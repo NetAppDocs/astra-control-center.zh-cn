@@ -1,11 +1,14 @@
+---
+sidebar: sidebar 
+permalink: use/execution-hooks.html 
+keywords: execution hook, snapshot, hook, kubernetes, astra control, astra 
+summary: 执行钩是一种自定义脚本，您可以在托管应用程序快照之前或之后运行该脚本。 
+---
 = 管理应用程序执行挂钩
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/use/
 
-
-SELECT —侧栏：侧栏 perMalink ： use/execution-hooks.html 关键字：执行钩，快照，钩， Kubernetes ， Astra 控件， Astra 摘要：执行挂钩是一种自定义脚本，您可以在托管应用程序快照之前或之后运行该脚本。——
-
-
-
-= 管理应用程序执行挂钩
 
 [role="lead"]
 执行钩是一种自定义脚本，您可以在托管应用程序快照之前或之后运行该脚本。例如，如果您有一个数据库应用程序，则可以使用执行挂钩在快照之前暂停所有数据库事务，并在快照完成后恢复事务。这样可以确保应用程序一致的快照。

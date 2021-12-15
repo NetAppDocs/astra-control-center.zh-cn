@@ -60,7 +60,7 @@ TIP: 如果您连接到 NetApp Cloud Insights ，则 Cloud Insights 中的数据
 +
 image:../use/acc_backends_ci_connection2.png["后端页面的屏幕截图"]
 
-. 要直接转到 Cloud Insights ，请单击指标图像旁边的 * Cloud Insights * 图标。
+. 要直接转到 Cloud Insights ，请选择指标图像旁边的 * Cloud Insights * 图标。
 
 
 

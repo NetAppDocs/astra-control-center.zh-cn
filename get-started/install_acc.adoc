@@ -500,7 +500,7 @@ name: astra
  spec:
    accountName: Example
    astraAddress: astra.example.com
-   astraVersion: 21.12.59
+   astraVersion: 21.12.60
    autoSupport:
      enrolled: true
      url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -514,7 +514,7 @@ name: astra
  status:
    accConditionHistory:
      items:
-     - astraVersion: 21.12.59
+     - astraVersion: 21.12.60
        condition:
          lastTransitionTime: "2021-11-23T02:23:59Z"
          message: Deploying is currently in progress.
@@ -525,7 +525,7 @@ name: astra
        observedSpec:
          accountName: Example
          astraAddress: astra.example.com
-         astraVersion: 21.12.59
+         astraVersion: 21.12.60
          autoSupport:
            enrolled: true
            url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -537,7 +537,7 @@ name: astra
            secret: astra-registry-cred
          lastName: Admin
        timestamp: "2021-11-23T02:23:59Z"
-     - astraVersion: 21.12.59
+     - astraVersion: 21.12.60
        condition:
          lastTransitionTime: "2021-11-23T02:23:59Z"
          message: Deploying is currently in progress.
@@ -548,7 +548,7 @@ name: astra
        observedSpec:
          accountName: Example
          astraAddress: astra.example.com
-         astraVersion: 21.12.59
+         astraVersion: 21.12.60
          autoSupport:
            enrolled: true
            url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -560,7 +560,7 @@ name: astra
            secret: astra-registry-cred
          lastName: Admin
        timestamp: "2021-11-23T02:23:59Z"
-     - astraVersion: 21.12.59
+     - astraVersion: 21.12.60
        condition:
          lastTransitionTime: "2021-11-23T02:29:41Z"
          message: Post Install was successful
@@ -572,7 +572,7 @@ name: astra
        observedSpec:
          accountName: Example
          astraAddress: astra.example.com
-         astraVersion: 21.12.59
+         astraVersion: 21.12.60
          autoSupport:
            enrolled: true
            url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -584,7 +584,7 @@ name: astra
            secret: astra-registry-cred
          lastName: Admin
        timestamp: "2021-11-23T02:29:41Z"
-     - astraVersion: 21.12.59
+     - astraVersion: 21.12.60
        condition:
          lastTransitionTime: "2021-11-23T02:29:41Z"
          message: Deploying succeeded.
@@ -596,7 +596,7 @@ name: astra
        observedSpec:
          accountName: Example
          astraAddress: astra.example.com
-         astraVersion: 21.12.59
+         astraVersion: 21.12.60
          autoSupport:
            enrolled: true
            url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -607,9 +607,9 @@ name: astra
            name: registry_name/astra
            secret: astra-registry-cred
          lastName: Admin
-       observedVersion: 21.12.59
+       observedVersion: 21.12.60
        timestamp: "2021-11-23T02:29:41Z"
-     - astraVersion: 21.12.59
+     - astraVersion: 21.12.60
        condition:
          lastTransitionTime: "2021-11-23T02:29:41Z"
          message: Astra is deployed
@@ -621,7 +621,7 @@ name: astra
        observedSpec:
          accountName: Example
          astraAddress: astra.example.com
-         astraVersion: 21.12.59
+         astraVersion: 21.12.60
          autoSupport:
            enrolled: true
            url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -632,9 +632,9 @@ name: astra
            name: registry_name/astra
            secret: astra-registry-cred
          lastName: Admin
-       observedVersion: 21.12.59
+       observedVersion: 21.12.60
        timestamp: "2021-11-23T02:29:41Z"
-     - astraVersion: 21.12.59
+     - astraVersion: 21.12.60
        condition:
          lastTransitionTime: "2021-11-23T02:29:41Z"
          message: Astra is deployed
@@ -646,7 +646,7 @@ name: astra
        observedSpec:
          accountName: Example
          astraAddress: astra.example.com
-         astraVersion: 21.12.59
+         astraVersion: 21.12.60
          autoSupport:
            enrolled: true
            url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -657,7 +657,7 @@ name: astra
            name: registry_name/astra
            secret: astra-registry-cred
          lastName: Admin
-       observedVersion: 21.12.59
+       observedVersion: 21.12.60
        timestamp: "2021-11-23T02:29:41Z"
    certManager: deploy
    cluster:
@@ -691,7 +691,7 @@ name: astra
    observedSpec:
      accountName: Example
      astraAddress: astra.example.com
-     astraVersion: 21.12.59
+     astraVersion: 21.12.60
      autoSupport:
        enrolled: true
        url: https://support.netapp.com/asupprod/post/1.0/postAsup
@@ -702,7 +702,7 @@ name: astra
        name: registry_name/astra
        secret: astra-registry-cred
      lastName: Admin
-   observedVersion: 21.12.59
+   observedVersion: 21.12.60
    postInstall: Complete
    *uuid: 9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f*
 kind: List
