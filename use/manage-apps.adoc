@@ -1,0 +1,248 @@
+---
+sidebar: sidebar 
+permalink: use/manage-apps.html 
+keywords: how to manage apps with astra control, discover app, how to manage kubernetes apps, astra control, astra 
+summary: 将 Kubernetes 集群添加到 Astra Control 后，您可以在该集群上安装应用程序（在 Astra Control 之外），然后转到 Astra Control 中的应用程序页面开始管理这些应用程序。 
+---
+= 开始管理应用程序
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/use/
+
+
+你先请 link:../get-started/setup_overview.html#add-cluster["将集群添加到 Astra Control 管理中"]，您可以在集群上安装应用程序（在 Astra Control 之外），然后转到 Astra Control 中的应用程序页面开始管理应用程序及其资源。
+
+
+
+== 应用程序管理要求
+
+Astra Control 具有以下应用程序管理要求：
+
+* * 许可 * ：要使用 Astra 控制中心管理应用程序，您需要获得 Astra 控制中心许可证。
+* * 命名空间 * ： Astra Control 要求一个应用程序不能跨越多个命名空间，但一个命名空间可以包含多个应用程序。
+* * 存储类 * ：如果您安装的应用程序明确设置了 StorageClass ，并且需要克隆该应用程序，则克隆操作的目标集群必须具有最初指定的 StorageClass 。将显式设置了 StorageClass 的应用程序克隆到不具有相同 StorageClass 的集群将失败。
+* * Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：
++
+** ClusterRole
+** ClusterRoleBinding.
+** 配置映射
+** 自定义资源定义
+** 自定义资源
+** DemonSet
+** 部署
+** DeploymentConfig
+** 传入
+** MutatingWebhook
+** PersistentVolumeClaim
+** POD
+** ReplicaSet
+** RoleBinding.
+** Role
+** 路由
+** 机密
+** 服务
+** ServiceAccount
+** 状态集
+** 验证 Webhook
+
+
+
+
+
+
+=== 支持的应用程序安装方法
+
+Astra Control 支持以下应用程序安装方法：
+
+* * 清单文件 * ： Astra Control 支持使用 kubectl 从清单文件安装的应用程序。例如：
++
+[listing]
+----
+kubectl apply -f myapp.yaml
+----
+* * Helm 3* ：如果使用 Helm 安装应用程序，则 Astra Control 需要 Helm 版本 3 。完全支持管理和克隆随 Helm 3 安装的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持管理随 Helm 2 安装的应用程序。
+* * 操作员部署的应用程序 * ： Astra Control 支持使用命名空间范围的运算符安装的应用程序。这些操作员通常采用 " 按价值传递 " 架构，而不是 " 按参考传递 " 架构。以下是一些遵循这些模式的操作员应用程序：
++
+** https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
+** https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
+** https://github.com/percona/percona-xtradb-cluster-operator["Percona XtraDB 集群"^]
+
+
+
+
+请注意， Astra Control 可能无法克隆使用 " 按参考传递 " 架构设计的运算符（例如 CockroachDB 运算符）。在这些类型的克隆操作期间，克隆的操作员会尝试引用源操作员提供的 Kubernetes 机密，尽管在克隆过程中他们拥有自己的新机密。克隆操作可能会失败，因为 Astra Control 不知道源运算符中的 Kubernetes 密钥。
+
+
+NOTE: 操作员及其安装的应用程序必须使用相同的命名空间；您可能需要为操作员修改部署 .yaml 文件，以确保情况确实如此。
+
+
+
+== 在集群上安装应用程序
+
+现在，您已将集群添加到 Astra Control 中，您可以在集群上安装应用程序或管理现有应用程序。可以管理范围限定于命名空间的任何应用程序。Pod 联机后，您可以使用 Astra Control 管理应用程序。
+
+有关从 Helm 图表部署经过验证的应用程序的帮助，请参见以下内容：
+
+* link:../solutions/mariadb-deploy-from-helm-chart.html["从 Helm 图表部署 MariaDB"]
+* link:../solutions/mysql-deploy-from-helm-chart.html["从 Helm 图表部署 MySQL"]
+* link:../solutions/postgres-deploy-from-helm-chart.html["从 Helm 图表部署 Postgres"]
+* link:../solutions/jenkins-deploy-from-helm-chart.html["从 Helm 图表中部署 Jenkins"]
+
+
+
+
+== 管理应用程序
+
+使用 Astra Control 可以在命名空间级别或通过 Kubernetes 标签管理应用程序。
+
+
+NOTE: 不支持随 Helm 2 安装的应用程序。
+
+您可以执行以下活动来管理应用程序：
+
+* 管理应用程序
++
+** <<Manage apps by namespace>>
+** <<Manage apps by Kubernetes label>>
+
+
+* <<Ignore apps>>
+* <<Unmanage apps>>
+
+
+
+TIP: Astra Control 本身不是一个标准应用程序，而是一个 " 系统应用程序 " 。 您不应尝试管理 Astra Control 本身。默认情况下，用于管理的 Astra Control 本身不会显示。要查看系统应用程序，请使用 " 显示系统应用程序 " 筛选器。
+
+有关如何使用 Astra Control API 管理应用程序的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
+
+
+NOTE: 在执行数据保护操作（克隆，备份，还原）并随后调整永久性卷大小后，在 UI 中显示新卷大小之前，最长会有 20 分钟的延迟。数据保护操作将在几分钟内成功完成，您可以使用存储后端的管理软件确认卷大小的更改。
+
+
+
+=== 按命名空间管理应用程序
+
+" 应用程序 " 页面的 * 已发现 * 部分显示命名空间以及这些命名空间中由 Helm 安装的任何应用程序或自定义标记的应用程序。您可以选择单独管理每个应用程序，也可以选择在命名空间级别管理每个应用程序。这一切都可以细化到数据保护操作所需的粒度级别。
+
+例如，您可能希望为 "Maria" 设置一个每周节奏的备份策略，但您可能需要比该策略更频繁地备份 "MariaDB" （位于同一命名空间中）。根据这些需求，您需要单独管理应用程序，而不是在一个命名空间下进行管理。
+
+虽然您可以使用 Astra Control 单独管理层次结构的两个级别（命名空间和该命名空间中的应用程序），但最佳做法是选择一个或另一个。如果在命名空间和应用程序级别同时执行操作，则在 Astra Control 中执行的操作可能会失败。
+
+.步骤
+. 从左侧导航栏中，选择 * 应用程序 * 。
+. 选择 * 已发现 * 。
++
+image:acc_apps_discovered4.png["已发现应用程序的屏幕截图"]
+
+. 查看已发现的命名空间列表。展开命名空间以查看应用程序和关联资源。
++
+Astra Control 会向您显示命名空间中的 Helm 应用程序和自定义标记的应用程序。如果 Helm 标签可用，则会使用标记图标来指定这些标签。
+
+. 查看 * 组 * 列，查看应用程序运行在哪个命名空间中（使用文件夹图标指定）。
+. 确定是单独管理每个应用程序，还是在命名空间级别管理每个应用程序。
+. 在层次结构中的所需级别找到所需的应用程序，然后从操作菜单中选择 * 管理 * 。
+. 如果您不想管理某个应用程序，请从该应用程序旁边的操作菜单中选择 * 忽略 * 。
++
+例如，如果您希望同时管理 "Maria" 命名空间下的所有应用程序，以便它们具有相同的快照和备份策略，则可以管理命名空间并忽略命名空间中的应用程序。
+
+. 要查看受管应用程序的列表，请选择 * 受管 * 作为显示筛选器。
++
+image:acc_apps_managed3.png["受管应用程序的屏幕截图"]
+
++
+请注意，您刚刚添加的应用程序在 " 受保护 " 列下有一个警告图标，表示它尚未备份，也尚未计划备份。
+
+. 要查看特定应用程序的详细信息，请选择应用程序名称。
+
+
+您选择管理的应用程序现在可从 * 受管 * 选项卡访问。任何被忽略的应用程序都将移至 * 已忽略 * 选项卡。理想情况下， " 已发现 " 选项卡将显示零个应用程序，以便在安装新应用程序后更容易找到和管理这些应用程序。
+
+
+
+=== 按 Kubernetes 标签管理应用程序
+
+Astra Control 在应用程序页面顶部包含一个名为 * 定义自定义应用程序 * 的操作。您可以使用此操作管理使用 Kubernetes 标签标识的应用程序。 link:../use/define-custom-app.html["了解有关通过 Kubernetes 标签定义自定义应用程序的更多信息"]。
+
+.步骤
+. 从左侧导航栏中，选择 * 应用程序 * 。
+. 选择 * 定义 * 。
++
+image:acc_apps_custom_details3.png["定义自定义应用程序的屏幕截图"]
+
+. 在 * 定义自定义应用程序 * 对话框中，提供管理该应用程序所需的信息：
++
+.. * 新建应用程序 * ：输入应用程序的显示名称。
+.. * 集群 * ：选择应用程序所在的集群。
+.. * 命名空间： * 选择应用程序的命名空间。
+.. * 标签： * 输入标签或从以下资源中选择标签。
+.. * 选定资源 * ：查看和管理要保护的选定 Kubernetes 资源（ Pod ，机密，永久性卷等）。
++
+*** 通过展开资源并单击标签数量来查看可用标签。
+*** 选择一个标签。
++
+选择标签后，它将显示在 * 标签 * 字段中。Astra Control 还会更新 * 未选定资源 * 部分，以显示与选定标签不匹配的资源。
+
+
+
+.. * 未选择资源 * ：验证您不想保护的应用程序资源。
+
+
+. 单击 * 定义自定义应用程序 * 。
+
+
+使用 Astra Control 可以管理应用程序。现在，您可以在 * 受管 * 选项卡中找到它。
+
+
+
+== 忽略应用程序
+
+如果已发现某个应用程序，它将显示在已发现列表中。在这种情况下，您可以清理已发现的列表，以便更容易找到新安装的应用程序。或者，您可能会管理一些应用程序，稍后决定不再需要管理这些应用程序。如果您不想管理这些应用程序，可以指示应忽略它们。
+
+此外，您可能希望在一个命名空间下同时管理应用程序（命名空间管理）。您可以忽略要从命名空间中排除的应用程序。
+
+.步骤
+. 从左侧导航栏中，选择 * 应用程序 * 。
+. 选择 * 已发现 * 作为筛选器。
+. 选择应用程序。
+. 从操作菜单中，选择 * 忽略 * 。
+. 要取消忽略，请从操作菜单中选择 * 取消忽略 * 。
+
+
+
+
+== 取消管理应用程序
+
+如果您不再需要备份，创建快照或克隆某个应用程序，则可以停止对其进行管理。
+
+
+NOTE: 如果取消管理某个应用程序，则先前创建的任何备份或快照都将丢失。
+
+.步骤
+. 从左侧导航栏中，选择 * 应用程序 * 。
+. 选择 * 受管 * 作为筛选器。
+. 选择应用程序。
+. 从操作菜单中，选择 * 取消管理 * 。
+. 查看相关信息。
+. 键入 "unmanage" 进行确认。
+. 选择 * 是，取消管理应用程序 * 。
+
+
+
+
+== 系统应用程序如何？
+
+Astra Control 还会发现 Kubernetes 集群上运行的系统应用程序。您可以通过在工具栏的集群筛选器下选中 * 显示系统应用程序 * 复选框来显示系统应用程序。
+
+image:acc_apps_system_apps3.png["显示应用程序页面中提供的显示系统应用程序选项的屏幕截图。"]
+
+默认情况下，我们不会向您显示这些系统应用程序，因为您很少需要备份这些应用程序。
+
+
+TIP: Astra Control 本身不是一个标准应用程序，而是一个 " 系统应用程序 " 。 您不应尝试管理 Astra Control 本身。默认情况下，用于管理的 Astra Control 本身不会显示。要查看系统应用程序，请使用 " 显示系统应用程序 " 筛选器。
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+

@@ -1,0 +1,12 @@
+---
+section: concepts
+title: 概念
+entries:
+- title: Astra Control 简介
+  url: "/concepts/intro.html"
+- title: 架构和组件
+  url: "/concepts/architecture.html"
+- title: 经验证的应用程序与标准应用程序
+  url: "/concepts/validated-vs-standard.html"
+- title: 存储类和 PV 大小
+  url: "/concepts/choose-class-and-size.html"

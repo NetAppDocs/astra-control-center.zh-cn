@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: use/close-account.html 
+keywords: close account, delete account, delete my account, close my account 
+summary: 如果您不再需要 Astra 帐户，可以随时关闭该帐户。 
+---
+= 关闭您的帐户
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/use/
+
+
+如果您不再需要 Astra 帐户，可以随时关闭该帐户。
+
+.步骤
+. link:unmanage.html["取消管理所有应用程序和集群"]。
+. link:manage-credentials.html["从 Astra 中删除凭据"]。
+. 选择 * 帐户 > 计费 > 付款方式 * 。
+. 选择 * 关闭帐户 * 。
+. 输入您的帐户名称并确认关闭该帐户。
+

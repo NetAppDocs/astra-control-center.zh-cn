@@ -1,0 +1,55 @@
+---
+section: use
+title: 使用 Astra
+entries:
+- title: 管理应用程序
+  entries:
+  - title: 开始管理应用程序
+    url: "/use/manage-apps.html"
+  - title: 定义自定义应用程序
+    url: "/use/define-custom-app.html"
+- title: 保护应用程序
+  entries:
+  - title: 保护应用程序
+    url: "/use/protect-apps.html"
+  - title: 还原应用程序
+    url: "/use/restore-apps.html"
+  - title: 克隆和迁移应用程序
+    url: "/use/clone-apps.html"
+  - title: 管理应用程序执行挂钩
+    url: "/use/execution-hooks.html"
+    entries:
+    - title: 执行钩示例
+      url: "/use/execution-hook-examples.html"
+- title: 查看应用程序和集群运行状况
+  entries:
+  - title: 信息板摘要
+    url: "/use/view-dashboard.html"
+  - title: 集群运行状况和详细信息
+    url: "/use/view-clusters.html"
+  - title: 应用程序运行状况和详细信息
+    url: "/use/view-apps.html"
+- title: 管理您的帐户
+  entries:
+  - title: 管理用户
+    url: "/use/manage-users.html"
+  - title: 管理通知
+    url: "/use/manage-notifications.html"
+  - title: 管理凭据
+    url: "/use/manage-credentials.html"
+  - title: 更新现有许可证
+    url: "/use/update-licenses.html"
+- title: 管理存储分段
+  url: "/use/manage-buckets.html"
+- title: 管理存储后端
+  url: "/use/manage-backend.html"
+- title: 监控和保护基础架构
+  url: "/use/monitor-protect.html"
+- title: 更新现有许可证
+  url: "/use/update-licenses.html"
+- title: 取消管理应用程序和集群
+  url: "/use/unmanage.html"
+- title: 升级 Astra 控制中心
+  url: "/use/upgrade-acc.html"
+- title: 卸载 Astra 控制中心
+  url: "/use/uninstall_acc.html"

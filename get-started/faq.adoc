@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: get-started/faq.html 
+keywords: astra faq, astra frequently asked questions, what is astra, astra control, kubernetes, persistent volumes 
+summary: 如果您只是想快速了解问题解答，此常见问题解答会很有帮助。 
+---
+= 有关 Astra 控制中心的常见问题
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+如果您只是想快速了解问题解答，此常见问题解答会很有帮助。
+
+
+
+== 概述
+
+以下各节将为您在使用 Astra 控制中心时可能遇到的其他一些问题提供解答。如需更多说明，请联系 astra.feedback@netapp.com
+
+
+
+== 访问 Astra 控制中心
+
+* 什么是 Astra Control URL ？ *
+
+Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
+
+对于 URL ，在浏览器中，在安装 Astra Control Center 时，在 Astra_control_center_min.YAML 自定义资源定义（ CRD ）文件的 spec.astraAddress 字段中输入您设置的完全限定域名（ FQDN ）。电子邮件是您在 Astra_control_center_min.YAML CRD 的 spec.email 字段中设置的值。
+
+* 我正在使用评估版许可证。如何更改为完整许可证？ *
+
+您可以通过获取 NetApp 许可证文件（ NLF ）轻松更改为完整许可证。
+
+* 步骤 *
+
+* 从左侧导航栏中，选择 * 帐户 * > * 许可证 * 。
+* 选择 * 添加许可证 * 。
+* 浏览到下载的许可证文件并选择 * 添加 * 。
+
+
+* 我正在使用评估版许可证。我是否仍能管理应用程序？ *
+
+可以，您可以使用评估版许可证测试管理应用程序功能。
+
+
+
+== 注册 Kubernetes 集群
+
+* 在添加到 Astra Control 后，我需要向 Kubernetes 集群添加工作节点。我该怎么办？ *
+
+可以将新的工作节点添加到现有池中。这些信息将由 Astra Control 自动发现。如果新节点在 Astra Control 中不可见，请检查新工作节点是否正在运行受支持的映像类型。您也可以使用 `kubectl get nodes` 命令验证新工作节点的运行状况。
+
+* 如何正确取消管理集群？ *
+
+. link:../use/unmanage.html["从 Astra Control 取消管理应用程序"]。
+. link:../use/unmanage.html#stop-managing-compute["从 Astra Control 取消管理集群"]。
+
+
+* 从 Astra Control 中删除 Kubernetes 集群后，应用程序和数据会发生什么情况？ *
+
+从 Astra Control 中删除集群不会对集群的配置（应用程序和永久性存储）进行任何更改。对该集群上的应用程序执行的任何 Astra Control 快照或备份都将无法还原。由 Astra Control 创建的永久性存储备份仍保留在 Astra Control 中，但无法还原。
+
+
+WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。
+
+* 从 Astra Control 中删除 Kubernetes 集群时是否会卸载 NetApp Trident ？ *
+
+从 Astra Control 中删除 Trident 后，它不会从集群中卸载。
+
+
+
+== 管理应用程序
+
+* Astra Control 是否可以部署应用程序？ *
+
+Astra Control 不会部署应用程序。应用程序必须部署在 Astra Control 之外。
+
+* 停止从 Astra Control 管理应用程序后，应用程序会发生什么情况？ *
+
+任何现有备份或快照都将被删除。应用程序和数据始终可用。数据管理操作不适用于非受管应用程序或属于该应用程序的任何备份或快照。
+
+* Astra Control 是否可以管理非 NetApp 存储上的应用程序？ *
+
+否虽然 Astra Control 可以发现使用非 NetApp 存储的应用程序，但它无法管理使用非 NetApp 存储的应用程序。
+
+* 我是否应该管理 Astra Control 本身？ * 不，您不应该管理 Astra Control 本身，因为它是一个 " 系统应用程序 " 。
+
+
+
+== 数据管理操作
+
+* 我的帐户中存在未创建的快照。它们来自何处？ *
+
+在某些情况下， Astra Control 会在备份，克隆或还原过程中自动创建快照。
+
+* 我的应用程序使用多个 PV 。Astra Control 是否会为所有这些 PVC 创建快照和备份？ *
+
+是的。Astra Control 对应用程序执行的快照操作包括绑定到应用程序 PVC 的所有 PV 的快照。
+
+* 是否可以直接通过其他接口或对象存储管理 Astra Control 创建的快照？ *
+
+否Astra Control 创建的快照和备份只能使用 Astra Control 进行管理。

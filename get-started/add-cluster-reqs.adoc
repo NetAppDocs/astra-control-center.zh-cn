@@ -1,0 +1,274 @@
+---
+sidebar: sidebar 
+permalink: get-started/add-cluster-reqs.html 
+keywords: what are astra prerequisites, what is Astra Control, add kubernetes cluster, astra trident version 
+summary: 您应运行灵活性检查，以确保集群已准备好添加到 Astra 控制中心。 
+---
+= 添加集群的前提条件
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+在添加集群之前，应确保满足前提条件。您还应运行资格检查，以确保集群已准备好添加到 Astra 控制中心。
+
+
+
+== 添加集群之前需要满足的要求
+
+* 以下类型的集群之一：
++
+** 运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses 。
+** 运行 Rancher 2.5 的集群
+** 运行 Kubernetes 1.19 到 1.21 （包括 1.21.x ）的集群
++
+确保集群中有一个或多个工作节点，并且至少有 1 GB RAM 可用于运行遥测服务。
+
++
+
+NOTE: 如果您计划将第二个 OpenShift 4.6 ， 4.7 或 4.8 集群添加为托管计算资源，则应确保已启用 Astra Trident 卷快照功能。请参见官方的 Astra Trident https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["说明"^] 使用 Astra Trident 启用和测试卷快照。
+
+
+
+* 在备份 ONTAP 系统上设置的超级用户和用户 ID ，用于使用 Astra 控制中心（ Accc ）备份和还原应用程序。在 ONTAP 命令行中运行以下命令： `export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -superuser sysm -anon 65534`
+* 管理员定义的 Astra Trident `volumesnapshotclass` 对象。请参见 Astra Trident https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["说明"^] 使用 Astra Trident 启用和测试卷快照。
+
+
+
+
+== 运行资格检查
+
+运行以下资格检查，以确保您的集群已准备好添加到 Astra 控制中心。
+
+.步骤
+. 检查 Trident 版本。
++
+[listing]
+----
+kubectl get tridentversions -n trident
+----
++
+如果存在 Trident ，您将看到类似于以下内容的输出：
+
++
+[listing]
+----
+NAME      VERSION
+trident   21.04.0
+----
++
+如果 Trident 不存在，您将看到类似于以下内容的输出：
+
++
+[listing]
+----
+error: the server doesn't have a resource type "tridentversions"
+----
++
+
+NOTE: 如果未安装 Trident 或安装的版本不是最新的，则需要先安装最新版本的 Trident ，然后再继续操作。请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Trident 文档"^] 有关说明，请参见。
+
+. 检查存储类是否正在使用受支持的 Trident 驱动程序。配置程序名称应为 `csi.trident.netapp.io` 。请参见以下示例：
++
+[listing]
+----
+kubectl get sc
+NAME                   PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+ontap-gold (default)   csi.trident.netapp.io          Delete          Immediate           true                   5d23h
+thin                   kubernetes.io/vsphere-volume   Delete          Immediate           false                  6d
+----
+
+
+
+
+== 创建管理员角色 kubeconfig
+
+执行这些步骤之前，请确保您的计算机上具有以下内容：
+
+* 已安装 `kubectl` v1.19 或更高版本
+* 具有活动上下文集群管理员权限的活动 kubeconfig
+
+
+.步骤
+. 按如下所示创建服务帐户：
++
+.. 创建名为 ``asacontrol service-account.yaml`` 的服务帐户文件。
++
+根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astracontrol-service-account.yaml*
+----
++
+[listing]
+----
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: astracontrol-service-account
+  namespace: default
+----
+.. 应用服务帐户：
++
+[listing]
+----
+kubectl apply -f astracontrol-service-account.yaml
+----
+
+
+. 按如下所示授予集群管理员权限：
++
+.. 创建一个 `ClusterRoleBindingm` 文件，该文件名为 `astracontrol — clusterrolebind.YAML` 。
++
+根据需要调整创建服务帐户时修改的任何名称和命名空间。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astracontrol-clusterrolebinding.yaml*
+----
++
+[listing]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: astracontrol-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: astracontrol-service-account
+  namespace: default
+----
+.. 应用集群角色绑定：
++
+[listing]
+----
+kubectl apply -f astracontrol-clusterrolebinding.yaml
+----
+
+
+. 列出服务帐户密码，将 ` <context>` 替换为适用于您的安装的正确上下文：
++
+[listing]
+----
+kubectl get serviceaccount astracontrol-service-account --context <context> --namespace default -o json
+----
++
+输出的结尾应类似于以下内容：
+
++
+[listing]
+----
+"secrets": [
+{ "name": "astracontrol-service-account-dockercfg-vhz87"},
+{ "name": "astracontrol-service-account-token-r59kr"}
+]
+----
++
+`sec白 烟` 数组中每个元素的索引均以 0 开头。在上面的示例中， `asacontrol service-account-dockercfg-vhz87` 的索引为 0 ， `asacontrol service-account-token-r59rk` 的索引为 1 。在输出中，记下包含 "token" 一词的服务帐户名称的索引。
+
+. 按如下所示生成 kubeconfig ：
++
+.. 创建 `create-kubeconfig.sh` 文件。如果您在上一步中记下的令牌索引不是 0 ，请将以下脚本开头的 `token_index` 的值替换为正确的值。
++
+[source, subs="specialcharacters,quotes"]
+----
+*create-kubeconfig.sh*
+----
++
+[listing]
+----
+# Update these to match your environment. Replace the value for TOKEN_INDEX from
+# the output in the previous step if it was not 0. If you didn't change anything
+# else above, don't change anything else here.
+
+SERVICE_ACCOUNT_NAME=astracontrol-service-account
+NAMESPACE=default
+NEW_CONTEXT=astracontrol
+KUBECONFIG_FILE='kubeconfig-sa'
+TOKEN_INDEX=0
+
+CONTEXT=$(kubectl config current-context)
+
+SECRET_NAME=$(kubectl get serviceaccount ${SERVICE_ACCOUNT_NAME} \
+  --context ${CONTEXT} \
+  --namespace ${NAMESPACE} \
+  -o jsonpath='{.secrets[TOKEN_INDEX].name}')
+TOKEN_DATA=$(kubectl get secret ${SECRET_NAME} \
+  --context ${CONTEXT} \
+  --namespace ${NAMESPACE} \
+  -o jsonpath='{.data.token}')
+
+TOKEN=$(echo ${TOKEN_DATA} | base64 -d)
+
+# Create dedicated kubeconfig
+# Create a full copy
+kubectl config view --raw > ${KUBECONFIG_FILE}.full.tmp
+
+# Switch working context to correct context
+kubectl --kubeconfig ${KUBECONFIG_FILE}.full.tmp config use-context ${CONTEXT}
+
+# Minify
+kubectl --kubeconfig ${KUBECONFIG_FILE}.full.tmp \
+  config view --flatten --minify > ${KUBECONFIG_FILE}.tmp
+
+# Rename context
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  rename-context ${CONTEXT} ${NEW_CONTEXT}
+
+# Create token user
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-credentials ${CONTEXT}-${NAMESPACE}-token-user \
+  --token ${TOKEN}
+
+# Set context to use token user
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-context ${NEW_CONTEXT} --user ${CONTEXT}-${NAMESPACE}-token-user
+
+# Set context to correct namespace
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-context ${NEW_CONTEXT} --namespace ${NAMESPACE}
+
+# Flatten/minify kubeconfig
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  view --flatten --minify > ${KUBECONFIG_FILE}
+
+# Remove tmp
+rm ${KUBECONFIG_FILE}.full.tmp
+rm ${KUBECONFIG_FILE}.tmp
+----
+.. 获取用于将其应用于 Kubernetes 集群的命令。
++
+[listing]
+----
+source create-kubeconfig.sh
+----
+
+
+. （ * 可选 * ）将 kubeconfig 重命名为集群的有意义名称。保护集群凭据。
++
+[listing]
+----
+chmod 700 create-kubeconfig.sh
+mv kubeconfig-sa.txt YOUR_CLUSTER_NAME_kubeconfig
+----
+
+
+
+
+== 下一步是什么？
+
+确认满足了这些前提条件后，您便已准备就绪 link:setup_overview.html["添加集群"^]。
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/trident/index.html["Trident 文档"^]
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+

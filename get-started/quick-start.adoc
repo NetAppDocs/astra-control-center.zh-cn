@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: get-started/quick-start.html 
+keywords: how to get started with astra, astra quick start, astra installation, how to install astra control, deploy, deployment, kubernetes 
+summary: 只需几步即可开始使用 Astra Control 。 
+---
+= Astra 控制中心快速入门
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+此页面简要概述了开始使用 Astra 控制中心所需的步骤。每个步骤中的链接将转到一个页面，其中提供了更多详细信息。
+
+试用！如果您要试用 Astra Control Center ，可以使用 90 天评估许可证。请参见 link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["许可信息"] 了解详细信息。
+
+.跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] Alt-one"></span> 查看 Kubernetes 集群要求
+* Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储存储后端的 Kubernetes 集群结合使用。
+* 集群必须以运行状况良好的状态运行，并且至少有三个联机辅助节点。
+* 集群必须运行 Kubernetes 。
+
+
+[role="quick-margin-para"]
+link:../get-started/requirements.html["了解有关 Astra 控制中心要求的更多信息"]。
+
+.跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png"[] Alt-twe"></span> 下载并安装 Astra 控制中心
+* 从下载 Astra 控制中心 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点 Astra 控制中心下载页面"^]。
+* 在本地环境中安装 Astra Control Center 。
++
+也可以从 Red Hat OperatorHub 安装 Astra 控制中心。
+
+* 了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，将您的 Astra Data Store 集群作为存储后端。
++
+您可以在 OpenShift 注册表上安装映像，也可以使用本地注册表。
+
+
+
+[role="quick-margin-para"]
+link:../get-started/install_acc.html["了解有关安装 Astra 控制中心的更多信息"]。
+
+.跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] Alt-Three </span> 完成一些初始设置任务
+* 添加许可证
+* 添加 Kubernetes 集群， Astra 控制中心将发现详细信息。
+* 添加 ONTAP 或 Astra 数据存储存储后端。
+* 或者，添加用于存储应用程序备份的对象存储分段。
+
+
+[role="quick-margin-para"]
+link:../get-started/setup_overview.html["了解有关初始设置过程的更多信息"]。
+
+[role="quick-margin-list"]
+设置完 Astra 控制中心后，您接下来可能会执行以下操作：
+
+* 管理应用程序。 link:../use/manage-apps.html["详细了解如何管理应用程序"]。
+* 或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。 link:../use/monitor-protect.html["了解有关连接到 Cloud Insights 的更多信息"]。
+
+
+[role="quick-margin-para"]
+link:../get-started/install_acc.html["安装 Astra 控制中心"]。
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+

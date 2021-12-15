@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-limitations.html 
+keywords: astra, control center, limitations, known limitations, interoperability 
+summary: 已知限制确定了本产品版本不支持的平台、设备或功能、或者这些平台、设备或功能无法与产品正确交互操作。仔细审查这些限制。 
+---
+= 已知限制
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+已知限制确定了本产品版本不支持的平台、设备或功能、或者这些平台、设备或功能无法与产品正确交互操作。仔细审查这些限制。
+
+
+
+== 同一集群不能由两个 Astra Control Center 实例管理
+
+如果要管理另一个 Astra Control Center 实例上的集群，应首先进行管理 link:../use/unmanage.html#stop-managing-compute["取消管理集群"] 在另一个实例上管理之前，先从所管理的实例进行管理。从管理中删除集群后，执行以下命令以验证此集群是否未受管理：
+
+[listing]
+----
+oc get pods n -netapp-monitoring
+----
+此命名空间中不应运行任何 Pod ，或者此命名空间不应存在。如果其中任一项为 true ，则集群不受管理。
+
+
+
+== 使用 Ppass by reference operators 安装的应用程序克隆可能会失败
+
+Astra Control 支持使用命名空间范围的运算符安装的应用程序。这些操作员通常采用 " 按价值传递 " 架构，而不是 " 按参考传递 " 架构。以下是一些遵循这些模式的操作员应用程序：
+
+* https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
+* https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
+* https://github.com/percona/percona-xtradb-cluster-operator["Percona XtraDB 集群"^]
+
+
+请注意， Astra Control 可能无法克隆使用 " 按参考传递 " 架构设计的运算符（例如 CockroachDB 运算符）。在这些类型的克隆操作期间，克隆的操作员会尝试引用源操作员提供的 Kubernetes 机密，尽管在克隆过程中他们拥有自己的新机密。克隆操作可能会失败，因为 Astra Control 不知道源运算符中的 Kubernetes 密钥。
+
+
+
+== 尽管集群和网络在其他方面按预期工作，但集群处于 "Removed" 状态
+
+如果集群处于 `removed` 状态，而集群和网络连接运行状况良好（外部尝试使用 Kubernetes API 访问集群成功），则您为 Astra Control 提供的 kubeconfig 可能不再有效。这可能是由于集群上的证书轮换或到期造成的。要更正此问题描述，请使用在 Astra Control 中更新与集群关联的凭据 link:https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"]：
+
+. 运行 POST 调用，将更新后的 kubeconfig 文件添加到 ` 凭据` 端点，并从响应正文中检索分配的 `id` 。
+. 使用适当的集群 ID 从 ` 集群` 端点运行 PUT 调用，并将 `credentialId` 设置为上一步中的 `id` 值。
+
+
+完成这些步骤后，将更新与集群关联的凭据，集群应重新连接并将其状态更新为 `Available` 。
+
+
+
+== 不支持已部署的应用程序，这些应用程序已启用 olm ，并且已部署集群范围
+
+Astra 控制中心不支持使用启用了操作员生命周期管理器（ OLM ）的操作员或集群范围的操作员部署的应用程序。
+
+
+
+== 只能使用相同的 K8s 分发版克隆应用程序
+
+如果在集群之间克隆应用程序，则源集群和目标集群必须是相同的 Kubernetes 分发版。例如，如果从 OpenShift 4.7 集群克隆应用程序，请使用同时也是 OpenShift 4.7 的目标集群。
+
+
+
+== Astra 控制中心中的 S3 存储分段不会报告可用容量
+
+在备份或克隆由 Astra 控制中心管理的应用程序之前，请检查 ONTAP 或 StorageGRID 管理系统中的存储分段信息。
+
+
+
+== 不支持 metalLB 0.11.0
+
+metalLB 0.11.0 不是 Astra 控制中心支持的负载平衡器。有关支持的负载平衡器的详细信息，请参见 link:../get-started/requirements.html#service-type-loadbalancer-for-on-premises-kubernetes-clusters["Astra 控制中心要求"]。
+
+
+
+== 不支持使用 Helm 2 部署的应用程序
+
+如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。有关详细信息，请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
+
+
+
+== Astra 控制中心不会验证您为代理服务器输入的详细信息
+
+请确保您的安全 link:../use/monitor-protect.html#add-a-proxy-server["输入正确的值"] 建立连接时。
+
+
+
+== 尚未提供适用于 Astra 控制中心的数据保护应用程序
+
+此版本不支持使用快照，备份或还原选项将 Astra 作为应用程序进行管理。
+
+
+
+== 运行状况不正常的 Pod 会影响应用程序管理
+
+如果受管应用程序中的 Pod 运行状况不正常，则 Astra Control 无法创建新的备份和克隆。
+
+
+
+== 与 Postgres Pod 的现有连接导致故障
+
+在 Postgres Pod 上执行操作时，不应直接在 Pod 中连接以使用 psql 命令。Astra Control 需要使用 psql 访问权限来冻结和解冻数据库。如果已建立连接，则快照，备份或克隆将失败。
+
+
+
+== 未从集群中卸载 Trident
+
+从 Astra 控制中心取消管理集群时， Trident 不会自动从集群中卸载。要卸载 Trident ，您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照 Trident 文档中的以下步骤进行操作"^]。
+
+
+
+== 了解更多信息
+
+* link:../release-notes/resolved-issues.html["已解决的问题"]
+* link:../release-notes/known-issues.html["已知问题"]
+

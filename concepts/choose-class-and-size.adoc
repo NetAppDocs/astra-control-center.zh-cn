@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: concepts/choose-class-and-size.html 
+keywords: service level, storage class, storage classes, pv size, persistent volume size, volume size, bandwidth, performance, persistent, volume, kubernetes, containers 
+summary: Astra 控制中心支持由 ONTAP 存储类或 Astra 数据存储类提供支持的 Trident 存储类。您应了解存储类和永久性卷大小如何帮助您实现性能目标。 
+---
+= 存储类和永久性卷大小
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+
+[role="lead"]
+Astra 控制中心支持使用 ONTAP 或 Astra 数据存储作为后端存储。您应了解存储类和永久性卷（ PV ）大小如何帮助您实现性能目标。
+
+
+
+== 概述
+
+Astra 控制中心支持以下功能：
+
+* * 由 Astra Data Store 存储提供支持的 Trident 存储类 * ：如果您手动安装了一个或多个 Astra Data Store 集群，则 Astra 控制中心可以导入这些集群并检索其拓扑（节点，磁盘）以及各种状态。
++
+Astra 控制中心显示 Astra Data Store 配置中的底层 Kubernetes 集群， Kubernetes 集群所属的云，由 Astra Data Store 配置的任何永久性卷，相应内部卷的名称，使用永久性卷的应用程序以及包含此应用程序的集群。
+
+* * 由 ONTAP 存储提供支持的 Trident 存储类 * ：如果您使用的是 ONTAP 后端，则 Astra 控制中心可以导入 ONTAP 后端以报告各种监控信息。
+
+
+
+NOTE: 应在 Astra 控制中心之外预先配置 Trident 存储类。
+
+
+
+== 存储类
+
+将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。
+
+如果使用与 Astra Data Store 后端存储集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见 Astra Data Store 入门中有关如何创建默认 Astra Data Store 存储类的信息。
+
+
+
+== 有关详细信息 ...
+
+* https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
+

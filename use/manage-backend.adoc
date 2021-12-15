@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: use/manage-backend.html 
+keywords: how to use astra control, what is astra storage, how to set up astra backend storage, ontap storage in astra, kubernetes, 
+summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现并使用已部署的资源，包括 Trident ， ONTAP 以及关联的存储类。 
+---
+= 管理存储后端
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/use/
+
+
+通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。您可以监控存储容量和运行状况详细信息，包括当 Astra 控制中心连接到 Cloud Insights 时的性能。
+
+有关如何使用 Astra Control API 管理存储后端的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
+
+您可以完成以下与管理存储后端相关的任务：
+
+* link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"]
+* <<View storage backend details>>
+* <<Unmanage a storage backend>>
+
+
+
+
+== 查看存储后端详细信息
+
+您可以从信息板或后端选项查看存储后端信息。
+
+
+
+=== 从信息板查看存储后端详细信息
+
+.步骤
+. 从左侧导航栏中选择 * 信息板 * 。
+. 查看存储后端部分，其中显示了以下状态：
++
+** * 运行状况不正常 * ：存储未处于最佳状态。这可能是由于延迟问题描述或应用程序因容器问题描述等原因而降级。
+** * 所有运行状况均正常 * ：存储已进行管理并处于最佳状态。
+** * 已发现 * ：存储已被发现，但未由 Astra Control 管理。
+
+
+
+
+
+
+=== 从后端选项查看存储后端详细信息
+
+查看有关后端运行状况，容量和性能（ IOPS 吞吐量和 / 或延迟）的信息。
+
+通过连接到 Cloud Insights ，您可以查看 Kubernetes 应用程序正在使用的卷，这些卷存储在选定的存储后端。
+
+.步骤
+. 在左侧导航区域中，选择 * 后端 * 。
+. 选择存储后端。
++
+
+TIP: 如果您连接到 NetApp Cloud Insights ，则 Cloud Insights 中的数据摘录将显示在后端页面上。
+
++
+image:../use/acc_backends_ci_connection2.png["后端页面的屏幕截图"]
+
+. 要直接转到 Cloud Insights ，请单击指标图像旁边的 * Cloud Insights * 图标。
+
+
+
+
+== 取消管理存储后端
+
+您可以取消管理后端。
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 选择后端存储。
+. 从操作菜单中，选择 * 取消管理 * 。
+. 键入 "unmanage" 确认删除。
+. 选择 * 是，删除存储后端 * 。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+

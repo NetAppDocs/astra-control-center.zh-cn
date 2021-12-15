@@ -1,0 +1,19 @@
+---
+section: get-started
+title: 入门
+entries:
+- title: Astra 控制中心要求
+  url: "/get-started/requirements.html"
+- title: Astra 控制中心快速入门
+  url: "/get-started/quick-start.html"
+- title: 安装 Astra 控制中心
+  url: "/get-started/install_acc.html"
+- title: 设置 Astra 控制中心
+  url: "/get-started/setup_overview.html"
+  entries:
+  - title: 添加集群的前提条件
+    url: "/get-started/add-cluster-reqs.html"
+  - title: 添加自定义 TLS 证书
+    url: "/get-started/add-custom-tls-certificate.html"
+- title: 常见问题解答
+  url: "/get-started/faq.html"

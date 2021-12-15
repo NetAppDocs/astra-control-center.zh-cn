@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: release-notes/rn_overview.html 
+keywords: what's new, bugs, bug fixes, new features, enhancements 
+summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增强功能和错误修复。 
+---
+= 发行说明
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+我们很高兴地宣布发布 Astra 控制中心 21.12 版。
+
+* link:../release-notes/whats-new.html["此版本的 Astra 控制中心包含哪些内容"]
+* link:../release-notes/resolved-issues.html["已解决的问题"]
+* link:../release-notes/known-issues.html["已知问题"]
+* link:../release-notes/known-limitations.html["已知限制"]
+
+
+在 Twitter @NetAppDoc 上关注我们。通过成为发送有关文档的反馈 link:https://docs.netapp.com/us-en/contribute/["GitHub 贡献者"^] 或发送电子邮件至 doccomments@netapp.com 。

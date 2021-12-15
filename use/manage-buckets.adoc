@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: use/manage-buckets.html 
+keywords: how to set up object storage in astra, how to set up astra buckets, s3, astra, setting up astra control, how to set up astra control center, kubernetes 
+summary: 如果要备份应用程序和的永久性存储，并且要跨集群克隆应用程序，则必须添加对象存储分段提供程序。 
+---
+= 管理存储分段
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/use/
+
+
+如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则对象存储分段提供程序至关重要。使用 Astra 控制中心，添加一个对象存储提供程序作为应用程序的集群外备份目标。
+
+如果要将应用程序配置和永久性存储克隆到同一集群，则不需要存储分段。
+
+使用以下任一存储分段提供程序：
+
+* NetApp ONTAP S3
+* NetApp StorageGRID S3
+* 通用 S3
+
+
+
+NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段提供商，但 Astra 控制中心可能不支持声称支持 Amazon S3 的所有对象存储供应商。
+
+您不能删除某个存储分段，但可以对其进行编辑。
+
+存储分段可以处于以下状态之一：
+
+* Pending ：存储分段已计划进行发现。
+* Available ：存储分段可供使用。
+* Removed ：当前无法访问此存储分段。
+
+
+有关如何使用 Astra Control API 管理存储分段的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
+
+您可以执行以下与管理存储分段相关的任务：
+
+* link:../get-started/setup_overview.html#add-a-bucket["添加存储分段"]
+* <<Edit a bucket>>
+
+
+
+NOTE: Astra 控制中心中的 S3 存储分段不会报告可用容量。在备份或克隆由 Astra 控制中心管理的应用程序之前，请检查 ONTAP 或 StorageGRID 管理系统中的存储分段信息。
+
+
+
+== 删除凭据
+
+使用 Astra Control API 随时从帐户中删除 S3 凭据。
+
+有关详细信息，请参见 https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]。
+
+
+TIP: 添加到 Astra Control 的第一组凭据始终处于使用状态，因为 Astra Control 使用这些凭据对备份存储分段进行身份验证。最好不要删除这些凭据。
+
+
+
+== 编辑存储分段
+
+您可以更改存储分段的访问凭据信息，并更改选定存储分段是否为默认存储分段。
+
+
+NOTE: 添加存储分段时，请选择正确的存储分段提供程序，并为该提供程序提供正确的凭据。例如， UI 接受 NetApp ONTAP S3 作为类型并接受 StorageGRID 凭据；但是，这将发生原因使使用此存储分段执行所有未来应用程序备份和还原失败。请参见 link:../release-notes/known-issues.html#selecting-a-bucket-provider-type-with-credentials-for-another-type-causes-data-protection-failures["发行说明"]。
+
+.步骤
+. 从左侧导航栏中，选择 * 分段器 * 。
+. 从操作菜单中，选择 * 编辑 * 。
+. 更改存储分段类型以外的任何信息。
++
+
+TIP: 您无法修改存储分段类型。
+
+. 选择 * 更新 * 。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+
