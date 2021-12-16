@@ -6,8 +6,13 @@ entries:
   url: "/get-started/requirements.html"
 - title: Astra 控制中心快速入门
   url: "/get-started/quick-start.html"
-- title: 安装 Astra 控制中心
-  url: "/get-started/install_acc.html"
+- title: 安装概述
+  url: "/get-started/install_overview.html"
+  entries:
+  - title: 安装 Astra 控制中心
+    url: "/get-started/install_acc.html"
+  - title: 使用 OpenShift OperatorHub 安装 Astra 控制中心
+    url: "/get-started/acc_operatorhub_install.html"
 - title: 设置 Astra 控制中心
   url: "/get-started/setup_overview.html"
   entries:

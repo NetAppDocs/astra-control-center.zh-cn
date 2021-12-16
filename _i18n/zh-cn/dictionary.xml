@@ -371,7 +371,6 @@
   <block id="93b56b9578017297217418b72ff40fbc" category="inline-link-macro">对上游 Kubernetes 和 Rancher 的其他支持</block>
   <block id="05b717a9f0704ef0acb8b8d5a5c987be" category="list-text"><block ref="05b717a9f0704ef0acb8b8d5a5c987be" category="inline-link-macro-rx"></block></block>
   <block id="7fa2c34f099664d0468c7ed86ca45c0a" category="inline-link-macro">Astra Data Store 后端管理和监控</block>
-  <block id="a4754385dc10c65f9da95c32492d1ea5" category="list-text"><block ref="a4754385dc10c65f9da95c32492d1ea5" category="inline-link-macro-rx"></block></block>
   <block id="d1879efa6b71fd1f276ba61087108559" category="inline-link-macro">Astra 控制中心升级</block>
   <block id="5cd7678f3dff4842453101e8e61fd407" category="list-text"><block ref="5cd7678f3dff4842453101e8e61fd407" category="inline-link-macro-rx"></block></block>
   <block id="6b892616f929d1b058e3f03572a07ba8" category="inline-link-macro">此版本已解决的问题</block>
@@ -1345,7 +1344,6 @@
   <block id="77a7c94739d3e3b6a3c106162739bbcd" category="paragraph">查看 <block ref="4a78f9b7a1530228ea4c970be46c5b94" category="inline-link-macro-rx"></block> 概述。</block>
   <block id="254a18b3f13c4603a1e896ef9d067cab" category="summary">要在满足某些环境前提条件后安装 Astra 控制中心，您需要下载此软件包并按照所述步骤进行安装。</block>
   <block id="8c7c70cb991e0295e289054b79308c5d" category="doc">安装 Astra 控制中心</block>
-  <block id="a1b0697722e64e564361cee594a01269" category="paragraph">要安装 Astra 控制中心，请从下载安装包<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block> 并执行一系列命令，在您的环境中安装 Astra Control Center 操作员和 Astra Control Center 。您可以使用此操作步骤在互联网连接或通风环境中安装 Astra 控制中心。</block>
   <block id="2b305f607904d67cd2da521366334e8c" category="inline-link-macro">开始安装之前，请为 Astra Control Center 部署准备您的环境</block>
   <block id="44e141a783b8346b1ee5c52bcf894d19" category="list-text"><block ref="689b20f2e0a9cb0a12bc48475b3f81ee" category="inline-link-macro-rx"></block>。</block>
   <block id="c7a6b30f3874b15dc6f9794ebff2cd4b" category="list-text">确保所有 API 服务均处于运行状况良好且可用：</block>
@@ -1358,7 +1356,6 @@
   <block id="06bf44ff43299db4009eb4ecd3ddd8ba" category="admonition">请勿在整个安装过程中执行以下命令以避免删除所有 Astra 控制中心 Pod ： `kubectl delete -f Astra_control_center_operator_deploy.yaml`</block>
   <block id="4de536d50d49606d870ffa9b3afa1563" category="paragraph">要安装 Astra 控制中心，请执行以下步骤：</block>
   <block id="78e91e3436e2e97007f90fc041b5587b" category="list-text"><block ref="4278a6848845658ae840cbda7d5ac403" category="inline-xref-macro-rx"></block></block>
-  <block id="d606efee9128730bf210cb5361bb7d4f" category="list-text"><block ref="3bb44716dc4a214b9be074d146ad8349" category="inline-xref-macro-rx"></block></block>
   <block id="0da0893fd4172b066fbee6e30d6e2ba8" category="list-text"><block ref="ebe8cfbc6650e599857a4d3918ff7b39" category="inline-xref-macro-rx"></block></block>
   <block id="38cccefe46476a7d1004d44a110ca140" category="list-text"><block ref="016bc1543542fafb09ef2c6eee94e211" category="inline-xref-macro-rx"></block></block>
   <block id="0d3c2b3775953963477be58a687ef396" category="list-text"><block ref="7f5260aec8ab352f0317ebd62c8ed1fa" category="inline-xref-macro-rx"></block></block>
@@ -1372,7 +1369,6 @@
   <block id="6991b18d1a4e22ab1157055468087de4" category="list-text">为 `NetApp-Acc-operator` 命名空间创建一个密钥。添加 Docker 信息并运行以下命令：</block>
   <block id="d62c5849c83a783e51d9f960d482751c" category="list-text">创建 `NetApp-Accc` （或自定义命名）命名空间。</block>
   <block id="4fda54d668773dca068eddcae2b9f6c0" category="list-text">为 `NetApp-Accc` （或自定义命名）命名空间创建一个密钥。添加 Docker 信息并运行以下命令：</block>
-  <block id="a729da2fb14b08a4656e117c3506d9e8" category="section-title">配置 Astra 控制中心操作员</block>
   <block id="8763b5c0837ac6cf7ff31e202742432c" category="section-title">配置 Astra 控制中心</block>
   <block id="25bc3690d011ed7eb8a9cb727a3de4a1" category="list-text">编辑 Astra Control Center 自定义资源（ CR ）文件（`Astra_control_center_min.yaml` ）：</block>
   <block id="67c786024def27f9fe344173bf9e992c" category="admonition">如果您的环境需要其他自定义设置，您可以使用 `Astra_control_center.yaml` 作为替代 CR 。`Astra_control_center_min.yaml` 是默认 CR ，适用于大多数安装。</block>
@@ -1471,7 +1467,6 @@
   <block id="afdff0e68ce5b4b3109d398df16872f7" category="inline-link">NetApp 支持站点 Astra 控制中心下载页面</block>
   <block id="b6511e86f155fe09cdd3bb8e739ea6b5" category="list-text">从下载 Astra 控制中心<block ref="287561c5277beeaf3b39a65b237114c8" category="inline-link-rx"></block>。</block>
   <block id="276a11727deff1a1f5ebf349b23835fc" category="list-text">在本地环境中安装 Astra Control Center 。</block>
-  <block id="c001bba6e6180c1e4140557d3b64ccc1" category="paragraph">也可以从 Red Hat OperatorHub 安装 Astra 控制中心。</block>
   <block id="329d3d3e078ae53adf6212f468d70fe1" category="list-text">了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，将您的 Astra Data Store 集群作为存储后端。</block>
   <block id="caa2daddac20e8701619c1fd7c38fe0b" category="paragraph">您可以在 OpenShift 注册表上安装映像，也可以使用本地注册表。</block>
   <block id="4cb444388821c2b32d8c80c962e7f1c0" category="inline-link-macro">了解有关安装 Astra 控制中心的更多信息</block>
@@ -1664,4 +1659,71 @@
   <block id="9de0e2b17d7e1e2da6c0ce7e9dc6e377" category="list-text">选择 * 克隆 * 。</block>
   <block id="5b61834813d7f3309a69f7290ea63a30" category="list-text">* 克隆摘要 * ：查看有关克隆的详细信息并选择 * 克隆 * 。</block>
   <block id="7fc51f41da7b2a2245c552ae08b9e61d" category="list-text">选择受管计算集群并选择 * 下一步 * 。</block>
+  <block id="4eb6b90b70e4b33c67acac97663fbf18" category="list-text"><block ref="4eb6b90b70e4b33c67acac97663fbf18" category="inline-link-macro-rx"></block></block>
+  <block id="0df000eb4beca8d0a81a45b343d35f99" category="inline-link-macro">用于安装的 Red Hat OperatorHub 选项</block>
+  <block id="a9fecccda3867d27c0facb2d20b2d744" category="list-text"><block ref="a9fecccda3867d27c0facb2d20b2d744" category="inline-link-macro-rx"></block></block>
+  <block id="d15664749a56effbbb05a3423ea5e504" category="summary">如果您使用的是 Red Hat OpenShift ，则可以使用操作员安装 Astra 控制中心。</block>
+  <block id="d74cdf75cddd8ade6d1b83dd387ec2f2" category="doc">使用 OpenShift OperatorHub 安装 Astra 控制中心</block>
+  <block id="cd165c3825c1608d9ab0d7fb7273e21a" category="inline-link">Red Hat 生态系统目录</block>
+  <block id="73c219a393057feacc35c345709d0eff" category="paragraph">如果您使用的是 Red Hat OpenShift ，则可以使用 Red Hat 认证操作员安装 Astra Control Center 。使用此操作步骤从安装 Astra 控制中心<block ref="a0bebb9db4c42678b95afc86229a893d" category="inline-link-rx"></block> 或使用 Red Hat OpenShift 容器平台。</block>
+  <block id="07d25e4715e49135a64667c0c238798e" category="inline-link-macro">剩余步骤</block>
+  <block id="b34733c94c2ec2f94f6765fc88c9f8db" category="paragraph">完成此操作步骤后，您必须返回到安装操作步骤以完成 <block ref="3a285f0bf32f130cd082e260eb98d4dd" category="inline-link-macro-rx"></block> 以验证安装是否成功并登录。</block>
+  <block id="cffc15bb864472cd1fadfc05a2ff6ba0" category="list-text">在 OpenShift 集群中，确保所有集群操作员均处于运行状况良好的状态（`Available` is `true` ）：</block>
+  <block id="e02f9042db758ce6a1037367dde260b6" category="list-text">在 OpenShift 集群中，确保所有 API 服务均处于运行状况良好的状态（`Available` is `true` ）：</block>
+  <block id="8c915ac911ebe3188e6e32c91334d0b3" category="list-text">您已在数据中心为 Astra 控制中心创建 FQDN 地址。</block>
+  <block id="624352a90a679e1e491ad57f7da09691" category="list-text">您拥有对 Red Hat OpenShift 容器平台执行所述安装步骤所需的权限和访问权限。</block>
+  <block id="9b7b5553b7f9a88388ff63538315f288" category="list-text"><block ref="d671e7cdeaa98f3485173f8d5a620d81" category="inline-xref-macro-rx"></block></block>
+  <block id="bcd2064257ec8fce1f11d1eab34e50a1" category="list-text"><block ref="d1f909bce77ae129ee64cf4c211e47c3" category="inline-xref-macro-rx"></block></block>
+  <block id="3cc546d35377f25093968cba1e8c0fc6" category="list-text"><block ref="27fe6aaf425c0f95213ec6c507a97d2d" category="inline-xref-macro-rx"></block></block>
+  <block id="55c6b9fd6efcd18e0f53c34459084a3f" category="section-title">找到操作员安装页面</block>
+  <block id="396cd1df886b31da3577b40fa6f7cf0f" category="list-text">要访问操作员安装页面，请完成以下过程之一：</block>
+  <block id="fd8cbefedde3fbeeb2817b2484ff0e38" category="inline-image-macro">Astra 控制中心安装页面</block>
+  <block id="e6864876ae5824d03aa7240670e5a79c" category="list-text">从 Red Hat OpenShift Web 控制台：<block ref="aa29e3cb75d2e7e5a7c9020ff806205e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1b37bd82bf53c89bcedcfc65519416b2" category="list-text">登录到 OpenShift 容器平台 UI 。</block>
+  <block id="d23202f3a841766e7b5d6b37777fc6c3" category="list-text">从侧面菜单中，选择 * 运算符 &gt; OperatorHub * 。</block>
+  <block id="7bd157f1c5eb232cab6fc80166141018" category="list-text">选择 NetApp Astra Control Center 操作员。</block>
+  <block id="6d20ba1f906a03b7657514dee48eb121" category="list-text">选择 * 安装 * 。</block>
+  <block id="89bb9ef577ff373ba97cf5d87b3cbfa2" category="inline-image-macro">Astra 控制中心概述页面</block>
+  <block id="12127d8c57ab445f63f35cb27db68dfa" category="list-text">从 Red Hat 生态系统目录：<block ref="5698ddd18c8f6cab72a468c7cfa4eeec" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4b583376b2767b923c3e1da60d10de59" category="inline-link">运算符</block>
+  <block id="c0c6f0344d291d5ee9dd15a613c81a83" category="list-text">选择 NetApp Astra 控制中心<block ref="f328fcf88c0a47197ef258962206eb83" category="inline-link-rx"></block>。</block>
+  <block id="13191ff715c85f59fd2da330d31c4e9f" category="list-text">选择 * 部署并使用 * 。</block>
+  <block id="a961f7d3b56fe3f9b072af70813d6f82" category="section-title">安装操作员</block>
+  <block id="80c07a74abae733a8881dd926a32ef70" category="list-text">完成 * 安装操作员 * 页面并安装操作员：</block>
+  <block id="1d0cc3a3781d64cc680980dd96e982ab" category="admonition">操作员将在所有集群命名空间中可用。</block>
+  <block id="41b5eac0367cc21302a1679dcee4e14e" category="list-text">选择运算符命名空间或 `netapp-ac-operator` namespace will be created automatically as part of the operator install.</block>
+  <block id="6190446e1c8dc2a260a3eeaaa23815e7" category="list-text">选择手动或自动批准策略。</block>
+  <block id="fc99f53ee127b4cd13ec3e5986cf0b4e" category="admonition">建议手动批准。每个集群只能运行一个操作员实例。</block>
+  <block id="05bdebf9e792d9368547ebb8d5f2c878" category="admonition">如果您选择了手动批准策略，系统将提示您批准此操作员的手动安装计划。</block>
+  <block id="aaa3b697f556836b1ccf6d4b524be91f" category="list-text">从控制台中，转到 OperatorHub 菜单并确认操作员已成功安装。</block>
+  <block id="0e31ab41ac11f3ddd6ff1a1b66bac23e" category="list-text">在 Astra 控制中心操作员的详细信息视图的控制台中，在提供的 API 部分中选择 `Create instance` 。</block>
+  <block id="004e45eb65515df1dc4c779bfd994156" category="list-text">填写 `Create AstraControlCenter` Form 字段：</block>
+  <block id="333a60821968ef136fc241c723e560c7" category="list-text">保留或调整 Astra 控制中心名称。</block>
+  <block id="d428c16854f07cbfe28afb7b35e4ec7f" category="list-text">（可选）启用或禁用自动支持。建议保留自动支持功能。</block>
+  <block id="7b625446126311f8289b99965f874567" category="list-text">输入 Astra 控制中心地址。请勿在此地址中输入 `http ： //` 或 `https ： //` 。</block>
+  <block id="bb78a9da438c9bc3d6927b7e4cc397cd" category="list-text">输入帐户名称，电子邮件地址和管理员姓氏。</block>
+  <block id="7113a598ff918e14e69611190b04f917" category="list-text">保留默认卷回收策略。</block>
+  <block id="1e4ea0b6d22039e7284329548ea3fb51" category="list-text">在 * 映像注册表 * 中，输入本地容器映像注册表路径。请勿在此地址中输入 `http ： //` 或 `https ： //` 。</block>
+  <block id="6881173b182cc92c2e8408f79678be22" category="list-text">如果您使用的注册表需要身份验证，请输入密钥。</block>
+  <block id="118e41df0294e779966ab834d310bc09" category="list-text">输入管理员的名字。</block>
+  <block id="4b8b88591e5702615cf22b5d36197d60" category="list-text">配置资源扩展。</block>
+  <block id="1d57e0a24077636df90da71912e901ba" category="list-text">保留默认存储类。</block>
+  <block id="6b9265a82fa5bd326052ec55e040a54a" category="list-text">定义 CRD 处理首选项。</block>
+  <block id="752136dc4b557a30d80aab0135d2d8d0" category="list-text">选择 `Create` 。</block>
+  <block id="25bd4bfe1fe1f3d4f00d0a880c5c7b69" category="paragraph">验证是否已成功安装 Astra 控制中心并完成 <block ref="3a285f0bf32f130cd082e260eb98d4dd" category="inline-link-macro-rx"></block> 登录。此外，您还可以通过执行来完成部署 <block ref="c74ac040317626af0342a18a145cdbb7" category="inline-link-macro-rx"></block>。</block>
+  <block id="6ffac32d322f5864924327003ba10101" category="doc">使用标准流程安装 Astra 控制中心</block>
+  <block id="35a8efb565f090fbcf5c91d55fe021af" category="paragraph">要安装 Astra 控制中心，请从 NetApp 支持站点下载安装包，并执行以下步骤在您的环境中安装 Astra 控制中心操作员和 Astra 控制中心。您可以使用此操作步骤在互联网连接或通风环境中安装 Astra 控制中心。</block>
+  <block id="851d9a49d7101a2aa57ff83ec3919ddf" category="inline-link-macro">备用操作步骤</block>
+  <block id="fdf3c3f5e3384a31ea3417cb0192eb18" category="paragraph">对于 Red Hat OpenShift 环境，您还可以使用 <block ref="3070b96c53dc6268c37367db253e962f" category="inline-link-macro-rx"></block> 使用 OpenShift OperatorHub 安装 Astra Control Center 。</block>
+  <block id="d0cc7cda1d4465f85d79e82f2658bcbd" category="list-text"><block ref="40f1117f0e32d897ff425a931dd88437" category="inline-xref-macro-rx"></block></block>
+  <block id="0a18f33b0f80b08df9b4d602225a719e" category="section-title">安装 Astra 控制中心操作员</block>
+  <block id="5697bb57ca3018341d9c037cd8499ec1" category="list-text">编辑 Astra 控制中心操作员部署 YAML （`Astra_control_center_operator_deploy.yaml` ）以参考您的本地注册表和机密。</block>
+  <block id="48a071385ba38a453473b2eca34728d6" category="admonition">如果您更喜欢使用 OpenShift ，则可以使用同等的 oc 命令执行验证步骤。</block>
+  <block id="0e941f8350a728f8786d81c6ce155c8c" category="paragraph">或者，也可以使用 Red Hat OperatorHub 安装 Astra 控制中心。</block>
+  <block id="c55e11b550a8c2a8131da8875b06b54f" category="summary">您可以选择两种安装 Astra Control Center 的方法。</block>
+  <block id="46921a75e8534ad7d1c379a9e3aec033" category="doc">安装概述</block>
+  <block id="2835a37ac89f56f462499928fa4f5630" category="paragraph">选择并完成以下 Astra 控制中心安装过程之一：</block>
+  <block id="8810f3085242ca927538791ec7fc8110" category="list-text"><block ref="8810f3085242ca927538791ec7fc8110" category="inline-link-macro-rx"></block></block>
+  <block id="3366964e7a216dba2d0ba31b76ba649c" category="inline-link-macro">（如果使用 Red Hat OpenShift ）使用 OpenShift OperatorHub 安装 Astra 控制中心</block>
+  <block id="dbcbff2a607cc46b36bf41219a49e1a4" category="list-text"><block ref="dbcbff2a607cc46b36bf41219a49e1a4" category="inline-link-macro-rx"></block></block>
 </blocks>

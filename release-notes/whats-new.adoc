@@ -23,8 +23,9 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 * link:../use/execution-hooks.html["执行挂钩"]
 * link:../get-started/requirements.html#supported-app-installation-methods["支持使用命名空间范围的运算符部署的应用程序"]
 * link:../get-started/requirements.html["对上游 Kubernetes 和 Rancher 的其他支持"]
-* link:../get-started/setup_overview.html#add-a-storage-backend["Astra Data Store 后端管理和监控"]
+* link:../get-started/setup_oversview.html#add-a-storage-backend["Astra Data Store 后端管理和监控"]
 * link:../use/upgrade-acc.html["Astra 控制中心升级"]
+* link:../get-started/acc_operatorhub_install.html["用于安装的 Red Hat OperatorHub 选项"]
 
 
 .已解决的问题

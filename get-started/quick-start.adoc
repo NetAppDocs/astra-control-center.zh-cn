@@ -27,7 +27,7 @@ link:../get-started/requirements.html["了解有关 Astra 控制中心要求的�
 * 从下载 Astra 控制中心 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点 Astra 控制中心下载页面"^]。
 * 在本地环境中安装 Astra Control Center 。
 +
-也可以从 Red Hat OperatorHub 安装 Astra 控制中心。
+或者，也可以使用 Red Hat OperatorHub 安装 Astra 控制中心。
 
 * 了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，将您的 Astra Data Store 集群作为存储后端。
 +
