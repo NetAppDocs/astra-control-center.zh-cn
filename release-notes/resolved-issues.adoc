@@ -54,4 +54,5 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 * link:../release-notes/known-issues.html["已知问题"]
 * link:../release-notes/known-limitations.html["已知限制"]
+* link:../release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"]
 

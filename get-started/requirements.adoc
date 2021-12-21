@@ -30,13 +30,15 @@ Astra 控制中心需要以下类型的主机集群之一：
 * 3 个工作节点，每个节点至少具有 12 个 CPU 核， 32 GB RAM 和 50 GB 可用存储
 * 服务类型 "loadbalancer" 可用于将传入流量发送到 OpenShift 集群中的服务
 * 一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
+* 如果要使用 NetApp ONTAP 9.5 或更高版本作为存储后端，则已安装并配置 Astra Trident 21.04 或更高版本
+* 如果要使用 Astra Trident 作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本
 
 
 
 NOTE: 这些要求假定 Astra 控制中心是 OpenShift 集群上运行的唯一应用程序。如果集群运行的是其他应用程序，请相应地调整这些最低要求。
 
 * * 映像注册表 * ：您必须具有可将 Astra 控制中心构建映像推送到的现有私有 Docker 映像注册表。您需要提供要将映像上传到的映像注册表的 URL 。
-* * Astra Trident / ONTAP 存储配置 * ： Astra 控制中心要求已安装并配置 Astra Trident 21.04 或更高版本，以便使用 NetApp ONTAP 9.5 或更高版本作为存储后端。Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：
+* * 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：
 +
 ** ontap-NAS
 ** ontap-nas-flexgroup

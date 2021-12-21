@@ -15,7 +15,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 试用！如果您要试用 Astra Control Center ，可以使用 90 天评估许可证。请参见 link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["许可信息"] 了解详细信息。
 
 .跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] Alt-one"></span> 查看 Kubernetes 集群要求
-* Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储存储后端的 Kubernetes 集群结合使用。
+* Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储预览存储后端的 Kubernetes 集群结合使用。
 * 集群必须以运行状况良好的状态运行，并且至少有三个联机辅助节点。
 * 集群必须运行 Kubernetes 。
 
@@ -29,7 +29,7 @@ link:../get-started/requirements.html["了解有关 Astra 控制中心要求的�
 +
 或者，也可以使用 Red Hat OperatorHub 安装 Astra 控制中心。
 
-* 了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，将您的 Astra Data Store 集群作为存储后端。
+* 了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，发现您的 https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 预览"] 集群作为存储后端。
 +
 您可以在 OpenShift 注册表上安装映像，也可以使用本地注册表。
 
@@ -41,7 +41,7 @@ link:../get-started/install_acc.html["了解有关安装 Astra 控制中心的�
 .跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] Alt-Three </span> 完成一些初始设置任务
 * 添加许可证
 * 添加 Kubernetes 集群， Astra 控制中心将发现详细信息。
-* 添加 ONTAP 或 Astra 数据存储存储后端。
+* 添加 ONTAP 或 Astra 数据存储预览存储后端。
 * 或者，添加用于存储应用程序备份的对象存储分段。
 
 

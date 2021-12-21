@@ -50,14 +50,14 @@ Astra Control 有两种部署模式：
 
 
 
-| 应用程序数据管理功能是什么？ | 两个平台上的功能相同，但后端存储或外部服务除外  a| 
-两个平台上的功能相同，但后端存储或外部服务除外
+| 应用程序数据管理功能是什么？ | 两个平台上的功能相同，但存储后端或外部服务除外  a| 
+两个平台上的功能相同，但存储后端或外部服务除外
 
 
 
-| 什么是后端存储支持？ | NetApp 云服务产品  a| 
+| 什么是存储后端支持？ | NetApp 云服务产品  a| 
 * NetApp ONTAP AFF 和 FAS 系统
-* 作为后端存储的 Astra 数据存储
+* 作为存储后端的 Astra 数据存储
 
 
 |===
@@ -83,8 +83,8 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 * 您可以通过设置云提供商并注册 Astra 帐户开始使用 Astra Control Service 。
 +
-** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 作为永久性卷的后端存储。
-** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 作为永久性卷的后端存储。
+** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 作为永久性卷的存储后端。
+** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 作为永久性卷的存储后端。
 
 
 * 您可以将第一个 Kubernetes 计算添加到 Astra Control Service 中。然后， Astra 控制服务将执行以下操作：
@@ -134,7 +134,7 @@ Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，�
 +
 ** 设置许可
 ** 添加第一个集群。
-** 添加在添加集群时发现的后端存储。
+** 添加在添加集群时发现的存储后端。
 ** 添加用于存储应用程序备份的对象存储分段。
 
 
@@ -157,6 +157,7 @@ Astra 控制中心可执行以下操作：
 
 * https://docs.netapp.com/us-en/astra/index.html["Astra Control Service 文档"^]
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Astra 控制中心文档"^]
+* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 文档"]
 * https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
 * https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
 * https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"^]

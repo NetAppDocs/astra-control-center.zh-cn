@@ -9,11 +9,9 @@
   <block id="2325c645f4d2112a8e96b127fbad7bf2" category="inline-image-macro">Astra Control 架构图和组件</block>
   <block id="06cdc9e30d742dad53fba16779d1c3ab" category="paragraph"><block ref="06cdc9e30d742dad53fba16779d1c3ab" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a8d77bbb11d2e1a349811767d194e9ba" category="list-text">* Kubernetes 集群 * ： Kubernetes 是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，便于进行声明性配置和自动化。Astra 为 Kubernetes 集群中托管的应用程序提供管理服务。</block>
-  <block id="c2c28b59e21cbd4b3d6c78dbdf1db70f" category="list-text">* Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端。</block>
   <block id="951fe18cc6e59e05fca3c0ca7de399fa" category="list-text">* 存储后端 * ：</block>
   <block id="a3b5183ae6f5c3f1d6644448f795b5cb" category="inline-link">适用于 Google Cloud 的 NetApp Cloud Volumes Service</block>
   <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="inline-link">Azure NetApp Files</block>
-  <block id="b3ae90dd55a66dbbf1818284cc7f9314" category="list-text">Astra Control Service 使用<block ref="d804c793f302b1f3285300e6253aaac6" category="inline-link-rx"></block> 作为 GKE- 集群和的后端存储<block ref="9e2d15731749abbc242896b41a1be2ef" category="inline-link-rx"></block> 作为 AKS 集群的后端存储。</block>
   <block id="dd069ab6d74011bb108bf219e092a2d0" category="list-text">Astra 控制中心使用以下存储后端：</block>
   <block id="69a0ead95fc9c4c42592c123ebbf437a" category="list-text">Astra Data Store 存储后端</block>
   <block id="fc8adf6067b9e369fbebc9abf2891bce" category="list-text">ONTAP AFF 和 FAS 存储后端。作为存储软件和硬件平台， ONTAP 可提供核心存储服务，支持多个存储访问协议以及快照和镜像等存储管理功能。</block>
@@ -64,11 +62,8 @@
   <block id="b2929741e98ca2c366d8d7dfda36e2b9" category="cell">由 NetApp 管理</block>
   <block id="091f846d60c1037c90ba7580f37ef9fa" category="paragraph">您可以管理任何更新</block>
   <block id="cef5c6ab0b7d20ab7cd426689afb9fa5" category="cell">应用程序数据管理功能是什么？</block>
-  <block id="6d23e94a1a5dc06559303503aa66bb54" category="cell">两个平台上的功能相同，但后端存储或外部服务除外</block>
-  <block id="1ca7b72bd26cd5c5adf9a4ebc84be59b" category="cell">什么是后端存储支持？</block>
   <block id="d1c86529e5adfef0855455a2e0bd54bd" category="cell">NetApp 云服务产品</block>
   <block id="d6fc0eb1930e7e56affc953c237c5514" category="list-text">NetApp ONTAP AFF 和 FAS 系统</block>
-  <block id="cab896b6a5209389028f064ef1cbd5dd" category="list-text">作为后端存储的 Astra 数据存储</block>
   <block id="4d9496325ef678735e8ac8b99b7a562b" category="section-title">支持的应用程序</block>
   <block id="9ceaa15e10dc0e56e79bbb4822552022" category="paragraph">NetApp 已对某些应用程序进行了验证，以确保快照和备份的安全性和一致性。</block>
   <block id="be46076931cd53387cf526748531fc6f" category="inline-link">了解经过验证的应用程序与 Astra Control Service 中的标准应用程序之间的区别</block>
@@ -80,8 +75,6 @@
   <block id="972dbc054c14df6a8a668ad2c71b9afa" category="paragraph">Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于启用状态，并使用最新功能进行更新。它利用多个组件实现应用程序数据生命周期管理。</block>
   <block id="29346571353a36c4c8e378195149db77" category="paragraph">从较高的层面来看， Astra Control Service 的工作原理如下：</block>
   <block id="5e44a260fc47d95ab78eb0e97efe4e7d" category="list-text">您可以通过设置云提供商并注册 Astra 帐户开始使用 Astra Control Service 。</block>
-  <block id="13fcc9b8465f60b72f591715f581b2d7" category="list-text">对于 GKE- 集群， Astra Control Service 使用<block ref="33441d63a8e7ace6860eab2024320819" category="inline-link-rx"></block> 作为永久性卷的后端存储。</block>
-  <block id="766e03fde5f400830f8365087232fdf8" category="list-text">对于 AKS 集群， Astra Control Service 使用<block ref="16e1ab965c1d673c5cb3b5a28e77c1c1" category="inline-link-rx"></block> 作为永久性卷的后端存储。</block>
   <block id="1ae8e0ca715d9854cf1c69ead32e4931" category="list-text">您可以将第一个 Kubernetes 计算添加到 Astra Control Service 中。然后， Astra 控制服务将执行以下操作：</block>
   <block id="e99f973393b40d224e0166ec9b211177" category="list-text">在云提供商帐户中创建一个对象存储，该帐户是备份副本的存储位置。</block>
   <block id="2fe87449d125b0daf20d2fc8de53081e" category="paragraph">在 Azure 中， Astra Control Service 还会为 Blob 容器创建资源组，存储帐户和密钥。</block>
@@ -109,7 +102,6 @@
   <block id="700b690f37b8bd2c5567e27f33a6ebc3" category="list-text">您可以完成一些设置任务，例如：</block>
   <block id="7201cacbec2885cd7fb3b75613cca8c9" category="list-text">设置许可</block>
   <block id="eb5c57b6e151d53821e4b23967e81377" category="list-text">添加第一个集群。</block>
-  <block id="c9907096d1eaf9ff75898674c5c5886c" category="list-text">添加在添加集群时发现的后端存储。</block>
   <block id="71aa2846410bae740856b6176a203f5f" category="list-text">添加用于存储应用程序备份的对象存储分段。</block>
   <block id="41d8c63c7f85077d4a2d906119683f17" category="inline-link">设置 Astra 控制中心</block>
   <block id="8797309fdabab1846a95a0aa2a7562ca" category="paragraph">详细了解如何操作<block ref="76291acbbbed703f1210502e4bd01c93" category="inline-link-rx"></block>。</block>
@@ -370,7 +362,6 @@
   <block id="4ab0523baf0e134a1ddb0f963292b06d" category="list-text"><block ref="4ab0523baf0e134a1ddb0f963292b06d" category="inline-link-macro-rx"></block></block>
   <block id="93b56b9578017297217418b72ff40fbc" category="inline-link-macro">对上游 Kubernetes 和 Rancher 的其他支持</block>
   <block id="05b717a9f0704ef0acb8b8d5a5c987be" category="list-text"><block ref="05b717a9f0704ef0acb8b8d5a5c987be" category="inline-link-macro-rx"></block></block>
-  <block id="7fa2c34f099664d0468c7ed86ca45c0a" category="inline-link-macro">Astra Data Store 后端管理和监控</block>
   <block id="d1879efa6b71fd1f276ba61087108559" category="inline-link-macro">Astra 控制中心升级</block>
   <block id="5cd7678f3dff4842453101e8e61fd407" category="list-text"><block ref="5cd7678f3dff4842453101e8e61fd407" category="inline-link-macro-rx"></block></block>
   <block id="6b892616f929d1b058e3f03572a07ba8" category="inline-link-macro">此版本已解决的问题</block>
@@ -422,18 +413,8 @@
   <block id="0197eedefddfa1dc3c535db285d61bc5" category="list-text"><block ref="0197eedefddfa1dc3c535db285d61bc5" category="inline-link-macro-rx"></block></block>
   <block id="3f4fc4220755866f399810fee47c7884" category="inline-link-macro">GitHub 贡献者</block>
   <block id="65ed3c4720fad34d453db54755338725" category="paragraph">在 Twitter @NetAppDoc 上关注我们。通过成为发送有关文档的反馈 <block ref="78cabac26f0b6e0ce9a3e24d1b749910" category="inline-link-macro-rx"></block> 或发送电子邮件至 doccomments@netapp.com 。</block>
-  <block id="ddc02a40e74b8c01e69864a1bba6a3f7" category="doc">Astra 数据存储和此 Astra 控制中心版本的已知问题</block>
   <block id="fdc2918b75d781bb6dd3c5b611748816" category="paragraph">使用此最新版本的 Astra 控制中心时，以下已知问题会影响 Astra 数据存储的管理：</block>
-  <block id="f64741e32163c1865ba7b1e7bc001850" category="section-title">由于 MongoDB POD 活动性探针故障，无法将 Astra 数据存储用作 Astra 控制中心的存储类</block>
-  <block id="fc8c004eedc0fcdf27bf5099906de857" category="paragraph">在部署 Astra 控制中心期间，当您尝试使用 Astra 数据存储作为存储类配置程序时， MongoDB POD 活动性探针将失败，从而导致部署无法完成。</block>
   <block id="e81390ac7a4e5ed54e210e59e5b5f694" category="inline-link-macro">Astra 控制中心安装过程</block>
-  <block id="7af7d1689c12ce43071b67f25d9d66b0" category="paragraph">要更正此问题描述，请在完成时进行以下更改 <block ref="d14182609c4f3318aa56c7cc5e96252d" category="inline-link-macro-rx"></block>：</block>
-  <block id="949413fa467c16ecc02729351cfe6ddf" category="list-text">配置 Astra 控制中心操作员部署 YAML （ Astra_control_center_operator_deploy.yaml ）以更改 Helm 安装超时：</block>
-  <block id="bbd737bb26e6b71a700d2e873e91d847" category="list-text">将更新应用于 Astra_control_center_operator_deploy.yaml ：</block>
-  <block id="8a8b9718ceef02d0d9d2444b003cbf78" category="list-text">编辑 Astra 控制中心自定义资源（ CR ）文件（ Astra_control_center_min.yaml ），并在 `sPec 下包括以下内容：` ：</block>
-  <block id="8bbb14ef8c211318b8bbd24fa1731628" category="list-text">将更新应用于 Astra_control_center_min.yaml ：</block>
-  <block id="b8556fdc128b454850a11b567f26788e" category="section-title">Astra 控制中心显示 Astra 数据存储存储后端处于未知状态</block>
-  <block id="4b6b57ef1f3a34108d3d47bcace06962" category="paragraph">Astra 控制中心通过用户界面的后端页面将 Astra Data Store 存储后端显示为 `未知` 状态。在这种情况下，存储后端实际可用，可以与通信。存储后端中的组件可能处于不正常状态，需要将其恢复为正常状态，以便存储后端显示为 `Available` 。</block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="summary">已知限制确定了本产品版本不支持的平台、设备或功能、或者这些平台、设备或功能无法与产品正确交互操作。仔细审查这些限制。</block>
   <block id="733442372849ffb7318ed29ca9c55aaa" category="section-title">同一集群不能由两个 Astra Control Center 实例管理</block>
   <block id="1bca7607e51d744e7281a7c4772adc9f" category="inline-link-macro">取消管理集群</block>
@@ -1069,7 +1050,6 @@
   <block id="f57b8354105fca4aac29ae2d26190dd4" category="section-title">取消管理存储后端</block>
   <block id="8b99f44f0c8c2337436131d1301ca65f" category="paragraph">您可以取消管理后端。</block>
   <block id="60d47fd78d4f8656bb0f888d042cfea3" category="list-text">从左侧导航栏中，选择 * 后端 * 。</block>
-  <block id="3b05e43807a6c04b41f5475a4b742884" category="list-text">选择后端存储。</block>
   <block id="1c6323f03f0cbf2e8bd172dd0140dabe" category="list-text">键入 "unmanage" 确认删除。</block>
   <block id="88f4f6240bf5585674f1d440e779bdf8" category="list-text">选择 * 是，删除存储后端 * 。</block>
   <block id="60487fcdacfcf0e2feb2363106047906" category="summary">通过使用自动保护策略或临时创建快照和备份来保护应用程序。</block>
@@ -1190,7 +1170,6 @@
   <block id="272589e3bba01ae30195621960908a6b" category="paragraph"><block ref="272589e3bba01ae30195621960908a6b" category="inline-link-macro-rx"></block></block>
   <block id="d7c7d29d3805da2de5195519be0c1b5d" category="summary">Astra 控制中心支持由 ONTAP 存储类或 Astra 数据存储类提供支持的 Trident 存储类。您应了解存储类和永久性卷大小如何帮助您实现性能目标。</block>
   <block id="1266a5a3fd194fe421f8d3d701b44de7" category="doc">存储类和永久性卷大小</block>
-  <block id="e7d36dae61e26470c03535deac5c2112" category="paragraph">Astra 控制中心支持使用 ONTAP 或 Astra 数据存储作为后端存储。您应了解存储类和永久性卷（ PV ）大小如何帮助您实现性能目标。</block>
   <block id="2a48cd265597705926220f5e81d03941" category="paragraph">Astra 控制中心支持以下功能：</block>
   <block id="2124ae3775a5a4adf47d241a18d132b4" category="list-text">* 由 Astra Data Store 存储提供支持的 Trident 存储类 * ：如果您手动安装了一个或多个 Astra Data Store 集群，则 Astra 控制中心可以导入这些集群并检索其拓扑（节点，磁盘）以及各种状态。</block>
   <block id="53bc25d3c64c7a66880aa2e8c5a38e07" category="paragraph">Astra 控制中心显示 Astra Data Store 配置中的底层 Kubernetes 集群， Kubernetes 集群所属的云，由 Astra Data Store 配置的任何永久性卷，相应内部卷的名称，使用永久性卷的应用程序以及包含此应用程序的集群。</block>
@@ -1198,7 +1177,6 @@
   <block id="70e3c204bfcd6d0d484839b699e7653c" category="admonition">应在 Astra 控制中心之外预先配置 Trident 存储类。</block>
   <block id="7672a092783c4348b96b40ea2dcf6681" category="section-title">存储类</block>
   <block id="ee99e1e97839ffbebff4ddc1ca815081" category="paragraph">将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。</block>
-  <block id="dcf8695e79bee46e501e87fab8bdd5ae" category="paragraph">如果使用与 Astra Data Store 后端存储集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见 Astra Data Store 入门中有关如何创建默认 Astra Data Store 存储类的信息。</block>
   <block id="9282ad3aef7e124a3b2b9c7eab52b33d" category="doc">架构和组件</block>
   <block id="42b90d40b51b0ccfc8a50cfa2f6c88bc" category="summary">Astra 是 Kubernetes 应用程序数据生命周期管理服务，可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。</block>
   <block id="7e073986fe6af6ce1775bdfd558def36" category="doc">Astra Control 简介</block>
@@ -1286,7 +1264,6 @@
   <block id="388d11680799d7c6a6a659aa88d96d5f" category="list-text">一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法</block>
   <block id="18c2119e330cd6c8461f3a3e1a0f0e81" category="admonition">这些要求假定 Astra 控制中心是 OpenShift 集群上运行的唯一应用程序。如果集群运行的是其他应用程序，请相应地调整这些最低要求。</block>
   <block id="4d40a8e178faea46fe31329801bc6573" category="list-text">* 映像注册表 * ：您必须具有可将 Astra 控制中心构建映像推送到的现有私有 Docker 映像注册表。您需要提供要将映像上传到的映像注册表的 URL 。</block>
-  <block id="21cac9c4811f70be84796859af3b9f98" category="list-text">* Astra Trident / ONTAP 存储配置 * ： Astra 控制中心要求已安装并配置 Astra Trident 21.04 或更高版本，以便使用 NetApp ONTAP 9.5 或更高版本作为存储后端。Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
   <block id="8321592ce24c8a122ecf26a63cfca407" category="list-text">ontap-NAS</block>
   <block id="844e84da8e822b4a33c4d8188da97937" category="list-text">ontap-nas-flexgroup</block>
   <block id="73a3350a1b91aeb6e2836fdf5975672c" category="list-text">ontap-san</block>
@@ -1414,7 +1391,6 @@
   <block id="84fccda9e18ab736ae1e33ef33ff8543" category="paragraph">在添加集群之前，应确保满足前提条件。您还应运行资格检查，以确保集群已准备好添加到 Astra 控制中心。</block>
   <block id="32ce911ba9da44dfbcba79bbe607d8f0" category="section-title">添加集群之前需要满足的要求</block>
   <block id="46071ecf3cc6ea1619ad76021e951cc6" category="list-text">以下类型的集群之一：</block>
-  <block id="c781da421144216a7ca6c8d94dbd4449" category="list-text">运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses 。</block>
   <block id="651cf0b7f84c677320f45d5d6816398a" category="list-text">运行 Rancher 2.5 的集群</block>
   <block id="22de8d4f47d2a55f106f2f70f3e8353f" category="list-text">运行 Kubernetes 1.19 到 1.21 （包括 1.21.x ）的集群</block>
   <block id="0fe8e21b3c54341023df7a85185c9f37" category="paragraph">确保集群中有一个或多个工作节点，并且至少有 1 GB RAM 可用于运行遥测服务。</block>
@@ -1458,7 +1434,6 @@
   <block id="b777e6ba4555d404b00c2436d03ae649" category="inline-link-macro">许可信息</block>
   <block id="dc9e569caa79effd430c7ea63ceff7be" category="paragraph">试用！如果您要试用 Astra Control Center ，可以使用 90 天评估许可证。请参见 <block ref="3d35b4f40b39e7d8200f90f9d624f8f4" category="inline-link-macro-rx"></block> 了解详细信息。</block>
   <block id="4854d4c0301c6f34c76f1cb78057e09e" category="list-title">跨度 class="image&gt;&lt;img src=<block ref="0c3becc25d95e48b9ca863002a042824" category="inline-link-rx"></block> Alt-one"&gt;&lt;/span&gt; 查看 Kubernetes 集群要求</block>
-  <block id="89110f39cddf501c149d691e3219c46f" category="list-text">Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储存储后端的 Kubernetes 集群结合使用。</block>
   <block id="0deb5023224ed4d71135e9bae6dff9d4" category="list-text">集群必须以运行状况良好的状态运行，并且至少有三个联机辅助节点。</block>
   <block id="5f08198ddd920cae8e4af705793b2a56" category="list-text">集群必须运行 Kubernetes 。</block>
   <block id="e34728b4f7a3f87b9d4e4bc0568096e1" category="inline-link-macro">了解有关 Astra 控制中心要求的更多信息</block>
@@ -1467,14 +1442,12 @@
   <block id="afdff0e68ce5b4b3109d398df16872f7" category="inline-link">NetApp 支持站点 Astra 控制中心下载页面</block>
   <block id="b6511e86f155fe09cdd3bb8e739ea6b5" category="list-text">从下载 Astra 控制中心<block ref="287561c5277beeaf3b39a65b237114c8" category="inline-link-rx"></block>。</block>
   <block id="276a11727deff1a1f5ebf349b23835fc" category="list-text">在本地环境中安装 Astra Control Center 。</block>
-  <block id="329d3d3e078ae53adf6212f468d70fe1" category="list-text">了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，将您的 Astra Data Store 集群作为存储后端。</block>
   <block id="caa2daddac20e8701619c1fd7c38fe0b" category="paragraph">您可以在 OpenShift 注册表上安装映像，也可以使用本地注册表。</block>
   <block id="4cb444388821c2b32d8c80c962e7f1c0" category="inline-link-macro">了解有关安装 Astra 控制中心的更多信息</block>
   <block id="868d347e9c5a5e26320992d6e87924f1" category="paragraph"><block ref="85d4e7b942cbd0c7d715ed76a5e5652f" category="inline-link-macro-rx"></block>。</block>
   <block id="80de081c75779cda8e2db1de0f292684" category="list-title">跨度 class="image&gt;&lt;img src=<block ref="ddd753dc2858fe3a5582f20b300a0541" category="inline-link-rx"></block> Alt-Three &lt;/span&gt; 完成一些初始设置任务</block>
   <block id="f13e95a655fb97423bd52082209d8781" category="list-text">添加许可证</block>
   <block id="89a40ca78d4ff20ec6d54ba006768895" category="list-text">添加 Kubernetes 集群， Astra 控制中心将发现详细信息。</block>
-  <block id="6c1cbaa551811aa61f798756c7777ff0" category="list-text">添加 ONTAP 或 Astra 数据存储存储后端。</block>
   <block id="aacfab881a9e939b2424f0e0b25eb558" category="list-text">或者，添加用于存储应用程序备份的对象存储分段。</block>
   <block id="dd1777e71bd3db9cdf9848cb04565f48" category="inline-link-macro">了解有关初始设置过程的更多信息</block>
   <block id="9ad40a01405c834a45bae664275527c1" category="paragraph"><block ref="8993acb8fe2145a6f530c4154ba1344b" category="inline-link-macro-rx"></block>。</block>
@@ -1486,7 +1459,6 @@
   <block id="50163fe12849b86fd33513d8e9d88331" category="paragraph"><block ref="77590b44f90500dc5947be95e5a6eb47" category="inline-link-macro-rx"></block>。</block>
   <block id="efb8331a92b47dc173e5cbcd8ae1a87b" category="summary">安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
   <block id="d507eb4e66b24d44edccbe2de081c8ee" category="doc">设置 Astra 控制中心</block>
-  <block id="8094e00e08038426e0117316deaf9a14" category="paragraph">Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为后端存储。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
   <block id="ef615563c8e8ea902c7fcac3cd2c4246" category="list-title">任务</block>
   <block id="36b04ba2baeae9c2b2c117fe0fcacd6e" category="list-text"><block ref="8f0c94a5689852a988023d9eacea25d5" category="inline-xref-macro-rx"></block></block>
   <block id="e1e6c161faa6c75c7133e9e6ae59ee8b" category="list-text"><block ref="9ced4f74d5dd00d10c8f22472c967962" category="inline-xref-macro-rx"></block></block>
@@ -1506,7 +1478,6 @@
   <block id="dba8f9224fe57ff63ee43bec55381abc" category="list-text">浏览到您下载的许可证文件（ NLF ）。</block>
   <block id="3fbb83902c150a1377da8e8e2d911407" category="paragraph">* 帐户 * &gt; * 许可证 * 页面显示许可证信息，到期日期，许可证序列号，帐户 ID 和使用的 CPU 单元。</block>
   <block id="f81a9c9a14318abe20f6169e8dff8100" category="section-title">添加集群</block>
-  <block id="918bc432b267e0783b861303d55f277d" category="paragraph">要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。</block>
   <block id="3dff3c9eae1caa73c7e03a840b9006bc" category="admonition">我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。您可以使用 * 添加集群 * 功能通过 Astra 控制中心管理集群。</block>
   <block id="e093c58278ab31ada17a121c56d90db1" category="inline-link-macro">前提条件任务</block>
   <block id="2da8d90a7d49193202102fa438d418a9" category="admonition">在添加集群之前，请查看并执行必要的操作 <block ref="ebe3cd38b4e51bcacd56492771545a76" category="inline-link-macro-rx"></block>。</block>
@@ -1529,7 +1500,6 @@
   <block id="2cc9296c494487aee08ead4a5418cb26" category="inline-link-macro">已添加集群</block>
   <block id="f3a8b51739759c7aab725f0b7c0b6d05" category="list-text">您已拥有 <block ref="490469b1058ddba4dd23d8bc5d4ce310" category="inline-link-macro-rx"></block> 它由 Astra Control 管理。</block>
   <block id="8df2a009a22eec9cf4e582865db9e073" category="admonition">受管集群连接了一个受支持的后端， Astra Control 可以发现该后端。</block>
-  <block id="abe1a6dda0eba00f032db314fabde687" category="list-text">对于 Astra Data Store 安装：您已添加 Kubernetes 应用程序集群。</block>
   <block id="129d92c88545c014f5981e4bedd69fd4" category="inline-link-macro">添加集群</block>
   <block id="d50382f4f1656b37fe3490e3ea650497" category="admonition">为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群在已发现的后端列表中显示为 `非受管` 。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 <block ref="8c30ee7267ee6c93cf0c195b661c2cd2" category="inline-link-macro-rx"></block>。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。</block>
   <block id="d8c9edabd6660da785c04c0b0f470ab7" category="list-text">从 * 信息板 * ：</block>
@@ -1659,7 +1629,6 @@
   <block id="9de0e2b17d7e1e2da6c0ce7e9dc6e377" category="list-text">选择 * 克隆 * 。</block>
   <block id="5b61834813d7f3309a69f7290ea63a30" category="list-text">* 克隆摘要 * ：查看有关克隆的详细信息并选择 * 克隆 * 。</block>
   <block id="7fc51f41da7b2a2245c552ae08b9e61d" category="list-text">选择受管计算集群并选择 * 下一步 * 。</block>
-  <block id="4eb6b90b70e4b33c67acac97663fbf18" category="list-text"><block ref="4eb6b90b70e4b33c67acac97663fbf18" category="inline-link-macro-rx"></block></block>
   <block id="0df000eb4beca8d0a81a45b343d35f99" category="inline-link-macro">用于安装的 Red Hat OperatorHub 选项</block>
   <block id="a9fecccda3867d27c0facb2d20b2d744" category="list-text"><block ref="a9fecccda3867d27c0facb2d20b2d744" category="inline-link-macro-rx"></block></block>
   <block id="d15664749a56effbbb05a3423ea5e504" category="summary">如果您使用的是 Red Hat OpenShift ，则可以使用操作员安装 Astra 控制中心。</block>
@@ -1726,4 +1695,51 @@
   <block id="8810f3085242ca927538791ec7fc8110" category="list-text"><block ref="8810f3085242ca927538791ec7fc8110" category="inline-link-macro-rx"></block></block>
   <block id="3366964e7a216dba2d0ba31b76ba649c" category="inline-link-macro">（如果使用 Red Hat OpenShift ）使用 OpenShift OperatorHub 安装 Astra 控制中心</block>
   <block id="dbcbff2a607cc46b36bf41219a49e1a4" category="list-text"><block ref="dbcbff2a607cc46b36bf41219a49e1a4" category="inline-link-macro-rx"></block></block>
+  <block id="b11f09eb1179914138fa8f5a15ba016a" category="list-text">* Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端，并支持将 Astra 数据存储作为存储后端。</block>
+  <block id="e64a7ac3db2aba4dd93ec2430e457fd3" category="list-text">Astra Control Service 使用<block ref="d804c793f302b1f3285300e6253aaac6" category="inline-link-rx"></block> 作为 GKE- 集群和的存储后端<block ref="9e2d15731749abbc242896b41a1be2ef" category="inline-link-rx"></block> 作为 AKS 集群的存储后端。</block>
+  <block id="1598aaab2cb9865732925d064c6978c2" category="cell">两个平台上的功能相同，但存储后端或外部服务除外</block>
+  <block id="c1d5f7fc5daa2ea9189ee2df5ca15da2" category="cell">什么是存储后端支持？</block>
+  <block id="b5f2cd553d6a44d90b26f50dcb979f46" category="list-text">作为存储后端的 Astra 数据存储</block>
+  <block id="87bed9eb61a03aa8496ee681d63b56b9" category="list-text">对于 GKE- 集群， Astra Control Service 使用<block ref="33441d63a8e7ace6860eab2024320819" category="inline-link-rx"></block> 作为永久性卷的存储后端。</block>
+  <block id="719caf9a493ac60627a73d0b272c3657" category="list-text">对于 AKS 集群， Astra Control Service 使用<block ref="16e1ab965c1d673c5cb3b5a28e77c1c1" category="inline-link-rx"></block> 作为永久性卷的存储后端。</block>
+  <block id="6adefb23833ae29ed830d55a8a9ae713" category="list-text">添加在添加集群时发现的存储后端。</block>
+  <block id="be1c3d3113c4023e29e8dd947523c711" category="inline-link">Astra Data Store 文档</block>
+  <block id="050916fdc75ec9ba557049b316bbfa98" category="list-text"><block ref="050916fdc75ec9ba557049b316bbfa98" category="inline-link-rx"></block></block>
+  <block id="f5d9d24d940ae73d19518997227845ae" category="inline-link-macro">Astra Data Store prreview 和此 Astra Control Center 版本的已知问题</block>
+  <block id="e3ef67ef771ccecb9617669e034f8a72" category="list-text"><block ref="e3ef67ef771ccecb9617669e034f8a72" category="inline-link-macro-rx"></block></block>
+  <block id="eeb5139838bc01ee74f5e84228e770e3" category="inline-link-macro">Astra Data Store 预览后端管理和监控</block>
+  <block id="3b5bcfdb1095bc6e9d274d9f8541dd79" category="list-text"><block ref="3b5bcfdb1095bc6e9d274d9f8541dd79" category="inline-link-macro-rx"></block></block>
+  <block id="88c91ef58cacca0ce7311796478d0cf3" category="inline-link-macro">有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题</block>
+  <block id="fc8259e97b18a3baf3d9ca96fb8b483d" category="list-text"><block ref="fc8259e97b18a3baf3d9ca96fb8b483d" category="inline-link-macro-rx"></block></block>
+  <block id="5132446b033e54d6debc0548b45d49ae" category="section-title">由于 MongoDB Pod 活跃度探针故障，无法将 Astra Data Store 预览用作 Astra 控制中心的存储类</block>
+  <block id="3c8fe1f135ab2ac9300f533669001f30" category="paragraph">在部署 Astra 控制中心期间，当您尝试使用 Astra Data Store 预览作为存储类配置程序时， MongoDB POD 活动性探针将失败，从而导致部署无法完成。</block>
+  <block id="6e8ac331af01cb23ac316dc2018c097d" category="paragraph">要更正此问题描述，请在完成时除了进行标准的 YAML 更改外，还进行以下更改 <block ref="d14182609c4f3318aa56c7cc5e96252d" category="inline-link-macro-rx"></block>：</block>
+  <block id="8a13d448d34448db22a2b0a6dd1acefc" category="inline-link-macro">Astra 控制中心操作员部署 YAML （ Astra_control_center_operator_deploy.yaml ）</block>
+  <block id="85d3f736ce18017c45e8a6ae4d1e8fe5" category="list-text">编辑 <block ref="aa49db316689710519b7c8def18b8801" category="inline-link-macro-rx"></block> 更改 Helm 安装超时：</block>
+  <block id="7a80cbdb518e1d355b96f0f85cfc440d" category="inline-link-macro">Astra 控制中心自定义资源（ CR ）文件（ Astra_control_center_min.yaml ）</block>
+  <block id="f0e4789c9bc3e68aa311924dc6728d18" category="list-text">编辑 <block ref="4c6c00b260f38942b09c4617203862e3" category="inline-link-macro-rx"></block> 并在 `sPec` 下添加突出显示的其他值：</block>
+  <block id="d9eccd26e5cbb8da91b3a27fd92bd333" category="section-title">Astra 控制中心显示 Astra Data Store 预览存储后端处于未知状态</block>
+  <block id="549ef937be092b5163803516d9dba2ce" category="paragraph">Astra 控制中心从用户界面的后端页面中显示处于 `未知` 状态的 Astra Data Store 预览存储后端。在这种情况下，存储后端实际可用，可以与通信。存储后端中的组件可能处于不正常状态，需要将其恢复为正常状态，以便存储后端显示为 `Available` 。</block>
+  <block id="f885d736613811b426f3882868416c0c" category="inline-link-macro">有关 Astra 数据存储预览的通知</block>
+  <block id="866684ba00f3eaa7ffb3119bad439e6e" category="list-text"><block ref="866684ba00f3eaa7ffb3119bad439e6e" category="inline-link-macro-rx"></block></block>
+  <block id="16b48c0e3b4aacde3bfc58584c2bd392" category="paragraph">Astra 控制中心支持使用 ONTAP 或 Astra 数据存储作为存储后端。您应了解存储类和永久性卷（ PV ）大小如何帮助您实现性能目标。</block>
+  <block id="8af92bb4a82e9330d36767a461117b77" category="inline-link">Astra Data Store 入门</block>
+  <block id="010fe8b2dcf8f2144d52f7fa09b19be3" category="paragraph">如果使用与 Astra Data Store 存储后端集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见<block ref="31e869d7ae2f401f4a85bdc155c56e86" category="inline-link-rx"></block> 创建默认的 Astra Data Store 存储类。</block>
+  <block id="985b6adb919aeef8919d4fde98114277" category="list-text">如果要使用 NetApp ONTAP 9.5 或更高版本作为存储后端，则已安装并配置 Astra Trident 21.04 或更高版本</block>
+  <block id="0225f25459706cc4ae111fa1fcf6e6a4" category="list-text">如果要使用 Astra Trident 作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本</block>
+  <block id="df819717a2baf5b48925d2b4cdaf4745" category="list-text">* 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
+  <block id="17eb8d332e75f64616b506be451b189f" category="inline-link-macro">需要进行的其他更改</block>
+  <block id="19dfa68f9af3ebcd8abb0bcfff39c5fd" category="list-text">（对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 <block ref="6511a1f600064236c7dbbb54dd879ccf" category="inline-link-macro-rx"></block> 向 YAML 报告。</block>
+  <block id="a4a555ce407a7c7e6c4672e426b35f6d" category="list-text">运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 Astra 数据存储或 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses</block>
+  <block id="c287552db25a1fab7b049bb27d492f51" category="list-text">Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储预览存储后端的 Kubernetes 集群结合使用。</block>
+  <block id="15124155930d299e6f1779b4748a5e68" category="inline-link">Astra Data Store 预览</block>
+  <block id="f327cdc0a653517cdcb026a40e649593" category="list-text">了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，发现您的<block ref="e41935a824f782ed0b4e20297d584896" category="inline-link-rx"></block> 集群作为存储后端。</block>
+  <block id="6d1c9119490d3892054a1cfdca439215" category="list-text">添加 ONTAP 或 Astra 数据存储预览存储后端。</block>
+  <block id="9103a93ceb430727f35a3f9417e478c1" category="paragraph">Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
+  <block id="af529ec0ce8e62fc49e3f11779d0350c" category="paragraph">要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra Data Store 预览版，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra Data Store 预览版配置的卷的应用程序。</block>
+  <block id="3c8d59911b2ed233f35086eafb17748f" category="list-text">对于 Astra Data Store 预览安装：您已添加 Kubernetes 应用程序集群。</block>
+  <block id="7ea0911f99c3d96666fd9f883b4db9ca" category="sidebar">使用 Astra Data Store 预览版</block>
+  <block id="9f828d6c562cc0df256e51d5d235c7bb" category="sidebar">Astra 数据存储简介</block>
+  <block id="9496fd053449dc632695aa62786ebaf1" category="sidebar">此版本的 Astra 数据存储中的内容</block>
+  <block id="3551ec406ac2e45ff0f50e87c946ab31" category="sidebar">快速启动 Astra Data Store 预览</block>
 </blocks>

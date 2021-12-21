@@ -4,7 +4,7 @@ permalink: release-notes/known-issues-ads.html
 keywords: astra, control center, ads, data store, bugs, known issues, problems 
 summary: 已知问题可确定可能妨碍您成功使用此版本产品的问题。 
 ---
-= Astra 数据存储和此 Astra 控制中心版本的已知问题
+= 有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/release-notes/
@@ -16,25 +16,20 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 
 
-== 由于 MongoDB POD 活动性探针故障，无法将 Astra 数据存储用作 Astra 控制中心的存储类
+== 由于 MongoDB Pod 活跃度探针故障，无法将 Astra Data Store 预览用作 Astra 控制中心的存储类
 
-在部署 Astra 控制中心期间，当您尝试使用 Astra 数据存储作为存储类配置程序时， MongoDB POD 活动性探针将失败，从而导致部署无法完成。
+在部署 Astra 控制中心期间，当您尝试使用 Astra Data Store 预览作为存储类配置程序时， MongoDB POD 活动性探针将失败，从而导致部署无法完成。
 
-要更正此问题描述，请在完成时进行以下更改 link:../get-started/install_acc.html#configure-astra-control-center["Astra 控制中心安装过程"]：
+要更正此问题描述，请在完成时除了进行标准的 YAML 更改外，还进行以下更改 link:../get-started/install_acc.html#configure-astra-control-center["Astra 控制中心安装过程"]：
 
-. 配置 Astra 控制中心操作员部署 YAML （ Astra_control_center_operator_deploy.yaml ）以更改 Helm 安装超时：
+. 编辑 link:../get-started/install_acc.html#configure-the-astra-control-center-operator["Astra 控制中心操作员部署 YAML （ Astra_control_center_operator_deploy.yaml ）"] 更改 Helm 安装超时：
 +
 [listing]
 ----
-kubectl set env -n netapp-acc-operator deployment/acc-operator-controller-manager ACCOP_HELM_INSTALLTIMEOUT=20m
+- name: ACCOP_HELM_INSTALLTIMEOUT
+  value: 20m
 ----
-. 将更新应用于 Astra_control_center_operator_deploy.yaml ：
-+
-[listing]
-----
-kubectl apply -f astra_control_center_operator_deploy.yaml
-----
-. 编辑 Astra 控制中心自定义资源（ CR ）文件（ Astra_control_center_min.yaml ），并在 `sPec 下包括以下内容：` ：
+. 编辑 link:../get-started/install_acc.html#configure-astra-control-center["Astra 控制中心自定义资源（ CR ）文件（ Astra_control_center_min.yaml ）"] 并在 `sPec` 下添加突出显示的其他值：
 +
 [listing, subs="+quotes"]
 ----
@@ -64,19 +59,13 @@ metadata:
         *livenessProbe:*
           *initialDelaySeconds: 400*
 ----
-. 将更新应用于 Astra_control_center_min.yaml ：
-+
-[listing]
-----
-kubectl apply -f astra_control_center_min.yaml -n [netapp-acc or custom namespace]
-----
 
 
 
 
-== Astra 控制中心显示 Astra 数据存储存储后端处于未知状态
+== Astra 控制中心显示 Astra Data Store 预览存储后端处于未知状态
 
-Astra 控制中心通过用户界面的后端页面将 Astra Data Store 存储后端显示为 `未知` 状态。在这种情况下，存储后端实际可用，可以与通信。存储后端中的组件可能处于不正常状态，需要将其恢复为正常状态，以便存储后端显示为 `Available` 。
+Astra 控制中心从用户界面的后端页面中显示处于 `未知` 状态的 Astra Data Store 预览存储后端。在这种情况下，存储后端实际可用，可以与通信。存储后端中的组件可能处于不正常状态，需要将其恢复为正常状态，以便存储后端显示为 `Available` 。
 
 
 
@@ -85,4 +74,5 @@ Astra 控制中心通过用户界面的后端页面将 Astra Data Store 存储�
 * link:../release-notes/resolved-issues.html["已解决的问题"]
 * link:../release-notes/known-issues.html["已知问题"]
 * link:../release-notes/known-limitations.html["已知限制"]
+* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 文档"]
 

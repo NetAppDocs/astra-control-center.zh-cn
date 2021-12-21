@@ -115,4 +115,5 @@ metalLB 0.11.0 不是 Astra 控制中心支持的负载平衡器。有关支持�
 
 * link:../release-notes/resolved-issues.html["已解决的问题"]
 * link:../release-notes/known-issues.html["已知问题"]
+* link:../release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"]
 

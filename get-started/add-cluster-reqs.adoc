@@ -18,7 +18,7 @@ summary: 您应运行灵活性检查，以确保集群已准备好添加到 Astr
 
 * 以下类型的集群之一：
 +
-** 运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses 。
+** 运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 Astra 数据存储或 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses
 ** 运行 Rancher 2.5 的集群
 ** 运行 Kubernetes 1.19 到 1.21 （包括 1.21.x ）的集群
 +

@@ -10,7 +10,7 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 :imagesdir: ../media/get-started/
 
 
-Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为后端存储。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
+Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
 
 .任务
 * <<Add a license for Astra Control Center>>
@@ -58,7 +58,7 @@ NOTE: 如果您拥有评估许可证，请务必存储帐户 ID ，以避免在�
 
 == 添加集群
 
-要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。
+要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra Data Store 预览版，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra Data Store 预览版配置的卷的应用程序。
 
 
 TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。您可以使用 * 添加集群 * 功能通过 Astra 控制中心管理集群。
@@ -113,7 +113,7 @@ IMPORTANT: 添加要在 Astra 控制中心中管理的集群后，部署监控�
 
 NOTE: 受管集群连接了一个受支持的后端， Astra Control 可以发现该后端。
 
-* 对于 Astra Data Store 安装：您已添加 Kubernetes 应用程序集群。
+* 对于 Astra Data Store 预览安装：您已添加 Kubernetes 应用程序集群。
 +
 
 NOTE: 为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群在已发现的后端列表中显示为 `非受管` 。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 link:../get-started/setup_overview.html#add-cluster["添加集群"]。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。

@@ -222,8 +222,7 @@ imagePullSecrets:
 ----
 .. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 <<substep_image_local_registry_push,上一步>>。
 .. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 <<substep_image_local_registry_push,上一步>>。
-
-
+.. （对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 link:../release-notes/known-issues-ads.html#astra-data-store-cannot-be-used-as-a-storage-class-for-astra-control-center-due-to-mongodb-pod-liveness-probe-failure["需要进行的其他更改"] 向 YAML 报告。
 +
 [listing, subs="+quotes"]
 ----
@@ -268,6 +267,8 @@ spec:
         imagePullPolicy: IfNotPresent
       *imagePullSecrets: []*
 ----
+
+
 . 安装 Astra 控制中心操作员：
 +
 [listing]
@@ -325,6 +326,7 @@ IMPORTANT: 如果您使用的注册表不需要授权，则必须删除 `imageRe
 .. 将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。
 .. （可选）添加与帐户关联的用户的名字 `firstName` 和姓氏 `lastName` 。您可以在用户界面中立即或稍后执行此步骤。
 .. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Trident storageClass 资源。
+.. （对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 link:../release-notes/known-issues-ads.html#astra-data-store-cannot-be-used-as-a-storage-class-for-astra-control-center-due-to-mongodb-pod-liveness-probe-failure["需要进行的其他更改"] 向 YAML 报告。
 
 
 +
