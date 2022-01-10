@@ -1421,7 +1421,6 @@
   <block id="f087976277d273660b942918b43af841" category="paragraph">输出的结尾应类似于以下内容：</block>
   <block id="65c0a05d8c47a658174fbed46d46f8e7" category="paragraph">`sec白 烟` 数组中每个元素的索引均以 0 开头。在上面的示例中， `asacontrol service-account-dockercfg-vhz87` 的索引为 0 ， `asacontrol service-account-token-r59rk` 的索引为 1 。在输出中，记下包含 "token" 一词的服务帐户名称的索引。</block>
   <block id="d3727d544efa902d0381ec79cec3d488" category="list-text">按如下所示生成 kubeconfig ：</block>
-  <block id="c2e9276c18aefa5ab46cb1b3fc86b3bb" category="list-text">创建 `create-kubeconfig.sh` 文件。如果您在上一步中记下的令牌索引不是 0 ，请将以下脚本开头的 `token_index` 的值替换为正确的值。</block>
   <block id="7d164f3971b504d6203cf274cc77dd35" category="list-text">获取用于将其应用于 Kubernetes 集群的命令。</block>
   <block id="a2f929de0da027192d03a87b325f91cb" category="list-text">（ * 可选 * ）将 kubeconfig 重命名为集群的有意义名称。保护集群凭据。</block>
   <block id="3f297ef15cde0668e93b35f2752fd4fd" category="section-title">下一步是什么？</block>
@@ -1742,4 +1741,5 @@
   <block id="9f828d6c562cc0df256e51d5d235c7bb" category="sidebar">Astra 数据存储简介</block>
   <block id="9496fd053449dc632695aa62786ebaf1" category="sidebar">此版本的 Astra 数据存储中的内容</block>
   <block id="3551ec406ac2e45ff0f50e87c946ab31" category="sidebar">快速启动 Astra Data Store 预览</block>
+  <block id="ed6be01d66e94b422222a328f085d0bc" category="list-text">创建 `create-kubeconfig.sh` 文件。将以下脚本开头的 `token_index` 替换为正确的值。</block>
 </blocks>
