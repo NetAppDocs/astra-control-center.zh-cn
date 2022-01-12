@@ -1747,4 +1747,5 @@
   <block id="ea0a75505b0b24811b92c3214821dcac" category="paragraph">Docker ：</block>
   <block id="ea52c6d9102288140df3fa3417e6d622" category="paragraph">播客：</block>
   <block id="77b70c8d427825f357ab6bf8fd419de6" category="list-text">使用适当的脚本加载映像，标记映像，并将这些映像推送到本地注册表：</block>
+  <block id="8ba4664b08ecc7bbd36d1c4a65dfb521" category="list-text">输入 Astra 控制中心版本；例如 21.12.60 。</block>
 </blocks>
