@@ -1742,4 +1742,9 @@
   <block id="9496fd053449dc632695aa62786ebaf1" category="sidebar">此版本的 Astra 数据存储中的内容</block>
   <block id="3551ec406ac2e45ff0f50e87c946ab31" category="sidebar">快速启动 Astra Data Store 预览</block>
   <block id="ed6be01d66e94b422222a328f085d0bc" category="list-text">创建 `create-kubeconfig.sh` 文件。将以下脚本开头的 `token_index` 替换为正确的值。</block>
+  <block id="8a610f3ea380fe1789ef14712ba6b1f0" category="admonition">有关自动加载映像的信息，请参见下面的示例脚本。</block>
+  <block id="e8c44728c041065d90e7029dec2e142c" category="list-text">登录到注册表：</block>
+  <block id="ea0a75505b0b24811b92c3214821dcac" category="paragraph">Docker ：</block>
+  <block id="ea52c6d9102288140df3fa3417e6d622" category="paragraph">播客：</block>
+  <block id="77b70c8d427825f357ab6bf8fd419de6" category="list-text">使用适当的脚本加载映像，标记映像，并将这些映像推送到本地注册表：</block>
 </blocks>

@@ -83,16 +83,26 @@ cd astra-control-center-[version]
 NOTE: 有关自动加载映像的信息，请参见下面的示例脚本。
 
 +
-.. 登录到 Docker 注册表：
+.. 登录到注册表：
++
+Docker ：
+
 +
 [listing]
 ----
 docker login [your_registry_path]
 ----
-.. 将映像加载到 Docker 中。
-.. 标记图像。
-.. [substep_image_local_registry_push]] 将映像推送到本地注册表。
++
+播客：
 
++
+[listing]
+----
+podman login [your_registry_path]
+----
+.. 使用适当的脚本加载映像，标记映像，并将这些映像推送到本地注册表：
++
+Docker ：
 
 +
 [listing]
@@ -108,6 +118,25 @@ for astraImageFile in $(ls images/*.tar) ; do
   docker push ${REGISTRY}/${astraImage}
 done
 ----
++
+播客：
+
++
+[listing]
+----
+export REGISTRY=[Registry_path]
+for astraImageFile in $(ls images/*.tar) ; do
+  # Load to local cache. And store the name of the loaded image trimming the 'Loaded images: '
+  astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image(s): //')
+  astraImage=$(echo ${astraImage} | sed 's!localhost/!!')
+  # Tag with local image repo.
+  podman tag ${astraImage} ${REGISTRY}/${astraImage}
+  # Push to the local repo.
+  podman push ${REGISTRY}/${astraImage}
+done
+----
+
+
 
 
 
