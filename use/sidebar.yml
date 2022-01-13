@@ -10,6 +10,8 @@ entries:
     url: "/use/define-custom-app.html"
 - title: 保护应用程序
   entries:
+  - title: 保护概述
+    url: "/use/protection-overview.html"
   - title: 保护应用程序
     url: "/use/protect-apps.html"
   - title: 还原应用程序

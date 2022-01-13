@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: concepts/data-protection.html 
+keywords: backup, back up, backup apps, back up apps, snapshots, snapshot an app, take a snapshot, take a backup, view backups, view snapshots, set policy, set schedule, schedule backups, schedule snapshots 
+summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以最佳方式使用它们来保护您的应用程序。 
+---
+= 数据保护
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/concepts/
+
+
+了解 Astra 控制中心提供的数据保护类型，以及如何以最佳方式使用它们来保护您的应用程序。
+
+
+
+== 快照，备份和保护策略
+
+_snapshot_ 是应用程序的时间点副本，它与应用程序存储在同一个已配置卷上。通常速度较快。您可以使用本地快照将应用程序还原到较早的时间点。快照对于快速克隆很有用；快照包括应用程序的所有 Kubernetes 对象，包括配置文件。
+
+_backup_ 存储在外部对象存储中，与本地快照相比，创建速度可能较慢。您可以将应用程序备份还原到同一集群，也可以通过将应用程序备份还原到其他集群来迁移应用程序。您还可以选择较长的备份保留期限。由于备份存储在外部对象存储中，因此在发生服务器故障或数据丢失时，备份通常比快照提供更好的保护。
+
+保护策略 _ 是一种通过根据您为应用程序定义的计划自动创建快照和 / 或备份来保护应用程序的方法。此外，您还可以通过保护策略选择要在计划中保留的快照和备份数量。使用保护策略自动执行备份和快照是确保每个应用程序都根据组织需求受到保护的最佳方式。
+
+
+CAUTION: _You can't be Fully protected until you have a recent backup_ 。这一点非常重要，因为备份存储在对象存储中，而不是永久性卷。如果发生故障或意外事件会擦除集群及其关联的永久性存储，则需要备份才能恢复。快照无法让您恢复。
+
+
+
+== 克隆
+
+_clone_ 是应用程序，其配置及其永久性存储的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。

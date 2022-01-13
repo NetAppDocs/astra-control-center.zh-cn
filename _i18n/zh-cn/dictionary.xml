@@ -1055,11 +1055,7 @@
   <block id="60487fcdacfcf0e2feb2363106047906" category="summary">通过使用自动保护策略或临时创建快照和备份来保护应用程序。</block>
   <block id="c48341950d06dc5b2b657a869930da35" category="doc">通过快照和备份保护应用程序</block>
   <block id="0ea2d3938278fb80f86236d57c1fdd9f" category="paragraph">通过使用自动保护策略或临时创建快照和备份来保护应用程序。您可以使用 Astra UI 或<block ref="c3bdc3d9b521474044010a53b984c85e" category="inline-link-rx"></block> 保护应用程序。</block>
-  <block id="a21e997b73eef6d37e2890a1fa07e1a9" category="section-title">快照和备份</block>
-  <block id="a6b140244ee94e4034d7fa36914e11f9" category="paragraph">_snapshot_ 是应用程序的时间点副本，它与应用程序存储在同一个已配置卷上。通常速度较快。本地快照用于将应用程序还原到较早的时间点。快照对于快速克隆很有用；快照包括应用程序的所有 Kubernetes 对象，包括配置文件。</block>
-  <block id="71fbc2b4b22cbdf13fa8902edc91369a" category="paragraph">_backup_ 存储在外部对象存储中。与本地快照相比，备份速度可能较慢。您可以通过将应用程序的备份还原到其他集群来迁移应用程序。您还可以选择较长的备份保留期限。</block>
   <block id="2b44ed9b51c4c625419cf0a113f71811" category="section-title">配置保护策略</block>
-  <block id="45ad0235a77627fe6b23b64997cecf69" category="paragraph">保护策略通过按定义的计划创建快照，备份或这两者来保护应用程序。您可以选择每小时，每天，每周和每月创建快照和备份，并且可以指定要保留的副本数。</block>
   <block id="88999cc5907cf0e9ead77c8da2e009fd" category="list-text">选择 * 应用程序 * ，然后选择应用程序的名称。</block>
   <block id="dea95de7f2633f161384f311ab180946" category="list-text">选择 * 数据保护 * 。</block>
   <block id="991b4d6d3f0be95d8e0ca4853eea90a9" category="list-text">选择 * 配置保护策略 * 。</block>
@@ -1748,4 +1744,29 @@
   <block id="ea52c6d9102288140df3fa3417e6d622" category="paragraph">播客：</block>
   <block id="77b70c8d427825f357ab6bf8fd419de6" category="list-text">使用适当的脚本加载映像，标记映像，并将这些映像推送到本地注册表：</block>
   <block id="8ba4664b08ecc7bbd36d1c4a65dfb521" category="list-text">输入 Astra 控制中心版本；例如 21.12.60 。</block>
+  <block id="242b16009698fe8de90e3b0966885de7" category="summary">了解 Astra 控制中心提供的数据保护类型，以及如何以最佳方式使用它们来保护您的应用程序。</block>
+  <block id="4af39b8c609e94299d6c11ef13a2428c" category="doc">保护概述</block>
+  <block id="4f8289d2ea64efb565cdd08c451ac322" category="inline-link-macro">了解 Astra 控制中心提供的数据保护类型以及何时使用</block>
+  <block id="9c4b5c958d6364ac3b17f0aa5a50e29d" category="paragraph">您可以使用 Astra 控制中心为应用程序创建备份，克隆，快照和保护策略。备份应用程序可帮助您的服务和关联数据尽可能地可用；在灾难情形下，从备份还原可以确保应用程序及其关联数据的完全恢复，而不会造成任何中断。备份，克隆和快照有助于防止常见威胁，例如勒索软件，意外数据丢失和环境灾难。 <block ref="6b6e09024640eb9ec4bbda9f054e4ca3" category="inline-link-macro-rx"></block>。</block>
+  <block id="fe2011653552de71bf2a04defdef5e3d" category="section-title">应用程序保护工作流</block>
+  <block id="9e3e52a15539d6b76c9af7b7c901f2dc" category="paragraph">您可以使用以下示例工作流开始保护应用程序。</block>
+  <block id="a04c6aa912ab1752fccd834c4a0468b9" category="section-title">备份所有应用程序</block>
+  <block id="cdb972c8ec0f0d2d064eee29da832b09" category="inline-link-macro">为所有应用程序创建手动备份</block>
+  <block id="bb9745866a03e99751c67559a4b5bbfc" category="paragraph">要确保您的应用程序立即受到保护， <block ref="153c1de46633dd7b9ee4197b0f57d4e6" category="inline-link-macro-rx"></block>。</block>
+  <block id="fc728311492264f387b6d56bf7f401d9" category="section-title">为每个应用程序配置一个保护策略</block>
+  <block id="67d8aac0ef877e89b323dda77c01cdc7" category="inline-link-macro">为每个应用程序配置一个保护策略</block>
+  <block id="a6f3f1cac5047bfc8c8a549d7555afb4" category="paragraph">要自动执行未来备份和快照， <block ref="be33481d5db8c6459d2a9f9986e47ba8" category="inline-link-macro-rx"></block>。例如，您可以从每周备份和每日快照开始，这两种备份均保留一个月。强烈建议使用保护策略自动执行备份和快照，而不是手动备份和快照。</block>
+  <block id="68db57ac71c439bd714299714a3d5cd5" category="section-title">可选：调整保护策略</block>
+  <block id="2afcb2016ee556b04a072d6535bbab55" category="paragraph">随着应用程序及其使用模式的变化，根据需要调整保护策略以提供最佳保护。</block>
+  <block id="ae923994b95458260e1a5b8c8c593bf1" category="section-title">发生灾难时，请还原您的应用程序</block>
+  <block id="7ce9ebbb5de6892ca270cea878bd99d1" category="inline-link-macro">还原最新备份</block>
+  <block id="dd27127bd92a34c602fa40bc2a1cdd3e" category="paragraph">如果发生数据丢失，您可以通过进行恢复 <block ref="550aec8aa1d184571b143fbb368e4c54" category="inline-link-macro-rx"></block> 每个应用程序的第一个。然后，您可以还原最新的快照（如果可用）。</block>
+  <block id="75e48fb59b8569e506bf04badc196e20" category="paragraph">保护策略通过按定义的计划创建快照，备份或这两者来保护应用程序。您可以选择每小时，每天，每周和每月创建快照和备份，并且可以指定要保留的副本数。例如，保护策略可能会创建每周备份和每日快照，并将备份和快照保留一个月。创建快照和备份的频率以及保留时间取决于组织的需求。</block>
+  <block id="646e605e86066bd9485e0c23704757f2" category="section-title">快照，备份和保护策略</block>
+  <block id="0ff3a63f501bdc56779548c1895a7830" category="paragraph">_snapshot_ 是应用程序的时间点副本，它与应用程序存储在同一个已配置卷上。通常速度较快。您可以使用本地快照将应用程序还原到较早的时间点。快照对于快速克隆很有用；快照包括应用程序的所有 Kubernetes 对象，包括配置文件。</block>
+  <block id="8088bcbdd6f32dd97af613eaa18dbfc9" category="paragraph">_backup_ 存储在外部对象存储中，与本地快照相比，创建速度可能较慢。您可以将应用程序备份还原到同一集群，也可以通过将应用程序备份还原到其他集群来迁移应用程序。您还可以选择较长的备份保留期限。由于备份存储在外部对象存储中，因此在发生服务器故障或数据丢失时，备份通常比快照提供更好的保护。</block>
+  <block id="1cf677982e8ac99f55d7314cb3a51d20" category="paragraph">保护策略 _ 是一种通过根据您为应用程序定义的计划自动创建快照和 / 或备份来保护应用程序的方法。此外，您还可以通过保护策略选择要在计划中保留的快照和备份数量。使用保护策略自动执行备份和快照是确保每个应用程序都根据组织需求受到保护的最佳方式。</block>
+  <block id="33bb9df0e608c1dab17890f54a41a8db" category="admonition">_You can't be Fully protected until you have a recent backup_ 。这一点非常重要，因为备份存储在对象存储中，而不是永久性卷。如果发生故障或意外事件会擦除集群及其关联的永久性存储，则需要备份才能恢复。快照无法让您恢复。</block>
+  <block id="999cc42b236c7aee1157ff02d6f1bcd5" category="section-title">克隆</block>
+  <block id="3e92f2df0bda8968dc6665778c2f9b99" category="paragraph">_clone_ 是应用程序，其配置及其永久性存储的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。</block>
 </blocks>
