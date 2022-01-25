@@ -496,8 +496,6 @@
   <block id="201d245e3b93a26007d42f5f603f6230" category="paragraph">Astra 控制中心从帐户中删除用户。</block>
   <block id="02c8c5fbeebdf293d83e1ec96ea30aff" category="summary">Astra 可以从快照或备份还原应用程序配置和永久性存储。永久性存储备份会从对象存储传输，因此从现有备份还原的速度最快。</block>
   <block id="e07596cf624c6e8c354d1188f9bdb6bb" category="doc">还原应用程序</block>
-  <block id="41b6890553c133e0a80fee28f7a2bce2" category="paragraph">Astra 控制中心可以从快照或备份还原您的应用程序。您可以使用 Astra Control UI 或<block ref="c3bdc3d9b521474044010a53b984c85e" category="inline-link-rx"></block> 还原应用程序。</block>
-  <block id="547ac8d7a81a6b2601261a27b0d9d416" category="paragraph">从备份还原可能需要一段时间，因为数据是从对象存储传输的。因此，与其他方法相比，从现有快照还原到同一集群的速度更快。</block>
   <block id="e502e50919efc0bce1d30fabf1522cff" category="admonition">如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。</block>
   <block id="aafffef647c1af195c5bf1decab81f7f" category="admonition">如果要还原到其他集群，请确保此集群使用相同的永久性卷访问模式（例如 ReadWriteMany ）。如果目标永久性卷访问模式不同，还原操作将失败。</block>
   <block id="9d03fdc967fba647997be40db306a50b" category="paragraph">在 OpenShift 集群上创建用于托管应用程序的项目时，系统会为该项目（或 Kubernetes 命名空间）分配一个 SecurityContext UID 。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。</block>
@@ -1769,4 +1767,5 @@
   <block id="33bb9df0e608c1dab17890f54a41a8db" category="admonition">_You can't be Fully protected until you have a recent backup_ 。这一点非常重要，因为备份存储在对象存储中，而不是永久性卷。如果发生故障或意外事件会擦除集群及其关联的永久性存储，则需要备份才能恢复。快照无法让您恢复。</block>
   <block id="999cc42b236c7aee1157ff02d6f1bcd5" category="section-title">克隆</block>
   <block id="3e92f2df0bda8968dc6665778c2f9b99" category="paragraph">_clone_ 是应用程序，其配置及其永久性存储的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。</block>
+  <block id="bd48cb856a5ec10f9c3c2bf8d62fc86c" category="paragraph">Astra Control 可以从快照或备份还原应用程序。将应用程序还原到同一集群时，从现有快照进行还原的速度会更快。您可以使用 Astra Control UI 或<block ref="c3bdc3d9b521474044010a53b984c85e" category="inline-link-rx"></block> 还原应用程序。</block>
 </blocks>

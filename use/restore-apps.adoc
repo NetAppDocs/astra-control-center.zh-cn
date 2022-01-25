@@ -11,9 +11,7 @@ summary: Astra 可以从快照或备份还原应用程序配置和永久性存�
 
 
 [role="lead"]
-Astra 控制中心可以从快照或备份还原您的应用程序。您可以使用 Astra Control UI 或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 还原应用程序。
-
-从备份还原可能需要一段时间，因为数据是从对象存储传输的。因此，与其他方法相比，从现有快照还原到同一集群的速度更快。
+Astra Control 可以从快照或备份还原应用程序。将应用程序还原到同一集群时，从现有快照进行还原的速度会更快。您可以使用 Astra Control UI 或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 还原应用程序。
 
 
 NOTE: 如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。
