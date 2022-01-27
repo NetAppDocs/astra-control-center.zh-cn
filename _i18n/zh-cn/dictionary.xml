@@ -1768,4 +1768,11 @@
   <block id="999cc42b236c7aee1157ff02d6f1bcd5" category="section-title">克隆</block>
   <block id="3e92f2df0bda8968dc6665778c2f9b99" category="paragraph">_clone_ 是应用程序，其配置及其永久性存储的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。</block>
   <block id="bd48cb856a5ec10f9c3c2bf8d62fc86c" category="paragraph">Astra Control 可以从快照或备份还原应用程序。将应用程序还原到同一集群时，从现有快照进行还原的速度会更快。您可以使用 Astra Control UI 或<block ref="c3bdc3d9b521474044010a53b984c85e" category="inline-link-rx"></block> 还原应用程序。</block>
+  <block id="92db826983b1418f74a79a587157b045" category="section-title">Astra 控制中心无法在同一个云中管理两个命名相同的集群</block>
+  <block id="1c91b63172e93b5c096a494a79970b0e" category="paragraph">如果您尝试添加与云中已存在的集群同名的集群，则此操作将失败。如果未更改 Kubernetes 配置文件中的集群默认名称，则此问题描述最常发生在标准 Kubernetes 环境中。</block>
+  <block id="22ec3951623db87fb800ca769fec5e8f" category="paragraph">作为临时解决策，请执行以下操作：</block>
+  <block id="b6dcf530db55b7783db7f050410455e4" category="list-text">编辑 kubeadm-config 配置映射：</block>
+  <block id="33fe94a78e4fc743a279dacacc468c5d" category="list-text">将 `clustername` 字段值从 `Kubernetes` （ Kubernetes 默认名称）更改为唯一的自定义名称。</block>
+  <block id="890a77a8c921a60204701adfa2f5c160" category="list-text">编辑 kubeconfig （` .Kube/config` ）。</block>
+  <block id="6c97574dc1b4c1296eabcd490b901dbf" category="list-text">将集群名称从 `Kubernetes` 更新为唯一的自定义名称（在以下示例中使用`xyz-cluster` ）。在 `clusters` 和 `Context` 部分进行更新，如以下示例所示：</block>
 </blocks>

@@ -26,6 +26,42 @@ oc get pods n -netapp-monitoring
 
 
 
+== Astra 控制中心无法在同一个云中管理两个命名相同的集群
+
+如果您尝试添加与云中已存在的集群同名的集群，则此操作将失败。如果未更改 Kubernetes 配置文件中的集群默认名称，则此问题描述最常发生在标准 Kubernetes 环境中。
+
+作为临时解决策，请执行以下操作：
+
+. 编辑 kubeadm-config 配置映射：
++
+[listing]
+----
+kubectl edit configmaps -n kube-system kubeadm-config
+----
+. 将 `clustername` 字段值从 `Kubernetes` （ Kubernetes 默认名称）更改为唯一的自定义名称。
+. 编辑 kubeconfig （` .Kube/config` ）。
+. 将集群名称从 `Kubernetes` 更新为唯一的自定义名称（在以下示例中使用`xyz-cluster` ）。在 `clusters` 和 `Context` 部分进行更新，如以下示例所示：
++
+[listing, subs="+quotes"]
+----
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: ExAmPLERb2tCcjZ5K3E2Njk4eQotLExAMpLEORCBDRVJUSUZJQ0FURS0txxxxXX==
+    server: https://x.x.x.x:6443
+  *name: xyz-cluster*
+contexts:
+- context:
+    *cluster: xyz-cluster*
+    namespace: default
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+current-context: kubernetes-admin@kubernetes
+----
+
+
+
+
 == 使用 Ppass by reference operators 安装的应用程序克隆可能会失败
 
 Astra Control 支持使用命名空间范围的运算符安装的应用程序。这些操作员通常采用 " 按价值传递 " 架构，而不是 " 按参考传递 " 架构。以下是一些遵循这些模式的操作员应用程序：
