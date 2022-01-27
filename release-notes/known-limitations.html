@@ -983,7 +983,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-25 18:05:15 +0000">01/25/2022</time>
+    <time datetime="2022-01-27 19:28:06 +0000">01/27/2022</time>
     
   
 
@@ -1038,6 +1038,55 @@
 </div>
 <div class="paragraph">
 <p>此命名空间中不应运行任何 Pod ，或者此命名空间不应存在。如果其中任一项为 true ，则集群不受管理。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="astra-控制中心无法在同一个云中管理两个命名相同的集群">Astra 控制中心无法在同一个云中管理两个命名相同的集群</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果您尝试添加与云中已存在的集群同名的集群，则此操作将失败。如果未更改 Kubernetes 配置文件中的集群默认名称，则此问题描述最常发生在标准 Kubernetes 环境中。</p>
+</div>
+<div class="paragraph">
+<p>作为临时解决策，请执行以下操作：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>编辑 kubeadm-config 配置映射：</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl edit configmaps -n kube-system kubeadm-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>将 <code>clustername</code> 字段值从 <code>Kubernetes</code> （ Kubernetes 默认名称）更改为唯一的自定义名称。</p>
+</li>
+<li>
+<p>编辑 kubeconfig （` .Kube/config` ）。</p>
+</li>
+<li>
+<p>将集群名称从 <code>Kubernetes</code> 更新为唯一的自定义名称（在以下示例中使用`xyz-cluster` ）。在 <code>clusters</code> 和 <code>Context</code> 部分进行更新，如以下示例所示：</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: ExAmPLERb2tCcjZ5K3E2Njk4eQotLExAMpLEORCBDRVJUSUZJQ0FURS0txxxxXX==
+    server: https://x.x.x.x:6443
+  <strong>name: xyz-cluster</strong>
+contexts:
+- context:
+    <strong>cluster: xyz-cluster</strong>
+    namespace: default
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+current-context: kubernetes-admin@kubernetes</pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
