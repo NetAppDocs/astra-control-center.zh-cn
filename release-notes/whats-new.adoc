@@ -4,7 +4,7 @@ permalink: release-notes/whats-new.html
 keywords: what's new, bugs, bug fixes, new features, enhancements 
 summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增强功能和错误修复。 
 ---
-= 此版本的 Astra 控制中心中的新增功能 &#8217
+= 此版本的 Astra 控制中心中的新增功能
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/release-notes/

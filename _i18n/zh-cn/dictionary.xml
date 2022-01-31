@@ -349,7 +349,6 @@
   <block id="482723983a4f2af954e36ff41e567451" category="inline-link-macro">已知限制</block>
   <block id="58ddb149ad752e78b7ddd185699b6c95" category="list-text"><block ref="58ddb149ad752e78b7ddd185699b6c95" category="inline-link-macro-rx"></block></block>
   <block id="83d9b7618daad6df97a85360aa72e97b" category="summary">NetApp 会定期更新 Astra 控制中心，为您提供新功能，增强功能和错误修复。</block>
-  <block id="59252dceb661c54631f15d164c8509a3" category="doc">此版本的 Astra 控制中心中的新增功能 &amp;#8217</block>
   <block id="e163632735ca9d0486603e8093602bc7" category="paragraph">我们很高兴地宣布发布最新版本的 Astra 控制中心 21.12 。</block>
   <block id="a1be4875b5bb7cb5ecf7bdcde9034c85" category="section-title">2021 年 12 月 14 日（ 21.12 ）</block>
   <block id="971d6551c63734c1f30df7cc1cad2e64" category="paragraph">更新版本的 Astra 控制中心。</block>
@@ -1775,4 +1774,5 @@
   <block id="33fe94a78e4fc743a279dacacc468c5d" category="list-text">将 `clustername` 字段值从 `Kubernetes` （ Kubernetes 默认名称）更改为唯一的自定义名称。</block>
   <block id="890a77a8c921a60204701adfa2f5c160" category="list-text">编辑 kubeconfig （` .Kube/config` ）。</block>
   <block id="6c97574dc1b4c1296eabcd490b901dbf" category="list-text">将集群名称从 `Kubernetes` 更新为唯一的自定义名称（在以下示例中使用`xyz-cluster` ）。在 `clusters` 和 `Context` 部分进行更新，如以下示例所示：</block>
+  <block id="2d917589e4367d5e3e965e02872e555b" category="doc">此版本的 Astra 控制中心中的新增功能</block>
 </blocks>
