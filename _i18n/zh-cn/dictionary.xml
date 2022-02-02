@@ -1334,13 +1334,11 @@
   <block id="37b9c0fe975f84a28c93ed400bbf96df" category="list-text">从下载 Astra 控制中心捆绑包（`Astra-control-center-[version].tar.gz` ）<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
   <block id="b27a38bf3a2f1598cf85f6edd595c1f2" category="list-text">从下载 Astra 控制中心证书和密钥的 zip<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
   <block id="f748f65c20601bd5ff808f54e4a932d1" category="section-title">为具有身份验证要求的注册表设置命名空间和密钥</block>
-  <block id="0847bd4ccdcd6882e6ff58df58030582" category="list-text">（仅适用于具有身份验证要求的注册表）如果您使用的注册表需要身份验证，则需要执行以下操作：</block>
   <block id="4f1676fe8dda03f26994cd830c2d09a1" category="list-text">创建 `NetApp-Acc-operator` 命名空间：</block>
   <block id="6991b18d1a4e22ab1157055468087de4" category="list-text">为 `NetApp-Acc-operator` 命名空间创建一个密钥。添加 Docker 信息并运行以下命令：</block>
   <block id="d62c5849c83a783e51d9f960d482751c" category="list-text">创建 `NetApp-Accc` （或自定义命名）命名空间。</block>
   <block id="4fda54d668773dca068eddcae2b9f6c0" category="list-text">为 `NetApp-Accc` （或自定义命名）命名空间创建一个密钥。添加 Docker 信息并运行以下命令：</block>
   <block id="8763b5c0837ac6cf7ff31e202742432c" category="section-title">配置 Astra 控制中心</block>
-  <block id="25bc3690d011ed7eb8a9cb727a3de4a1" category="list-text">编辑 Astra Control Center 自定义资源（ CR ）文件（`Astra_control_center_min.yaml` ）：</block>
   <block id="67c786024def27f9fe344173bf9e992c" category="admonition">如果您的环境需要其他自定义设置，您可以使用 `Astra_control_center.yaml` 作为替代 CR 。`Astra_control_center_min.yaml` 是默认 CR ，适用于大多数安装。</block>
   <block id="1b541447f46db215b4ac2a73f41115ca" category="admonition">首次部署 Astra 控制中心后，无法更改 CR 配置的属性。</block>
   <block id="5f41634ced99810c0f400b7519177c04" category="admonition">如果您使用的注册表不需要授权，则必须删除 `imageRegistry` 中的 `secret` 行，否则安装将失败。</block>
@@ -1775,4 +1773,8 @@
   <block id="890a77a8c921a60204701adfa2f5c160" category="list-text">编辑 kubeconfig （` .Kube/config` ）。</block>
   <block id="6c97574dc1b4c1296eabcd490b901dbf" category="list-text">将集群名称从 `Kubernetes` 更新为唯一的自定义名称（在以下示例中使用`xyz-cluster` ）。在 `clusters` 和 `Context` 部分进行更新，如以下示例所示：</block>
   <block id="2d917589e4367d5e3e965e02872e555b" category="doc">此版本的 Astra 控制中心中的新增功能</block>
+  <block id="863333fc6964aae7ff1cd85ff324bdad" category="list-text">如果您使用的注册表需要身份验证，则需要执行以下操作：</block>
+  <block id="9fb31bf48e490c8cc9100621633a4882" category="inline-link-macro">存储类配置程序以及需要对 YAML 进行的其他更改</block>
+  <block id="1ee30587538b0f2fb782cfd336e211af" category="list-text">（对于使用 Astra 数据存储预览版的安装）请参见有关的此已知问题描述 <block ref="41115f9f1d35c2b8edc407cb676a515f" category="inline-link-macro-rx"></block>。</block>
+  <block id="e30ec2af9a8a15a002fcf184ac176f18" category="list-text">编辑 Astra 控制中心自定义资源（ CR ）文件（`Astra_control_center_min.yaml` ）以进行帐户， AutoSupport ，注册表和其他必要配置：</block>
 </blocks>
