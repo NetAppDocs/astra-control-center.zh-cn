@@ -92,8 +92,8 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 * 您可以通过设置云提供商并注册 Astra 帐户开始使用 Astra Control Service 。
 +
-** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 作为永久性卷的存储后端。
-** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 作为永久性卷的存储后端。
+** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 或 Google Persistent Disk 作为永久性卷的存储后端。
+** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 或 Azure 磁盘存储作为永久性卷的存储后端。
 
 
 * 您可以将第一个 Kubernetes 计算添加到 Astra Control Service 中。然后， Astra 控制服务将执行以下操作：
@@ -104,7 +104,7 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 ** 在集群上创建新的管理员角色和 Kubernetes 服务帐户。
 ** 使用此新管理员角色进行安装 https://docs.netapp.com/us-en/trident/index.html["Astra Trident"^] 以创建一个或多个存储类。
-** 使用 Astra Trident 为应用程序配置永久性卷。
+** 如果您使用 Azure NetApp Files 或 NetApp Cloud Volumes Service for Google Cloud 作为存储后端，则 Astra 控制服务将使用 Astra Trident 为应用程序配置永久性卷。
 
 
 * 此时，您可以向集群添加应用程序。将在新的默认存储类上配置永久性卷。
