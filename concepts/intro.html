@@ -992,7 +992,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-02-02 23:07:49 +0000">02/02/2022</time>
+    <time datetime="2022-02-16 17:19:32 +0000">02/16/2022</time>
     
   
 
@@ -1183,10 +1183,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>对于 GKE- 集群， Astra Control Service 使用 <a href="https://cloud.netapp.com/cloud-volumes-service-for-gcp" target="_blank" rel="noopener">"适用于 Google Cloud 的 NetApp Cloud Volumes Service"</a> 作为永久性卷的存储后端。</p>
+<p>对于 GKE- 集群， Astra Control Service 使用 <a href="https://cloud.netapp.com/cloud-volumes-service-for-gcp" target="_blank" rel="noopener">"适用于 Google Cloud 的 NetApp Cloud Volumes Service"</a> 或 Google Persistent Disk 作为永久性卷的存储后端。</p>
 </li>
 <li>
-<p>对于 AKS 集群， Astra Control Service 使用 <a href="https://cloud.netapp.com/azure-netapp-files" target="_blank" rel="noopener">"Azure NetApp Files"</a> 作为永久性卷的存储后端。</p>
+<p>对于 AKS 集群， Astra Control Service 使用 <a href="https://cloud.netapp.com/azure-netapp-files" target="_blank" rel="noopener">"Azure NetApp Files"</a> 或 Azure 磁盘存储作为永久性卷的存储后端。</p>
 </li>
 </ul>
 </div>
@@ -1208,7 +1208,7 @@
 <p>使用此新管理员角色进行安装 <a href="https://docs.netapp.com/us-en/trident/index.html" target="_blank" rel="noopener">"Astra Trident"</a> 以创建一个或多个存储类。</p>
 </li>
 <li>
-<p>使用 Astra Trident 为应用程序配置永久性卷。</p>
+<p>如果您使用 Azure NetApp Files 或 NetApp Cloud Volumes Service for Google Cloud 作为存储后端，则 Astra 控制服务将使用 Astra Trident 为应用程序配置永久性卷。</p>
 </li>
 </ul>
 </div>
