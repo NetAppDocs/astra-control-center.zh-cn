@@ -2,5 +2,7 @@
 section: support
 title: 知识和支持
 entries:
+- title: 故障排除
+  url: "/support/troubleshooting-acc.html"
 - title: 获取帮助
   url: "/support/get-help.html"

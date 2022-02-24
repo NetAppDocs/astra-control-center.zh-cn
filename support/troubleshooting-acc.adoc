@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: support/troubleshooting-acc.html 
+keywords: how to get help with astra control, astra control knowledgebase 
+summary: NetApp 以多种方式为 Astra Control 提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和可宽延的渠道。您的 Astra Control 帐户包括通过 Web 服务单提供的远程技术支持。 
+---
+= 故障排除
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/support/
+
+
+了解如何解决您可能遇到的一些常见问题。
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra[]
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/How_to_upload_a_file_to_NetApp["如何将文件上传到 NetApp （需要登录）"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_manually_upload_AutoSupport_messages_to_NetApp_in_ONTAP_9["如何手动将文件上传到 NetApp （需要登录）"^]
+

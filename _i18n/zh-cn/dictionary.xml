@@ -7,7 +7,6 @@
   <block id="51d249216b03414f10b242b851af7951" category="doc">Astra Control 组件</block>
   <block id="60f694f21643599c137f6c610e48124e" category="paragraph">下面简要介绍了 Astra Control 环境的各个组件。</block>
   <block id="2325c645f4d2112a8e96b127fbad7bf2" category="inline-image-macro">Astra Control 架构图和组件</block>
-  <block id="06cdc9e30d742dad53fba16779d1c3ab" category="paragraph"><block ref="06cdc9e30d742dad53fba16779d1c3ab" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a8d77bbb11d2e1a349811767d194e9ba" category="list-text">* Kubernetes 集群 * ： Kubernetes 是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，便于进行声明性配置和自动化。Astra 为 Kubernetes 集群中托管的应用程序提供管理服务。</block>
   <block id="951fe18cc6e59e05fca3c0ca7de399fa" category="list-text">* 存储后端 * ：</block>
   <block id="a3b5183ae6f5c3f1d6644448f795b5cb" category="inline-link">适用于 Google Cloud 的 NetApp Cloud Volumes Service</block>
@@ -1777,4 +1776,8 @@
   <block id="052766753c4902f7b4dda44f55923c85" category="list-text">对于 GKE- 集群， Astra Control Service 使用<block ref="33441d63a8e7ace6860eab2024320819" category="inline-link-rx"></block> 或 Google Persistent Disk 作为永久性卷的存储后端。</block>
   <block id="e6b1925e4e775a70bcb5b95deee417b9" category="list-text">对于 AKS 集群， Astra Control Service 使用<block ref="16e1ab965c1d673c5cb3b5a28e77c1c1" category="inline-link-rx"></block> 或 Azure 磁盘存储作为永久性卷的存储后端。</block>
   <block id="53a30ad173bc821551d7bc21cfd2f4c8" category="list-text">如果您使用 Azure NetApp Files 或 NetApp Cloud Volumes Service for Google Cloud 作为存储后端，则 Astra 控制服务将使用 Astra Trident 为应用程序配置永久性卷。</block>
+  <block id="28f3b0cd697bf5f33c7eab89e20baff4" category="paragraph"><block ref="28f3b0cd697bf5f33c7eab89e20baff4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="231cf4c70d866b616c21baddaeed0696" category="doc">故障排除</block>
+  <block id="36e2bd9e7950f46d3ea6d2bca4c50ba1" category="paragraph">了解如何解决您可能遇到的一些常见问题。</block>
+  <block id="79c5785e2761673e59d8eea6f1277fe2" category="paragraph"><block ref="79c5785e2761673e59d8eea6f1277fe2" category="inline-link-rx"></block></block>
 </blocks>
