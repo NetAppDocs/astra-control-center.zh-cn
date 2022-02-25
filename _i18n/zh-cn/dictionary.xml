@@ -1780,4 +1780,17 @@
   <block id="231cf4c70d866b616c21baddaeed0696" category="doc">故障排除</block>
   <block id="36e2bd9e7950f46d3ea6d2bca4c50ba1" category="paragraph">了解如何解决您可能遇到的一些常见问题。</block>
   <block id="79c5785e2761673e59d8eea6f1277fe2" category="paragraph"><block ref="79c5785e2761673e59d8eea6f1277fe2" category="inline-link-rx"></block></block>
+  <block id="c24664a07eb6e40162f3e96c142b0bdc" category="summary">您可以在 Astra Control 帐户中查看有关活动的详细信息。例如，邀请新用户时，添加集群时或创建快照时。您还可以将帐户活动导出到 CSV 文件。</block>
+  <block id="d112e0a58a044eb2c083fe74be3c2923" category="doc">监控帐户活动</block>
+  <block id="ab8e74263d81fdf9aa776a7d093168b7" category="list-title">在 Astra Control 中查看所有帐户活动</block>
+  <block id="249970c8d2d3e0d2742fe616014569b1" category="list-text">选择 * 活动 * 。</block>
+  <block id="da7c0d21607588079696a48048b93c4f" category="list-text">使用筛选器缩小活动列表的范围，或者使用搜索框准确查找所需内容。</block>
+  <block id="14cbedf07116abcddc1da499ecd3b826" category="list-text">选择 * 导出到 CSV* 将您的帐户活动下载到 CSV 文件。</block>
+  <block id="1fe93cae1894af91bbbf239212b98d90" category="list-title">查看特定应用程序的帐户活动</block>
+  <block id="870305fca27f62b3e2f62ab8aadb0791" category="list-title">查看集群的帐户活动</block>
+  <block id="957102c47a44d84e6d367c6810150ef5" category="list-text">选择 * 集群 * ，然后选择集群的名称。</block>
+  <block id="6d7a2b2e94a9d1f18f49ef7549e447d1" category="list-title">采取措施解决需要关注的事件</block>
+  <block id="91b0fccd50fc200b9aa9a40a0cc5a82d" category="list-text">选择需要关注的事件。</block>
+  <block id="e2900726473d9bdf15d18c496f0edc96" category="list-text">选择 * 执行操作 * 下拉选项。</block>
+  <block id="02251349687d4a85c56e4346486d3ad4" category="paragraph">从此列表中，您可以查看可能采取的更正操作，查看与问题描述 相关的文档，并获得支持以帮助解决问题描述 。</block>
 </blocks>
