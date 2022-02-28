@@ -1288,23 +1288,12 @@
   <block id="428324956bb1d934255acfcca9f5c85d" category="admonition">不支持 MetalLB 0.11.0 版。</block>
   <block id="9251700e586dc1a410f2e755a8643751" category="section-title">网络要求</block>
   <block id="2feeeeaca31f7c9852665b6eca3013b1" category="paragraph">托管 Astra 控制中心的集群使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口要求在托管 Astra 控制中心的集群与每个受管集群之间建立双向连接（请在适用时注明）。</block>
-  <block id="deb10517653c255364175796ace3553f" category="cell">产品</block>
   <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">Port</block>
   <block id="888a77f5ac0748b6c8001822417df8b6" category="cell">协议</block>
-  <block id="02674a4ef33e11c879283629996c8ff8" category="cell">方向</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">目的</block>
   <block id="13f3cf8c531952d72e5847c4183e6910" category="cell">443.</block>
   <block id="0e8433f9a404f1f3ba601c14b026d321" category="cell">HTTPS</block>
-  <block id="839b06ddc239e153e77ac327418547b2" category="cell">UI / API 访问：确保此端口在托管 Astra 控制中心的集群与每个受管集群之间双向开放</block>
   <block id="38f629170ac3ab74b9d6d2cc411c2f3c" category="cell">9090</block>
-  <block id="1abc2c64b76ede54340671c0f6b2120e" category="list-text">入口（到托管 Astra 控制中心的集群）</block>
-  <block id="acbc6de2a74557699e812a14b82cd337" category="list-text">传出（来自每个受管集群中每个工作节点的节点 IP 地址的随机端口）</block>
-  <block id="35831b917e420073b8cb2c0749c38b29" category="cell">指标数据到指标使用者：确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口</block>
-  <block id="c621a118ac90861aad62088a5a4ef5e3" category="cell">34571</block>
-  <block id="1195bea8018d2ab41320845d5d6fc163" category="cell">节点 POD 通信</block>
-  <block id="e4d09d3f57c2c971c8b2bf8efb416a0a" category="cell">9220</block>
-  <block id="293c9ea246ff9985dc6f62a650f78986" category="cell">HTTP</block>
-  <block id="5d7fba152c80f5fa7ccc3386b01488f7" category="cell">指标端点</block>
   <block id="f370975993dbb1e7c1e24af01ed7986c" category="section-title">支持的 Web 浏览器</block>
   <block id="5ee52824555f7e54b800612663b9f098" category="paragraph">Astra 控制中心支持最新版本的 Firefox ， Safari 和 Chrome ，最小分辨率为 1280 x 720 。</block>
   <block id="0a20c90d5270bed19fcaf851778c663b" category="section-title">下一步行动</block>
@@ -1793,4 +1782,17 @@
   <block id="91b0fccd50fc200b9aa9a40a0cc5a82d" category="list-text">选择需要关注的事件。</block>
   <block id="e2900726473d9bdf15d18c496f0edc96" category="list-text">选择 * 执行操作 * 下拉选项。</block>
   <block id="02251349687d4a85c56e4346486d3ad4" category="paragraph">从此列表中，您可以查看可能采取的更正操作，查看与问题描述 相关的文档，并获得支持以帮助解决问题描述 。</block>
+  <block id="f31bbdd1b3e85bccd652680e16935819" category="cell">源</block>
+  <block id="12007e1d59f4d09c87dbe2c438256244" category="cell">目标</block>
+  <block id="8304923f61b35eb89581fa0086ed14f5" category="cell">客户端 PC</block>
+  <block id="2d9fec261b12bd71da19f847d4e58d8d" category="cell">UI / API 访问 - 确保托管 Astra 控制中心的集群与每个受管集群之间的此端口是双向开放的</block>
+  <block id="24efa4ba853cd9af293a840b0bf27678" category="cell">指标使用者</block>
+  <block id="c2b9f54ff75ba870e024a0704429b5a7" category="cell">Astra 控制中心工作节点</block>
+  <block id="8c5a91ebed7886a0bcc83fc5b014b1db" category="cell">指标数据通信—确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 （需要双向通信）</block>
+  <block id="58b33906aae097af4ed4563136d482f3" category="cell">托管 Cloud Insights 服务 <block ref="eff4620b8100f76d481110a8ee67faf9" category="inline-link-rx"></block></block>
+  <block id="641aa484b65c0e7fde013bc2c73c8773" category="cell">Cloud Insights 通信</block>
+  <block id="dca17a8eb713c4979ff90034336d90db" category="cell">Amazon S3 存储分段提供商 <block ref="4e90f284db65fc9cd863090aa8767e3c" category="inline-link-rx"></block></block>
+  <block id="30e3526a27f1ee2a9a8203d224600891" category="cell">Amazon S3 存储通信</block>
+  <block id="814db317c49c42a57e9b5fe4d5943fa8" category="cell">NetApp ActiveIQ <block ref="9e45a0209dd868ae736875db61b96d9d" category="inline-link-rx"></block></block>
+  <block id="5dbf9f76b95952a36b5c81bedd95e1c8" category="cell">NetApp ActiveIQ 通信</block>
 </blocks>

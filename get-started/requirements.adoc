@@ -163,23 +163,22 @@ NOTE: 不支持 MetalLB 0.11.0 版。
 托管 Astra 控制中心的集群使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口要求在托管 Astra 控制中心的集群与每个受管集群之间建立双向连接（请在适用时注明）。
 
 |===
-| 产品 | Port | 协议 | 方向 | 目的 
+| 源 | 目标 | Port | 协议 | 目的 
 
 
-| Astra 控制中心 | 443. | HTTPS | 传入 | UI / API 访问：确保此端口在托管 Astra 控制中心的集群与每个受管集群之间双向开放 
+| 客户端 PC | Astra 控制中心 | 443. | HTTPS | UI / API 访问 - 确保托管 Astra 控制中心的集群与每个受管集群之间的此端口是双向开放的 
 
 
-| Astra 控制中心 | 9090 | HTTPS  a| 
-* 入口（到托管 Astra 控制中心的集群）
-* 传出（来自每个受管集群中每个工作节点的节点 IP 地址的随机端口）
-
-| 指标数据到指标使用者：确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 
+| 指标使用者 | Astra 控制中心工作节点 | 9090 | HTTPS | 指标数据通信—确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 （需要双向通信） 
 
 
-| Astra Trident | 34571 | HTTPS | 传入 | 节点 POD 通信 
+| Astra 控制中心 | 托管 Cloud Insights 服务 (https://cloudinsights.netapp.com)[] | 443. | HTTPS | Cloud Insights 通信 
 
 
-| Astra Trident | 9220 | HTTP | 传入 | 指标端点 
+| Astra 控制中心 | Amazon S3 存储分段提供商 (https://my-bucket.s3.us-west-2.amazonaws.com/)[] | 443. | HTTPS | Amazon S3 存储通信 
+
+
+| Astra 控制中心 | NetApp ActiveIQ (https://activeiq.solidfire.com)[] | 443. | HTTPS | NetApp ActiveIQ 通信 
 |===
 
 
