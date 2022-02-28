@@ -1000,7 +1000,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-02-25 21:12:16 +0000">02/25/2022</time>
+    <time datetime="2022-02-28 18:00:46 +0000">02/28/2022</time>
     
   
 
@@ -1380,50 +1380,48 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">产品</th>
+<th class="tableblock halign-left valign-top">源</th>
+<th class="tableblock halign-left valign-top">目标</th>
 <th class="tableblock halign-left valign-top">Port</th>
 <th class="tableblock halign-left valign-top">协议</th>
-<th class="tableblock halign-left valign-top">方向</th>
 <th class="tableblock halign-left valign-top">目的</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">客户端 PC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Astra 控制中心</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">443.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">传入</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UI / API 访问：确保此端口在托管 Astra 控制中心的集群与每个受管集群之间双向开放</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI / API 访问 - 确保托管 Astra 控制中心的集群与每个受管集群之间的此端口是双向开放的</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">指标使用者</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Astra 控制中心工作节点</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9090</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">指标数据通信—确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 （需要双向通信）</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Astra 控制中心</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9090</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">托管 Cloud Insights 服务 (<a href="https://cloudinsights.netapp.com)" class="bare">https://cloudinsights.netapp.com)</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">443.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>入口（到托管 Astra 控制中心的集群）</p>
-</li>
-<li>
-<p>传出（来自每个受管集群中每个工作节点的节点 IP 地址的随机端口）</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">指标数据到指标使用者：确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Insights 通信</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Astra Trident</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">34571</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Astra 控制中心</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon S3 存储分段提供商 (<a href="https://my-bucket.s3.us-west-2.amazonaws.com/)" class="bare">https://my-bucket.s3.us-west-2.amazonaws.com/)</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">443.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">传入</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">节点 POD 通信</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon S3 存储通信</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Astra Trident</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9220</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">传入</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">指标端点</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Astra 控制中心</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp ActiveIQ (<a href="https://activeiq.solidfire.com)" class="bare">https://activeiq.solidfire.com)</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">443.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp ActiveIQ 通信</p></td>
 </tr>
 </tbody>
 </table>
