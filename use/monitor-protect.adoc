@@ -13,9 +13,6 @@ summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体�
 您可以配置多种可选设置来增强您的 Astra 控制中心体验。如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet （将支持包上传到 NetApp 支持站点或建立与 Cloud Insights 的连接），则应在 Astra 控制中心中配置一个代理服务器。要监控和深入了解整个基础架构，请与 NetApp Cloud Insights 建立连接。要从 Astra 控制中心监控的系统收集 Kubernetes 事件，请添加 Fluentd 连接。
 
 
-NOTE: 启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从此处连接到 Cloud Insights 。
-
-
 
 == 添加代理服务器
 
@@ -73,11 +70,12 @@ image:proxy-new.png["显示代理服务器已成功连接。"]
 
 要监控和深入了解整个基础架构，请将 NetApp Cloud Insights 与您的 Astra 控制中心实例连接起来。Cloud Insights 包含在您的 Astra 控制中心许可证中。
 
+Cloud Insights 应可从 Astra 控制中心使用的网络访问，也可通过代理服务器间接访问。
 
-NOTE: Cloud Insights 应可从 Astra 控制中心使用的网络访问，也可通过代理服务器间接访问。
+当 Astra 控制中心连接到 Cloud Insights 时，将创建采集单元 POD 。此 POD 从由 Astra 控制中心管理的存储后端收集数据并将其推送到 Cloud Insights 。此 POD 需要 8 GB RAM 和 2 个 CPU 核。
 
 
-NOTE: 当 Astra 控制中心连接到 Cloud Insights 时，将创建采集单元 POD 。此 POD 从由 Astra 控制中心管理的存储后端收集数据并将其推送到 Cloud Insights 。此 POD 需要 8 GB RAM 和 2 个 CPU 核。
+NOTE: 启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从该处连接到 Cloud Insights 。
 
 .您需要什么？ #8217 ；将需要什么
 * 具有 * 管理 */* 所有者 * 权限的 Astra 控制中心帐户。
@@ -86,7 +84,7 @@ NOTE: 当 Astra 控制中心连接到 Cloud Insights 时，将创建采集单元
 
 
 
-TIP: 如果您是 Cloud Insights 的新用户，请熟悉其特性和功能 link:https://docs.netapp.com/us-en/cloudinsights/index.html["此处"^]。
+TIP: 如果您是 Cloud Insights 的新用户，请熟悉其特性和功能。请参见 link:https://docs.netapp.com/us-en/cloudinsights/index.html["Cloud Insights 文档"^]。
 
 .步骤
 . 使用具有 * 管理员 */* 所有者 * 权限的帐户登录到 Astra 控制中心。
@@ -106,13 +104,12 @@ https://<environment-name>.c01.cloudinsights.netapp.com/
 
 +
 .. 以获取 link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-access-tokens["API 令牌"^]，登录到您的 Cloud Insights 租户 URL 。
-.. 在 Cloud Insights 中，生成 * 只读 * 类型的 API 令牌。
+.. 在 Cloud Insights 中，单击 * 管理 * > * API 访问 * 以生成 * 读 / 写 * 和 * 只读 * API 访问令牌。
 +
 image:cloud-insights-api.png["显示了 Cloud Insights API 令牌生成页面。"]
 
-.. 复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。
-.. 在 Cloud Insights 中，生成 * 读 / 写 * 类型的 API 令牌。
-.. 复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。
+.. 复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。对于读取 API 访问令牌密钥权限，请选择：资产，警报，采集单元和数据收集。
+.. 复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读 / 写 API 访问令牌密钥权限，请选择： Assets ， Data Inestion ， Log ingestion ， Acquisition Unit ， 和数据收集。
 +
 
 NOTE: 建议您生成 * 只读 * 密钥和 * 读 / 写 * 密钥，不要将同一密钥用于这两种用途。默认情况下，令牌到期期限设置为一年。我们建议您保留默认选择，以便为令牌提供到期前的最长持续时间。如果令牌过期，遥测将停止。

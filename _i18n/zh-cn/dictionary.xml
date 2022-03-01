@@ -697,7 +697,6 @@
   <block id="d3780315ac76826db7abed6c6e026316" category="summary">您可以配置多种可选设置来增强您的 Astra 控制中心体验。如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet ，请在 Astra 控制中心中配置该代理服务器。您可以使用 NetApp Cloud Insights 监控和深入了解整个基础架构。您可以添加一个流畅的位连接，以便从容器收集数据和日志。</block>
   <block id="86bdaa23a69ecd82896c4f940aec6575" category="doc">监控和保护基础架构</block>
   <block id="d5c666dff1c927b1a64c186e7df77767" category="paragraph">您可以配置多种可选设置来增强您的 Astra 控制中心体验。如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet （将支持包上传到 NetApp 支持站点或建立与 Cloud Insights 的连接），则应在 Astra 控制中心中配置一个代理服务器。要监控和深入了解整个基础架构，请与 NetApp Cloud Insights 建立连接。要从 Astra 控制中心监控的系统收集 Kubernetes 事件，请添加 Fluentd 连接。</block>
-  <block id="e3a943aa599958322981a4b599b2fec2" category="admonition">启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从此处连接到 Cloud Insights 。</block>
   <block id="97ff96f7909f045865ea51fd63df492d" category="section-title">添加代理服务器</block>
   <block id="815670b898754c13cc79ad3a175cd3ed" category="paragraph">如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet （将支持包上传到 NetApp 支持站点或建立与 Cloud Insights 的连接），则应在 Astra 控制中心中配置一个代理服务器。</block>
   <block id="83f8bdf396bfe8f43a87afcaeaf47a89" category="admonition">Astra 控制中心不会验证您为代理服务器输入的详细信息。请确保输入正确的值。</block>
@@ -730,7 +729,6 @@
   <block id="4d2b5cb03567061103a730b4f25b2c61" category="list-text">有效的 Astra Control Center 许可证。</block>
   <block id="1bdb819abf27f345e251d7d74bd13432" category="list-text">如果运行 Astra 控制中心的网络需要使用代理连接到 Internet ，则为代理服务器。</block>
   <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">此处</block>
-  <block id="ff7fdaba5fb921ddc7138b0adf324959" category="admonition">如果您是 Cloud Insights 的新用户，请熟悉其特性和功能 <block ref="4b1893b127f9bfa7ba7657752323f2a4" category="inline-link-macro-rx"></block>。</block>
   <block id="c83c4a85c1f411531560f13476d42d8a" category="list-text">选择 * 连接 * ，其中下拉列表中显示 * 已断开连接 * 以添加连接。</block>
   <block id="c588327a11cf77e3d35f9fea2f6da70f" category="inline-image-macro">显示了用于启用 Cloud Insights 连接的下拉列表中的 "Connect" 选项。</block>
   <block id="f2045802e1db2626118073af019ba192" category="paragraph"><block ref="f2045802e1db2626118073af019ba192" category="inline-image-macro-rx" type="image"></block></block>
@@ -738,12 +736,8 @@
   <block id="3897b2a4ac4a4ef4f11715fcf865f739" category="paragraph">获取 Cloud Insights 许可证后，您将获得租户 URL 。如果您没有租户 URL ，请参见 <block ref="2afd17eb985e67d361b768309fdff3cf" category="inline-link-macro-rx"></block>。</block>
   <block id="51408f1c75ab7bcc90f67b3ab1801733" category="inline-link-macro">API 令牌</block>
   <block id="434bddda84600d6af976eacbebbfcf8d" category="list-text">以获取 <block ref="466720263e1cfd612e0752298c39ffb4" category="inline-link-macro-rx"></block>，登录到您的 Cloud Insights 租户 URL 。</block>
-  <block id="49fa2ff4e5943b66c32963330a0106aa" category="list-text">在 Cloud Insights 中，生成 * 只读 * 类型的 API 令牌。</block>
   <block id="1510025929fc977562c0c445934e3ab5" category="inline-image-macro">显示了 Cloud Insights API 令牌生成页面。</block>
   <block id="0297da739425ffb4582516e5cde91975" category="paragraph"><block ref="0297da739425ffb4582516e5cde91975" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="686e9df1806b619d4d33aeda056dee20" category="list-text">复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。</block>
-  <block id="ff73c239846afbcd193ade2a2afb8e82" category="list-text">在 Cloud Insights 中，生成 * 读 / 写 * 类型的 API 令牌。</block>
-  <block id="cd33b75dda93cfb1631b62dbb15746a0" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。</block>
   <block id="5d81b6bdee197be668fe2348e55a8d14" category="admonition">建议您生成 * 只读 * 密钥和 * 读 / 写 * 密钥，不要将同一密钥用于这两种用途。默认情况下，令牌到期期限设置为一年。我们建议您保留默认选择，以便为令牌提供到期前的最长持续时间。如果令牌过期，遥测将停止。</block>
   <block id="a086aaec8aa524f4ce0a74b48df64bcd" category="list-text">将从 Cloud Insights 复制的密钥粘贴到 Astra 控制中心。</block>
   <block id="eaae7a4b072e6c1469d18740d72675ab" category="admonition">选择 * 连接后，在 Cloud Insights * 帐户 * &gt; * 连接 * 页面的 * 连接 * 部分中，连接状态将更改为 * 待定 * 。可以在几分钟内启用连接并将状态更改为 * 已连接 * 。</block>
@@ -1795,4 +1789,9 @@
   <block id="30e3526a27f1ee2a9a8203d224600891" category="cell">Amazon S3 存储通信</block>
   <block id="814db317c49c42a57e9b5fe4d5943fa8" category="cell">NetApp ActiveIQ <block ref="9e45a0209dd868ae736875db61b96d9d" category="inline-link-rx"></block></block>
   <block id="5dbf9f76b95952a36b5c81bedd95e1c8" category="cell">NetApp ActiveIQ 通信</block>
+  <block id="e52cc9ca02a7bc549eb6dba47cd2ee25" category="admonition">启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从该处连接到 Cloud Insights 。</block>
+  <block id="c9bcb1e1ffd0a3c4060e93553536017d" category="admonition">如果您是 Cloud Insights 的新用户，请熟悉其特性和功能。请参见 <block ref="c0165bf1c80302323bce293718326d03" category="inline-link-macro-rx"></block>。</block>
+  <block id="0f21509577569fcfd44247652db09da1" category="list-text">在 Cloud Insights 中，单击 * 管理 * &gt; * API 访问 * 以生成 * 读 / 写 * 和 * 只读 * API 访问令牌。</block>
+  <block id="7a3ef7b3d20368f22318e140ed0c8bf5" category="list-text">复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。对于读取 API 访问令牌密钥权限，请选择：资产，警报，采集单元和数据收集。</block>
+  <block id="3471dafa540ad99cab68490eddb48830" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读 / 写 API 访问令牌密钥权限，请选择： Assets ， Data Inestion ， Log ingestion ， Acquisition Unit ， 和数据收集。</block>
 </blocks>
