@@ -63,6 +63,15 @@ NOTE: 如果您拥有评估许可证，请务必存储帐户 ID ，以避免在�
 
 TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。您可以使用 * 添加集群 * 功能通过 Astra 控制中心管理集群。
 
+[NOTE]
+====
+当 Astra Control 管理集群时，它会跟踪集群的默认 StorageClass 。如果使用 `kubectl` 命令更改 StorageClass ，则 Astra Control 将还原此更改。要更改由 Astra Control 管理的集群中的默认 StorageClass ，请使用以下方法之一：
+
+* 使用 Astra Control API `PUT /managedClusters` Endpoint ，并使用 `DefaultStorageClass` 参数分配其他默认 StorageClass
+* 从 Astra Control 管理中删除集群，然后在选择其他默认 StorageClass 后重新添加
+
+
+====
 .您需要什么？ #8217 ；将需要什么
 
 IMPORTANT: 在添加集群之前，请查看并执行必要的操作 link:add-cluster-reqs.html["前提条件任务"^]。

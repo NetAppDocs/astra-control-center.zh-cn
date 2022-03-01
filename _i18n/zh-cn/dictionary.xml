@@ -1794,4 +1794,7 @@
   <block id="0f21509577569fcfd44247652db09da1" category="list-text">在 Cloud Insights 中，单击 * 管理 * &gt; * API 访问 * 以生成 * 读 / 写 * 和 * 只读 * API 访问令牌。</block>
   <block id="7a3ef7b3d20368f22318e140ed0c8bf5" category="list-text">复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。对于读取 API 访问令牌密钥权限，请选择：资产，警报，采集单元和数据收集。</block>
   <block id="3471dafa540ad99cab68490eddb48830" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读 / 写 API 访问令牌密钥权限，请选择： Assets ， Data Inestion ， Log ingestion ， Acquisition Unit ， 和数据收集。</block>
+  <block id="f4105577bf107396cef41e7fc8b36c75" category="paragraph">当 Astra Control 管理集群时，它会跟踪集群的默认 StorageClass 。如果使用 `kubectl` 命令更改 StorageClass ，则 Astra Control 将还原此更改。要更改由 Astra Control 管理的集群中的默认 StorageClass ，请使用以下方法之一：</block>
+  <block id="e9fac85aa2673b1b448faa45d2eeb596" category="list-text">使用 Astra Control API `PUT /managedClusters` Endpoint ，并使用 `DefaultStorageClass` 参数分配其他默认 StorageClass</block>
+  <block id="11937632e52ddd422c6068df5f4a8641" category="list-text">从 Astra Control 管理中删除集群，然后在选择其他默认 StorageClass 后重新添加</block>
 </blocks>
