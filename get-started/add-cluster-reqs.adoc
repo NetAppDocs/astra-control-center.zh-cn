@@ -32,6 +32,7 @@ NOTE: 如果您计划将第二个 OpenShift 4.6 ， 4.7 或 4.8 集群添加为�
 
 * 在备份 ONTAP 系统上设置的超级用户和用户 ID ，用于使用 Astra 控制中心（ Accc ）备份和还原应用程序。在 ONTAP 命令行中运行以下命令： `export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -superuser sysm -anon 65534`
 * 管理员定义的 Astra Trident `volumesnapshotclass` 对象。请参见 Astra Trident https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["说明"^] 使用 Astra Trident 启用和测试卷快照。
+* 确保您仅为 Kubernetes 集群定义了一个默认存储类。
 
 
 

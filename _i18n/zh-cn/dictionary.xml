@@ -1161,7 +1161,6 @@
   <block id="56a2a4029e73c469c307bf583648cd20" category="list-text">* 由 ONTAP 存储提供支持的 Trident 存储类 * ：如果您使用的是 ONTAP 后端，则 Astra 控制中心可以导入 ONTAP 后端以报告各种监控信息。</block>
   <block id="70e3c204bfcd6d0d484839b699e7653c" category="admonition">应在 Astra 控制中心之外预先配置 Trident 存储类。</block>
   <block id="7672a092783c4348b96b40ea2dcf6681" category="section-title">存储类</block>
-  <block id="ee99e1e97839ffbebff4ddc1ca815081" category="paragraph">将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。</block>
   <block id="9282ad3aef7e124a3b2b9c7eab52b33d" category="doc">架构和组件</block>
   <block id="42b90d40b51b0ccfc8a50cfa2f6c88bc" category="summary">Astra 是 Kubernetes 应用程序数据生命周期管理服务，可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。</block>
   <block id="7e073986fe6af6ce1775bdfd558def36" category="doc">Astra Control 简介</block>
@@ -1797,4 +1796,6 @@
   <block id="f4105577bf107396cef41e7fc8b36c75" category="paragraph">当 Astra Control 管理集群时，它会跟踪集群的默认 StorageClass 。如果使用 `kubectl` 命令更改 StorageClass ，则 Astra Control 将还原此更改。要更改由 Astra Control 管理的集群中的默认 StorageClass ，请使用以下方法之一：</block>
   <block id="e9fac85aa2673b1b448faa45d2eeb596" category="list-text">使用 Astra Control API `PUT /managedClusters` Endpoint ，并使用 `DefaultStorageClass` 参数分配其他默认 StorageClass</block>
   <block id="11937632e52ddd422c6068df5f4a8641" category="list-text">从 Astra Control 管理中删除集群，然后在选择其他默认 StorageClass 后重新添加</block>
+  <block id="81ffc06cbec6fd6654f00db161751c15" category="paragraph">将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。确保您仅为 Kubernetes 集群定义了一个默认存储类。</block>
+  <block id="1de4eda534b81a776926b71c5d509a3c" category="list-text">确保您仅为 Kubernetes 集群定义了一个默认存储类。</block>
 </blocks>

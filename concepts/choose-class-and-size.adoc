@@ -33,7 +33,7 @@ NOTE: 应在 Astra 控制中心之外预先配置 Trident 存储类。
 
 == 存储类
 
-将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。
+将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。确保您仅为 Kubernetes 集群定义了一个默认存储类。
 
 如果使用与 Astra Data Store 存储后端集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见 https://docs.netapp.com/us-en/astra-data-store/get-started/setup-ads.html#set-up-astra-data-store-as-storage-backend["Astra Data Store 入门"] 创建默认的 Astra Data Store 存储类。
 
