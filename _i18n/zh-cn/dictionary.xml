@@ -338,8 +338,6 @@
   <block id="e9af48b4b5ee8bcfadf7ef62dd4a4bfe" category="paragraph">示例结果：</block>
   <block id="4ff75587096ba2120a2bfc670ec2ac17" category="list-text">删除自定义资源定义（ CRD ）信息：</block>
   <block id="fb65ba277fbc37590f65160abd06ff8b" category="section-title">卸载 Astra 控制中心无法清理 Traefik CRD</block>
-  <block id="f95aab161e19ad7bea228b05dbbfd055" category="paragraph">您可以手动删除 Traefik CRD ：</block>
-  <block id="b6b043c391721cf06571cdc68769e638" category="list-text">确认卸载过程未删除哪些 CRD ：</block>
   <block id="d64ed3e9c10229648e069f56e32f4c8e" category="paragraph">响应</block>
   <block id="1aa64d23efd8fbdb9b2de01b1ad03883" category="list-text">删除 CRD ：</block>
   <block id="8e33d0035ce9088a5bcc4cff0c38cf36" category="inline-link-macro">已解决的问题</block>
@@ -1798,4 +1796,6 @@
   <block id="11937632e52ddd422c6068df5f4a8641" category="list-text">从 Astra Control 管理中删除集群，然后在选择其他默认 StorageClass 后重新添加</block>
   <block id="81ffc06cbec6fd6654f00db161751c15" category="paragraph">将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。确保您仅为 Kubernetes 集群定义了一个默认存储类。</block>
   <block id="1de4eda534b81a776926b71c5d509a3c" category="list-text">确保您仅为 Kubernetes 集群定义了一个默认存储类。</block>
+  <block id="a514c0ae3c82c51ee5b4cd862c3c6ae5" category="paragraph">您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。</block>
+  <block id="30e9f9c381fe23f7ce3650c2587f95e5" category="list-text">列出集群上安装的 Traefik CRD ：</block>
 </blocks>

@@ -267,10 +267,10 @@ customresourcedefinition.apiextensions.k8s.io "agents.monitoring.netapp.com" del
 
 == 卸载 Astra 控制中心无法清理 Traefik CRD
 
-您可以手动删除 Traefik CRD ：
+您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。
 
 .步骤
-. 确认卸载过程未删除哪些 CRD ：
+. 列出集群上安装的 Traefik CRD ：
 +
 [listing]
 ----
