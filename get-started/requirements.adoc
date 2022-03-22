@@ -31,7 +31,7 @@ Astra 控制中心需要以下类型的主机集群之一：
 * 服务类型 "loadbalancer" 可用于将传入流量发送到 OpenShift 集群中的服务
 * 一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
 * 如果要使用 NetApp ONTAP 9.5 或更高版本作为存储后端，则已安装并配置 Astra Trident 21.04 或更高版本
-* 如果要使用 Astra Trident 作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本
+* 如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本
 
 
 

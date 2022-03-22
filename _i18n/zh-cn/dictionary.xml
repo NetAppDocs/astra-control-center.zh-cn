@@ -1692,7 +1692,6 @@
   <block id="8af92bb4a82e9330d36767a461117b77" category="inline-link">Astra Data Store 入门</block>
   <block id="010fe8b2dcf8f2144d52f7fa09b19be3" category="paragraph">如果使用与 Astra Data Store 存储后端集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见<block ref="31e869d7ae2f401f4a85bdc155c56e86" category="inline-link-rx"></block> 创建默认的 Astra Data Store 存储类。</block>
   <block id="985b6adb919aeef8919d4fde98114277" category="list-text">如果要使用 NetApp ONTAP 9.5 或更高版本作为存储后端，则已安装并配置 Astra Trident 21.04 或更高版本</block>
-  <block id="0225f25459706cc4ae111fa1fcf6e6a4" category="list-text">如果要使用 Astra Trident 作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本</block>
   <block id="df819717a2baf5b48925d2b4cdaf4745" category="list-text">* 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
   <block id="17eb8d332e75f64616b506be451b189f" category="inline-link-macro">需要进行的其他更改</block>
   <block id="19dfa68f9af3ebcd8abb0bcfff39c5fd" category="list-text">（对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 <block ref="6511a1f600064236c7dbbb54dd879ccf" category="inline-link-macro-rx"></block> 向 YAML 报告。</block>
@@ -1798,4 +1797,5 @@
   <block id="1de4eda534b81a776926b71c5d509a3c" category="list-text">确保您仅为 Kubernetes 集群定义了一个默认存储类。</block>
   <block id="a514c0ae3c82c51ee5b4cd862c3c6ae5" category="paragraph">您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。</block>
   <block id="30e9f9c381fe23f7ce3650c2587f95e5" category="list-text">列出集群上安装的 Traefik CRD ：</block>
+  <block id="a533261ecbd74405d561fc2ee31235f5" category="list-text">如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本</block>
 </blocks>
