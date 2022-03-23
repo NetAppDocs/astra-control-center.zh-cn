@@ -6,6 +6,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 ---
 = 有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/release-notes/
 

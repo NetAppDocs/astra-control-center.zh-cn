@@ -6,6 +6,7 @@ summary: 从 BitNami Helm 图表中了解如何部署 Jenkins 。在集群上部
 ---
 = 从 Helm 图表中部署 Jenkins
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

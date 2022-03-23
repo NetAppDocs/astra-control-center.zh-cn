@@ -6,6 +6,7 @@ summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体�
 ---
 = 监控和保护基础架构
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

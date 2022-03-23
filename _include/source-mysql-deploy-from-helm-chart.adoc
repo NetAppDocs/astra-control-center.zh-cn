@@ -1,4 +1,5 @@
 = 要求
+:allow-uri-read: 
 
 
 了解如何从部署 MySQL https://bitnami.com/stack/mysql/helm["BitNami Helm 图表"^]。在 Kubernetes 集群上部署 MySQL 后，您可以使用 Astra Control 管理此应用程序。

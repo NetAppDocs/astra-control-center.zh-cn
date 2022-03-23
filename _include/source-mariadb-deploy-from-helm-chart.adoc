@@ -1,4 +1,5 @@
 = 要求
+:allow-uri-read: 
 
 
 了解如何从部署 MariaDB https://bitnami.com/stack/mariadb/helm["BitNami Helm 图表"^]。在集群上部署 MariaDB 后，您可以使用 Astra Control 管理应用程序。

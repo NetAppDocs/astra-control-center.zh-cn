@@ -6,6 +6,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 ---
 = 已知问题
 :hardbreaks:
+:allow-uri-read: 
 :source-highlighter: highlight.js
 :icons: font
 :imagesdir: ../media/release-notes/
@@ -100,7 +101,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 == 克隆操作不能使用默认值以外的其他分段
 
-在应用程序备份或应用程序还原期间，您可以选择指定存储分段 ID 。但是，应用程序克隆操作始终使用已定义的默认分段。没有选项可用于更改克隆的分段。如果要控制使用哪个存储分段，您可以选择 link:../use/manage-buckets.html#edit-a-bucket["更改存储分段默认值"] 或者执行  后跟 A  请单独使用。
+在应用程序备份或应用程序还原期间，您可以选择指定存储分段 ID 。但是，应用程序克隆操作始终使用已定义的默认分段。没有选项可用于更改克隆的分段。如果要控制使用哪个存储分段，您可以选择 link:../use/manage-buckets.html#edit-a-bucket["更改存储分段默认值"] 或者执行 link:../use/protect-apps.html#create-a-backup["backup"] 后跟 A link:../use/restore-apps.html["还原"] 请单独使用。
 
 
 

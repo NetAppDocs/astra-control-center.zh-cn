@@ -6,6 +6,7 @@ summary: 将用户添加到 Astra 控制中心系统，并删除不应再访问�
 ---
 = 管理用户
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

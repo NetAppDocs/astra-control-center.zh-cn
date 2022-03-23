@@ -6,6 +6,7 @@ summary: 您可以将两种类型的应用程序引入 Astra Control ： Validat
 ---
 = 经验证的应用程序与标准应用程序
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

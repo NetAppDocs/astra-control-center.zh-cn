@@ -6,6 +6,7 @@ summary: 您应运行灵活性检查，以确保集群已准备好添加到 Astr
 ---
 = 添加集群的前提条件
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 

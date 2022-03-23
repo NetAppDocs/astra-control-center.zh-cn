@@ -6,6 +6,7 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 ---
 = 设置 Astra 控制中心
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 

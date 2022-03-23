@@ -6,6 +6,7 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 ---
 = 保护概述
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

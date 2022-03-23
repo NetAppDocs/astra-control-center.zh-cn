@@ -6,6 +6,7 @@ summary: 要升级 Astra 控制中心，您需要下载此捆绑包并按照所�
 ---
 = 升级 Astra 控制中心
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 

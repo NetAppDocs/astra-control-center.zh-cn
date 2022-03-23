@@ -6,6 +6,7 @@ summary: 您可以上传并验证由第三方证书颁发机构（ CA ）签名�
 ---
 = 添加自定义 TLS 证书
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 

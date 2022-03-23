@@ -6,6 +6,7 @@ summary: 您可以选择两种安装 Astra Control Center 的方法。
 ---
 = 安装概述
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/release-notes/
 

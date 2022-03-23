@@ -6,6 +6,7 @@ summary: 将集群添加到 Astra 控制中心后，您可以查看有关集群�
 ---
 = 查看集群的运行状况和详细信息
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

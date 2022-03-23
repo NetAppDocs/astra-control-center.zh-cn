@@ -6,6 +6,7 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 ---
 = 管理存储后端
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

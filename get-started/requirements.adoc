@@ -6,6 +6,7 @@ summary: 通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支
 ---
 = Astra 控制中心要求
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 

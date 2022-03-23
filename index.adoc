@@ -7,6 +7,7 @@ summary: Astra Control Center 软件可为内部环境中的 Kubernetes 集群�
 ---
 = Astra 控制中心文档
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

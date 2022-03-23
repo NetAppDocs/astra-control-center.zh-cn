@@ -6,6 +6,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 ---
 = 使用标准流程安装 Astra 控制中心
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 

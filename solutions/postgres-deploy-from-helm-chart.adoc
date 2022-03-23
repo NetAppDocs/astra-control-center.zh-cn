@@ -6,6 +6,7 @@ summary: 了解如何从 Helm 图表中部署 Postgres 。在集群上部署 Pos
 ---
 = 从 Helm 图表部署 Postgres
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

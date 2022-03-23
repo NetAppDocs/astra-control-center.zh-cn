@@ -6,6 +6,7 @@ summary: 下面简要介绍了 Astra Control 环境的各个组件。
 ---
 = 架构和组件
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/concepts/
 
@@ -22,7 +23,7 @@ image:astra-ads-architecture-diagram-v3.png["Astra Control 架构图和组件"]
 * * Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端，并支持将 Astra 数据存储作为存储后端。
 * * 存储后端 * ：
 +
-** Astra Control Service 使用 https://www.netapp.com/cloud-services/cloud-volumes-service-for-google-cloud/["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 作为 GKE- 集群和的存储后端 作为 AKS 集群的存储后端。
+** Astra Control Service 使用 https://www.netapp.com/cloud-services/cloud-volumes-service-for-google-cloud/["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 作为 GKE- 集群和的存储后端 https://www.netapp.com/cloud-services/azure-netapp-files/["Azure NetApp Files"^] 作为 AKS 集群的存储后端。
 ** Astra 控制中心使用以下存储后端：
 +
 *** Astra Data Store 存储后端

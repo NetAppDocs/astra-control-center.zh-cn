@@ -6,6 +6,7 @@ summary: 如果要备份应用程序和的永久性存储，并且要跨集群�
 ---
 = 管理存储分段
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

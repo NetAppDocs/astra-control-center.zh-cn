@@ -1,4 +1,5 @@
 = 要求
+:allow-uri-read: 
 
 
 了解如何从部署 Jenkins https://bitnami.com/stack/jenkins/helm["BitNami Helm 图表"^]。在集群上部署 Jenkins 后，您可以向 Astra Control 注册此应用程序。

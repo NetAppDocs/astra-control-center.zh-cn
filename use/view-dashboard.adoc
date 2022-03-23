@@ -6,6 +6,7 @@ summary: 选择 Dashboard 可查看应用程序，计算及其运行状况的高
 ---
 = 查看应用程序和集群运行状况摘要
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/use/
 

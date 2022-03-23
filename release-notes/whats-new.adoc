@@ -6,6 +6,7 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 ---
 = 此版本的 Astra 控制中心中的新增功能
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/release-notes/
 
@@ -47,9 +48,9 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 * link:../concepts/intro.html["它是什么"]
 * link:../concepts/architecture.html["了解架构和组件"]
 * link:../get-started/requirements.html["入门所需的资源"]
-* link:../get-started/install_acc.html["安装"] 和 
-* link:../use/manage-apps.html["管理"] 和  应用程序
-* link:../use/manage-buckets.html["管理存储分段"] 和 
+* link:../get-started/install_acc.html["安装"] 和 link:../get-started/setup_overview.html["设置"]
+* link:../use/manage-apps.html["管理"] 和 link:../use/protect-apps.html["保护"] 应用程序
+* link:../use/manage-buckets.html["管理存储分段"] 和 link:../use/manage-backend.html["存储后端"]
 * link:../use/manage-users.html["管理帐户"]
 * link:../rest-api/api-intro.html["利用 API 实现自动化"]
 

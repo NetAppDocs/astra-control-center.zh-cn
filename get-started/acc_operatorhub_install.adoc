@@ -6,6 +6,7 @@ summary: 如果您使用的是 Red Hat OpenShift ，则可以使用操作员安�
 ---
 = 使用 OpenShift OperatorHub 安装 Astra 控制中心
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 
@@ -217,4 +218,4 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 
 == 下一步行动
 
-验证是否已成功安装 Astra 控制中心并完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"] 登录。此外，您还可以通过执行来完成部署 。
+验证是否已成功安装 Astra 控制中心并完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"] 登录。此外，您还可以通过执行来完成部署 link:setup_overview.html["设置任务"]。

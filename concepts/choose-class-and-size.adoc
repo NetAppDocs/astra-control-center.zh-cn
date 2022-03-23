@@ -6,6 +6,7 @@ summary: Astra 控制中心支持由 ONTAP 存储类或 Astra 数据存储类提
 ---
 = 存储类和永久性卷大小
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/concepts/
 

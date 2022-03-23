@@ -6,6 +6,7 @@ summary: 您可以将评估版许可证转换为完整许可证，也可以使�
 ---
 = 更新现有许可证
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 
