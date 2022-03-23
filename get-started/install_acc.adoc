@@ -354,7 +354,7 @@ IMPORTANT: 如果您使用的注册表不需要授权，则必须删除 `imageRe
 .. 将 `email` 字符串更改为默认的初始管理员地址。复制此电子邮件地址以在中使用 <<Log in to the Astra Control Center UI,后续步骤>>。
 .. 将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。
 .. （可选）添加与帐户关联的用户的名字 `firstName` 和姓氏 `lastName` 。您可以在用户界面中立即或稍后执行此步骤。
-.. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Trident storageClass 资源。
+.. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Astra Trident StorageClass 资源。
 .. （对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 link:../release-notes/known-issues-ads.html#astra-data-store-cannot-be-used-as-a-storage-class-for-astra-control-center-due-to-mongodb-pod-liveness-probe-failure["需要进行的其他更改"] 向 YAML 报告。
 
 
@@ -437,7 +437,7 @@ kubectl get pods -n [netapp-acc or custom namespace]
 +
 [listing]
 ----
-NAME                                         READY   STATUS    RESTARTS   AGE
+NAME                                       READY   STATUS    RESTARTS   AGE
 acc-helm-repo-5f75c5f564-bzqmt             1/1     Running   0          11m
 activity-6b8f7cccb9-mlrn4                  1/1     Running   0          9m2s
 api-token-authentication-6hznt             1/1     Running   0          8m50s
@@ -515,7 +515,7 @@ vault-controller-86c94fbf4f-krttq          1/1     Running   0          9m24s
 ----
 kubectl logs deploy/acc-operator-controller-manager -n netapp-acc-operator -c manager -f
 ----
-. 当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 AstraControlCenter 实例来验证安装是否成功。
+. 当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 `AstraControlCenter` 实例来验证安装是否成功。
 +
 [listing]
 ----

@@ -1232,37 +1232,22 @@
   <block id="42511da273423fbc3ea5080eac730b22" category="list-text">验证证书详细信息是否与您安装的证书的详细信息匹配。</block>
   <block id="a916669e994506f936472b106140c25c" category="list-text">导出证书并将结果导入到 Web 浏览器中的证书管理器中。</block>
   <block id="994e9e207b5ca34793cc2495e51460bc" category="summary">通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支持，开始使用 Astra 控制中心。</block>
-  <block id="db78c0f5b10c24664d231610a6659e34" category="paragraph">首先验证对 Kubernetes 集群，应用程序，许可证和 Web 浏览器的支持。</block>
-  <block id="439adc0dbc528b64a9ff703d097e3b82" category="section-title">Kubernetes 集群的一般要求</block>
-  <block id="511dd37a4aa35883fa7f6a24343dd0d1" category="paragraph">Astra 控制中心需要以下类型的主机集群之一：</block>
   <block id="cef4d0b91bb8aab2c211dd304e0c4289" category="list-text">Red Hat OpenShift 容器平台 4.6-8 ， 4.7 或 4.8</block>
   <block id="fe139348e0ca57eb38a7899f6c69d91c" category="list-text">Rancher 2.5</block>
   <block id="25a0186371b45414a82f2649706103b6" category="list-text">Kubernetes 1.19 到 1.21 （包括 1.21.x ）</block>
-  <block id="a70d162049b4f5b885b073d3b53d8de7" category="paragraph">集群必须满足以下一般要求，才能从 Astra 控制中心发现和管理它。</block>
-  <block id="66d8fdfd4de86ba586bce7eab476d6b6" category="list-text">后端 ONTAP 存储容量至少为 300 GB</block>
-  <block id="1aea8280bfe9dc50d8d63908d2ea4801" category="list-text">3 个控制器节点，每个节点具有 4 个 CPU 核， 16 GB RAM 和 120 GB 可用存储</block>
-  <block id="f5ed70fa9021d53e9429378968189632" category="list-text">3 个工作节点，每个节点至少具有 12 个 CPU 核， 32 GB RAM 和 50 GB 可用存储</block>
-  <block id="b0dd8997eb75bb5389338a7e9cd03f9d" category="list-text">服务类型 "loadbalancer" 可用于将传入流量发送到 OpenShift 集群中的服务</block>
   <block id="388d11680799d7c6a6a659aa88d96d5f" category="list-text">一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法</block>
-  <block id="18c2119e330cd6c8461f3a3e1a0f0e81" category="admonition">这些要求假定 Astra 控制中心是 OpenShift 集群上运行的唯一应用程序。如果集群运行的是其他应用程序，请相应地调整这些最低要求。</block>
   <block id="4d40a8e178faea46fe31329801bc6573" category="list-text">* 映像注册表 * ：您必须具有可将 Astra 控制中心构建映像推送到的现有私有 Docker 映像注册表。您需要提供要将映像上传到的映像注册表的 URL 。</block>
   <block id="8321592ce24c8a122ecf26a63cfca407" category="list-text">ontap-NAS</block>
   <block id="844e84da8e822b4a33c4d8188da97937" category="list-text">ontap-nas-flexgroup</block>
   <block id="73a3350a1b91aeb6e2836fdf5975672c" category="list-text">ontap-san</block>
   <block id="3016c12c1db45f14c80c9c1731b9c26a" category="list-text">ontap-san-economy.</block>
-  <block id="d30f38ab78c0916a3437789046f724f7" category="paragraph">如果您计划从 Astra 控制中心管理 Kubernetes 集群，并使用该集群托管 Astra 控制中心安装，则该集群还需要满足以下附加要求：</block>
   <block id="3a918414d05f891a1261ec3c5c3782b4" category="inline-link">Snapshot 控制器组件</block>
   <block id="5179f058e3f9e02f1e48773756bf7e37" category="list-text">Kubernetes 的最新版本<block ref="8bfa435518674179afbdcd4004c26111" category="inline-link-rx"></block> 已安装</block>
   <block id="07784a2c28addddfc9538216d05bebfd" category="inline-link">volumesnapshotclass 对象</block>
   <block id="827b040b0ecaa2fb883fc51cf0c2bc68" category="list-text">Astra Trident<block ref="958f5eca13bd67633095ea960be168a9" category="inline-link-rx"></block> 已由管理员定义</block>
   <block id="485f29484d3f576809313d5c7af147f7" category="list-text">集群上存在默认 Kubernetes 存储类</block>
   <block id="b277ec6caf6aa96c35055cf875a5ebf9" category="list-text">至少将一个存储类配置为使用 Astra Trident</block>
-  <block id="f4a66dbdf3443a9624d18c32fca9ced1" category="list-text">一种将 Astra 控制中心的 FQDN 指向 Astra 控制中心服务的外部 IP 地址的方法</block>
-  <block id="8815830e33eede3983a905812fb1d407" category="paragraph">在应用程序克隆期间， Astra 控制中心需要允许 OpenShift 挂载卷，并在必要时更改文件的所有权。因此，您需要配置 ONTAP 卷导出策略才能成功完成卷操作。您可以使用以下命令执行此操作：</block>
-  <block id="75b768a65bdd69fa66b038f8fb8f2d23" category="paragraph">`export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sysm -anon 65534`</block>
   <block id="cbde2df6a7c89370edc449dc5705d30c" category="inline-link">说明</block>
-  <block id="29656b93b05d848d092d38cecf57f5ba" category="admonition">如果您计划将另一个 OpenShift 集群添加为托管计算资源，则需要确保已启用 Astra Trident 卷快照功能。请参见官方的 Astra Trident<block ref="556b3c0c56aa97a1bc2ad282c2c6ac73" category="inline-link-rx"></block> 使用 Astra Trident 启用和测试卷快照。</block>
-  <block id="8839e830db85b9ff275511128b9ab255" category="list-text">* Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：</block>
   <block id="7c17a9c491c5e0d15acef220e3ba0652" category="list-text">* 操作员部署的应用程序 * ： Astra Control 支持使用命名空间范围的运算符安装的应用程序。以下是已针对此安装模式验证的一些应用程序：</block>
   <block id="c62e13b3973df086f7d17eeaf006b535" category="section-title">访问 Internet</block>
   <block id="46cce64fca5b60351328e94ed2b72255" category="paragraph">您应确定是否可以从外部访问 Internet 。否则，某些功能可能会受到限制，例如从 NetApp Cloud Insights 接收监控和指标数据或向发送支持包<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
@@ -1276,9 +1261,7 @@
   <block id="b404529afca09f5a2fb2b21f843c5b5b" category="section-title">内部 Kubernetes 集群的服务类型 "loadbalancer"</block>
   <block id="2b545f7c547a71eaeda9dcb451aea0c5" category="inline-link">元 LB</block>
   <block id="a9dfa8f964107f6d896a76f58003f9a9" category="paragraph">Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为服务提供服务），并要求为其分配一个可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个负载平衡器，则可以使用<block ref="9b49f108c23e1909f3cfe7a1eaa3a8cd" category="inline-link-rx"></block> 自动为服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。</block>
-  <block id="428324956bb1d934255acfcca9f5c85d" category="admonition">不支持 MetalLB 0.11.0 版。</block>
   <block id="9251700e586dc1a410f2e755a8643751" category="section-title">网络要求</block>
-  <block id="2feeeeaca31f7c9852665b6eca3013b1" category="paragraph">托管 Astra 控制中心的集群使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口要求在托管 Astra 控制中心的集群与每个受管集群之间建立双向连接（请在适用时注明）。</block>
   <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">Port</block>
   <block id="888a77f5ac0748b6c8001822417df8b6" category="cell">协议</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">目的</block>
@@ -1325,9 +1308,7 @@
   <block id="b74df8ed66dab15b4d425c5788286114" category="inline-xref">后续步骤</block>
   <block id="eb9645176e7742ea508be8d0a75a1712" category="list-text">将 `astraAddress` 字符串更改为要在浏览器中使用的 FQDN 以访问 Astra 。请勿在此地址中使用 `http ： //` 或 `https ： //` 。复制此 FQDN 以在中使用 <block ref="39c8566ec35b62823c898c5e38a4b78c" category="inline-xref-macro-rx"></block>。</block>
   <block id="7ae99e59821f8806f2d1675980b350e5" category="list-text">将 `email` 字符串更改为默认的初始管理员地址。复制此电子邮件地址以在中使用 <block ref="39c8566ec35b62823c898c5e38a4b78c" category="inline-xref-macro-rx"></block>。</block>
-  <block id="fb319af16359e29cd25b37979fe83fee" category="list-text">将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。</block>
   <block id="b401b2bf00b8f93934e05052f459d36e" category="list-text">（可选）添加与帐户关联的用户的名字 `firstName` 和姓氏 `lastName` 。您可以在用户界面中立即或稍后执行此步骤。</block>
-  <block id="5b624fa8d68852c0185da2d779709dc8" category="list-text">（可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Trident storageClass 资源。</block>
   <block id="a59774b3b337d42ea8340b94bf2d3f8e" category="section-title">完成 Astra 控制中心和操作员安装</block>
   <block id="dfa816f2277b6d07821b3fb152d086c3" category="list-text">安装 Astra 控制中心操作员：</block>
   <block id="c788fbef242d8cbeac1895b022577b56" category="list-text">如果您在上一步中尚未创建，请创建 `NetApp-Accc` （或自定义）命名空间：</block>
@@ -1335,7 +1316,6 @@
   <block id="0d8696fee8128bfee6ff7fd8a30bb0e4" category="list-text">验证是否已成功安装所有系统组件。</block>
   <block id="11c3861e648bc26a2b528eee5b947860" category="paragraph">每个 POD 的状态应为 `running` 。部署系统 Pod 可能需要几分钟的时间。</block>
   <block id="13cfc7621dad08a2783d2e6063e03159" category="list-text">（可选）为确保安装完成，您可以使用以下命令查看 `Acc-operator` 日志。</block>
-  <block id="9b64c46ab72624dc349f638bc8a13507" category="list-text">当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 AstraControlCenter 实例来验证安装是否成功。</block>
   <block id="ae0ff6d35e31e4e342ca19ba7218d2ee" category="list-text">`s响应中的 tatus.deploymentState` `D字段，查看` eploy 值。如果部署失败，则会显示一条错误消息。</block>
   <block id="97df607c8bd3126c1e35e7ea5a7960a6" category="admonition">您将在下一步中使用 `uuid` 。</block>
   <block id="fea2809becd046aad95879e23b62d736" category="list-text">要获取登录到 Astra 控制中心时要使用的一次性密码，请从上一步的响应中复制 `status.uuid` 值。密码为 `Acc-` ，后跟 UUID 值（`Acc-[UUUUUID]` 或在本示例中为 `Acc-c49008a5-4ef1-4c5d-a53e-830daf994116` ）。</block>
@@ -1364,7 +1344,6 @@
   <block id="22de8d4f47d2a55f106f2f70f3e8353f" category="list-text">运行 Kubernetes 1.19 到 1.21 （包括 1.21.x ）的集群</block>
   <block id="0fe8e21b3c54341023df7a85185c9f37" category="paragraph">确保集群中有一个或多个工作节点，并且至少有 1 GB RAM 可用于运行遥测服务。</block>
   <block id="b5a54438cd4ef372398ebc0939def4bb" category="admonition">如果您计划将第二个 OpenShift 4.6 ， 4.7 或 4.8 集群添加为托管计算资源，则应确保已启用 Astra Trident 卷快照功能。请参见官方的 Astra Trident<block ref="8b7ff4f9e99396172438cb6668056409" category="inline-link-rx"></block> 使用 Astra Trident 启用和测试卷快照。</block>
-  <block id="cd70c5fc6a6f862ba2ca038e2d0c39e0" category="list-text">在备份 ONTAP 系统上设置的超级用户和用户 ID ，用于使用 Astra 控制中心（ Accc ）备份和还原应用程序。在 ONTAP 命令行中运行以下命令： `export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sysm -anon 65534`</block>
   <block id="105932ea4fe1c5240d2bf6bced56c8fc" category="list-text">管理员定义的 Astra Trident `volumesnapshotclass` 对象。请参见 Astra Trident<block ref="556b3c0c56aa97a1bc2ad282c2c6ac73" category="inline-link-rx"></block> 使用 Astra Trident 启用和测试卷快照。</block>
   <block id="df17fddf226fe3399a8cb420856f3565" category="section-title">运行资格检查</block>
   <block id="40152bf47b47316f99abeacf61572ddd" category="paragraph">运行以下资格检查，以确保您的集群已准备好添加到 Astra 控制中心。</block>
@@ -1798,4 +1777,43 @@
   <block id="a514c0ae3c82c51ee5b4cd862c3c6ae5" category="paragraph">您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。</block>
   <block id="30e9f9c381fe23f7ce3650c2587f95e5" category="list-text">列出集群上安装的 Traefik CRD ：</block>
   <block id="a533261ecbd74405d561fc2ee31235f5" category="list-text">如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本</block>
+  <block id="61f5bc231326b2369e71b3e4d9f8c986" category="paragraph">删除现有的自签名 TLS 证书。</block>
+  <block id="1cee46fe31fb6be4325d72afeb43c038" category="paragraph">添加一个由 CA 签名的新 TLS 证书。</block>
+  <block id="38073e52be4dfccbbd24b3272a244562" category="list-text">从下载 Astra 控制中心证书和密钥的 zip<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
+  <block id="817e1aba6882bae4837bd1f640be671a" category="list-text">将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。</block>
+  <block id="4004ff1a10260338c71b8e3d8620ee2e" category="list-text">（可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Astra Trident StorageClass 资源。</block>
+  <block id="2a0a2b464d2715b6fb4ea6d68ae8f9c4" category="list-text">当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 `AstraControlCenter` 实例来验证安装是否成功。</block>
+  <block id="7267bf4022ef959138b9f6b053eb4b37" category="paragraph">首先验证操作环境，应用程序集群，应用程序，许可证和 Web 浏览器的就绪情况。</block>
+  <block id="14c3520c1ca6993e39c544e92a538f0b" category="section-title">操作环境要求</block>
+  <block id="f309c81e3298ac86b7cca708e668bb1e" category="paragraph">Astra 控制中心需要以下类型的操作环境之一：</block>
+  <block id="540bf6f549a34a85e07e4a8510890f43" category="paragraph">确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。除了环境的资源要求之外， Astra 控制中心还需要以下资源：</block>
+  <block id="2cb05e4bb7830be982f0922fed86b4cd" category="cell">组件</block>
+  <block id="9b97b7bd5e0a87be7bf218224ada83cf" category="cell">要求</block>
+  <block id="d2f19bd8f3c8ffc8a9d59cb0d2b1f64f" category="cell">后端 ONTAP 存储容量</block>
+  <block id="d790821fc08e7990a2ca5464b3010b41" category="cell">至少 300 GB 可用</block>
+  <block id="fcb81a84511da525a1581c4ccc00d0fb" category="cell">工作节点</block>
+  <block id="3dc2f4e20c545bc208864c2f1c9ce93c" category="cell">总共至少 3 个辅助节点，每个节点有 4 个 CPU 核和 12 GB RAM</block>
+  <block id="7d361abb047884b8a99059e060849d09" category="cell">负载平衡器</block>
+  <block id="9ce2a4ad8b4e3701686912911908c134" category="cell">服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务</block>
+  <block id="f92f004bde3256be6cc9486a240be63d" category="cell">FQDN 解析</block>
+  <block id="865fcbd8a3a74376a7ff576d468c2697" category="admonition">这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。</block>
+  <block id="a194c96c412e6851d927b9d0e77bba07" category="paragraph">在 OpenShift 环境中克隆应用程序期间， Astra Control Center 需要允许 OpenShift 挂载卷并更改文件所有权。因此，您需要配置 ONTAP 卷导出策略以允许执行这些操作。您可以使用以下命令执行此操作：</block>
+  <block id="6a100a7ad7e7c18962424f35ca8111fe" category="list-text">`export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sys`</block>
+  <block id="fc2f1854d37f5b2e29ee40dea0f6d097" category="list-text">`export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -anon 65534`</block>
+  <block id="071c5707a439bbd6de6c6e0344647c7f" category="inline-link">请参见官方的 Astra Trident 说明</block>
+  <block id="3471e3ba742a3a9944bcbb20b1536158" category="admonition">如果您计划将第二个 OpenShift 操作环境添加为托管计算资源，则需要确保已启用 Astra Trident 卷快照功能。要使用 Astra Trident 启用和测试卷快照，<block ref="d93dc967bbaad34bc17aaffbb93a4567" category="inline-link-rx"></block>。</block>
+  <block id="16a0a46f449dbbcd05f16d54a6c8524f" category="section-title">应用程序集群要求</block>
+  <block id="defc23c1d21672df9aa172827b1c3279" category="paragraph">对于计划从 Astra 控制中心管理的集群， Astra 控制中心具有以下要求。如果您计划管理的集群是托管 Astra 控制中心的运行环境集群，则这些要求也适用。</block>
+  <block id="42c8504a22cba3e23d786539ecebf6d4" category="inline-link">有关创建 kubeconfig 文件的信息</block>
+  <block id="8b428222ce88f1e162c46221c197b55e" category="admonition">您的应用程序集群应具有一个 `kubeconfig.yaml` 文件，该文件仅定义一个 _context_ 元素。请访问的 Kubernetes 文档<block ref="8bdc55ab80651b9fc036fc9c0b8439d1" category="inline-link-rx"></block>。</block>
+  <block id="cd0f65e312a1020e80f5aa7da07171fb" category="admonition">在 Rancher 环境中管理应用程序集群时，请修改 Rancher 提供的 `kubeconfig` 文件中的应用程序集群默认上下文，以使用控制平面上下文，而不是 Rancher API 服务器上下文。这样可以减少 Rancher API 服务器上的负载并提高性能。</block>
+  <block id="ca6f33719464e2320b44f90d6ae70eb7" category="section-title">应用程序管理要求</block>
+  <block id="304f557d4b7e64bda6836386e7c79fc6" category="paragraph">Astra Control 具有以下应用程序管理要求：</block>
+  <block id="279aeb8fefc116ce50f1bb81d8dc343c" category="list-text">* 许可 * ：要使用 Astra 控制中心管理应用程序，您需要获得 Astra 控制中心许可证。</block>
+  <block id="5d9c523a0997c65517bdf38e2f85aecd" category="list-text">* 存储类 * ：如果您安装的应用程序明确设置了 StorageClass ，并且需要克隆该应用程序，则克隆操作的目标集群必须具有最初指定的 StorageClass 。将显式设置了 StorageClass 的应用程序克隆到不具有相同 StorageClass 的集群将失败。</block>
+  <block id="508704b5a40f45083050ce024bcadbd2" category="list-text">* Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：</block>
+  <block id="b3104cfb935337df60d4e34408caa059" category="section-title">支持的应用程序安装方法</block>
+  <block id="d029da9201b0669cba4f3b93daf90afe" category="list-text">* Helm 3* ：如果使用 Helm 安装应用程序，则 Astra Control 需要 Helm 版本 3 。完全支持管理和克隆随 Helm 3 安装的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持管理随 Helm 2 安装的应用程序。</block>
+  <block id="8385440fe17d036a98c18fc4c23e2a74" category="paragraph">托管 Astra 控制中心的操作环境使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口需要在托管 Astra 控制中心的环境与每个受管集群之间进行双向连接（请在适用时注明）。</block>
+  <block id="50f5114fa3abb27ad72c5e0f536b7f7d" category="list-text">在备份 ONTAP 系统上设置的超级用户和用户 ID ，用于使用 Astra 控制中心备份和还原应用程序。在 ONTAP 命令行中运行以下命令： `export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sysm -anon 65534`</block>
 </blocks>
