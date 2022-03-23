@@ -17,7 +17,7 @@
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
   <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支持，开始使用 Astra 控制中心。">
-  <meta name="keywords" content=" what are astra kubernetes requirements, astra control requirements, astra supported versions, apps, supported apps, mariadb, mysql, postgres, kubernetes version, ubuntu, image type, networking"><!-- Icons -->
+  <meta name="keywords" content=" what are astra kubernetes requirements, astra control requirements, astra supported versions, apps, supported apps, mariadb, mysql, postgres, kubernetes version, ubuntu, image type, networking, environment, operational, operational environment, hosting, host, cluster, clusters"><!-- Icons -->
   <link rel="icon" href="/zh-cn/astra-control-center/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -987,7 +987,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-22 19:16:23 +0000">03/22/2022</time>
+    <time datetime="2022-03-23 22:09:20 +0000">03/23/2022</time>
     
   
 
@@ -997,15 +997,15 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>首先验证对 Kubernetes 集群，应用程序，许可证和 Web 浏览器的支持。</p>
+<p>首先验证操作环境，应用程序集群，应用程序，许可证和 Web 浏览器的就绪情况。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="kubernetes-集群的一般要求">Kubernetes 集群的一般要求</h2>
+<h2 id="操作环境要求">操作环境要求</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Astra 控制中心需要以下类型的主机集群之一：</p>
+<p>Astra 控制中心需要以下类型的操作环境之一：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1021,25 +1021,40 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>集群必须满足以下一般要求，才能从 Astra 控制中心发现和管理它。</p>
+<p>确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。除了环境的资源要求之外， Astra 控制中心还需要以下资源：</p>
 </div>
-<div class="ulist">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">组件</th>
+<th class="tableblock halign-left valign-top">要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">后端 ONTAP 存储容量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">至少 300 GB 可用</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工作节点</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">总共至少 3 个辅助节点，每个节点有 4 个 CPU 核和 12 GB RAM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">负载平衡器</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FQDN 解析</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Astra Trident</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
-<li>
-<p>后端 ONTAP 存储容量至少为 300 GB</p>
-</li>
-<li>
-<p>3 个控制器节点，每个节点具有 4 个 CPU 核， 16 GB RAM 和 120 GB 可用存储</p>
-</li>
-<li>
-<p>3 个工作节点，每个节点至少具有 12 个 CPU 核， 32 GB RAM 和 50 GB 可用存储</p>
-</li>
-<li>
-<p>服务类型 "loadbalancer" 可用于将传入流量发送到 OpenShift 集群中的服务</p>
-</li>
-<li>
-<p>一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法</p>
-</li>
 <li>
 <p>如果要使用 NetApp ONTAP 9.5 或更高版本作为存储后端，则已安装并配置 Astra Trident 21.04 或更高版本</p>
 </li>
@@ -1047,7 +1062,10 @@
 <p>如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本</p>
 </li>
 </ul>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1055,7 +1073,7 @@
 <img src="/us-en/astra-control-center/images/note.svg" alt="注">
 </td>
 <td class="content">
-这些要求假定 Astra 控制中心是 OpenShift 集群上运行的唯一应用程序。如果集群运行的是其他应用程序，请相应地调整这些最低要求。
+这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
 </td>
 </tr>
 </table>
@@ -1086,8 +1104,49 @@
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+</td>
+<td class="content">
 <div class="paragraph">
-<p>如果您计划从 Astra 控制中心管理 Kubernetes 集群，并使用该集群托管 Astra 控制中心安装，则该集群还需要满足以下附加要求：</p>
+<p>在 OpenShift 环境中克隆应用程序期间， Astra Control Center 需要允许 OpenShift 挂载卷并更改文件所有权。因此，您需要配置 ONTAP 卷导出策略以允许执行这些操作。您可以使用以下命令执行此操作：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sys</code></p>
+</li>
+<li>
+<p><code>export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -anon 65534</code></p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+</td>
+<td class="content">
+如果您计划将第二个 OpenShift 操作环境添加为托管计算资源，则需要确保已启用 Astra Trident 卷快照功能。要使用 Astra Trident 启用和测试卷快照， <a href="https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html" target="_blank" rel="noopener">"请参见官方的 Astra Trident 说明"</a>。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="应用程序集群要求">应用程序集群要求</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>对于计划从 Astra 控制中心管理的集群， Astra 控制中心具有以下要求。如果您计划管理的集群是托管 Astra 控制中心的运行环境集群，则这些要求也适用。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1103,9 +1162,6 @@
 <li>
 <p>至少将一个存储类配置为使用 Astra Trident</p>
 </li>
-<li>
-<p>一种将 Astra 控制中心的 FQDN 指向 Astra 控制中心服务的外部 IP 地址的方法</p>
-</li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -1115,12 +1171,7 @@
 <img src="/us-en/astra-control-center/images/note.svg" alt="注">
 </td>
 <td class="content">
-<div class="paragraph">
-<p>在应用程序克隆期间， Astra 控制中心需要允许 OpenShift 挂载卷，并在必要时更改文件的所有权。因此，您需要配置 ONTAP 卷导出策略才能成功完成卷操作。您可以使用以下命令执行此操作：</p>
-</div>
-<div class="paragraph">
-<p><code>export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sysm -anon 65534</code></p>
-</div>
+您的应用程序集群应具有一个 <code>kubeconfig.yaml</code> 文件，该文件仅定义一个 <em>context</em> 元素。请访问的 Kubernetes 文档 <a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/" target="_blank" rel="noopener">"有关创建 kubeconfig 文件的信息"</a>。
 </td>
 </tr>
 </table>
@@ -1132,7 +1183,7 @@
 <img src="/us-en/astra-control-center/images/note.svg" alt="注">
 </td>
 <td class="content">
-如果您计划将另一个 OpenShift 集群添加为托管计算资源，则需要确保已启用 Astra Trident 卷快照功能。请参见官方的 Astra Trident <a href="https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html" target="_blank" rel="noopener">"说明"</a> 使用 Astra Trident 启用和测试卷快照。
+在 Rancher 环境中管理应用程序集群时，请修改 Rancher 提供的 <code>kubeconfig</code> 文件中的应用程序集群默认上下文，以使用控制平面上下文，而不是 Rancher API 服务器上下文。这样可以减少 Rancher API 服务器上的负载并提高性能。
 </td>
 </tr>
 </table>
@@ -1317,25 +1368,13 @@
 <div class="paragraph">
 <p>Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为服务提供服务），并要求为其分配一个可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个负载平衡器，则可以使用 <a href="https://docs.netapp.com/us-en/netapp-solutions/containers/rh-os-n_LB_MetalLB.html#installing-the-metallb-load-balancer" target="_blank" rel="noopener">"元 LB"</a> 自动为服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/astra-control-center/images/note.svg" alt="注">
-</td>
-<td class="content">
-不支持 MetalLB 0.11.0 版。
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="网络要求">网络要求</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>托管 Astra 控制中心的集群使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口要求在托管 Astra 控制中心的集群与每个受管集群之间建立双向连接（请在适用时注明）。</p>
+<p>托管 Astra 控制中心的操作环境使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口需要在托管 Astra 控制中心的环境与每个受管集群之间进行双向连接（请在适用时注明）。</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

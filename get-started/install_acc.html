@@ -987,7 +987,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-02-02 23:07:49 +0000">02/02/2022</time>
+    <time datetime="2022-03-23 22:09:20 +0000">03/23/2022</time>
     
   
 
@@ -1511,7 +1511,7 @@ deployment.apps/acc-operator-controller-manager created</pre>
 <p>（可选）添加与帐户关联的用户的名字 <code>firstName</code> 和姓氏 <code>lastName</code> 。您可以在用户界面中立即或稍后执行此步骤。</p>
 </li>
 <li>
-<p>（可选）如果您的安装需要，请将 <code>storageClass</code> 值更改为另一个 Trident storageClass 资源。</p>
+<p>（可选）如果您的安装需要，请将 <code>storageClass</code> 值更改为另一个 Astra Trident StorageClass 资源。</p>
 </li>
 <li>
 <p>（对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 <a href="../release-notes/known-issues-ads.html#astra-data-store-cannot-be-used-as-a-storage-class-for-astra-control-center-due-to-mongodb-pod-liveness-probe-failure">"需要进行的其他更改"</a> 向 YAML 报告。</p>
@@ -1617,7 +1617,7 @@ spec:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>NAME                                         READY   STATUS    RESTARTS   AGE
+<pre>NAME                                       READY   STATUS    RESTARTS   AGE
 acc-helm-repo-5f75c5f564-bzqmt             1/1     Running   0          11m
 activity-6b8f7cccb9-mlrn4                  1/1     Running   0          9m2s
 api-token-authentication-6hznt             1/1     Running   0          8m50s
@@ -1700,7 +1700,7 @@ vault-controller-86c94fbf4f-krttq          1/1     Running   0          9m24s</p
 </div>
 </li>
 <li>
-<p>当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 AstraControlCenter 实例来验证安装是否成功。</p>
+<p>当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 <code>AstraControlCenter</code> 实例来验证安装是否成功。</p>
 <div class="listingblock">
 <div class="content">
 <pre>kubectl get acc -o yaml -n [netapp-acc or custom namespace]</pre>

@@ -987,13 +987,15 @@
 <p class="page-details">
   
     
-    <time datetime="2021-12-15 18:21:17 +0000">12/15/2021</time>
+    <time datetime="2022-03-23 22:09:20 +0000">03/23/2022</time>
     
   
 
 
 </p>
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>您可以删除现有的自签名 TLS 证书，并将其替换为由证书颁发机构（ CA ）签名的 TLS 证书。</p>
 </div>
@@ -1011,8 +1013,15 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="删除自签名证书">删除自签名证书</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>删除现有的自签名 TLS 证书。</p>
+</div>
 <div class="olist arabic">
-<div class="title">删除自签名证书</div>
 <ol class="arabic">
 <li>
 <p>使用 SSH ，以管理用户身份登录到托管 Astra 控制中心的 Kubernetes 集群。</p>
@@ -1036,8 +1045,15 @@ kubectl delete secret secure-testing-cert -n &lt;ACC-deployment-namespace&gt;</p
 </li>
 </ol>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="添加新证书">添加新证书</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>添加一个由 CA 签名的新 TLS 证书。</p>
+</div>
 <div class="olist arabic">
-<div class="title">添加新证书</div>
 <ol class="arabic">
 <li>
 <p>使用以下命令使用 CA 中的专用密钥和证书文件创建新的 TLS 密钥，并将括号 &lt;&gt; 中的参数替换为相应的信息：</p>
@@ -1174,6 +1190,8 @@ Events:                    &lt;none&gt;</pre>
 <p>导出证书并将结果导入到 Web 浏览器中的证书管理器中。</p>
 </li>
 </ol>
+</div>
+</div>
 </div>
 
     </article>
