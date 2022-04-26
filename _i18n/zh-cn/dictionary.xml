@@ -2045,25 +2045,6 @@
   <block id="61919f8ed6a4559b38f81d9a03af7c7e" category="list-text"><block ref="61919f8ed6a4559b38f81d9a03af7c7e" category="inline-link-macro-rx"></block></block>
   <block id="8129213766a460b291fb99be007611f8" category="inline-link-macro">支持 VMware Tanzu 产品组合</block>
   <block id="d694b53d89bf6c370a946e6c4739b082" category="list-text"><block ref="d694b53d89bf6c370a946e6c4739b082" category="inline-link-macro-rx"></block></block>
-  <block id="162c583a9419e9e9ef6bdd9b125884de" category="list-text"><block ref="162c583a9419e9e9ef6bdd9b125884de" category="inline-link-rx"></block></block>
-  <block id="ea0ac2e7a0ec9bc6f3f6306903d70cf5" category="list-text"><block ref="ea0ac2e7a0ec9bc6f3f6306903d70cf5" category="inline-link-rx"></block></block>
-  <block id="0adc605f1fb9c132c2d403bcc2adaad1" category="list-text"><block ref="0adc605f1fb9c132c2d403bcc2adaad1" category="inline-link-rx"></block></block>
-  <block id="ff65f5fbabf1c5f1d65da663c77bd371" category="list-text"><block ref="ff65f5fbabf1c5f1d65da663c77bd371" category="inline-link-rx"></block></block>
-  <block id="11c0fd565e51012936bd009c2b3a673c" category="list-text"><block ref="11c0fd565e51012936bd009c2b3a673c" category="inline-link-rx"></block></block>
-  <block id="48ed655a0692f034d592c9afc6d90e6d" category="list-text"><block ref="48ed655a0692f034d592c9afc6d90e6d" category="inline-link-rx"></block></block>
-  <block id="ba2a4fb031b7bf74930beb5469e04eab" category="list-text"><block ref="ba2a4fb031b7bf74930beb5469e04eab" category="inline-link-rx"></block></block>
-  <block id="e1ec5945a89b3a26b7d1064484f288c8" category="list-text"><block ref="e1ec5945a89b3a26b7d1064484f288c8" category="inline-link-rx"></block></block>
-  <block id="6b116be1c05745d9b7d81739130428e7" category="list-text"><block ref="6b116be1c05745d9b7d81739130428e7" category="inline-link-rx"></block></block>
-  <block id="d16f95f51a31a7bfb208791bb8df402c" category="list-text"><block ref="d16f95f51a31a7bfb208791bb8df402c" category="inline-link-rx"></block></block>
-  <block id="c7fbd45c3ad4bc5cdd49c42150d44a7d" category="list-text"><block ref="c7fbd45c3ad4bc5cdd49c42150d44a7d" category="inline-link-rx"></block></block>
-  <block id="94fb8e1492fc6ba7471eb16e61e77901" category="list-text"><block ref="94fb8e1492fc6ba7471eb16e61e77901" category="inline-link-rx"></block></block>
-  <block id="73e8e7917aef8a94a53c1571bb5d498a" category="list-text"><block ref="73e8e7917aef8a94a53c1571bb5d498a" category="inline-link-rx"></block></block>
-  <block id="f0690b1a8def1bb3e74fc8101093fa52" category="list-text"><block ref="f0690b1a8def1bb3e74fc8101093fa52" category="inline-link-rx"></block></block>
-  <block id="c56b58ed8f9b276554482efd3a4be878" category="list-text"><block ref="5a965f5cda67b2c8018730dccf0bce79" category="inline-link-rx"></block> 和<block ref="190334a632c272d2893dafa0601ddf2e" category="inline-link-rx"></block></block>
-  <block id="400aee187d43d54b5326d7efac9983e7" category="list-text"><block ref="a7fdf766e43fbd24d1cd0c9533a02b51" category="inline-link-rx"></block> 和<block ref="9b189c2495b6f2ea2fca9c2316b25d55" category="inline-link-rx"></block> 应用程序</block>
-  <block id="17ed8e2e579e3555a165d2be0d0f2253" category="list-text"><block ref="da23c72bbbcf49c8bb912b0a83f8f699" category="inline-link-rx"></block> 和<block ref="79074041e6f94e100f13ed758c4c05e8" category="inline-link-rx"></block></block>
-  <block id="0839cfa5b1e8b99d643e6304899b3729" category="list-text"><block ref="0839cfa5b1e8b99d643e6304899b3729" category="inline-link-rx"></block></block>
-  <block id="9b30eadeeb1eb8a4dd294a08f59ed02d" category="list-text"><block ref="9b30eadeeb1eb8a4dd294a08f59ed02d" category="inline-link-rx"></block></block>
   <block id="36ca4b12e94f7f77ccd6700cbb0d85c7" category="list-title">集群管理限制</block>
   <block id="e01059e5d12812cdeae69a89c571fcd0" category="list-text"><block ref="372421c4f6d28777a404ea99982adad0" category="inline-xref-macro-rx"></block></block>
   <block id="c198f005af93363b23c0583d11980e76" category="list-text"><block ref="e43f05398a515e7831c1ad56aeb8fddd" category="inline-xref-macro-rx"></block></block>
@@ -2119,4 +2100,23 @@
   <block id="916abcd023426dbbc4e3b29f0bafe83a" category="paragraph">如果您安装了带风的安装，请在生成支持包后执行以下步骤。当该捆绑包可供下载时，在 * 支持 * 页面的 * 支持捆绑包 * 部分中的 * 生成 * 旁边会显示下载图标。</block>
   <block id="f3ccd882d52648e593d05c699f459f60" category="list-text">选择下载图标以在本地下载此捆绑包。</block>
   <block id="4345f2150d39e38a6a11ee7ee57bed28" category="list-text">使用 NetApp Active IQ 。</block>
+  <block id="a32d618c008b6afc5518ea6d4e48c6e9" category="list-text"><block ref="a32d618c008b6afc5518ea6d4e48c6e9" category="inline-link-rx"></block></block>
+  <block id="3b4a30d48038265333402fd0ace2ad01" category="list-text"><block ref="3b4a30d48038265333402fd0ace2ad01" category="inline-link-rx"></block></block>
+  <block id="d1bdd7d7be6447d916ca20ce5bf313b6" category="list-text"><block ref="d1bdd7d7be6447d916ca20ce5bf313b6" category="inline-link-rx"></block></block>
+  <block id="c7c00d178de850c7099dc11eec54297c" category="list-text"><block ref="c7c00d178de850c7099dc11eec54297c" category="inline-link-rx"></block></block>
+  <block id="fdba3e802d7f550a83107f3ba66f2765" category="list-text"><block ref="fdba3e802d7f550a83107f3ba66f2765" category="inline-link-rx"></block></block>
+  <block id="791872105f5a1e8141e462fd024d4c7d" category="list-text"><block ref="791872105f5a1e8141e462fd024d4c7d" category="inline-link-rx"></block></block>
+  <block id="33b00cd64ea96ab3578b1a0f1179611d" category="list-text"><block ref="33b00cd64ea96ab3578b1a0f1179611d" category="inline-link-rx"></block></block>
+  <block id="ffd63f8445c2feb6522e8c478d2475e8" category="list-text"><block ref="ffd63f8445c2feb6522e8c478d2475e8" category="inline-link-rx"></block></block>
+  <block id="b8abcbb6c16b637f6be7d41b1fab46cc" category="list-text"><block ref="b8abcbb6c16b637f6be7d41b1fab46cc" category="inline-link-rx"></block></block>
+  <block id="35b5eb92a19c07a330b66b4881d4c693" category="list-text"><block ref="35b5eb92a19c07a330b66b4881d4c693" category="inline-link-rx"></block></block>
+  <block id="e3746b00156d80a206f0c1c2d4048e61" category="list-text"><block ref="e3746b00156d80a206f0c1c2d4048e61" category="inline-link-rx"></block></block>
+  <block id="130f2028f153411ea647f4f29dd5f6eb" category="list-text"><block ref="130f2028f153411ea647f4f29dd5f6eb" category="inline-link-rx"></block></block>
+  <block id="02bef4de5d403b627e69414fdd74c550" category="list-text"><block ref="02bef4de5d403b627e69414fdd74c550" category="inline-link-rx"></block></block>
+  <block id="4d554117e8d1288e4fe4f653e08706fd" category="list-text"><block ref="4d554117e8d1288e4fe4f653e08706fd" category="inline-link-rx"></block></block>
+  <block id="f08f7acc50dbd12909e0d89b15f91613" category="list-text"><block ref="16547be49c2fb00308874c0e28ebae10" category="inline-link-rx"></block> 和<block ref="5056bb18ac14af4559c65ee7603ea026" category="inline-link-rx"></block></block>
+  <block id="f24584ebcda2b5c82157f5853733e209" category="list-text"><block ref="3d9fe274266aff2db470531baf25408c" category="inline-link-rx"></block> 和<block ref="b11b8f5a9cd9ae96c887af2430a8770f" category="inline-link-rx"></block> 应用程序</block>
+  <block id="f40dda1cd02e9ee8f5e162848caadd83" category="list-text"><block ref="9efb3235917ed6ee5ca4f6d3c009bcea" category="inline-link-rx"></block> 和<block ref="99c9739f78d0a0a06ac43aab27b410b9" category="inline-link-rx"></block></block>
+  <block id="da1ad815b5ce4f824168d73638363d30" category="list-text"><block ref="da1ad815b5ce4f824168d73638363d30" category="inline-link-rx"></block></block>
+  <block id="be626d1089f32a72dd9f0fb107f44f16" category="list-text"><block ref="be626d1089f32a72dd9f0fb107f44f16" category="inline-link-rx"></block></block>
 </blocks>

@@ -36,23 +36,23 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 == 2021 年 12 月 14 日（ 21.12 ）
 
 .新增功能和支持
-* https://docs.netapp.com/us-en/astra-control-center-2112/use/restore-apps.html["应用程序还原"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/use/execution-hooks.html["执行挂钩"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html#supported-app-installation-methods["支持使用命名空间范围的运算符部署的应用程序"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html["对上游 Kubernetes 和 Rancher 的其他支持"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/setup_overview.html#add-a-storage-backend["Astra Data Store 预览后端管理和监控"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/use/upgrade-acc.html["Astra 控制中心升级"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/acc_operatorhub_install.html["用于安装的 Red Hat OperatorHub 选项"]
+* https://docs.netapp.com/us-en/astra-control-center-2112/use/restore-apps.html["应用程序还原"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/use/execution-hooks.html["执行挂钩"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html#supported-app-installation-methods["支持使用命名空间范围的运算符部署的应用程序"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html["对上游 Kubernetes 和 Rancher 的其他支持"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/setup_overview.html#add-a-storage-backend["Astra Data Store 预览后端管理和监控"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/use/upgrade-acc.html["Astra 控制中心升级"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/acc_operatorhub_install.html["用于安装的 Red Hat OperatorHub 选项"^]
 
 
 .已解决的问题
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/resolved-issues.html["此版本已解决的问题"]
+* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/resolved-issues.html["此版本已解决的问题"^]
 
 
 .已知问题和限制
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues.html["此版本的已知问题"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"]
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-limitations.html["此版本的已知限制"]
+* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues.html["此版本的已知问题"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
 
@@ -61,14 +61,14 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 
 初始版本的 Astra 控制中心。
 
-* https://docs.netapp.com/us-en/astra-control-center-2108/concepts/intro.html["它是什么"]
-* https://docs.netapp.com/us-en/astra-control-center-2108/concepts/architecture.html["了解架构和组件"]
-* https://docs.netapp.com/us-en/astra-control-center-2108/get-started/requirements.html["入门所需的资源"]
-* https://docs.netapp.com/us-en/astra-control-center-2108/get-started/install_acc.html["安装"] 和 https://docs.netapp.com/us-en/astra-control-center-2108/get-started/setup_overview.html["设置"]
-* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-apps.html["管理"] 和 https://docs.netapp.com/us-en/astra-control-center-2108/use/protect-apps.html["保护"] 应用程序
-* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-buckets.html["管理存储分段"] 和 https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-backend.html["存储后端"]
-* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-users.html["管理帐户"]
-* https://docs.netapp.com/us-en/astra-control-center-2108/rest-api/api-intro.html["利用 API 实现自动化"]
+* https://docs.netapp.com/us-en/astra-control-center-2108/concepts/intro.html["它是什么"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/concepts/architecture.html["了解架构和组件"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/get-started/requirements.html["入门所需的资源"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/get-started/install_acc.html["安装"^] 和 https://docs.netapp.com/us-en/astra-control-center-2108/get-started/setup_overview.html["设置"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-apps.html["管理"^] 和 https://docs.netapp.com/us-en/astra-control-center-2108/use/protect-apps.html["保护"^] 应用程序
+* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-buckets.html["管理存储分段"^] 和 https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-backend.html["存储后端"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-users.html["管理帐户"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/rest-api/api-intro.html["利用 API 实现自动化"^]
 
 
 
