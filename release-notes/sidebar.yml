@@ -5,11 +5,10 @@ url: "/release-notes/rn_overview.html"
 entries:
 - title: 此版本的 Astra 控制中心中的新增功能
   url: "/release-notes/whats-new.html"
-- title: 已解决的问题
-  url: "/release-notes/resolved-issues.html"
-- title: 有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题
-  url: "/release-notes/known-issues-ads.html"
 - title: 已知问题
   url: "/release-notes/known-issues.html"
+  entries:
+  - title: 有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题
+    url: "/release-notes/known-issues-ads.html"
 - title: 已知限制
   url: "/release-notes/known-limitations.html"

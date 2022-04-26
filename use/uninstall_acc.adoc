@@ -13,6 +13,8 @@ summary: 介绍如何删除 Astra 控制中心和 Astra 控制中心操作员。
 
 如果要从试用版升级到完整版本的产品，您可能需要删除 Astra Control Center 组件。要删除 Astra 控制中心和 Astra 控制中心操作员，请按顺序运行此操作步骤中所述的命令。
 
+如果您在卸载时遇到任何问题，请参见 <<Troubleshooting uninstall issues>>。
+
 .您需要什么？ #8217 ；将需要什么
 * 使用 Astra 控制中心 UI 取消全部管理 link:../use/unmanage.html#stop-managing-compute["集群"]。
 
@@ -70,6 +72,128 @@ clusterrolebinding.rbac.authorization.k8s.io "acc-operator-proxy-rolebinding" de
 configmap "acc-operator-manager-config" deleted
 service "acc-operator-controller-manager-metrics-service" deleted
 deployment.apps "acc-operator-controller-manager" deleted
+----
+
+
+
+
+== 对卸载问题进行故障排除
+
+使用以下解决方法解决卸载 Astra 控制中心时出现的任何问题。
+
+
+
+=== 卸载 Astra 控制中心无法清理受管集群上的监控操作员 POD
+
+如果在卸载 Astra Control Center 之前未取消管理集群，则可以使用以下命令手动删除 netapp-monitoring 命名空间和命名空间中的 Pod ：
+
+.步骤
+. 删除 `附件监控` 代理：
++
+[listing]
+----
+kubectl delete agents acc-monitoring -n netapp-monitoring
+----
++
+结果
+
++
+[listing]
+----
+agent.monitoring.netapp.com "acc-monitoring" deleted
+----
+. 删除命名空间：
++
+[listing]
+----
+kubectl delete ns netapp-monitoring
+----
++
+结果
+
++
+[listing]
+----
+namespace "netapp-monitoring" deleted
+----
+. 确认已删除资源：
++
+[listing]
+----
+kubectl get pods -n netapp-monitoring
+----
++
+结果
+
++
+[listing]
+----
+No resources found in netapp-monitoring namespace.
+----
+. 确认已删除监控代理：
++
+[listing]
+----
+kubectl get crd|grep agent
+----
++
+示例结果：
+
++
+[listing]
+----
+agents.monitoring.netapp.com                     2021-07-21T06:08:13Z
+----
+. 删除自定义资源定义（ CRD ）信息：
++
+[listing]
+----
+kubectl delete crds agents.monitoring.netapp.com
+----
++
+结果
+
++
+[listing]
+----
+customresourcedefinition.apiextensions.k8s.io "agents.monitoring.netapp.com" deleted
+----
+
+
+
+
+=== 卸载 Astra 控制中心无法清理 Traefik CRD
+
+您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。
+
+.步骤
+. 列出集群上安装的 Traefik CRD ：
++
+[listing]
+----
+kubectl get crds |grep -E 'traefik'
+----
++
+响应
+
++
+[listing]
+----
+ingressroutes.traefik.containo.us             2021-06-23T23:29:11Z
+ingressroutetcps.traefik.containo.us          2021-06-23T23:29:11Z
+ingressrouteudps.traefik.containo.us          2021-06-23T23:29:12Z
+middlewares.traefik.containo.us               2021-06-23T23:29:12Z
+middlewaretcps.traefik.containo.us            2021-06-23T23:29:12Z
+serverstransports.traefik.containo.us         2021-06-23T23:29:13Z
+tlsoptions.traefik.containo.us                2021-06-23T23:29:13Z
+tlsstores.traefik.containo.us                 2021-06-23T23:29:14Z
+traefikservices.traefik.containo.us           2021-06-23T23:29:15Z
+----
+. 删除 CRD ：
++
+[listing]
+----
+kubectl delete crd ingressroutes.traefik.containo.us ingressroutetcps.traefik.containo.us ingressrouteudps.traefik.containo.us middlewares.traefik.containo.us serverstransports.traefik.containo.us tlsoptions.traefik.containo.us tlsstores.traefik.containo.us traefikservices.traefik.containo.us middlewaretcps.traefik.containo.us
 ----
 
 

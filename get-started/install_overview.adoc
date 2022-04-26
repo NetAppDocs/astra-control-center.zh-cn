@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: get-started/install_overview.html 
-keywords: astra installation, install astra control center, how to install astra control, deploy, download from netapp support 
-summary: 您可以选择两种安装 Astra Control Center 的方法。 
+keywords: astra installation, install astra control center, openshift, amazon web services, azure, how to install astra control, deploy, download from netapp support 
+summary: 您可以选择安装 Astra Control Center 。 
 ---
 = 安装概述
 :hardbreaks:
@@ -15,4 +15,5 @@ summary: 您可以选择两种安装 Astra Control Center 的方法。
 
 * link:../get-started/install_acc.html["使用标准流程安装 Astra 控制中心"]
 * link:../get-started/acc_operatorhub_install.html["（如果使用 Red Hat OpenShift ）使用 OpenShift OperatorHub 安装 Astra 控制中心"]
+* link:../get-started/install_acc-cvo.html["使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心"]
 

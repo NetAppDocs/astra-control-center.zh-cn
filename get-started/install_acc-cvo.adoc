@@ -1,0 +1,447 @@
+---
+sidebar: sidebar 
+permalink: get-started/install_acc-cvo.html 
+keywords: astra installation, install astra control center, cloud volumes ontap, amazon web services, aws, azure, how to install astra control, deploy, download from netapp support 
+summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您需要下载此软件包并按照所述步骤进行安装。 
+---
+= 使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+借助 Astra 控制中心，您可以使用自管理的 Kubernetes 集群和 Cloud Volumes ONTAP 实例在混合云环境中管理应用程序。您可以在内部 Kubernetes 集群或云环境中的一个自管理 Kubernetes 集群中部署 Astra Control Center 。
+
+在其中一种部署中，您可以使用 Cloud Volumes ONTAP 作为存储后端来执行应用程序数据管理操作。您还可以将 S3 存储分段配置为备份目标。
+
+要在 Amazon Web Services （ AWS ）和 Microsoft Azure 中使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心，请根据您的云环境执行以下步骤。
+
+* <<Deploy Astra Control Center in Amazon Web Services>>
+* <<Deploy Astra Control Center in Microsoft Azure>>
+
+
+
+
+== 在 Amazon Web Services 中部署 Astra 控制中心
+
+您可以在 Amazon Web Services （ AWS ）公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。
+
+部署 Astra 控制中心仅支持自管理 OpenShift 容器平台（ OCP ）集群。
+
+
+
+=== AWS 需要的功能
+
+在 AWS 中部署 Astra 控制中心之前，您需要满足以下条件：
+
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
+* NetApp Cloud Central account
+* Red Hat OpenShift Container Platform （ OCP ）权限（在命名空间级别用于创建 Pod ）
+* AWS 凭据，访问 ID 和机密密钥，具有用于创建存储分段和连接器的权限
+* AWS 帐户弹性容器注册（ Elastic Container Registry ， ECR ）访问和登录
+* 要访问 Astra Control UI ，需要 AWS 托管分区和 Route 53 条目
+
+
+
+
+=== AWS 的操作环境要求
+
+Astra 控制中心需要以下 AWS 操作环境：
+
+* Red Hat OpenShift 容器平台 4.8
+
+
+
+NOTE: 确保您选择托管 Astra 控制中心的操作环境符合环境官方文档中概述的基本资源要求。
+
+除了环境的资源要求之外， Astra 控制中心还需要以下资源：
+
+[cols="1h,2a"]
+|===
+| 组件 | 要求 
+
+
+| 后端 NetApp Cloud Volumes ONTAP 存储容量  a| 
+至少 300 GB 可用
+
+
+
+| 工作节点（ AWS EC2 要求）  a| 
+总共至少 3 个辅助节点，每个节点有 4 个 vCPU 核心和 12 GB RAM
+
+
+
+| 负载平衡器  a| 
+服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务
+
+
+
+| FQDN  a| 
+一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
+
+
+
+| Astra Trident （在 NetApp Cloud Manager 中发现 Kubernetes 集群时安装）  a| 
+安装并配置了 Astra Trident 21.04 或更高版本，并将 NetApp ONTAP 9.5 或更高版本作为存储后端
+
+
+
+| 映像注册表  a| 
+您必须拥有一个现有的私有注册表，例如 AWS 弹性容器注册表，您可以将 Astra Control Center 构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
+
+
+NOTE: Astra 控制中心托管的集群和受管集群必须能够访问同一映像注册表，才能使用基于 Restic 的映像备份和还原应用程序。
+
+
+
+| Astra Trident / ONTAP 配置  a| 
+Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持以下 ONTAP Kubernetes 存储类，这些存储类是在将 Kubernetes 集群导入到 NetApp Cloud Manager 中时创建的。这些功能由 Astra Trident 提供：
+
+* `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
+* `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
+* `vsaworkingenvironment-<>-Singal-NAS csi.trident.netapp.io`
+* `vsaworkingenvironment-<>-Singon-san csi.trident.netapp.io`
+
+
+|===
+
+NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
+
+
+NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docker 映像注册表密钥。
+
+
+
+=== AWS 部署概述
+
+下面简要介绍了将 Cloud Volumes ONTAP 作为存储后端安装适用于 AWS 的 Astra 控制中心的过程。
+
+下面详细介绍了其中每个步骤。
+
+. <<Ensure that you have sufficient IAM permissions>>。
+. <<Install a RedHat OpenShift cluster on AWS>>。
+. <<Configure AWS>>。
+. <<Configure NetApp Cloud Manager>>。
+. <<Install Astra Control Center>>。
+
+
+
+
+=== 确保您具有足够的 IAM 权限
+
+确保您具有足够的 IAM 角色和权限，可以安装 RedHat OpenShift 集群和 NetApp Cloud Volumes ONTAP 连接器。
+
+请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-aws.html#initial-aws-credentials["初始 AWS 凭据"^]。
+
+
+
+=== 在 AWS 上安装 RedHat OpenShift 集群
+
+在 AWS 上安装 RedHat OpenShift 容器平台集群。
+
+有关安装说明，请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-aws-default.html["在 OpenShift 容器平台中的 AWS 上安装集群"^]。
+
+
+
+=== 配置 AWS
+
+接下来，将 AWS 配置为创建虚拟私有云，设置 EC2 计算实例，创建 AWS S3 存储分段，创建弹性容器注册表（ ECR ）以托管 Astra 控制中心映像，并将这些映像推送到此注册表。
+
+按照 AWS 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-aws-default.html["AWS 安装文档"^]。
+
+. 创建 AWS 虚拟私有云。
+. 查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 link:../requirements.html["Astra 控制中心要求"]。
+. 至少创建一个 AWS S3 存储分段来存储备份。
+. 创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。
++
+
+NOTE: 如果不创建 ECR ，则 Astra 控制中心无法从包含带有 AWS 后端 CVO 的集群访问监控数据。如果您尝试使用 Astra 控制中心发现和管理的集群没有 AWS ECR 访问权限，则会导致出现问题描述 。
+
+. 将这些 Accc 映像推送到您定义的注册表。
+
+
+
+NOTE: AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并导致跨集群克隆操作失败。从为 AWS 配置的 Cloud Volumes ONTAP （ CVO ）管理存储后端时会发生此问题描述 。要更正此问题描述 ，请再次向 ECR 进行身份验证，并生成一个新密钥，以便成功恢复克隆操作。
+
+以下是 AWS 部署示例：
+
+image:acc-cvo-aws2.png["采用 Cloud Volumes ONTAP 的 Astra 控制中心部署示例"]
+
+
+
+=== 配置 NetApp Cloud Manager
+
+使用 Cloud Manager 创建工作空间，向 AWS 添加连接器，创建工作环境并导入集群。
+
+按照 Cloud Manager 文档完成以下步骤。请参见以下内容：
+
+* https://docs.netapp.com/us-en/occm/task_getting_started_aws.html["AWS 中的 Cloud Volumes ONTAP 入门"^]。
+* https://docs.netapp.com/us-en/occm/task_creating_connectors_aws.html#create-a-connector["使用 Cloud Manager 在 AWS 中创建连接器"^]
+
+
+.步骤
+. 将凭据添加到 Cloud Manager 。
+. 创建工作空间。
+. 为 AWS 添加连接器。选择 AWS 作为提供程序。
+. 为您的云环境创建一个工作环境。
++
+.. 位置： "Amazon Web Services （ AWS ） "
+.. 类型： Cloud Volumes ONTAP HA
+
+
+. 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
++
+.. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
+.. 在右上角，记下 Trident 版本。
+.. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
++
+此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。
+
+
+
+. 记下此 CVO 部署中的所有永久性卷和卷。
+
+
+
+TIP: Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 AWS 中运行的 HA 状态和节点部署状态。
+
+
+
+=== 安装 Astra 控制中心
+
+请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
+
+
+
+== 在 Microsoft Azure 中部署 Astra 控制中心
+
+您可以在 Microsoft Azure 公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。
+
+
+
+=== Azure 所需的功能
+
+在 Azure 中部署 Astra 控制中心之前，您需要满足以下条件：
+
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
+* NetApp Cloud Central account
+* Red Hat OpenShift 容器平台（ OCP ） 4.8
+* Red Hat OpenShift Container Platform （ OCP ）权限（在命名空间级别用于创建 Pod ）
+* 具有用于创建存储分段和连接器的权限的 Azure 凭据
+
+
+
+
+=== Azure 的操作环境要求
+
+确保您选择托管 Astra 控制中心的操作环境符合环境官方文档中概述的基本资源要求。
+
+除了环境的资源要求之外， Astra 控制中心还需要以下资源：
+
+请参见 link:../get-started/requirements.html#operational-environment-requirements["Astra 控制中心运营环境要求"]。
+
+[cols="1h,2a"]
+|===
+| 组件 | 要求 
+
+
+| 后端 NetApp Cloud Volumes ONTAP 存储容量  a| 
+至少 300 GB 可用
+
+
+
+| 员工节点（ Azure 计算要求）  a| 
+总共至少 3 个辅助节点，每个节点有 4 个 vCPU 核心和 12 GB RAM
+
+
+
+| 负载平衡器  a| 
+服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务
+
+
+
+| FQDN （ Azure DNS 区域）  a| 
+一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
+
+
+
+| Astra Trident （在 NetApp Cloud Manager 中发现 Kubernetes 集群时安装）  a| 
+安装和配置的 Astra Trident 21.04 或更高版本以及 NetApp ONTAP 9.5 或更高版本将用作存储后端
+
+
+
+| 映像注册表  a| 
+您必须具有一个现有的专用注册表，例如 Azure 容器注册表（ ACR ），您可以将 Astra Control Center 构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
+
+
+NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
+
+
+
+| Astra Trident / ONTAP 配置  a| 
+Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持以下 ONTAP Kubernetes 存储类，这些存储类是在将 Kubernetes 集群导入到 NetApp Cloud Manager 中时创建的。这些功能由 Astra Trident 提供：
+
+* `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
+* `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
+* `vsaworkingenvironment-<>-Singal-NAS csi.trident.netapp.io`
+* `vsaworkingenvironment-<>-Singon-san csi.trident.netapp.io`
+
+
+|===
+
+NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
+
+
+
+=== Azure 部署概述
+
+下面简要介绍了适用于 Azure 的 Astra 控制中心的安装过程。
+
+下面详细介绍了其中每个步骤。
+
+. <<Install a RedHat OpenShift cluster on Azure>>。
+. <<Create Azure resource groups>>。
+. <<Ensure that you have sufficient IAM permissions>>。
+. <<Configure Azure>>。
+. <<Configure NetApp Cloud Manager>>。
+. <<Install and configure Astra Control Center>>。
+
+
+
+
+=== 在 Azure 上安装 RedHat OpenShift 集群
+
+第一步是在 Azure 上安装 RedHat OpenShift 集群。
+
+有关安装说明，请参见以下内容：
+
+* https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-azure-default.html["在 Azure 上安装 OpenShift 集群"^]。
+* https://docs.openshift.com/container-platform/4.8/installing/installing_azure/installing-azure-account.html#installing-azure-account["安装 Azure 帐户"^]。
+
+
+
+
+=== 创建 Azure 资源组
+
+至少创建一个 Azure 资源组。
+
+
+NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还应定义 Azure 资源组。请参见 OpenShift 文档。
+
+您可能需要创建平台集群资源组和目标应用程序 OpenShift 集群资源组。
+
+
+
+=== 确保您具有足够的 IAM 权限
+
+确保您具有足够的 IAM 角色和权限，可以安装 RedHat OpenShift 集群和 NetApp Cloud Volumes ONTAP 连接器。
+
+请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-azure.html["Azure 凭据和权限"^]。
+
+
+
+=== 配置 Azure
+
+接下来，将 Azure 配置为创建虚拟私有云，设置计算实例，创建 Azure Blob S3 存储分段，创建 Azure 容器注册表（ ACR ）以托管 Astra 控制中心映像，并将这些映像推送到此注册表。
+
+按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-azure-default.html["在 Azure 上安装 OpenShift 集群"^]。
+
+. 创建 Azure 虚拟私有云。
+. 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
+. 至少创建一个 Azure Blob S3 存储分段来存储备份。
+. 创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。
+. 创建存储分段访问所需的密钥。
+. 创建 Azure 容器注册表（ ACR ）以托管所有 Astra 控制中心映像。
+. 为 Docker 推送 / 拉所有 Astra 控制中心映像设置 ACR 访问。
+. 输入以下脚本，将 Accc 映像推送到此注册表：
++
+[listing]
+----
+az acr login -n <AZ ACR URL/Location>
+This script requires ACC manifest file and your Azure ACR location.
+----
++
+* 示例 * ：
+
++
+[listing]
+----
+manifestfile=astra-control-center-<version>.manifest
+AZ_ACR_REGISTRY=<target image repository>
+ASTRA_REGISTRY=<source ACC image repository>
+
+while IFS= read -r image; do
+    echo "image: $ASTRA_REGISTRY/$image $AZ_ACR_REGISTRY/$image"
+    root_image=${image%:*}
+    echo $root_image
+    docker pull $ASTRA_REGISTRY/$image
+    docker tag $ASTRA_REGISTRY/$image $AZ_ACR_REGISTRYY/$image
+    docker push $AZ_ACR_REGISTRY/$image
+done < astra-control-center-22.04.41.manifest
+----
+. 设置 DNS 区域。
+
+
+
+
+=== 配置 NetApp Cloud Manager
+
+使用 Cloud Manager 创建工作空间，向 Azure 添加连接器，创建工作环境并导入集群。
+
+按照 Cloud Manager 文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_azure.html["Azure 中的 Cloud Manager 入门"^]。
+
+使用所需的 IAM 权限和角色访问 Azure 帐户
+
+.步骤
+. 将凭据添加到 Cloud Manager 。
+. 添加适用于 Azure 的连接器。请参见 https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager 策略"^]。
++
+.. 选择 * Azure * 作为提供程序。
+.. 输入 Azure 凭据，包括应用程序 ID ，客户端密钥和目录（租户） ID 。
++
+请参见 https://docs.netapp.com/us-en/occm/task_creating_connectors_azure.html["从 Cloud Manager 在 Azure 中创建连接器"^]。
+
+
+
+. 确保连接器正在运行，然后切换到该连接器。
++
+image:acc-cvo-azure-connectors.png["在 Cloud Manager 中切换连接器"]
+
+. 为您的云环境创建一个工作环境。
++
+.. 位置： "Microsoft Azure" 。
+.. 键入： Cloud Volumes ONTAP HA 。
+
+
++
+image:acc-cvo-azure-working-environment.png["在 Cloud Manager 中创建工作环境"]
+
+. 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
++
+.. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
++
+image:acc-cvo-azure-connected.png["已在 Cloud Manager 中导入集群"]
+
+.. 在右上角，记下 Trident 版本。
+.. 记下显示 NetApp 作为配置程序的 CVO 集群存储类。
+
+
++
+此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。
+
+. 记下此 CVO 部署中的所有永久性卷和卷。
+. Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 Azure 中运行的 HA 状态和节点部署状态。
+
+
+
+
+=== 安装和配置 Astra 控制中心
+
+按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"]。
+
+使用 Astra 控制中心添加 Azure 存储分段。请参见 link:../get-started/setup_overview.html["设置 Astra 控制中心并添加存储分段"]。

@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: get-started/requirements.html 
-keywords: what are astra kubernetes requirements, astra control requirements, astra supported versions, apps, supported apps, mariadb, mysql, postgres, kubernetes version, ubuntu, image type, networking, environment, operational, operational environment, hosting, host, cluster, clusters 
+keywords: what are astra kubernetes requirements, astra control requirements, astra supported versions, apps, supported apps, mariadb, mysql, postgres, kubernetes version, ubuntu, image type, networking, environment, operational, operational environment, hosting, host, cluster, clusters, tanzu, tkg, tkgi, grid, kubernetes, k8s 
 summary: 通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支持，开始使用 Astra 控制中心。 
 ---
 = Astra 控制中心要求
@@ -19,9 +19,11 @@ summary: 通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支
 
 Astra 控制中心需要以下类型的操作环境之一：
 
-* Red Hat OpenShift 容器平台 4.6-8 ， 4.7 或 4.8
-* Rancher 2.5
-* Kubernetes 1.19 到 1.21 （包括 1.21.x ）
+* Kubernetes 1.20 到 1.23
+* 使用 RKE1 的 Rancher 2.2.8 ， 2.0.9 或 2.6
+* Red Hat OpenShift 容器平台 4.6-8 ， 4.7 ， 4.8 或 4.9
+* VMware Tanzu Kubernetes 网格 1.4
+* VMware Tanzu Kubernetes Grid Integrated Edition 1.12.2
 
 
 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。除了环境的资源要求之外， Astra 控制中心还需要以下资源：
@@ -30,20 +32,17 @@ Astra 控制中心需要以下类型的操作环境之一：
 | 组件 | 要求 
 
 
-| 后端 ONTAP 存储容量 | 至少 300 GB 可用 
+| ONTAP 后端存储容量 | 至少 300 GB 可用 
 
 
 | 工作节点 | 总共至少 3 个辅助节点，每个节点有 4 个 CPU 核和 12 GB RAM 
 
 
-| 负载平衡器 | 服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务 
-
-
-| FQDN 解析 | 一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法 
+| FQDN 地址 | Astra 控制中心的 FQDN 地址 
 
 
 | Astra Trident  a| 
-* 如果要使用 NetApp ONTAP 9.5 或更高版本作为存储后端，则已安装并配置 Astra Trident 21.04 或更高版本
+* 已安装并配置 Astra Trident 21.04 或更高版本
 * 如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本
 
 
@@ -76,6 +75,37 @@ NOTE: 如果您计划将第二个 OpenShift 操作环境添加为托管计算资
 
 
 
+=== VMware Tanzu Kubernetes Grid 集群要求
+
+在 VMware Tanzu Kubernetes Grid （ TKG ）或 Tanzu Kubernetes Grid Integrated Edition （ TKGi ）集群上托管 Astra Control Center 时，请记住以下注意事项。
+
+* 在任何要由 Astra Control 管理的应用程序集群上禁用 TKG 或 TKGi 默认存储类强制实施。为此，您可以编辑命名空间集群上的 `TanuKubernetes Cluster` 资源。
+* 您必须创建一个允许 Astra 控制中心在集群中创建 Pod 的安全策略。您可以使用以下命令执行此操作：
++
+[listing]
+----
+kubectl config use-context <context-of-workload-cluster>
+kubectl create clusterrolebinding default-tkg-admin-privileged-binding --clusterrole=psp:vmware-system-privileged --group=system:authenticated
+----
+* 在 TKG 或 TKGi 环境中部署 Astra 控制中心时，请注意 Astra Trident 的特定要求。有关详细信息，请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#other-known-configuration-options["Astra Trident 文档"^]。
+
+
+
+NOTE: 默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时过期。如果您使用的是 Tanzu 产品组合，则必须使用未过期的令牌生成 Tanzu Kubernetes 集群配置文件，以防止 Astra 控制中心与受管应用程序集群之间出现连接问题。有关说明，请访问 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/nsx-application-platform/GUID-52A52C0B-9575-43B6-ADE2-E8640E22C29F.html["VMware NSX-T 数据中心产品文档。"]
+
+
+
+== 支持的存储后端
+
+Astra 控制中心支持以下存储后端。
+
+* Astra 数据存储
+* NetApp ONTAP 9.5 或更高版本的 AFF 和 FAS 系统
+* NetApp Cloud Volumes ONTAP
+
+
+
+
 == 应用程序集群要求
 
 对于计划从 Astra 控制中心管理的集群， Astra 控制中心具有以下要求。如果您计划管理的集群是托管 Astra 控制中心的运行环境集群，则这些要求也适用。
@@ -103,29 +133,36 @@ Astra Control 具有以下应用程序管理要求：
 * * 存储类 * ：如果您安装的应用程序明确设置了 StorageClass ，并且需要克隆该应用程序，则克隆操作的目标集群必须具有最初指定的 StorageClass 。将显式设置了 StorageClass 的应用程序克隆到不具有相同 StorageClass 的集群将失败。
 * * Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：
 +
-** ClusterRole
-** ClusterRoleBinding.
-** 配置映射
-** 自定义资源定义
-** 自定义资源
-** DemonSet
-** 部署
-** DeploymentConfig
-** 传入
-** MutatingWebhook
-** PersistentVolumeClaim
-** POD
-** ReplicaSet
-** RoleBinding.
-** Role
-** 路由
-** 机密
-** 服务
-** ServiceAccount
-** 状态集
-** 验证 Webhook
+[cols="1,1,1"]
+|===
 
 
+| ClusterRole | ClusterRoleBinding. | 配置映射 
+
+
+| 自定义资源定义 | 自定义资源 | cronjob 
+
+
+| DemonSet | HorizontalPodAutoscaler | 传入 
+
+
+| DeploymentConfig | MutatingWebhook | PersistentVolumeClaim 
+
+
+| POD | PodDisruptionBuget | 播客模板 
+
+
+| 网络策略 | ReplicaSet | Role 
+
+
+| RoleBinding. | 路由 | 机密 
+
+
+| 服务 | ServiceAccount | 状态集 
+
+
+| 验证 Webhook |  |  
+|===
 
 
 
@@ -172,17 +209,25 @@ NOTE: 操作员及其安装的应用程序必须使用相同的命名空间；�
 
 如果您要尝试使用 Astra 控制中心，可以 link:setup_overview.html#add-a-full-or-evaluation-license["使用 90 天评估许可证"]。
 
+要了解有关许可证工作原理的详细信息，请参见 link:../concepts/licensing.html["许可"]。
 
 
-== 内部 Kubernetes 集群的服务类型 "loadbalancer"
 
-Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为服务提供服务），并要求为其分配一个可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个负载平衡器，则可以使用 https://docs.netapp.com/us-en/netapp-solutions/containers/rh-os-n_LB_MetalLB.html#installing-the-metallb-load-balancer["元 LB"^] 自动为服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
+== 内部 Kubernetes 集群的传入
+
+您可以选择 Astra 控制中心使用的网络传入类型。默认情况下， Astra 控制中心会将 Astra 控制中心网关（ service/traefik ）部署为集群范围的资源。如果您的环境允许使用服务负载平衡器，则 Astra 控制中心也支持使用服务负载平衡器。如果您希望使用服务负载平衡器，但尚未配置此平衡器，则可以使用 MetalLB 负载平衡器自动为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
+
+
+NOTE: 如果要在 Tanzu Kubernetes 网格集群上托管 Astra 控制中心，请使用 `kubectl get nssxlbmonitors -a` 命令查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。
 
 
 
 == 网络要求
 
 托管 Astra 控制中心的操作环境使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口需要在托管 Astra 控制中心的环境与每个受管集群之间进行双向连接（请在适用时注明）。
+
+
+NOTE: 您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 Astra 控制中心则可以管理为双堆栈操作配置的应用程序和存储后端。有关双堆栈集群要求的详细信息，请参见 https://kubernetes.io/docs/concepts/services-networking/dual-stack/["Kubernetes 文档"^]。
 
 |===
 | 源 | 目标 | Port | 协议 | 目的 
@@ -200,7 +245,7 @@ Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中
 | Astra 控制中心 | Amazon S3 存储分段提供商 (https://my-bucket.s3.us-west-2.amazonaws.com/)[] | 443. | HTTPS | Amazon S3 存储通信 
 
 
-| Astra 控制中心 | NetApp ActiveIQ (https://activeiq.solidfire.com)[] | 443. | HTTPS | NetApp ActiveIQ 通信 
+| Astra 控制中心 | NetApp AutoSupport (https://support.netapp.com)[] | 443. | HTTPS | NetApp AutoSupport 通信 
 |===
 
 

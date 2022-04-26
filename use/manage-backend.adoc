@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: use/manage-backend.html 
-keywords: how to use astra control, what is astra storage, how to set up astra storage backend, ontap storage in astra, kubernetes, 
+keywords: how to use astra control, what is astra storage, how to set up astra storage backend, ontap storage in astra, backend storage in astra 
 summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现并使用已部署的资源，包括 Trident ， ONTAP 以及关联的存储类。 
 ---
 = 管理存储后端
@@ -20,6 +20,9 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 * link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"]
 * <<View storage backend details>>
 * <<Unmanage a storage backend>>
+* <<Update a storage backend license>>
+* <<Add nodes to a storage backend cluster>>
+* <<Remove a storage backend>>
 
 
 
@@ -73,9 +76,108 @@ image:../use/acc_backends_ci_connection2.png["后端页面的屏幕截图"]
 .步骤
 . 从左侧导航栏中，选择 * 后端 * 。
 . 选择存储后端。
-. 从操作菜单中，选择 * 取消管理 * 。
-. 键入 "unmanage" 确认删除。
-. 选择 * 是，删除存储后端 * 。
+. 从选项菜单的 * 操作 * 列中，选择 * 取消管理 * 。
+. 键入 "unmanage" 确认此操作。
+. 选择 * 是，取消管理存储后端 * 。
+
+
+
+
+== 删除存储后端
+
+您可以删除不再使用的存储后端。您可能需要执行此操作，以使您的配置简单且最新。
+
+
+TIP: 如果要删除 Astra Data Store 后端，则 vCenter 不能创建它。
+
+.您需要什么？ #8217 ；将需要什么
+* 确保存储后端未受管。
+* 确保存储后端没有与 Astra Data Store 集群关联的任何卷。
+
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 如果管理后端，请取消管理它。
++
+.. 选择 * 受管 * 。
+.. 选择存储后端。
+.. 从 * 操作 * 选项中，选择 * 取消管理 * 。
+.. 键入 "unmanage" 确认此操作。
+.. 选择 * 是，取消管理存储后端 * 。
+
+
+. 选择 * 已发现 * 。
++
+.. 选择存储后端。
+.. 从 * 操作 * 选项中，选择 * 删除 * 。
+.. 键入 "remove" 确认此操作。
+.. 选择 * 是，删除存储后端 * 。
+
+
+
+
+
+
+== 更新存储后端许可证
+
+您可以更新 Astra Data Store 存储后端的许可证，以支持更大规模的部署或增强功能。
+
+.您需要什么？ #8217 ；将需要什么
+* 已部署和管理的 Astra Data Store 存储后端
+* Astra Data Store 许可证文件（请联系您的 NetApp 销售代表以购买 Astra Data Store 许可证）
+
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 选择存储后端的名称。
+. 在 * 基本信息 * 下，您可以查看安装的许可证类型（如果有）。
++
+如果将鼠标悬停在许可证信息上，则会显示一个弹出窗口，其中包含更多信息，例如到期时间和授权信息。
+
+. 在 * 许可证 * 下，选择许可证名称旁边的编辑图标。
+. 在 * 更新许可证 * 页面中，选择 * 添加许可证 * 。
+. 选择从 NetApp 获取的许可证文件。
+. 选择 * 添加 * 。
+. 选择 * 更新 * 。
+
+
+
+
+== 将节点添加到存储后端集群
+
+您可以向 Astra Data Store 集群添加节点，最多可添加为 Astra Data Store 安装的许可证类型所支持的节点数。
+
+.您需要什么？ #8217 ；将需要什么
+* 已部署并获得许可的 Astra Data Store 存储后端
+* 您已在 Astra 控制中心中添加 Astra 数据存储软件包
+* 要添加到集群的一个或多个新节点
+
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 选择存储后端的名称。
+. 在 " 基本信息 " 下，您可以查看此存储后端集群中的节点数。
+. 在 * 节点 * 下，选择节点数旁边的编辑图标。
+. 在 * 添加节点 * 页面中，输入有关新节点的信息：
++
+.. 为每个节点分配一个节点标签。
+.. 执行以下操作之一：
++
+*** 如果希望 Astra 数据存储始终根据您的许可证使用最大可用节点数，请启用 * 始终使用最多允许的最大节点数 * 复选框。
+*** 如果您不希望 Astra 数据存储始终使用最大可用节点数，请选择所需的要使用的节点总数。
+
+
+.. 如果您部署的 Astra 数据存储启用了保护域，请将新节点分配给保护域。
+
+
+. 选择 * 下一步 * 。
+. 输入每个新节点的 IP 地址和网络信息。为一个新节点输入一个 IP 地址，为多个新节点输入一个 IP 地址池。
++
+如果 Astra 数据存储可以使用部署期间配置的 IP 地址，则无需输入任何 IP 地址信息。
+
+. 选择 * 下一步 * 。
+. 查看新节点的配置。
+. 选择 * 添加节点 * 。
 
 
 

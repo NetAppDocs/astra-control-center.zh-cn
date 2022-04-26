@@ -65,9 +65,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。
 
-* 从 Astra Control 中删除 Kubernetes 集群时是否会卸载 NetApp Trident ？ *
-
-从 Astra Control 中删除 Trident 后，它不会从集群中卸载。
+* 取消管理集群时是否自动从集群中卸载 NetApp Trident ？ * 从 Astra 控制中心取消管理集群时，不会自动从集群中卸载 Trident 。要卸载 Trident ，您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照 Trident 文档中的以下步骤进行操作"^]。
 
 
 
@@ -86,6 +84,8 @@ Astra Control 不会部署应用程序。应用程序必须部署在 Astra Contr
 否虽然 Astra Control 可以发现使用非 NetApp 存储的应用程序，但它无法管理使用非 NetApp 存储的应用程序。
 
 * 我是否应该管理 Astra Control 本身？ * 不，您不应该管理 Astra Control 本身，因为它是一个 " 系统应用程序 " 。
+
+* 运行状况不正常的 Pod 是否影响应用程序管理？ * 如果受管应用程序中的 Pod 处于运行状况不正常的状态，则 Astra Control 无法创建新的备份和克隆。
 
 
 

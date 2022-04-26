@@ -26,14 +26,10 @@ Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端
 
 您可以使用 UI 或添加新许可证 https://docs.netapp.com/us-en/astra-automation/index.html["API"^] 获得完整的 Astra 控制中心功能。如果没有许可证，则只能使用 Astra 控制中心来管理用户和添加新集群。
 
-从下载 Astra 控制中心时 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]，您还下载了 NetApp 许可证文件（ NLF ）。确保您有权访问此许可证文件。
+有关如何计算许可证的详细信息，请参见 link:../concepts/licensing.html["许可"]。
 
 
 NOTE: 要更新现有评估版或完整许可证，请参见 link:../use/update-licenses.html["更新现有许可证"]。
-
-
-
-=== 添加完整许可证或评估许可证
 
 Astra 控制中心许可证使用 Kubernetes CPU 单元测量 CPU 资源。此许可证需要考虑分配给所有受管 Kubernetes 集群的工作节点的 CPU 资源。在添加许可证之前，您需要从获取许可证文件（ NLF ） link:https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
 
@@ -41,6 +37,8 @@ Astra 控制中心许可证使用 Kubernetes CPU 单元测量 CPU 资源。此�
 
 
 NOTE: 如果您的安装增长到超过许可的 CPU 单元数，则 Astra 控制中心将阻止您管理新应用程序。超过容量时，将显示警报。
+
+从下载 Astra 控制中心时 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]，您还下载了 NetApp 许可证文件（ NLF ）。确保您有权访问此许可证文件。
 
 .步骤
 . 登录到 Astra 控制中心 UI 。
@@ -135,14 +133,14 @@ NOTE: 为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群�
 +
 ** 从 * 信息板 * ：
 +
-... 从信息板存储后端部分中，选择 * 管理 * 。
-... 在信息板资源摘要 > 存储后端部分中，选择 * 添加 * 。
+... 从存储后端部分中，选择 * 添加 * 。
+... 从资源摘要 > 存储后端部分中，选择 * 添加 * 。
 
 
 ** 从 * 后端 * ：
 +
 ... 在左侧导航区域中，选择 * 后端 * 。
-... 选择 * 管理 * 。
+... 选择 * 添加 * 。
 
 
 
@@ -151,6 +149,7 @@ NOTE: 为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群�
 +
 ** * Astra 数据存储库 * ：
 +
+... 选择 * 使用现有 * 选项卡。
 ... 选择 * Astra Data Store* 选项卡。
 ... 选择受管计算集群并选择 * 下一步 * 。
 ... 确认后端详细信息并选择 * 管理存储后端 * 。
@@ -158,6 +157,7 @@ NOTE: 为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群�
 
 ** * ONTAP * ：
 +
+... 选择 * 使用现有 * 选项卡。
 ... 输入 ONTAP 管理员凭据并选择 * 审核 * 。
 ... 确认后端详细信息并选择 * 管理 * 。
 

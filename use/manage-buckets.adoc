@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: use/manage-buckets.html 
 keywords: how to set up object storage in astra, how to set up astra buckets, s3, astra, setting up astra control, how to set up astra control center, kubernetes 
-summary: 如果要备份应用程序和的永久性存储，并且要跨集群克隆应用程序，则必须添加对象存储分段提供程序。 
+summary: 如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则必须添加对象存储分段提供程序。 
 ---
 = 管理存储分段
 :hardbreaks:
@@ -15,17 +15,16 @@ summary: 如果要备份应用程序和的永久性存储，并且要跨集群�
 
 如果要将应用程序配置和永久性存储克隆到同一集群，则不需要存储分段。
 
-使用以下任一存储分段提供程序：
+使用以下 Amazon Simple Storage Service （ S3 ）存储分段提供商之一：
 
 * NetApp ONTAP S3
 * NetApp StorageGRID S3
 * 通用 S3
+* Microsoft Azure
 
 
 
 NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段提供商，但 Astra 控制中心可能不支持声称支持 Amazon S3 的所有对象存储供应商。
-
-您不能删除某个存储分段，但可以对其进行编辑。
 
 存储分段可以处于以下状态之一：
 
@@ -40,6 +39,7 @@ NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段�
 
 * link:../get-started/setup_overview.html#add-a-bucket["添加存储分段"]
 * <<Edit a bucket>>
+* <<Remove a bucket>>
 
 
 
@@ -67,13 +67,40 @@ NOTE: 添加存储分段时，请选择正确的存储分段提供程序，并�
 
 .步骤
 . 从左侧导航栏中，选择 * 分段器 * 。
-. 从操作菜单中，选择 * 编辑 * 。
+. 从选项菜单的 * 操作 * 列中，选择 * 编辑 * 。
 . 更改存储分段类型以外的任何信息。
 +
 
 TIP: 您无法修改存储分段类型。
 
 . 选择 * 更新 * 。
+
+
+
+
+== 删除存储分段
+
+您可以删除不再使用或运行状况不佳的存储分段。您可能需要执行此操作以使对象存储配置简单且最新。
+
+
+NOTE: 您不能删除默认存储分段。如果要删除此存储分段，请先选择另一个存储分段作为默认存储。
+
+.您需要什么？ #8217 ；将需要什么
+* 开始之前，应检查以确保此存储分段没有正在运行或已完成的备份。
+* 您应进行检查，以确保存储分段未在任何活动保护策略中使用。
+
+
+如果存在，您将无法继续。
+
+.步骤
+. 从左侧导航栏中，选择 * 分段器 * 。
+. 从 * 操作 * 菜单中，选择 * 删除 * 。
++
+
+NOTE: Astra Control 可首先确保没有使用存储分段进行备份的计划策略，并且要删除的存储分段中没有活动备份。
+
+. 键入 "remove" 确认此操作。
+. 选择 * 是，删除存储分段 * 。
 
 
 

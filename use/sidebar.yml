@@ -35,6 +35,8 @@ entries:
   entries:
   - title: 管理用户
     url: "/use/manage-users.html"
+  - title: 管理角色
+    url: "/use/manage-roles.html"
   - title: 管理通知
     url: "/use/manage-notifications.html"
   - title: 管理凭据
@@ -49,8 +51,6 @@ entries:
   url: "/use/manage-backend.html"
 - title: 监控和保护基础架构
   url: "/use/monitor-protect.html"
-- title: 更新现有许可证
-  url: "/use/update-licenses.html"
 - title: 取消管理应用程序和集群
   url: "/use/unmanage.html"
 - title: 升级 Astra 控制中心

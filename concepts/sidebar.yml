@@ -8,7 +8,11 @@ entries:
   url: "/concepts/architecture.html"
 - title: 数据保护
   url: "/concepts/data-protection.html"
+- title: 许可
+  url: "/concepts/licensing.html"
 - title: 经验证的应用程序与标准应用程序
   url: "/concepts/validated-vs-standard.html"
 - title: 存储类和 PV 大小
   url: "/concepts/choose-class-and-size.html"
+- title: 用户角色和命名空间
+  url: "/concepts/user-roles-namespaces.html"

@@ -104,7 +104,7 @@ thin                   kubernetes.io/vsphere-volume   Delete          Immediate 
 *astracontrol-service-account.yaml*
 ----
 +
-[listing]
+[source, yaml]
 ----
 apiVersion: v1
 kind: ServiceAccount
@@ -120,6 +120,7 @@ kubectl apply -f astracontrol-service-account.yaml
 ----
 
 
+. （可选）如果集群使用限制性的 POD 安全策略，该策略不允许创建特权 POD 或允许 Pod 容器中的进程以 root 用户身份运行，请为集群创建一个自定义 POD 安全策略，以使 Astra Control 能够创建和管理 Pod 。有关说明，请参见 link:acc-create-podsecuritypolicy.html["创建自定义 POD 安全策略"]。
 . 按如下所示授予集群管理员权限：
 +
 .. 创建一个 `ClusterRoleBindingm` 文件，该文件名为 `astracontrol — clusterrolebind.YAML` 。
@@ -132,7 +133,7 @@ kubectl apply -f astracontrol-service-account.yaml
 *astracontrol-clusterrolebinding.yaml*
 ----
 +
-[listing]
+[source, yaml]
 ----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -184,7 +185,7 @@ kubectl get serviceaccount astracontrol-service-account --context <context> --na
 *create-kubeconfig.sh*
 ----
 +
-[listing]
+[source, sh]
 ----
 # Update these to match your environment.
 # Replace TOKEN_INDEX with the correct value

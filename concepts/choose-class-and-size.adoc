@@ -12,7 +12,7 @@ summary: Astra 控制中心支持由 ONTAP 存储类或 Astra 数据存储类提
 
 
 [role="lead"]
-Astra 控制中心支持使用 ONTAP 或 Astra 数据存储作为存储后端。您应了解存储类和永久性卷（ PV ）大小如何帮助您实现性能目标。
+Astra 控制中心支持使用 ONTAP 或 Astra 数据存储作为存储后端。
 
 
 

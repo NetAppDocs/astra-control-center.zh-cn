@@ -14,25 +14,21 @@ summary: Astra 可以从快照或备份还原应用程序配置和永久性存�
 [role="lead"]
 Astra Control 可以从快照或备份还原应用程序。将应用程序还原到同一集群时，从现有快照进行还原的速度会更快。您可以使用 Astra Control UI 或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 还原应用程序。
 
-
-NOTE: 如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。
-
-
-NOTE: 如果要还原到其他集群，请确保此集群使用相同的永久性卷访问模式（例如 ReadWriteMany ）。如果目标永久性卷访问模式不同，还原操作将失败。
-
-[NOTE]
-====
-在 OpenShift 集群上创建用于托管应用程序的项目时，系统会为该项目（或 Kubernetes 命名空间）分配一个 SecurityContext UID 。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。
-
+.关于此任务
+* 强烈建议在继续还原之前先创建应用程序的快照或备份。这样，您可以在还原失败时从快照或备份进行克隆。
+* 如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。
+* 如果要还原到其他集群，请确保此集群使用相同的永久性卷访问模式（例如 ReadWriteMany ）。如果目标永久性卷访问模式不同，还原操作将失败。
+* 在 OpenShift 集群上创建用于托管应用程序的项目时，系统会为该项目（或 Kubernetes 命名空间）分配一个 SecurityContext UID 。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。
++
 `oc new-project WordPress` `oc adm policy add-SCS-to-group anyuid system ： serviceaccounts ： WordPress` `oc adm policy add-SCS-to-user privileged -z default -n WordPress`
 
-====
+
+
 .步骤
 . 选择 * 应用程序 * ，然后选择应用程序的名称。
 . 选择 * 数据保护 * 。
 . 如果要从快照还原，请保持选中 * 快照 * 图标。否则，请选择 * 备份 * 图标以从备份中还原。
-. 在 * 操作 * 列中选择要从中还原的快照或备份的下拉列表。
-. 选择 * 还原应用程序 * 。
+. 从要还原的快照或备份的 * 操作 * 列的选项菜单中，选择 * 还原应用程序 * 。
 . * 还原详细信息 * ：指定已还原应用程序的详细信息。默认情况下，将显示当前集群和命名空间。保留这些值不变，以便原位还原应用程序，从而将应用程序还原到其自身的早期版本。如果要还原到其他集群或命名空间，请更改这些值。
 +
 ** 输入应用程序的名称和命名空间。

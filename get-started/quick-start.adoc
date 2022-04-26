@@ -30,19 +30,15 @@ link:../get-started/requirements.html["了解有关 Astra 控制中心要求的�
 +
 或者，也可以使用 Red Hat OperatorHub 安装 Astra 控制中心。
 
-* 了解由 ONTAP 存储后端提供支持的 Trident 配置。或者，发现您的 https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 预览"] 集群作为存储后端。
-+
-您可以在 OpenShift 注册表上安装映像，也可以使用本地注册表。
-
 
 
 [role="quick-margin-para"]
-link:../get-started/install_acc.html["了解有关安装 Astra 控制中心的更多信息"]。
+link:../get-started/install_overview.html["了解有关安装 Astra 控制中心的更多信息"]。
 
 .跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] Alt-Three </span> 完成一些初始设置任务
 * 添加许可证
 * 添加 Kubernetes 集群， Astra 控制中心将发现详细信息。
-* 添加 ONTAP 或 Astra 数据存储预览存储后端。
+* 添加 ONTAP 或 https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 预览"] 存储后端。
 * 或者，添加用于存储应用程序备份的对象存储分段。
 
 
@@ -57,7 +53,7 @@ link:../get-started/setup_overview.html["了解有关初始设置过程的更多
 
 
 [role="quick-margin-para"]
-link:../get-started/install_acc.html["安装 Astra 控制中心"]。
+link:../get-started/install_overview.html["安装 Astra 控制中心"]。
 
 
 

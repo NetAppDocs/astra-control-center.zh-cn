@@ -17,6 +17,10 @@ summary: 将集群添加到 Astra 控制中心后，您可以查看有关集群�
 .步骤
 . 在 Astra 控制中心 UI 中，选择 * 集群 * 。
 . 在 * 集群 * 页面上，选择要查看其详细信息的集群。
++
+
+NOTE: 如果集群处于 `removed` 状态，而集群和网络连接运行状况良好（外部尝试使用 Kubernetes API 访问集群成功），则您为 Astra Control 提供的 kubeconfig 可能不再有效。这可能是由于集群上的证书轮换或到期造成的。要更正此问题描述，请使用在 Astra Control 中更新与集群关联的凭据 link:https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"]。
+
 . 查看 * 概述 * ， * 存储 * 和 * 活动 * 选项卡上的信息，找到您要查找的信息。
 +
 ** * 概述 * ：有关工作节点的详细信息，包括其状态。

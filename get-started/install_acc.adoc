@@ -35,7 +35,7 @@ OpenShift 示例：
 ----
 oc get apiservices
 ----
-* 您已在数据中心为 Astra 控制中心创建 FQDN 地址。
+* 您计划使用的 Astra FQDN 需要可路由到此集群。这意味着您的内部 DNS 服务器中有一个 DNS 条目，或者您正在使用已注册的核心 URL 路由。
 
 
 Astra 控制中心安装过程将执行以下操作：
@@ -63,10 +63,9 @@ IMPORTANT: 请勿在整个安装过程中执行以下命令以避免删除所有
 * <<Configure Astra Control Center>>
 * <<Complete Astra Control Center and operator installation>>
 * <<Verify system status>>
+* <<Set up ingress for load balancing>>
 * <<Log in to the Astra Control Center UI>>
 
-
-执行以完成部署 link:setup_overview.html["设置任务"]。
 
 
 
@@ -228,6 +227,12 @@ kubectl create secret docker-registry astra-registry-cred -n [netapp-acc or cust
 ----
 secret/astra-registry-cred created
 ----
+.. （可选）如果您希望集群在安装后由 Astra 控制中心自动管理，请确保在您要使用此命令部署到的 Astra 控制中心命名空间中提供 kubeconfig 作为机密：
++
+[listing]
+----
+kubectl create secret generic [acc-kubeconfig-cred or custom secret name] --from-file=<path-to-your-kubeconfig> -n [netapp-acc or custom namespace]
+----
 
 
 
@@ -355,7 +360,27 @@ IMPORTANT: 如果您使用的注册表不需要授权，则必须删除 `imageRe
 .. 将 `email` 字符串更改为默认的初始管理员地址。复制此电子邮件地址以在中使用 <<Log in to the Astra Control Center UI,后续步骤>>。
 .. 将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。
 .. （可选）添加与帐户关联的用户的名字 `firstName` 和姓氏 `lastName` 。您可以在用户界面中立即或稍后执行此步骤。
-.. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Astra Trident StorageClass 资源。
+.. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Trident storageClass 资源。
+.. （可选）如果您希望集群在安装后由 Astra 控制中心自动管理，并且您已经这样了 <<substep_kubeconfig_secret,已为此集群创建包含 kubeconfig 的密钥>>，通过在此 YAML 文件中添加一个名为 `astraKubeConfigSecret 的新字段来提供此机密的名称： "Acc-kubeconfig-cred 或自定义机密名称 "`
+.. 完成以下步骤之一：
++
+*** * 其他传入控制器（ ingressType ： Generic ） * ：这是 Astra 控制中心的默认操作。部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。
++
+默认的 Astra 控制中心安装会将其网关（ `sservice/traefik` ）设置为类型 `ClusterIP` 。此默认安装要求您另外设置一个 Kubernetes IngressController/Ingress ，以便向其路由流量。如果要使用入口，请参见 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["设置传入以进行负载平衡"]。
+
+*** * 服务负载平衡器（ ingressType ： AccTraefik ） * ：如果您不想安装 IngressController 或创建 Ingress 资源，请将 `ingressType` 设置为 `AccTraefik` 。
++
+这会将 Astra 控制中心 `traefik` 网关部署为 Kubernetes 负载平衡器类型的服务。
+
++
+Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为 `svC/traefik` ），并要求为其分配可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个平衡器，则可以使用 MetalLB 或其他外部服务负载平衡器为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
+
++
+
+NOTE: 有关 "loadbalancer" 服务类型和入口的详细信息，请参见 link:../get-started/requirements.html["要求"]。
+
+
+
 .. （对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 link:../release-notes/known-issues-ads.html#astra-data-store-cannot-be-used-as-a-storage-class-for-astra-control-center-due-to-mongodb-pod-liveness-probe-failure["需要进行的其他更改"] 向 YAML 报告。
 
 
@@ -370,6 +395,8 @@ spec:
   *accountName: "Example"*
   astraVersion: "ASTRA_VERSION"
   *astraAddress: "astra.example.com"*
+  *astraKubeConfigSecret: "acc-kubeconfig-cred or custom secret name"*
+  *ingressType: "Generic"*
   autoSupport:
     *enrolled: true*
   *email: "[admin@example.com]"*
@@ -516,18 +543,22 @@ vault-controller-86c94fbf4f-krttq          1/1     Running   0          9m24s
 ----
 kubectl logs deploy/acc-operator-controller-manager -n netapp-acc-operator -c manager -f
 ----
++
+
+NOTE: `AccHost` 集群注册是最后一项操作，如果失败，发生原因 部署不会失败。如果日志中指示集群注册失败，您可以通过添加集群工作流再次尝试注册 link:../get-started/setup_overview.html#add-cluster["在 UI 中"] 或 API 。
+
 . 当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 `AstraControlCenter` 实例来验证安装是否成功。
 +
 [listing]
 ----
 kubectl get acc -o yaml -n [netapp-acc or custom namespace]
 ----
-. `s响应中的 tatus.deploymentState` `D字段，查看` eploy 值。如果部署失败，则会显示一条错误消息。
-+
+. 在 YAML 中，` 响应中的 `status.deploymentState` 字段以查看 `Deploy 值。如果部署失败，则会显示一条错误消息。
+. 要获取登录到 Astra 控制中心时要使用的一次性密码，请复制 `status.uuid` 值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或在此示例中为 `Acc-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f` ）。
 
-NOTE: 您将在下一步中使用 `uuid` 。
 
-+
+.YAML 详细信息示例
+====
 [listing, subs="+quotes"]
 ----
 name: astra
@@ -748,7 +779,101 @@ metadata:
  resourceVersion: ""
  selfLink: ""
 ----
-. 要获取登录到 Astra 控制中心时要使用的一次性密码，请从上一步的响应中复制 `status.uuid` 值。密码为 `Acc-` ，后跟 UUID 值（`Acc-[UUUUUID]` 或在本示例中为 `Acc-c49008a5-4ef1-4c5d-a53e-830daf994116` ）。
+====
+
+
+== 设置传入以进行负载平衡
+
+您可以设置 Kubernetes 入口控制器，用于管理对服务的外部访问，例如集群中的负载平衡。
+
+此操作步骤 介绍了如何设置入口控制器（`ingressType ： Generic` ）。这是 Astra 控制中心的默认操作。部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。
+
+
+NOTE: 如果您不想设置入口控制器，可以设置 `ingressType ： AccTraefik ）` 。Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为 `svC/traefik` ），并要求为其分配可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个平衡器，则可以使用 MetalLB 或其他外部服务负载平衡器为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。有关 "loadbalancer" 服务类型和入口的详细信息，请参见 link:../get-started/requirements.html["要求"]。
+
+根据您使用的入口控制器类型，步骤会有所不同：
+
+* nginx 入口控制器
+* OpenShift 入口控制器
+
+
+.您需要什么？ #8217 ；将需要什么
+* 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/["入口控制器"] 应已部署。
+* 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
+* 您使用的是介于 v1.19 和 v1.22 之间的 Kubernetes 版本，包括 v1.19 和 v1.22 。
+
+
+.nginx 入口控制器的步骤
+. 创建类型的密钥 http://kubernetes.io/tls["`Kubernetes 。 IO/TLS`"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
+. 使用 `vipeta1` （在 Kubernetes 版本低于或 1.22 的情况下已弃用）或 `v1` 资源类型（对于已弃用或新模式）在 `NetApp-Accc` （或自定义命名）命名空间中部署入站资源：
++
+.. 对于 `v1bea1` 已弃用的架构，请遵循以下示例：
++
+[listing]
+----
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-acc
+  namespace: [netapp-acc or custom namespace]
+  annotations:
+    kubernetes.io/ingress.class: [class name for nginx controller]
+spec:
+  tls:
+  - hosts:
+    - <ACC address>
+    secretName: [tls secret name]
+  rules:
+  - host: [ACC address]
+    http:
+      paths:
+      - backend:
+        serviceName: traefik
+        servicePort: 80
+        pathType: ImplementationSpecific
+----
+.. 对于 `v1` 新架构，请遵循以下示例：
++
+[listing]
+----
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netapp-acc-ingress
+  namespace: [netapp-acc or custom namespace]
+spec:
+  ingressClassName: [class name for nginx controller]
+  tls:
+  - hosts:
+    - <ACC address>
+    secretName: [tls secret name]
+  rules:
+  - host: <ACC addess>
+    http:
+      paths:
+        - path:
+          backend:
+            service:
+              name: traefik
+              port:
+                number: 80
+          pathType: ImplementationSpecific
+----
+
+
+
+
+.OpenShift 入口控制器的步骤
+. 获取证书并获取密钥，证书和 CA 文件，以供 OpenShift 路由使用。
+. 创建 OpenShift 路由：
++
+[listing]
+----
+oc create route edge --service=traefik
+--port=web -n [netapp-acc or custom namespace]
+--insecure-policy=Redirect --hostname=<ACC address>
+--cert=cert.pem --key=key.pem
+----
 
 
 

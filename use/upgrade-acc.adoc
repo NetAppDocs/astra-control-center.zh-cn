@@ -43,8 +43,9 @@ Astra 控制中心升级过程将指导您完成以下高级步骤：
 * <<Add the images to your local registry>>
 * <<Install the updated Astra Control Center operator>>
 * <<Upgrade Astra Control Center>>
-* <<Upgrade third-party services>>
+* <<Upgrade third-party services (Optional)>>
 * <<Verify system status>>
+* <<Set up ingress for load balancing>>
 
 
 
@@ -144,8 +145,13 @@ imagePullSecrets:
 ----
 .. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 <<substep_image_local_registry_push,上一步>>。
 .. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 <<substep_image_local_registry_push,上一步>>。
-
-
+.. 将以下值添加到 `env` 部分：
++
+[listing]
+----
+- name: ACCOP_HELM_UPGRADETIMEOUT
+  value: 300m
+----
 +
 [listing, subs="+quotes"]
 ----
@@ -186,10 +192,14 @@ spec:
         env:
         - name: ACCOP_LOG_LEVEL
           value: "2"
+        *- name: ACCOP_HELM_UPGRADETIMEOUT*
+          *value: 300m*
         *image: [your_registry_path]/acc-operator:[version x.y.z]*
         imagePullPolicy: IfNotPresent
       *imagePullSecrets: []*
 ----
+
+
 . 安装更新后的 Astra 控制中心操作员：
 +
 [listing]
@@ -221,7 +231,7 @@ deployment.apps/acc-operator-controller-manager configured
 
 == 升级 Astra 控制中心
 
-. 编辑 Astra Control Center 自定义资源（ CR ）并将 Astra 版本（`AstraVersion` Insideof `SPec` ）号更改为最新版本：
+. 编辑 Astra 控制中心自定义资源（ CR ）（`Astra_control_center_min.yaml` ），并将 Astra 版本（`AstraVersion` Insidem of `SPec` ）编号更改为最新：
 +
 [listing]
 ----
@@ -229,102 +239,45 @@ kubectl edit acc -n [netapp-acc or custom namespace]
 ----
 +
 
-NOTE: 只有在升级 Astra 控制中心时才需要更改 Astra 版本。注册表路径必须与中推送映像的注册表路径匹配 <<substep_image_local_registry_push,上一步>>。
+NOTE: 注册表路径必须与中推送映像的注册表路径匹配 <<substep_image_local_registry_push,上一步>>。
 
-. 验证 Pod 是否终止并重新可用：
+. 在 Astra 控制中心 CR 的 `SPec` 内的 `addtionalValues` 中添加以下行：
 +
 [listing]
 ----
-watch kubectl get pods -n [netapp-acc or custom namespace]
+additionalValues:
+    nautilus:
+      startupProbe:
+        periodSeconds: 30
+        failureThreshold: 600
 ----
-. 验证是否已成功升级所有系统组件。
+. 执行以下操作之一：
++
+.. 如果您没有自己的 InvorsController 或入口，并且一直使用带有其 Traefik 网关的 Astra 控制中心作为负载平衡器类型的服务，并且希望继续进行此设置，请指定另一个字段 `ingressType` （如果尚未显示）并将其设置为 `AccTraefik` 。
 +
 [listing]
 ----
-kubectl get pods -n [netapp-acc or custom namespace]
+ingressType:AccTraefik
 ----
-+
-每个 POD 的状态应为 `running` 和 `age` ，这是最新的。部署系统 Pod 可能需要几分钟的时间。
-
-+
-响应示例：
-
+.. 如果您要切换到默认的 Astra 控制中心通用传入部署，请提供您自己的内部控制器 / 传入设置（采用 TLS 终止等），打开通往 Astra 控制中心的路由，并将 `ingressType` 设置为 `Generic` 。
 +
 [listing]
 ----
-NAME                                         READY   STATUS    RESTARTS   AGE
-acc-helm-repo-5f75c5f564-bzqmt             1/1     Running   0          11m
-activity-6b8f7cccb9-mlrn4                  1/1     Running   0          9m2s
-api-token-authentication-6hznt             1/1     Running   0          8m50s
-api-token-authentication-qpfgb             1/1     Running   0          8m50s
-api-token-authentication-sqnb7             1/1     Running   0          8m50s
-asup-5578bbdd57-dxkbp                      1/1     Running   0          9m3s
-authentication-56bff4f95d-mspmq            1/1     Running   0          7m31s
-bucketservice-6f7968b95d-9rrrl             1/1     Running   0          8m36s
-cert-manager-5f6cf4bc4b-82khn              1/1     Running   0          6m19s
-cert-manager-cainjector-76cf976458-sdrbc   1/1     Running   0          6m19s
-cert-manager-webhook-5b7896bfd8-2n45j      1/1     Running   0          6m19s
-cloud-extension-749d9f684c-8bdhq           1/1     Running   0          9m6s
-cloud-insights-service-7d58687d9-h5tzw     1/1     Running   2          8m56s
-composite-compute-968c79cb5-nv7l4          1/1     Running   0          9m11s
-composite-volume-7687569985-jg9gg          1/1     Running   0          8m33s
-credentials-5c9b75f4d6-nx9cz               1/1     Running   0          8m42s
-entitlement-6c96fd8b78-zt7f8               1/1     Running   0          8m28s
-features-5f7bfc9f68-gsjnl                  1/1     Running   0          8m57s
-fluent-bit-ds-h88p7                        1/1     Running   0          7m22s
-fluent-bit-ds-krhnj                        1/1     Running   0          7m23s
-fluent-bit-ds-l5bjj                        1/1     Running   0          7m22s
-fluent-bit-ds-lrclb                        1/1     Running   0          7m23s
-fluent-bit-ds-s5t4n                        1/1     Running   0          7m23s
-fluent-bit-ds-zpr6v                        1/1     Running   0          7m22s
-graphql-server-5f5976f4bd-vbb4z            1/1     Running   0          7m13s
-identity-56f78b8f9f-8h9p9                  1/1     Running   0          8m29s
-influxdb2-0                                1/1     Running   0          11m
-krakend-6f8d995b4d-5khkl                   1/1     Running   0          7m7s
-license-5b5db87c97-jmxzc                   1/1     Running   0          9m
-login-ui-57b57c74b8-6xtv7                  1/1     Running   0          7m10s
-loki-0                                     1/1     Running   0          11m
-monitoring-operator-9dbc9c76d-8znck        2/2     Running   0          7m33s
-nats-0                                     1/1     Running   0          11m
-nats-1                                     1/1     Running   0          10m
-nats-2                                     1/1     Running   0          10m
-nautilus-6b9d88bc86-h8kfb                  1/1     Running   0          8m6s
-nautilus-6b9d88bc86-vn68r                  1/1     Running   0          8m35s
-openapi-b87d77dd8-5dz9h                    1/1     Running   0          9m7s
-polaris-consul-consul-5ljfb                1/1     Running   0          11m
-polaris-consul-consul-s5d5z                1/1     Running   0          11m
-polaris-consul-consul-server-0             1/1     Running   0          11m
-polaris-consul-consul-server-1             1/1     Running   0          11m
-polaris-consul-consul-server-2             1/1     Running   0          11m
-polaris-consul-consul-twmpq                1/1     Running   0          11m
-polaris-mongodb-0                          2/2     Running   0          11m
-polaris-mongodb-1                          2/2     Running   0          10m
-polaris-mongodb-2                          2/2     Running   0          10m
-polaris-ui-84dc87847f-zrg8w                1/1     Running   0          7m12s
-polaris-vault-0                            1/1     Running   0          11m
-polaris-vault-1                            1/1     Running   0          11m
-polaris-vault-2                            1/1     Running   0          11m
-public-metrics-657698b66f-67pgt            1/1     Running   0          8m47s
-storage-backend-metrics-6848b9fd87-w7x8r   1/1     Running   0          8m39s
-storage-provider-5ff5868cd5-r9hj7          1/1     Running   0          8m45s
-telegraf-ds-dw4hg                          1/1     Running   0          7m23s
-telegraf-ds-k92gn                          1/1     Running   0          7m23s
-telegraf-ds-mmxjl                          1/1     Running   0          7m23s
-telegraf-ds-nhs8s                          1/1     Running   0          7m23s
-telegraf-ds-rj7lw                          1/1     Running   0          7m23s
-telegraf-ds-tqrkb                          1/1     Running   0          7m23s
-telegraf-rs-9mwgj                          1/1     Running   0          7m23s
-telemetry-service-56c49d689b-ffrzx         1/1     Running   0          8m42s
-tenancy-767c77fb9d-g9ctv                   1/1     Running   0          8m52s
-traefik-5857d87f85-7pmx8                   1/1     Running   0          6m49s
-traefik-5857d87f85-cpxgv                   1/1     Running   0          5m34s
-traefik-5857d87f85-lvmlb                   1/1     Running   0          4m33s
-traefik-5857d87f85-t2xlk                   1/1     Running   0          4m33s
-traefik-5857d87f85-v9wpf                   1/1     Running   0          7m3s
-trident-svc-595f84dd78-zb8l6               1/1     Running   0          8m54s
-vault-controller-86c94fbf4f-krttq          1/1     Running   0          9m24s
+ingressType:Generic
 ----
-. 验证 Astra 状态条件是否指示升级已完成且已准备就绪：
++
+
+TIP: 如果省略此字段，则此过程将成为通用部署。如果您不希望使用通用部署，请务必添加此字段。
+
+
+
+. （可选）验证 Pod 是否终止并重新可用：
++
+[listing]
+----
+watch kubectl get po -n [netapp-acc or custom namespace]
+----
+. 等待 Astra 状态条件指示升级已完成且准备就绪：
 +
 [listing]
 ----
@@ -348,246 +301,44 @@ conditions:
     status: "False"
     type: Upgrading
 ----
+. 重新登录并验证所有受管集群和应用程序是否仍然存在并受到保护。
+. 如果操作员未更新证书管理器，请接下来升级第三方服务。
 
 
 
 
-== 升级第三方服务
+== 升级第三方服务（可选）
 
-在先前的升级步骤中，不会升级第三方服务 Traefik 和 Cert-manager 。您可以选择使用此处所述的操作步骤对其进行升级，也可以在系统需要时保留现有服务版本。以下是建议的 Traefik 和 Cert-manager 升级顺序：
+在先前的升级步骤中，不会升级第三方服务 Traefik 和 Cert-manager 。您可以选择使用此处所述的操作步骤对其进行升级，也可以在系统需要时保留现有服务版本。
 
-. <<Set up acc-helm-repo to upgrade Traefik and Cert-manager>>
-. <<Update Traefik service using acc-helm-repo>>
-. <<Update the Cert-manager service>>
+* * 任务期限 * ：默认情况下， Astra 控制中心负责管理任务期限部署的生命周期。如果将 `externalTraefik` 设置为 `false` （默认），则表示系统中不存在外部 Traefik ，并且 Astra 控制中心正在安装和管理 Traefik 。在这种情况下， `externalTraefik` 设置为 `false` 。
++
+另一方面，如果您有自己的 Traefik 部署，请将 `externalTraefik` 设置为 `true` 。在这种情况下，您将保持部署状态，并且 Astra 控制中心不会升级 CRD ，除非 `shouldUpgrade` 设置为 `true` 。
+
+* * 证书管理器 * ：默认情况下， Astra 控制中心会安装证书管理器（和 CRD ），除非您将 `externalCertManager` 设置为 `true` 。将 `shoulldUpgrade` 设置为 `true` 让 Astra Control Center 升级 CRD 。
 
 
+如果满足以下任一条件，则升级 Traefik ：
+
+* externalTraefik ： false 或
+* externalTraefik ： true ， shouldUpgrade ： true 。
 
 
-== 设置 Acc-hel-repo 以升级 Traefik 和 Cert-manager
-
-. 找到加载到本地 Docker 缓存的 `enterprise-hel-repo` ：
+.步骤
+. 编辑 `Acc` CR ：
 +
 [listing]
 ----
-docker images enterprise-helm-repo
+kubectl edit acc -n [netapp-acc or custom namespace]
 ----
-+
-响应：
-
+. 根据需要将 `externalTraefik` 字段和 `shouldUpgrade` 字段更改为 `true` 或 `false` 。
 +
 [listing]
 ----
-REPOSITORY             TAG         IMAGE ID       CREATED        SIZE
-enterprise-helm-repo   21.10.218   7a182d6b30f3   20 hours ago   464MB
-----
-. 使用上一步中的标记启动容器：
-+
-[listing]
-----
-docker run -dp 8082:8080 enterprise-helm-repo:21.10.218
-----
-+
-响应：
-
-+
-[listing]
-----
-940436e67fa86d2c4559ac4987b96bb35588313c2c9ddc9cec195651963f08d8
-----
-. 将 Helm repo 添加到本地主机存储库：
-+
-[listing]
-----
-helm repo add acc-helm-repo http://localhost:8082/
-----
-+
-响应：
-
-+
-[listing]
-----
-"acc-helm-repo" has been added to your repositories
-----
-. 将以下 Python 脚本另存为文件，例如 `set_previous values` ：
-+
-
-NOTE: 此 Python 脚本会创建两个文件，供后续升级步骤使用，以保留 Helm 值。
-
-+
-[listing]
-----
-#!/usr/bin/env python3
-import json
-import os
-
-NAMESPACE = "netapp-acc"
-
-os.system(f"helm get values traefik -n {NAMESPACE} -o json > traefik_values.json")
-os.system(f"helm get values cert-manager -n {NAMESPACE} -o json > cert_manager_values.json")
-
-# reformat traefik values
-f = open("traefik_values.json", "r")
-traefik_values = {'traefik': json.load(f)}
-f.close()
-
-with open('traefik_values.json', 'w') as output_file:
-    json.dump(traefik_values, output_file)
-
-# reformat cert-manager values
-f = open("cert_manager_values.json", "r")
-cm_values = {'cert-manager': json.load(f)}
-f.close()
-
-cm_values['global'] = cm_values['cert-manager']['global']
-del cm_values['cert-manager']['global']
-
-with open('cert_manager_values.json', 'w') as output_file:
-    json.dump(cm_values, output_file)
-
-print('Done')
-----
-. 运行脚本：
-+
-[listing]
-----
-python3.7 ./set_previous_values.py
-----
-
-
-
-
-== 使用 Acc-hel-repo 更新 Traefik 服务
-
-
-NOTE: 您必须已拥有 <<Set up acc-helm-repo to upgrade Traefik and Cert-manager,设置 ac-hel-repo>> 完成以下操作步骤之前。
-
-. 使用安全的文件传输工具下载 Traefik 捆绑包，例如 GNU wget ：
-+
-[listing]
-----
-wget http://localhost:8082/traefik-0.2.0.tgz
-----
-. 提取映像：
-+
-[listing]
-----
-tar -vxzf traefik-0.2.0.tgz
-----
-. 应用 Traefik CRD ：
-+
-[listing]
-----
-kubectl apply -f ./traefik/charts/traefik/crds/
-----
-. 查找要用于升级后的 Traefik 的 Helm 图表版本：
-+
-[listing]
-----
-helm search repo acc-helm-repo/traefik
-----
-+
-响应：
-
-+
-[listing]
-----
-NAME                                    CHART VERSION   APP VERSION DESCRIPTION
-acc-helm-repo/traefik                 0.2.0           2.5.3       Helm chart for Traefik Ingress controller
-acc-helm-repo/traefik-ingressroutes   0.2.0           2.5.3       A Helm chart for Kubernetes
-----
-. 验证要升级的 traefik_values.json 文件：
-+
-.. 打开 traefik_values.json 文件。
-.. 检查 `imagePullSecret` 字段是否有值。如果为空，请从文件中删除以下文本：
-+
-[listing]
-----
-"imagePullSecrets": [{"name": ""}],
-----
-.. 确保已将 traefik 映像定向到正确的位置并具有正确的名称：
-+
-[listing]
-----
-image: [your_registry_path]/traefik
-----
-
-
-. 升级 Traefik 配置：
-+
-[listing]
-----
-helm upgrade --version 0.2.0 --namespace netapp-acc -f traefik_values.json traefik acc-helm-repo/traefik
-----
-+
-响应：
-
-+
-[listing]
-----
-Release "traefik" has been upgraded. Happy Helming!
-NAME: traefik
-LAST DEPLOYED: Mon Oct 25 22:53:19 2021
-NAMESPACE: netapp-acc
-STATUS: deployed
-REVISION: 2
-TEST SUITE: None
-----
-
-
-
-
-== 更新证书管理器服务
-
-
-NOTE: 您必须已完成 <<Update Traefik service using acc-helm-repo,Traefik 更新>> 和 <<Set up acc-helm-repo to upgrade Traefik and Cert-manager,在 Helm 中添加了 act-helm-repo>> 完成以下操作步骤之前。
-
-. 查找要与升级后的证书管理器结合使用的 Helm 图表版本：
-+
-[listing]
-----
-helm search repo acc-helm-repo/cert-manager
-----
-+
-响应：
-
-+
-[listing]
-----
-NAME CHART VERSION APP VERSION DESCRIPTION
-acc-helm-repo/cert-manager 0.3.0 v1.5.4 A Helm chart for cert-manager
-acc-helm-repo/cert-manager-certificates 0.1.0 1.16.0 A Helm chart for Kubernetes
-----
-. 验证用于升级的 cert_manager_values.json 文件：
-+
-.. 打开 cert_manager_values.json 文件。
-.. 检查 `imagePullSecret` 字段是否有值。如果为空，请从文件中删除以下文本：
-+
-[listing]
-----
-"imagePullSecrets": [{"name": ""}],
-----
-.. 确保三个证书管理器映像定向到正确的位置并具有正确的名称。
-
-
-. 升级证书管理器配置：
-+
-[listing]
-----
-helm upgrade --version 0.3.0 --namespace netapp-acc -f cert_manager_values.json cert-manager acc-helm-repo/cert-manager
-----
-+
-响应：
-
-+
-[listing]
-----
-Release "cert-manager" has been upgraded. Happy Helming!
-NAME: cert-manager
-LAST DEPLOYED: Tue Nov 23 11:20:05 2021
-NAMESPACE: netapp-acc
-STATUS: deployed
-REVISION: 2
-TEST SUITE: None
+crds:
+    externalTraefik: false
+    externalCertManager: false
+    shouldUpgrade: false
 ----
 
 
@@ -597,4 +348,133 @@ TEST SUITE: None
 
 . 登录到 Astra 控制中心。
 . 验证所有受管集群和应用程序是否仍存在并受到保护。
+
+
+
+
+== 设置传入以进行负载平衡
+
+您可以设置 Kubernetes 入口对象，用于管理对服务的外部访问，例如集群中的负载平衡。
+
+* 默认升级使用通用传入部署。在这种情况下，您还需要设置入口控制器或入口资源。
+* 如果您不需要入口控制器，但希望保留现有控制器，请将 `ingressType` 设置为 `AccTraefik` 。
+
+
+
+NOTE: 有关 "loadbalancer" 服务类型和入口的其他详细信息，请参见 link:../get-started/requirements.html["要求"]。
+
+根据您使用的入口控制器类型，步骤会有所不同：
+
+* nginx 入口控制器
+* OpenShift 入口控制器
+
+
+.您需要什么？ #8217 ；将需要什么
+* 在 CR 规范中，
++
+** 如果存在 `crd.externalTraefik` ，则应将其设置为 `false` 或
+** 如果 `crd.externalTraefik` 为 `true` ，则 `crd.shouldUpgrade` 也应为 `true` 。
+
+
+* 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/["入口控制器"] 应已部署。
+* 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
+* 您使用的是介于 v1.19 和 v1.21 之间的 Kubernetes 版本，包括 v1.19 和 v1.21 。
+
+
+.nginx 入口控制器的步骤
+. 使用现有密钥 `secure-testing-cert` 或创建类型的密钥 http://kubernetes.io/tls["`Kubernetes 。 IO/TLS`"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
+. 在 `NetApp-Accc` （或自定义命名）命名空间中为已弃用或新模式部署入站资源：
++
+.. 对于已弃用的模式，请遵循以下示例：
++
+[listing]
+----
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-acc
+  namespace: [netapp-acc or custom namespace]
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+  - hosts:
+    - <ACC address>
+    secretName: [tls secret name]
+  rules:
+  - host: [ACC address]
+    http:
+      paths:
+      - backend:
+        serviceName: traefik
+        servicePort: 80
+        pathType: ImplementationSpecific
+----
+.. 对于新模式，请遵循以下示例：
+
+
++
+[listing]
+----
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netapp-acc-ingress
+  namespace: [netapp-acc or custom namespace]
+spec:
+  ingressClassName: [class name for nginx controller]
+  tls:
+  - hosts:
+    - <ACC address>
+    secretName: [tls secret name]
+  rules:
+  - host: <ACC address>
+    http:
+      paths:
+        - path:
+          backend:
+            service:
+              name: traefik
+              port:
+                number: 80
+          pathType: ImplementationSpecific
+----
+
+
+.OpenShift 入口控制器的步骤
+. 获取证书并获取密钥，证书和 CA 文件，以供 OpenShift 路由使用。
+. 创建 OpenShift 路由：
++
+[listing]
+----
+oc create route edge --service=traefik
+--port=web -n [netapp-acc or custom namespace]
+--insecure-policy=Redirect --hostname=<ACC address>
+--cert=cert.pem --key=key.pem
+----
+
+
+
+
+=== 验证入口设置
+
+您可以先验证入口设置，然后再继续操作。
+
+. 确保已将负载平衡器中的 Traefik 更改为 `clusterIP` ：
++
+[listing]
+----
+kubectl get service traefik -n [netapp-acc or custom namespace]
+----
+. 验证 Traefik 中的路由：
++
+[listing]
+----
+Kubectl get ingressroute ingressroutetls -n [netapp-acc or custom namespace]
+-o yaml | grep "Host("
+----
++
+
+NOTE: 结果应为空。
+
 
