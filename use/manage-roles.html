@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head class="at-element-marker">
-  <title>存储类和永久性卷大小</title>
+  <title>管理角色</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="存储类和永久性卷大小" />
+  <meta property="og:title" content="管理角色" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-cn/astra-control-center/concepts/choose-class-and-size.html" />
-	<meta property="og:description" content="Astra 控制中心支持由 ONTAP 存储类或 Astra 数据存储类提供支持的 Trident 存储类。您应了解存储类和永久性卷大小如何帮助您实现性能目标。" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-cn/astra-control-center/use/manage-roles.html" />
+	<meta property="og:description" content="了解如何通过向角色添加限制来管理用户角色。" />
   <meta property="og:image" content="https://docs.netapp.com/zh-cn/astra-control-center/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Astra 控制中心支持由 ONTAP 存储类或 Astra 数据存储类提供支持的 Trident 存储类。您应了解存储类和永久性卷大小如何帮助您实现性能目标。">
-  <meta name="keywords" content=" service level, storage class, storage classes, pv size, persistent volume size, volume size, bandwidth, performance, persistent, volume, kubernetes, containers"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="了解如何通过向角色添加限制来管理用户角色。">
+  <meta name="keywords" content=" users, roles, user roles, namespace, namespaces, account, accounts, permissions, restriction, restrict, constraint, constraints"><!-- Icons -->
   <link rel="icon" href="/zh-cn/astra-control-center/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-control-center/issues/new?body=Page%3A%20[存储类和永久性卷大小](https://docs.netapp.com/zh-cn/astra-control-center/concepts/choose-class-and-size.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/astra-control-center/images/discuss-sm.svg" class="github-icon" />请求文档变更</a><a target="_blank" href="https://github.com/NetAppDocs/astra-control-center/blob/main/concepts/choose-class-and-size.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/astra-control-center/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-cn/astra-control-center/images/article-sm.svg" class="github-icon" />提供者指南</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-control-center/issues/new?body=Page%3A%20[管理角色](https://docs.netapp.com/zh-cn/astra-control-center/use/manage-roles.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/astra-control-center/images/discuss-sm.svg" class="github-icon" />请求文档变更</a><a target="_blank" href="https://github.com/NetAppDocs/astra-control-center/blob/main/use/manage-roles.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/astra-control-center/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-cn/astra-control-center/images/article-sm.svg" class="github-icon" />提供者指南</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">在此页面上</div>
@@ -292,13 +292,13 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/astra-control-center/concepts/choose-class-and-size.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/astra-control-center/use/manage-roles.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/astra-control-center/concepts/choose-class-and-size.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/astra-control-center/use/manage-roles.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/astra-control-center/concepts/choose-class-and-size.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/astra-control-center/use/manage-roles.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/astra-control-center/concepts/choose-class-and-size.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/astra-control-center/use/manage-roles.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -442,15 +442,6 @@
 
 
 
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/zh-cn/astra-control-center/pdfs/pages/concepts/choose-class-and-size.pdf" >
-    <img src="/zh-cn/astra-control-center/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -711,6 +702,15 @@
           
 
 
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-cn/astra-control-center/pdfs/pages/use/manage-roles.pdf" >
+    <img src="/zh-cn/astra-control-center/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -908,7 +908,7 @@
         许可
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/validated-vs-standard.html">
         经验证的应用程序与标准应用程序
-      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/choose-class-and-size.html">
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/choose-class-and-size.html">
         存储类和 PV 大小
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/user-roles-namespaces.html">
         用户角色和命名空间
@@ -979,7 +979,7 @@
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-users.html">
         管理用户
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-roles.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-roles.html">
         管理角色
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-notifications.html">
         管理通知
@@ -1082,7 +1082,7 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">存储类和永久性卷大小</h1>
+  <h1 class="n-doc__component-detail-heading">管理角色</h1>
 </div>
 
 
@@ -1098,29 +1098,63 @@
 
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph lead">
-<p>Astra 控制中心支持使用 ONTAP 或 Astra 数据存储作为存储后端。</p>
+<div class="paragraph">
+<p>您可以通过添加命名空间限制并将用户角色限制为这些限制来管理角色。这样，您就可以控制对组织内资源的访问。您可以使用 Astra Control UI 或 <a href="https://docs.netapp.com/us-en/astra-automation/index.html" target="_blank" rel="noopener">"Astra Control API"</a> 以管理角色。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="概述">概述</h2>
+<h2 id="向角色添加命名空间限制">向角色添加命名空间限制</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Astra 控制中心支持以下功能：</p>
+<p>管理员或所有者用户可以添加命名空间约束。</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<div class="title">步骤</div>
+<ol class="arabic">
 <li>
-<p>* 由 Astra Data Store 存储提供支持的 Trident 存储类 * ：如果您手动安装了一个或多个 Astra Data Store 集群，则 Astra 控制中心可以导入这些集群并检索其拓扑（节点，磁盘）以及各种状态。</p>
+<p>在 * 管理帐户 * 导航区域中，选择 * 帐户 * 。</p>
+</li>
+<li>
+<p>选择 * 用户 * 选项卡。</p>
+</li>
+<li>
+<p>在 * 操作 * 列中，为具有成员或查看器角色的用户选择菜单按钮。</p>
+</li>
+<li>
+<p>选择 * 编辑角色 * 。</p>
+</li>
+<li>
+<p>启用 * 将角色限制为约束条件 * 复选框。</p>
 <div class="paragraph">
-<p>Astra 控制中心显示 Astra Data Store 配置中的底层 Kubernetes 集群， Kubernetes 集群所属的云，由 Astra Data Store 配置的任何永久性卷，相应内部卷的名称，使用永久性卷的应用程序以及包含此应用程序的集群。</p>
+<p>此复选框仅适用于 " 成员 " 或 " 查看器 " 角色。您可以从 * 角色 * 下拉列表中选择其他角色。</p>
 </div>
 </li>
 <li>
-<p>* 由 ONTAP 存储提供支持的 Trident 存储类 * ：如果您使用的是 ONTAP 后端，则 Astra 控制中心可以导入 ONTAP 后端以报告各种监控信息。</p>
+<p>选择 * 添加约束 * 。</p>
+<div class="paragraph">
+<p>您可以按命名空间或命名空间标签查看可用约束的列表。</p>
+</div>
 </li>
-</ul>
+<li>
+<p>在 * 约束类型 * 下拉列表中，根据命名空间的配置方式选择 * Kubernetes 命名空间 * 或 * Kubernetes 命名空间标签 * 。</p>
+</li>
+<li>
+<p>从列表中选择一个或多个命名空间或标签，以构成一个限制，将角色限制为这些命名空间。</p>
+</li>
+<li>
+<p>选择 * 确认 * 。</p>
+<div class="paragraph">
+<p>"* 编辑角色 * " 页面将显示您为此角色选择的约束列表。</p>
+</div>
+</li>
+<li>
+<p>选择 * 确认 * 。</p>
+<div class="paragraph">
+<p>在 * 帐户 * 页面上，您可以在 * 角色 * 列中查看任何成员或查看器角色的限制。</p>
+</div>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1129,7 +1163,7 @@
 <img src="/us-en/astra-control-center/images/note.svg" alt="注">
 </td>
 <td class="content">
-应在 Astra 控制中心之外预先配置 Trident 存储类。
+如果为某个角色启用了限制并选择了 * 确认 * 而未添加任何限制，则该角色将被视为具有完全限制（该角色将被拒绝访问分配给命名空间的任何资源）。
 </td>
 </tr>
 </table>
@@ -1137,13 +1171,36 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="存储类">存储类</h2>
+<h2 id="从角色中删除命名空间限制">从角色中删除命名空间限制</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>将集群添加到 Astra 控制中心时，系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。确保您仅为 Kubernetes 集群定义了一个默认存储类。</p>
+<p>管理员或所有者用户可以从角色中删除命名空间限制。</p>
 </div>
+<div class="olist arabic">
+<div class="title">步骤</div>
+<ol class="arabic">
+<li>
+<p>在 * 管理帐户 * 导航区域中，选择 * 帐户 * 。</p>
+</li>
+<li>
+<p>选择 * 用户 * 选项卡。</p>
+</li>
+<li>
+<p>在 * 操作 * 列中，为具有成员或查看器角色且具有活动约束的用户选择菜单按钮。</p>
+</li>
+<li>
+<p>选择 * 编辑角色 * 。</p>
 <div class="paragraph">
-<p>如果使用与 Astra Data Store 存储后端集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见 <a href="https://docs.netapp.com/us-en/astra-data-store/get-started/setup-ads.html#set-up-astra-data-store-as-storage-backend">"Astra Data Store 入门"</a> 创建默认的 Astra Data Store 存储类。</p>
+<p>"* 编辑角色 " 对话框显示角色的活动约束。</p>
+</div>
+</li>
+<li>
+<p>选择需要删除的约束右侧的 * X * 。</p>
+</li>
+<li>
+<p>选择 * 确认 * 。</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1153,7 +1210,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.netapp.com/us-en/trident/index.html" target="_blank" rel="noopener">"Astra Trident 文档"</a></p>
+<p><a href="../concepts/user-roles-namespaces.html">"用户角色和命名空间"</a></p>
 </li>
 </ul>
 </div>
