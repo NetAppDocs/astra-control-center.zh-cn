@@ -2119,4 +2119,5 @@
   <block id="f40dda1cd02e9ee8f5e162848caadd83" category="list-text"><block ref="9efb3235917ed6ee5ca4f6d3c009bcea" category="inline-link-rx"></block> 和<block ref="99c9739f78d0a0a06ac43aab27b410b9" category="inline-link-rx"></block></block>
   <block id="da1ad815b5ce4f824168d73638363d30" category="list-text"><block ref="da1ad815b5ce4f824168d73638363d30" category="inline-link-rx"></block></block>
   <block id="be626d1089f32a72dd9f0fb107f44f16" category="list-text"><block ref="be626d1089f32a72dd9f0fb107f44f16" category="inline-link-rx"></block></block>
+  <block id="81a948049e34f0b0478cdb4d7fee5cb1" category="list-text">任何按命名空间名称 /ID 或命名空间标签限制命名空间的成员用户都可以将应用程序克隆或还原到同一集群上的新命名空间或其组织帐户中的任何其他集群。但是，同一用户无法访问新命名空间中的克隆或还原应用程序。通过克隆或还原操作创建新命名空间后，帐户管理员 / 所有者可以编辑成员用户帐户并更新受影响用户的角色约束，以授予对新命名空间的访问权限。</block>
 </blocks>
