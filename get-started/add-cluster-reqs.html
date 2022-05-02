@@ -1089,7 +1089,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-26 16:31:29 +0000">04/26/2022</time>
+    <time datetime="2022-05-02 15:12:11 +0000">05/02/2022</time>
     
   
 
@@ -1113,13 +1113,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p>运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 Astra 数据存储或 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses</p>
+<p>运行OpenShift 4.6-8、4.7、4.8或4.9的集群</p>
 </li>
 <li>
-<p>运行 Rancher 2.5 的集群</p>
+<p>使用RKE1运行Rancher 2.2.8、2.0.9或2.6的集群</p>
 </li>
 <li>
-<p>运行 Kubernetes 1.19 到 1.21 （包括 1.21.x ）的集群</p>
+<p>运行Kubernetes 1.20到1.23的集群</p>
+</li>
+<li>
+<p>运行VMware Tanzu Kubernetes Grid 1.4的集群</p>
+</li>
+<li>
+<p>运行VMware Tanzu Kubernetes Grid Integrated Edition 1.12.2的集群</p>
 <div class="paragraph">
 <p>确保集群中有一个或多个工作节点，并且至少有 1 GB RAM 可用于运行遥测服务。</p>
 </div>
@@ -1138,6 +1144,9 @@
 </tr>
 </table>
 </div>
+</li>
+<li>
+<p>使用配置了的Astra Trident StorageClasses <a href="requirements.html#supported-storage-backends">"支持的存储后端"</a> (对于任何类型的集群都是必需的)</p>
 </li>
 <li>
 <p>在备份 ONTAP 系统上设置的超级用户和用户 ID ，用于使用 Astra 控制中心备份和还原应用程序。在 ONTAP 命令行中运行以下命令： <code>export-policy rule modify -vserver &lt;storage virtual machine name&gt; -policyname &lt;policy name&gt; -ruleindex 1 -superuser sysm -anon 65534</code></p>
