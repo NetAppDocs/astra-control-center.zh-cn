@@ -1110,8 +1110,6 @@
   <block id="84fccda9e18ab736ae1e33ef33ff8543" category="paragraph">在添加集群之前，应确保满足前提条件。您还应运行资格检查，以确保集群已准备好添加到 Astra 控制中心。</block>
   <block id="32ce911ba9da44dfbcba79bbe607d8f0" category="section-title">添加集群之前需要满足的要求</block>
   <block id="46071ecf3cc6ea1619ad76021e951cc6" category="list-text">以下类型的集群之一：</block>
-  <block id="651cf0b7f84c677320f45d5d6816398a" category="list-text">运行 Rancher 2.5 的集群</block>
-  <block id="22de8d4f47d2a55f106f2f70f3e8353f" category="list-text">运行 Kubernetes 1.19 到 1.21 （包括 1.21.x ）的集群</block>
   <block id="0fe8e21b3c54341023df7a85185c9f37" category="paragraph">确保集群中有一个或多个工作节点，并且至少有 1 GB RAM 可用于运行遥测服务。</block>
   <block id="b5a54438cd4ef372398ebc0939def4bb" category="admonition">如果您计划将第二个 OpenShift 4.6 ， 4.7 或 4.8 集群添加为托管计算资源，则应确保已启用 Astra Trident 卷快照功能。请参见官方的 Astra Trident<block ref="8b7ff4f9e99396172438cb6668056409" category="inline-link-rx"></block> 使用 Astra Trident 启用和测试卷快照。</block>
   <block id="105932ea4fe1c5240d2bf6bced56c8fc" category="list-text">管理员定义的 Astra Trident `volumesnapshotclass` 对象。请参见 Astra Trident<block ref="556b3c0c56aa97a1bc2ad282c2c6ac73" category="inline-link-rx"></block> 使用 Astra Trident 启用和测试卷快照。</block>
@@ -1419,7 +1417,6 @@
   <block id="df819717a2baf5b48925d2b4cdaf4745" category="list-text">* 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
   <block id="17eb8d332e75f64616b506be451b189f" category="inline-link-macro">需要进行的其他更改</block>
   <block id="19dfa68f9af3ebcd8abb0bcfff39c5fd" category="list-text">（对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 <block ref="6511a1f600064236c7dbbb54dd879ccf" category="inline-link-macro-rx"></block> 向 YAML 报告。</block>
-  <block id="a4a555ce407a7c7e6c4672e426b35f6d" category="list-text">运行 OpenShift 4.6 ， 4.7 或 4.8 的集群，其中包含由 Astra 数据存储或 ONTAP 9.5 或更高版本提供支持的 Astra Trident StorageClasses</block>
   <block id="c287552db25a1fab7b049bb27d492f51" category="list-text">Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储预览存储后端的 Kubernetes 集群结合使用。</block>
   <block id="15124155930d299e6f1779b4748a5e68" category="inline-link">Astra Data Store 预览</block>
   <block id="9103a93ceb430727f35a3f9417e478c1" category="paragraph">Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
@@ -2120,4 +2117,11 @@
   <block id="da1ad815b5ce4f824168d73638363d30" category="list-text"><block ref="da1ad815b5ce4f824168d73638363d30" category="inline-link-rx"></block></block>
   <block id="be626d1089f32a72dd9f0fb107f44f16" category="list-text"><block ref="be626d1089f32a72dd9f0fb107f44f16" category="inline-link-rx"></block></block>
   <block id="81a948049e34f0b0478cdb4d7fee5cb1" category="list-text">任何按命名空间名称 /ID 或命名空间标签限制命名空间的成员用户都可以将应用程序克隆或还原到同一集群上的新命名空间或其组织帐户中的任何其他集群。但是，同一用户无法访问新命名空间中的克隆或还原应用程序。通过克隆或还原操作创建新命名空间后，帐户管理员 / 所有者可以编辑成员用户帐户并更新受影响用户的角色约束，以授予对新命名空间的访问权限。</block>
+  <block id="04836771e0f63e9503643a0ab68fa3c1" category="list-text">运行OpenShift 4.6-8、4.7、4.8或4.9的集群</block>
+  <block id="3a2b605b2443215a0b7ae1bc41decc01" category="list-text">使用RKE1运行Rancher 2.2.8、2.0.9或2.6的集群</block>
+  <block id="4a3db371a2a9c3a3366a01b03634fa7b" category="list-text">运行Kubernetes 1.20到1.23的集群</block>
+  <block id="1289603112f9c3615bcae4123ffe8b19" category="list-text">运行VMware Tanzu Kubernetes Grid 1.4的集群</block>
+  <block id="ad0fc95c44aeed3ac73310973f16f935" category="list-text">运行VMware Tanzu Kubernetes Grid Integrated Edition 1.12.2的集群</block>
+  <block id="1a18d97aba49d472b746ce28ae926d7b" category="inline-link-macro">支持的存储后端</block>
+  <block id="070ad46046dde9383841affeae8d1582" category="list-text">使用配置了的Astra Trident StorageClasses <block ref="fd11461319251c08cd1706087c3f4e9f" category="inline-link-macro-rx"></block> (对于任何类型的集群都是必需的)</block>
 </blocks>
