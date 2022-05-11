@@ -1834,7 +1834,6 @@
   <block id="11531d35bffa3200921e5a8ee5950b84" category="list-text"><block ref="c4954d5a433a0b3badc3311583a31b34" category="inline-xref-macro-rx"></block>。</block>
   <block id="aa212b05ee6b0b78026790241fbde05d" category="list-text"><block ref="27fe6aaf425c0f95213ec6c507a97d2d" category="inline-xref-macro-rx"></block>。</block>
   <block id="e8e336c6539723454a54092c15b17831" category="section-title">确保您具有足够的 IAM 权限</block>
-  <block id="4cccd232c18c48f403e1b0ca88018111" category="paragraph">确保您具有足够的 IAM 角色和权限，可以安装 RedHat OpenShift 集群和 NetApp Cloud Volumes ONTAP 连接器。</block>
   <block id="9ef43b020d41cab5808d78fdf855c429" category="inline-link">初始 AWS 凭据</block>
   <block id="8bf9b9f442874d498c38dc3f714a9739" category="paragraph">请参见<block ref="1a5e66975901600375e1b84abc3d58bd" category="inline-link-rx"></block>。</block>
   <block id="ed759a399e3faa755d36418e610d10fb" category="section-title">在 AWS 上安装 RedHat OpenShift 集群</block>
@@ -1842,17 +1841,13 @@
   <block id="fe44234b66d63db4cd81036ae75cf378" category="inline-link">在 OpenShift 容器平台中的 AWS 上安装集群</block>
   <block id="09c5cce6c0b81c5a122141133cc096d8" category="paragraph">有关安装说明，请参见<block ref="02dece0ad7d56c8ca4c0002821b8ba8e" category="inline-link-rx"></block>。</block>
   <block id="431d662f081880135f580544e6ebca68" category="section-title">配置 AWS</block>
-  <block id="cccaf966d7360e27e6fae03ddd583733" category="paragraph">接下来，将 AWS 配置为创建虚拟私有云，设置 EC2 计算实例，创建 AWS S3 存储分段，创建弹性容器注册表（ ECR ）以托管 Astra 控制中心映像，并将这些映像推送到此注册表。</block>
   <block id="455960d50b151ff6ed28fa01f3d6356f" category="inline-link">AWS 安装文档</block>
   <block id="e874bd0f330d9513016dc844dfd62e6f" category="paragraph">按照 AWS 文档完成以下步骤。请参见<block ref="b5a7979c22035fe192b9eb8d0cab1e4a" category="inline-link-rx"></block>。</block>
-  <block id="799fec05d94fec2c59fc527e8f91c4c6" category="list-text">创建 AWS 虚拟私有云。</block>
   <block id="92d9212a67ec9da982a091cf92cb4347" category="list-text">查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。</block>
   <block id="b881f78be517f5315cfb2d556f3448f7" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 <block ref="32be9c8362ea42075ea0b5d43bb3b5d0" category="inline-link-macro-rx"></block>。</block>
   <block id="b109e192f966bb3bb3e8cd30e1a59bfa" category="list-text">至少创建一个 AWS S3 存储分段来存储备份。</block>
   <block id="e5c5351f3ea6206a7f110205b4155acc" category="list-text">创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。</block>
-  <block id="b6e02cb40f51ac7c03a21989247074b0" category="admonition">如果不创建 ECR ，则 Astra 控制中心无法从包含带有 AWS 后端 CVO 的集群访问监控数据。如果您尝试使用 Astra 控制中心发现和管理的集群没有 AWS ECR 访问权限，则会导致出现问题描述 。</block>
   <block id="6da6782dc02c8e2ffb3f2eeb0c8f4f10" category="list-text">将这些 Accc 映像推送到您定义的注册表。</block>
-  <block id="0aa9d7a142af7c23c39b44a27f0dcc8f" category="admonition">AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并导致跨集群克隆操作失败。从为 AWS 配置的 Cloud Volumes ONTAP （ CVO ）管理存储后端时会发生此问题描述 。要更正此问题描述 ，请再次向 ECR 进行身份验证，并生成一个新密钥，以便成功恢复克隆操作。</block>
   <block id="d0d3a0a6bbae566c1e61c2fc0d0377ad" category="paragraph">以下是 AWS 部署示例：</block>
   <block id="00e2fab6bb1c1ddf5a08853aa2b05595" category="inline-image-macro">采用 Cloud Volumes ONTAP 的 Astra 控制中心部署示例</block>
   <block id="a5f9219af3aa469c4909489aee2c2362" category="paragraph"><block ref="a5f9219af3aa469c4909489aee2c2362" category="inline-image-macro-rx" type="image"></block></block>
@@ -1874,7 +1869,6 @@
   <block id="e1001cf6163456f78888de73e0dd8241" category="list-text">在右上角，记下 Trident 版本。</block>
   <block id="879166e5d3ed3d9886dcb671dee52d57" category="list-text">记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。</block>
   <block id="6f132ecc107812f9bd274ba758fce276" category="paragraph">此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。</block>
-  <block id="3cc9e3bbc9dd541f4db8ebbb5b141c8c" category="list-text">记下此 CVO 部署中的所有永久性卷和卷。</block>
   <block id="022f3cb861d350bac16e19b15e4f1f9c" category="admonition">Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 AWS 中运行的 HA 状态和节点部署状态。</block>
   <block id="d35cd0582def6a18a65ff02ce2d5ff77" category="inline-link-macro">Astra 控制中心安装说明</block>
   <block id="1cb58fa5a8f36029f128e85d88276810" category="paragraph">请遵循标准 <block ref="ef8e47848fa28ef11d8d85ade3f221ee" category="inline-link-macro-rx"></block>。</block>
@@ -1912,13 +1906,10 @@
   <block id="1ab5193f89cf79df51fd4138318923ac" category="inline-link">Azure 凭据和权限</block>
   <block id="ac5af645cec8d25669a5a9893f571bcc" category="paragraph">请参见<block ref="47e48c38bbba09ad0234959e4f70e6b5" category="inline-link-rx"></block>。</block>
   <block id="ffe7dbf60b2fbe9ee35b02eca9bedb83" category="section-title">配置 Azure</block>
-  <block id="def08885f6fc7373c0b5463ba8cfcf9b" category="paragraph">接下来，将 Azure 配置为创建虚拟私有云，设置计算实例，创建 Azure Blob S3 存储分段，创建 Azure 容器注册表（ ACR ）以托管 Astra 控制中心映像，并将这些映像推送到此注册表。</block>
   <block id="310c2720a5523c6a1f55532ee951393c" category="paragraph">按照 Azure 文档完成以下步骤。请参见<block ref="604df1e02f9d2d76a67db6e61299339e" category="inline-link-rx"></block>。</block>
-  <block id="1f5c184a439ca64495bef0e301c34bb1" category="list-text">创建 Azure 虚拟私有云。</block>
   <block id="d03589157dd63e1aaf5497955f5058f5" category="list-text">查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。</block>
   <block id="b82f3e0352c4295f8db3114c4d861a92" category="inline-link-macro">Astra 控制中心要求</block>
   <block id="8a803e817d15e18f4c26de7531681f8c" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 <block ref="69ebc365ae107089b5acea91d6e6ce3d" category="inline-link-macro-rx"></block>。</block>
-  <block id="ece21a337138f7f8683bac6e6615e56e" category="list-text">至少创建一个 Azure Blob S3 存储分段来存储备份。</block>
   <block id="307374e80fc7db1b05d765029543d9c8" category="list-text">创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。</block>
   <block id="a9d92f56cc3dae134fc1ee53e8136378" category="list-text">创建存储分段访问所需的密钥。</block>
   <block id="7d8431378165cbd970da3a000187a79e" category="list-text">创建 Azure 容器注册表（ ACR ）以托管所有 Astra 控制中心映像。</block>
@@ -1945,7 +1936,6 @@
   <block id="889cbe9961ca696a510e412a4b30232a" category="paragraph"><block ref="889cbe9961ca696a510e412a4b30232a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e94546b01b99a1eb48dc2aa847bd1bc9" category="inline-image-macro">已在 Cloud Manager 中导入集群</block>
   <block id="a340fe93d59bc226299f8720ea322256" category="paragraph"><block ref="a340fe93d59bc226299f8720ea322256" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="d9ea115977abd9d7e16409cba9fd16f6" category="list-text">记下显示 NetApp 作为配置程序的 CVO 集群存储类。</block>
   <block id="5acebafc0c752497041f5a0d80fe30bb" category="paragraph">此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。</block>
   <block id="a4f1bc6952ef35fa4b362d48d0bae5cf" category="list-text">Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 Azure 中运行的 HA 状态和节点部署状态。</block>
   <block id="ed5ef8c204e33b0e0f057dc70e0b4867" category="section-title">安装和配置 Astra 控制中心</block>
@@ -2031,8 +2021,6 @@
   <block id="636d6f4332398bd5b282d3ece2b35c37" category="section-title">2022 年 4 月 26 日（ 22.04.0 ）</block>
   <block id="0097e428776046ceb8cd1fcde6d6fa2e" category="inline-link-macro">命名空间基于角色的访问控制（ RBAC ）</block>
   <block id="64bad51f74b4f1807a7d2af0cf87257c" category="list-text"><block ref="64bad51f74b4f1807a7d2af0cf87257c" category="inline-link-macro-rx"></block></block>
-  <block id="6d1f817d433aa2ed5357833d205f7ecc" category="inline-link-macro">支持 Cloud Volumes ONTAP （ CVO ）</block>
-  <block id="a0d0deee3c5c466bfed70fd7382479c3" category="list-text"><block ref="a0d0deee3c5c466bfed70fd7382479c3" category="inline-link-macro-rx"></block></block>
   <block id="b2c30cdbb458ef4f85645f614f9a044c" category="inline-link-macro">为 Astra 控制中心启用通用传入</block>
   <block id="7488f95bd73a954d45792854208eec9a" category="list-text"><block ref="7488f95bd73a954d45792854208eec9a" category="inline-link-macro-rx"></block></block>
   <block id="ec4f18f5d437fda081d810a9841b26d4" category="inline-link-macro">从 Astra Control 中删除存储分段</block>
@@ -2135,4 +2123,15 @@
   <block id="b2b8741126a8674edc86e6286a85c804" category="inline-link">对删除存储分段凭据进行故障排除</block>
   <block id="983be0b26fa308ee99003c55cac37fb5" category="admonition">如果删除了活动存储分段凭据、请参见<block ref="939cc867881057c221247142d6425e0a" category="inline-link-rx"></block>。</block>
   <block id="576924ceb67cb5e87c15acdcb112c47d" category="paragraph">有关如何使用Astra Control API删除S3凭据的说明、请参见 <block ref="ef5b26cd6e9ab40377842cc20d2b4ebf" category="inline-link-macro-rx"></block>。</block>
+  <block id="aa702244278ce9224bdf493dbd836fcf" category="inline-link-macro">支持 Cloud Volumes ONTAP</block>
+  <block id="4de20b7239bb26359da9a0232e6d739e" category="list-text"><block ref="4de20b7239bb26359da9a0232e6d739e" category="inline-link-macro-rx"></block></block>
+  <block id="eb835db53d5442a3408fb4a797dd33d9" category="paragraph">确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp Cloud Manager Connector。</block>
+  <block id="8752cd76f7db37e4826aaa5b11f2a007" category="paragraph">接下来、将AWS配置为创建虚拟网络、设置EC2计算实例、创建AWS S3存储分段、创建弹性容器注册表(ECR)以托管Astra控制中心映像、并将这些映像推送到此注册表。</block>
+  <block id="9c7a256a23d947f541662b1e88bac33d" category="list-text">创建AWS虚拟网络。</block>
+  <block id="9d58e473a9f64a9efe76c63ca0a30602" category="admonition">如果不创建ECR、则Astra控制中心无法从包含Cloud Volumes ONTAP 且具有AWS后端的集群访问监控数据。如果您尝试使用 Astra 控制中心发现和管理的集群没有 AWS ECR 访问权限，则会导致出现问题描述 。</block>
+  <block id="1768a4b0762c934953673bc18b18890a" category="admonition">AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并导致跨集群克隆操作失败。从为AWS配置的Cloud Volumes ONTAP 管理存储后端时会发生此问题描述。要更正此问题描述 ，请再次向 ECR 进行身份验证，并生成一个新密钥，以便成功恢复克隆操作。</block>
+  <block id="b68aeba87c67e932282eec3bb99d6309" category="list-text">记下此Cloud Volumes ONTAP 部署中的所有永久性卷和卷。</block>
+  <block id="daee2a4caddb0f1fced149c9b185ab3e" category="paragraph">接下来、将Azure配置为创建虚拟网络、设置计算实例、创建Azure Blob容器、创建Azure容器注册表(ACR)以托管Astra控制中心映像、并将这些映像推送到此注册表。</block>
+  <block id="52393bb21023d79ef4e0fa374e54b83d" category="list-text">创建Azure虚拟网络。</block>
+  <block id="5df56ab7fcd23252a7ac4c7a21742e57" category="list-text">至少创建一个Azure Blob容器以存储备份。</block>
 </blocks>

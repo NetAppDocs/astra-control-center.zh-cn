@@ -131,7 +131,7 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 
 === 确保您具有足够的 IAM 权限
 
-确保您具有足够的 IAM 角色和权限，可以安装 RedHat OpenShift 集群和 NetApp Cloud Volumes ONTAP 连接器。
+确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp Cloud Manager Connector。
 
 请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-aws.html#initial-aws-credentials["初始 AWS 凭据"^]。
 
@@ -147,24 +147,24 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 
 === 配置 AWS
 
-接下来，将 AWS 配置为创建虚拟私有云，设置 EC2 计算实例，创建 AWS S3 存储分段，创建弹性容器注册表（ ECR ）以托管 Astra 控制中心映像，并将这些映像推送到此注册表。
+接下来、将AWS配置为创建虚拟网络、设置EC2计算实例、创建AWS S3存储分段、创建弹性容器注册表(ECR)以托管Astra控制中心映像、并将这些映像推送到此注册表。
 
 按照 AWS 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-aws-default.html["AWS 安装文档"^]。
 
-. 创建 AWS 虚拟私有云。
+. 创建AWS虚拟网络。
 . 查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。
 . 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 link:../requirements.html["Astra 控制中心要求"]。
 . 至少创建一个 AWS S3 存储分段来存储备份。
 . 创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。
 +
 
-NOTE: 如果不创建 ECR ，则 Astra 控制中心无法从包含带有 AWS 后端 CVO 的集群访问监控数据。如果您尝试使用 Astra 控制中心发现和管理的集群没有 AWS ECR 访问权限，则会导致出现问题描述 。
+NOTE: 如果不创建ECR、则Astra控制中心无法从包含Cloud Volumes ONTAP 且具有AWS后端的集群访问监控数据。如果您尝试使用 Astra 控制中心发现和管理的集群没有 AWS ECR 访问权限，则会导致出现问题描述 。
 
 . 将这些 Accc 映像推送到您定义的注册表。
 
 
 
-NOTE: AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并导致跨集群克隆操作失败。从为 AWS 配置的 Cloud Volumes ONTAP （ CVO ）管理存储后端时会发生此问题描述 。要更正此问题描述 ，请再次向 ECR 进行身份验证，并生成一个新密钥，以便成功恢复克隆操作。
+NOTE: AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并导致跨集群克隆操作失败。从为AWS配置的Cloud Volumes ONTAP 管理存储后端时会发生此问题描述。要更正此问题描述 ，请再次向 ECR 进行身份验证，并生成一个新密钥，以便成功恢复克隆操作。
 
 以下是 AWS 部署示例：
 
@@ -202,7 +202,7 @@ image:acc-cvo-aws2.png["采用 Cloud Volumes ONTAP 的 Astra 控制中心部署�
 
 
 
-. 记下此 CVO 部署中的所有永久性卷和卷。
+. 记下此Cloud Volumes ONTAP 部署中的所有永久性卷和卷。
 
 
 
@@ -338,7 +338,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 === 确保您具有足够的 IAM 权限
 
-确保您具有足够的 IAM 角色和权限，可以安装 RedHat OpenShift 集群和 NetApp Cloud Volumes ONTAP 连接器。
+确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp Cloud Manager Connector。
 
 请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-azure.html["Azure 凭据和权限"^]。
 
@@ -346,14 +346,14 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 === 配置 Azure
 
-接下来，将 Azure 配置为创建虚拟私有云，设置计算实例，创建 Azure Blob S3 存储分段，创建 Azure 容器注册表（ ACR ）以托管 Astra 控制中心映像，并将这些映像推送到此注册表。
+接下来、将Azure配置为创建虚拟网络、设置计算实例、创建Azure Blob容器、创建Azure容器注册表(ACR)以托管Astra控制中心映像、并将这些映像推送到此注册表。
 
 按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-azure-default.html["在 Azure 上安装 OpenShift 集群"^]。
 
-. 创建 Azure 虚拟私有云。
+. 创建Azure虚拟网络。
 . 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
 . 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
-. 至少创建一个 Azure Blob S3 存储分段来存储备份。
+. 至少创建一个Azure Blob容器以存储备份。
 . 创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。
 . 创建存储分段访问所需的密钥。
 . 创建 Azure 容器注册表（ ACR ）以托管所有 Astra 控制中心映像。
@@ -428,13 +428,13 @@ image:acc-cvo-azure-working-environment.png["在 Cloud Manager 中创建工作�
 image:acc-cvo-azure-connected.png["已在 Cloud Manager 中导入集群"]
 
 .. 在右上角，记下 Trident 版本。
-.. 记下显示 NetApp 作为配置程序的 CVO 集群存储类。
+.. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
 
 
 +
 此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。
 
-. 记下此 CVO 部署中的所有永久性卷和卷。
+. 记下此Cloud Volumes ONTAP 部署中的所有永久性卷和卷。
 . Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 Azure 中运行的 HA 状态和节点部署状态。
 
 
