@@ -18,7 +18,7 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 == 2022 年 4 月 26 日（ 22.04.0 ）
 
 .新增功能和支持
-* link:../get-started/setup_overview.html#add-a-storage-backend["从Astra控制中心部署Astra Store"]
+* link:../get-started/setup_overview.html#add-a-storage-backend["从Astra控制中心部署Astra Data Store"]
 * link:../concepts/user-roles-namespaces.html["命名空间基于角色的访问控制（ RBAC ）"]
 * link:../get-started/install_acc-cvo.html["支持 Cloud Volumes ONTAP"]
 * link:../get-started/requirements.html#ingress-for-on-premises-kubernetes-clusters["为 Astra 控制中心启用通用传入"]
