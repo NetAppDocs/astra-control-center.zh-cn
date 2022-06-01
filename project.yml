@@ -62,13 +62,13 @@ homepage:
       url: https://docs.netapp.com/us-en/astra/release-notes/whats-new.html
     - title: Astra 控制服务快速入门
       url: https://docs.netapp.com/us-en/astra/get-started/quick-start.html
-  - title: 使用 Astra Data Store 预览版
+  - title: 使用 Astra 数据存储
     links:
     - title: Astra 数据存储简介
       url: https://docs.netapp.com/us-en/astra-data-store/concepts/intro.html
     - title: 此版本的 Astra 数据存储中的内容
       url: https://docs.netapp.com/us-en/astra-data-store/release-notes/whats-new.html
-    - title: 快速启动 Astra Data Store 预览
+    - title: Astra 数据存储快速入门
       url: https://docs.netapp.com/us-en/astra-data-store/get-started/quick-start.html
   - title: 解决方案简介
     links:

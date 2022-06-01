@@ -45,6 +45,10 @@ entries:
     url: "/use/view-account-activity.html"
   - title: 更新现有许可证
     url: "/use/update-licenses.html"
+  - title: 管理存储库连接
+    url: "/use/manage-connections.html"
+  - title: 管理软件包
+    url: "/use/manage-packages-acc.html"
 - title: 管理存储分段
   url: "/use/manage-buckets.html"
 - title: 管理存储后端

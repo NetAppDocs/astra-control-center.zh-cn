@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: get-started/setup_overview.html 
-keywords: set up astra control, setup astra control, setting up Astra Control Center, astra control license, add cluster, import storage, add bucket 
+keywords: set up astra control, astra control license, add cluster, add storage backend, import storage, add bucket 
 summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。 
 ---
 = 设置 Astra 控制中心
@@ -57,7 +57,7 @@ NOTE: 如果您拥有评估许可证，请务必存储帐户 ID ，以避免在�
 
 == 添加集群
 
-要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra Data Store 预览版，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra Data Store 预览版配置的卷的应用程序。
+要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。
 
 
 TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。您可以使用 * 添加集群 * 功能通过 Astra 控制中心管理集群。
@@ -72,8 +72,8 @@ TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理�
 
 ====
 .您需要什么？ #8217 ；将需要什么
+* 在添加集群之前，请查看并执行必要的操作 link:add-cluster-reqs.html["前提条件任务"^]。
 
-IMPORTANT: 在添加集群之前，请查看并执行必要的操作 link:add-cluster-reqs.html["前提条件任务"^]。
 
 .步骤
 . 从 Astra 控制中心用户界面的 * 信息板 * 中，选择集群部分中的 * 添加 * 。
@@ -111,32 +111,39 @@ IMPORTANT: 添加要在 Astra 控制中心中管理的集群后，部署监控�
 
 == 添加存储后端
 
-您可以添加存储后端，以使 Astra Control 能够管理其资源。通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。
+您可以添加存储后端，以使 Astra Control 能够管理其资源。您可以在受管集群上部署存储后端、也可以使用现有存储后端。
 
-您可以通过在信息板或后端菜单中导航提示来添加已发现的存储后端。
+通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。
 
-.您需要什么？ #8217 ；将需要什么
-* 您已拥有 link:../get-started/setup_overview.html#add-cluster["已添加集群"] 它由 Astra Control 管理。
+.现有Astra Data Store部署需要什么
+* 您已添加Kubernetes应用程序集群和底层计算集群。
 +
 
-NOTE: 受管集群连接了一个受支持的后端， Astra Control 可以发现该后端。
-
-* 对于 Astra Data Store 预览安装：您已添加 Kubernetes 应用程序集群。
-+
-
-NOTE: 为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群在已发现的后端列表中显示为 `非受管` 。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 link:../get-started/setup_overview.html#add-cluster["添加集群"]。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。
+IMPORTANT: 添加适用于Astra Data Store的Kubernetes应用程序集群并由Astra Control管理后、该集群在已发现的后端列表中显示为`非受管`。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 link:../get-started/setup_overview.html#add-cluster["添加集群"]。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。
 
 
+
+.新的Astra Data Store部署需要什么
+* 您已拥有 link:../use/manage-packages-acc.html["已上传要部署的安装包版本"] 到Astra Control可访问的位置。
+* 您已添加要用于部署的Kubernetes集群。
+* 您已上传 <<Add a license for Astra Control Center,Astra Data Store许可证>> 部署到可供Astra Control访问的位置。
+
+
+.选项
+* <<Deploy storage resources>>
+* <<Use an existing storage backend>>
+
+
+
+
+=== 部署存储资源
+
+您可以部署新的Astra数据存储并管理关联的存储后端。
 
 .步骤
-. 执行以下操作之一：
+. 从信息板或后端菜单导航：
 +
-** 从 * 信息板 * ：
-+
-... 从存储后端部分中，选择 * 添加 * 。
-... 从资源摘要 > 存储后端部分中，选择 * 添加 * 。
-
-
+** 从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。
 ** 从 * 后端 * ：
 +
 ... 在左侧导航区域中，选择 * 后端 * 。
@@ -145,29 +152,99 @@ NOTE: 为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群�
 
 
 
+. 在*部署*选项卡中选择* Astra Data Store*部署选项。
+. 选择要部署的Astra Data Store软件包：
++
+.. 输入Astra Data Store应用程序的名称。
+.. 选择要部署的Astra数据存储的版本。
++
+
+NOTE: 如果您尚未上传要部署的版本、可以使用*添加软件包*选项或退出向导并使用 link:../use/manage-packages-acc.html["软件包管理"] 上传安装包。
+
+
+
+. 选择先前上传的Astra Data Store许可证、或者使用*添加许可证*选项上传要用于应用程序的许可证。
++
+
+NOTE: 具有完全权限的Astra Data Store许可证将与您的Kubernetes集群关联、并且这些关联的集群应自动显示。如果没有受管集群、您可以选择*添加集群*选项将其添加到Astra Control管理中。对于Astra Data Store许可证、如果许可证和集群之间未建立关联、您可以在向导的下一页定义此关联。
+
+. 如果尚未将Kubernetes集群添加到Astra Control管理中、则需要从* Kubernetes cluster*页面中执行此操作。从列表中选择一个现有集群或选择*添加底层集群*将集群添加到Astra Control管理中。
+. 选择要为Astra数据存储提供资源的Kubernetes集群的部署模板大小。
++
+
+TIP: 选择模板时、请为大型工作负载选择具有更多内存和核心的大型节点、为小型工作负载选择更多节点。您应根据许可证允许的内容选择模板。每个模板选项都会建议符合条件且满足每个节点的内存、核心和容量模板模式的节点数。
+
+. 配置节点：
++
+.. 添加节点标签以标识支持此Astra数据存储集群的工作节点池。
++
+
+IMPORTANT: 在开始部署或部署失败之前、必须将此标签添加到集群中要用于部署Astra Data Store的每个节点上。
+
+.. 手动配置每个节点的容量(GiB)或选择允许的最大节点容量。
+.. 配置集群中允许的最大节点数或允许集群中的最大节点数。
+
+
+. (仅限Astra Data Store完整许可证)输入要用于保护域的标签的密钥。
++
+
+NOTE: 为每个节点的密钥至少创建三个唯一标签。例如、如果您的密钥为`astra.datastore.protection.domain`、则可以创建以下标签：`astra.datastore.protection.domain=domain1`,`astra.datastore.protection.domain=domain2`和`astra.datastore.protection.domain=domain3`。
+
+. 配置管理网络：
++
+.. 输入Astra Data Store内部管理的管理IP地址、该地址与工作节点IP地址位于同一子网上。
+.. 选择对管理网络和数据网络使用相同的NIC、或者单独进行配置。
+.. 输入用于存储访问的数据网络IP地址池、子网掩码和网关。
+
+
+. 查看配置并选择*部署*以开始安装。
+
+
+成功安装后、后端会在后端列表中显示为`Available`状态、并显示活动性能信息。
+
+
+NOTE: 您可能需要刷新页面才能显示后端。
+
+
+
+=== 使用现有存储后端
+
+您可以将已发现的ONTAP 或Astra数据存储存储后端引入Astra控制中心管理。
+
+.步骤
+. 从信息板或后端菜单导航：
++
+** 从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。
+** 从 * 后端 * ：
++
+... 在左侧导航区域中，选择 * 后端 * 。
+... 在受管集群中发现的后端上选择*管理*、或者选择*添加*来管理其他现有后端。
+
+
+
+
+. 选择 * 使用现有 * 选项卡。
 . 根据后端类型执行以下操作之一：
 +
 ** * Astra 数据存储库 * ：
 +
-... 选择 * 使用现有 * 选项卡。
-... 选择 * Astra Data Store* 选项卡。
+... 选择* Astra Data Store*。
 ... 选择受管计算集群并选择 * 下一步 * 。
-... 确认后端详细信息并选择 * 管理存储后端 * 。
+... 确认后端详细信息并选择*添加存储后端*。
 
 
 ** * ONTAP * ：
 +
-... 选择 * 使用现有 * 选项卡。
+... 选择* ONTAP *。
 ... 输入 ONTAP 管理员凭据并选择 * 审核 * 。
-... 确认后端详细信息并选择 * 管理 * 。
+... 确认后端详细信息并选择*添加存储后端*。
 
 
 
 
-+
+
+
 后端会在列表中显示为 `available` 状态，并显示摘要信息。
-
-
 
 
 NOTE: 您可能需要刷新页面才能显示后端。

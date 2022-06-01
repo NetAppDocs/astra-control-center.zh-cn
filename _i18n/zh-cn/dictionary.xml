@@ -303,8 +303,6 @@
   <block id="0197eedefddfa1dc3c535db285d61bc5" category="list-text"><block ref="0197eedefddfa1dc3c535db285d61bc5" category="inline-link-macro-rx"></block></block>
   <block id="3f4fc4220755866f399810fee47c7884" category="inline-link-macro">GitHub 贡献者</block>
   <block id="65ed3c4720fad34d453db54755338725" category="paragraph">在 Twitter @NetAppDoc 上关注我们。通过成为发送有关文档的反馈 <block ref="78cabac26f0b6e0ce9a3e24d1b749910" category="inline-link-macro-rx"></block> 或发送电子邮件至 doccomments@netapp.com 。</block>
-  <block id="fdc2918b75d781bb6dd3c5b611748816" category="paragraph">使用此最新版本的 Astra 控制中心时，以下已知问题会影响 Astra 数据存储的管理：</block>
-  <block id="e81390ac7a4e5ed54e210e59e5b5f694" category="inline-link-macro">Astra 控制中心安装过程</block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="summary">已知限制确定了本产品版本不支持的平台、设备或功能、或者这些平台、设备或功能无法与产品正确交互操作。仔细审查这些限制。</block>
   <block id="733442372849ffb7318ed29ca9c55aaa" category="section-title">同一集群不能由两个 Astra Control Center 实例管理</block>
   <block id="1bca7607e51d744e7281a7c4772adc9f" category="inline-link-macro">取消管理集群</block>
@@ -940,7 +938,6 @@
   <block id="7672a092783c4348b96b40ea2dcf6681" category="section-title">存储类</block>
   <block id="9282ad3aef7e124a3b2b9c7eab52b33d" category="doc">架构和组件</block>
   <block id="42b90d40b51b0ccfc8a50cfa2f6c88bc" category="summary">Astra 是 Kubernetes 应用程序数据生命周期管理服务，可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。</block>
-  <block id="7e073986fe6af6ce1775bdfd558def36" category="doc">Astra Control 简介</block>
   <block id="ed0ddcd9092b607bdbb746861c4340a7" category="summary">您可以将两种类型的应用程序引入 Astra Control ： Validated 和 Standard 。了解这两个类别之间的差异以及对项目和战略的潜在影响。</block>
   <block id="c8a8951e747490d31a329c8be8936189" category="doc">经验证的应用程序与标准应用程序</block>
   <block id="3e7ce18250825ebe097f3b6178f9d04a" category="summary">从 BitNami Helm 图表中了解如何部署 MariaDB 。在集群上部署 MariaDB 后，您可以使用 Astra Control 管理应用程序。</block>
@@ -1203,22 +1200,12 @@
   <block id="c34e73c1ab29825cfabdde95f496f768" category="list-text">查看相关信息，如果一切正常，请选择 * 添加集群 * 。</block>
   <block id="3b8e5272ef61221ea3c7e5d842687fae" category="paragraph">集群将进入 * 正在发现 * 状态，然后更改为 * 正在运行 * 。您已成功添加 Kubernetes 集群，现在正在 Astra 控制中心中对其进行管理。</block>
   <block id="30d1bfe2e9b6bfe1d2ea5dd7e0e26c80" category="admonition">添加要在 Astra 控制中心中管理的集群后，部署监控操作员可能需要几分钟的时间。在此之前，通知图标将变为红色并记录一个 * 监控代理状态检查失败 * 事件。您可以忽略此问题，因为当 Astra 控制中心获得正确状态时，问题描述将解析。如果问题描述在几分钟内未解析，请转至集群，然后运行 `oc get Pod -n netapp-monitoring` 作为起点。您需要查看监控操作员日志以调试此问题。</block>
-  <block id="00e06e3552b1b0b5e3883c5e00c80134" category="paragraph">您可以添加存储后端，以使 Astra Control 能够管理其资源。通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。</block>
-  <block id="ee0ce8ad611b1fbf9c6721c60a0baf71" category="paragraph">您可以通过在信息板或后端菜单中导航提示来添加已发现的存储后端。</block>
-  <block id="2cc9296c494487aee08ead4a5418cb26" category="inline-link-macro">已添加集群</block>
-  <block id="f3a8b51739759c7aab725f0b7c0b6d05" category="list-text">您已拥有 <block ref="490469b1058ddba4dd23d8bc5d4ce310" category="inline-link-macro-rx"></block> 它由 Astra Control 管理。</block>
-  <block id="8df2a009a22eec9cf4e582865db9e073" category="admonition">受管集群连接了一个受支持的后端， Astra Control 可以发现该后端。</block>
   <block id="129d92c88545c014f5981e4bedd69fd4" category="inline-link-macro">添加集群</block>
-  <block id="d50382f4f1656b37fe3490e3ea650497" category="admonition">为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群在已发现的后端列表中显示为 `非受管` 。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 <block ref="8c30ee7267ee6c93cf0c195b661c2cd2" category="inline-link-macro-rx"></block>。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。</block>
-  <block id="d8c9edabd6660da785c04c0b0f470ab7" category="list-text">从 * 信息板 * ：</block>
   <block id="94fdb40b8f29075643feafb58a5c7715" category="list-text">从 * 后端 * ：</block>
   <block id="4b46912a4f3acad842c6ef52f8b990dc" category="list-text">根据后端类型执行以下操作之一：</block>
   <block id="527c8a8fccaa699a0c6292d5018c13a3" category="list-text">* Astra 数据存储库 * ：</block>
-  <block id="99b183b5232e3f7f3fd7aa98ed075954" category="list-text">选择 * Astra Data Store* 选项卡。</block>
-  <block id="8d152c6be3319e8a434f4a4eded5f1d7" category="list-text">确认后端详细信息并选择 * 管理存储后端 * 。</block>
   <block id="c77884d91114de0aa4b7d8b549b2113e" category="list-text">* ONTAP * ：</block>
   <block id="bf2393bb3f17f3d2b4ff6979c3c20036" category="list-text">输入 ONTAP 管理员凭据并选择 * 审核 * 。</block>
-  <block id="094888b3c75d89979aa1e343a8e5c119" category="list-text">确认后端详细信息并选择 * 管理 * 。</block>
   <block id="a8511fe304f9e2caa12c3c1c129e452a" category="paragraph">后端会在列表中显示为 `available` 状态，并显示摘要信息。</block>
   <block id="d4608e29abe9d25f2211f4d29b0802fa" category="admonition">您可能需要刷新页面才能显示后端。</block>
   <block id="deea85f1feaf69ed17f9d01c95389da1" category="paragraph">如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则必须添加对象存储分段提供程序。Astra Control 会将这些备份或克隆存储在您定义的对象存储分段中。</block>
@@ -1399,30 +1386,12 @@
   <block id="e3ef67ef771ccecb9617669e034f8a72" category="list-text"><block ref="e3ef67ef771ccecb9617669e034f8a72" category="inline-link-macro-rx"></block></block>
   <block id="eeb5139838bc01ee74f5e84228e770e3" category="inline-link-macro">Astra Data Store 预览后端管理和监控</block>
   <block id="88c91ef58cacca0ce7311796478d0cf3" category="inline-link-macro">有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题</block>
-  <block id="fc8259e97b18a3baf3d9ca96fb8b483d" category="list-text"><block ref="fc8259e97b18a3baf3d9ca96fb8b483d" category="inline-link-macro-rx"></block></block>
-  <block id="5132446b033e54d6debc0548b45d49ae" category="section-title">由于 MongoDB Pod 活跃度探针故障，无法将 Astra Data Store 预览用作 Astra 控制中心的存储类</block>
-  <block id="3c8fe1f135ab2ac9300f533669001f30" category="paragraph">在部署 Astra 控制中心期间，当您尝试使用 Astra Data Store 预览作为存储类配置程序时， MongoDB POD 活动性探针将失败，从而导致部署无法完成。</block>
-  <block id="6e8ac331af01cb23ac316dc2018c097d" category="paragraph">要更正此问题描述，请在完成时除了进行标准的 YAML 更改外，还进行以下更改 <block ref="d14182609c4f3318aa56c7cc5e96252d" category="inline-link-macro-rx"></block>：</block>
-  <block id="8a13d448d34448db22a2b0a6dd1acefc" category="inline-link-macro">Astra 控制中心操作员部署 YAML （ Astra_control_center_operator_deploy.yaml ）</block>
-  <block id="85d3f736ce18017c45e8a6ae4d1e8fe5" category="list-text">编辑 <block ref="aa49db316689710519b7c8def18b8801" category="inline-link-macro-rx"></block> 更改 Helm 安装超时：</block>
-  <block id="7a80cbdb518e1d355b96f0f85cfc440d" category="inline-link-macro">Astra 控制中心自定义资源（ CR ）文件（ Astra_control_center_min.yaml ）</block>
-  <block id="f0e4789c9bc3e68aa311924dc6728d18" category="list-text">编辑 <block ref="4c6c00b260f38942b09c4617203862e3" category="inline-link-macro-rx"></block> 并在 `sPec` 下添加突出显示的其他值：</block>
-  <block id="f885d736613811b426f3882868416c0c" category="inline-link-macro">有关 Astra 数据存储预览的通知</block>
-  <block id="866684ba00f3eaa7ffb3119bad439e6e" category="list-text"><block ref="866684ba00f3eaa7ffb3119bad439e6e" category="inline-link-macro-rx"></block></block>
   <block id="8af92bb4a82e9330d36767a461117b77" category="inline-link">Astra Data Store 入门</block>
   <block id="010fe8b2dcf8f2144d52f7fa09b19be3" category="paragraph">如果使用与 Astra Data Store 存储后端集成的 Astra 控制中心，则在安装后，不会定义任何存储类。您需要创建 Trident 默认存储类并将其应用于存储后端。请参见<block ref="31e869d7ae2f401f4a85bdc155c56e86" category="inline-link-rx"></block> 创建默认的 Astra Data Store 存储类。</block>
   <block id="df819717a2baf5b48925d2b4cdaf4745" category="list-text">* 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
-  <block id="17eb8d332e75f64616b506be451b189f" category="inline-link-macro">需要进行的其他更改</block>
-  <block id="19dfa68f9af3ebcd8abb0bcfff39c5fd" category="list-text">（对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 <block ref="6511a1f600064236c7dbbb54dd879ccf" category="inline-link-macro-rx"></block> 向 YAML 报告。</block>
-  <block id="c287552db25a1fab7b049bb27d492f51" category="list-text">Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储预览存储后端的 Kubernetes 集群结合使用。</block>
-  <block id="15124155930d299e6f1779b4748a5e68" category="inline-link">Astra Data Store 预览</block>
   <block id="9103a93ceb430727f35a3f9417e478c1" category="paragraph">Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
-  <block id="af529ec0ce8e62fc49e3f11779d0350c" category="paragraph">要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra Data Store 预览版，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra Data Store 预览版配置的卷的应用程序。</block>
-  <block id="3c8d59911b2ed233f35086eafb17748f" category="list-text">对于 Astra Data Store 预览安装：您已添加 Kubernetes 应用程序集群。</block>
-  <block id="7ea0911f99c3d96666fd9f883b4db9ca" category="sidebar">使用 Astra Data Store 预览版</block>
   <block id="9f828d6c562cc0df256e51d5d235c7bb" category="sidebar">Astra 数据存储简介</block>
   <block id="9496fd053449dc632695aa62786ebaf1" category="sidebar">此版本的 Astra 数据存储中的内容</block>
-  <block id="3551ec406ac2e45ff0f50e87c946ab31" category="sidebar">快速启动 Astra Data Store 预览</block>
   <block id="ed6be01d66e94b422222a328f085d0bc" category="list-text">创建 `create-kubeconfig.sh` 文件。将以下脚本开头的 `token_index` 替换为正确的值。</block>
   <block id="8a610f3ea380fe1789ef14712ba6b1f0" category="admonition">有关自动加载映像的信息，请参见下面的示例脚本。</block>
   <block id="e8c44728c041065d90e7029dec2e142c" category="list-text">登录到注册表：</block>
@@ -1509,7 +1478,6 @@
   <block id="1de4eda534b81a776926b71c5d509a3c" category="list-text">确保您仅为 Kubernetes 集群定义了一个默认存储类。</block>
   <block id="a514c0ae3c82c51ee5b4cd862c3c6ae5" category="paragraph">您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。</block>
   <block id="30e9f9c381fe23f7ce3650c2587f95e5" category="list-text">列出集群上安装的 Traefik CRD ：</block>
-  <block id="a533261ecbd74405d561fc2ee31235f5" category="list-text">如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本</block>
   <block id="61f5bc231326b2369e71b3e4d9f8c986" category="paragraph">删除现有的自签名 TLS 证书。</block>
   <block id="1cee46fe31fb6be4325d72afeb43c038" category="paragraph">添加一个由 CA 签名的新 TLS 证书。</block>
   <block id="38073e52be4dfccbbd24b3272a244562" category="list-text">从下载 Astra 控制中心证书和密钥的 zip<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
@@ -1571,11 +1539,8 @@
   <block id="0d6a0b4ff88d33831cdf8302d6f4d636" category="list-text">已部署和管理的 Astra Data Store 存储后端</block>
   <block id="8ff093262ab4588936566aa5eb25a42f" category="list-text">Astra Data Store 许可证文件（请联系您的 NetApp 销售代表以购买 Astra Data Store 许可证）</block>
   <block id="fac828474586c4baa2e12ed37254e3bc" category="list-text">选择存储后端的名称。</block>
-  <block id="f94ec21b3c0c7b47ac39427793903380" category="list-text">在 * 基本信息 * 下，您可以查看安装的许可证类型（如果有）。</block>
   <block id="06396cd50d61096b559e91288e0a0460" category="paragraph">如果将鼠标悬停在许可证信息上，则会显示一个弹出窗口，其中包含更多信息，例如到期时间和授权信息。</block>
   <block id="862b26354fab838d0bc4c72a4d1e45c6" category="list-text">在 * 许可证 * 下，选择许可证名称旁边的编辑图标。</block>
-  <block id="793c2102fbdb2f1f590ab9cd7867e98f" category="list-text">在 * 更新许可证 * 页面中，选择 * 添加许可证 * 。</block>
-  <block id="5b4282392687039f164888af6aae32bd" category="list-text">选择从 NetApp 获取的许可证文件。</block>
   <block id="cca05d90c5263f2a5fa3bf4eb854fba0" category="section-title">将节点添加到存储后端集群</block>
   <block id="d114496fcc61250e5f3f6bc3c93263c9" category="paragraph">您可以向 Astra Data Store 集群添加节点，最多可添加为 Astra Data Store 安装的许可证类型所支持的节点数。</block>
   <block id="451d9def44f6d43bde528c5862033f71" category="list-text">已部署并获得许可的 Astra Data Store 存储后端</block>
@@ -1944,8 +1909,6 @@
   <block id="22a505b5cbfe40e35bb7fb0543690f0e" category="inline-link-macro">设置 Astra 控制中心并添加存储分段</block>
   <block id="7a971c76db7e65f29d30288ac83cec37" category="paragraph">使用 Astra 控制中心添加 Azure 存储分段。请参见 <block ref="84c85bd9149d8879a472dbef331261f3" category="inline-link-macro-rx"></block>。</block>
   <block id="5aa431ebb0b0805358c5d6b3a9b9745d" category="paragraph">有关如何计算许可证的详细信息，请参见 <block ref="5d4863a02d05fc8628043f5d98bb32ab" category="inline-link-macro-rx"></block>。</block>
-  <block id="4d9379be73ba55f4c1b079ee884897de" category="list-text">从存储后端部分中，选择 * 添加 * 。</block>
-  <block id="a60d8d99de1db552bb0ff25496934484" category="list-text">从资源摘要 &gt; 存储后端部分中，选择 * 添加 * 。</block>
   <block id="4e5f7f6ac61851274c3d50decf63b5a2" category="list-text">选择 * 使用现有 * 选项卡。</block>
   <block id="dbf61aa578cd1d84f45f72364fceae0b" category="summary">您需要创建限制性较低的 POD 安全策略，以使 Astra Control 能够在受管集群上创建和更新 Pod 。</block>
   <block id="c8083e34bef7c1ffc5a6569022032c94" category="doc">创建自定义 POD 安全策略</block>
@@ -1983,7 +1946,6 @@
   <block id="db199481bf6cf2d5e29909b07d83a660" category="summary">您可以选择安装 Astra Control Center 。</block>
   <block id="29a22a050bd07366c87409e65a0fd0cd" category="list-text"><block ref="29a22a050bd07366c87409e65a0fd0cd" category="inline-link-macro-rx"></block></block>
   <block id="869e88fdb2291fe31fc2aeb4bc0d3c4f" category="paragraph"><block ref="9eecb239704d706edd0e9065cdf42037" category="inline-link-macro-rx"></block>。</block>
-  <block id="6514f4d4ab7040c9d32ce9aea0fd62ad" category="list-text">添加 ONTAP 或<block ref="e41935a824f782ed0b4e20297d584896" category="inline-link-rx"></block> 存储后端。</block>
   <block id="5c3ecd2a6e7743910c01e8a3ede5d0e2" category="paragraph"><block ref="4f53ab095a585e280035de1f6822ef65" category="inline-link-macro-rx"></block>。</block>
   <block id="938b18df1cf4fc30adffffdbd05580fb" category="list-text">（可选）如果集群使用限制性的 POD 安全策略，该策略不允许创建特权 POD 或允许 Pod 容器中的进程以 root 用户身份运行，请为集群创建一个自定义 POD 安全策略，以使 Astra Control 能够创建和管理 Pod 。有关说明，请参见 <block ref="a0c087a50043435816db1a08670aaa8c" category="inline-link-macro-rx"></block>。</block>
   <block id="a705d9c4def0cc55ff217de6d14232c6" category="list-text">Kubernetes 1.20 到 1.23</block>
@@ -2118,7 +2080,6 @@
   <block id="02007100629a6c88678f302f0918ab86" category="list-title">编辑和轮换凭据的步骤</block>
   <block id="08972981c30d730f81d00e7d6e7709cb" category="list-text">创建新凭据。</block>
   <block id="f8be12e25cfcab7e808ca98f80a56433" category="section-title">删除存储分段凭据</block>
-  <block id="47b2c3588cbae505ee9eeaf0ad395f38" category="paragraph">只有在已将新凭据应用于存储分段或存储分段不再处于活动状态时、才应删除存储分段凭据。</block>
   <block id="a31d0ea55a51bfbd5a603a8f5fa7a37a" category="admonition">添加到 Astra Control 的第一组凭据始终处于使用状态，因为 Astra Control 使用这些凭据对备份存储分段进行身份验证。如果存储分段正在使用中、请勿删除这些凭据、因为这会导致备份失败和备份不可用。</block>
   <block id="b2b8741126a8674edc86e6286a85c804" category="inline-link">对删除存储分段凭据进行故障排除</block>
   <block id="983be0b26fa308ee99003c55cac37fb5" category="admonition">如果删除了活动存储分段凭据、请参见<block ref="939cc867881057c221247142d6425e0a" category="inline-link-rx"></block>。</block>
@@ -2134,4 +2095,146 @@
   <block id="daee2a4caddb0f1fced149c9b185ab3e" category="paragraph">接下来、将Azure配置为创建虚拟网络、设置计算实例、创建Azure Blob容器、创建Azure容器注册表(ACR)以托管Astra控制中心映像、并将这些映像推送到此注册表。</block>
   <block id="52393bb21023d79ef4e0fa374e54b83d" category="list-text">创建Azure虚拟网络。</block>
   <block id="5df56ab7fcd23252a7ac4c7a21742e57" category="list-text">至少创建一个Azure Blob容器以存储备份。</block>
+  <block id="89110f39cddf501c149d691e3219c46f" category="list-text">Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储存储后端的 Kubernetes 集群结合使用。</block>
+  <block id="97b4ab60412f0ac1b694143b04594cea" category="list-text">添加 ONTAP 或<block ref="fc4f86eeee76cae2d1ef9200e442add9" category="inline-link-rx"></block> 存储后端。</block>
+  <block id="fa137497aee412183c61f5b8fc5b4e06" category="list-text">如果使用Astra数据存储作为存储后端、则已安装并配置Astra Trident 21.10.1或更高版本</block>
+  <block id="918bc432b267e0783b861303d55f277d" category="paragraph">要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。</block>
+  <block id="07bb61072986729e824079c9eb528582" category="paragraph">您可以添加存储后端，以使 Astra Control 能够管理其资源。您可以在受管集群上部署存储后端、也可以使用现有存储后端。</block>
+  <block id="eb33ac2274505b5f55f336ecd9e9a2d2" category="paragraph">通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。</block>
+  <block id="f8f5539f53262607b5f2bff0f2048a87" category="list-title">现有Astra Data Store部署需要什么</block>
+  <block id="bbcdee2c81617430cf13df9d72e93bd4" category="list-text">您已添加Kubernetes应用程序集群和底层计算集群。</block>
+  <block id="dc03b544598d0dfcfdee0b1fce2a4730" category="admonition">添加适用于Astra Data Store的Kubernetes应用程序集群并由Astra Control管理后、该集群在已发现的后端列表中显示为`非受管`。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 <block ref="8c30ee7267ee6c93cf0c195b661c2cd2" category="inline-link-macro-rx"></block>。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。</block>
+  <block id="5f8f1c10343756cee5ac9c33e098132e" category="list-title">新的Astra Data Store部署需要什么</block>
+  <block id="e149dd131ab58984f98a85e4acdc17f3" category="inline-link-macro">已上传要部署的安装包版本</block>
+  <block id="371c46463ca3b465cd0a0b198363c17f" category="list-text">您已拥有 <block ref="ce9e25f6db2a9b698807ac8ac2ea2d16" category="inline-link-macro-rx"></block> 到Astra Control可访问的位置。</block>
+  <block id="562a8ee2a8f15700012f29228a3198c7" category="list-text">您已添加要用于部署的Kubernetes集群。</block>
+  <block id="458428a2ebc28699f1238b3813b734ca" category="inline-xref">Astra Data Store许可证</block>
+  <block id="6948cc91a6c54649d12ce002178db797" category="list-text">您已上传 <block ref="ca242e38061772769065e88579b2054b" category="inline-xref-macro-rx"></block> 部署到可供Astra Control访问的位置。</block>
+  <block id="dae8ace18bdcbcc6ae5aece263e14fe8" category="list-title">选项</block>
+  <block id="46b48276edd178cc02652b2502748e9b" category="list-text"><block ref="21c89fb696a98da415ef141d4426f5b4" category="inline-xref-macro-rx"></block></block>
+  <block id="eac5db2451716c6e754c5629b4aba911" category="list-text"><block ref="9112bb0ebca556cf8f0b58b937197e52" category="inline-xref-macro-rx"></block></block>
+  <block id="14eab9a2db4a5049557d0fd1dec518f6" category="section-title">部署存储资源</block>
+  <block id="7ddc987aad918c3aa5c7681afd4f0ad1" category="paragraph">您可以部署新的Astra数据存储并管理关联的存储后端。</block>
+  <block id="08f444eb9d655ac72bff7a8c7a156be4" category="list-text">从信息板或后端菜单导航：</block>
+  <block id="dfb9c23bbc7c2e16774a33629fda3206" category="list-text">从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。</block>
+  <block id="676bdf86441ac2653b79a3ebf49e8358" category="list-text">在*部署*选项卡中选择* Astra Data Store*部署选项。</block>
+  <block id="597be48d7babaac4ca80e69876b30416" category="list-text">选择要部署的Astra Data Store软件包：</block>
+  <block id="aec23c9187f09f1b6efccd1defa7e90a" category="list-text">输入Astra Data Store应用程序的名称。</block>
+  <block id="16d3b970beca75a7d4d9291bf7630d08" category="list-text">选择要部署的Astra数据存储的版本。</block>
+  <block id="76df88555116f4997612dbb2de76c67f" category="inline-link-macro">软件包管理</block>
+  <block id="c91338544c12c273ccf29dae0abc13f3" category="admonition">如果您尚未上传要部署的版本、可以使用*添加软件包*选项或退出向导并使用 <block ref="e91d3a69532f4acdfd68c74249de52b4" category="inline-link-macro-rx"></block> 上传安装包。</block>
+  <block id="054467aebfccd30e1439657836085172" category="list-text">选择先前上传的Astra Data Store许可证、或者使用*添加许可证*选项上传要用于应用程序的许可证。</block>
+  <block id="9947bbb930c0833599055262eb533350" category="admonition">具有完全权限的Astra Data Store许可证将与您的Kubernetes集群关联、并且这些关联的集群应自动显示。如果没有受管集群、您可以选择*添加集群*选项将其添加到Astra Control管理中。对于Astra Data Store许可证、如果许可证和集群之间未建立关联、您可以在向导的下一页定义此关联。</block>
+  <block id="b9ab366bc5de1ee421a3f42aebb6e744" category="list-text">如果尚未将Kubernetes集群添加到Astra Control管理中、则需要从* Kubernetes cluster*页面中执行此操作。从列表中选择一个现有集群或选择*添加底层集群*将集群添加到Astra Control管理中。</block>
+  <block id="2c907290e05b9dae6669b08995fc334f" category="list-text">选择要为Astra数据存储提供资源的Kubernetes集群的部署模板大小。</block>
+  <block id="cf0567ca20b66234ddc139b3ae9e9ee2" category="admonition">选择模板时、请为大型工作负载选择具有更多内存和核心的大型节点、为小型工作负载选择更多节点。您应根据许可证允许的内容选择模板。每个模板选项都会建议符合条件且满足每个节点的内存、核心和容量模板模式的节点数。</block>
+  <block id="c71bdd7933746d7b616e6590ce5bc1e6" category="list-text">配置节点：</block>
+  <block id="196e58f817fb76b922d42ae8cb507b84" category="list-text">添加节点标签以标识支持此Astra数据存储集群的工作节点池。</block>
+  <block id="dbe2804e146eaed331f5634b7987d4b7" category="admonition">在开始部署或部署失败之前、必须将此标签添加到集群中要用于部署Astra Data Store的每个节点上。</block>
+  <block id="597e664d9c313b97f534759016885f81" category="list-text">手动配置每个节点的容量(GiB)或选择允许的最大节点容量。</block>
+  <block id="9714572d5c62ef898444053c725f14f4" category="list-text">配置集群中允许的最大节点数或允许集群中的最大节点数。</block>
+  <block id="f4d94ebe0ea637c0b8c179c1988331f9" category="list-text">(仅限Astra Data Store完整许可证)输入要用于保护域的标签的密钥。</block>
+  <block id="d034acb092111ab4de2380986529c1f1" category="admonition">为每个节点的密钥至少创建三个唯一标签。例如、如果您的密钥为`astra.datastore.protection.domain`、则可以创建以下标签：`astra.datastore.protection.domain=domain1`,`astra.datastore.protection.domain=domain2`和`astra.datastore.protection.domain=domain3`。</block>
+  <block id="fe243dd2cb4abaca6857f186347c3955" category="list-text">配置管理网络：</block>
+  <block id="c025a4dd2f98cc089b3e6d845d68c39f" category="list-text">输入Astra Data Store内部管理的管理IP地址、该地址与工作节点IP地址位于同一子网上。</block>
+  <block id="d9336e58192e96a8929b9eaa33ab10c0" category="list-text">选择对管理网络和数据网络使用相同的NIC、或者单独进行配置。</block>
+  <block id="ee35715999671aa777fffb12e79bc3fa" category="list-text">输入用于存储访问的数据网络IP地址池、子网掩码和网关。</block>
+  <block id="13907c40c50b60592dab5f935efefdfa" category="list-text">查看配置并选择*部署*以开始安装。</block>
+  <block id="956419482d3a1dd60147a8112ee9d44a" category="paragraph">成功安装后、后端会在后端列表中显示为`Available`状态、并显示活动性能信息。</block>
+  <block id="1367edd6c20df9b4f12b0a42dda9848f" category="section-title">使用现有存储后端</block>
+  <block id="cc554fa05cd0e6f33901ad854991ed9b" category="paragraph">您可以将已发现的ONTAP 或Astra数据存储存储后端引入Astra控制中心管理。</block>
+  <block id="697006fa33c54f166cb7f597861b31be" category="list-text">在受管集群中发现的后端上选择*管理*、或者选择*添加*来管理其他现有后端。</block>
+  <block id="95bb1f6fc6c0566a462d54ff7d82a31b" category="list-text">选择* Astra Data Store*。</block>
+  <block id="d3fff538538992ab275610d9ab9fc8fe" category="list-text">确认后端详细信息并选择*添加存储后端*。</block>
+  <block id="3a8637e581240d33340d3e6f8927a52d" category="list-text">选择* ONTAP *。</block>
+  <block id="1acdd4dfb3c47f47b9b3897e8d3325f4" category="inline-link-macro">有关Astra数据存储的通知</block>
+  <block id="fdb93feaa2c6123b98a32fa7804c91f8" category="list-text"><block ref="fdb93feaa2c6123b98a32fa7804c91f8" category="inline-link-macro-rx"></block></block>
+  <block id="35766360770e699f50fa8f51d1c6ff36" category="doc">了解Astra Control</block>
+  <block id="a4680eb9fa1582cab96754589680065b" category="list-text">在*基本信息*下、您可以看到安装的许可证类型。</block>
+  <block id="da41fa69f81a24e015fab366b0caf0cf" category="list-text">在*更新许可证*页面中、执行以下操作之一：</block>
+  <block id="5e33a12bc16d66724cc09b67c72dbf73" category="cell">许可证状态</block>
+  <block id="004bf6c9a40003140292e97330236c53" category="cell">Action</block>
+  <block id="0ebc865688ac84bd01bec7d7b4761f9a" category="cell">至少已向Astra数据存储添加一个许可证。</block>
+  <block id="17ec870bf13b808b4960a96bb617abb9" category="paragraph">从列表中选择一个许可证。</block>
+  <block id="25c87085115cd9f361d6c891eea68f96" category="cell">尚未向Astra数据存储添加任何许可证。</block>
+  <block id="da1e98dc49123864bfa24e00c323c4de" category="list-text">选择*添加*按钮。</block>
+  <block id="9ed83fc36c5339f8ef4956aebfa3e02e" category="list-text">选择要上传的许可证文件。</block>
+  <block id="fb32cd0ea7e3744a722a981f0618c8a8" category="list-text">选择*添加*以上传许可证文件。</block>
+  <block id="41c6b2124485566dfdffb7497c5c575c" category="summary">您可以将软件包上传并安装到Astra控制中心。</block>
+  <block id="34995c0b7b3605616ca699a218578506" category="doc">管理存储库连接</block>
+  <block id="917d0bb268e2c38e9d5edc010a23df45" category="paragraph">您可以将存储库连接到Astra Control、以用作软件包安装映像和项目的参考。导入软件包时、Astra Control会引用映像存储库中的安装映像以及项目存储库中的二进制文件和其他项目。</block>
+  <block id="6995185986444f5433b5959c9571c405" category="list-text">一个正在运行的Docker存储库、您可以访问该存储库</block>
+  <block id="44e4bcec2ed6d13ac6ad2a367f2db51c" category="list-text">可访问的正在运行的项目存储库(如Artifactory)</block>
+  <block id="e7c0f6f6d040c5a03a881c2ca91f03f7" category="section-title">连接Docker映像存储库</block>
+  <block id="a1df89e0f4bd63fee4296afbb85b610d" category="paragraph">您可以连接Docker映像存储库以保存软件包安装映像、例如用于Astra数据存储的安装映像。安装软件包时、Astra Control会从映像存储库导入软件包映像文件。</block>
+  <block id="947b6aeb064e43a1220d233b58bd6019" category="list-text">选择*连接*选项卡。</block>
+  <block id="62f6dbc3561d757215911e5b66302815" category="list-text">在* Docker映像存储库*部分中、选择右上角的菜单。</block>
+  <block id="3eacc67b9e94130b9c939109be6a82d5" category="list-text">添加存储库的URL和端口。</block>
+  <block id="2c90eeb5d4b8aedff1dbe87bf0178bb8" category="list-text">如果需要身份验证、请启用*使用身份验证*复选框并输入存储库的凭据。</block>
+  <block id="9fd3141d50ea9c4a63199f4a30de4ae4" category="paragraph">存储库已连接。在* Docker映像存储库*部分中、存储库应显示已连接状态。</block>
+  <block id="46cded6b636ad30dd75c44dfd45f5cde" category="section-title">断开Docker映像存储库的连接</block>
+  <block id="96261d42d312a0d903df883ab5869abb" category="paragraph">如果不再需要与Docker映像存储库的连接、您可以将其删除。</block>
+  <block id="4230b528c751be001043bf90304b82d6" category="list-text">选择*断开连接*。</block>
+  <block id="2d2d24a8953783d150de3da549808807" category="list-text">选择*是、断开Docker映像存储库*。</block>
+  <block id="a290478b8ef175d2a130f208f09d5000" category="paragraph">存储库已断开连接。在* Docker映像存储库*部分中、存储库应显示已断开连接状态。</block>
+  <block id="d7351c5a932a1232bcdd2bbd88253bce" category="section-title">连接项目存储库</block>
+  <block id="d54de9ccfd0a2952012a22848e14b530" category="paragraph">您可以将项目存储库连接到主机项目、例如软件包二进制文件。安装软件包时、Astra Control会从映像存储库导入软件包的项目。</block>
+  <block id="5c360025d1b6d66c4f618b5ba99defd7" category="list-text">在*项目存储库*部分中、选择右上角的菜单。</block>
+  <block id="1db2048bfc2d747d8bc6cf146db2bbbe" category="paragraph">存储库已连接。在*项目存储库*部分中、存储库应显示已连接状态。</block>
+  <block id="0fed6f8450a54370757bce6f3d96128c" category="section-title">断开项目存储库的连接</block>
+  <block id="d5eb1d7f67e82cda0cfde787bd2e3d6c" category="paragraph">如果不再需要与项目存储库的连接、您可以将其删除。</block>
+  <block id="9d10bea41ced64f74831039bb561dfc7" category="list-text">选择*是、断开项目存储库*。</block>
+  <block id="e654dafeadeb54ed6762c77fe01aafe9" category="paragraph">存储库已断开连接。在*项目存储库*部分中、存储库应显示已连接状态。</block>
+  <block id="0487f0495bc8eb403584fca5cb73b48a" category="inline-link-macro">管理软件包</block>
+  <block id="681458536636d04eeb1a702aa3539f21" category="list-text"><block ref="681458536636d04eeb1a702aa3539f21" category="inline-link-macro-rx"></block></block>
+  <block id="26dae90e3a5699447c13a6b61982b521" category="paragraph">NetApp通过可从NetApp支持站点下载的软件包为Astra控制中心提供更多功能。连接Docker和项目存储库后、您可以上传并导入软件包、以便将此功能添加到Astra控制中心。您可以使用命令行界面或Astra控制中心Web UI管理软件包。</block>
+  <block id="c236eea9ef9081e645ecb4497a3c05ce" category="list-text">一个连接的Docker映像存储库、用于存放软件包映像。有关详细信息，请参见 <block ref="70e5c10b1699fd43bcc41dd27e493e57" category="inline-link-macro-rx"></block>。</block>
+  <block id="e403b6f2306f02333fd7ef7221f85040" category="list-text">一个连接的项目存储库、用于存放软件包二进制文件和项目。有关详细信息，请参见 <block ref="70e5c10b1699fd43bcc41dd27e493e57" category="inline-link-macro-rx"></block>。</block>
+  <block id="3aa4078371fb9b0c4a3e6c177942f01d" category="list-text">NetApp支持站点提供的软件包</block>
+  <block id="821446301df86887f14a587de1046311" category="section-title">将软件包上传到存储库</block>
+  <block id="1861208871c49f3fafbdd2b1baedad6a" category="paragraph">Astra控制中心引用已连接存储库中的软件包映像和项目。您可以使用命令行界面将映像和项目上传到存储库。</block>
+  <block id="8a0c00d15eb4f3a9a8a6c659a1d7c576" category="list-text">从NetApp支持站点下载软件包、并将其保存在已安装`kubectl`实用程序的计算机上。</block>
+  <block id="a5d15ab770cd44d363e7f95fd16d0a4b" category="list-text">提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.manifest.bundle.YAML`)。</block>
+  <block id="af2248b7281e83a45508e2ec7c9356ea" category="list-text">将软件包映像推送到Docker存储库。进行以下替换：</block>
+  <block id="109f9842fb9259a1de20c1577339c28c" category="list-text">将bundle_file替换为Astra Control捆绑包文件的名称。</block>
+  <block id="48c5334862569a4217279192a534b20a" category="list-text">将my_regRegistry替换为Docker存储库的URL。</block>
+  <block id="da5ff2a96a29f48c8c4ffcf756aada4e" category="list-text">将my_registry_user和my_registry_password替换为存储库的凭据。</block>
+  <block id="873e5b0189688b130064268c0c68de0b" category="list-text">将软件包项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：</block>
+  <block id="82a16926420b6ee2d26a80442a3db7ae" category="section-title">添加软件包</block>
+  <block id="5801238264a16600dd0ab813e21d2cd9" category="paragraph">您可以使用Astra Control Center捆绑包文件导入软件包。这样将安装该软件包并使该软件可供Astra控制中心使用。</block>
+  <block id="ab1a0888acffbae43d2539e8dbc89a9d" category="section-title">使用Astra Control Web UI添加软件包</block>
+  <block id="896776e8feb543ce7e9cbdcee7dd60a9" category="paragraph">您可以使用Astra控制中心Web UI添加已上传到已连接存储库的软件包。</block>
+  <block id="f1be192bd49b3cbda9db469b861871fc" category="list-text">选择*软件包*选项卡。</block>
+  <block id="01dc3774aa73ad8d887097cb8219fd86" category="list-text">在文件选择对话框中、选择上传图标。</block>
+  <block id="e0abb0e6602d13f1d5dab2daf459ce78" category="list-text">选择一个格式为`.yaml`的Astra Control捆绑包文件进行上传。</block>
+  <block id="30731fce07bd1fc48191b64d59deac14" category="paragraph">如果捆绑包文件有效、并且软件包映像和项目位于已连接的存储库中、则软件包将添加到Astra控制中心。当*状态*列中的状态更改为*可用*时、您可以使用软件包。您可以将鼠标悬停在软件包的状态上以获取详细信息。</block>
+  <block id="f9ba0eda4f991c722f987cf4ea3a812e" category="admonition">如果在存储库中未找到某个软件包的一个或多个映像或项目、则会显示该软件包的错误消息。</block>
+  <block id="b4c542701e978aaad0f69de8fe42cb55" category="section-title">使用命令行界面添加软件包</block>
+  <block id="6e44d06482be8e79ed142e445a15d4e6" category="paragraph">您可以使用命令行界面导入已上传到已连接存储库的软件包。为此、您首先需要记录Astra控制中心帐户ID和API令牌。</block>
+  <block id="fa4b9acbac7c43e5402548abeb02f960" category="list-text">使用Web浏览器登录到Astra控制中心Web UI。</block>
+  <block id="4b37e02dfa574bb3e9129e38b3850393" category="list-text">从信息板中、选择右上角的用户图标。</block>
+  <block id="28478864077d4a55fa88e064f317cc13" category="list-text">选择* API访问*。</block>
+  <block id="0ece686d675a0e57009c57a97688af8b" category="list-text">记下屏幕顶部附近的帐户ID。</block>
+  <block id="a23600f50dab13161c6e99ea4d6488e7" category="list-text">选择*生成API令牌*。</block>
+  <block id="56a0897f95e899c3e49ee8e27649b365" category="list-text">在显示的对话框中、选择*生成API令牌*。</block>
+  <block id="f89f3e07532867b8676ace707d29c174" category="list-text">记下生成的令牌、然后选择*关闭*。在命令行界面中、将目录更改为提取的软件包内容中`.yaml`软件包文件的位置。</block>
+  <block id="8a4e92913adf07f40baa051841e42594" category="list-text">使用捆绑包文件导入软件包、进行以下替换：</block>
+  <block id="13bdd52149987d6235f8110b85d10e90" category="list-text">将Server替换为Astra Control实例的DNS名称。</block>
+  <block id="55d3ede0ad36838477b18f3237142ff4" category="list-text">将account_ID和token替换为先前记录的帐户ID和API令牌。</block>
+  <block id="236c70eff76d85ba5d492b545a1f4a40" category="paragraph">如果捆绑包文件有效、并且软件包映像和项目位于已连接的存储库中、则软件包将添加到Astra控制中心。</block>
+  <block id="da0fadc656f4ccc74a03023158d6eed6" category="section-title">删除软件包</block>
+  <block id="6999d3f0aa7b059b10136d77fa64d5c9" category="paragraph">您可以使用Astra控制中心Web UI删除先前在Astra控制中心导入的软件包。</block>
+  <block id="4886c9d566b2f27922911fe0da4ffc73" category="paragraph">您可以在此页面上查看已安装软件包的列表及其状态。</block>
+  <block id="7d690a25043051913957548b66947103" category="list-text">在软件包的*操作*列中、打开操作菜单。</block>
+  <block id="5c1a90f55380a450fff0fdefedbdecc0" category="paragraph">该软件包将从Astra控制中心删除、但该软件包的映像和项目仍保留在存储库中。</block>
+  <block id="70e5c10b1699fd43bcc41dd27e493e57" category="list-text"><block ref="70e5c10b1699fd43bcc41dd27e493e57" category="inline-link-macro-rx"></block></block>
+  <block id="cea7924acf8d3c8a75f4abdda00f5229" category="paragraph">只有在已将新凭据应用于存储分段或存储分段不再处于活动状态时、才应删除存储分段凭据。</block>
+  <block id="ddc02a40e74b8c01e69864a1bba6a3f7" category="inline-link-macro">Astra 数据存储和此 Astra 控制中心版本的已知问题</block>
+  <block id="149f42af15b65ad0999339db3936d2df" category="list-text"><block ref="149f42af15b65ad0999339db3936d2df" category="inline-link-macro-rx"></block></block>
+  <block id="484d77b3bea70db59bbc245217b42578" category="inline-link-macro">从Astra控制中心部署Astra Store</block>
+  <block id="a62e8d130d7ff1f207f36203d80de75d" category="list-text"><block ref="a62e8d130d7ff1f207f36203d80de75d" category="inline-link-macro-rx"></block></block>
+  <block id="1394793485c038a7492d0d7a8dec3919" category="inline-link">请参见以下已知问题</block>
+  <block id="c39c062b458656cdf3c9c374e86f4fdd" category="paragraph"><block ref="8073f6655f8c45390fcb4595835fbf06" category="inline-link-rx"></block> 这可能会影响当前版本的Astra控制中心对Astra数据存储的管理。</block>
+  <block id="042ad0dc0362e73320e5850115e17224" category="sidebar">使用 Astra 数据存储</block>
+  <block id="f0b65328b01ef9e6301a81ee7e9ed23f" category="sidebar">Astra 数据存储快速入门</block>
 </blocks>

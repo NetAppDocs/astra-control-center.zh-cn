@@ -168,5 +168,5 @@ Astra 控制中心不支持使用集群范围的操作员执行应用程序管�
 == 了解更多信息
 
 * link:../release-notes/known-issues.html["已知问题"]
-* link:../release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"]
+* link:../release-notes/known-issues-ads.html["Astra 数据存储和此 Astra 控制中心版本的已知问题"]
 

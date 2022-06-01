@@ -381,7 +381,6 @@ NOTE: 有关 "loadbalancer" 服务类型和入口的详细信息，请参见 lin
 
 
 
-.. （对于使用 Astra 数据存储预览版的安装）请参见适用于的此已知问题描述 link:../release-notes/known-issues-ads.html#astra-data-store-cannot-be-used-as-a-storage-class-for-astra-control-center-due-to-mongodb-pod-liveness-probe-failure["需要进行的其他更改"] 向 YAML 报告。
 
 
 +

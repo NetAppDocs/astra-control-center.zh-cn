@@ -43,7 +43,7 @@ Astra 控制中心需要以下类型的操作环境之一：
 
 | Astra Trident  a| 
 * 已安装并配置 Astra Trident 21.04 或更高版本
-* 如果使用 Astra Data Store 预览版作为存储后端，则已安装并配置 Astra Trident 21.10.1 或更高版本
+* 如果使用Astra数据存储作为存储后端、则已安装并配置Astra Trident 21.10.1或更高版本
 
 
 |===

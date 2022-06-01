@@ -1,0 +1,133 @@
+---
+sidebar: sidebar 
+permalink: use/manage-packages-acc.html 
+keywords: manage package, packages, install 
+summary: 您可以将软件包上传并安装到Astra控制中心。 
+---
+= 管理软件包
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+NetApp通过可从NetApp支持站点下载的软件包为Astra控制中心提供更多功能。连接Docker和项目存储库后、您可以上传并导入软件包、以便将此功能添加到Astra控制中心。您可以使用命令行界面或Astra控制中心Web UI管理软件包。
+
+.您需要什么？ #8217 ；将需要什么
+* 安装了 Astra 控制中心的 Kubernetes 集群
+* 一个连接的Docker映像存储库、用于存放软件包映像。有关详细信息，请参见 link:manage-connections.html["管理存储库连接"]。
+* 一个连接的项目存储库、用于存放软件包二进制文件和项目。有关详细信息，请参见 link:manage-connections.html["管理存储库连接"]。
+* NetApp支持站点提供的软件包
+
+
+
+
+== 将软件包上传到存储库
+
+Astra控制中心引用已连接存储库中的软件包映像和项目。您可以使用命令行界面将映像和项目上传到存储库。
+
+.步骤
+. 从NetApp支持站点下载软件包、并将其保存在已安装`kubectl`实用程序的计算机上。
+. 提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.manifest.bundle.YAML`)。
+. 将软件包映像推送到Docker存储库。进行以下替换：
++
+** 将bundle_file替换为Astra Control捆绑包文件的名称。
+** 将my_regRegistry替换为Docker存储库的URL。
+** 将my_registry_user和my_registry_password替换为存储库的凭据。
++
+[listing]
+----
+kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_PASSWORD
+----
+
+
+. 将软件包项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：
++
+[listing]
+----
+kubectl astra packages copy-artifacts -m BUNDLE_FILE -n NETWORK_LOCATION
+----
+
+
+
+
+== 添加软件包
+
+您可以使用Astra Control Center捆绑包文件导入软件包。这样将安装该软件包并使该软件可供Astra控制中心使用。
+
+
+
+=== 使用Astra Control Web UI添加软件包
+
+您可以使用Astra控制中心Web UI添加已上传到已连接存储库的软件包。
+
+.步骤
+. 在 * 管理帐户 * 导航区域中，选择 * 帐户 * 。
+. 选择*软件包*选项卡。
+. 选择*添加*按钮。
+. 在文件选择对话框中、选择上传图标。
+. 选择一个格式为`.yaml`的Astra Control捆绑包文件进行上传。
+. 选择 * 添加 * 。
+
+
+如果捆绑包文件有效、并且软件包映像和项目位于已连接的存储库中、则软件包将添加到Astra控制中心。当*状态*列中的状态更改为*可用*时、您可以使用软件包。您可以将鼠标悬停在软件包的状态上以获取详细信息。
+
+
+NOTE: 如果在存储库中未找到某个软件包的一个或多个映像或项目、则会显示该软件包的错误消息。
+
+
+
+=== 使用命令行界面添加软件包
+
+您可以使用命令行界面导入已上传到已连接存储库的软件包。为此、您首先需要记录Astra控制中心帐户ID和API令牌。
+
+.步骤
+. 使用Web浏览器登录到Astra控制中心Web UI。
+. 从信息板中、选择右上角的用户图标。
+. 选择* API访问*。
+. 记下屏幕顶部附近的帐户ID。
+. 选择*生成API令牌*。
+. 在显示的对话框中、选择*生成API令牌*。
+. 记下生成的令牌、然后选择*关闭*。在命令行界面中、将目录更改为提取的软件包内容中`.yaml`软件包文件的位置。
+. 使用捆绑包文件导入软件包、进行以下替换：
++
+** 将bundle_file替换为Astra Control捆绑包文件的名称。
+** 将Server替换为Astra Control实例的DNS名称。
+** 将account_ID和token替换为先前记录的帐户ID和API令牌。
++
+[listing]
+----
+kubectl astra packages import -m BUNDLE_FILE -u SERVER -a ACCOUNT_ID -k TOKEN
+----
+
+
+
+
+如果捆绑包文件有效、并且软件包映像和项目位于已连接的存储库中、则软件包将添加到Astra控制中心。
+
+
+NOTE: 如果在存储库中未找到某个软件包的一个或多个映像或项目、则会显示该软件包的错误消息。
+
+
+
+== 删除软件包
+
+您可以使用Astra控制中心Web UI删除先前在Astra控制中心导入的软件包。
+
+.步骤
+. 在 * 管理帐户 * 导航区域中，选择 * 帐户 * 。
+. 选择*软件包*选项卡。
++
+您可以在此页面上查看已安装软件包的列表及其状态。
+
+. 在软件包的*操作*列中、打开操作菜单。
+. 选择 * 删除 * 。
+
+
+该软件包将从Astra控制中心删除、但该软件包的映像和项目仍保留在存储库中。
+
+[discrete]
+== 了解更多信息
+
+* link:manage-connections.html["管理存储库连接"]
+
