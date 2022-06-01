@@ -1953,7 +1953,6 @@
   <block id="43f3d97ccd6796a3175dc4b954b117d5" category="list-text">Red Hat OpenShift 容器平台 4.6-8 ， 4.7 ， 4.8 或 4.9</block>
   <block id="1c7b98666e263594b1210d624b6018b5" category="list-text">VMware Tanzu Kubernetes 网格 1.4</block>
   <block id="22a419d5d77916bed9436540926a459b" category="list-text">VMware Tanzu Kubernetes Grid Integrated Edition 1.12.2</block>
-  <block id="aea29060af1aacdb3f8aff291b534e55" category="cell">ONTAP 后端存储容量</block>
   <block id="1db3861c7c604e022707e65328ef7cc2" category="cell">FQDN 地址</block>
   <block id="b3071c30261a1e065c64f3de227b01ff" category="cell">Astra 控制中心的 FQDN 地址</block>
   <block id="782ddd5eae9f93dbf990bc08c3f35c1a" category="list-text">已安装并配置 Astra Trident 21.04 或更高版本</block>
@@ -2237,4 +2236,6 @@
   <block id="f0b65328b01ef9e6301a81ee7e9ed23f" category="sidebar">Astra 数据存储快速入门</block>
   <block id="d850b44f2f72f0feef1b9d467d2bbae5" category="inline-link-macro">从Astra控制中心部署Astra Data Store</block>
   <block id="40de2a42deb6ff0c41ce913a29c4785a" category="list-text"><block ref="40de2a42deb6ff0c41ce913a29c4785a" category="inline-link-macro-rx"></block></block>
+  <block id="355508832b7eb5caa7423548e7222913" category="cell">存储后端容量</block>
+  <block id="97eba840a0a254e76474a1a32d2f5634" category="cell">至少500 GB可用</block>
 </blocks>
