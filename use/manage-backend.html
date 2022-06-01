@@ -715,6 +715,10 @@
 
 
 
+
+
+
+
           
         </li>
       </ul>
@@ -894,14 +898,14 @@
         <div class="na-navbar-padding"> 已知问题</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/release-notes/known-issues-ads.html">
-        有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题
+        Astra 数据存储和此 Astra 控制中心版本的已知问题
       </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/release-notes/known-limitations.html">
         已知限制
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 概念</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/intro.html">
-        Astra Control 简介
+        了解Astra Control
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/architecture.html">
         架构和组件
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/data-protection.html">
@@ -991,6 +995,10 @@
         监控帐户活动
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/update-licenses.html">
         更新现有许可证
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-connections.html">
+        管理存储库连接
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-packages-acc.html">
+        管理软件包
       </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-buckets.html">
         管理存储分段
       </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-backend.html">
@@ -1095,7 +1103,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-26 16:31:29 +0000">04/26/2022</time>
+    <time datetime="2022-06-01 01:05:07 +0000">06/01/2022</time>
     
   
 
@@ -1345,7 +1353,7 @@
 <p>选择存储后端的名称。</p>
 </li>
 <li>
-<p>在 * 基本信息 * 下，您可以查看安装的许可证类型（如果有）。</p>
+<p>在*基本信息*下、您可以看到安装的许可证类型。</p>
 <div class="paragraph">
 <p>如果将鼠标悬停在许可证信息上，则会显示一个弹出窗口，其中包含更多信息，例如到期时间和授权信息。</p>
 </div>
@@ -1354,13 +1362,43 @@
 <p>在 * 许可证 * 下，选择许可证名称旁边的编辑图标。</p>
 </li>
 <li>
-<p>在 * 更新许可证 * 页面中，选择 * 添加许可证 * 。</p>
+<p>在*更新许可证*页面中、执行以下操作之一：</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">许可证状态</th>
+<th class="tableblock halign-left valign-top">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">至少已向Astra数据存储添加一个许可证。</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>从列表中选择一个许可证。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">尚未向Astra数据存储添加任何许可证。</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>选择*添加*按钮。</p>
 </li>
 <li>
-<p>选择从 NetApp 获取的许可证文件。</p>
+<p>选择要上传的许可证文件。</p>
 </li>
 <li>
-<p>选择 * 添加 * 。</p>
+<p>选择*添加*以上传许可证文件。</p>
+</li>
+</ol>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>选择 * 更新 * 。</p>

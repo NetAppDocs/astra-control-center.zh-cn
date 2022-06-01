@@ -17,7 +17,7 @@
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
   <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。">
-  <meta name="keywords" content=" set up astra control, setup astra control, setting up Astra Control Center, astra control license, add cluster, import storage, add bucket"><!-- Icons -->
+  <meta name="keywords" content=" set up astra control, astra control license, add cluster, add storage backend, import storage, add bucket"><!-- Icons -->
   <link rel="icon" href="/zh-cn/astra-control-center/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -724,6 +724,10 @@
 
 
 
+
+
+
+
           
         </li>
       </ul>
@@ -894,14 +898,14 @@
         <div class="na-navbar-padding"> 已知问题</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/release-notes/known-issues-ads.html">
-        有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题
+        Astra 数据存储和此 Astra 控制中心版本的已知问题
       </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/release-notes/known-limitations.html">
         已知限制
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 概念</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/intro.html">
-        Astra Control 简介
+        了解Astra Control
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/architecture.html">
         架构和组件
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/concepts/data-protection.html">
@@ -991,6 +995,10 @@
         监控帐户活动
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/update-licenses.html">
         更新现有许可证
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-connections.html">
+        管理存储库连接
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-packages-acc.html">
+        管理软件包
       </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-buckets.html">
         管理存储分段
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/astra-control-center/use/manage-backend.html">
@@ -1095,7 +1103,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-26 16:31:29 +0000">04/26/2022</time>
+    <time datetime="2022-06-01 01:05:07 +0000">06/01/2022</time>
     
   
 
@@ -1213,7 +1221,7 @@
 <h2 id="添加集群">添加集群</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra Data Store 预览版，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra Data Store 预览版配置的卷的应用程序。</p>
+<p>要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1251,18 +1259,13 @@
 </tr>
 </table>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/astra-control-center/images/important.svg" alt="重要">
-</td>
-<td class="content">
+<div class="ulist">
 <div class="title">您需要什么？ #8217 ；将需要什么</div>
-在添加集群之前，请查看并执行必要的操作 <a href="add-cluster-reqs.html" target="_blank" rel="noopener">"前提条件任务"</a>。
-</td>
-</tr>
-</table>
+<ul>
+<li>
+<p>在添加集群之前，请查看并执行必要的操作 <a href="add-cluster-reqs.html" target="_blank" rel="noopener">"前提条件任务"</a>。</p>
+</li>
+</ul>
 </div>
 <div class="olist arabic">
 <div class="title">步骤</div>
@@ -1350,39 +1353,24 @@
 <h2 id="添加存储后端">添加存储后端</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以添加存储后端，以使 Astra Control 能够管理其资源。通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。</p>
+<p>您可以添加存储后端，以使 Astra Control 能够管理其资源。您可以在受管集群上部署存储后端、也可以使用现有存储后端。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过在信息板或后端菜单中导航提示来添加已发现的存储后端。</p>
+<p>通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。</p>
 </div>
 <div class="ulist">
-<div class="title">您需要什么？ #8217 ；将需要什么</div>
+<div class="title">现有Astra Data Store部署需要什么</div>
 <ul>
 <li>
-<p>您已拥有 <a href="../get-started/setup_overview.html#add-cluster">"已添加集群"</a> 它由 Astra Control 管理。</p>
-<div class="admonitionblock note">
+<p>您已添加Kubernetes应用程序集群和底层计算集群。</p>
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+<img src="/us-en/astra-control-center/images/important.svg" alt="重要">
 </td>
 <td class="content">
-受管集群连接了一个受支持的后端， Astra Control 可以发现该后端。
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>对于 Astra Data Store 预览安装：您已添加 Kubernetes 应用程序集群。</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/astra-control-center/images/note.svg" alt="注">
-</td>
-<td class="content">
-为 Astra Data Store 添加 Kubernetes 应用程序集群后，该集群在已发现的后端列表中显示为 <code>非受管</code> 。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 <code>Manage</code> ，然后 <a href="../get-started/setup_overview.html#add-cluster">"添加集群"</a>。在集群状态 <code>非受管</code> 更改为 Kubernetes 集群的名称后，您可以继续添加后端。
+添加适用于Astra Data Store的Kubernetes应用程序集群并由Astra Control管理后、该集群在已发现的后端列表中显示为`非受管`。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 <code>Manage</code> ，然后 <a href="../get-started/setup_overview.html#add-cluster">"添加集群"</a>。在集群状态 <code>非受管</code> 更改为 Kubernetes 集群的名称后，您可以继续添加后端。
 </td>
 </tr>
 </table>
@@ -1390,25 +1378,45 @@
 </li>
 </ul>
 </div>
+<div class="ulist">
+<div class="title">新的Astra Data Store部署需要什么</div>
+<ul>
+<li>
+<p>您已拥有 <a href="../use/manage-packages-acc.html">"已上传要部署的安装包版本"</a> 到Astra Control可访问的位置。</p>
+</li>
+<li>
+<p>您已添加要用于部署的Kubernetes集群。</p>
+</li>
+<li>
+<p>您已上传 <a href="#Add a license for Astra Control Center">Astra Data Store许可证</a> 部署到可供Astra Control访问的位置。</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">选项</div>
+<ul>
+<li>
+<p><a href="#Deploy storage resources">[Deploy storage resources]</a></p>
+</li>
+<li>
+<p><a href="#Use an existing storage backend">[Use an existing storage backend]</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="部署存储资源">部署存储资源</h3>
+<div class="paragraph">
+<p>您可以部署新的Astra数据存储并管理关联的存储后端。</p>
+</div>
 <div class="olist arabic">
 <div class="title">步骤</div>
 <ol class="arabic">
 <li>
-<p>执行以下操作之一：</p>
+<p>从信息板或后端菜单导航：</p>
 <div class="ulist">
 <ul>
 <li>
-<p>从 * 信息板 * ：</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>从存储后端部分中，选择 * 添加 * 。</p>
-</li>
-<li>
-<p>从资源摘要 &gt; 存储后端部分中，选择 * 添加 * 。</p>
-</li>
-</ol>
-</div>
+<p>从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。</p>
 </li>
 <li>
 <p>从 * 后端 * ：</p>
@@ -1427,51 +1435,132 @@
 </div>
 </li>
 <li>
-<p>根据后端类型执行以下操作之一：</p>
-<div class="ulist">
-<ul>
-<li>
-<p>* Astra 数据存储库 * ：</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>选择 * 使用现有 * 选项卡。</p>
+<p>在*部署*选项卡中选择* Astra Data Store*部署选项。</p>
 </li>
 <li>
-<p>选择 * Astra Data Store* 选项卡。</p>
+<p>选择要部署的Astra Data Store软件包：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>输入Astra Data Store应用程序的名称。</p>
 </li>
 <li>
-<p>选择受管计算集群并选择 * 下一步 * 。</p>
-</li>
-<li>
-<p>确认后端详细信息并选择 * 管理存储后端 * 。</p>
+<p>选择要部署的Astra数据存储的版本。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+</td>
+<td class="content">
+如果您尚未上传要部署的版本、可以使用*添加软件包*选项或退出向导并使用 <a href="../use/manage-packages-acc.html">"软件包管理"</a> 上传安装包。
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>* ONTAP * ：</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>选择 * 使用现有 * 选项卡。</p>
+<p>选择先前上传的Astra Data Store许可证、或者使用*添加许可证*选项上传要用于应用程序的许可证。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+</td>
+<td class="content">
+具有完全权限的Astra Data Store许可证将与您的Kubernetes集群关联、并且这些关联的集群应自动显示。如果没有受管集群、您可以选择*添加集群*选项将其添加到Astra Control管理中。对于Astra Data Store许可证、如果许可证和集群之间未建立关联、您可以在向导的下一页定义此关联。
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
-<p>输入 ONTAP 管理员凭据并选择 * 审核 * 。</p>
+<p>如果尚未将Kubernetes集群添加到Astra Control管理中、则需要从* Kubernetes cluster*页面中执行此操作。从列表中选择一个现有集群或选择*添加底层集群*将集群添加到Astra Control管理中。</p>
 </li>
 <li>
-<p>确认后端详细信息并选择 * 管理 * 。</p>
+<p>选择要为Astra数据存储提供资源的Kubernetes集群的部署模板大小。</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/tip.svg" alt="提示">
+</td>
+<td class="content">
+选择模板时、请为大型工作负载选择具有更多内存和核心的大型节点、为小型工作负载选择更多节点。您应根据许可证允许的内容选择模板。每个模板选项都会建议符合条件且满足每个节点的内存、核心和容量模板模式的节点数。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>配置节点：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>添加节点标签以标识支持此Astra数据存储集群的工作节点池。</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/important.svg" alt="重要">
+</td>
+<td class="content">
+在开始部署或部署失败之前、必须将此标签添加到集群中要用于部署Astra Data Store的每个节点上。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>手动配置每个节点的容量(GiB)或选择允许的最大节点容量。</p>
+</li>
+<li>
+<p>配置集群中允许的最大节点数或允许集群中的最大节点数。</p>
 </li>
 </ol>
 </div>
 </li>
-</ul>
+<li>
+<p>(仅限Astra Data Store完整许可证)输入要用于保护域的标签的密钥。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+</td>
+<td class="content">
+为每个节点的密钥至少创建三个唯一标签。例如、如果您的密钥为`astra.datastore.protection.domain`、则可以创建以下标签：<code>astra.datastore.protection.domain=domain1</code>,<code>astra.datastore.protection.domain=domain2`和`astra.datastore.protection.domain=domain3</code>。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>配置管理网络：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>输入Astra Data Store内部管理的管理IP地址、该地址与工作节点IP地址位于同一子网上。</p>
+</li>
+<li>
+<p>选择对管理网络和数据网络使用相同的NIC、或者单独进行配置。</p>
+</li>
+<li>
+<p>输入用于存储访问的数据网络IP地址池、子网掩码和网关。</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>查看配置并选择*部署*以开始安装。</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>后端会在列表中显示为 <code>available</code> 状态，并显示摘要信息。</p>
-</div>
-</li>
-</ol>
+<p>成功安装后、后端会在后端列表中显示为`Available`状态、并显示活动性能信息。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1484,6 +1573,98 @@
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="使用现有存储后端">使用现有存储后端</h3>
+<div class="paragraph">
+<p>您可以将已发现的ONTAP 或Astra数据存储存储后端引入Astra控制中心管理。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步骤</div>
+<ol class="arabic">
+<li>
+<p>从信息板或后端菜单导航：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。</p>
+</li>
+<li>
+<p>从 * 后端 * ：</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>在左侧导航区域中，选择 * 后端 * 。</p>
+</li>
+<li>
+<p>在受管集群中发现的后端上选择*管理*、或者选择*添加*来管理其他现有后端。</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>选择 * 使用现有 * 选项卡。</p>
+</li>
+<li>
+<p>根据后端类型执行以下操作之一：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>* Astra 数据存储库 * ：</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>选择* Astra Data Store*。</p>
+</li>
+<li>
+<p>选择受管计算集群并选择 * 下一步 * 。</p>
+</li>
+<li>
+<p>确认后端详细信息并选择*添加存储后端*。</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>* ONTAP * ：</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>选择* ONTAP *。</p>
+</li>
+<li>
+<p>输入 ONTAP 管理员凭据并选择 * 审核 * 。</p>
+</li>
+<li>
+<p>确认后端详细信息并选择*添加存储后端*。</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>后端会在列表中显示为 <code>available</code> 状态，并显示摘要信息。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center/images/note.svg" alt="注">
+</td>
+<td class="content">
+您可能需要刷新页面才能显示后端。
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
