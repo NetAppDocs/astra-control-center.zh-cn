@@ -257,13 +257,13 @@ additionalValues:
 +
 [listing]
 ----
-ingressType:AccTraefik
+ingressType: AccTraefik
 ----
 .. 如果您要切换到默认的 Astra 控制中心通用传入部署，请提供您自己的内部控制器 / 传入设置（采用 TLS 终止等），打开通往 Astra 控制中心的路由，并将 `ingressType` 设置为 `Generic` 。
 +
 [listing]
 ----
-ingressType:Generic
+ingressType: Generic
 ----
 +
 
