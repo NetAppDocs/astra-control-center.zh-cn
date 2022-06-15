@@ -22,33 +22,51 @@ NetApp通过可从NetApp支持站点下载的软件包为Astra控制中心提供
 
 
 
-== 将软件包上传到存储库
+== 将软件包映像上传到存储库
 
 Astra控制中心引用已连接存储库中的软件包映像和项目。您可以使用命令行界面将映像和项目上传到存储库。
 
 .步骤
 . 从NetApp支持站点下载软件包、并将其保存在已安装`kubectl`实用程序的计算机上。
 . 提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.manifest.bundle.YAML`)。
-. 将软件包映像推送到Docker存储库。进行以下替换：
-+
-** 将bundle_file替换为Astra Control捆绑包文件的名称。
-** 将my_regRegistry替换为Docker存储库的URL。
-** 将my_registry_user和my_registry_password替换为存储库的凭据。
-+
+. 运行以下脚本、将软件包映像推送到Docker存储库。将`reGISTRY`变量的值替换为您自己注册表的URL：
+
+
 [listing]
 ----
-kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_PASSWORD
+# Replace the registry value:
+export REGISTRY=registry.url.com
+
+export PACKAGENAME=astrads
+export PACKAGEVERSION=22.5.0-6371157
+export DIRECTORYNAME=astrads
+
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+  # Load to local cache
+  astraImage=$(docker load --input ${astraImageFile} | sed 's/Loaded image: //')
+  # Remove path and keep imageName
+  astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+  # Tag with local image repo.
+  docker tag ${astraImage} ${REGISTRY}/netapp/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+  # Push to the local repo.
+  docker push ${REGISTRY}/netapp/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
+
+export PACKAGENAME=vasa-provider
+export PACKAGEVERSION=2022.5.0
+export DIRECTORYNAME=vasa
+
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+  # Load to local cache
+  astraImage=$(docker load --input ${astraImageFile} | sed 's/Loaded image: //')
+  # Remove path and keep imageName
+  astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+  # Tag with local image repo.
+  docker tag ${astraImage} ${REGISTRY}/netapp/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+  # Push to the local repo.
+  docker push ${REGISTRY}/netapp/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
 ----
-
-
-. 将软件包项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：
-+
-[listing]
-----
-kubectl astra packages copy-artifacts -m BUNDLE_FILE -n NETWORK_LOCATION
-----
-
-
 
 
 == 添加软件包

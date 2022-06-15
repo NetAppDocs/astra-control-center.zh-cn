@@ -2187,15 +2187,10 @@
   <block id="c236eea9ef9081e645ecb4497a3c05ce" category="list-text">一个连接的Docker映像存储库、用于存放软件包映像。有关详细信息，请参见 <block ref="70e5c10b1699fd43bcc41dd27e493e57" category="inline-link-macro-rx"></block>。</block>
   <block id="e403b6f2306f02333fd7ef7221f85040" category="list-text">一个连接的项目存储库、用于存放软件包二进制文件和项目。有关详细信息，请参见 <block ref="70e5c10b1699fd43bcc41dd27e493e57" category="inline-link-macro-rx"></block>。</block>
   <block id="3aa4078371fb9b0c4a3e6c177942f01d" category="list-text">NetApp支持站点提供的软件包</block>
-  <block id="821446301df86887f14a587de1046311" category="section-title">将软件包上传到存储库</block>
   <block id="1861208871c49f3fafbdd2b1baedad6a" category="paragraph">Astra控制中心引用已连接存储库中的软件包映像和项目。您可以使用命令行界面将映像和项目上传到存储库。</block>
   <block id="8a0c00d15eb4f3a9a8a6c659a1d7c576" category="list-text">从NetApp支持站点下载软件包、并将其保存在已安装`kubectl`实用程序的计算机上。</block>
   <block id="a5d15ab770cd44d363e7f95fd16d0a4b" category="list-text">提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.manifest.bundle.YAML`)。</block>
-  <block id="af2248b7281e83a45508e2ec7c9356ea" category="list-text">将软件包映像推送到Docker存储库。进行以下替换：</block>
   <block id="109f9842fb9259a1de20c1577339c28c" category="list-text">将bundle_file替换为Astra Control捆绑包文件的名称。</block>
-  <block id="48c5334862569a4217279192a534b20a" category="list-text">将my_regRegistry替换为Docker存储库的URL。</block>
-  <block id="da5ff2a96a29f48c8c4ffcf756aada4e" category="list-text">将my_registry_user和my_registry_password替换为存储库的凭据。</block>
-  <block id="873e5b0189688b130064268c0c68de0b" category="list-text">将软件包项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：</block>
   <block id="82a16926420b6ee2d26a80442a3db7ae" category="section-title">添加软件包</block>
   <block id="5801238264a16600dd0ab813e21d2cd9" category="paragraph">您可以使用Astra Control Center捆绑包文件导入软件包。这样将安装该软件包并使该软件可供Astra控制中心使用。</block>
   <block id="ab1a0888acffbae43d2539e8dbc89a9d" category="section-title">使用Astra Control Web UI添加软件包</block>
@@ -2247,4 +2242,6 @@
   <block id="a57d95e33fbdffe3b4bd71d5b0be74cd" category="list-text">选择*存储类*类别。</block>
   <block id="b76660fac98aeb4fc46b77e989e6d8b0" category="list-text">选择要设置为默认值的存储类的*操作*菜单。</block>
   <block id="b4789b0ec041cd5e51f32c2f901a0951" category="list-text">选择*设置为默认值*。</block>
+  <block id="6a76517aff3e7c512c0367b12342145c" category="section-title">将软件包映像上传到存储库</block>
+  <block id="e098894ec3d131e5a95bb73b789f7ab5" category="list-text">运行以下脚本、将软件包映像推送到Docker存储库。将`reGISTRY`变量的值替换为您自己注册表的URL：</block>
 </blocks>
