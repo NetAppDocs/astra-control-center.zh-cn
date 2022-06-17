@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: solutions/postgres-deploy-from-helm-chart.html 
-keywords: how to deploy apps in astra, how to deploy postgres from a helm chart, set up from helm chart, astra, astra control, kubernetes 
+keywords: how to deploy apps in astra, how to deploy postgres from a helm chart, set up from helm chart, astra control, kubernetes 
 summary: 了解如何从 Helm 图表中部署 Postgres 。在集群上部署 Postgres 后，您可以向 Astra Control 注册该应用程序。 
 ---
 = 从 Helm 图表部署 Postgres
@@ -57,7 +57,8 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 +
 [listing]
 ----
-Helm install <name> --namespace <namespace> --create-namespace -–set persistence.storageClass=<storage_class>
+helm install <name> bitnami/postgresql –namespace <namespace>
+--create-namespace –set global.storageClass=<storage_class_name>
 ----
 +
 
