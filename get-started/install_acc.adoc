@@ -58,8 +58,8 @@ NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可�
 
 要安装 Astra 控制中心，请执行以下步骤：
 
-* <<Download the Astra Control Center bundle>>
-* <<Unpack the bundle and change directory>>
+* <<Download and unpack the Astra Control Center bundle>>
+* <<Install the NetApp Astra kubectl plugin>>
 * <<Add the images to your local registry>>
 * <<Set up namespace and secret for registries with auth requirements>>
 * <<Install the Astra Control Center operator>>
@@ -72,7 +72,7 @@ NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可�
 
 
 
-== 下载 Astra Control Center 捆绑包
+== 下载并解包Astra Control Center软件包
 
 . 从下载 Astra 控制中心捆绑包（`Astra-control-center-[version].tar.gz` ） https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
 . 从下载 Astra 控制中心证书和密钥的 zip https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
@@ -82,23 +82,34 @@ NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可�
 ----
 openssl dgst -sha256 -verify astra-control-center[version].pub -signature <astra-control-center[version].sig astra-control-center[version].tar.gz
 ----
-
-
-
-
-== 打开软件包的包装并更改目录
-
 . 提取映像：
 +
 [listing]
 ----
 tar -vxzf astra-control-center-[version].tar.gz
 ----
-. 更改为 Astra 目录。
+
+
+
+
+== 安装NetApp Astra kubectl插件
+
+NetApp Astra `kubectl`命令行插件可在执行与部署和升级Astra控制中心相关的常见任务时节省时间。
+
+NetApp为不同CPU架构和操作系统的插件提供二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。在Linux和Mac操作系统上、您可以使用`uname -a`命令收集此信息。
+
+.步骤
+. 列出可用的NetApp Astra `kubectl`插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
 +
 [listing]
 ----
-cd astra-control-center-[version]
+ls kubectl-astra/
+----
+. 将此文件复制到与标准`kubectl`实用程序相同的位置。在此示例中、`kubectl`实用程序位于`/usr/local/bin`目录中。将`<二进制名称>`替换为所需文件的名称：
++
+[listing]
+----
+cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ----
 
 
@@ -106,6 +117,12 @@ cd astra-control-center-[version]
 
 == 将映像添加到本地注册表
 
+. 更改为Astra目录：
++
+[listing]
+----
+cd acc
+----
 . 将 Astra Control Center 映像目录中的文件添加到本地注册表中。
 +
 

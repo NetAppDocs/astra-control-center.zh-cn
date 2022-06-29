@@ -1060,7 +1060,6 @@
   <block id="510a796972d54f6936dbae0081373fc0" category="inline-link-macro">设置任务</block>
   <block id="30639cc5d4879b6ab4636e1faec4ce6c" category="paragraph">执行以完成部署 <block ref="c74ac040317626af0342a18a145cdbb7" category="inline-link-macro-rx"></block>。</block>
   <block id="37b9c0fe975f84a28c93ed400bbf96df" category="list-text">从下载 Astra 控制中心捆绑包（`Astra-control-center-[version].tar.gz` ）<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
-  <block id="b27a38bf3a2f1598cf85f6edd595c1f2" category="list-text">从下载 Astra 控制中心证书和密钥的 zip<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
   <block id="f748f65c20601bd5ff808f54e4a932d1" category="section-title">为具有身份验证要求的注册表设置命名空间和密钥</block>
   <block id="4f1676fe8dda03f26994cd830c2d09a1" category="list-text">创建 `NetApp-Acc-operator` 命名空间：</block>
   <block id="6991b18d1a4e22ab1157055468087de4" category="list-text">为 `NetApp-Acc-operator` 命名空间创建一个密钥。添加 Docker 信息并运行以下命令：</block>
@@ -2256,4 +2255,13 @@
   <block id="da5ff2a96a29f48c8c4ffcf756aada4e" category="list-text">将my_registry_user和my_registry_password替换为存储库的凭据。</block>
   <block id="25d79c61a8c2cf8672fbd0f32f9bfc13" category="list-text">如果软件包包含项目、请将这些项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：</block>
   <block id="2707211a1bc867b58edced6b3def5b35" category="list-text">输入存储库的凭据。</block>
+  <block id="4e7bc0f2f576e3a2e7b9bd624d2da7d3" category="list-text"><block ref="f9a9477fa54fe91dbfcc4b4adc8c5a84" category="inline-xref-macro-rx"></block></block>
+  <block id="f27876af7f41dd88d732712643f9e8ab" category="list-text"><block ref="edd1a66c7657e8422b18455f2fcc01fd" category="inline-xref-macro-rx"></block></block>
+  <block id="bb550e726ecd8419a94f47dd80d637fc" category="section-title">下载并解包Astra Control Center软件包</block>
+  <block id="72b3b17d23e094f72641c4ffa8928d85" category="section-title">安装NetApp Astra kubectl插件</block>
+  <block id="c1f2a81be0634c59dcf176e57cdd246f" category="paragraph">NetApp Astra `kubectl`命令行插件可在执行与部署和升级Astra控制中心相关的常见任务时节省时间。</block>
+  <block id="9f0fcc78c5a2532a64740d954442b2ed" category="paragraph">NetApp为不同CPU架构和操作系统的插件提供二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。在Linux和Mac操作系统上、您可以使用`uname -a`命令收集此信息。</block>
+  <block id="9e4429c7ff20df6dc3259e988d743184" category="list-text">列出可用的NetApp Astra `kubectl`插件二进制文件、并记下操作系统和CPU架构所需的文件名称：</block>
+  <block id="514d62046ae8a4ae1c0e43a7e2dbd83c" category="list-text">将此文件复制到与标准`kubectl`实用程序相同的位置。在此示例中、`kubectl`实用程序位于`/usr/local/bin`目录中。将`&lt;二进制名称&gt;`替换为所需文件的名称：</block>
+  <block id="acffa2c7e97237434bf90fa326b9759f" category="list-text">更改为Astra目录：</block>
 </blocks>
