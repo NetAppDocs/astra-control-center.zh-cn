@@ -2255,4 +2255,5 @@
   <block id="48c5334862569a4217279192a534b20a" category="list-text">将my_regRegistry替换为Docker存储库的URL。</block>
   <block id="da5ff2a96a29f48c8c4ffcf756aada4e" category="list-text">将my_registry_user和my_registry_password替换为存储库的凭据。</block>
   <block id="25d79c61a8c2cf8672fbd0f32f9bfc13" category="list-text">如果软件包包含项目、请将这些项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：</block>
+  <block id="2707211a1bc867b58edced6b3def5b35" category="list-text">输入存储库的凭据。</block>
 </blocks>
