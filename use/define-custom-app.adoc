@@ -1,61 +1,8 @@
 ---
-sidebar: sidebar 
 permalink: use/define-custom-app.html 
-keywords: manage app, custom app, kubernetes, astra control, astra 
-summary: 通过创建自定义应用程序，您可以将 Kubernetes 集群中的元素分组到一个应用程序中。 
+redirect: use/manage-apps.html 
 ---
-= 定义自定义应用示例
-:hardbreaks:
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/use/
 
 
-[role="lead"]
-通过创建自定义应用程序，您可以将 Kubernetes 集群中的元素分组到一个应用程序中。此 Kubernetes 资源集合基于命名空间和标签。
-
-通过自定义应用程序，您可以更精细地控制要包含在 Astra Control 操作中的内容，其中包括：
-
-* 克隆
-* Snapshot
-* 备份
-* 保护策略
-
-
-大多数情况下，您需要在整个应用程序上使用 Astra Control 的功能。但是，您也可以创建一个自定义应用程序，以便通过为命名空间中的 Kubernetes 对象分配的标签来使用这些功能。
-
-
-NOTE: 只能在单个集群上的指定命名空间中创建自定义应用程序。Astra Control 不支持自定义应用程序跨越多个命名空间或集群。
-
-标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进行标识。通过标签，可以更轻松地对 Kubernetes 对象进行排序，组织和查找。要了解有关 Kubernetes 标签的更多信息， https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["请参见 Kubernetes 官方文档"^]。
-
-
-WARNING: 名称不同的同一资源的重叠策略可能会发生发生原因数据冲突。如果要为某个资源创建自定义应用程序，请确保不会根据任何其他策略克隆或备份该应用程序。
-
-.您需要什么？ #8217 ；将需要什么
-* 已添加到 Astra Control 的集群
-
-
-.步骤
-. 从 "Apps" 页面中，选择 "++ define （超过定义） "* 。
-+
-" 自定义应用程序 " 窗口将显示哪些资源将包含在您的自定义应用程序中或从该应用程序中排除。这有助于您确保选择正确的标准来定义自定义应用程序。
-
-. 在弹出窗口中，输入应用程序名称，在 "* 集群 "* 下拉列表中选择集群，然后从 "* 命名空间 "* 下拉列表中选择应用程序的命名空间。
-. 从 * 标签 * 下拉列表中，选择应用程序和命名空间的标签。
-. 为一个部署定义自定义应用程序后，根据需要对其他部署重复此过程。
-
-
-创建完这两个自定义应用程序后，您可以将这些资源视为任何其他 Astra Control 应用程序。他们可以克隆这些资源，创建备份和快照，并根据 Kubernetes 标签为每个资源组创建自定义保护策略。
-
-
-
-== 示例：不同版本的单独保护策略
-
-在此示例中， DevOps 团队正在管理一个 Canary 版本部署。他们的集群中有三个 Pod 运行 nginx 。其中两个 Pod 专用于稳定版本。第三个 POD 适用于加那利版本。
-
-DevOps 团队的 Kubernetes 管理员会将标签 `detion=stable` 添加到稳定版本 Pod 中。该团队会将标签 `deeption=Canary` 添加到 Canary 版本 POD 中。
-
-该团队的稳定版本要求每小时创建一次快照，每天进行备份。金那利版本的发布时间较短，因此他们希望为任何标记为 `deeption=Canary` 的对象创建一个不太积极的短期保护策略。
-
-为了避免可能发生的数据冲突，管理员将创建两个自定义应用程序：一个用于 " 加那利 " 版本，一个用于 " 稳定 " 版本。这样就可以使两组 Kubernetes 对象的备份，快照和克隆操作分开。

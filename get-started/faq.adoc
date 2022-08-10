@@ -29,6 +29,10 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 对于 URL ，在浏览器中，在安装 Astra Control Center 时，在 Astra_control_center_min.YAML 自定义资源定义（ CRD ）文件的 spec.astraAddress 字段中输入您设置的完全限定域名（ FQDN ）。电子邮件是您在 Astra_control_center_min.YAML CRD 的 spec.email 字段中设置的值。
 
+
+
+== 许可
+
 * 我正在使用评估版许可证。如何更改为完整许可证？ *
 
 您可以通过获取 NetApp 许可证文件（ NLF ）轻松更改为完整许可证。

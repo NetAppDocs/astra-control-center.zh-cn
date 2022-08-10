@@ -14,6 +14,9 @@ summary: 您可以在 Astra Control 帐户中查看有关活动的详细信息�
 [role="lead"]
 您可以在 Astra Control 帐户中查看有关活动的详细信息。例如，邀请新用户时，添加集群时或创建快照时。您还可以将帐户活动导出到 CSV 文件。
 
+
+TIP: 如果您从Astra Control管理Kubernetes集群、并且Astra Control连接到Cloud Insights 、则Astra Control会将事件日志发送到Cloud Insights。日志信息(包括POD部署和PVC附件的相关信息)将显示在Astra Control Activity日志中。使用此信息确定您所管理的Kubernetes集群上的任何问题。
+
 .在 Astra Control 中查看所有帐户活动
 . 选择 * 活动 * 。
 . 使用筛选器缩小活动列表的范围，或者使用搜索框准确查找所需内容。

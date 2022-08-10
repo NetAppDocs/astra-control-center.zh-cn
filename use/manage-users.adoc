@@ -13,6 +13,14 @@ summary: 将用户添加到 Astra 控制中心系统，并删除不应再访问�
 
 您可以使用 Astra Control UI 邀请，添加，删除和编辑 Astra Control Center 安装的用户。您可以使用 Astra Control UI 或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 以管理用户。
 
+您还可以使用LDAP对选定用户执行身份验证。
+
+
+
+== 使用 LDAP
+
+LDAP是一种用于访问分布式目录信息的行业标准协议、也是企业身份验证的常见选择。您可以将Astra控制中心连接到LDAP服务器、以便对选定的Astra用户执行身份验证。从较高层面来看、该配置涉及将Astra与LDAP集成、并定义与LDAP定义对应的Astra用户和组。请参见 https://docs.netapp.com/us-en/astra-automation/workflows_infra/ldap_prepare.html["LDAP 身份验证"^] 有关详细信息 ...
+
 
 
 == 邀请用户

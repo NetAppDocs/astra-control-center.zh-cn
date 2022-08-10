@@ -13,8 +13,76 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 已知问题可确定可能妨碍您成功使用此版本产品的问题。
 
-https://docs.netapp.com/us-en/astra-data-store/release-notes/known-issues.html["请参见以下已知问题"] 这可能会影响当前版本的Astra控制中心对Astra数据存储的管理。
+https://docs.netapp.com/us-en/astra-data-store/release-notes/known-issues.html["请参见以下其他Astra数据存储已知问题"^] 这可能会影响当前版本的Astra控制中心对Astra数据存储的管理。
 
+
+
+== Astra Data Store卷详细信息不会显示在Astra控制中心UI的存储后端页面中
+
+容量和吞吐量等详细信息不会显示在用户界面中。发生此问题描述 时、取消管理存储后端并重新添加它。
+
+
+
+== 使用Astra Data Store取消集群管理需要先删除受管系统应用程序
+
+如果您将包含Astra数据存储的集群添加到Astra控制中心集群、则默认情况下、astrads-system应用程序将作为隐藏应用程序进行管理。要取消管理集群、必须先取消管理astrads-system应用程序。您不能使用Astra控制中心UI取消管理此类应用程序。请改用Astra Control API请求手动删除此应用：
+
+.详细信息
+====
+.步骤
+. 使用此API获取受管集群的ID：
++
+[listing]
+----
+/accounts/{account_id}/topology/v1/managedClusters
+----
++
+响应：
+
++
+[listing, subs="+quotes"]
+----
+{
+"items": [
+{
+"type": "application/astra-managedCluster",
+"version": "1.1",
+*"id": "123ab987-0bc0-00d0-a00a-1234567abd8d",*
+"name": "astrads-cluster-1234567",
+...
+----
+. 获取受管astrads-system应用程序ID：
++
+[listing]
+----
+/accounts/{account_id}/topology/v2/managedClusters/{managedCluster_id}/apps
+----
++
+响应：
+
++
+[listing, subs="+quotes"]
+----
+{
+  "items": [
+    [
+      *"1b011d11-bb88-40c7-a1a1-ab1234c123d3",*
+      "astrads-system",
+      "ready"
+    ]
+  ],
+  "metadata": {}
+}
+----
+. 使用您在上一步中获得的应用程序ID删除astrads-system应用程序(`1b011d11-bb88-40c7-A1A1-ab123fc123d3`)。
++
+[listing]
+----
+/accounts/{account_id}/k8s/v2/apps/{astrads-system_app_id}
+----
+
+
+====
 
 
 == 了解更多信息

@@ -17,21 +17,15 @@ summary: 要升级 Astra 控制中心，您需要下载此捆绑包并按照所�
 * link:../get-started/requirements.html["开始升级之前，请确保您的环境仍满足 Astra Control Center 部署的最低要求"]。
 * 确保所有集群操作员均处于运行状况良好且可用。
 +
-OpenShift 示例：
-
-+
 [listing]
 ----
-oc get clusteroperators
+kubectl get clusteroperators
 ----
 * 确保所有 API 服务均处于运行状况良好且可用。
 +
-OpenShift 示例：
-
-+
 [listing]
 ----
-oc get apiservices
+kubectl get apiservices
 ----
 * 从 Astra 控制中心注销。
 
@@ -61,12 +55,12 @@ NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可�
 
 == 下载 Astra Control Center 捆绑包
 
-. 从下载 Astra Control Center 升级包（`Astra-control-center-[version].tar.gz` ） https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
+. 从https：mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab[NetApp支持站点^下载Astra Control Center升级包(`Astra-control-center-[version].tar.gz`)。
 . （可选）使用以下命令验证捆绑包的签名：
 +
 [listing]
 ----
-openssl dgst -sha256 -verify astra-control-center[version].pub -signature <astra-control-center[version].sig astra-control-center[version].tar.gz
+openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
 
 
@@ -84,7 +78,7 @@ tar -vxzf astra-control-center-[version].tar.gz
 +
 [listing]
 ----
-cd astra-control-center-[version]
+cd acc
 ----
 
 
@@ -92,34 +86,15 @@ cd astra-control-center-[version]
 
 == 将映像添加到本地注册表
 
-. 将 Astra Control Center 映像目录中的文件添加到本地注册表中。
+. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
 +
-
-NOTE: 有关自动加载映像的信息，请参见下面的示例脚本。
-
-+
-.. 登录到 Docker 注册表：
+** 将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.manifest.bundle.YAML`)。
+** 将my_regRegistry替换为Docker存储库的URL。
+** 将my_registry_user和my_registry_password替换为存储库的凭据。
 +
 [listing]
 ----
-docker login [your_registry_path]
-----
-.. 将映像加载到 Docker 中。
-.. 标记图像。
-.. [substep_image_local_registry_push]] 将映像推送到本地注册表。
-+
-[listing]
-----
-export REGISTRY=[your_registry_path]
-for astraImageFile in $(ls images/*.tar)
-  # Load to local cache. And store the name of the loaded image trimming the 'Loaded images: '
-  do astraImage=$(docker load --input ${astraImageFile} | sed 's/Loaded image: //')
-  astraImage=$(echo ${astraImage} | sed 's!localhost/!!')
-  # Tag with local image repo.
-  docker tag ${astraImage} ${REGISTRY}/${astraImage}
-  # Push to the local repo.
-  docker push ${REGISTRY}/${astraImage}
-done
+kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_PASSWORD
 ----
 
 
@@ -320,7 +295,7 @@ conditions:
 
 如果满足以下任一条件，则升级 Traefik ：
 
-* externalTraefik ： false 或
+* externalTraefik：false
 * externalTraefik ： true ， shouldUpgrade ： true 。
 
 
@@ -376,7 +351,7 @@ NOTE: 有关 "loadbalancer" 服务类型和入口的其他详细信息，请参�
 ** 如果 `crd.externalTraefik` 为 `true` ，则 `crd.shouldUpgrade` 也应为 `true` 。
 
 
-* 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/["入口控制器"] 应已部署。
+* 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers["入口控制器"] 应已部署。
 * 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
 * 您使用的是介于 v1.19 和 v1.21 之间的 Kubernetes 版本，包括 v1.19 和 v1.21 。
 

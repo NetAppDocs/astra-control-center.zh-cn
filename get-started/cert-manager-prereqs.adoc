@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: get-started/cert-manager-prereqs.html 
+keywords: astra control center, prereq, requirement, cert-manager, install 
+summary: 如果集群中已存在证书管理器、则需要执行一些前提步骤、以便Astra控制中心不会安装自己的证书管理器。 
+---
+= 配置外部证书管理器
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+如果Kubernetes集群中已存在证书管理器、则需要执行一些前提步骤、以使Astra控制中心不会安装自己的证书管理器。
+
+.步骤
+. 确认已安装证书管理器：
++
+[source, sh]
+----
+kubectl get pods -A | grep 'cert-manager'
+----
++
+响应示例：
+
++
+[listing]
+----
+cert-manager   essential-cert-manager-84446f49d5-sf2zd              1/1     Running    0     6d5h
+cert-manager   essential-cert-manager-cainjector-66dc99cc56-9ldmt   1/1     Running    0     6d5h
+cert-manager   essential-cert-manager-webhook-56b76db9cc-fjqrq      1/1     Running    0     6d5h
+----
+. 为astraAddress FQDN创建证书/密钥对：
++
+[listing]
+----
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
+----
++
+响应示例：
+
++
+[listing]
+----
+Generating a 2048 bit RSA private key
+..................+++
+........................................+++
+writing new private key to 'tls.key'
+----
+. 使用先前生成的文件创建密钥：
++
+[source, sh]
+----
+kubectl create secret tls selfsigned-tls --key tls.key --cert tls.crt -n <cert-manager-namespace>
+----
++
+响应示例：
+
++
+[listing]
+----
+secret/selfsigned-tls created
+----
+. 创建一个Cluster颁发 者文件、该文件*完全*为以下文件、但包含安装证书管理器Pod的命名空间位置：
++
+[source, yaml]
+----
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: astra-ca-clusterissuer
+  namespace: <cert-manager-namespace>
+spec:
+  ca:
+    secretName: selfsigned-tls
+----
++
+[source, sh]
+----
+kubectl apply -f ClusterIssuer.yaml
+----
++
+响应示例：
+
++
+[listing]
+----
+clusterissuer.cert-manager.io/astra-ca-clusterissuer created
+----
+. 验证Cluster颁发 程序是否已正确启动。`就绪`必须为`True`、然后才能继续：
++
+[source, sh]
+----
+kubectl get ClusterIssuer
+----
++
+响应示例：
+
++
+[listing]
+----
+NAME                     READY   AGE
+astra-ca-clusterissuer   True    9s
+----
+. 完成 link:../get-started/install_acc.html["Astra 控制中心安装过程"]。有一个 link:../get-started/install_acc.html#configure-astra-control-center["Astra控制中心集群YAML的所需配置步骤"] 其中、您可以更改CRD值、以指示证书管理器是外部安装的。您必须在安装期间完成此步骤、以使Astra控制中心能够识别外部证书管理器。
+

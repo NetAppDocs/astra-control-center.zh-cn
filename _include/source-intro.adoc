@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Astra Control 是 Kubernetes 应用程序数据生命周期管理解决方案，可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。
+Astra Control 是 Kubernetes 应用程序数据生命周期管理解决方案，可简化有状态应用程序的操作。轻松保护、备份、复制和迁移Kubernetes工作负载、并即时创建有效的应用程序克隆。
 
 
 
@@ -13,6 +13,7 @@ Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键
 * 自动管理永久性存储
 * 创建应用程序感知型按需快照和备份
 * 自动执行策略驱动的快照和备份操作
+* 使用NetApp SnapMirror技术将应用程序复制到远程系统
 * 将应用程序和数据从一个 Kubernetes 集群迁移到另一个集群
 * 轻松地将应用程序从生产环境克隆到暂存环境
 * 直观显示应用程序运行状况和保护状态
@@ -65,18 +66,6 @@ Astra Control 有两种部署模式：
 |===
 
 
-== 支持的应用程序
-
-NetApp 已对某些应用程序进行了验证，以确保快照和备份的安全性和一致性。
-
-* https://docs.netapp.com/us-en/astra/learn/validated-vs-standard.html["了解经过验证的应用程序与 Astra Control Service 中的标准应用程序之间的区别"^]。
-* https://docs.netapp.com/us-en/astra-control-center/concepts/validated-vs-standard.html["在 Astra 控制中心了解经过验证的应用程序与标准应用程序之间的区别"^]。
-
-
-无论与 Astra Control 结合使用哪种类型的应用程序，您都应始终自行测试备份和还原工作流，以确保满足灾难恢复要求。
-
-
-
 == Astra 控制服务的工作原理
 
 Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于启用状态，并使用最新功能进行更新。它利用多个组件实现应用程序数据生命周期管理。
@@ -87,6 +76,7 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 +
 ** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 或 Google Persistent Disk 作为永久性卷的存储后端。
 ** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 或 Azure 磁盘存储作为永久性卷的存储后端。
+** 对于Amazon EKS集群、Astra Control Service使用 https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] 或 https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["适用于 NetApp ONTAP 的 Amazon FSX"^] 作为永久性卷的存储后端。
 
 
 * 您可以将第一个 Kubernetes 计算添加到 Astra Control Service 中。然后， Astra 控制服务将执行以下操作：
@@ -102,9 +92,6 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 * 此时，您可以向集群添加应用程序。将在新的默认存储类上配置永久性卷。
 * 然后，您可以使用 Astra Control Service 管理这些应用程序，并开始创建快照，备份和克隆。
-+
-Astra Control Service 会持续监控您的计算状态变化，因此它可以识别您在此过程中添加的任何新应用程序。
-
 
 
 Astra Control 的免费计划支持您管理帐户中多达 10 个应用程序。如果您要管理 10 个以上的应用程序，则需要通过从 " 免费计划 " 升级到 " 高级计划 " 来设置计费。
@@ -115,7 +102,7 @@ Astra Control 的免费计划支持您管理帐户中多达 10 个应用程序�
 
 Astra 控制中心在您自己的私有云中本地运行。
 
-Astra 控制中心支持具有以下功能的 OpenShift Kubernetes 集群：
+Astra控制中心通过以下功能支持Kubernetes集群：
 
 * ONTAP 9.5 及更高版本的 Trident 存储后端
 * Astra 数据存储存储后端
@@ -146,12 +133,11 @@ Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，�
 
 Astra 控制中心可执行以下操作：
 
-* 发现有关受管 Kubernetes 集群的详细信息。
+* 发现有关集群的详细信息、包括命名空间、并可用于定义和保护应用程序。
 * 在您选择管理的集群上发现您的 Astra Trident 或 Astra 数据存储配置，并可用于监控存储后端。
-* 发现这些集群上的应用程序，并使您能够管理和保护这些应用程序。
 
 
-您可以将应用程序添加到集群中。或者，如果要管理的集群中已有一些应用程序，则可以使用 Astra 控制中心来发现和管理它们。然后，使用 Astra 控制中心创建快照，备份和克隆。
+您可以将应用程序添加到集群中。或者、如果要管理的集群中已有一些应用程序、则可以使用Astra控制中心对其进行管理。然后、使用Astra控制中心创建快照、备份、克隆和复制关系。
 
 
 

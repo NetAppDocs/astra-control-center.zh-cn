@@ -17,21 +17,10 @@ summary: 您应运行灵活性检查，以确保集群已准备好添加到 Astr
 
 == 添加集群之前需要满足的要求
 
-* 以下类型的集群之一：
-+
-** 运行OpenShift 4.6-8、4.7、4.8或4.9的集群
-** 使用RKE1运行Rancher 2.2.8、2.0.9或2.6的集群
-** 运行Kubernetes 1.20到1.23的集群
-** 运行VMware Tanzu Kubernetes Grid 1.4的集群
-** 运行VMware Tanzu Kubernetes Grid Integrated Edition 1.12.2的集群
-+
-确保集群中有一个或多个工作节点，并且至少有 1 GB RAM 可用于运行遥测服务。
+确保集群满足中所述的要求 link:requirements.html#application-cluster-requirements["应用程序集群要求"]。
 
-+
 
 NOTE: 如果您计划将第二个 OpenShift 4.6 ， 4.7 或 4.8 集群添加为托管计算资源，则应确保已启用 Astra Trident 卷快照功能。请参见官方的 Astra Trident https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["说明"^] 使用 Astra Trident 启用和测试卷快照。
-
-
 
 * 使用配置了的Astra Trident StorageClasses link:requirements.html#supported-storage-backends["支持的存储后端"] (对于任何类型的集群都是必需的)
 * 在备份 ONTAP 系统上设置的超级用户和用户 ID ，用于使用 Astra 控制中心备份和还原应用程序。在 ONTAP 命令行中运行以下命令： `export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -superuser sysm -anon 65534`

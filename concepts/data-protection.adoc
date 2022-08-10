@@ -31,3 +31,29 @@ CAUTION: _You can't be Fully protected until you have a recent backup_ 。这一
 == 克隆
 
 _clone_ 是应用程序，其配置及其永久性存储的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。
+
+
+
+== 复制到远程集群
+
+使用Astra Control、您可以使用NetApp SnapMirror技术的异步复制功能、以低RPO (恢复点目标)和低RTO (恢复时间目标)为应用程序构建业务连续性。配置完成后、应用程序便可将数据和应用程序更改从一个集群复制到另一个集群。
+
+Astra Control异步将应用程序Snapshot副本复制到远程集群。复制过程包括SnapMirror复制的永久性卷中的数据以及受Astra Control保护的应用程序元数据。
+
+应用程序复制与应用程序备份和还原在以下方面有所不同：
+
+* *应用程序复制*：Astra Control要求源和目标Kubernetes集群可用并进行管理、并将其各自的ONTAP 存储后端配置为启用NetApp SnapMirror。Astra Control会获取策略驱动型应用程序Snapshot并将其复制到远程集群。NetApp SnapMirror技术用于复制永久性卷数据。要进行故障转移、Astra Control可以在目标Kubernetes集群上重新创建应用程序对象、并在目标ONTAP 集群上创建复制的卷、从而使复制的应用程序联机。由于目标ONTAP 集群上已存在永久性卷数据、因此Astra Control可以为故障转移提供快速恢复时间。
+* *应用程序备份和还原*：在备份应用程序时、Astra Control会为应用程序数据创建Snapshot并将其存储在对象存储分段中。需要还原时、必须将存储分段中的数据复制到ONTAP 集群上的永久性卷。备份/还原操作不要求二级Kubernetes或ONTAP集群可用并进行管理、但额外的数据复制可能会导致还原时间较长。
+
+
+要了解如何复制应用程序、请参见 link:../use/replication.html["使用SnapMirror技术将应用程序复制到远程系统"]。
+
+下图显示了计划的备份和还原过程与复制过程的对比情况。
+
+备份过程会将数据复制到S3存储分段、并从S3存储分段进行还原：
+
+image:acc-backup_5.5in.png["计划备份和还原映像"]
+
+另一方面、复制是通过复制到ONTAP 来完成的、然后故障转移将创建Kubernetes资源：
+
+image:acc-replication_5.5in.png["复制和故障转移映像"]

@@ -11,18 +11,25 @@ summary: 通过使用自动保护策略或临时创建快照和备份来保护�
 :imagesdir: ../media/use/
 
 
-通过使用自动保护策略或临时创建快照和备份来保护应用程序。您可以使用 Astra UI 或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 保护应用程序。
+通过使用自动保护策略或临时创建快照和备份来保护所有应用程序。您可以使用 Astra UI 或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 保护应用程序。
 
+如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。
 
-NOTE: 如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。
-
-[NOTE]
-====
 在 OpenShift 集群上创建用于托管应用程序的项目时，系统会为该项目（或 Kubernetes 命名空间）分配一个 SecurityContext UID 。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。
 
 `oc new-project WordPress` `oc adm policy add-SCS-to-group anyuid system ： serviceaccounts ： WordPress` `oc adm policy add-SCS-to-user privileged -z default -n WordPress`
 
-====
+您可以执行以下与保护应用程序数据相关的任务：
+
+* <<Configure a protection policy>>
+* <<Create a snapshot>>
+* <<Create a backup>>
+* <<View snapshots and backups>>
+* <<Delete snapshots>>
+* <<Cancel backups>>
+* <<Delete backups>>
+
+
 
 
 == 配置保护策略
@@ -115,6 +122,9 @@ NOTE: 在执行数据保护操作（克隆，备份，还原）并随后调整�
 
 删除不再需要的计划快照或按需快照。
 
+
+NOTE: 您不能删除当前正在复制的Snapshot副本。
+
 .步骤
 . 选择 * 应用程序 * ，然后选择应用程序的名称。
 . 选择 * 数据保护 * 。
@@ -126,6 +136,23 @@ Astra 控制中心会删除快照。
 
 
 
+== 取消备份
+
+您可以取消正在进行的备份。
+
+
+TIP: 要取消备份、备份必须处于运行状态。您不能取消处于"Pending"状态的备份。
+
+.步骤
+. 选择 * 应用程序 * ，然后选择应用程序的名称。
+. 选择 * 数据保护 * 。
+. 选择 * 备份 * 。
+. 从选项菜单中的*操作*列中为所需备份选择*取消*。
+. 键入单词"cancel"以确认删除、然后选择*是、取消备份*。
+
+
+
+
 == 删除备份
 
 删除不再需要的计划备份或按需备份。
@@ -133,6 +160,7 @@ Astra 控制中心会删除快照。
 
 NOTE: 无法停止正在运行的备份。如果需要删除备份，请等待备份完成，然后按照以下说明进行操作。删除失败的备份， https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]。
 
+.步骤
 . 选择 * 应用程序 * ，然后选择应用程序的名称。
 . 选择 * 数据保护 * 。
 . 选择 * 备份 * 。

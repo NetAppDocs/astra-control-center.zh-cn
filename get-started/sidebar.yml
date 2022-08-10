@@ -11,6 +11,13 @@ entries:
   entries:
   - title: 安装 Astra 控制中心
     url: "/get-started/install_acc.html"
+    entries:
+    - title: 了解Astra控制中心集群CR选项
+      url: "/get-started/acc_cluster_cr_options.html"
+    - title: 了解POD安全策略限制
+      url: "/get-started/understand-psp-restrictions.html"
+    - title: 配置外部证书管理器
+      url: "/get-started/cert-manager-prereqs.html"
   - title: 使用 OpenShift OperatorHub 安装 Astra 控制中心
     url: "/get-started/acc_operatorhub_install.html"
   - title: 使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心

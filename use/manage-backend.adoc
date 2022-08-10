@@ -20,9 +20,11 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 * link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"]
 * <<View storage backend details>>
 * <<Unmanage a storage backend>>
-* <<Update a storage backend license>>
-* <<Add nodes to a storage backend cluster>>
+* <<Update an Astra Data Store storage backend license>>
+* <<Upgrade an Astra Data Store storage backend>>
 * <<Remove a storage backend>>
+* <<Add nodes to a storage backend cluster>>
+* <<Remove nodes from a storage backend cluster>>
 
 
 
@@ -68,7 +70,7 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 
 查看有关后端运行状况，容量和性能（ IOPS 吞吐量和 / 或延迟）的信息。
 
-通过连接到 Cloud Insights ，您可以查看 Kubernetes 应用程序正在使用的卷，这些卷存储在选定的存储后端。
+您可以查看Kubernetes应用程序正在使用的卷、这些卷存储在选定的存储后端。使用Cloud Insights 、您可以看到追加信息。请参见 https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"]。
 
 .步骤
 . 在左侧导航区域中，选择 * 后端 * 。
@@ -134,7 +136,7 @@ TIP: 如果要删除 Astra Data Store 后端，则 vCenter 不能创建它。
 
 
 
-== 更新存储后端许可证
+== 更新Astra Data Store存储后端许可证
 
 您可以更新 Astra Data Store 存储后端的许可证，以支持更大规模的部署或增强功能。
 
@@ -174,6 +176,31 @@ TIP: 如果要删除 Astra Data Store 后端，则 vCenter 不能创建它。
 
 
 
+== 升级Astra Data Store存储后端
+
+您可以从Astra控制中心升级Astra数据存储后端。为此、您必须先上传升级包；Astra控制中心将使用此升级包升级Astra数据存储。
+
+.您需要什么？ #8217 ；将需要什么
+* 受管Astra Data Store存储后端
+* 已上传Astra Data Store升级包(请参见 link:manage-packages-acc.html["管理软件包"]）
+
+
+.步骤
+. 选择*后端*。
+. 从列表中选择一个Astra Data Store存储后端、然后在*操作*列中选择相应的菜单。
+. 选择*升级*。
+. 从列表中选择升级版本。
++
+如果存储库中有多个不同版本的升级包、您可以打开下拉列表以选择所需版本。
+
+. 选择 * 下一步 * 。
+. 选择*开始升级*。
+
+
+在升级完成之前、*后端*页面的*状态*列将显示*正在升级*状态。
+
+
+
 == 将节点添加到存储后端集群
 
 您可以向 Astra Data Store 集群添加节点，最多可添加为 Astra Data Store 安装的许可证类型所支持的节点数。
@@ -209,6 +236,29 @@ TIP: 如果要删除 Astra Data Store 后端，则 vCenter 不能创建它。
 . 选择 * 下一步 * 。
 . 查看新节点的配置。
 . 选择 * 添加节点 * 。
+
+
+
+
+== 从存储后端集群中删除节点
+
+您可以从Astra数据存储集群中删除节点。这些节点可以是运行状况良好的节点、也可以是发生故障的节点。
+
+从Astra数据存储集群中删除节点会将其数据移至集群中的其他节点、并从Astra数据存储中删除此节点。
+
+此过程需要满足以下条件：
+
+* 其他节点必须有足够的可用空间来接收数据。
+* 集群中必须有4个或更多节点。
+
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 选择存储后端的名称。
+. 选择*节点*选项卡。
+. 从操作菜单中、选择*删除*。
+. 输入"remove"确认删除。
+. 选择*是、删除节点*。
 
 
 

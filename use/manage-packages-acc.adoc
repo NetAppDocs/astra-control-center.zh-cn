@@ -31,7 +31,7 @@ Astra控制中心引用已连接存储库中的软件包映像和项目。您可
 . 提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.manifest.bundle.YAML`)。
 . 将软件包映像推送到Docker存储库。进行以下替换：
 +
-** 将bundle_file替换为Astra Control捆绑包文件的名称。
+** 将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.manifest.bundle.YAML`)。
 ** 将my_regRegistry替换为Docker存储库的URL。
 ** 将my_registry_user和my_registry_password替换为存储库的凭据。
 +

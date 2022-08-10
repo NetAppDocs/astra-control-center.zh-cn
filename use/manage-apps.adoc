@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: use/manage-apps.html 
 keywords: how to manage apps with astra control, discover app, how to manage kubernetes apps, astra control, astra 
-summary: 将 Kubernetes 集群添加到 Astra Control 后，您可以在该集群上安装应用程序（在 Astra Control 之外），然后转到 Astra Control 中的应用程序页面开始管理这些应用程序。 
+summary: '将Kubernetes集群添加到Astra Control后、您可以在该集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的"Applications"页面开始管理这些应用程序。' 
 ---
 = 开始管理应用程序
 :hardbreaks:
@@ -11,7 +11,7 @@ summary: 将 Kubernetes 集群添加到 Astra Control 后，您可以在该集�
 :imagesdir: ../media/use/
 
 
-你先请 link:../get-started/setup_overview.html#add-cluster["将集群添加到 Astra Control 管理中"]，您可以在集群上安装应用程序（在 Astra Control 之外），然后转到 Astra Control 中的应用程序页面开始管理应用程序及其资源。
+你先请 link:../get-started/setup_overview.html#add-cluster["将集群添加到 Astra Control 管理中"]、您可以在集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的应用程序页面开始管理应用程序及其资源。
 
 
 
@@ -69,154 +69,127 @@ Astra Control 支持以下应用程序安装方法：
 kubectl apply -f myapp.yaml
 ----
 * * Helm 3* ：如果使用 Helm 安装应用程序，则 Astra Control 需要 Helm 版本 3 。完全支持管理和克隆随 Helm 3 安装的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持管理随 Helm 2 安装的应用程序。
-* * 操作员部署的应用程序 * ： Astra Control 支持使用命名空间范围的运算符安装的应用程序。这些操作员通常采用 " 按价值传递 " 架构，而不是 " 按参考传递 " 架构。以下是一些遵循这些模式的操作员应用程序：
+* *操作员部署的应用程序*：Astra Control支持使用命名空间范围的操作员安装的应用程序、这些应用程序通常采用"按价值传递"而不是"按参考传递"架构设计。操作员及其安装的应用程序必须使用相同的命名空间；您可能需要为操作员修改部署 .yaml 文件，以确保情况确实如此。
++
+以下是一些遵循这些模式的操作员应用程序：
+
 +
 ** https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
++
+
+NOTE: 对于 K8ssandra ，支持原位还原操作。要对新命名空间或集群执行还原操作，需要关闭应用程序的原始实例。这是为了确保传输的对等组信息不会导致跨实例通信。不支持克隆应用程序。
+
 ** https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
 ** https://github.com/percona/percona-xtradb-cluster-operator["Percona XtraDB 集群"^]
 
 
 
 
-请注意， Astra Control 可能无法克隆使用 " 按参考传递 " 架构设计的运算符（例如 CockroachDB 运算符）。在这些类型的克隆操作期间，克隆的操作员会尝试引用源操作员提供的 Kubernetes 机密，尽管在克隆过程中他们拥有自己的新机密。克隆操作可能会失败，因为 Astra Control 不知道源运算符中的 Kubernetes 密钥。
-
-
-NOTE: 操作员及其安装的应用程序必须使用相同的命名空间；您可能需要为操作员修改部署 .yaml 文件，以确保情况确实如此。
+Astra Control可能无法克隆使用"按参考传递"架构设计的运算符(例如CockroachDB运算符)。在这些类型的克隆操作期间，克隆的操作员会尝试引用源操作员提供的 Kubernetes 机密，尽管在克隆过程中他们拥有自己的新机密。克隆操作可能会失败，因为 Astra Control 不知道源运算符中的 Kubernetes 密钥。
 
 
 
 == 在集群上安装应用程序
 
-现在，您已将集群添加到 Astra Control 中，您可以在集群上安装应用程序或管理现有应用程序。可以管理范围限定于命名空间的任何应用程序。Pod 联机后，您可以使用 Astra Control 管理应用程序。
-
-有关从 Helm 图表部署经过验证的应用程序的帮助，请参见以下内容：
-
-* link:../solutions/mariadb-deploy-from-helm-chart.html["从 Helm 图表部署 MariaDB"]
-* link:../solutions/mysql-deploy-from-helm-chart.html["从 Helm 图表部署 MySQL"]
-* link:../solutions/postgres-deploy-from-helm-chart.html["从 Helm 图表部署 Postgres"]
-* link:../solutions/jenkins-deploy-from-helm-chart.html["从 Helm 图表中部署 Jenkins"]
-
+你先请 link:../get-started/setup_overview.html#add-cluster["已添加集群"] 对于Astra Control、您可以在集群上安装应用程序或管理现有应用程序。可以管理范围仅限于单个命名空间的任何应用程序。
 
 
 
 == 管理应用程序
 
-使用 Astra Control 可以在命名空间级别或通过 Kubernetes 标签管理应用程序。
+在Astra Control发现集群上的命名空间后、您可以定义要管理的应用程序。您可以选择 link:../learn/app-management.html["将整个命名空间作为一个应用程序进行管理、或者单独管理命名空间中的一个或多个应用程序"]。这一切都可以细化到数据保护操作所需的粒度级别。
+
+虽然您可以使用Astra Control单独管理层次结构的两个级别(命名空间和该命名空间中的应用程序)、但最佳做法是选择一个或另一个。如果在命名空间和应用程序级别同时执行操作，则在 Astra Control 中执行的操作可能会失败。
 
 
-NOTE: 不支持随 Helm 2 安装的应用程序。
+TIP: 例如、您可能希望为"Maria"设置一个每周节奏的备份策略、但您可能需要比该策略更频繁地备份"MariaDB"(位于同一命名空间中)。根据这些需求、您需要单独管理这些应用程序、而不是作为单命名空间应用程序来管理。
 
-您可以执行以下活动来管理应用程序：
-
-* 管理应用程序
+.您需要什么？ #8217 ；将需要什么
+* 已将Kubernetes集群添加到Astra Control中。
+* 集群上安装的一个或多个应用程序。 <<Supported app installation methods,阅读有关支持的应用程序安装方法的更多信息>>。
+* 一个或多个活动Pod。
+* 在已添加到Astra Control的Kubernetes集群上指定的命名空间。
+* (可选)任何上的Kubernetes标签 link:../use/manage-apps.html#app-management-requirements["支持的Kubernetes资源"]。
 +
-** <<Manage apps by namespace>>
-** <<Manage apps by Kubernetes label>>
+
+TIP: 标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进行标识。通过标签，可以更轻松地对 Kubernetes 对象进行排序，组织和查找。要了解有关 Kubernetes 标签的更多信息， https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["请参见 Kubernetes 官方文档"^]。
 
 
-* <<Ignore apps>>
+
+开始之前、您还应了解相关信息 link:../use/manage-apps.html#what-about-system-namespaces["管理标准命名空间和系统命名空间"]。
+
+有关如何使用 Astra Control API 管理应用程序的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
+
+.应用程序管理选项
+* <<Define resources to manage as an app>>
+* <<Define a namespace to manage as an app>>
+
+
+.其他应用程序管理选项
 * <<Unmanage apps>>
 
 
 
-TIP: Astra Control 本身不是一个标准应用程序，而是一个 " 系统应用程序 " 。 您不应尝试管理 Astra Control 本身。默认情况下，用于管理的 Astra Control 本身不会显示。要查看系统应用程序，请使用 " 显示系统应用程序 " 筛选器。
 
-有关如何使用 Astra Control API 管理应用程序的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
+=== 定义要作为应用程序进行管理的资源
+
+您可以指定 link:../learn/app-management.html["构成应用程序的Kubernetes资源"] 要使用Astra Control进行管理的。通过定义应用程序、您可以将Kubernetes集群中的元素分组到一个应用程序中。此Kubernetes资源集合按命名空间和标签选择器标准进行组织。
+
+通过定义应用程序、您可以更精细地控制要包含在Astra Control操作中的内容、包括克隆、快照和备份。
 
 
-NOTE: 在执行数据保护操作（克隆，备份，还原）并随后调整永久性卷大小后，在 UI 中显示新卷大小之前，最长会有 20 分钟的延迟。数据保护操作将在几分钟内成功完成，您可以使用存储后端的管理软件确认卷大小的更改。
-
-
-
-=== 按命名空间管理应用程序
-
-" 应用程序 " 页面的 * 已发现 * 部分显示命名空间以及这些命名空间中由 Helm 安装的任何应用程序或自定义标记的应用程序。您可以选择单独管理每个应用程序，也可以选择在命名空间级别管理每个应用程序。这一切都可以细化到数据保护操作所需的粒度级别。
-
-例如，您可能希望为 "Maria" 设置一个每周节奏的备份策略，但您可能需要比该策略更频繁地备份 "MariaDB" （位于同一命名空间中）。根据这些需求，您需要单独管理应用程序，而不是在一个命名空间下进行管理。
-
-虽然您可以使用 Astra Control 单独管理层次结构的两个级别（命名空间和该命名空间中的应用程序），但最佳做法是选择一个或另一个。如果在命名空间和应用程序级别同时执行操作，则在 Astra Control 中执行的操作可能会失败。
+WARNING: 定义应用程序时、请确保不在具有保护策略的多个应用程序中包含Kubernetes资源。Kubernetes资源上重叠的保护策略可能会发生发生原因 数据冲突。 <<Example: Separate Protection Policy for different releases,阅读有关最佳实践的更多信息。>>
 
 .步骤
-. 从左侧导航栏中，选择 * 应用程序 * 。
-. 选择 * 已发现 * 筛选器。
+. 从应用程序页面中、选择*定义*。
+. 在*定义应用程序*窗口中、输入应用程序名称。
+. 在*集群*下拉列表中选择运行应用程序的集群。
+. 从*命名空间*下拉列表中选择应用程序的命名空间。
 +
-image:acc_apps_discovered4.png["已发现应用程序筛选器的屏幕截图"]
 
-. 查看已发现的命名空间列表。展开命名空间以查看应用程序和关联资源。
-+
-Astra Control 会向您显示命名空间中的 Helm 应用程序和自定义标记的应用程序。如果 Helm 标签可用，则会使用标记图标来指定这些标签。
+NOTE: 只能在单个集群上的指定命名空间中定义应用程序。Astra Control不支持应用程序跨越多个命名空间或集群。
 
-. 查看 * 组 * 列，查看应用程序运行在哪个命名空间中（使用文件夹图标指定）。
-. 确定是单独管理每个应用程序，还是在命名空间级别管理每个应用程序。
-. 在层次结构中的所需级别找到所需的应用程序，然后从 * 操作 * 列的选项菜单中选择 * 管理 * 。
-. 如果您不想管理某个应用程序，请从 * 操作 * 列的选项菜单中选择 * 忽略 * 。
+. 输入应用程序和命名空间的标签。您可以指定单个标签或标签选择器条件(查询)。
 +
-例如，如果您希望同时管理 "Maria" 命名空间下的所有应用程序，以便它们具有相同的快照和备份策略，则可以管理命名空间并忽略命名空间中的应用程序。
 
-. 要查看受管应用程序的列表，请选择 * 受管 * 作为显示筛选器。
-+
-image:acc_apps_managed3.png["受管应用程序筛选器的屏幕截图"]
+TIP: 要了解有关 Kubernetes 标签的更多信息， https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["请参见 Kubernetes 官方文档"^]。
 
-+
+. 选择*定义*后、根据需要对其他应用程序重复此过程。
+
+
+定义完应用程序后、该应用程序将显示在应用程序页面上的应用程序列表中。现在、您可以克隆它并创建备份和快照。
+
 
 NOTE: 您刚刚添加的应用程序在 " 受保护 " 列下可能会显示一个警告图标，表示它尚未备份，并且尚未计划备份。
 
-. 要查看特定应用程序的详细信息，请选择应用程序名称。
 
-
-您选择管理的应用程序现在可从 * 受管 * 选项卡访问。任何被忽略的应用程序都将移至 * 已忽略 * 选项卡。理想情况下， " 已发现 " 选项卡将显示零个应用程序，以便在安装新应用程序后更容易找到和管理这些应用程序。
+TIP: 要查看特定应用程序的详细信息，请选择应用程序名称。
 
 
 
-=== 按 Kubernetes 标签管理应用程序
+=== 定义要作为应用程序进行管理的命名空间
 
-Astra Control 在应用程序页面顶部包含一个名为 * 定义自定义应用程序 * 的操作。您可以使用此操作管理使用 Kubernetes 标签标识的应用程序。 link:../use/define-custom-app.html["了解有关通过 Kubernetes 标签定义自定义应用程序的更多信息"]。
+您可以通过将命名空间的资源定义为应用程序来将命名空间中的所有Kubernetes资源添加到Astra Control管理中。如果您要以类似的方式并以通用间隔管理和保护特定命名空间中的所有资源、则此方法比单独定义应用程序更好。
 
 .步骤
-. 从左侧导航栏中，选择 * 应用程序 * 。
-. 选择 * 定义 * 。
-. 在 * 定义自定义应用程序 * 对话框中，提供管理该应用程序所需的信息：
+. 从集群页面中、选择一个集群。
+. 选择*命名空间*选项卡。
+. 选择包含要管理的应用程序资源的命名空间的"Actions"菜单、然后选择*定义为应用程序*。
 +
-.. * 新建应用程序 * ：输入应用程序的显示名称。
-.. * 集群 * ：选择应用程序所在的集群。
-.. * 命名空间： * 选择应用程序的命名空间。
-.. * 标签： * 输入标签或从以下资源中选择标签。
-.. * 选定资源 * ：查看和管理要保护的选定 Kubernetes 资源（ Pod ，机密，永久性卷等）。
+
+TIP: 如果要管理多个命名空间、请选择这些命名空间、然后选择左上角的*操作*按钮并选择*管理*。
+
 +
-*** 通过展开资源并选择标签数量来查看可用标签。
-*** 选择一个标签。
-+
-选择标签后，它将显示在 * 标签 * 字段中。Astra Control 还会更新 * 未选定资源 * 部分，以显示与选定标签不匹配的资源。
+
+NOTE: 选中*显示系统命名空间*复选框以显示默认情况下在应用程序管理中不使用的系统命名空间。 image:acc_namespace_system.png["显示命名空间选项卡中提供的*显示系统命名空间*选项的屏幕截图。"] link:../use/manage-apps.html#what-about-system-namespaces["阅读更多内容"]。
 
 
 
-.. * 未选择资源 * ：验证您不想保护的应用程序资源。
-
-
-. 选择 * 定义自定义应用程序 * 。
-
-
-使用 Astra Control 可以管理应用程序。现在，您可以在 * 受管 * 选项卡中找到它。
+此过程完成后、与此命名空间关联的应用程序将显示在`Associated applications`列中。
 
 
 
-== 忽略应用程序
-
-如果已发现某个应用程序，它将显示在已发现列表中。在这种情况下，您可以清理已发现的列表，以便更容易找到新安装的应用程序。或者，您可能会管理一些应用程序，稍后决定不再需要管理这些应用程序。如果您不想管理这些应用程序，可以指示应忽略它们。
-
-此外，您可能希望在一个命名空间下同时管理应用程序（命名空间管理）。您可以忽略要从命名空间中排除的应用程序。
-
-.步骤
-. 从左侧导航栏中，选择 * 应用程序 * 。
-. 选择 * 已发现 * 作为筛选器。
-. 选择应用程序。
-. 从选项菜单的 * 操作 * 列中，选择 * 忽略 * 。
-. 要取消忽略，请选择 * 取消忽略 * 。
-
-
-
-
-== 取消管理应用程序
+=== 取消管理应用程序
 
 如果您不再需要备份，创建快照或克隆某个应用程序，则可以停止对其进行管理。
 
@@ -225,9 +198,8 @@ NOTE: 如果取消管理某个应用程序，则先前创建的任何备份或�
 
 .步骤
 . 从左侧导航栏中，选择 * 应用程序 * 。
-. 选择 * 受管 * 作为筛选器。
 . 选择应用程序。
-. 从选项菜单的 * 操作 * 列中，选择 * 取消管理 * 。
+. 从菜单的*操作*列中、选择*取消管理*。
 . 查看相关信息。
 . 键入 "unmanage" 进行确认。
 . 选择 * 是，取消管理应用程序 * 。
@@ -235,16 +207,28 @@ NOTE: 如果取消管理某个应用程序，则先前创建的任何备份或�
 
 
 
-== 系统应用程序如何？
+== 系统命名空间如何？
 
-Astra Control 还会发现 Kubernetes 集群上运行的系统应用程序。默认情况下，我们不会向您显示这些系统应用程序，因为您很少需要备份这些应用程序。
+Astra Control还会发现Kubernetes集群上的系统命名空间。默认情况下、我们不会向您显示这些系统命名空间、因为您很少需要备份系统应用程序资源。
 
-您可以从 " 应用程序 " 页面显示系统应用程序，方法是选中工具栏中 " 集群 " 筛选器下的 * 显示系统应用程序 * 复选框。
+通过选中*显示系统命名空间*复选框、您可以从选定集群的命名空间选项卡中显示系统命名空间。
 
-image:acc_apps_system_apps3.png["显示应用程序页面中提供的显示系统应用程序选项的屏幕截图。"]
+image:acc_namespace_system.png["显示命名空间选项卡中提供的*显示系统命名空间*选项的屏幕截图。"]
 
 
 TIP: Astra Control 本身不是一个标准应用程序，而是一个 " 系统应用程序 " 。 您不应尝试管理 Astra Control 本身。默认情况下，用于管理的 Astra Control 本身不会显示。
+
+
+
+== 示例：不同版本的单独保护策略
+
+在此示例中、DevOps团队正在管理"金丝利"版本部署。该团队的集群中有三个Pod运行nginx。其中两个 Pod 专用于稳定版本。第三个 POD 适用于加那利版本。
+
+DevOps 团队的 Kubernetes 管理员会将标签 `detion=stable` 添加到稳定版本 Pod 中。该团队会将标签 `deeption=Canary` 添加到 Canary 版本 POD 中。
+
+该团队的稳定版本要求每小时创建一次快照，每天进行备份。金那利版本的发布时间较短，因此他们希望为任何标记为 `deeption=Canary` 的对象创建一个不太积极的短期保护策略。
+
+为了避免可能发生的数据冲突、管理员将创建两个应用程序：一个用于"加那利"版本、一个用于"稳定"版本。这样就可以使两组 Kubernetes 对象的备份，快照和克隆操作分开。
 
 
 

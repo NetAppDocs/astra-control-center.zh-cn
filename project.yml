@@ -16,7 +16,6 @@ sidebar:
   - section: get-started
   - section: use
   - section: rest-api
-  - section: solutions
   - section: support
   - title: 早期版本
     url: "/acc-earlier-versions.html"
@@ -46,6 +45,8 @@ homepage:
       url: "/use/protect-apps.html"
     - title: 克隆和迁移应用程序
       url: "/use/clone-apps.html"
+    - title: 将应用程序复制到远程系统
+      url: "/use/replication.html"
   - title: 使用 Astra Control API
     links:
     - title: 开始使用 Astra Control API
@@ -56,17 +57,17 @@ homepage:
       url: https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html
   - title: 使用 Astra 控制服务
     links:
-    - title: Astra 控制服务简介
+    - title: 了解 Astra Control Service
       url: https://docs.netapp.com/us-en/astra/get-started/intro.html
-    - title: 新增功能
+    - title: Astra控制服务的新增功能
       url: https://docs.netapp.com/us-en/astra/release-notes/whats-new.html
     - title: Astra 控制服务快速入门
       url: https://docs.netapp.com/us-en/astra/get-started/quick-start.html
   - title: 使用 Astra 数据存储
     links:
-    - title: Astra 数据存储简介
+    - title: 了解 Astra 数据存储
       url: https://docs.netapp.com/us-en/astra-data-store/concepts/intro.html
-    - title: 此版本的 Astra 数据存储中的内容
+    - title: Astra数据存储中的新增功能
       url: https://docs.netapp.com/us-en/astra-data-store/release-notes/whats-new.html
     - title: Astra 数据存储快速入门
       url: https://docs.netapp.com/us-en/astra-data-store/get-started/quick-start.html
@@ -78,16 +79,6 @@ homepage:
       url: https://cloud.netapp.com/hubfs/SB-4110-0221-MySQL-Astra%20(2).pdf
     - title: 简化 Jenkins 生命周期管理
       url: https://cloud.netapp.com/hubfs/SB-4100-Jenkins%20(2).pdf
-  - title: 演示教程
-    links:
-    - title: 部署 Jenkins
-      url: "/solutions/jenkins-deploy-from-helm-chart.html"
-    - title: 部署 MariaDB
-      url: "/solutions/mariadb-deploy-from-helm-chart.html"
-    - title: 部署 MySQL
-      url: "/solutions/mysql-deploy-from-helm-chart.html"
-    - title: 部署 Postgres
-      url: "/solutions/postgres-deploy-from-helm-chart.html"
   - title: 博客社区
     links:
     - title: Slack 通道
