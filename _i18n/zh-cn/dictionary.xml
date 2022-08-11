@@ -357,11 +357,7 @@
   <block id="32139554c6b5c9a48dcfdd0ff983a9eb" category="doc">开始管理应用程序</block>
   <block id="1cf97dd1e6f6c8888d8fa6dcede7fac9" category="inline-link-macro">将集群添加到 Astra Control 管理中</block>
   <block id="7b7f260c982647b3aee51c681be792ef" category="section-title">应用程序管理要求</block>
-  <block id="07eb1eefb9996b52d1fdfe23101a2b03" category="paragraph">Astra Control 具有以下应用程序管理要求：</block>
-  <block id="040814594415b3be75eca728578ba39d" category="list-text">* 许可 * ：要使用 Astra 控制中心管理应用程序，您需要获得 Astra 控制中心许可证。</block>
   <block id="9ddfdbe42c83c42ff3e215c90be2d274" category="list-text">* 命名空间 * ： Astra Control 要求一个应用程序不能跨越多个命名空间，但一个命名空间可以包含多个应用程序。</block>
-  <block id="a23e8e619b2ffd1ec1e37fd1f16eee74" category="list-text">* 存储类 * ：如果您安装的应用程序明确设置了 StorageClass ，并且需要克隆该应用程序，则克隆操作的目标集群必须具有最初指定的 StorageClass 。将显式设置了 StorageClass 的应用程序克隆到不具有相同 StorageClass 的集群将失败。</block>
-  <block id="7a9f49c6cd6dca3bc35b755523c76570" category="list-text">* Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：</block>
   <block id="d7d354d0f9d0780e168c895c92a32c24" category="list-text">ClusterRole</block>
   <block id="e866afd8290d5c73cda6260e04e6eef0" category="list-text">ClusterRoleBinding.</block>
   <block id="a941f8adb5ae079ebc739cb59407fd30" category="list-text">配置映射</block>
@@ -2635,4 +2631,5 @@
   <block id="f37ba65ac5d8b8df530d2009f9539d5d" category="sidebar">Astra数据存储中的新增功能</block>
   <block id="9c55cf3bb8c415c1b4cf797d9fae1d67" category="sidebar">监控应用程序和集群运行状况</block>
   <block id="0adc618a9ad28f57db9328d47cf45165" category="sidebar">使用Cloud Insights 和Fluentd监控基础架构</block>
+  <block id="d1736d27c7efe09a7fdb5f5e3b18e8dc" category="paragraph">有关详细信息，请参见 <block ref="f6d2e41142da7ccda158b71b34630966" category="inline-link-macro-rx"></block>。</block>
 </blocks>

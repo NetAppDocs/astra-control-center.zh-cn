@@ -13,48 +13,7 @@ summary: '将Kubernetes集群添加到Astra Control后、您可以在该集群�
 
 你先请 link:../get-started/setup_overview.html#add-cluster["将集群添加到 Astra Control 管理中"]、您可以在集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的应用程序页面开始管理应用程序及其资源。
 
-
-
-== 应用程序管理要求
-
-Astra Control 具有以下应用程序管理要求：
-
-* * 许可 * ：要使用 Astra 控制中心管理应用程序，您需要获得 Astra 控制中心许可证。
-* * 命名空间 * ： Astra Control 要求一个应用程序不能跨越多个命名空间，但一个命名空间可以包含多个应用程序。
-* * 存储类 * ：如果您安装的应用程序明确设置了 StorageClass ，并且需要克隆该应用程序，则克隆操作的目标集群必须具有最初指定的 StorageClass 。将显式设置了 StorageClass 的应用程序克隆到不具有相同 StorageClass 的集群将失败。
-* * Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：
-+
-[cols="1,1,1"]
-|===
-
-
-| ClusterRole | ClusterRoleBinding. | 配置映射 
-
-
-| 自定义资源定义 | 自定义资源 | cronjob 
-
-
-| DemonSet | HorizontalPodAutoscaler | 传入 
-
-
-| DeploymentConfig | MutatingWebhook | PersistentVolumeClaim 
-
-
-| POD | PodDisruptionBuget | 播客模板 
-
-
-| 网络策略 | ReplicaSet | Role 
-
-
-| RoleBinding. | 路由 | 机密 
-
-
-| 服务 | ServiceAccount | 状态集 
-
-
-| 验证 Webhook |  |  
-|===
-
+有关详细信息，请参见 link:../get-started/requirements.html#application-management-requirements["应用程序管理要求"]。
 
 
 
