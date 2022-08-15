@@ -240,13 +240,8 @@ NOTE: 您可能需要刷新页面才能显示后端。
 
 ** * ONTAP * ：
 +
-... 选择* ONTAP *并选择*下一步*。
-... 输入ONTAP 集群管理IP地址和管理员凭据。
-+
-
-NOTE: 您在此处输入凭据的用户必须在ONTAP 集群上的ONTAP 系统管理器中启用`ontapi`用户登录访问方法。如果您计划使用SnapMirror复制、请在两个ONTAP 集群上为用户启用`ontapi`和`http`访问方法。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理用户帐户"^] 有关详细信息 ...
-
-... 选择 * 审阅 * 。
+... 选择* ONTAP *。
+... 输入 ONTAP 管理员凭据并选择 * 审核 * 。
 ... 确认后端详细信息并选择*添加存储后端*。
 
 

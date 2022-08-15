@@ -201,16 +201,6 @@ Astra Control应用程序复制要求在开始之前必须满足以下前提条�
 * 配对的远程SVM必须可供目标集群上的Trident使用。
 * 源和目标ONTAP 集群上必须同时存在Trident 22.04或更高版本。
 * 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^]。
-* Astra Trident后端配置文件必须包含以下行：
-+
-[listing]
-----
-"replicationPolicy": "MirrorAllSnapshots"
-----
-+
-请参见 https://docs.netapp.com/us-en/trident/trident-use/backends.html["配置后端"^] 有关详细信息 ...
-
-* 在将ONTAP 存储后端添加到Astra控制中心时、如果用户的凭据用于在控制中心与存储后端之间进行通信、则必须在两个ONTAP 集群的ONTAP System Manager中启用用户登录访问方法`http`和`ontapi`。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理用户帐户"^] 有关详细信息 ...
 * 源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。
 +
 
