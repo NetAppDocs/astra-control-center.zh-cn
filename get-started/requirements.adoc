@@ -164,19 +164,19 @@ Astra Control 具有以下应用程序管理要求：
 | ClusterRole | ClusterRoleBinding. | 配置映射 
 
 
-| 自定义资源定义 | 自定义资源 | cronjob 
+| cronjob | 自定义资源定义 | 自定义资源 
 
 
-| DemonSet | HorizontalPodAutoscaler | 传入 
+| DemonSet | DeploymentConfig | HorizontalPodAutoscaler 
 
 
-| DeploymentConfig | MutatingWebhook | PersistentVolumeClaim 
+| 传入 | MutatingWebhook | 网络策略 
 
 
-| POD | PodDisruptionBuget | 播客模板 
+| PersistentVolumeClaim | POD | PodDisruptionBuget 
 
 
-| 网络策略 | ReplicaSet | Role 
+| 播客模板 | ReplicaSet | Role 
 
 
 | RoleBinding. | 路由 | 机密 
