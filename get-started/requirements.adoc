@@ -201,6 +201,16 @@ Astra Control应用程序复制要求在开始之前必须满足以下前提条�
 * 配对的远程SVM必须可供目标集群上的Trident使用。
 * 源和目标ONTAP 集群上必须同时存在Trident 22.04或更高版本。
 * 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^]。
+* Astra Trident后端配置文件必须包含以下行：
++
+[listing]
+----
+"replicationPolicy": "MirrorAllSnapshots"
+----
++
+请参见 https://docs.netapp.com/us-en/trident/trident-use/backends.html["配置后端"^] 有关详细信息 ...
+
+* 在将ONTAP 存储后端添加到Astra控制中心时、如果用户的凭据用于在控制中心与存储后端之间进行通信、则必须在两个ONTAP 集群的ONTAP System Manager中启用用户登录访问方法`http`和`ontapi`。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理用户帐户"^] 有关详细信息 ...
 * 源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。
 +
 
@@ -264,6 +274,8 @@ NOTE: 操作员及其安装的应用程序必须使用相同的命名空间；�
 
 
 NOTE: 如果要在 Tanzu Kubernetes 网格集群上托管 Astra 控制中心，请使用 `kubectl get nssxlbmonitors -a` 命令查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。
+
+有关详细信息，请参见 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["设置传入以进行负载平衡"]。
 
 
 

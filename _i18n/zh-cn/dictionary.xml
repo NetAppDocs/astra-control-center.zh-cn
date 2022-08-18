@@ -2630,6 +2630,13 @@
   <block id="d1736d27c7efe09a7fdb5f5e3b18e8dc" category="paragraph">有关详细信息，请参见 <block ref="f6d2e41142da7ccda158b71b34630966" category="inline-link-macro-rx"></block>。</block>
   <block id="3dc2f4e20c545bc208864c2f1c9ce93c" category="cell">总共至少 3 个辅助节点，每个节点有 4 个 CPU 核和 12 GB RAM</block>
   <block id="7710790456945bed9a23fff9f934b8fd" category="paragraph">要启用完整的应用程序数据管理功能、需要安装Astra Control Center许可证。如果在没有许可证的情况下部署 Astra 控制中心，则 Web UI 中会显示一个横幅，警告系统功能受限。</block>
-  <block id="3a8637e581240d33340d3e6f8927a52d" category="list-text">选择* ONTAP *。</block>
-  <block id="bf2393bb3f17f3d2b4ff6979c3c20036" category="list-text">输入 ONTAP 管理员凭据并选择 * 审核 * 。</block>
+  <block id="a698e4170358adf4ae12dde1db5e4df4" category="list-text">Astra Trident后端配置文件必须包含以下行：</block>
+  <block id="87dc0337d3ded2211d9b01c32e22d90d" category="inline-link">配置后端</block>
+  <block id="10455fcfd55eff76710d4945e30e3c6f" category="paragraph">请参见<block ref="f296f2024998b4c76709035f49bba3d4" category="inline-link-rx"></block> 有关详细信息 ...</block>
+  <block id="8e9fceaaf84bd1591dc11726965a5b35" category="inline-link">管理用户帐户</block>
+  <block id="57e07386eb22ab2bcc329ab181a33fdf" category="list-text">在将ONTAP 存储后端添加到Astra控制中心时、如果用户的凭据用于在控制中心与存储后端之间进行通信、则必须在两个ONTAP 集群的ONTAP System Manager中启用用户登录访问方法`http`和`ontapi`。请参见<block ref="f6ed2b7e6315ca84a258679db888068b" category="inline-link-rx"></block> 有关详细信息 ...</block>
+  <block id="558e41f71155360e3f8ee151e27ea06f" category="paragraph">有关详细信息，请参见 <block ref="ad125f0a3036e9b5f57b3a7077f489d9" category="inline-link-macro-rx"></block>。</block>
+  <block id="eee7185d57747c6b57ad38a0e1864f92" category="list-text">选择* ONTAP *并选择*下一步*。</block>
+  <block id="27fa550ebd74698993e3dcb9ba7e2945" category="list-text">输入ONTAP 集群管理IP地址和管理员凭据。</block>
+  <block id="b6b734f5600f81536bcbb3b4bbdc32bc" category="admonition">您在此处输入凭据的用户必须在ONTAP 集群上的ONTAP 系统管理器中启用`ontapi`用户登录访问方法。如果您计划使用SnapMirror复制、请在两个ONTAP 集群上为用户启用`ontapi`和`http`访问方法。请参见<block ref="f6ed2b7e6315ca84a258679db888068b" category="inline-link-rx"></block> 有关详细信息 ...</block>
 </blocks>
