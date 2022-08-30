@@ -2639,4 +2639,10 @@
   <block id="eee7185d57747c6b57ad38a0e1864f92" category="list-text">选择* ONTAP *并选择*下一步*。</block>
   <block id="27fa550ebd74698993e3dcb9ba7e2945" category="list-text">输入ONTAP 集群管理IP地址和管理员凭据。</block>
   <block id="b6b734f5600f81536bcbb3b4bbdc32bc" category="admonition">您在此处输入凭据的用户必须在ONTAP 集群上的ONTAP 系统管理器中启用`ontapi`用户登录访问方法。如果您计划使用SnapMirror复制、请在两个ONTAP 集群上为用户启用`ontapi`和`http`访问方法。请参见<block ref="f6ed2b7e6315ca84a258679db888068b" category="inline-link-rx"></block> 有关详细信息 ...</block>
+  <block id="64f97564a976931750ce87e0cc98894a" category="list-text">为容器引擎完成相应的步骤顺序：</block>
+  <block id="c5fd214cdd0d2b3b4272e73b022ba5c2" category="open-title">Docker</block>
+  <block id="455cbd59356abfa16dcf7666d4ae6c2b" category="open-title">Podman</block>
+  <block id="e8c44728c041065d90e7029dec2e142c" category="list-text">登录到注册表：</block>
+  <block id="c330f6e98afeb2bb5f8da986c24088ee" category="list-text">运行以下脚本、按照注释中的说明替换&lt;your_registry&gt;：</block>
+  <block id="b5a8988ef4b9c7e25ec15b79d93a02d4" category="admonition">占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.0-20`)。</block>
 </blocks>

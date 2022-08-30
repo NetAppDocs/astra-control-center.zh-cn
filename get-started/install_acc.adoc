@@ -113,9 +113,16 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 
 == 将映像添加到本地注册表
 
+. 为容器引擎完成相应的步骤顺序：
+
+
+[role="tabbed-block"]
+====
+.Docker
+--
 . 更改为Astra目录：
 +
-[listing]
+[source, sh]
 ----
 cd acc
 ----
@@ -125,7 +132,7 @@ cd acc
 ** 将my_regRegistry替换为Docker存储库的URL。
 ** 将my_registry_user和my_registry_password替换为存储库的凭据。
 +
-[listing]
+[source, sh]
 ----
 kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_PASSWORD
 ----
@@ -133,6 +140,47 @@ kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_
 
 
 
+--
+.Podman
+--
+. 登录到注册表：
++
+[source, sh]
+----
+podman login [your_registry_path]
+----
+. 运行以下脚本、按照注释中的说明替换<your_registry>：
++
+[source, sh]
+----
+# You need to be at the root of the tarball.
+# You should see these files to confirm correct location:
+#   acc.manifest.bundle.yaml
+#   acc/
+
+# Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
+export REGISTRY=<YOUR_REGISTRY>
+export PACKAGENAME=acc
+export PACKAGEVERSION=22.08.0-20
+export DIRECTORYNAME=acc
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+  # Load to local cache
+  astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
+
+  # Remove path and keep imageName.
+  astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+
+  # Tag with local image repo.
+  podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+
+  # Push to the local repo.
+  podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
+----
+
+
+--
+====
 
 
 == 为具有身份验证要求的注册表设置命名空间和密钥
@@ -154,6 +202,10 @@ kubectl create ns netapp-acc-operator
 namespace/netapp-acc-operator created
 ----
 .. 为 `NetApp-Acc-operator` 命名空间创建一个密钥。添加 Docker 信息并运行以下命令：
++
+
+NOTE: 占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.0-20`)。
+
 +
 [listing]
 ----
