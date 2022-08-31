@@ -97,7 +97,6 @@
   <block id="9318b0c96f2eb8cb846f9939d293ee5c" category="summary">Astra Control Center 软件可为内部环境中的 Kubernetes 集群提供应用程序感知型数据管理。轻松备份 Kubernetes 应用程序，将数据迁移到其他集群以及即时创建有效的应用程序克隆。如果您需要管理在公有云中运行的 Kubernetes 应用程序，请转至 Astra 控制服务的文档。</block>
   <block id="5bc8792f4d0618bc7421137123233c68" category="summary">NetApp 以多种方式为 Astra Control 提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和可宽延的渠道。您的 Astra Control 帐户包括通过 Web 服务单提供的远程技术支持。</block>
   <block id="fabfc25ef8996fd90836e58a4c0b26b6" category="doc">获取帮助</block>
-  <block id="a6e1f493785653671f0660b3a3ccc2e2" category="admonition">如果您拥有 Astra 控制中心的评估许可证，则可以获得技术支持。但是，无法通过 NetApp 支持站点（ NSS ）创建案例。您可以通过反馈选项联系支持部门，也可以使用 Slack 渠道自助服务。</block>
   <block id="9f1a9252fa8e7cccfce329f81193d946" category="inline-link-macro">激活对您的 NetApp 序列号的支持</block>
   <block id="9580bedb9d61fe3a06c2c0a84428340b" category="paragraph">您必须先执行此操作 <block ref="0da2bd51927b2e0d6e9f34a462b8052f" category="inline-link-macro-rx"></block> 以便使用这些非自助服务支持选项。聊天和 Web 服务单以及案例管理需要使用 NetApp 支持站点（ NSS ） SSO 帐户。</block>
   <block id="e9f9b053971e4cd8cce3a402331a125b" category="paragraph">您可以从 Astra 控制中心用户界面访问支持选项，方法是从主菜单中选择 * 支持 * 选项卡。</block>
@@ -1059,7 +1058,6 @@
   <block id="b1cb177a36a717434db632021b6d91bc" category="sidebar">采用 Astra Control 的 MySQL DBaaS</block>
   <block id="332153f6f1b31602ac3418cdf4d18170" category="sidebar">简化 Jenkins 生命周期管理</block>
   <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">博客社区</block>
-  <block id="0c2a2a6a4c35696b309713d6db0f8404" category="sidebar">Slack 通道</block>
   <block id="36910a95584c53fdc9ed97782ef3965c" category="sidebar">Astra Control 博客</block>
   <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">NetApp 社区</block>
   <block id="874d8a5301794a9ca2aba132ac2460f3" category="sidebar">Kubernetes Hub</block>
@@ -1752,8 +1750,6 @@
   <block id="68f269105158a82f8e06dd324631610e" category="inline-link">* 知识库 * （需要登录）</block>
   <block id="3ce7820e1a8dcaf1b20e89638e9eb65c" category="list-text"><block ref="c21c91b055ef6d38b9e7473e1602e44f" category="inline-link-rx"></block>：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。</block>
   <block id="54fb836d65dfa963fa159aa13bf9fe60" category="list-text">* 文档中心 * ：这是您当前正在查看的文档站点。</block>
-  <block id="8fcc40b57fd2544f263ddca555e1a42f" category="inline-link">* 通过 Slack 获取帮助 *</block>
-  <block id="f3bd3849c5621364cd7faf04bda271ca" category="list-text"><block ref="f235ba35538949dfe124c04907cdfa51" category="inline-link-rx"></block>：转到 Pub 工作空间中的容器通道与同行和专家进行联系。</block>
   <block id="2d1cdbb35250ece1f1e88fdafee9d683" category="list-text">* 创建支持案例 * ：生成支持包以提供给 NetApp 支持部门进行故障排除。</block>
   <block id="5a7e155bd663e7d6145fbd05e0908d7e" category="list-text">* 提供有关 Astra Control* 的反馈：发送电子邮件至 astra.feedback@netapp.com ，告知我们您的想法，想法或顾虑。</block>
   <block id="8c32a73fa8e487b617354c9f67eced24" category="paragraph">确定将捆绑包上传到 NSS 是否需要代理连接。如果需要代理连接，请验证是否已将 Astra 控制中心配置为使用代理服务器。</block>
@@ -2645,4 +2641,9 @@
   <block id="e8c44728c041065d90e7029dec2e142c" category="list-text">登录到注册表：</block>
   <block id="c330f6e98afeb2bb5f8da986c24088ee" category="list-text">运行以下脚本、按照注释中的说明替换&lt;your_registry&gt;：</block>
   <block id="b5a8988ef4b9c7e25ec15b79d93a02d4" category="admonition">占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.0-20`)。</block>
+  <block id="1c90591655cdfe7d885b02ed72ae2509" category="summary">NetApp 以多种方式为 Astra Control 提供支持。全天候提供广泛的免费自助支持选项、例如知识库(KB)文章和不和渠道。您的 Astra Control 帐户包括通过 Web 服务单提供的远程技术支持。</block>
+  <block id="e63bdfa6fe9dccaf39b5d028f12a4a15" category="admonition">如果您拥有 Astra 控制中心的评估许可证，则可以获得技术支持。但是，无法通过 NetApp 支持站点（ NSS ）创建案例。您可以通过反馈选项联系支持部门、也可以使用不和渠道自助服务。</block>
+  <block id="35cdc0acd4828a4d409d79a5f18ee353" category="inline-link">*通过不和获得帮助*</block>
+  <block id="5782a764d5148bc0a62fa0db213a073b" category="list-text"><block ref="f560054dea7b7d17ab98f97d9a55b6ac" category="inline-link-rx"></block>：转到"Pub类别"中的Astra、与同行和专家建立联系。</block>
+  <block id="a7cfd917113a9ee9c1e789887d1d809f" category="sidebar">渠道不和</block>
 </blocks>
