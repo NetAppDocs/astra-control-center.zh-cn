@@ -611,7 +611,6 @@
   <block id="7ccab09493cf97c9665c6c2126741ee5" category="list-text">（可选）使用以下命令验证捆绑包的签名：</block>
   <block id="55dd7c8d274890e1cb45bb29840ae107" category="section-title">打开软件包的包装并更改目录</block>
   <block id="ae32a002cf3df8354380980ceb442a90" category="list-text">提取映像：</block>
-  <block id="f649b0ca3deae5a7d2e60dabf74a0ab4" category="list-text">更改为 Astra 目录。</block>
   <block id="22a59db7b4ba20ac09e829d51d726828" category="section-title">将映像添加到本地注册表</block>
   <block id="9d37e8b16bca7866e9db4f98f5080a5a" category="section-title">安装更新后的 Astra 控制中心操作员</block>
   <block id="4dfe1039695653a07d27cb2151fbe633" category="list-text">编辑 Astra 控制中心操作员部署 YAML （`Astra_control_center_operator_deploy.yaml` ）以参考您的本地注册表和机密。</block>
@@ -1249,7 +1248,6 @@
   <block id="1cee46fe31fb6be4325d72afeb43c038" category="paragraph">添加一个由 CA 签名的新 TLS 证书。</block>
   <block id="38073e52be4dfccbbd24b3272a244562" category="list-text">从下载 Astra 控制中心证书和密钥的 zip<block ref="4e4882d47509d388d52971aaee9abe33" category="inline-link-rx"></block>。</block>
   <block id="817e1aba6882bae4837bd1f640be671a" category="list-text">将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。</block>
-  <block id="2a0a2b464d2715b6fb4ea6d68ae8f9c4" category="list-text">当所有 Pod 运行时，通过检索 Astra 控制中心操作员安装的 `AstraControlCenter` 实例来验证安装是否成功。</block>
   <block id="7267bf4022ef959138b9f6b053eb4b37" category="paragraph">首先验证操作环境，应用程序集群，应用程序，许可证和 Web 浏览器的就绪情况。</block>
   <block id="14c3520c1ca6993e39c544e92a538f0b" category="section-title">操作环境要求</block>
   <block id="540bf6f549a34a85e07e4a8510890f43" category="paragraph">确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。除了环境的资源要求之外， Astra 控制中心还需要以下资源：</block>
@@ -1668,9 +1666,6 @@
   <block id="77e0de8ecc5568c2d3a063c7dc7001ec" category="admonition">有关 "loadbalancer" 服务类型和入口的详细信息，请参见 <block ref="ec43fa96d69fa714ee8406758839eaf7" category="inline-link-macro-rx"></block>。</block>
   <block id="ee0526590c13af447ef6f7015055f42a" category="inline-link-macro">在 UI 中</block>
   <block id="7273584d0fdded6be7a9a6e1cc3f03b4" category="admonition">`AccHost` 集群注册是最后一项操作，如果失败，发生原因 部署不会失败。如果日志中指示集群注册失败，您可以通过添加集群工作流再次尝试注册 <block ref="b470e1e769f57d21f243dd7007dff492" category="inline-link-macro-rx"></block> 或 API 。</block>
-  <block id="ac7bb8980fbb62357b278b4b6c7c9338" category="list-text">在 YAML 中，` 响应中的 `status.deploymentState` 字段以查看 `Deploy 值。如果部署失败，则会显示一条错误消息。</block>
-  <block id="28bbf0acdd3b39e5c8c561287bc93cb0" category="list-text">要获取登录到 Astra 控制中心时要使用的一次性密码，请复制 `status.uuid` 值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或在此示例中为 `Acc-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f` ）。</block>
-  <block id="9b1d9a579e35c7ae0c56196f2ec084e1" category="example-title">YAML 详细信息示例</block>
   <block id="d6cdb892fe9623e9782bae6db8d7dcd7" category="paragraph">您可以设置 Kubernetes 入口控制器，用于管理对服务的外部访问，例如集群中的负载平衡。</block>
   <block id="0d1c106f5017462d9de6e4f8a82e074c" category="paragraph">此操作步骤 介绍了如何设置入口控制器（`ingressType ： Generic` ）。这是 Astra 控制中心的默认操作。部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。</block>
   <block id="4bed96e1b3536d83eb37a83daf2c99fe" category="admonition">如果您不想设置入口控制器，可以设置 `ingressType ： AccTraefik ）` 。Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为 `svC/traefik` ），并要求为其分配可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个平衡器，则可以使用 MetalLB 或其他外部服务负载平衡器为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。有关 "loadbalancer" 服务类型和入口的详细信息，请参见 <block ref="ec43fa96d69fa714ee8406758839eaf7" category="inline-link-macro-rx"></block>。</block>
@@ -1896,7 +1891,6 @@
   <block id="3aa4078371fb9b0c4a3e6c177942f01d" category="list-text">NetApp支持站点提供的软件包</block>
   <block id="1861208871c49f3fafbdd2b1baedad6a" category="paragraph">Astra控制中心引用已连接存储库中的软件包映像和项目。您可以使用命令行界面将映像和项目上传到存储库。</block>
   <block id="8a0c00d15eb4f3a9a8a6c659a1d7c576" category="list-text">从NetApp支持站点下载软件包、并将其保存在已安装`kubectl`实用程序的计算机上。</block>
-  <block id="a5d15ab770cd44d363e7f95fd16d0a4b" category="list-text">提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.manifest.bundle.YAML`)。</block>
   <block id="109f9842fb9259a1de20c1577339c28c" category="list-text">将bundle_file替换为Astra Control捆绑包文件的名称。</block>
   <block id="82a16926420b6ee2d26a80442a3db7ae" category="section-title">添加软件包</block>
   <block id="5801238264a16600dd0ab813e21d2cd9" category="paragraph">您可以使用Astra Control Center捆绑包文件导入软件包。这样将安装该软件包并使该软件可供Astra控制中心使用。</block>
@@ -1958,7 +1952,6 @@
   <block id="0b85467ebafa7ca3c47e82dc38184484" category="list-text">吞吐量</block>
   <block id="af2248b7281e83a45508e2ec7c9356ea" category="list-text">将软件包映像推送到Docker存储库。进行以下替换：</block>
   <block id="48c5334862569a4217279192a534b20a" category="list-text">将my_regRegistry替换为Docker存储库的URL。</block>
-  <block id="da5ff2a96a29f48c8c4ffcf756aada4e" category="list-text">将my_registry_user和my_registry_password替换为存储库的凭据。</block>
   <block id="25d79c61a8c2cf8672fbd0f32f9bfc13" category="list-text">如果软件包包含项目、请将这些项目复制到项目存储库。将bundle_file替换为Astra Control捆绑包文件的名称、将network_location替换为将项目文件复制到的网络位置：</block>
   <block id="2707211a1bc867b58edced6b3def5b35" category="list-text">输入存储库的凭据。</block>
   <block id="4e7bc0f2f576e3a2e7b9bd624d2da7d3" category="list-text"><block ref="f9a9477fa54fe91dbfcc4b4adc8c5a84" category="inline-xref-macro-rx"></block></block>
@@ -2064,8 +2057,6 @@
   <block id="817ff31e06696b2ddfbd20628237efec" category="list-text">获取对Red Hat OpenShift容器平台的必要权限和访问权限、以执行所述的安装步骤。</block>
   <block id="6b711ca63f3156860c2b2918a106b882" category="inline-link-macro">前提条件步骤</block>
   <block id="6f3f4e3c6db4311eee9b8e4f3d7cf320" category="list-text">如果集群中已存在证书管理器、则需要执行某些操作 <block ref="1787bdbf8a8938a728c4bed68c77105f" category="inline-link-macro-rx"></block> 这样、Astra控制中心就不会安装自己的证书管理器。</block>
-  <block id="c7556264a1988a2b92f66e12713a407c" category="list-text">将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：</block>
-  <block id="b3b0a5bd71a112bf9bb26c32b1d97c02" category="list-text">将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.manifest.bundle.YAML`)。</block>
   <block id="ab25aff32a32d9ce9e224b3e4c8d5eaa" category="paragraph">对于Red Hat OpenShift环境、您可以使用 <block ref="3070b96c53dc6268c37367db253e962f" category="inline-link-macro-rx"></block> 使用 OpenShift OperatorHub 安装 Astra Control Center 。</block>
   <block id="e13d4a668fc56237f39878bf668e8d7b" category="inline-link-macro">了解POD安全策略限制</block>
   <block id="edc827c257229b5297b0a885b6edd0a4" category="list-text">如果您已在环境中配置或希望配置POD安全策略、请熟悉POD安全策略及其对Astra Control Center安装的影响。请参见 <block ref="90eb15ded1d67bf22279d5e261d434f2" category="inline-link-macro-rx"></block>。</block>
@@ -2646,4 +2637,14 @@
   <block id="35cdc0acd4828a4d409d79a5f18ee353" category="inline-link">*通过不和获得帮助*</block>
   <block id="5782a764d5148bc0a62fa0db213a073b" category="list-text"><block ref="f560054dea7b7d17ab98f97d9a55b6ac" category="inline-link-rx"></block>：转到"Pub类别"中的Astra、与同行和专家建立联系。</block>
   <block id="a7cfd917113a9ee9c1e789887d1d809f" category="sidebar">渠道不和</block>
+  <block id="90062dfdb5439267ea2ea3670efc5200" category="list-text">提取压缩的软件包文件、然后将目录更改为Astra Control软件包文件的位置(例如、`Acc.Manifest.YAML`)。</block>
+  <block id="81730a436a6662ae645289e52e592f39" category="list-text">将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.Manifest.YAML`)。</block>
+  <block id="f7fd97c3e77b1bf62b2ea426c794d07a" category="list-text">将my_registry_user替换为用户名。</block>
+  <block id="cfb00d559ebab724c9dc29059831ddb8" category="list-text">将my_registry_token替换为注册表的授权令牌。</block>
+  <block id="bb6d95ff16fd3c7abf9daa650b5357c5" category="list-text">更改目录：</block>
+  <block id="3287973c50b09462bde24fe82b06c59b" category="list-text">验证Pod是否正在运行：</block>
+  <block id="4350127c708b74b4f04ca10d2c10b10d" category="list-text">导出Astra控制中心主机集群的KUBECONFIG：</block>
+  <block id="ee757186f5199677f301e66433ce62a8" category="admonition">如果在生成密钥后删除命名空间、则需要在重新创建命名空间后重新生成命名空间的密钥。</block>
+  <block id="706e80be7b24b81c7ab49d441d7d88f8" category="list-text">运行所有Pod时、请确认安装成功(`reADY` Is `True`)、并获取登录到Astra控制中心时要使用的一次性密码：</block>
+  <block id="85573d5352311b01ff7319a4b0e9bf34" category="admonition">复制UUID值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或在此示例中为 `Acc-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f` ）。</block>
 </blocks>
