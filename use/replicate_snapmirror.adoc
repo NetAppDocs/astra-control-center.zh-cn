@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: use/replication.html 
+permalink: use/replicate_snapmirror.html 
 keywords: replicate, replication, disaster, recovery 
 summary: Astra 可以从快照或备份还原应用程序配置和永久性存储。永久性存储备份会从对象存储传输，因此从现有备份还原的速度最快。 
 ---

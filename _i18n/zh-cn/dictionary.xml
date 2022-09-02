@@ -2000,7 +2000,6 @@
   <block id="d822994c8eeb864206aa022481872893" category="list-text">*应用程序复制*：Astra Control要求源和目标Kubernetes集群可用并进行管理、并将其各自的ONTAP 存储后端配置为启用NetApp SnapMirror。Astra Control会获取策略驱动型应用程序Snapshot并将其复制到远程集群。NetApp SnapMirror技术用于复制永久性卷数据。要进行故障转移、Astra Control可以在目标Kubernetes集群上重新创建应用程序对象、并在目标ONTAP 集群上创建复制的卷、从而使复制的应用程序联机。由于目标ONTAP 集群上已存在永久性卷数据、因此Astra Control可以为故障转移提供快速恢复时间。</block>
   <block id="46f7c1ba8a4fd8b1f55723b061d38c1d" category="list-text">*应用程序备份和还原*：在备份应用程序时、Astra Control会为应用程序数据创建Snapshot并将其存储在对象存储分段中。需要还原时、必须将存储分段中的数据复制到ONTAP 集群上的永久性卷。备份/还原操作不要求二级Kubernetes或ONTAP集群可用并进行管理、但额外的数据复制可能会导致还原时间较长。</block>
   <block id="229c7c759f13c80c6aa16940d599fb67" category="inline-link-macro">使用SnapMirror技术将应用程序复制到远程系统</block>
-  <block id="317260303a03ec46fcba8a310dc6a463" category="paragraph">要了解如何复制应用程序、请参见 <block ref="5b509d981d6206aae3d3ed45ff0fd262" category="inline-link-macro-rx"></block>。</block>
   <block id="2e67b4ffa9856ed714ace3c83ce69b11" category="paragraph">下图显示了计划的备份和还原过程与复制过程的对比情况。</block>
   <block id="0684163543dd8c63ba059f860287849a" category="paragraph">备份过程会将数据复制到S3存储分段、并从S3存储分段进行还原：</block>
   <block id="81cddeedfe823c0b5ecc3077e6dafc47" category="inline-image-macro">计划备份和还原映像</block>
@@ -2031,7 +2030,6 @@
   <block id="d5aedbc082e54ed66f533aea75c374f6" category="paragraph">Astra Control可能无法克隆使用"按参考传递"架构设计的运算符(例如CockroachDB运算符)。在这些类型的克隆操作期间，克隆的操作员会尝试引用源操作员提供的 Kubernetes 机密，尽管在克隆过程中他们拥有自己的新机密。克隆操作可能会失败，因为 Astra Control 不知道源运算符中的 Kubernetes 密钥。</block>
   <block id="8903edbd1d0463471f5590d10a85b600" category="section-title">2022年8月10日(22.08.0)</block>
   <block id="cf730d1df7f3b98c75cd949f7b3155ec" category="inline-link-macro">使用NetApp SnapMirror技术复制应用程序</block>
-  <block id="72c6d36c2615563abe62774a0cc12db3" category="list-text"><block ref="72c6d36c2615563abe62774a0cc12db3" category="inline-link-macro-rx"></block></block>
   <block id="43a321aa397f8593d184ea33759d7e38" category="inline-link-macro">改进了应用程序管理工作流</block>
   <block id="698d9d3cfbd3ea1d9902191a82b88d3e" category="list-text"><block ref="698d9d3cfbd3ea1d9902191a82b88d3e" category="inline-link-macro-rx"></block></block>
   <block id="ced3580ec3e1b083304a574bccfdc820" category="inline-link-macro">增强的自行执行挂钩功能</block>
@@ -2239,7 +2237,6 @@
   <block id="665cb0fd449119a5f020701a7e4d37aa" category="list-text">源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。</block>
   <block id="12656d1c4d74b517feee96e4c4eda095" category="admonition">您可以同时按相反方向复制另一个应用程序(在另一个集群或站点上运行)。例如、应用程序A、B、C可以从数据中心1复制到数据中心2；应用程序X、Y、Z可以从数据中心2复制到数据中心1。</block>
   <block id="b74602b149e39af1209754432fd537e3" category="inline-link-macro">使用SnapMirror技术将应用程序复制到远程系统</block>
-  <block id="66c524f14574de53906b92bf06297447" category="paragraph">了解操作方法 <block ref="4661ce5eb4f3d4f6821de12edff361d7" category="inline-link-macro-rx"></block>。</block>
   <block id="dd065d032958db1fedcce03e51dcef9e" category="paragraph">要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。如果没有许可证、您将无法执行以下任何操作：</block>
   <block id="4eba5ba43cc624385f276658a22c51a8" category="list-text">定义应用程序</block>
   <block id="ce54d221292e1505e5b1a6ed4c74dac7" category="summary">在安装Astra控制中心之前、您需要了解POD安全策略的工作原理。</block>
@@ -2361,7 +2358,6 @@
   <block id="44c76d6a0a4f1bde94eb2cd76b8d4eae" category="section-title">调整保护策略</block>
   <block id="e0a9a1ca749b026f1191e8980cfd9475" category="section-title">将应用程序复制到远程集群</block>
   <block id="87c77d08f8cc9ba015bc277bf63171ec" category="inline-link-macro">复制应用程序</block>
-  <block id="02210d3f5ab3b22ced0c30fadc0b6c36" category="paragraph"><block ref="dc8666aecf0cf92219eb818c68a8e765" category="inline-link-macro-rx"></block> 使用NetApp SnapMirror技术连接到远程集群。Astra Control可将快照复制到远程集群、从而提供异步灾难恢复功能。</block>
   <block id="c4491e86699f3e74488527dd9f36c879" category="section-title">发生灾难时、请使用最新备份或复制功能将应用程序还原到远程系统</block>
   <block id="e11f531afbfddcb2e626779912560475" category="paragraph">如果发生数据丢失，您可以通过进行恢复 <block ref="550aec8aa1d184571b143fbb368e4c54" category="inline-link-macro-rx"></block> 每个应用程序的第一个。然后，您可以还原最新的快照（如果可用）。或者、您也可以使用复制到远程系统。</block>
   <block id="d77a72056cdc02124a845066bec0d946" category="paragraph">执行挂钩是一种自定义操作、您可以将其配置为与受管应用程序的数据保护操作结合运行。例如，如果您有一个数据库应用程序，则可以使用执行挂钩在快照之前暂停所有数据库事务，并在快照完成后恢复事务。这样可以确保应用程序一致的快照。</block>
@@ -2647,4 +2643,8 @@
   <block id="ee757186f5199677f301e66433ce62a8" category="admonition">如果在生成密钥后删除命名空间、则需要在重新创建命名空间后重新生成命名空间的密钥。</block>
   <block id="706e80be7b24b81c7ab49d441d7d88f8" category="list-text">运行所有Pod时、请确认安装成功(`reADY` Is `True`)、并获取登录到Astra控制中心时要使用的一次性密码：</block>
   <block id="85573d5352311b01ff7319a4b0e9bf34" category="admonition">复制UUID值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或在此示例中为 `Acc-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f` ）。</block>
+  <block id="d212abf709fef8fefcdce84a69830236" category="paragraph">要了解如何复制应用程序、请参见 <block ref="f775ff169c13e4056fe6b95c5da23416" category="inline-link-macro-rx"></block>。</block>
+  <block id="4ac4f3b37f65d59e010bc2f6ddd50ea2" category="list-text"><block ref="4ac4f3b37f65d59e010bc2f6ddd50ea2" category="inline-link-macro-rx"></block></block>
+  <block id="ed78458df917d6da9f19cca23d8468cd" category="paragraph"><block ref="c229e392652cddf73148e5c65f706c6d" category="inline-link-macro-rx"></block> 使用NetApp SnapMirror技术连接到远程集群。Astra Control可将快照复制到远程集群、从而提供异步灾难恢复功能。</block>
+  <block id="6ec03beb7c5c0fd46afad879591343a9" category="paragraph">了解操作方法 <block ref="6f4a779492bc5e3eca7c765cfa3ccb84" category="inline-link-macro-rx"></block>。</block>
 </blocks>

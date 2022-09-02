@@ -60,7 +60,7 @@ homepage:
     - title: 克隆和迁移应用程序
       url: "/use/clone-apps.html"
     - title: 将应用程序复制到远程系统
-      url: "/use/replication.html"
+      url: "/use/replicate_snapmirror.html"
   - title: 使用 Astra Control API
     links:
     - title: 开始使用 Astra Control API
