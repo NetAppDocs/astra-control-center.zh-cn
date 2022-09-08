@@ -1208,7 +1208,6 @@
   <block id="052766753c4902f7b4dda44f55923c85" category="list-text">对于 GKE- 集群， Astra Control Service 使用<block ref="33441d63a8e7ace6860eab2024320819" category="inline-link-rx"></block> 或 Google Persistent Disk 作为永久性卷的存储后端。</block>
   <block id="e6b1925e4e775a70bcb5b95deee417b9" category="list-text">对于 AKS 集群， Astra Control Service 使用<block ref="16e1ab965c1d673c5cb3b5a28e77c1c1" category="inline-link-rx"></block> 或 Azure 磁盘存储作为永久性卷的存储后端。</block>
   <block id="53a30ad173bc821551d7bc21cfd2f4c8" category="list-text">如果您使用 Azure NetApp Files 或 NetApp Cloud Volumes Service for Google Cloud 作为存储后端，则 Astra 控制服务将使用 Astra Trident 为应用程序配置永久性卷。</block>
-  <block id="28f3b0cd697bf5f33c7eab89e20baff4" category="paragraph"><block ref="28f3b0cd697bf5f33c7eab89e20baff4" category="inline-image-macro-rx" type="image"></block></block>
   <block id="231cf4c70d866b616c21baddaeed0696" category="doc">故障排除</block>
   <block id="36e2bd9e7950f46d3ea6d2bca4c50ba1" category="paragraph">了解如何解决您可能遇到的一些常见问题。</block>
   <block id="c24664a07eb6e40162f3e96c142b0bdc" category="summary">您可以在 Astra Control 帐户中查看有关活动的详细信息。例如，邀请新用户时，添加集群时或创建快照时。您还可以将帐户活动导出到 CSV 文件。</block>
@@ -2602,7 +2601,6 @@
   <block id="6b01e4d97036360d209f5a9bacf98f31" category="admonition">要取消备份、备份必须处于运行状态。您不能取消处于"Pending"状态的备份。</block>
   <block id="5a74785c1f7b64991b4e6c1995f2e049" category="list-text">从选项菜单中的*操作*列中为所需备份选择*取消*。</block>
   <block id="b9f936afd1e658e03141a156ac26af63" category="list-text">键入单词"cancel"以确认删除、然后选择*是、取消备份*。</block>
-  <block id="30d8cb6f04725be5c7ac4990581efaa9" category="list-text"><block ref="30d8cb6f04725be5c7ac4990581efaa9" category="inline-link-macro-rx"></block></block>
   <block id="cf449e1563eca443c9bf5d00151887e8" category="sidebar">将应用程序复制到远程系统</block>
   <block id="13c01a54604c3f7049eaa9f3390e1622" category="sidebar">了解 Astra Control Service</block>
   <block id="3df43a986689c71190e7e91a132b254a" category="sidebar">Astra控制服务的新增功能</block>
@@ -2627,7 +2625,6 @@
   <block id="455cbd59356abfa16dcf7666d4ae6c2b" category="open-title">Podman</block>
   <block id="e8c44728c041065d90e7029dec2e142c" category="list-text">登录到注册表：</block>
   <block id="c330f6e98afeb2bb5f8da986c24088ee" category="list-text">运行以下脚本、按照注释中的说明替换&lt;your_registry&gt;：</block>
-  <block id="b5a8988ef4b9c7e25ec15b79d93a02d4" category="admonition">占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.0-20`)。</block>
   <block id="1c90591655cdfe7d885b02ed72ae2509" category="summary">NetApp 以多种方式为 Astra Control 提供支持。全天候提供广泛的免费自助支持选项、例如知识库(KB)文章和不和渠道。您的 Astra Control 帐户包括通过 Web 服务单提供的远程技术支持。</block>
   <block id="e63bdfa6fe9dccaf39b5d028f12a4a15" category="admonition">如果您拥有 Astra 控制中心的评估许可证，则可以获得技术支持。但是，无法通过 NetApp 支持站点（ NSS ）创建案例。您可以通过反馈选项联系支持部门、也可以使用不和渠道自助服务。</block>
   <block id="35cdc0acd4828a4d409d79a5f18ee353" category="inline-link">*通过不和获得帮助*</block>
@@ -2647,4 +2644,9 @@
   <block id="4ac4f3b37f65d59e010bc2f6ddd50ea2" category="list-text"><block ref="4ac4f3b37f65d59e010bc2f6ddd50ea2" category="inline-link-macro-rx"></block></block>
   <block id="ed78458df917d6da9f19cca23d8468cd" category="paragraph"><block ref="c229e392652cddf73148e5c65f706c6d" category="inline-link-macro-rx"></block> 使用NetApp SnapMirror技术连接到远程集群。Astra Control可将快照复制到远程集群、从而提供异步灾难恢复功能。</block>
   <block id="6ec03beb7c5c0fd46afad879591343a9" category="paragraph">了解操作方法 <block ref="6f4a779492bc5e3eca7c765cfa3ccb84" category="inline-link-macro-rx"></block>。</block>
+  <block id="98918f261da964e04189c67d73791199" category="paragraph"><block ref="98918f261da964e04189c67d73791199" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ca5eff8f4c2396bf09558b428d91e9f3" category="section-title">2022年9月8日(22.08.1)</block>
+  <block id="322f8233054cca6c9d6204f1aa1d1f7f" category="paragraph">适用于Astra控制中心(22.08.0)的此修补程序版本(22.08.1)修复了使用NetApp SnapMirror复制应用程序时出现的小错误。</block>
+  <block id="a2fe57b8184603cedfc5695bc5afd246" category="list-text"><block ref="a2fe57b8184603cedfc5695bc5afd246" category="inline-link-macro-rx"></block></block>
+  <block id="29e1fc80b410102b7ef8f1c2808ca7c5" category="admonition">占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.1-26`)。</block>
 </blocks>
