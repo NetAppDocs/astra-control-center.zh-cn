@@ -54,16 +54,16 @@ NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可�
 
 要安装 Astra 控制中心，请执行以下步骤：
 
-* <<Download and unpack the Astra Control Center bundle>>
-* <<Install the NetApp Astra kubectl plugin>>
-* <<Add the images to your local registry>>
-* <<Set up namespace and secret for registries with auth requirements>>
-* <<Install the Astra Control Center operator>>
-* <<Configure Astra Control Center>>
-* <<Complete Astra Control Center and operator installation>>
-* <<Verify system status>>
-* <<Set up ingress for load balancing>>
-* <<Log in to the Astra Control Center UI>>
+*  and unpack the Astra Control Center bundle
+*  the NetApp Astra kubectl plugin
+*  the images to your local registry
+*  up namespace and secret for registries with auth requirements
+*  the Astra Control Center operator
+*  Astra Control Center
+*  Astra Control Center and operator installation
+*  system status
+*  up ingress for load balancing
+*  in to the Astra Control Center UI
 
 
 
@@ -296,8 +296,8 @@ NOTE: 以下步骤将提供一个标注的YAML示例。
 imagePullSecrets:
 - name: <astra-registry-cred>
 ----
-.. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 <<substep_image_local_registry_push,上一步>>。
-.. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 <<substep_image_local_registry_push,上一步>>。
+.. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 ,上一步。
+.. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 ,上一步。
 .. （对于使用 Astra 数据存储预览版的安装）请参见有关的此已知问题描述 https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/known-issues.html#mongodb-deployment-with-default-liveness-probe-value-fails-with-pods-in-crash-loop["存储类配置程序以及需要对 YAML 进行的其他更改"^]。
 +
 [listing, subs="+quotes"]
@@ -399,8 +399,8 @@ IMPORTANT: 如果您使用的注册表不需要授权，则必须删除 `imageRe
 +
 .. 将 ` [yor_registry_path]` 更改为上一步中用于推送映像的注册表路径。
 .. 将 `accountName` 字符串更改为要与帐户关联的名称。
-.. 将 `astraAddress` 字符串更改为要在浏览器中使用的 FQDN 以访问 Astra 。请勿在此地址中使用 `http ： //` 或 `https ： //` 。复制此 FQDN 以在中使用 <<Log in to the Astra Control Center UI,后续步骤>>。
-.. 将 `email` 字符串更改为默认的初始管理员地址。复制此电子邮件地址以在中使用 <<Log in to the Astra Control Center UI,后续步骤>>。
+.. 将 `astraAddress` 字符串更改为要在浏览器中使用的 FQDN 以访问 Astra 。请勿在此地址中使用 `http ： //` 或 `https ： //` 。复制此 FQDN 以在中使用  in to the Astra Control Center UI,后续步骤。
+.. 将 `email` 字符串更改为默认的初始管理员地址。复制此电子邮件地址以在中使用  in to the Astra Control Center UI,后续步骤。
 .. 将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。
 .. 如果使用外部证书管理器、请将以下行添加到`sPec`中：
 +
@@ -412,7 +412,7 @@ spec:
 ----
 .. （可选）添加与帐户关联的用户的名字 `firstName` 和姓氏 `lastName` 。您可以在用户界面中立即或稍后执行此步骤。
 .. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Trident storageClass 资源。
-.. （可选）如果您希望集群在安装后由 Astra 控制中心自动管理，并且您已经这样了 <<substep_kubeconfig_secret,已为此集群创建包含 kubeconfig 的密钥>>，通过在此 YAML 文件中添加一个名为 `astraKubeConfigSecret 的新字段来提供此机密的名称： "Acc-kubeconfig-cred 或自定义机密名称 "`
+.. （可选）如果您希望集群在安装后由 Astra 控制中心自动管理，并且您已经这样了 ,已为此集群创建包含 kubeconfig 的密钥，通过在此 YAML 文件中添加一个名为 `astraKubeConfigSecret 的新字段来提供此机密的名称： "Acc-kubeconfig-cred 或自定义机密名称 "`
 .. 完成以下步骤之一：
 +
 *** * 其他传入控制器（ ingressType ： Generic ） * ：这是 Astra 控制中心的默认操作。部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。
@@ -842,13 +842,13 @@ oc create route edge --service=traefik
 安装 Astra 控制中心后，您将更改默认管理员的密码并登录到 Astra 控制中心 UI 信息板。
 
 .步骤
-. 在浏览器中，输入在 `Astra_control_center_min.YAML` CR when 的 `AstraAddress` 中使用的 FQDN <<Install Astra Control Center,您安装了 Astra 控制中心>>。
+. 在浏览器中，输入在 `Astra_control_center_min.YAML` CR when 的 `AstraAddress` 中使用的 FQDN  Astra Control Center,您安装了 Astra 控制中心。
 . 出现提示时接受自签名证书。
 +
 
 NOTE: 您可以在登录后创建自定义证书。
 
-. 在 Astra Control Center 登录页面上，在 `Astra_control_center_min.yaml` CR when 中输入您用于 `email` 的值 <<Install Astra Control Center,您安装了 Astra 控制中心>>，后跟一次性密码（`Acc-UUID` ）。
+. 在 Astra Control Center 登录页面上，在 `Astra_control_center_min.yaml` CR when 中输入您用于 `email` 的值  Astra Control Center,您安装了 Astra 控制中心，后跟一次性密码（`Acc-UUID` ）。
 +
 
 NOTE: 如果您输入的密码三次不正确，管理员帐户将锁定 15 分钟。

@@ -21,13 +21,13 @@ summary: 通过使用自动保护策略或临时创建快照和备份来保护�
 
 您可以执行以下与保护应用程序数据相关的任务：
 
-* <<Configure a protection policy>>
-* <<Create a snapshot>>
-* <<Create a backup>>
-* <<View snapshots and backups>>
-* <<Delete snapshots>>
-* <<Cancel backups>>
-* <<Delete backups>>
+*  a protection policy
+*  a snapshot
+*  a backup
+*  snapshots and backups
+*  snapshots
+*  backups
+*  backups
 
 
 
@@ -96,7 +96,7 @@ Astra 控制中心创建应用程序的备份。
 NOTE: 如果网络发生中断或异常缓慢，备份操作可能会超时。这会导致备份失败。
 
 
-NOTE: 无法停止正在运行的备份。如果需要删除备份，请等待备份完成，然后按照中的说明进行操作 <<Delete backups>>。删除失败的备份， https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]。
+NOTE: 无法停止正在运行的备份。如果需要删除备份，请等待备份完成，然后按照中的说明进行操作  backups。删除失败的备份， https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]。
 
 
 NOTE: 在执行数据保护操作（克隆，备份，还原）并随后调整永久性卷大小后，在 UI 中显示新卷大小之前，最长会有 20 分钟的延迟。数据保护操作将在几分钟内成功完成，您可以使用存储后端的管理软件确认卷大小的更改。

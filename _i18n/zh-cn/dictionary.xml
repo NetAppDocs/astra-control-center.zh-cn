@@ -2216,7 +2216,6 @@
   <block id="37accdd90658899d1dec0f0f1a91d1fe" category="list-text">Red Hat OpenShift容器平台4.8、4.9或4.10</block>
   <block id="8c19cded473a1f250d655fce0b3d1417" category="list-text">VMware Tanzu Kubernetes Grid 1.4或1.5</block>
   <block id="392295e1bbc9dd503d6376cf6e270a01" category="list-text">VMware Tanzu Kubernetes Grid Integrated Edition 1.12.2或1.13</block>
-  <block id="022edc3637cfb3843cebdfdd464d0b9d" category="paragraph">Astra Trident 21.10.1或更高版本已安装并配置Astra Trident 22.04或更高版本、用于基于SnapMirror的应用程序复制</block>
   <block id="3e3162b6d17401fa39d86c5e6f2f8052" category="list-text">在安装Astra控制中心时、会在受POD安全策略(PSP)限制的环境中创建以下资源：</block>
   <block id="2eec382fbdd640ff6611d08393c4826a" category="list-text">POD安全策略</block>
   <block id="9de377bbeb1d616465bbc603de8c993f" category="list-text">RBAC角色</block>
@@ -2225,12 +2224,10 @@
   <block id="3fd03b3fab32e6b61e1029eeb6c4ff3a" category="paragraph">在Google Anthos集群上托管Astra控制中心时、请注意、Google Anthos默认包括MetalLB负载平衡器和Istio入口网关服务、使您可以在安装期间轻松使用Astra控制中心的通用入口功能。请参见 <block ref="f6a1cf5eec2ea81747b868c57cbc43b9" category="inline-link-macro-rx"></block> 了解详细信息。</block>
   <block id="d193cd9a2432eca22e5cf0d06dcee1e6" category="section-title">复制前提条件</block>
   <block id="c44cedaf2d63c8d308691c23f6010413" category="paragraph">Astra Control应用程序复制要求在开始之前必须满足以下前提条件：</block>
-  <block id="1b672321e9664b2eb186d655ae44ed8c" category="list-text">要实现无缝灾难恢复、必须将Astra控制中心部署在第三个故障域或二级站点中。</block>
   <block id="eed83efadf29183b5559e6ce1c465cfd" category="list-text">应用程序的主机Kubernetes集群和目标Kubernetes集群必须可用并连接到两个ONTAP 集群、理想情况下、它们位于不同的故障域或站点。</block>
   <block id="9fecd08b776fdfca7b33426363edf913" category="inline-link">集群和 SVM 对等概述</block>
   <block id="a4a1e480aebfbd46d35f256b3df7247a" category="list-text">ONTAP 集群和主机SVM必须已配对。请参见<block ref="60333a598df416e49fbceb5a88dce370" category="inline-link-rx"></block>。</block>
   <block id="de6244dc540e17321cd688cd3fd68f12" category="list-text">配对的远程SVM必须可供目标集群上的Trident使用。</block>
-  <block id="d10d4ace3ff0f3a59fecd7907a4f6cff" category="list-text">源和目标ONTAP 集群上必须同时存在Trident 22.04或更高版本。</block>
   <block id="ba84728ffba482ceb12371a53be2f636" category="inline-link">ONTAP 中的SnapMirror许可概述</block>
   <block id="e7b8e237f5a701af8dfc2c63bc4188df" category="list-text">必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见<block ref="a7b9425cefc4a3715b38951f4b2b6b35" category="inline-link-rx"></block>。</block>
   <block id="665cb0fd449119a5f020701a7e4d37aa" category="list-text">源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。</block>
@@ -2611,11 +2608,7 @@
   <block id="d1736d27c7efe09a7fdb5f5e3b18e8dc" category="paragraph">有关详细信息，请参见 <block ref="f6d2e41142da7ccda158b71b34630966" category="inline-link-macro-rx"></block>。</block>
   <block id="3dc2f4e20c545bc208864c2f1c9ce93c" category="cell">总共至少 3 个辅助节点，每个节点有 4 个 CPU 核和 12 GB RAM</block>
   <block id="7710790456945bed9a23fff9f934b8fd" category="paragraph">要启用完整的应用程序数据管理功能、需要安装Astra Control Center许可证。如果在没有许可证的情况下部署 Astra 控制中心，则 Web UI 中会显示一个横幅，警告系统功能受限。</block>
-  <block id="a698e4170358adf4ae12dde1db5e4df4" category="list-text">Astra Trident后端配置文件必须包含以下行：</block>
-  <block id="87dc0337d3ded2211d9b01c32e22d90d" category="inline-link">配置后端</block>
-  <block id="10455fcfd55eff76710d4945e30e3c6f" category="paragraph">请参见<block ref="f296f2024998b4c76709035f49bba3d4" category="inline-link-rx"></block> 有关详细信息 ...</block>
   <block id="8e9fceaaf84bd1591dc11726965a5b35" category="inline-link">管理用户帐户</block>
-  <block id="57e07386eb22ab2bcc329ab181a33fdf" category="list-text">在将ONTAP 存储后端添加到Astra控制中心时、如果用户的凭据用于在控制中心与存储后端之间进行通信、则必须在两个ONTAP 集群的ONTAP System Manager中启用用户登录访问方法`http`和`ontapi`。请参见<block ref="f6ed2b7e6315ca84a258679db888068b" category="inline-link-rx"></block> 有关详细信息 ...</block>
   <block id="558e41f71155360e3f8ee151e27ea06f" category="paragraph">有关详细信息，请参见 <block ref="ad125f0a3036e9b5f57b3a7077f489d9" category="inline-link-macro-rx"></block>。</block>
   <block id="eee7185d57747c6b57ad38a0e1864f92" category="list-text">选择* ONTAP *并选择*下一步*。</block>
   <block id="27fa550ebd74698993e3dcb9ba7e2945" category="list-text">输入ONTAP 集群管理IP地址和管理员凭据。</block>
@@ -2649,4 +2642,10 @@
   <block id="322f8233054cca6c9d6204f1aa1d1f7f" category="paragraph">适用于Astra控制中心(22.08.0)的此修补程序版本(22.08.1)修复了使用NetApp SnapMirror复制应用程序时出现的小错误。</block>
   <block id="a2fe57b8184603cedfc5695bc5afd246" category="list-text"><block ref="a2fe57b8184603cedfc5695bc5afd246" category="inline-link-macro-rx"></block></block>
   <block id="29e1fc80b410102b7ef8f1c2808ca7c5" category="admonition">占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.1-26`)。</block>
+  <block id="5b2adf7b0ad2a0778dbb2eb934a1a4ff" category="paragraph">Astra Trident 21.10.1或更高版本已安装并配置Astra Trident 22.07或更高版本、用于基于SnapMirror的应用程序复制</block>
+  <block id="419590ef59b29bd36215f285b4098a7c" category="list-text">NetApp ONTAP 9.8或更高版本的AFF 和FAS 系统、用于基于SnapMirror的应用程序复制</block>
+  <block id="eb507cd0bc5d12259c54a50f248a2049" category="list-text">为了实现无缝灾难恢复、我们建议您在第三个故障域或二级站点中部署Astra控制中心。</block>
+  <block id="baf63b9083c98bb375244f0d47ed5c13" category="list-text">源和目标ONTAP 集群上必须同时存在Trident 22.07或更高版本。</block>
+  <block id="f7d920333cf612086b3bd66993ed20b5" category="list-text">将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、此角色在两个ONTAP 集群上均启用了访问方法`http`和`ontapi`。请参见<block ref="f6ed2b7e6315ca84a258679db888068b" category="inline-link-rx"></block> 有关详细信息 ...</block>
+  <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">所有Astra文档</block>
 </blocks>

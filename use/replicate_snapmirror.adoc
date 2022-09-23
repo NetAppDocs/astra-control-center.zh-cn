@@ -31,12 +31,12 @@ NOTE: 您可以同时按相反方向复制另一个应用程序(在另一个集�
 
 使用Astra Control、您可以执行以下与复制应用程序相关的任务：
 
-* <<Set up a replication relationship>>
-* <<Bring a replicated app online on the destination cluster (fail over)>>
-* <<Resync a failed over replication>>
-* <<Reverse application replication>>
-* <<Fail back applications to the original source cluster>>
-* <<Delete an application replication relationship>>
+*  up a replication relationship
+*  a replicated app online on the destination cluster (fail over)
+*  a failed over replication
+*  application replication
+*  back applications to the original source cluster
+*  an application replication relationship
 
 
 

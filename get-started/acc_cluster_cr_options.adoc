@@ -41,13 +41,13 @@ summary: 了解部署期间用于自定义配置的Astra控制中心集群CR选�
 | volumeReclaimPolicy | 未定义 | 可选 | 保留 | 回收要为永久性卷设置的策略。 
 
 
-| AstraResourcesScal | string | Required | Default | AstraControlCenter资源限制的扩展选项。请参见 <<Configuration combinations and incompatibilities,设置复杂性>> 了解此设置如何影响其他设置。 
+| AstraResourcesScal | string | Required | Default | AstraControlCenter资源限制的扩展选项。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
 
 
 | AstraKubeConfigSecret | string | Required | Acc-kubeconfig-cred. | 如果此值存在且存在密钥、则操作员将尝试添加该KubeConfig以成为第一个受管集群。 
 
 
-| 正在载入类型 | string | 可选 | 通用(这是默认值) | 应为配置入口Astra控制中心的类型。有效值为`Generic`和`AccTraefik`。请参见 <<Configuration combinations and incompatibilities,设置复杂性>> 了解此设置如何影响其他设置。 
+| 正在载入类型 | string | 可选 | 通用(这是默认值) | 应为配置入口Astra控制中心的类型。有效值为`Generic`和`AccTraefik`。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
 
 
 | avpDeploy | 布尔值 | 可选 | true (这是默认值) | 允许用户禁用适用于VMware vSphere的Astra插件操作员部署的选项。 
@@ -83,7 +83,7 @@ summary: 了解部署期间用于自定义配置的Astra控制中心集群CR选�
 | CRDs.shouldUpgrade | 布尔值 | 可选 | 未定义 | 确定升级Astra控制中心时是否应升级CRD。 
 
 
-| MTLS |  |  |  | 有关Astra控制中心应如何实施服务以在集群中为MTLS提供服务的选项。请参见 <<Configuration combinations and incompatibilities,设置复杂性>> 了解此设置如何影响其他设置 
+| MTLS |  |  |  | 有关Astra控制中心应如何实施服务以在集群中为MTLS提供服务的选项。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置 
 
 
 | 已启用MTLS.enabled | 布尔值 | 可选 | true (此值为默认值) | 默认情况下、Astra控制中心使用MTLS进行服务到服务通信。在使用服务网格对服务到服务通信进行加密时、应禁用此选项。 

@@ -13,7 +13,7 @@ summary: 介绍如何删除 Astra 控制中心和 Astra 控制中心操作员。
 
 如果要从试用版升级到完整版本的产品，您可能需要删除 Astra Control Center 组件。要删除 Astra 控制中心和 Astra 控制中心操作员，请按顺序运行此操作步骤中所述的命令。
 
-如果您在卸载时遇到任何问题，请参见 <<Troubleshooting uninstall issues>>。
+如果您在卸载时遇到任何问题，请参见  uninstall issues。
 
 .您需要什么？ #8217 ；将需要什么
 * 使用 Astra 控制中心 UI 取消全部管理 link:../use/unmanage.html#stop-managing-compute["集群"]。

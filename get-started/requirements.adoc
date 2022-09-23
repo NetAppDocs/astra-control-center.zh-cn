@@ -13,16 +13,16 @@ summary: 通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支
 
 首先验证操作环境，应用程序集群，应用程序，许可证和 Web 浏览器的就绪情况。
 
-* <<Operational environment requirements>>
-* <<Supported storage backends>>
-* <<Application cluster requirements>>
-* <<Application management requirements>>
-* <<Replication prerequisites>>
-* <<Access to the internet>>
-* <<License>>
-* <<Ingress for on-premises Kubernetes clusters>>
-* <<Networking requirements>>
-* <<Supported web browsers>>
+*  environment requirements
+*  storage backends
+*  cluster requirements
+*  management requirements
+*  prerequisites
+*  to the internet
+* 
+*  for on-premises Kubernetes clusters
+*  requirements
+*  web browsers
 
 
 
@@ -60,7 +60,7 @@ Astra控制中心已在以下类型的操作环境中进行了验证：
 
 
 | Astra Trident  a| 
-Astra Trident 21.10.1或更高版本已安装并配置Astra Trident 22.04或更高版本、用于基于SnapMirror的应用程序复制
+Astra Trident 21.10.1或更高版本已安装并配置Astra Trident 22.07或更高版本、用于基于SnapMirror的应用程序复制
 
 |===
 
@@ -123,8 +123,8 @@ NOTE: 默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时�
 
 Astra 控制中心支持以下存储后端。
 
-* Astra 数据存储
 * NetApp ONTAP 9.5 或更高版本的 AFF 和 FAS 系统
+* NetApp ONTAP 9.8或更高版本的AFF 和FAS 系统、用于基于SnapMirror的应用程序复制
 * NetApp Cloud Volumes ONTAP
 
 
@@ -195,22 +195,13 @@ Astra Control 具有以下应用程序管理要求：
 
 Astra Control应用程序复制要求在开始之前必须满足以下前提条件：
 
-* 要实现无缝灾难恢复、必须将Astra控制中心部署在第三个故障域或二级站点中。
+* 为了实现无缝灾难恢复、我们建议您在第三个故障域或二级站点中部署Astra控制中心。
 * 应用程序的主机Kubernetes集群和目标Kubernetes集群必须可用并连接到两个ONTAP 集群、理想情况下、它们位于不同的故障域或站点。
 * ONTAP 集群和主机SVM必须已配对。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^]。
 * 配对的远程SVM必须可供目标集群上的Trident使用。
-* 源和目标ONTAP 集群上必须同时存在Trident 22.04或更高版本。
+* 源和目标ONTAP 集群上必须同时存在Trident 22.07或更高版本。
 * 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^]。
-* Astra Trident后端配置文件必须包含以下行：
-+
-[listing]
-----
-"replicationPolicy": "MirrorAllSnapshots"
-----
-+
-请参见 https://docs.netapp.com/us-en/trident/trident-use/backends.html["配置后端"^] 有关详细信息 ...
-
-* 在将ONTAP 存储后端添加到Astra控制中心时、如果用户的凭据用于在控制中心与存储后端之间进行通信、则必须在两个ONTAP 集群的ONTAP System Manager中启用用户登录访问方法`http`和`ontapi`。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理用户帐户"^] 有关详细信息 ...
+* 将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、此角色在两个ONTAP 集群上均启用了访问方法`http`和`ontapi`。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理用户帐户"^] 有关详细信息 ...
 * 源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。
 +
 

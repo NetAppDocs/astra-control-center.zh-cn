@@ -18,13 +18,13 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 您可以完成以下与管理存储后端相关的任务：
 
 * link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"]
-* <<View storage backend details>>
-* <<Unmanage a storage backend>>
-* <<Update an Astra Data Store storage backend license>>
-* <<Upgrade an Astra Data Store storage backend>>
-* <<Remove a storage backend>>
-* <<Add nodes to a storage backend cluster>>
-* <<Remove nodes from a storage backend cluster>>
+*  storage backend details
+*  a storage backend
+*  an Astra Data Store storage backend license
+*  an Astra Data Store storage backend
+*  a storage backend
+*  nodes to a storage backend cluster
+*  nodes from a storage backend cluster
 
 
 

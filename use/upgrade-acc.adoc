@@ -32,14 +32,14 @@ kubectl get apiservices
 
 Astra 控制中心升级过程将指导您完成以下高级步骤：
 
-* <<Download the Astra Control Center bundle>>
-* <<Unpack the bundle and change directory>>
-* <<Add the images to your local registry>>
-* <<Install the updated Astra Control Center operator>>
-* <<Upgrade Astra Control Center>>
-* <<Upgrade third-party services (Optional)>>
-* <<Verify system status>>
-* <<Set up ingress for load balancing>>
+*  the Astra Control Center bundle
+*  the bundle and change directory
+*  the images to your local registry
+*  the updated Astra Control Center operator
+*  Astra Control Center
+*  third-party services (Optional)
+*  system status
+*  up ingress for load balancing
 
 
 
@@ -173,8 +173,8 @@ vim astra_control_center_operator_deploy.yaml
 imagePullSecrets:
 - name: <name_of_secret_with_creds_to_local_registry>
 ----
-.. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 <<substep_image_local_registry_push,上一步>>。
-.. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 <<substep_image_local_registry_push,上一步>>。
+.. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 ,上一步。
+.. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 ,上一步。
 .. 将以下值添加到 `env` 部分：
 +
 [listing]
@@ -275,7 +275,7 @@ kubectl edit acc -n [netapp-acc or custom namespace]
 ----
 +
 
-NOTE: 注册表路径必须与中推送映像的注册表路径匹配 <<substep_image_local_registry_push,上一步>>。
+NOTE: 注册表路径必须与中推送映像的注册表路径匹配 ,上一步。
 
 . 在 Astra 控制中心 CR 的 `SPec` 内的 `addtionalValues` 中添加以下行：
 +

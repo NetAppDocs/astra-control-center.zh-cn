@@ -14,10 +14,10 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
 
 .任务
-* <<Add a license for Astra Control Center>>
-* <<Add cluster>>
-* <<Add a storage backend>>
-* <<Add a bucket>>
+*  a license for Astra Control Center
+*  cluster
+*  a storage backend
+*  a bucket
 
 
 
@@ -67,7 +67,7 @@ TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理�
 当Astra Control管理集群时、它会跟踪集群的默认存储类。如果使用`kubectl`命令更改存储类、则Astra Control将还原此更改。要更改由Astra Control管理的集群中的默认存储类、请使用以下方法之一：
 
 * 使用Astra Control API `PUT /managedClusters` Endpoint、并使用`DefaultStorageClass`参数分配其他默认存储类。
-* 使用Astra Control Web UI分配其他默认存储类。请参见 <<Change the default storage class>>。
+* 使用Astra Control Web UI分配其他默认存储类。请参见  the default storage class。
 
 
 ====
@@ -126,12 +126,12 @@ IMPORTANT: 添加适用于Astra Data Store的Kubernetes应用程序集群并由A
 .新的Astra Data Store部署需要什么
 * 您已拥有 link:../use/manage-packages-acc.html["已上传要部署的安装包版本"] 到Astra Control可访问的位置。
 * 您已添加要用于部署的Kubernetes集群。
-* 您已上传 <<Add a license for Astra Control Center,Astra Data Store许可证>> 部署到可供Astra Control访问的位置。
+* 您已上传  a license for Astra Control Center,Astra Data Store许可证 部署到可供Astra Control访问的位置。
 
 
 .选项
-* <<Deploy storage resources>>
-* <<Use an existing storage backend>>
+*  storage resources
+*  an existing storage backend
 
 
 
@@ -302,7 +302,7 @@ TIP: 存储分段名称和问题描述显示为备份位置，您可以稍后在
 
 NOTE: 创建的第一个存储分段不会显示此选项。
 
-.. 通过添加继续 <<Add S3 access credentials,凭据信息>>。
+.. 通过添加继续  S3 access credentials,凭据信息。
 
 
 
