@@ -274,11 +274,17 @@ NOTE: 您可能需要刷新页面才能显示后端。
 * NetApp ONTAP S3
 * NetApp StorageGRID S3
 * 通用 S3
++
+
+NOTE: Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。
+
 * Microsoft Azure
-
-
++
 
 NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段提供商，但 Astra 控制中心可能不支持声称支持 Amazon S3 的所有对象存储供应商。
+
+* Microsoft Azure
+
 
 有关如何使用 Astra Control API 添加存储分段的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
 

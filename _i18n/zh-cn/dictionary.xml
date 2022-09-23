@@ -1486,12 +1486,10 @@
   <block id="4f8d010e860956031d20fa5be10bf6e6" category="doc">使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心</block>
   <block id="5393a81971c7f6d5a2fe5f5a8e4bdf5c" category="paragraph">借助 Astra 控制中心，您可以使用自管理的 Kubernetes 集群和 Cloud Volumes ONTAP 实例在混合云环境中管理应用程序。您可以在内部 Kubernetes 集群或云环境中的一个自管理 Kubernetes 集群中部署 Astra Control Center 。</block>
   <block id="c04013afca22f8891a14626d97030a38" category="paragraph">在其中一种部署中，您可以使用 Cloud Volumes ONTAP 作为存储后端来执行应用程序数据管理操作。您还可以将 S3 存储分段配置为备份目标。</block>
-  <block id="e624ed574525585c685008c2f08743fe" category="paragraph">要在 Amazon Web Services （ AWS ）和 Microsoft Azure 中使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心，请根据您的云环境执行以下步骤。</block>
   <block id="63a3ec0e0f90aa951a9bab60ae25b8f5" category="list-text"><block ref="71cd372809cfada10662b9cfa5c56473" category="inline-xref-macro-rx"></block></block>
   <block id="e276a2ae0c328a61a235ae7ba15f71a3" category="list-text"><block ref="afa82c5fe7ac560615325c4fdfba4b92" category="inline-xref-macro-rx"></block></block>
   <block id="5f70f12e51733f39df8a8d8f2f0742da" category="section-title">在 Amazon Web Services 中部署 Astra 控制中心</block>
   <block id="b4504a5af800e56b2ac7bc310c520499" category="paragraph">您可以在 Amazon Web Services （ AWS ）公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。</block>
-  <block id="09cd08225c53bd8f4ccf737618d3fd24" category="paragraph">部署 Astra 控制中心仅支持自管理 OpenShift 容器平台（ OCP ）集群。</block>
   <block id="4ad0f595b9dbd4c0336e372a8a1b2410" category="section-title">AWS 需要的功能</block>
   <block id="a5a36964a87d94d5ac0851af923c64fc" category="paragraph">在 AWS 中部署 Astra 控制中心之前，您需要满足以下条件：</block>
   <block id="e7e1ddd48b888f0547b40d916ec5553d" category="inline-link-macro">Astra 控制中心许可要求</block>
@@ -1499,7 +1497,6 @@
   <block id="962a965cf88e3974508a49a177bfab16" category="inline-link-macro">满足 Astra 控制中心的要求</block>
   <block id="432bc10b47ea475ecbbc50fb50d0978a" category="list-text"><block ref="cdf0380926240bc589ee0ad782ff731a" category="inline-link-macro-rx"></block>。</block>
   <block id="3a6435e71d5b3aaba8dfb2b39bf255c9" category="list-text">NetApp Cloud Central account</block>
-  <block id="3b6edb8eb729a7afdf6dfbd4642bf654" category="list-text">Red Hat OpenShift Container Platform （ OCP ）权限（在命名空间级别用于创建 Pod ）</block>
   <block id="21b6348603465642d3b74890973e2947" category="list-text">AWS 凭据，访问 ID 和机密密钥，具有用于创建存储分段和连接器的权限</block>
   <block id="b9724bca640bb00ddfd17050c789c0c6" category="list-text">AWS 帐户弹性容器注册（ Elastic Container Registry ， ECR ）访问和登录</block>
   <block id="9aed630e926461540134fd3b366acb60" category="list-text">要访问 Astra Control UI ，需要 AWS 托管分区和 Route 53 条目</block>
@@ -1575,7 +1572,6 @@
   <block id="7f18f262f0f4112be8239133aa15cff4" category="paragraph">您可以在 Microsoft Azure 公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。</block>
   <block id="24fdd2eaa17fe7802a949abb767e47ff" category="section-title">Azure 所需的功能</block>
   <block id="0868fde25a786c798cfe63227a2e632c" category="paragraph">在 Azure 中部署 Astra 控制中心之前，您需要满足以下条件：</block>
-  <block id="80495d67a6c40d68dcd4966f400a72b8" category="list-text">Red Hat OpenShift 容器平台（ OCP ） 4.8</block>
   <block id="067c001dbf7480cc26099ff0edfb8bda" category="list-text">具有用于创建存储分段和连接器的权限的 Azure 凭据</block>
   <block id="a7ab880bb218b2e0b517005f90e662c8" category="section-title">Azure 的操作环境要求</block>
   <block id="ac388b858e49b0566fa15ba968147e01" category="inline-link-macro">Astra 控制中心运营环境要求</block>
@@ -2648,4 +2644,64 @@
   <block id="baf63b9083c98bb375244f0d47ed5c13" category="list-text">源和目标ONTAP 集群上必须同时存在Trident 22.07或更高版本。</block>
   <block id="f7d920333cf612086b3bd66993ed20b5" category="list-text">将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、此角色在两个ONTAP 集群上均启用了访问方法`http`和`ontapi`。请参见<block ref="f6ed2b7e6315ca84a258679db888068b" category="inline-link-rx"></block> 有关详细信息 ...</block>
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">所有Astra文档</block>
+  <block id="cc76a05fe8cbb45b45b1139e841822bd" category="admonition">Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。</block>
+  <block id="49f02638b249b496152336fa67d7f9c5" category="paragraph">要在Amazon Web Services (AWS)、Google云平台(GCP)和Microsoft Azure中使用Cloud Volumes ONTAP 存储后端安装Astra控制中心、请根据您的云环境执行以下步骤。</block>
+  <block id="cf594d0bb41326e3db7d23f51499a433" category="list-text"><block ref="f25f9d6f8bbda4a323ee7521012b952a" category="inline-xref-macro-rx"></block></block>
+  <block id="7b07707c591c0c1d685106f821b042b1" category="paragraph">您可以使用自管理Kubernetes集群(例如OpenShift容器平台(OCP))在分发版中管理应用程序。只有自管理的OCP集群才会通过验证来部署Astra控制中心。</block>
+  <block id="fd591703833610f8e2a03221e8c218e2" category="list-text">如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)</block>
+  <block id="4fa3cb64c7a4d0ea493cd71172a39adf" category="admonition">AWS使用通用S3存储分段类型。</block>
+  <block id="1e1383512a183b22a38cf414944a5e6f" category="section-title">在Google Cloud Platform中部署Astra控制中心</block>
+  <block id="b22e8d7dd55c8decf5f9ba74419121b1" category="paragraph">您可以在Google云平台(GCP)公有 云上托管的自管理Kubernetes集群上部署Astra控制中心。</block>
+  <block id="03bf87a4447c098a7f465eb8095fc070" category="section-title">GCP的需求</block>
+  <block id="643d752df6c3694f3ce7af63534415ce" category="paragraph">在GCP中部署Astra控制中心之前、您需要满足以下条件：</block>
+  <block id="f5c6148230da18b53bb888b7c50f6394" category="list-text">如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.10</block>
+  <block id="053fe1b94d4c8c543d8ea27c9283521c" category="list-text">GCP服务帐户、具有创建存储分段和连接器的权限</block>
+  <block id="b32083661594dec86f9945fb39f2b059" category="section-title">GCP的操作环境要求</block>
+  <block id="b75c2ef9095a885dc0ef6fd7ca29fdcf" category="cell">工作节点(GCP计算要求)</block>
+  <block id="03b9b349bfdd1ce91a22d139cbf004bc" category="cell">FQDN (GCP DNS区域)</block>
+  <block id="4e2bfc03b961741a1606bd501279f287" category="paragraph">您必须具有现有的专用注册表、例如Google Container Registry、您可以将Astra Control Center构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。</block>
+  <block id="baa0c7f7c93168cadeba3527548bd954" category="section-title">GCP部署概述</block>
+  <block id="2070102f40ff1d99329caf83f2507c4e" category="paragraph">下面概述了在GCP中将Cloud Volumes ONTAP 作为存储后端的自管理OCP集群上安装Astra控制中心的过程。</block>
+  <block id="3b02e745516f5c71a77c246060a51e43" category="list-text"><block ref="d61d940c61a6a00e19275fbf437320a7" category="inline-xref-macro-rx"></block>。</block>
+  <block id="3bb6ea60376ef3bc68f6457f221e4b85" category="list-text"><block ref="c1579a3607e2fa78215b28fe342296c1" category="inline-xref-macro-rx"></block>。</block>
+  <block id="04c3b3e2f32165098d29e6b6881ec58e" category="list-text"><block ref="52e5d08098b2b607d9d2f97161a837df" category="inline-xref-macro-rx"></block>。</block>
+  <block id="12332c49e684e46b7ac699f207bf16a8" category="section-title">在GCP上安装RedHat OpenShift集群</block>
+  <block id="7c5a7b7621ba103d2f073201a81e462a" category="paragraph">第一步是在GCP上安装RedHat OpenShift集群。</block>
+  <block id="d1442006ea024cc45950b650da58fcb9" category="inline-link">在GCP中安装OpenShift集群</block>
+  <block id="06ae5144a84de0bebf0efd5df7c00e06" category="list-text"><block ref="06ae5144a84de0bebf0efd5df7c00e06" category="inline-link-rx"></block></block>
+  <block id="cb61f975c18dbe1fc8e8d6c8d8486d7e" category="inline-link">创建GCP服务帐户</block>
+  <block id="83e04df6a72ee17f24d691755368e8d5" category="list-text"><block ref="83e04df6a72ee17f24d691755368e8d5" category="inline-link-rx"></block></block>
+  <block id="87d185607b5b3fa9b106856512932ac9" category="section-title">创建GCP项目和虚拟私有云</block>
+  <block id="35a21bb900244f6d422fa67e266605a6" category="paragraph">至少创建一个GCP项目和虚拟私有云(Virtual Private Cloud、VPC)。</block>
+  <block id="b852359c7698cdd2b9c1d8cea04079d3" category="admonition">OpenShift 可能会创建自己的资源组。此外、您还应定义GCP VPC。请参见 OpenShift 文档。</block>
+  <block id="f278df8e4fae8c2d860bbf93ec87083a" category="inline-link">初始GCP凭据和权限</block>
+  <block id="a51774c7ee8c7a1917d32e07bbbdef38" category="paragraph">请参见<block ref="385e8d87b885c39cb24ca39a45247481" category="inline-link-rx"></block>。</block>
+  <block id="209192cc4a50f2aaec907833e188e01e" category="section-title">配置GCP</block>
+  <block id="fd44c34d860360718bf48fe6737d924e" category="paragraph">接下来、将GCP配置为创建VPC、设置计算实例、创建Google Cloud Object Storage、创建用于托管Astra控制中心映像的Google Container Register并将这些映像推送到此注册表。</block>
+  <block id="c578b94b33bf07e688365d51671b2a15" category="paragraph">按照GCP文档完成以下步骤。请参见在GCP中安装OpenShift集群。</block>
+  <block id="70f9b4bc984c8a51ae2377e7357c3f9c" category="list-text">在GCP中创建一个GCP项目和VPC、该项目和VPC计划用于具有CVO后端的OCP集群。</block>
+  <block id="79b77f6749b1fd6847f3c81051c1a461" category="list-text">查看计算实例。此服务器可以是GCP中的裸机服务器或VM。</block>
+  <block id="80400c768a12e5693e6fb733e0ac97a6" category="list-text">如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 <block ref="a41c664e3d2520e4c4deb907d0286272" category="inline-link-macro-rx"></block>。</block>
+  <block id="84e3433d1da2695e582ef2f2de7e3312" category="list-text">至少创建一个GCP Cloud Storage Bucket以存储备份。</block>
+  <block id="2dd9e1f422bf892345f5cec3f5b2b2c2" category="list-text">创建Google容器注册表以托管所有Astra控制中心映像。</block>
+  <block id="033b1ecf3fb0416aaad3238723dff2c9" category="list-text">为所有Astra控制中心映像设置用于Docker推/拉的Google容器注册表访问权限。</block>
+  <block id="81634e2d9f608a938249929e3c633af7" category="paragraph">示例：输入以下脚本可将Accc映像推送到此注册表：</block>
+  <block id="2701c9c6d63abc5115841cd703843f03" category="paragraph">此脚本需要一个Astra控制中心清单文件以及您的Google映像注册表位置。</block>
+  <block id="81eeab9506186e2dca8faefa78d54067" category="paragraph">示例</block>
+  <block id="99b7bd23c05a93cee30a6e9c3c39b359" category="paragraph">使用Cloud Manager创建工作空间、向GCP添加连接器、创建工作环境并导入集群。</block>
+  <block id="dfe1fba5955d5d74d058493ad8119d8b" category="inline-link">GCP中的Cloud Volumes ONTAP 入门</block>
+  <block id="86adc4e2944a2f460b95d8b533d526d2" category="paragraph">按照 Cloud Manager 文档完成以下步骤。请参见<block ref="fd497c06a560f4076813894ede6ff8c5" category="inline-link-rx"></block>。</block>
+  <block id="7e34162efc1d04688ccb605f69cdce12" category="list-text">使用所需的IAM权限和角色访问GCP服务帐户</block>
+  <block id="8ff27825088b9b7b70bee8f534efb213" category="inline-link">正在添加GCP帐户</block>
+  <block id="dbd985f7f9e9c9fe27d65d1a1a460501" category="list-text">将凭据添加到 Cloud Manager 。请参见<block ref="00955d29011aa40dcc67c554f704112f" category="inline-link-rx"></block>。</block>
+  <block id="9e99d66a9c1ee7b17d8f38e885843926" category="list-text">为GCP添加一个连接器。</block>
+  <block id="54b57b93ed657c0018a0bfc4f3eef4e3" category="list-text">选择"GCP"作为提供程序。</block>
+  <block id="fe73b668c1d463cc0715ccc5dfa7d57b" category="inline-link">通过Cloud Manager在GCP中创建连接器</block>
+  <block id="c066638d3945abed7b87ca51edd81621" category="list-text">输入GCP凭据。请参见<block ref="6017f5fbe8f0ed9d4c85e07287920faa" category="inline-link-rx"></block>。</block>
+  <block id="0bc1b957173faff9c730b82ae202584f" category="list-text">位置："GCP"</block>
+  <block id="2f20898a4d0101de01d254a693ab94be" category="list-text">记下显示为"netapp"作为配置程序的Cloud Volumes ONTAP 集群存储类。</block>
+  <block id="e5f70079847fbdf0dfed8524e002462a" category="admonition">Cloud Volumes ONTAP 可以作为单个节点运行、也可以在高可用性(HA)中运行。如果已启用HA、请记下在GCP中运行的HA状态和节点部署状态。</block>
+  <block id="425fd91b4451257e5079173762463def" category="admonition">GCP使用通用S3存储分段类型。</block>
+  <block id="9e7e41f010f82585ef3b0ebd3f1de902" category="list-text">生成Docker密钥以提取用于Astra控制中心安装的映像：</block>
+  <block id="06e1b0116459bf681b32b65360e38671" category="list-text">如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.8</block>
 </blocks>
