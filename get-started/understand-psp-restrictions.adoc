@@ -31,18 +31,21 @@ Astra控制中心会在安装期间创建多个POD安全策略。其中一些是
 
 新策略和对象具有以下属性：
 
-[source, sh]
+[listing]
 ----
-$ kubectl get psp
+kubectl get psp
+
 NAME                           PRIV    CAPS          SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 avp-psp                        false                 RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
 netapp-astra-deployment-psp    false                 RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
 
-$ kubectl get role
+kubectl get role
+
 NAME                                     CREATED AT
 netapp-astra-deployment-role             2022-06-27T19:34:58Z
 
-$ kubectl get rolebinding
+kubectl get rolebinding
+
 NAME                                     ROLE                                          AGE
 netapp-astra-deployment-rb               Role/netapp-astra-deployment-role             32m
 ----
@@ -54,17 +57,20 @@ netapp-astra-deployment-rb               Role/netapp-astra-deployment-role      
 
 新策略和对象具有以下属性：
 
-[source, sh]
+[listing]
 ----
-$ kubectl get psp
+kubectl get psp
+
 NAME                           PRIV    CAPS                            SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 netapp-astra-backup            false   DAC_READ_SEARCH                 RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
 
-$ kubectl get role
+kubectl get role
+
 NAME                  CREATED AT
 netapp-astra-backup   2022-07-21T00:00:00Z
 
-$ kubectl get rolebinding
+kubectl get rolebinding
+
 NAME                  ROLE                       AGE
 netapp-astra-backup   Role/netapp-astra-backup   62s
 ----
@@ -76,17 +82,20 @@ netapp-astra-backup   Role/netapp-astra-backup   62s
 
 新策略和对象具有以下属性：
 
-[source, sh]
+[listing]
 ----
-$ kubectl get psp
+kubectl get psp
+
 NAME                           PRIV    CAPS                            SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 netapp-monitoring-psp-nkmo     true    AUDIT_WRITE,NET_ADMIN,NET_RAW   RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
 
-$ kubectl get role
+kubectl get role
+
 NAME                                           CREATED AT
 netapp-monitoring-role-privileged              2022-07-21T00:00:00Z
 
-$ kubectl get rolebinding
+kubectl get rolebinding
+
 NAME                                                  ROLE                                                AGE
 netapp-monitoring-role-binding-privileged             Role/netapp-monitoring-role-privileged              2m5s
 ----
@@ -101,13 +110,13 @@ netapp-monitoring-role-binding-privileged             Role/netapp-monitoring-rol
 +
 [source, sh]
 ----
-$kubectl get networkpolicy -n netapp-acc
+kubectl get networkpolicy -n netapp-acc
 ----
 . 对于上述命令返回的每个NetworkPolicy对象、请使用以下命令将其删除。将<object_name>替换为返回对象的名称：
 +
 [source, sh]
 ----
-$kubectl delete networkpolicy <OBJECT_NAME> -n netapp-acc
+kubectl delete networkpolicy <OBJECT_NAME> -n netapp-acc
 ----
 . 应用以下资源文件以配置Acc-AVP-network-policy对象、以允许适用于VMware vSphere的Astra插件服务向Astra控制中心服务发出请求。将括号<>中的信息替换为您环境中的信息：
 +
@@ -162,8 +171,14 @@ spec:
 +
 [source, sh]
 ----
-$ kubectl get quota -n netapp-acc
+kubectl get quota -n netapp-acc
+----
++
+响应：
 
++
+[listing]
+----
 NAME          AGE   REQUEST                                        LIMIT
 pods-high     16s   requests.cpu: 0/20, requests.memory: 0/100Gi   limits.cpu: 0/200, limits.memory: 0/1000Gi
 pods-low      15s   requests.cpu: 0/1, requests.memory: 0/1Gi      limits.cpu: 0/2, limits.memory: 0/2Gi
@@ -171,23 +186,32 @@ pods-medium   16s   requests.cpu: 0/10, requests.memory: 0/20Gi    limits.cpu: 0
 ----
 . 按名称删除所有资源配额：
 +
-[source, sh]
+[listing]
 ----
-$ kubectl delete resourcequota  pods-high -n netapp-acc
+kubectl delete resourcequota  pods-high -n netapp-acc
+
 resourcequota "pods-high" deleted
 
-$ kubectl delete resourcequota  pods-low -n netapp-acc
+kubectl delete resourcequota  pods-low -n netapp-acc
+
 resourcequota "pods-low" deleted
 
-$ kubectl delete resourcequota  pods-medium -n netapp-acc
+kubectl delete resourcequota  pods-medium -n netapp-acc
+
 resourcequota "pods-medium" deleted
 ----
 . 在NetApp-Accc命名空间中获取限制范围：
 +
 [source, sh]
 ----
-$ kubectl get limits -n netapp-acc
+kubectl get limits -n netapp-acc
+----
++
+响应：
 
++
+[listing]
+----
 NAME              CREATED AT
 cpu-limit-range   2022-06-27T19:01:23Z
 ----
@@ -195,6 +219,6 @@ cpu-limit-range   2022-06-27T19:01:23Z
 +
 [source, sh]
 ----
-$kubectl delete limitrange cpu-limit-range -n netapp-acc
+kubectl delete limitrange cpu-limit-range -n netapp-acc
 ----
 

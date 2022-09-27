@@ -19,13 +19,13 @@ summary: 如果您使用的是 Red Hat OpenShift ，则可以使用操作员安�
 * link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
 * 在 OpenShift 集群中，确保所有集群操作员均处于运行状况良好的状态（`Available` is `true` ）：
 +
-[listing]
+[source, sh]
 ----
 oc get clusteroperators
 ----
 * 在 OpenShift 集群中，确保所有 API 服务均处于运行状况良好的状态（`Available` is `true` ）：
 +
-[listing]
+[source, sh]
 ----
 oc get apiservices
 ----
@@ -51,13 +51,13 @@ oc get apiservices
 . 从下载 Astra 控制中心证书和密钥的 zip https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
 . （可选）使用以下命令验证捆绑包的签名：
 +
-[listing]
+[source, sh]
 ----
 openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
 . 提取映像：
 +
-[listing]
+[source, sh]
 ----
 tar -vxzf astra-control-center-[version].tar.gz
 ----
@@ -74,13 +74,13 @@ NetApp为不同CPU架构和操作系统的插件提供二进制文件。在执�
 .步骤
 . 列出可用的NetApp Astra `kubectl`插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
 +
-[listing]
+[source, sh]
 ----
 ls kubectl-astra/
 ----
 . 将此文件复制到与标准`kubectl`实用程序相同的位置。在此示例中、`kubectl`实用程序位于`/usr/local/bin`目录中。将`<二进制名称>`替换为所需文件的名称：
 +
-[listing]
+[source, sh]
 ----
 cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ----
