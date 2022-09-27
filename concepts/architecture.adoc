@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concepts/architecture.html 
-keywords: what is astra, astra control, astra control architecture, astra control center, kubernetes, netapp, clusters, trident 
+keywords: what is astra, astra control, astra control architecture, astra control center, astra control service, kubernetes, netapp, clusters, trident 
 summary: 下面简要介绍了 Astra Control 环境的各个组件。 
 ---
 = 架构和组件
@@ -13,14 +13,14 @@ summary: 下面简要介绍了 Astra Control 环境的各个组件。
 
 下面简要介绍了 Astra Control 环境的各个组件。
 
-image:astra-ads-architecture-diagram-v4.png["Astra Control 架构图和组件"]
+image:astra-architecture-diagram-v4.png["Astra Control 架构图和组件"]
 
 
 
 == Astra Control 组件
 
 * * Kubernetes 集群 * ： Kubernetes 是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，便于进行声明性配置和自动化。Astra 为 Kubernetes 集群中托管的应用程序提供管理服务。
-* * Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端，并支持将 Astra 数据存储作为存储后端。
+* * Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端。
 * * 存储后端 * ：
 +
 ** Astra控制服务使用以下存储后端：
@@ -32,7 +32,6 @@ image:astra-ads-architecture-diagram-v4.png["Astra Control 架构图和组件"]
 
 ** Astra 控制中心使用以下存储后端：
 +
-*** Astra 数据存储
 *** ONTAP AFF 和FAS。作为存储软件和硬件平台， ONTAP 可提供核心存储服务，支持多个存储访问协议以及快照和镜像等存储管理功能。
 *** Cloud Volumes ONTAP
 
