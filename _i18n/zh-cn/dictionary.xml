@@ -922,7 +922,6 @@
   <block id="7b30cce2a5969e8fadcb1e4aa9106224" category="list-text">已安装 `kubectl` v1.19 或更高版本</block>
   <block id="ee6257954c2f973cd54453583dc792ca" category="list-text">具有活动上下文集群管理员权限的活动 kubeconfig</block>
   <block id="5f85438ae0f2c9122a5cf54e8e098c98" category="list-text">按如下所示创建服务帐户：</block>
-  <block id="3dddc4b1e9542d891ece7f0755904e26" category="list-text">创建名为 ``asacontrol service-account.yaml`` 的服务帐户文件。</block>
   <block id="210c5331ab46caa141e6ac9d5aeb1bee" category="paragraph">根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。</block>
   <block id="605443509a67749999ab3b0d3ba43e8b" category="list-text">应用服务帐户：</block>
   <block id="b01a13e2cbe1b4af2c39de81232bb23b" category="list-text">按如下所示授予集群管理员权限：</block>
@@ -2704,4 +2703,5 @@
   <block id="06e1b0116459bf681b32b65360e38671" category="list-text">如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.8</block>
   <block id="3b21110a90480d802de559fc751fede8" category="paragraph"><block ref="3b21110a90480d802de559fc751fede8" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c2c28b59e21cbd4b3d6c78dbdf1db70f" category="list-text">* Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端。</block>
+  <block id="4ab759267d2877902a521921e10f5f5b" category="list-text">创建名为`asacontrol service-account.yaml`的服务帐户文件。</block>
 </blocks>

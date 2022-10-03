@@ -37,7 +37,7 @@ NOTE: 如果您计划将第二个 OpenShift 4.6 ， 4.7 或 4.8 集群添加为�
 .步骤
 . 检查 Trident 版本。
 +
-[listing]
+[source, sh]
 ----
 kubectl get tridentversions -n trident
 ----
@@ -86,7 +86,7 @@ thin                   kubernetes.io/vsphere-volume   Delete          Immediate 
 .步骤
 . 按如下所示创建服务帐户：
 +
-.. 创建名为 ``asacontrol service-account.yaml`` 的服务帐户文件。
+.. 创建名为`asacontrol service-account.yaml`的服务帐户文件。
 +
 根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
 
@@ -106,7 +106,7 @@ metadata:
 ----
 .. 应用服务帐户：
 +
-[listing]
+[source, sh]
 ----
 kubectl apply -f astracontrol-service-account.yaml
 ----
@@ -142,7 +142,7 @@ subjects:
 ----
 .. 应用集群角色绑定：
 +
-[listing]
+[source, sh]
 ----
 kubectl apply -f astracontrol-clusterrolebinding.yaml
 ----
@@ -150,7 +150,7 @@ kubectl apply -f astracontrol-clusterrolebinding.yaml
 
 . 列出服务帐户密码，将 ` <context>` 替换为适用于您的安装的正确上下文：
 +
-[listing]
+[source, sh]
 ----
 kubectl get serviceaccount astracontrol-service-account --context <context> --namespace default -o json
 ----
@@ -241,7 +241,7 @@ rm ${KUBECONFIG_FILE}.tmp
 ----
 .. 获取用于将其应用于 Kubernetes 集群的命令。
 +
-[listing]
+[source, sh]
 ----
 source create-kubeconfig.sh
 ----
@@ -249,7 +249,7 @@ source create-kubeconfig.sh
 
 . （ * 可选 * ）将 kubeconfig 重命名为集群的有意义名称。保护集群凭据。
 +
-[listing]
+[source, sh]
 ----
 chmod 700 create-kubeconfig.sh
 mv kubeconfig-sa.txt YOUR_CLUSTER_NAME_kubeconfig

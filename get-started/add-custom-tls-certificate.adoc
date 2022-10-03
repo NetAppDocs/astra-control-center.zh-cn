@@ -28,13 +28,13 @@ summary: 您可以上传并验证由第三方证书颁发机构（ CA ）签名�
 . 使用 SSH ，以管理用户身份登录到托管 Astra 控制中心的 Kubernetes 集群。
 . 使用以下命令查找与当前证书关联的 TLS 密钥，并将 ` <Acc-deployment-namespace>` 替换为 Astra Control Center 部署命名空间：
 +
-[listing]
+[source, sh]
 ----
 kubectl get certificate -n <ACC-deployment-namespace>
 ----
 . 使用以下命令删除当前安装的密钥和证书：
 +
-[listing]
+[source, sh]
 ----
 kubectl delete cert cert-manager-certificates -n <ACC-deployment-namespace>
 kubectl delete secret secure-testing-cert -n <ACC-deployment-namespace>
@@ -49,7 +49,7 @@ kubectl delete secret secure-testing-cert -n <ACC-deployment-namespace>
 
 . 使用以下命令使用 CA 中的专用密钥和证书文件创建新的 TLS 密钥，并将括号 <> 中的参数替换为相应的信息：
 +
-[listing]
+[source, sh]
 ----
 kubectl create secret tls <secret-name> --key <private-key-filename> --cert <certificate-filename> -n <ACC-deployment-namespace>
 ----
@@ -86,7 +86,7 @@ Events:                    <none>
 ----
 . 使用以下示例创建 `certificate.yaml` 文件，将括号中的占位值替换为相应的信息：
 +
-[listing]
+[source, yaml]
 ----
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -105,7 +105,7 @@ spec:
 ----
 . 使用以下命令创建证书：
 +
-[listing]
+[source, sh]
 ----
 kubectl apply -f certificate.yaml
 ----
