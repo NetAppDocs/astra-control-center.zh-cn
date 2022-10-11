@@ -52,8 +52,8 @@ Astra Control异步将应用程序Snapshot副本复制到远程集群。复制�
 
 备份过程会将数据复制到S3存储分段、并从S3存储分段进行还原：
 
-image:acc-backup_5.5in.png["计划备份和还原映像"]
+image:acc-backup_4in.png["计划备份和还原映像"]
 
 另一方面、复制是通过复制到ONTAP 来完成的、然后故障转移将创建Kubernetes资源：
 
-image:acc-replication_5.5in.png["复制和故障转移映像"]
+image:acc-replication_4in.png["复制和故障转移映像"]
