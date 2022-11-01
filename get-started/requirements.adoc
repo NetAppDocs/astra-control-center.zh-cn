@@ -128,6 +128,15 @@ Astra 控制中心支持以下存储后端。
 * NetApp Cloud Volumes ONTAP
 
 
+要使用Astra控制中心、请根据您需要完成的任务、验证您是否具有以下ONTAP 许可证：
+
+* FlexClone
+* SnapMirror：可选。只有在使用SnapMirror技术复制到远程系统时才需要。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["SnapMirror许可证信息"^]。
+* S3许可证：可选。只有ONTAP S3存储分段才需要
+
+
+您可能需要检查ONTAP 系统是否具有所需的许可证。请参见 https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["管理ONTAP 许可证"^]。
+
 
 
 == 应用程序集群要求
@@ -246,16 +255,13 @@ NOTE: 操作员及其安装的应用程序必须使用相同的命名空间；�
 
 == 许可证
 
-要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。如果没有许可证、您将无法执行以下任何操作：
+要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。您需要一个许可证来保护应用程序和数据。请参见 link:../concepts/intro.html["Astra控制中心功能"] 了解详细信息。
 
-* 定义应用程序
-* 为现有应用程序创建快照或克隆
-* 配置数据保护策略
+您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。您可以通过注册注册注册免费试用版 link:https://cloud.netapp.com/astra-register["此处"^]。
 
+有关ONTAP 存储后端所需许可证的详细信息、请参见 link:../get-started/requirements.html["支持的存储后端"]。
 
-如果您要尝试使用 Astra 控制中心，可以 link:setup_overview.html#add-a-full-or-evaluation-license["使用 90 天评估许可证"]。
-
-要了解有关许可证工作原理的详细信息，请参见 link:../concepts/licensing.html["许可"]。
+有关许可证工作原理的详细信息、请参见 link:../concepts/licensing.html["许可"]。
 
 
 

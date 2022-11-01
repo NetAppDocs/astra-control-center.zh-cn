@@ -22,7 +22,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 [role="quick-margin-para"]
-link:../get-started/requirements.html["了解有关 Astra 控制中心要求的更多信息"]。
+详细了解 link:../get-started/requirements.html["Astra 控制中心要求"]。
 
 .跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png"[] Alt-twe"></span> 下载并安装 Astra 控制中心
 * 从下载 Astra 控制中心 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点 Astra 控制中心下载页面"^]。
@@ -30,26 +30,31 @@ link:../get-started/requirements.html["了解有关 Astra 控制中心要求的�
 +
 或者，也可以使用 Red Hat OperatorHub 安装 Astra 控制中心。
 
++
+或者、也可以安装带有Cloud Volumes ONTAP 存储后端的Astra控制中心。
+
 
 
 [role="quick-margin-para"]
-link:../get-started/install_overview.html["了解有关安装 Astra 控制中心的更多信息"]。
+了解更多信息 link:../get-started/install_overview.html["安装Astra控制中心"]。
 
 .跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] Alt-Three </span> 完成一些初始设置任务
-* 添加许可证
+* 添加Astra Control许可证和任何支持的ONTAP 许可证。
 * 添加 Kubernetes 集群， Astra 控制中心将发现详细信息。
-* 添加 ONTAP 或 https://docs.netapp.com/us-en/astra-data-store/index.html["Astra 数据存储"] 存储后端。
+* 添加 ONTAP 存储后端。
 * 或者，添加用于存储应用程序备份的对象存储分段。
 
 
 [role="quick-margin-para"]
-link:../get-started/setup_overview.html["了解有关初始设置过程的更多信息"]。
+详细了解 link:../get-started/setup_overview.html["初始设置过程"]。
 
 [role="quick-margin-list"]
 设置完 Astra 控制中心后，您接下来可能会执行以下操作：
 
-* 管理应用程序。 link:../use/manage-apps.html["详细了解如何管理应用程序"]。
-* 或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。 link:../use/monitor-protect.html["了解有关连接到 Cloud Insights 的更多信息"]。
+* 管理应用程序。详细了解如何操作 link:../use/manage-apps.html["管理应用程序"]。
+* 通过为应用程序配置保护策略、将应用程序复制到远程系统以及克隆和迁移应用程序来保护应用程序。详细了解如何操作 link:../use/protection-overview.html["保护应用程序"]。
+* 管理帐户(包括用户、角色、用于用户身份验证的LDAP、凭据、存储库连接等)。详细了解如何操作 link:../use/manage-users.html["管理用户"]。
+* 或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。了解更多信息 link:../use/monitor-protect.html["正在连接到Cloud Insights"]。
 
 
 [role="quick-margin-para"]

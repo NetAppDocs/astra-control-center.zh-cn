@@ -40,7 +40,6 @@
   <block id="053d6e036cc8c9d7a8c57234d6bfc574" category="list-text">轻松地将应用程序从生产环境克隆到暂存环境</block>
   <block id="1c26e7db082840fcbfcd87527c92e1aa" category="list-text">直观显示应用程序运行状况和保护状态</block>
   <block id="3e09a55ad40337db37927865855151a9" category="list-text">使用用户界面或 API 实施备份和迁移工作流</block>
-  <block id="894b9b2b2a66efc8393eed6013d32a66" category="paragraph">Astra Control 会持续监控您的计算状态变化，因此它可以识别您在此过程中添加的任何新应用程序。</block>
   <block id="6762973af9b127d271f0d2b2aea0bc96" category="section-title">部署模式</block>
   <block id="db1905d057dd6fde6f8b7bd6afe60e41" category="paragraph">Astra Control 有两种部署模式：</block>
   <block id="5ac9f21bb5ada8cf5c614ea23fce4131" category="list-text">* Astra Control Service* ： NetApp 管理的一项服务，可在 Google Kubernetes Engine （ GKEE ）和 Azure Kubernetes Service （ AKS ）中为 Kubernetes 集群提供应用程序感知型数据管理。</block>
@@ -833,10 +832,6 @@
   <block id="c62e13b3973df086f7d17eeaf006b535" category="section-title">访问 Internet</block>
   <block id="46cce64fca5b60351328e94ed2b72255" category="paragraph">您应确定是否可以从外部访问 Internet 。否则，某些功能可能会受到限制，例如从 NetApp Cloud Insights 接收监控和指标数据或向发送支持包<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
   <block id="794df3791a8c800841516007427a2aa3" category="section-title">许可证</block>
-  <block id="f626c62bb4d6f5fe91956336471bbb79" category="list-text">为现有应用程序创建快照或克隆</block>
-  <block id="52edc9582dd9649bf5c1dc07e4e2db40" category="list-text">配置数据保护策略</block>
-  <block id="fbd7f511b2e75e5ab019b2450e398c1d" category="inline-link-macro">使用 90 天评估许可证</block>
-  <block id="3899f9844f98943d4e24ef93b03e511a" category="paragraph">如果您要尝试使用 Astra 控制中心，可以 <block ref="f7fe48c6da560c77452dd7318b8ae9f9" category="inline-link-macro-rx"></block>。</block>
   <block id="9251700e586dc1a410f2e755a8643751" category="section-title">网络要求</block>
   <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">Port</block>
   <block id="888a77f5ac0748b6c8001822417df8b6" category="cell">协议</block>
@@ -946,24 +941,14 @@
   <block id="4854d4c0301c6f34c76f1cb78057e09e" category="list-title">跨度 class="image&gt;&lt;img src=<block ref="0c3becc25d95e48b9ca863002a042824" category="inline-link-rx"></block> Alt-one"&gt;&lt;/span&gt; 查看 Kubernetes 集群要求</block>
   <block id="0deb5023224ed4d71135e9bae6dff9d4" category="list-text">集群必须以运行状况良好的状态运行，并且至少有三个联机辅助节点。</block>
   <block id="5f08198ddd920cae8e4af705793b2a56" category="list-text">集群必须运行 Kubernetes 。</block>
-  <block id="e34728b4f7a3f87b9d4e4bc0568096e1" category="inline-link-macro">了解有关 Astra 控制中心要求的更多信息</block>
-  <block id="dc36d12219c1097713b63def4e923028" category="paragraph"><block ref="cb100f378703845999b4907e7c8315fb" category="inline-link-macro-rx"></block>。</block>
   <block id="9384595b10ef347b2da67882c7b37bd7" category="list-title">跨度 class="image&gt;&lt;img src=<block ref="c9bdd0fd7d7224adcf67691b15f15281" category="inline-link-rx"></block> Alt-twe"&gt;&lt;/span&gt; 下载并安装 Astra 控制中心</block>
   <block id="afdff0e68ce5b4b3109d398df16872f7" category="inline-link">NetApp 支持站点 Astra 控制中心下载页面</block>
   <block id="b6511e86f155fe09cdd3bb8e739ea6b5" category="list-text">从下载 Astra 控制中心<block ref="287561c5277beeaf3b39a65b237114c8" category="inline-link-rx"></block>。</block>
   <block id="276a11727deff1a1f5ebf349b23835fc" category="list-text">在本地环境中安装 Astra Control Center 。</block>
-  <block id="4cb444388821c2b32d8c80c962e7f1c0" category="inline-link-macro">了解有关安装 Astra 控制中心的更多信息</block>
   <block id="80de081c75779cda8e2db1de0f292684" category="list-title">跨度 class="image&gt;&lt;img src=<block ref="ddd753dc2858fe3a5582f20b300a0541" category="inline-link-rx"></block> Alt-Three &lt;/span&gt; 完成一些初始设置任务</block>
-  <block id="f13e95a655fb97423bd52082209d8781" category="list-text">添加许可证</block>
   <block id="89a40ca78d4ff20ec6d54ba006768895" category="list-text">添加 Kubernetes 集群， Astra 控制中心将发现详细信息。</block>
   <block id="aacfab881a9e939b2424f0e0b25eb558" category="list-text">或者，添加用于存储应用程序备份的对象存储分段。</block>
-  <block id="dd1777e71bd3db9cdf9848cb04565f48" category="inline-link-macro">了解有关初始设置过程的更多信息</block>
-  <block id="9ad40a01405c834a45bae664275527c1" category="paragraph"><block ref="8993acb8fe2145a6f530c4154ba1344b" category="inline-link-macro-rx"></block>。</block>
   <block id="154eb8ea764a5b550f71c94b510f7a75" category="paragraph">设置完 Astra 控制中心后，您接下来可能会执行以下操作：</block>
-  <block id="c377628a77d20588f5f69203b3d6934d" category="inline-link-macro">详细了解如何管理应用程序</block>
-  <block id="1d6659bf1854bf0469670ac4f97e9181" category="list-text">管理应用程序。 <block ref="4963e35346522bbc5627366c0be0f048" category="inline-link-macro-rx"></block>。</block>
-  <block id="e746991cfeb5b6a72629662618d89fd8" category="inline-link-macro">了解有关连接到 Cloud Insights 的更多信息</block>
-  <block id="dcde337510fa6abacde76850d8dfb34f" category="list-text">或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。 <block ref="26c266e2f618a4d4913a4efc9baa9572" category="inline-link-macro-rx"></block>。</block>
   <block id="efb8331a92b47dc173e5cbcd8ae1a87b" category="summary">安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
   <block id="d507eb4e66b24d44edccbe2de081c8ee" category="doc">设置 Astra 控制中心</block>
   <block id="ef615563c8e8ea902c7fcac3cd2c4246" category="list-title">任务</block>
@@ -1400,7 +1385,6 @@
   <block id="a18ffe589f51b2e8842d425e72f3267a" category="list-text">。<block ref="a5882513c2df5d3067eddd81ae049c5c" category="inline-link-rx"></block> 应已创建与入口控制器对应的。</block>
   <block id="aaaab6a43be0946d4047c135907a45d5" category="list-text">您使用的是介于 v1.19 和 v1.21 之间的 Kubernetes 版本，包括 v1.19 和 v1.21 。</block>
   <block id="729bdb5319ea7e408d8db1fc3179d448" category="list-title">nginx 入口控制器的步骤</block>
-  <block id="8a637503539b25b68130b6e8003579d9" category="inline-link">`Kubernetes 。 IO/TLS`</block>
   <block id="a980dad9ace20d62c935af0cd906e94b" category="inline-link">TLS 密钥</block>
   <block id="b8f8ca59e22fc841fff93c36afdc7722" category="list-text">使用现有密钥 `secure-testing-cert` 或创建类型的密钥<block ref="37832da3e75d3d08f1b0f5b5ed8a3dc0" category="inline-link-rx"></block> 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述<block ref="749b9942574f6d94028c602d678053d4" category="inline-link-rx"></block>。</block>
   <block id="aa34b47423099730412dc106577e8b8e" category="list-text">在 `NetApp-Accc` （或自定义命名）命名空间中为已弃用或新模式部署入站资源：</block>
@@ -1461,15 +1445,7 @@
   <block id="2c1b2aa1361b2b30f079d2afc37936be" category="admonition">Astra Control 本身不是一个标准应用程序，而是一个 " 系统应用程序 " 。 您不应尝试管理 Astra Control 本身。默认情况下，用于管理的 Astra Control 本身不会显示。</block>
   <block id="0ec24420f91223b35f271fb4a5f65f2f" category="summary">了解如何根据许可证状态对 Astra 控制中心执行不同的操作，以及如何使用 Astra 控制中心来影响许可证使用。</block>
   <block id="0b9c6eef4e3d3a222eb04e910d252339" category="doc">许可</block>
-  <block id="23c455802681d71fa7b93cceb849af79" category="paragraph">以下操作需要有效的许可证：</block>
-  <block id="866b10bb84f65c6e8641ad5e4d19560e" category="list-text">管理新应用程序</block>
-  <block id="aba42bf1b2c7c8728d1d2b28ff0070bd" category="list-text">创建快照或备份</block>
-  <block id="8502ac7f2b384f2e9bb1695305ce53a9" category="list-text">配置保护策略以计划快照或备份</block>
-  <block id="e95ea6c9ba285675e3841a7a3e18a7e4" category="list-text">从快照或备份还原</block>
-  <block id="584ffe6d9c3d3b6838bd35dc4e360aa7" category="list-text">从快照或当前状态克隆</block>
-  <block id="1c4c138d31621be6b2c37c33e6157586" category="admonition">您可以在没有许可证的情况下添加集群，添加存储分段以及管理 Astra Data Store 存储后端。但是，要使用 Astra Data Store 作为存储后端来管理应用程序，您需要有效的 Astra Control Center 许可证。</block>
   <block id="b2492fb1fd7556ab678e6f20a0553c6b" category="section-title">如何计算许可证使用量</block>
-  <block id="3c6b6cd9d1dacee4b5fe67b12150dda4" category="paragraph">在将新集群添加到 Astra 控制中心时，只有在集群上运行的至少一个应用程序由 Astra 控制中心管理之后，该集群才会计入已用许可证。您还可以将 Astra Data Store 存储后端添加到 Astra 控制中心，而不会影响许可证使用。这样，您就可以从未经许可的 Astra 控制中心系统管理 Astra 数据存储后端。</block>
   <block id="c985292efffba104a103f0714c4407ab" category="list-text"><block ref="c985292efffba104a103f0714c4407ab" category="inline-link-macro-rx"></block></block>
   <block id="f26ee8a93c95de7a50a14b73f85172c5" category="paragraph">了解 Astra Control 中的用户角色和命名空间，以及如何使用它们控制对组织中资源的访问。</block>
   <block id="f4040f71a7d553f2519487070892b115" category="section-title">用户角色</block>
@@ -1668,7 +1644,6 @@
   <block id="bd9816e38f7956650afc1ffe8318e16d" category="list-text">对于 `v1` 新架构，请遵循以下示例：</block>
   <block id="db199481bf6cf2d5e29909b07d83a660" category="summary">您可以选择安装 Astra Control Center 。</block>
   <block id="29a22a050bd07366c87409e65a0fd0cd" category="list-text"><block ref="29a22a050bd07366c87409e65a0fd0cd" category="inline-link-macro-rx"></block></block>
-  <block id="869e88fdb2291fe31fc2aeb4bc0d3c4f" category="paragraph"><block ref="9eecb239704d706edd0e9065cdf42037" category="inline-link-macro-rx"></block>。</block>
   <block id="5c3ecd2a6e7743910c01e8a3ede5d0e2" category="paragraph"><block ref="4f53ab095a585e280035de1f6822ef65" category="inline-link-macro-rx"></block>。</block>
   <block id="938b18df1cf4fc30adffffdbd05580fb" category="list-text">（可选）如果集群使用限制性的 POD 安全策略，该策略不允许创建特权 POD 或允许 Pod 容器中的进程以 root 用户身份运行，请为集群创建一个自定义 POD 安全策略，以使 Astra Control 能够创建和管理 Pod 。有关说明，请参见 <block ref="a0c087a50043435816db1a08670aaa8c" category="inline-link-macro-rx"></block>。</block>
   <block id="1db3861c7c604e022707e65328ef7cc2" category="cell">FQDN 地址</block>
@@ -1681,10 +1656,8 @@
   <block id="79c6eeaaf8d96d513388ecbf530b0ae3" category="admonition">默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时过期。如果您使用的是 Tanzu 产品组合，则必须使用未过期的令牌生成 Tanzu Kubernetes 集群配置文件，以防止 Astra 控制中心与受管应用程序集群之间出现连接问题。有关说明，请访问<block ref="c26a653248aa528b1bef9d4c5fae1fc5" category="inline-link-rx"></block></block>
   <block id="783d1a3e740eff9085416ec3f709793f" category="section-title">支持的存储后端</block>
   <block id="160a276b6627d6a6aa9859d6c2835948" category="paragraph">Astra 控制中心支持以下存储后端。</block>
-  <block id="8035d5d39b2b48f6ec1a3133b688513c" category="list-text">Astra 数据存储</block>
   <block id="dfac4790f1edf6101275f3ef6bff1bf3" category="list-text">NetApp ONTAP 9.5 或更高版本的 AFF 和 FAS 系统</block>
   <block id="0f0b99ea2f70cd363c2c6a279f74e760" category="list-text">NetApp Cloud Volumes ONTAP</block>
-  <block id="ff79203caa78d64e952438adf3dac421" category="paragraph">要了解有关许可证工作原理的详细信息，请参见 <block ref="5d4863a02d05fc8628043f5d98bb32ab" category="inline-link-macro-rx"></block>。</block>
   <block id="a935ac1929664c98f15473ff54019d68" category="section-title">内部 Kubernetes 集群的传入</block>
   <block id="a725c0ade3038af309a6f44b57e8b3e4" category="paragraph">您可以选择 Astra 控制中心使用的网络传入类型。默认情况下， Astra 控制中心会将 Astra 控制中心网关（ service/traefik ）部署为集群范围的资源。如果您的环境允许使用服务负载平衡器，则 Astra 控制中心也支持使用服务负载平衡器。如果您希望使用服务负载平衡器，但尚未配置此平衡器，则可以使用 MetalLB 负载平衡器自动为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。</block>
   <block id="3535d3befb15db2a6b9a1413eed8204e" category="admonition">如果要在 Tanzu Kubernetes 网格集群上托管 Astra 控制中心，请使用 `kubectl get nssxlbmonitors -a` 命令查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。</block>
@@ -1791,7 +1764,6 @@
   <block id="52393bb21023d79ef4e0fa374e54b83d" category="list-text">创建Azure虚拟网络。</block>
   <block id="5df56ab7fcd23252a7ac4c7a21742e57" category="list-text">至少创建一个Azure Blob容器以存储备份。</block>
   <block id="89110f39cddf501c149d691e3219c46f" category="list-text">Astra 可与具有 Trident 配置的 ONTAP 存储后端或 Astra 数据存储存储后端的 Kubernetes 集群结合使用。</block>
-  <block id="97b4ab60412f0ac1b694143b04594cea" category="list-text">添加 ONTAP 或<block ref="fc4f86eeee76cae2d1ef9200e442add9" category="inline-link-rx"></block> 存储后端。</block>
   <block id="918bc432b267e0783b861303d55f277d" category="paragraph">要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。</block>
   <block id="07bb61072986729e824079c9eb528582" category="paragraph">您可以添加存储后端，以使 Astra Control 能够管理其资源。您可以在受管集群上部署存储后端、也可以使用现有存储后端。</block>
   <block id="eb33ac2274505b5f55f336ecd9e9a2d2" category="paragraph">通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。</block>
@@ -1971,9 +1943,6 @@
   <block id="312f73bc02090ee1ad14be45b359dbe8" category="list-text"><block ref="f04576f201786fec5ebc1080637d02a1" category="inline-link-rx"></block> 或<block ref="789fe92e2b55f108a4e50dd78da73d71" category="inline-link-rx"></block> 作为EKS集群的后端存储选项。</block>
   <block id="878d04283184abd2b8ea5f813a053078" category="list-text">ONTAP AFF 和FAS。作为存储软件和硬件平台， ONTAP 可提供核心存储服务，支持多个存储访问协议以及快照和镜像等存储管理功能。</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="list-text">Cloud Volumes ONTAP</block>
-  <block id="6ef7c0bbca5e3aa2b607e7f425420904" category="list-text">将应用程序复制到远程系统</block>
-  <block id="a9bd773d5321644e70dcc3a3ab3e77b4" category="paragraph">当您开始管理集群上的应用程序时、该集群的所有CPU单元都会包含在Astra Control Center许可证使用中。如果集群已获得Astra Data Store的许可部署、则这些CPU单元将从Astra控制中心许可证使用量计算中排除。</block>
-  <block id="f78b4f993297c447c7dabfed92fc962c" category="admonition">Astra数据存储评估部署中的CPU单元不会被排除在Astra控制中心许可证使用范围之外。</block>
   <block id="a7da53d86332105dcae80a12f3e8b7a5" category="summary">介绍了Astra Control中的受管应用程序类型。</block>
   <block id="0aec310f3808bce2063a2292e6052cf8" category="doc">了解应用程序管理</block>
   <block id="848f207b3c4594754aa82fd21b5fc5e0" category="paragraph">当Astra Control发现集群时、这些集群上的应用程序将不受管理、直到您选择要如何管理它们为止。Astra Control 中的受管应用程序可以是以下任一项：</block>
@@ -2225,8 +2194,6 @@
   <block id="665cb0fd449119a5f020701a7e4d37aa" category="list-text">源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。</block>
   <block id="12656d1c4d74b517feee96e4c4eda095" category="admonition">您可以同时按相反方向复制另一个应用程序(在另一个集群或站点上运行)。例如、应用程序A、B、C可以从数据中心1复制到数据中心2；应用程序X、Y、Z可以从数据中心2复制到数据中心1。</block>
   <block id="b74602b149e39af1209754432fd537e3" category="inline-link-macro">使用SnapMirror技术将应用程序复制到远程系统</block>
-  <block id="dd065d032958db1fedcce03e51dcef9e" category="paragraph">要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。如果没有许可证、您将无法执行以下任何操作：</block>
-  <block id="4eba5ba43cc624385f276658a22c51a8" category="list-text">定义应用程序</block>
   <block id="ce54d221292e1505e5b1a6ed4c74dac7" category="summary">在安装Astra控制中心之前、您需要了解POD安全策略的工作原理。</block>
   <block id="2234ef98d31c468422ea2222fdcb5ce7" category="paragraph">Astra控制中心通过POD安全策略(PSP)支持权限限制。通过POD安全策略、您可以限制哪些用户或组能够运行容器以及这些容器可以具有哪些权限。</block>
   <block id="e279151c394a32f0a32e5a007f097d49" category="paragraph">某些Kubernetes分发版(例如RKE2)的默认POD安全策略限制性过强、在安装Astra Control Center时会出现问题。</block>
@@ -2704,4 +2671,39 @@
   <block id="4ab759267d2877902a521921e10f5f5b" category="list-text">创建名为`asacontrol service-account.yaml`的服务帐户文件。</block>
   <block id="85d4813220dc61b1558025981ecb0a0c" category="paragraph"><block ref="85d4813220dc61b1558025981ecb0a0c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="de57d5c9dad5ff2e5621f7541a798fe9" category="paragraph"><block ref="de57d5c9dad5ff2e5621f7541a798fe9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9f034b63948763d489f944319c2eb3de" category="inline-link-macro">features</block>
+  <block id="67de198544887d5fd6bd366f67305ff4" category="paragraph">您需要一个许可证来保护应用程序和数据。请参见Astra控制中心 <block ref="9c6ba53976c6f467204fe6057d6ccf7a" category="inline-link-macro-rx"></block> 了解详细信息。</block>
+  <block id="166a298c42736e336f80574cf9433db7" category="paragraph">您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。有关详细信息，请参见 <block ref="ec43fa96d69fa714ee8406758839eaf7" category="inline-link-macro-rx"></block>。</block>
+  <block id="40c5eb63f5dc254aeb1e6c3a7b34d15d" category="inline-link-macro">支持的存储后端</block>
+  <block id="3e55b813dfc77f5a692ec8411b86bba6" category="paragraph">有关ONTAP 存储后端所需许可证的详细信息、请参见 <block ref="dff615b80497dbcbaf9794a9900b6f10" category="inline-link-macro-rx"></block>。</block>
+  <block id="a26876e2ece0b6007cf03e315d57d9d2" category="admonition">您可以在没有许可证的情况下添加集群、添加存储分段以及管理存储后端。</block>
+  <block id="c181d2df235b02fa4e6f49a0a5318793" category="paragraph">在将新集群添加到 Astra 控制中心时，只有在集群上运行的至少一个应用程序由 Astra 控制中心管理之后，该集群才会计入已用许可证。</block>
+  <block id="f3949fab8a6f9c8bbf9fdf763da75747" category="paragraph">当您开始管理集群上的应用程序时、该集群的所有CPU单元都会包含在Astra Control Center许可证使用中。</block>
+  <block id="1a8fab43fd54631009166886f3f59682" category="paragraph">要使用Astra控制中心、请根据您需要完成的任务、验证您是否具有以下ONTAP 许可证：</block>
+  <block id="a701f5d044348085ee4f97fef6636845" category="list-text">FlexClone</block>
+  <block id="93ec3a6d617fbea35565aff959939259" category="inline-link">SnapMirror许可证信息</block>
+  <block id="1243c7149b271191003a5b7144418842" category="list-text">SnapMirror：可选。只有在使用SnapMirror技术复制到远程系统时才需要。请参见<block ref="35fcc11d8e33331eed4ebcd52f56173a" category="inline-link-rx"></block>。</block>
+  <block id="12b8055741d62426337fd360f342bc4f" category="list-text">S3许可证：可选。只有ONTAP S3存储分段才需要</block>
+  <block id="af0e614701190854322a2cbf66479b6f" category="inline-link">管理ONTAP 许可证</block>
+  <block id="3076b2c3d356be8ff96c3f9f8547824a" category="paragraph">您可能需要检查ONTAP 系统是否具有所需的许可证。请参见<block ref="8ad9b3553a563c3930ce9a2b06714e72" category="inline-link-rx"></block>。</block>
+  <block id="f79830bec9b778f1cf3c950471bafb95" category="inline-link-macro">Astra控制中心功能</block>
+  <block id="ae49257ca8c170cdd9b892d435d60a14" category="paragraph">要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。您需要一个许可证来保护应用程序和数据。请参见 <block ref="7fcc59b1843f920708fc18c7727f8745" category="inline-link-macro-rx"></block> 了解详细信息。</block>
+  <block id="32c2e315eb3384a5835e26a647684aec" category="paragraph">有关ONTAP 存储后端所需许可证的详细信息、请参见 <block ref="8e7dadcc6edcd7a6649fd7bd3abadd5f" category="inline-link-macro-rx"></block>。</block>
+  <block id="44bda7e34a7903c91a79b65e31c51143" category="paragraph">有关许可证工作原理的详细信息、请参见 <block ref="5d4863a02d05fc8628043f5d98bb32ab" category="inline-link-macro-rx"></block>。</block>
+  <block id="3eb8247119e86301f694edfa85ee565f" category="paragraph">详细了解 <block ref="a41c664e3d2520e4c4deb907d0286272" category="inline-link-macro-rx"></block>。</block>
+  <block id="9ae09076555ee5ddfe5af03ebf44bcf3" category="paragraph">或者、也可以安装带有Cloud Volumes ONTAP 存储后端的Astra控制中心。</block>
+  <block id="d0945e630f33dd0475cc6b38cb528ffb" category="inline-link-macro">安装Astra控制中心</block>
+  <block id="407e54fcf5cadabd365673d315aa5d2c" category="paragraph">了解更多信息 <block ref="a4c65d6b325e0b0dbae534b5bb678d6c" category="inline-link-macro-rx"></block>。</block>
+  <block id="99bebad9572c9b2d89ca66465539d959" category="list-text">添加Astra Control许可证和任何支持的ONTAP 许可证。</block>
+  <block id="87d2ee45afe04a74320927b3cc97c4ef" category="list-text">添加 ONTAP 存储后端。</block>
+  <block id="696638e6fb97f6a54feea5bca820df2e" category="inline-link-macro">初始设置过程</block>
+  <block id="e103cc9d2252c32b1965c1a4aef6e3de" category="paragraph">详细了解 <block ref="726a2b46b7700f295515291efa038ba2" category="inline-link-macro-rx"></block>。</block>
+  <block id="7bb17d4efbababbb50314c8f399d0a91" category="inline-link-macro">管理应用程序</block>
+  <block id="10732e0d2718c09bde37aea8652b38b4" category="list-text">管理应用程序。详细了解如何操作 <block ref="d7dea6cff4248b65fea4a7f9fae5beb4" category="inline-link-macro-rx"></block>。</block>
+  <block id="005f9e209f722d51ca734dc5b366ed67" category="inline-link-macro">保护应用程序</block>
+  <block id="d95c8989aadb2d836d9c01534314cd49" category="list-text">通过为应用程序配置保护策略、将应用程序复制到远程系统以及克隆和迁移应用程序来保护应用程序。详细了解如何操作 <block ref="ba05d0047b4c7802e522ce90f4638339" category="inline-link-macro-rx"></block>。</block>
+  <block id="a8bff67fd2d4a5c8599077523eee2ffe" category="inline-link-macro">管理用户</block>
+  <block id="766c3edeaca88ba89208ae8b5e83479e" category="list-text">管理帐户(包括用户、角色、用于用户身份验证的LDAP、凭据、存储库连接等)。详细了解如何操作 <block ref="b1dea768305cd8aacf8d500d63953651" category="inline-link-macro-rx"></block>。</block>
+  <block id="84d5805c780bde43dccfe3666e3283da" category="inline-link-macro">正在连接到Cloud Insights</block>
+  <block id="cfbe784ada75bca24be2b83ad0a64339" category="list-text">或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。了解更多信息 <block ref="76c9595f49defd96fd8c9e749ca851ae" category="inline-link-macro-rx"></block>。</block>
 </blocks>

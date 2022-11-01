@@ -770,7 +770,7 @@ ingress istio astra.example.com 172.16.103.248  80, 443 1h
 
 
 .nginx 入口控制器的步骤
-. 创建类型的密钥 http://kubernetes.io/tls["`Kubernetes 。 IO/TLS`"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
+. 创建类型的密钥 http://kubernetes.io/tls["8a637503539b25b68130b6e8003579d9"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
 . 使用`v1beta1`(在Kubernetes版本低于或1.22的情况下已弃用)或`v1`资源类型为已弃用或新模式在`NetApp-Accc`(或自定义命名)命名空间中部署入站资源：
 +
 .. 对于 `v1bea1` 已弃用的架构，请遵循以下示例：

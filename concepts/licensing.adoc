@@ -14,29 +14,23 @@ summary: 了解如何根据许可证状态对 Astra 控制中心执行不同的�
 [role="lead"]
 要启用完整的应用程序数据管理功能、需要安装Astra Control Center许可证。如果在没有许可证的情况下部署 Astra 控制中心，则 Web UI 中会显示一个横幅，警告系统功能受限。
 
-以下操作需要有效的许可证：
+您需要一个许可证来保护应用程序和数据。请参见Astra控制中心 link:../concepts/intro.html["features"] 了解详细信息。
 
-* 管理新应用程序
-* 创建快照或备份
-* 配置保护策略以计划快照或备份
-* 从快照或备份还原
-* 从快照或当前状态克隆
-* 将应用程序复制到远程系统
+ After you purchase the product, you receive a serial number and license. You can generate the NetApp license file (NLF) from the https://mysupport.netapp.com[NetApp Support Site^].
+您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。有关详细信息，请参见 link:../get-started/requirements.html["要求"]。
+
+有关ONTAP 存储后端所需许可证的详细信息、请参见 link:../get-started/requirements.html["支持的存储后端"]。
 
 
-
-NOTE: 您可以在没有许可证的情况下添加集群，添加存储分段以及管理 Astra Data Store 存储后端。但是，要使用 Astra Data Store 作为存储后端来管理应用程序，您需要有效的 Astra Control Center 许可证。
+NOTE: 您可以在没有许可证的情况下添加集群、添加存储分段以及管理存储后端。
 
 
 
 == 如何计算许可证使用量
 
-在将新集群添加到 Astra 控制中心时，只有在集群上运行的至少一个应用程序由 Astra 控制中心管理之后，该集群才会计入已用许可证。您还可以将 Astra Data Store 存储后端添加到 Astra 控制中心，而不会影响许可证使用。这样，您就可以从未经许可的 Astra 控制中心系统管理 Astra 数据存储后端。
+在将新集群添加到 Astra 控制中心时，只有在集群上运行的至少一个应用程序由 Astra 控制中心管理之后，该集群才会计入已用许可证。
 
-当您开始管理集群上的应用程序时、该集群的所有CPU单元都会包含在Astra Control Center许可证使用中。如果集群已获得Astra Data Store的许可部署、则这些CPU单元将从Astra控制中心许可证使用量计算中排除。
-
-
-NOTE: Astra数据存储评估部署中的CPU单元不会被排除在Astra控制中心许可证使用范围之外。
+当您开始管理集群上的应用程序时、该集群的所有CPU单元都会包含在Astra Control Center许可证使用中。
 
 
 

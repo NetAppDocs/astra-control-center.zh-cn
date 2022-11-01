@@ -418,7 +418,7 @@ NOTE: 有关 "loadbalancer" 服务类型和入口的其他详细信息，请参�
 
 
 .nginx 入口控制器的步骤
-. 使用现有密钥 `secure-testing-cert` 或创建类型的密钥 http://kubernetes.io/tls["`Kubernetes 。 IO/TLS`"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
+. 使用现有密钥 `secure-testing-cert` 或创建类型的密钥 http://kubernetes.io/tls["8a637503539b25b68130b6e8003579d9"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
 . 在 `NetApp-Accc` （或自定义命名）命名空间中为已弃用或新模式部署入站资源：
 +
 .. 对于已弃用的模式，请遵循以下示例：
