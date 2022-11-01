@@ -16,7 +16,8 @@ summary: 了解如何根据许可证状态对 Astra 控制中心执行不同的�
 
 您需要一个许可证来保护应用程序和数据。请参见Astra控制中心 link:../concepts/intro.html["features"] 了解详细信息。
 
- After you purchase the product, you receive a serial number and license. You can generate the NetApp license file (NLF) from the https://mysupport.netapp.com[NetApp Support Site^].
+购买产品后、您将收到序列号和许可证。您可以从生成NetApp许可证文件(NLF) https://mysupport.netapp.com["NetApp 支持站点"^]。
+
 您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。有关详细信息，请参见 link:../get-started/requirements.html["要求"]。
 
 有关ONTAP 存储后端所需许可证的详细信息、请参见 link:../get-started/requirements.html["支持的存储后端"]。

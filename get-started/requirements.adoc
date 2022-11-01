@@ -257,7 +257,7 @@ NOTE: 操作员及其安装的应用程序必须使用相同的命名空间；�
 
 要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。您需要一个许可证来保护应用程序和数据。请参见 link:../concepts/intro.html["Astra控制中心功能"] 了解详细信息。
 
-您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。您可以通过注册注册注册免费试用版 link:https://cloud.netapp.com/astra-register["此处"^]。
+您可以使用评估版许可证试用Astra控制中心、这样、您可以在自下载此许可证之日起的90天内使用Astra控制中心。您可以通过注册注册注册免费试用版 link:https://cloud.netapp.com/astra-register["此处"^]。
 
 有关ONTAP 存储后端所需许可证的详细信息、请参见 link:../get-started/requirements.html["支持的存储后端"]。
 

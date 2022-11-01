@@ -2706,4 +2706,6 @@
   <block id="766c3edeaca88ba89208ae8b5e83479e" category="list-text">管理帐户(包括用户、角色、用于用户身份验证的LDAP、凭据、存储库连接等)。详细了解如何操作 <block ref="b1dea768305cd8aacf8d500d63953651" category="inline-link-macro-rx"></block>。</block>
   <block id="84d5805c780bde43dccfe3666e3283da" category="inline-link-macro">正在连接到Cloud Insights</block>
   <block id="cfbe784ada75bca24be2b83ad0a64339" category="list-text">或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。了解更多信息 <block ref="76c9595f49defd96fd8c9e749ca851ae" category="inline-link-macro-rx"></block>。</block>
+  <block id="f06853bf12dc9a7737fb9921535d6e83" category="paragraph">购买产品后、您将收到序列号和许可证。您可以从生成NetApp许可证文件(NLF)<block ref="fcc52edac3ce57829c48ee35d97a295d" category="inline-link-rx"></block>。</block>
+  <block id="34c08446234edc37b22fa4ed2230f6fe" category="paragraph">您可以使用评估版许可证试用Astra控制中心、这样、您可以在自下载此许可证之日起的90天内使用Astra控制中心。您可以通过注册注册注册免费试用版 <block ref="94c4952ff767dc7f2318bf778dfb79d4" category="inline-link-macro-rx"></block>。</block>
 </blocks>
