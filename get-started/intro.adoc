@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: concepts/intro.html 
-keywords: how astra control works, what is astra, kubernetes cluster, cloud volumes ontap, what is astra control 
-summary: Astra 是 Kubernetes 应用程序数据生命周期管理服务，可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。 
+permalink: get-started/intro.html 
+keywords: how astra control works, what is astra, kubernetes cluster, what is astra control center 
+summary: Astra Control是Kubernetes应用程序数据生命周期管理服务、可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。 
 ---
 = 了解Astra Control
 :hardbreaks:
@@ -11,6 +11,7 @@ summary: Astra 是 Kubernetes 应用程序数据生命周期管理服务，可�
 :imagesdir: ../media/concepts/
 
 
+[role="lead"]
 Astra Control 是 Kubernetes 应用程序数据生命周期管理解决方案，可简化有状态应用程序的操作。轻松保护、备份、复制和迁移Kubernetes工作负载、并即时创建有效的应用程序克隆。
 
 
@@ -35,7 +36,7 @@ Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键
 
 Astra Control 有两种部署模式：
 
-* * Astra Control Service* ： NetApp 管理的一项服务，可在 Google Kubernetes Engine （ GKEE ）和 Azure Kubernetes Service （ AKS ）中为 Kubernetes 集群提供应用程序感知型数据管理。
+* * Astra Control Service*：NetApp管理的一项服务、可为多个云提供商环境中的Kubernetes集群提供应用程序感知型数据管理。
 * * Astra Control Center* ：自管理软件，可为内部环境中运行的 Kubernetes 集群提供应用程序感知型数据管理。
 
 
@@ -66,7 +67,6 @@ Astra Control 有两种部署模式：
 
 | 什么是存储后端支持？ | NetApp 云服务产品  a| 
 * NetApp ONTAP AFF 和 FAS 系统
-* 作为存储后端的 Astra 数据存储
 * Cloud Volumes ONTAP 存储后端
 
 
@@ -82,7 +82,7 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 * 您可以通过设置云提供商并注册 Astra 帐户开始使用 Astra Control Service 。
 +
 ** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 或 Google Persistent Disk 作为永久性卷的存储后端。
-** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 或 Azure 磁盘存储作为永久性卷的存储后端。
+** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 或Azure受管磁盘作为永久性卷的存储后端。
 ** 对于Amazon EKS集群、Astra Control Service使用 https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] 或 https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["适用于 NetApp ONTAP 的 Amazon FSX"^] 作为永久性卷的存储后端。
 
 
@@ -101,7 +101,7 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 * 然后，您可以使用 Astra Control Service 管理这些应用程序，并开始创建快照，备份和克隆。
 
 
-Astra Control 的免费计划支持您管理帐户中多达 10 个应用程序。如果您要管理 10 个以上的应用程序，则需要通过从 " 免费计划 " 升级到 " 高级计划 " 来设置计费。
+Astra Control的免费计划支持您管理帐户中多达10个命名空间。如果您要管理10个以上的计划、则需要通过从"免费计划"升级到"高级计划"来设置计费。
 
 
 
@@ -109,17 +109,13 @@ Astra Control 的免费计划支持您管理帐户中多达 10 个应用程序�
 
 Astra 控制中心在您自己的私有云中本地运行。
 
-Astra控制中心通过以下功能支持Kubernetes集群：
-
-* ONTAP 9.5 及更高版本的 Trident 存储后端
-* Astra 数据存储存储后端
-
+Astra控制中心支持具有基于Trident的存储类以及ONTAP 9.5及更高版本的存储后端的Kubernetes集群。
 
 在云互联环境中， Astra 控制中心使用 Cloud Insights 提供高级监控和遥测功能。如果没有 Cloud Insights 连接，则 Astra 控制中心可提供有限的（ 7 天的指标）监控和遥测功能，并通过开放式指标端点导出到 Kubernetes 原生监控工具（例如 Prometheus 和 Grafana ）。
 
 Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，可为用户和 NetApp 支持提供故障排除和使用信息。
 
-您可以使用 90 天评估许可证试用 Astra Control Center 。评估版可通过电子邮件和社区（ Slack 通道）选项来支持。此外，您还可以从产品支持信息板访问知识库文章和文档。
+您可以使用 90 天评估许可证试用 Astra Control Center 。评估版可通过电子邮件和社区选项获得支持。此外，您还可以从产品支持信息板访问知识库文章和文档。
 
 要安装和使用 Astra 控制中心，您需要满足特定的要求 https://docs.netapp.com/us-en/astra-control-center/get-started/requirements.html["要求"]。
 
@@ -138,12 +134,6 @@ Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，�
 
 详细了解如何操作 https://docs.netapp.com/us-en/astra-control-center/get-started/setup_overview.html["设置 Astra 控制中心"]。
 
-Astra 控制中心可执行以下操作：
-
-* 发现有关集群的详细信息、包括命名空间、并可用于定义和保护应用程序。
-* 在您选择管理的集群上发现您的 Astra Trident 或 Astra 数据存储配置，并可用于监控存储后端。
-
-
 您可以将应用程序添加到集群中。或者、如果要管理的集群中已有一些应用程序、则可以使用Astra控制中心对其进行管理。然后、使用Astra控制中心创建快照、备份、克隆和复制关系。
 
 
@@ -152,7 +142,6 @@ Astra 控制中心可执行以下操作：
 
 * https://docs.netapp.com/us-en/astra/index.html["Astra Control Service 文档"^]
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Astra 控制中心文档"^]
-* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 文档"]
 * https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
 * https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
 * https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"^]

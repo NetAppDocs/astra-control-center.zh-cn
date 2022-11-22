@@ -11,6 +11,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 :imagesdir: ../media/get-started/
 
 
+[role="lead"]
 借助 Astra 控制中心，您可以使用自管理的 Kubernetes 集群和 Cloud Volumes ONTAP 实例在混合云环境中管理应用程序。您可以在内部 Kubernetes 集群或云环境中的一个自管理 Kubernetes 集群中部署 Astra Control Center 。
 
 在其中一种部署中，您可以使用 Cloud Volumes ONTAP 作为存储后端来执行应用程序数据管理操作。您还可以将 S3 存储分段配置为备份目标。
@@ -55,7 +56,7 @@ Astra 控制中心需要以下 AWS 操作环境：
 
 
 
-NOTE: 确保您选择托管 Astra 控制中心的操作环境符合环境官方文档中概述的基本资源要求。
+NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
 
 除了环境的资源要求之外， Astra 控制中心还需要以下资源：
 
@@ -84,7 +85,7 @@ NOTE: 确保您选择托管 Astra 控制中心的操作环境符合环境官方�
 
 
 
-| Astra Trident （在 NetApp Cloud Manager 中发现 Kubernetes 集群时安装）  a| 
+| Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
 安装并配置了 Astra Trident 21.04 或更高版本，并将 NetApp ONTAP 9.5 或更高版本作为存储后端
 
 
@@ -98,7 +99,7 @@ NOTE: Astra 控制中心托管的集群和受管集群必须能够访问同一�
 
 
 | Astra Trident / ONTAP 配置  a| 
-Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持以下 ONTAP Kubernetes 存储类，这些存储类是在将 Kubernetes 集群导入到 NetApp Cloud Manager 中时创建的。这些功能由 Astra Trident 提供：
+Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持以下ONTAP Kubernetes存储类、这些存储类是在将Kubernetes集群导入到NetApp BlueXP (以前称为Cloud Manager)时创建的。这些功能由 Astra Trident 提供：
 
 * `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
 * `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
@@ -124,15 +125,15 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 .  that you have sufficient IAM permissions。
 .  a RedHat OpenShift cluster on AWS。
 .  AWS。
-.  NetApp Cloud Manager。
-.  Astra Control Center。
+.  NetApp BlueXP for AWS。
+.  Astra Control Center for AWS。
 
 
 
 
 === 确保您具有足够的 IAM 权限
 
-确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp Cloud Manager Connector。
+确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp BlueXP (以前称为Cloud Manager) Connector。
 
 请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-aws.html#initial-aws-credentials["初始 AWS 凭据"^]。
 
@@ -173,18 +174,18 @@ image:acc-cvo-aws2.png["采用 Cloud Volumes ONTAP 的 Astra 控制中心部署�
 
 
 
-=== 配置 NetApp Cloud Manager
+=== 配置适用于AWS的NetApp BlueXP
 
-使用 Cloud Manager 创建工作空间，向 AWS 添加连接器，创建工作环境并导入集群。
+使用NetApp BlueXP (以前称为Cloud Manager)创建工作空间、向AWS添加连接器、创建工作环境并导入集群。
 
-按照 Cloud Manager 文档完成以下步骤。请参见以下内容：
+按照BlueXP文档完成以下步骤。请参见以下内容：
 
 * https://docs.netapp.com/us-en/occm/task_getting_started_aws.html["AWS 中的 Cloud Volumes ONTAP 入门"^]。
-* https://docs.netapp.com/us-en/occm/task_creating_connectors_aws.html#create-a-connector["使用 Cloud Manager 在 AWS 中创建连接器"^]
+* https://docs.netapp.com/us-en/occm/task_creating_connectors_aws.html#create-a-connector["使用BlueXP在AWS中创建连接器"^]
 
 
 .步骤
-. 将凭据添加到 Cloud Manager 。
+. 将凭据添加到BlueXP。
 . 创建工作空间。
 . 为 AWS 添加连接器。选择 AWS 作为提供程序。
 . 为您的云环境创建一个工作环境。
@@ -211,7 +212,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用�
 
 
 
-=== 安装 Astra 控制中心
+=== 安装适用于AWS的Astra控制中心
 
 请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
 
@@ -243,7 +244,7 @@ NOTE: AWS使用通用S3存储分段类型。
 === GCP的操作环境要求
 
 
-NOTE: 确保您选择托管 Astra 控制中心的操作环境符合环境官方文档中概述的基本资源要求。
+NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
 
 除了环境的资源要求之外， Astra 控制中心还需要以下资源：
 
@@ -272,7 +273,7 @@ NOTE: 确保您选择托管 Astra 控制中心的操作环境符合环境官方�
 
 
 
-| Astra Trident （在 NetApp Cloud Manager 中发现 Kubernetes 集群时安装）  a| 
+| Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
 安装并配置了 Astra Trident 21.04 或更高版本，并将 NetApp ONTAP 9.5 或更高版本作为存储后端
 
 
@@ -286,7 +287,7 @@ NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
 
 
 | Astra Trident / ONTAP 配置  a| 
-Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持以下 ONTAP Kubernetes 存储类，这些存储类是在将 Kubernetes 集群导入到 NetApp Cloud Manager 中时创建的。这些功能由 Astra Trident 提供：
+Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持在将ONTAP Kubernetes集群导入到NetApp BlueXP中时创建的以下Kubernetes存储类。这些功能由 Astra Trident 提供：
 
 * `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
 * `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
@@ -310,8 +311,8 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 .  a GCP Project and Virtual Private Cloud。
 .  that you have sufficient IAM permissions。
 .  GCP。
-.  NetApp Cloud Manager。
-.  and configure Astra Control Center。
+.  NetApp BlueXP for GCP。
+.  Astra Control Center for GCP。
 
 
 
@@ -341,7 +342,7 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 
 === 确保您具有足够的 IAM 权限
 
-确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp Cloud Manager Connector。
+确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp BlueXP (以前称为Cloud Manager) Connector。
 
 请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html#setting-up-permissions["初始GCP凭据和权限"^]。
 
@@ -396,22 +397,22 @@ done < astra-control-center-22.04.41.manifest
 
 
 
-=== 配置 NetApp Cloud Manager
+=== 为GCP配置NetApp BlueXP
 
-使用Cloud Manager创建工作空间、向GCP添加连接器、创建工作环境并导入集群。
+使用NetApp BlueXP (以前称为Cloud Manager)创建工作空间、向GCP添加连接器、创建工作环境并导入集群。
 
-按照 Cloud Manager 文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_gcp.html["GCP中的Cloud Volumes ONTAP 入门"^]。
+按照BlueXP文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_gcp.html["GCP中的Cloud Volumes ONTAP 入门"^]。
 
 .您需要什么？ #8217 ；将需要什么
 * 使用所需的IAM权限和角色访问GCP服务帐户
 
 
 .步骤
-. 将凭据添加到 Cloud Manager 。请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-adding-gcp-accounts.html["正在添加GCP帐户"^]。
+. 将凭据添加到BlueXP。请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-adding-gcp-accounts.html["正在添加GCP帐户"^]。
 . 为GCP添加一个连接器。
 +
 .. 选择"GCP"作为提供程序。
-.. 输入GCP凭据。请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html["通过Cloud Manager在GCP中创建连接器"^]。
+.. 输入GCP凭据。请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html["从BlueXP在GCP中创建连接器"^]。
 .. 确保连接器正在运行，然后切换到该连接器。
 
 
@@ -439,7 +440,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行、也可以在高可用�
 
 
 
-=== 安装 Astra 控制中心
+=== 安装适用于GCP的Astra控制中心
 
 请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
 
@@ -450,11 +451,7 @@ NOTE: GCP使用通用S3存储分段类型。
 +
 [listing]
 ----
-kubectl create secret docker-registry <secret name>
---docker-server=<Registry location>
---docker-username=_json_key
---docker-password="$(cat <GCP Service Account JSON file>)"
---namespace=pcloud
+kubectl create secret docker-registry <secret name> --docker-server=<Registry location> --docker-username=_json_key --docker-password="$(cat <GCP Service Account JSON file>)" --namespace=pcloud
 ----
 
 
@@ -482,7 +479,7 @@ kubectl create secret docker-registry <secret name>
 
 === Azure 的操作环境要求
 
-确保您选择托管 Astra 控制中心的操作环境符合环境官方文档中概述的基本资源要求。
+确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
 
 除了环境的资源要求之外， Astra 控制中心还需要以下资源：
 
@@ -513,7 +510,7 @@ kubectl create secret docker-registry <secret name>
 
 
 
-| Astra Trident （在 NetApp Cloud Manager 中发现 Kubernetes 集群时安装）  a| 
+| Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装)  a| 
 安装和配置的 Astra Trident 21.04 或更高版本以及 NetApp ONTAP 9.5 或更高版本将用作存储后端
 
 
@@ -527,7 +524,7 @@ NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
 
 
 | Astra Trident / ONTAP 配置  a| 
-Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持以下 ONTAP Kubernetes 存储类，这些存储类是在将 Kubernetes 集群导入到 NetApp Cloud Manager 中时创建的。这些功能由 Astra Trident 提供：
+Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持在将ONTAP Kubernetes集群导入到NetApp BlueXP中时创建的以下Kubernetes存储类。这些功能由 Astra Trident 提供：
 
 * `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
 * `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
@@ -551,8 +548,8 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 .  Azure resource groups。
 .  that you have sufficient IAM permissions。
 .  Azure。
-.  NetApp Cloud Manager。
-.  and configure Astra Control Center。
+.  NetApp BlueXP (formerly Cloud Manager) for Azure。
+.  and configure Astra Control Center for Azure。
 
 
 
@@ -563,7 +560,7 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 有关安装说明，请参见以下内容：
 
-* https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-azure-default.html["在 Azure 上安装 OpenShift 集群"^]。
+* https://docs.openshift.com/container-platform/4.8/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
 * https://docs.openshift.com/container-platform/4.8/installing/installing_azure/installing-azure-account.html#installing-azure-account["安装 Azure 帐户"^]。
 
 
@@ -582,7 +579,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 === 确保您具有足够的 IAM 权限
 
-确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp Cloud Manager Connector。
+确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp BlueXP Connector。
 
 请参见 https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-accounts-azure.html["Azure 凭据和权限"^]。
 
@@ -592,7 +589,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 接下来、将Azure配置为创建虚拟网络、设置计算实例、创建Azure Blob容器、创建Azure容器注册表(ACR)以托管Astra控制中心映像、并将这些映像推送到此注册表。
 
-按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-azure-default.html["在 Azure 上安装 OpenShift 集群"^]。
+按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
 
 . 创建Azure虚拟网络。
 . 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
@@ -633,28 +630,28 @@ done < astra-control-center-22.04.41.manifest
 
 
 
-=== 配置 NetApp Cloud Manager
+=== 为Azure配置NetApp BlueXP (以前称为Cloud Manager)
 
-使用 Cloud Manager 创建工作空间，向 Azure 添加连接器，创建工作环境并导入集群。
+使用BlueXP (以前称为Cloud Manager)创建工作空间、向Azure添加连接器、创建工作环境并导入集群。
 
-按照 Cloud Manager 文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_azure.html["Azure 中的 Cloud Manager 入门"^]。
+按照BlueXP文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_azure.html["Azure中的BlueXP入门"^]。
 
 使用所需的 IAM 权限和角色访问 Azure 帐户
 
 .步骤
-. 将凭据添加到 Cloud Manager 。
-. 添加适用于 Azure 的连接器。请参见 https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager 策略"^]。
+. 将凭据添加到BlueXP。
+. 添加适用于 Azure 的连接器。请参见 https://mysupport.netapp.com/site/info/cloud-manager-policies["BlueXP策略"^]。
 +
 .. 选择 * Azure * 作为提供程序。
 .. 输入 Azure 凭据，包括应用程序 ID ，客户端密钥和目录（租户） ID 。
 +
-请参见 https://docs.netapp.com/us-en/occm/task_creating_connectors_azure.html["从 Cloud Manager 在 Azure 中创建连接器"^]。
+请参见 https://docs.netapp.com/us-en/occm/task_creating_connectors_azure.html["从BlueXPr.在Azure中创建连接器"^]。
 
 
 
 . 确保连接器正在运行，然后切换到该连接器。
 +
-image:acc-cvo-azure-connectors.png["在 Cloud Manager 中切换连接器"]
+image:acc-cvo-azure-connectors.png["在BlueXP中切换连接器"]
 
 . 为您的云环境创建一个工作环境。
 +
@@ -663,13 +660,13 @@ image:acc-cvo-azure-connectors.png["在 Cloud Manager 中切换连接器"]
 
 
 +
-image:acc-cvo-azure-working-environment.png["在 Cloud Manager 中创建工作环境"]
+image:acc-cvo-azure-working-environment.png["在BlueXP中创建工作环境"]
 
 . 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
 +
 .. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
 +
-image:acc-cvo-azure-connected.png["已在 Cloud Manager 中导入集群"]
+image:acc-cvo-azure-connected.png["已在BlueXP中导入集群"]
 
 .. 在右上角，记下 Trident 版本。
 .. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
@@ -684,7 +681,7 @@ image:acc-cvo-azure-connected.png["已在 Cloud Manager 中导入集群"]
 
 
 
-=== 安装和配置 Astra 控制中心
+=== 安装和配置适用于Azure的Astra控制中心
 
 按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"]。
 

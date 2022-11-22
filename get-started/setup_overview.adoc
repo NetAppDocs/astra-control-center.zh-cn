@@ -11,10 +11,12 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 :imagesdir: ../media/get-started/
 
 
-Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端。安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
+[role="lead"]
+安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
 
 .任务
 *  a license for Astra Control Center
+*  your environment for cluster management using Astra Control
 *  cluster
 *  a storage backend
 *  a bucket
@@ -24,21 +26,21 @@ Astra 控制中心支持并监控 ONTAP 和 Astra 数据存储作为存储后端
 
 == 添加 Astra 控制中心的许可证
 
-您可以使用 UI 或添加新许可证 https://docs.netapp.com/us-en/astra-automation/index.html["API"^] 获得完整的 Astra 控制中心功能。如果没有许可证，则只能使用 Astra 控制中心来管理用户和添加新集群。
+您可以使用Astra Control UI或添加新许可证 https://docs.netapp.com/us-en/astra-automation/index.html["API"^] 获得完整的 Astra 控制中心功能。如果没有许可证，则只能使用 Astra 控制中心来管理用户和添加新集群。
 
-有关如何计算许可证的详细信息，请参见 link:../concepts/licensing.html["许可"]。
-
-
-NOTE: 要更新现有评估版或完整许可证，请参见 link:../use/update-licenses.html["更新现有许可证"]。
-
-Astra 控制中心许可证使用 Kubernetes CPU 单元测量 CPU 资源。此许可证需要考虑分配给所有受管 Kubernetes 集群的工作节点的 CPU 资源。在添加许可证之前，您需要从获取许可证文件（ NLF ） link:https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
-
-您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。您可以通过注册注册注册免费试用版 link:https://cloud.netapp.com/astra-register["此处"^]。
+Astra控制中心许可证使用Kubernetes CPU单元测量CPU资源、并计算分配给所有受管Kubernetes集群的工作节点的CPU资源。许可证基于vCPU使用量。有关如何计算许可证的详细信息、请参见 link:../concepts/licensing.html["许可"^]。
 
 
 NOTE: 如果您的安装增长到超过许可的 CPU 单元数，则 Astra 控制中心将阻止您管理新应用程序。超过容量时，将显示警报。
 
-从下载 Astra 控制中心时 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]，您还下载了 NetApp 许可证文件（ NLF ）。确保您有权访问此许可证文件。
+
+NOTE: 要更新现有评估版或完整许可证、请参见 link:../use/update-licenses.html["更新现有许可证"^]。
+
+.您需要什么？ #8217 ；将需要什么
+* 访问新安装的Astra Control Center实例。
+* 管理员角色权限。
+* 答 link:../concepts/licensing.html["NetApp 许可证文件"^] (nlf)。
+
 
 .步骤
 . 登录到 Astra 控制中心 UI 。
@@ -51,58 +53,454 @@ NOTE: 如果您的安装增长到超过许可的 CPU 单元数，则 Astra 控�
 * 帐户 * > * 许可证 * 页面显示许可证信息，到期日期，许可证序列号，帐户 ID 和使用的 CPU 单元。
 
 
-NOTE: 如果您拥有评估许可证，请务必存储帐户 ID ，以避免在未发送 ASUP 的情况下 Astra 控制中心出现故障时丢失数据。
+NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据、请确保存储您的帐户ID、以避免在Astra控制中心发生故障时丢失数据。
+
+
+
+== 使用Astra Control准备用于集群管理的环境
+
+在添加集群之前、应确保满足以下前提条件。您还应运行资格检查、以确保集群已准备好添加到Astra控制中心并创建集群管理角色。
+
+.您需要什么？ #8217 ；将需要什么
+* 您的环境符合 link:../get-started/requirements.html#operational-environment-requirements["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
+* 一个版本的Astra Trident link:../get-started/requirements.html#operational-environment-requirements["受Astra控制中心支持"^] 已安装：
++
+
+NOTE: 您可以 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#choose-the-deployment-method["部署Astra Trident"^] 使用Trident运算符(手动或使用Helm图表)或 `tridentctl`。在安装或升级Astra Trident之前、请查看 https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["支持的前端、后端和主机配置"^]。
+
++
+** *已配置Trident存储后端*：至少必须有一个Astra Trident存储后端 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["已配置"^] 在集群上。
+** *已配置Trident存储类*：至少必须有一个Astra Trident存储类 https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["已配置"^] 在集群上。如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
+** 已安装并配置* Astra Trident卷快照控制器和卷快照类*：卷快照控制器必须为 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["已安装"^] 以便可以在Astra Control中创建快照。至少一个Astra Trident `VolumeSnapshotClass` 已经 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-set-up-a-volumesnapshotclass["设置"^] 由管理员执行。
+
+
+* * Kubeconfig accessible*：您可以访问 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["cluster kubeconfig"^] 这仅包括一个上下文元素。
+* * ONTAP 凭据*：您需要在备用ONTAP 系统上设置ONTAP 凭据以及超级用户和用户ID、以便使用Astra控制中心备份和还原应用程序。
++
+在ONTAP 命令行中运行以下命令：
+
++
+[listing]
+----
+export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -superuser sys
+export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -anon 65534
+----
+* *仅Rancher *：在Rancher环境中管理应用程序集群时、请修改Rancher提供的kubeconfig文件中的应用程序集群默认上下文、以使用控制平面上下文、而不是Rancher API服务器上下文。这样可以减少 Rancher API 服务器上的负载并提高性能。
+
+
+
+
+=== 运行资格检查
+
+运行以下资格检查，以确保您的集群已准备好添加到 Astra 控制中心。
+
+.步骤
+. 检查 Trident 版本。
++
+[source, console]
+----
+kubectl get tridentversions -n trident
+----
++
+如果存在 Trident ，您将看到类似于以下内容的输出：
+
++
+[listing]
+----
+NAME      VERSION
+trident   22.10.0
+----
++
+如果 Trident 不存在，您将看到类似于以下内容的输出：
+
++
+[listing]
+----
+error: the server doesn't have a resource type "tridentversions"
+----
++
+
+NOTE: 如果未安装 Trident 或安装的版本不是最新的，则需要先安装最新版本的 Trident ，然后再继续操作。请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Trident 文档"^] 有关说明，请参见。
+
+. 确保Pod正在运行：
++
+[source, console]
+----
+kubectl get pods -n trident
+----
+. 确定存储类是否正在使用受支持的Trident驱动程序。配置程序名称应为 `csi.trident.netapp.io`。请参见以下示例：
++
+[source, console]
+----
+kubectl get sc
+----
++
+响应示例：
+
++
+[listing]
+----
+NAME                  PROVISIONER            RECLAIMPOLICY  VOLUMEBINDINGMODE  ALLOWVOLUMEEXPANSION  AGE
+ontap-gold (default)  csi.trident.netapp.io  Delete         Immediate          true                  5d23h
+----
+
+
+
+
+=== 创建一个有限的集群角色kubeconfig
+
+您可以选择为Astra控制中心创建有限的管理员角色。这不是Astra控制中心设置所需的操作步骤。此操作步骤 有助于创建一个单独的kubeconfig、以限制Astra Control对其管理的集群的权限。
+
+在完成操作步骤 步骤之前、请确保您对要管理的集群具有以下信息：
+
+* 已安装kubectl v1.23或更高版本
+* kubectl访问要使用Astra控制中心添加和管理的集群
++
+
+NOTE: 对于此操作步骤 、您不需要对运行Astra控制中心的集群进行kubectl访问。
+
+* 要使用活动环境的集群管理员权限管理的集群的活动kubeconfig
+
+
+.步骤
+====
+. 创建服务帐户：
++
+.. 创建名为`asacontrol service-account.yaml`的服务帐户文件。
++
+根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astracontrol-service-account.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: astracontrol-service-account
+  namespace: default
+----
+.. 应用服务帐户：
++
+[source, console]
+----
+kubectl apply -f astracontrol-service-account.yaml
+----
+
+
+. 使用Astra Control管理集群所需的最低权限创建一个有限的集群角色：
++
+.. 创建 `ClusterRole` 文件已调用 `astra-admin-account.yaml`。
++
+根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astra-admin-account.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: astra-admin-account
+rules:
+
+# Get, List, Create, and Update all resources
+# Necessary to backup and restore all resources in an app
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - create
+  - patch
+
+# Delete Resources
+# Necessary for in-place restore and AppMirror failover
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - crd.projectcalico.org
+  - extensions
+  - networking.k8s.io
+  - policy
+  - rbac.authorization.k8s.io
+  - snapshot.storage.k8s.io
+  - trident.netapp.io
+  resources:
+  - configmaps
+  - cronjobs
+  - daemonsets
+  - deployments
+  - horizontalpodautoscalers
+  - ingresses
+  - jobs
+  - namespaces
+  - networkpolicies
+  - persistentvolumeclaims
+  - poddisruptionbudgets
+  - pods
+  - podtemplates
+  - podsecuritypolicies
+  - replicasets
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - rolebindings
+  - roles
+  - secrets
+  - serviceaccounts
+  - services
+  - statefulsets
+  - tridentmirrorrelationships
+  - tridentsnapshotinfos
+  - volumesnapshots
+  - volumesnapshotcontents
+  verbs:
+  - delete
+
+# Watch resources
+# Necessary to monitor progress
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  verbs:
+  - watch
+
+# Update resources
+- apiGroups:
+  - ""
+  - build.openshift.io
+  - image.openshift.io
+  resources:
+  - builds/details
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - imagestreams/layers
+  - imagestreamtags
+  - imagetags
+  verbs:
+  - update
+
+# Use PodSecurityPolicies
+- apiGroups:
+  - extensions
+  - policy
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+----
+.. 应用集群角色：
++
+[source, console]
+----
+kubectl apply -f astra-admin-account.yaml
+----
+
+
+. 为集群角色创建与服务帐户的集群角色绑定：
++
+.. 创建一个 `ClusterRoleBindingm` 文件，该文件名为 `astracontrol — clusterrolebind.YAML` 。
++
+根据需要调整创建服务帐户时修改的任何名称和命名空间。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astracontrol-clusterrolebinding.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: astracontrol-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: astra-admin-account
+subjects:
+- kind: ServiceAccount
+  name: astracontrol-service-account
+  namespace: default
+----
+.. 应用集群角色绑定：
++
+[source, console]
+----
+kubectl apply -f astracontrol-clusterrolebinding.yaml
+----
+
+
+. 列出服务帐户密码，将 ` <context>` 替换为适用于您的安装的正确上下文：
++
+[source, console]
+----
+kubectl get serviceaccount astracontrol-service-account --context <context> --namespace default -o json
+----
++
+输出的结尾应类似于以下内容：
+
++
+[listing]
+----
+"secrets": [
+{ "name": "astracontrol-service-account-dockercfg-vhz87"},
+{ "name": "astracontrol-service-account-token-r59kr"}
+]
+----
++
+`sec白 烟` 数组中每个元素的索引均以 0 开头。在上面的示例中， `asacontrol service-account-dockercfg-vhz87` 的索引为 0 ， `asacontrol service-account-token-r59rk` 的索引为 1 。在输出中，记下包含 "token" 一词的服务帐户名称的索引。
+
+. 按如下所示生成 kubeconfig ：
++
+.. 创建 `create-kubeconfig.sh` 文件。将以下脚本开头的 `token_index` 替换为正确的值。
++
+[source, subs="specialcharacters,quotes"]
+----
+*create-kubeconfig.sh*
+----
++
+[source, console]
+----
+# Update these to match your environment.
+# Replace TOKEN_INDEX with the correct value
+# from the output in the previous step. If you
+# didn't change anything else above, don't change
+# anything else here.
+
+SERVICE_ACCOUNT_NAME=astracontrol-service-account
+NAMESPACE=default
+NEW_CONTEXT=astracontrol
+KUBECONFIG_FILE='kubeconfig-sa'
+
+CONTEXT=$(kubectl config current-context)
+
+SECRET_NAME=$(kubectl get serviceaccount ${SERVICE_ACCOUNT_NAME} \
+  --context ${CONTEXT} \
+  --namespace ${NAMESPACE} \
+  -o jsonpath='{.secrets[TOKEN_INDEX].name}')
+TOKEN_DATA=$(kubectl get secret ${SECRET_NAME} \
+  --context ${CONTEXT} \
+  --namespace ${NAMESPACE} \
+  -o jsonpath='{.data.token}')
+
+TOKEN=$(echo ${TOKEN_DATA} | base64 -d)
+
+# Create dedicated kubeconfig
+# Create a full copy
+kubectl config view --raw > ${KUBECONFIG_FILE}.full.tmp
+
+# Switch working context to correct context
+kubectl --kubeconfig ${KUBECONFIG_FILE}.full.tmp config use-context ${CONTEXT}
+
+# Minify
+kubectl --kubeconfig ${KUBECONFIG_FILE}.full.tmp \
+  config view --flatten --minify > ${KUBECONFIG_FILE}.tmp
+
+# Rename context
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  rename-context ${CONTEXT} ${NEW_CONTEXT}
+
+# Create token user
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-credentials ${CONTEXT}-${NAMESPACE}-token-user \
+  --token ${TOKEN}
+
+# Set context to use token user
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-context ${NEW_CONTEXT} --user ${CONTEXT}-${NAMESPACE}-token-user
+
+# Set context to correct namespace
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-context ${NEW_CONTEXT} --namespace ${NAMESPACE}
+
+# Flatten/minify kubeconfig
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  view --flatten --minify > ${KUBECONFIG_FILE}
+
+# Remove tmp
+rm ${KUBECONFIG_FILE}.full.tmp
+rm ${KUBECONFIG_FILE}.tmp
+----
+.. 获取用于将其应用于 Kubernetes 集群的命令。
++
+[source, console]
+----
+source create-kubeconfig.sh
+----
+
+
+. (可选)将kubeconfig重命名为集群的有意义名称。
++
+[listing]
+----
+mv kubeconfig-sa YOUR_CLUSTER_NAME_kubeconfig
+----
+
+
+====
+
+
+=== 下一步是什么？
+
+现在、您已确认满足了这些前提条件、您已做好准备  cluster,添加集群。
 
 
 
 == 添加集群
 
-要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。对于 Astra 数据存储，您希望添加 Kubernetes 应用程序集群，其中包含使用由 Astra 数据存储配置的卷的应用程序。
+要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。
 
 
-TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。您可以使用 * 添加集群 * 功能通过 Astra 控制中心管理集群。
+TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。
 
-[NOTE]
-====
-当Astra Control管理集群时、它会跟踪集群的默认存储类。如果使用`kubectl`命令更改存储类、则Astra Control将还原此更改。要更改由Astra Control管理的集群中的默认存储类、请使用以下方法之一：
-
-* 使用Astra Control API `PUT /managedClusters` Endpoint、并使用`DefaultStorageClass`参数分配其他默认存储类。
-* 使用Astra Control Web UI分配其他默认存储类。请参见  the default storage class。
-
-
-====
 .您需要什么？ #8217 ；将需要什么
-* 在添加集群之前，请查看并执行必要的操作 link:add-cluster-reqs.html["前提条件任务"^]。
+* 在添加集群之前，请查看并执行必要的操作  your environment for cluster management using Astra Control,前提条件任务。
 
 
 .步骤
-. 从 Astra 控制中心用户界面的 * 信息板 * 中，选择集群部分中的 * 添加 * 。
+. 从信息板或集群菜单导航：
++
+** 从"Resource Summary"的"*信息板*"中、从"Clusters"窗格中选择"*添加*"。
+** 在左侧导航区域中、选择*集群*、然后从集群页面中选择*添加集群*。
+
+
 . 在打开的 * 添加集群 * 窗口中，上传 `kubeconfig.yaml` 文件或粘贴 `kubeconfig.yaml` 文件的内容。
 +
 
 NOTE: `kubeconfig.yaml` 文件应仅包含一个集群的集群凭据 * 。
 
 +
-image:cluster-creds.png["显示了用于为集群上传 kubeconfig.yaml 的屏幕。"]
 
-+
-
-IMPORTANT: 如果您创建自己的 `kubeconfig` 文件，则应仅在其中定义 * 一 * 上下文元素。请参见 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Kubernetes 文档"^] 有关创建 `kubeconfig` 文件的信息。
+IMPORTANT: 创建自己的 `kubeconfig` file中、您只能定义*一*上下文元素。请参见 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Kubernetes 文档"^] 有关创建的信息 `kubeconfig` 文件。如果您使用为有限集群角色创建了kubeconfig  a limited cluster role kubeconfig,上述过程、请务必在此步骤中上传或粘贴kubeconfig。
 
 . 请提供凭据名称。默认情况下，凭据名称会自动填充为集群的名称。
-. 选择 * 配置存储 * 。
-. 选择要用于此 Kubernetes 集群的存储类，然后选择 * 审核 * 。
+. 选择 * 下一步 * 。
+. 选择要用于此Kubernetes集群的默认存储类、然后选择*下一步*。
 +
 
-NOTE: 您应选择一个由 ONTAP 存储或 Astra 数据存储提供支持的 Trident 存储类。
+NOTE: 您应选择一个由 ONTAP 存储提供支持的 Trident 存储类。
 
-+
-image:cluster-storage.png["显示要用于集群的存储类。"]
-
-. 查看相关信息，如果一切正常，请选择 * 添加集群 * 。
+. 查看相关信息、如果一切正常、请选择*添加*。
 
 
-集群将进入 * 正在发现 * 状态，然后更改为 * 正在运行 * 。您已成功添加 Kubernetes 集群，现在正在 Astra 控制中心中对其进行管理。
+集群将进入*正在发现*状态、然后更改为*运行状况良好*。现在、您正在使用Astra控制中心管理集群。
 
 
 IMPORTANT: 添加要在 Astra 控制中心中管理的集群后，部署监控操作员可能需要几分钟的时间。在此之前，通知图标将变为红色并记录一个 * 监控代理状态检查失败 * 事件。您可以忽略此问题，因为当 Astra 控制中心获得正确状态时，问题描述将解析。如果问题描述在几分钟内未解析，请转至集群，然后运行 `oc get Pod -n netapp-monitoring` 作为起点。您需要查看监控操作员日志以调试此问题。
@@ -111,150 +509,28 @@ IMPORTANT: 添加要在 Astra 控制中心中管理的集群后，部署监控�
 
 == 添加存储后端
 
-您可以添加存储后端，以使 Astra Control 能够管理其资源。您可以在受管集群上部署存储后端、也可以使用现有存储后端。
+您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
 
 通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。
 
-.现有Astra Data Store部署需要什么
-* 您已添加Kubernetes应用程序集群和底层计算集群。
-+
-
-IMPORTANT: 添加适用于Astra Data Store的Kubernetes应用程序集群并由Astra Control管理后、该集群在已发现的后端列表中显示为`非受管`。接下来，您必须添加包含 Astra 数据存储的计算集群并将 Kubernetes 应用程序集群置于底层。您可以从用户界面中的 * 后端 * 执行此操作。选择集群的 "Actions" 菜单，选择 `Manage` ，然后 link:../get-started/setup_overview.html#add-cluster["添加集群"]。在集群状态 `非受管` 更改为 Kubernetes 集群的名称后，您可以继续添加后端。
-
-
-
-.新的Astra Data Store部署需要什么
-* 您已拥有 link:../use/manage-packages-acc.html["已上传要部署的安装包版本"] 到Astra Control可访问的位置。
-* 您已添加要用于部署的Kubernetes集群。
-* 您已上传  a license for Astra Control Center,Astra Data Store许可证 部署到可供Astra Control访问的位置。
-
-
-.选项
-*  storage resources
-*  an existing storage backend
-
-
-
-
-=== 部署存储资源
-
-您可以部署新的Astra数据存储并管理关联的存储后端。
-
 .步骤
-. 从信息板或后端菜单导航：
+. 从左侧导航区域的信息板中、选择*后端*。
+. 执行以下操作之一：
 +
-** 从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。
-** 从 * 后端 * ：
-+
-... 在左侧导航区域中，选择 * 后端 * 。
-... 选择 * 添加 * 。
+** *新建后端*：选择*添加*以管理现有后端、选择* ONTAP *、然后选择*下一步*。
+** *已发现后端*：从操作菜单中、从受管集群中的已发现后端选择*管理*。
 
 
-
-
-. 在*部署*选项卡中选择* Astra Data Store*部署选项。
-. 选择要部署的Astra Data Store软件包：
-+
-.. 输入Astra Data Store应用程序的名称。
-.. 选择要部署的Astra数据存储的版本。
+. 输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。
 +
 
-NOTE: 如果您尚未上传要部署的版本、可以使用*添加软件包*选项或退出向导并使用 link:../use/manage-packages-acc.html["软件包管理"] 上传安装包。
+NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `ontapi` 和 `http`、在源和目标ONTAP 集群上。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+
+. 选择 * 下一步 * 。
+. 确认后端详细信息并选择 * 管理 * 。
 
 
-
-. 选择先前上传的Astra Data Store许可证、或者使用*添加许可证*选项上传要用于应用程序的许可证。
-+
-
-NOTE: 具有完全权限的Astra Data Store许可证将与您的Kubernetes集群关联、并且这些关联的集群应自动显示。如果没有受管集群、您可以选择*添加集群*选项将其添加到Astra Control管理中。对于Astra Data Store许可证、如果许可证和集群之间未建立关联、您可以在向导的下一页定义此关联。
-
-. 如果尚未将Kubernetes集群添加到Astra Control管理中、则需要从* Kubernetes cluster*页面中执行此操作。从列表中选择一个现有集群或选择*添加底层集群*将集群添加到Astra Control管理中。
-. 为要为Astra数据存储提供资源的Kubernetes集群选择一个模板大小。您可以选择以下选项之一：
-+
-** 如果您选择`建议的Kubernetes工作节点要求`、请根据您的许可证允许的范围选择从大到小的模板。
-** 如果选择`Custom Kubernetes worker node Requirements`、请选择每个集群节点所需的核心数和总内存。您还可以显示集群中符合核心和内存选择标准的节点数。
-+
-
-TIP: 选择模板时、请为大型工作负载选择具有更多内存和核心的大型节点、为小型工作负载选择更多节点。您应根据许可证允许的内容选择模板。每个建议的模板选项都会建议符合条件的节点数、这些节点满足每个节点的内存、核心和容量模板模式。
-
-
-
-. 配置节点：
-+
-.. 添加节点标签以标识支持此Astra数据存储集群的工作节点池。
-+
-
-IMPORTANT: 在开始部署或部署失败之前、必须将此标签添加到集群中要用于部署Astra Data Store的每个节点上。
-
-.. 手动配置每个节点的容量(GiB)或选择允许的最大节点容量。
-.. 配置集群中允许的最大节点数或允许集群中的最大节点数。
-
-
-. (仅限Astra Data Store完整许可证)输入要用于保护域的标签的密钥。
-+
-
-NOTE: 为每个节点的密钥至少创建三个唯一标签。例如、如果您的密钥为`astra.datastore.protection.domain`、则可以创建以下标签：`astra.datastore.protection.domain=domain1`,`astra.datastore.protection.domain=domain2`和`astra.datastore.protection.domain=domain3`。
-
-. 配置管理网络：
-+
-.. 输入Astra Data Store内部管理的管理IP地址、该地址与工作节点IP地址位于同一子网上。
-.. 选择对管理网络和数据网络使用相同的NIC、或者单独进行配置。
-.. 输入用于存储访问的数据网络IP地址池、子网掩码和网关。
-
-
-. 查看配置并选择*部署*以开始安装。
-
-
-成功安装后、后端会在后端列表中显示为`Available`状态、并显示活动性能信息。
-
-
-NOTE: 您可能需要刷新页面才能显示后端。
-
-
-
-=== 使用现有存储后端
-
-您可以将已发现的ONTAP 或Astra数据存储存储后端引入Astra控制中心管理。
-
-.步骤
-. 从信息板或后端菜单导航：
-+
-** 从*信息板*：从资源摘要中、从存储后端窗格中选择一个链接、然后从后端部分中选择*添加*。
-** 从 * 后端 * ：
-+
-... 在左侧导航区域中，选择 * 后端 * 。
-... 在受管集群中发现的后端上选择*管理*、或者选择*添加*来管理其他现有后端。
-
-
-
-
-. 选择 * 使用现有 * 选项卡。
-. 根据后端类型执行以下操作之一：
-+
-** * Astra 数据存储库 * ：
-+
-... 选择* Astra Data Store*。
-... 选择受管计算集群并选择 * 下一步 * 。
-... 确认后端详细信息并选择*添加存储后端*。
-
-
-** * ONTAP * ：
-+
-... 选择* ONTAP *并选择*下一步*。
-... 输入ONTAP 集群管理IP地址和管理员凭据。
-+
-
-NOTE: 您在此处输入凭据的用户必须在ONTAP 集群上的ONTAP 系统管理器中启用`ontapi`用户登录访问方法。如果您计划使用SnapMirror复制、请在两个ONTAP 集群上为用户启用`ontapi`和`http`访问方法。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理用户帐户"^] 有关详细信息 ...
-
-... 选择 * 审阅 * 。
-... 确认后端详细信息并选择*添加存储后端*。
-
-
-
-
-
-
-后端会在列表中显示为 `available` 状态，并显示摘要信息。
+后端将显示在中 `Healthy` 包含摘要信息的列表中的状态。
 
 
 NOTE: 您可能需要刷新页面才能显示后端。
@@ -263,98 +539,78 @@ NOTE: 您可能需要刷新页面才能显示后端。
 
 == 添加存储分段
 
-如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则必须添加对象存储分段提供程序。Astra Control 会将这些备份或克隆存储在您定义的对象存储分段中。
+您可以使用Astra Control UI或添加存储分段 https://docs.netapp.com/us-en/astra-automation/index.html["API"^]。如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则必须添加对象存储分段提供程序。Astra Control 会将这些备份或克隆存储在您定义的对象存储分段中。
 
-添加存储分段时， Astra Control 会将一个存储分段标记为默认存储分段指示符。您创建的第一个存储分段将成为默认存储分段。
+如果您要将应用程序配置和永久性存储克隆到同一集群、则无需在Astra Control中使用存储分段。应用程序快照功能不需要存储分段。
 
-如果要将应用程序配置和永久性存储克隆到同一集群，则不需要存储分段。
-
-使用以下任一存储分段类型：
-
-* NetApp ONTAP S3
-* NetApp StorageGRID S3
-* 通用 S3
-* Microsoft Azure
+.您需要什么？ #8217 ；将需要什么
+* 可从由Astra控制中心管理的集群访问的存储分段。
+* 存储分段的凭据。
+* 包含以下类型的存储分段：
 +
+** NetApp ONTAP S3
+** NetApp StorageGRID S3
+** Microsoft Azure
+** 通用 S3
+
+
+
+
 
 NOTE: Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。
 
-+
 
-NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段提供商，但 Astra 控制中心可能不支持声称支持 Amazon S3 的所有对象存储供应商。
-
-
-
-有关如何使用 Astra Control API 添加存储分段的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
+NOTE: 虽然Astra控制中心支持将Amazon S3作为通用S3存储分段提供商、但Astra控制中心可能不支持声称支持Amazon S3的所有对象存储供应商。
 
 .步骤
 . 在左侧导航区域中，选择 * 桶 * 。
-+
-.. 选择 * 添加 * 。
-.. 选择存储分段类型。
+. 选择 * 添加 * 。
+. 选择存储分段类型。
 +
 
 NOTE: 添加存储分段时，请选择正确的存储分段提供程序，并为该提供程序提供正确的凭据。例如， UI 接受 NetApp ONTAP S3 作为类型并接受 StorageGRID 凭据；但是，这将发生原因使使用此存储分段执行所有未来应用程序备份和还原失败。
 
-.. 创建新的存储分段名称或输入现有存储分段名称和可选的问题描述。
+. 输入现有存储分段名称和可选的问题描述。
 +
 
-TIP: 存储分段名称和问题描述显示为备份位置，您可以稍后在创建备份时选择该位置。此名称也会在配置保护策略期间显示。
+TIP: 存储分段名称和问题描述 显示为备份位置、您可以稍后在创建备份时选择该位置。此名称也会在配置保护策略期间显示。
 
-.. 输入 S3 端点的名称或 IP 地址。
-.. 如果您希望此存储分段成为所有备份的默认存储分段，请选中 `MMake this bucket the default bucket for this private cloud` 选项。
+. 输入 S3 端点的名称或 IP 地址。
+. 在*选择凭据*下、选择*添加*或*使用现有*选项卡。
++
+** 如果选择*添加*：
++
+... 在 Astra Control 中输入凭据名称，以便与其他凭据区分开。
+... 通过粘贴剪贴板中的内容来输入访问 ID 和机密密钥。
+
+
+** 如果选择*使用现有*：
++
+... 选择要用于存储分段的现有凭据。
+
+
+
+
+. 选择 ... `Add`。
 +
 
-NOTE: 创建的第一个存储分段不会显示此选项。
+NOTE: 添加存储分段时、Astra Control会使用默认存储分段指示符标记一个存储分段。您创建的第一个存储分段将成为默认存储分段。添加分段时、您可以稍后决定添加 link:../use/manage-buckets.html#set-the-default-bucket["设置另一个默认存储分段"^]。
 
-.. 通过添加继续  S3 access credentials,凭据信息。
-
-
-
-
-
-
-=== 添加 S3 访问凭据
-
-随时添加 S3 访问凭据。
-
-.步骤
-. 从 " 分段 " 对话框中，选择 * 添加 * 或 * 使用现有 * 选项卡。
-+
-.. 在 Astra Control 中输入凭据名称，以便与其他凭据区分开。
-.. 通过粘贴剪贴板中的内容来输入访问 ID 和机密密钥。
-
-
-
-
-
-
-== 更改默认存储类
-
-您可以更改集群的默认存储类。
-
-.步骤
-. 在Astra控制中心Web UI中、选择*集群*。
-. 在*集群*页面上、选择要更改的集群。
-. 选择 * 存储 * 选项卡。
-. 选择*存储类*类别。
-. 选择要设置为默认值的存储类的*操作*菜单。
-. 选择*设置为默认值*。
 
 
 
 
 == 下一步是什么？
 
-现在，您已登录并将集群添加到 Astra 控制中心，即可开始使用 Astra 控制中心的应用程序数据管理功能。
+现在、您已登录并将集群添加到Astra控制中心、即可开始使用Astra控制中心的应用程序数据管理功能。
 
-* link:../use/manage-users.html["管理用户"]
+* link:../use/manage-local-users-and-roles.html["管理本地用户和角色"]
 * link:../use/manage-apps.html["开始管理应用程序"]
-* link:../use/protect-apps.html["保护应用程序"]
-* link:../use/clone-apps.html["克隆应用程序"]
+* link:../use/protection-overview.html["保护应用程序"]
 * link:../use/manage-notifications.html["管理通知"]
 * link:../use/monitor-protect.html#connect-to-cloud-insights["连接到 Cloud Insights"]
 * link:../get-started/add-custom-tls-certificate.html["添加自定义 TLS 证书"]
+* link:../use/view-clusters.html#change-the-default-storage-class["更改默认存储类"]
 
 
 [discrete]

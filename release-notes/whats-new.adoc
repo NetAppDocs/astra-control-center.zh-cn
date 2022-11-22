@@ -11,7 +11,25 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 :imagesdir: ../media/release-notes/
 
 
+[role="lead"]
 我们很高兴地宣布发布最新版本的Astra控制中心。
+
+
+
+== 2022年11月22日(22.11.0)
+
+.新增功能和支持
+* link:../use/manage-apps.html#define-apps["支持跨多个命名空间的应用程序"]
+* link:../use/manage-apps.html#define-apps["支持在应用程序定义中包括集群资源"]
+* link:../use/manage-remote-authentication.html["通过基于角色的访问控制(Role-Based Access Control、RBAC)集成增强了LDAP身份验证功能"]
+* link:../get-started/requirements.html["增加了对Kubernetes 1.25和Pod安全准入(PSA)的支持"]
+* link:../use/monitor-running-tasks.html["增强了备份、还原和克隆操作的进度报告功能"]
+
+
+.已知问题和限制
+* link:../release-notes/known-issues.html["此版本的已知问题"]
+* link:../release-notes/known-limitations.html["此版本的已知限制"]
+
 
 
 
@@ -23,9 +41,11 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 
 == 2022年8月10日(22.08.0)
 
+.详细信息
+====
 .新增功能和支持
 * link:../use/replicate_snapmirror.html["使用NetApp SnapMirror技术复制应用程序"]
-* link:../use/manage-apps.html#manage-apps["改进了应用程序管理工作流"]
+* link:../use/manage-apps.html#define-apps["改进了应用程序管理工作流"]
 * link:../use/execution-hooks.html["增强的自行执行挂钩功能"]
 +
 
@@ -38,10 +58,10 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 
 .已知问题和限制
 * link:../release-notes/known-issues.html["此版本的已知问题"]
-* link:../release-notes/known-issues-ads.html["Astra 数据存储和此 Astra 控制中心版本的已知问题"]
 * link:../release-notes/known-limitations.html["此版本的已知限制"]
 
 
+====
 
 
 == 2022 年 4 月 26 日（ 22.04.0 ）
@@ -49,7 +69,6 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 .详细信息
 ====
 .新增功能和支持
-* https://docs.netapp.com/us-en/astra-control-center-2204/get-started/setup_overview.html#add-a-storage-backend["从Astra控制中心部署Astra Data Store"]
 * https://docs.netapp.com/us-en/astra-control-center-2204/concepts/user-roles-namespaces.html["命名空间基于角色的访问控制（ RBAC ）"]
 * https://docs.netapp.com/us-en/astra-control-center-2204/get-started/install_acc-cvo.html["支持 Cloud Volumes ONTAP"]
 * https://docs.netapp.com/us-en/astra-control-center-2204/get-started/requirements.html#ingress-for-on-premises-kubernetes-clusters["为 Astra 控制中心启用通用传入"]
@@ -59,7 +78,6 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 
 .已知问题和限制
 * https://docs.netapp.com/us-en/astra-control-center-2204/release-notes/known-issues.html["此版本的已知问题"]
-* https://docs.netapp.com/us-en/astra-control-center-2204/release-notes/known-issues-ads.html["Astra 数据存储和此 Astra 控制中心版本的已知问题"]
 * https://docs.netapp.com/us-en/astra-control-center-2204/release-notes/known-limitations.html["此版本的已知限制"]
 
 
@@ -75,7 +93,6 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 * https://docs.netapp.com/us-en/astra-control-center-2112/use/execution-hooks.html["执行挂钩"^]
 * https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html#supported-app-installation-methods["支持使用命名空间范围的运算符部署的应用程序"^]
 * https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html["对上游 Kubernetes 和 Rancher 的其他支持"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/setup_overview.html#add-a-storage-backend["Astra Data Store 预览后端管理和监控"^]
 * https://docs.netapp.com/us-en/astra-control-center-2112/use/upgrade-acc.html["Astra 控制中心升级"^]
 * https://docs.netapp.com/us-en/astra-control-center-2112/get-started/acc_operatorhub_install.html["用于安装的 Red Hat OperatorHub 选项"^]
 
@@ -86,7 +103,6 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 
 .已知问题和限制
 * https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues.html["此版本的已知问题"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"^]
 * https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
@@ -116,6 +132,5 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 
 * link:../release-notes/known-issues.html["此版本的已知问题"]
 * link:../release-notes/known-limitations.html["此版本的已知限制"]
-* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra Data Store 文档"]
 * link:../acc-earlier-versions.html["早期版本的 Astra 控制中心文档"]
 

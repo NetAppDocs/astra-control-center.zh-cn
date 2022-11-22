@@ -1,6 +1,6 @@
 ---
 section: use
-title: 使用 Astra
+title: 使用 Astra 控制中心
 entries:
 - title: 开始管理应用程序
   url: "/use/manage-apps.html"
@@ -31,10 +31,12 @@ entries:
     url: "/use/view-apps.html"
 - title: 管理您的帐户
   entries:
-  - title: 管理用户
-    url: "/use/manage-users.html"
-  - title: 管理角色
-    url: "/use/manage-roles.html"
+  - title: 管理本地用户和角色
+    url: "/use/manage-local-users-and-roles.html"
+  - title: 管理远程身份验证
+    url: "/use/manage-remote-authentication.html"
+  - title: 管理远程用户和组
+    url: "/use/manage-remote-users-groups.html"
   - title: 管理通知
     url: "/use/manage-notifications.html"
   - title: 管理凭据
@@ -43,14 +45,12 @@ entries:
     url: "/use/view-account-activity.html"
   - title: 更新现有许可证
     url: "/use/update-licenses.html"
-  - title: 管理存储库连接
-    url: "/use/manage-connections.html"
-  - title: 管理软件包
-    url: "/use/manage-packages-acc.html"
 - title: 管理存储分段
   url: "/use/manage-buckets.html"
 - title: 管理存储后端
   url: "/use/manage-backend.html"
+- title: 监控正在运行的任务
+  url: "/use/monitor-running-tasks.html"
 - title: 使用Cloud Insights 和Fluentd监控基础架构
   url: "/use/monitor-protect.html"
 - title: 取消管理应用程序和集群

@@ -11,6 +11,7 @@ summary: 'NetApp 以多种方式为 Astra Control 提供支持。全天候提供
 :imagesdir: ../media/support/
 
 
+[role="lead"]
 NetApp 以多种方式为 Astra Control 提供支持。全天候提供广泛的免费自助支持选项、例如知识库(KB)文章和不和渠道。您的 Astra Control 帐户包括通过 Web 服务单提供的远程技术支持。
 
 
@@ -37,7 +38,7 @@ IMPORTANT: 如果您拥有 Astra 控制中心的评估许可证，则可以获�
 
 == 启用每日计划的支持包上传至 NetApp 支持
 
-在安装 Astra 控制中心期间，如果在 Astra 控制中心自定义资源定义（ CRD ）文件（`Astra_control_center_min.yaml` ）中指定 `enrolled ： true` for `AutoSupport` ，则每日支持包将自动上传到 https://mysupport.netapp.com/site/["NetApp 支持站点"^]。
+在安装Astra Control Center期间(如果指定) `enrolled: true` 适用于 `autoSupport` 在Astra控制中心自定义资源(CR)文件中 (`astra_control_center.yaml`)、则会自动将每日支持包上传到 https://mysupport.netapp.com/site/["NetApp 支持站点"^]。
 
 
 

@@ -11,46 +11,40 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 :imagesdir: ../media/get-started/
 
 
-要安装 Astra 控制中心，请从 NetApp 支持站点下载安装包，并执行以下步骤在您的环境中安装 Astra 控制中心操作员和 Astra 控制中心。您可以使用此操作步骤在互联网连接或通风环境中安装 Astra 控制中心。
+[role="lead"]
+要安装Astra控制中心、请从NetApp 支持站点 下载安装包并执行以下步骤。您可以使用此操作步骤在互联网连接或通风环境中安装 Astra 控制中心。
 
-对于Red Hat OpenShift环境、您可以使用 link:../get-started/acc_operatorhub_install.html["备用操作步骤"] 使用 OpenShift OperatorHub 安装 Astra Control Center 。
+.其他安装过程
+====
+* *使用RedHat OpenShift OperatorHub安装*：使用此 link:../get-started/acc_operatorhub_install.html["备用操作步骤"] 使用OperatorHub在OpenShift上安装Astra控制中心。
+* *使用Cloud Volumes ONTAP 后端在公有 云中安装*：使用 link:../get-started/install_acc-cvo.html["这些过程"] 在带有Cloud Volumes ONTAP 存储后端的Amazon Web Services (AWS)、Google云平台(GCP)或Microsoft Azure中安装Astra控制中心。
 
+
+====
 .您需要什么？ #8217 ；将需要什么
 * link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
-* 如果您已在环境中配置或希望配置POD安全策略、请熟悉POD安全策略及其对Astra Control Center安装的影响。请参见 link:understand-psp-restrictions.html["了解POD安全策略限制"]。
-* 确保所有集群操作员均处于运行状况良好且可用。
-+
-[source, sh]
-----
-kubectl get clusteroperators
-----
+* 如果您已在环境中配置或希望配置POD安全策略、请熟悉POD安全策略及其对Astra Control Center安装的影响。请参见 link:../concepts/understand-pod-security.html["了解POD安全策略限制"]。
 * 确保所有 API 服务均处于运行状况良好且可用：
 +
-[source, sh]
+[source, console]
 ----
 kubectl get apiservices
 ----
 * 确保您计划使用的Astra FQDN可路由到此集群。这意味着您的内部 DNS 服务器中有一个 DNS 条目，或者您正在使用已注册的核心 URL 路由。
-* 如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"] 这样、Astra控制中心就不会安装自己的证书管理器。
+* 如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"] 这样、Astra控制中心就不会尝试安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
 
 
-Astra 控制中心安装过程将执行以下操作：
+Astra控制中心安装过程可帮助您执行以下操作：
 
-* 将 Astra 组件安装到 `NetApp-Accc` （或自定义命名）命名空间中。
-* 创建默认帐户。
-* 建立默认管理用户电子邮件地址和默认一次性密码。系统会为该用户分配首次登录到UI所需的所有者角色。
-* 帮助您确定所有 Astra 控制中心 Pod 是否正在运行。
-* 安装 Astra UI 。
-
-
-
-IMPORTANT: (仅限适用场景 Astra数据存储早期访问计划(EAP)版本)如果要使用控制中心管理Astra数据存储并启用VMware工作流、 仅在`pcloud`命名空间上部署Astra控制中心、而不是在`NetApp-Accc`命名空间或本操作步骤 步骤中所述的自定义命名空间上部署。
+* 将Astra组件安装到中 `netapp-acc` (或自定义命名的)命名空间。
+* 创建默认的Astra Control所有者管理员帐户。
+* 建立管理用户电子邮件地址和默认初始设置密码。系统会为此用户分配首次登录到UI所需的所有者角色。
+* 确定所有Astra控制中心Pod均正在运行。
+* 安装Astra控制中心UI。
 
 
-IMPORTANT: 请勿在整个安装过程中执行以下命令以避免删除所有 Astra 控制中心 Pod ： `kubectl delete -f Astra_control_center_operator_deploy.yaml`
 
-
-NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可以使用 Podman 命令代替 Docker 命令。
+IMPORTANT: 请勿删除Astra Control Center运算符(例如、 `kubectl delete -f astra_control_center_operator_deploy.yaml`)、以避免删除Pod。
 
 要安装 Astra 控制中心，请执行以下步骤：
 
@@ -72,15 +66,15 @@ NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可�
 
 . 从下载 Astra 控制中心捆绑包（`Astra-control-center-[version].tar.gz` ） https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
 . 从下载 Astra 控制中心证书和密钥的 zip https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
-. （可选）使用以下命令验证捆绑包的签名：
+. （可选）验证捆绑包的签名：
 +
-[source, sh]
+[source, console]
 ----
 openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
 . 提取映像：
 +
-[source, sh]
+[source, console]
 ----
 tar -vxzf astra-control-center-[version].tar.gz
 ----
@@ -90,20 +84,24 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 == 安装NetApp Astra kubectl插件
 
-NetApp Astra `kubectl`命令行插件可在执行与部署和升级Astra控制中心相关的常见任务时节省时间。
+NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
 
-NetApp为不同CPU架构和操作系统的插件提供二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。在Linux和Mac操作系统上、您可以使用`uname -a`命令收集此信息。
+NetApp可为不同的CPU架构和操作系统提供插件二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。
 
 .步骤
-. 列出可用的NetApp Astra `kubectl`插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
+. 列出可用的NetApp Astra kubectl插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
 +
-[source, sh]
+
+NOTE: kubectl插件库是tar包的一部分、并会解压缩到文件夹中 `kubectl-astra`。
+
++
+[source, console]
 ----
 ls kubectl-astra/
 ----
-. 将此文件复制到与标准`kubectl`实用程序相同的位置。在此示例中、`kubectl`实用程序位于`/usr/local/bin`目录中。将`<二进制名称>`替换为所需文件的名称：
+. 将正确的二进制文件移动到当前路径并重命名为 `kubectl-astra`：
 +
-[source, sh]
+[source, console]
 ----
 cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ----
@@ -120,22 +118,26 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ====
 .Docker
 --
-. 更改为Astra目录：
+. 更改为 `acc` 从tar包中提取的目录：
 +
-[source, sh]
+示例
+
+
+
+[listing]
 ----
-cd acc
+cd ../acc
 ----
-. [substep_image_local_registry_push]]将Astra控制中心映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
+. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
 +
-** 将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.Manifest.YAML`)。
-** 将my_regRegistry替换为Docker存储库的URL。
-** 将my_registry_user替换为用户名。
-** 将my_registry_token替换为注册表的授权令牌。
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.yaml`）。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
+** 将<MY_REGISTRY_USER> 替换为用户名。
+** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
 +
-[source, sh]
+[source, console]
 ----
-kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_TOKEN
+kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -u <MY_REGISTRY_USER> -p <MY_REGISTRY_TOKEN>
 ----
 
 
@@ -146,13 +148,13 @@ kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_
 --
 . 登录到注册表：
 +
-[source, sh]
+[source, console]
 ----
-podman login [your_registry_path]
+podman login <MY_FULL_REGISTRY_PATH>
 ----
 . 运行以下脚本、按照注释中的说明替换<your_registry>：
 +
-[source, sh]
+[source, console]
 ----
 # You need to be at the root of the tarball.
 # You should see these files to confirm correct location:
@@ -162,7 +164,7 @@ podman login [your_registry_path]
 # Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
 export REGISTRY=<YOUR_REGISTRY>
 export PACKAGENAME=acc
-export PACKAGEVERSION=22.08.1-26
+export PACKAGEVERSION=22.11.0-82
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
   # Load to local cache
@@ -188,15 +190,19 @@ done
 
 . 导出Astra控制中心主机集群的KUBECONFIG：
 +
-[source, sh]
+[source, console]
 ----
 export KUBECONFIG=[file path]
 ----
++
+
+NOTE: 在完成安装之前、请确保您的KUBECONFIG指向要安装Astra控制中心的集群。KUBECONFIG只能包含一个上下文。
+
 . 如果您使用的注册表需要身份验证，则需要执行以下操作：
 +
 .. 创建 `NetApp-Acc-operator` 命名空间：
 +
-[source, sh]
+[source, console]
 ----
 kubectl create ns netapp-acc-operator
 ----
@@ -211,10 +217,10 @@ namespace/netapp-acc-operator created
 .. 为 `NetApp-Acc-operator` 命名空间创建一个密钥。添加 Docker 信息并运行以下命令：
 +
 
-NOTE: 占位符`yor_registry_path`应与您先前上传的映像的位置匹配(例如、`[Registry_URL]/NetApp/Astra/asac/22.08.1-26`)。
+NOTE: 占位符 `your_registry_path` 应与您先前上传的映像的位置匹配(例如、 `[Registry_URL]/netapp/astra/astracc/22.11.0-82`）。
 
 +
-[source, sh]
+[source, console]
 ----
 kubectl create secret docker-registry astra-registry-cred -n netapp-acc-operator --docker-server=[your_registry_path] --docker-username=[username] --docker-password=[token]
 ----
@@ -228,11 +234,11 @@ secret/astra-registry-cred created
 ----
 +
 
-NOTE: 如果在生成密钥后删除命名空间、则需要在重新创建命名空间后重新生成命名空间的密钥。
+NOTE: 如果在生成密钥后删除命名空间、请重新创建命名空间、然后重新生成命名空间的密钥。
 
-.. 创建 `NetApp-Accc` （或自定义命名）命名空间。
+.. 创建 `netapp-acc` (或自定义命名的)命名空间。
 +
-[source, sh]
+[source, console]
 ----
 kubectl create ns [netapp-acc or custom namespace]
 ----
@@ -244,9 +250,9 @@ kubectl create ns [netapp-acc or custom namespace]
 ----
 namespace/netapp-acc created
 ----
-.. 为 `NetApp-Accc` （或自定义命名）命名空间创建一个密钥。添加 Docker 信息并运行以下命令：
+.. 为创建密钥 `netapp-acc` (或自定义命名的)命名空间。添加 Docker 信息并运行以下命令：
 +
-[source, sh]
+[source, console]
 ----
 kubectl create secret docker-registry astra-registry-cred -n [netapp-acc or custom namespace] --docker-server=[your_registry_path] --docker-username=[username] --docker-password=[token]
 ----
@@ -258,12 +264,6 @@ kubectl create secret docker-registry astra-registry-cred -n [netapp-acc or cust
 ----
 secret/astra-registry-cred created
 ----
-.. （可选）如果您希望集群在安装后由 Astra 控制中心自动管理，请确保在您要使用此命令部署到的 Astra 控制中心命名空间中提供 kubeconfig 作为机密：
-+
-[source, sh]
-----
-kubectl create secret generic [acc-kubeconfig-cred or custom secret name] --from-file=<path-to-your-kubeconfig> -n [netapp-acc or custom namespace]
-----
 
 
 
@@ -274,13 +274,13 @@ kubectl create secret generic [acc-kubeconfig-cred or custom secret name] --from
 
 . 更改目录：
 +
-[source, sh]
+[source, console]
 ----
 cd manifests
 ----
 . 编辑 Astra 控制中心操作员部署 YAML （`Astra_control_center_operator_deploy.yaml` ）以参考您的本地注册表和机密。
 +
-[source, sh]
+[source, console]
 ----
 vim astra_control_center_operator_deploy.yaml
 ----
@@ -291,14 +291,18 @@ NOTE: 以下步骤将提供一个标注的YAML示例。
 +
 .. 如果您使用的注册表需要身份验证，请将默认行 `imagePullSecs ： []` 替换为以下内容：
 +
-[source, sh]
+[source, console]
 ----
 imagePullSecrets:
-- name: <astra-registry-cred>
+- name: astra-registry-cred
 ----
-.. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 ,上一步。
-.. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 ,上一步。
-.. （对于使用 Astra 数据存储预览版的安装）请参见有关的此已知问题描述 https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/known-issues.html#mongodb-deployment-with-default-liveness-probe-value-fails-with-pods-in-crash-loop["存储类配置程序以及需要对 YAML 进行的其他更改"^]。
+.. 更改 `[your_registry_path]` 。 `kube-rbac-proxy` 将映像推送到注册表路径中  the images to your local registry,上一步。
+.. 更改 `[your_registry_path]` 。 `acc-operator-controller-manager` 将映像推送到注册表路径中  the images to your local registry,上一步。
++
+[source, subs="specialcharacters,quotes"]
+----
+*astra_control_center_operator_deploy.yaml*
+----
 +
 [listing, subs="+quotes"]
 ----
@@ -314,6 +318,8 @@ spec:
   selector:
     matchLabels:
       control-plane: controller-manager
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -334,20 +340,45 @@ spec:
         - --health-probe-bind-address=:8081
         - --metrics-bind-address=127.0.0.1:8080
         - --leader-elect
-        command:
-        - /manager
         env:
         - name: ACCOP_LOG_LEVEL
           value: "2"
+        - name: ACCOP_HELM_INSTALLTIMEOUT
+          value: 5m
         *image: [your_registry_path]/acc-operator:[version x.y.z]*
         imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        name: manager
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          limits:
+            cpu: 300m
+            memory: 750Mi
+          requests:
+            cpu: 100m
+            memory: 75Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       *imagePullSecrets: []*
+      securityContext:
+        runAsUser: 65532
+      terminationGracePeriodSeconds: 10
 ----
 
 
 . 安装 Astra 控制中心操作员：
 +
-[source, sh]
+[source, console]
 ----
 kubectl apply -f astra_control_center_operator_deploy.yaml
 ----
@@ -372,7 +403,7 @@ deployment.apps/acc-operator-controller-manager created
 ----
 . 验证Pod是否正在运行：
 +
-[source, sh]
+[source, console]
 ----
 kubectl get pods -n netapp-acc-operator
 ----
@@ -382,49 +413,48 @@ kubectl get pods -n netapp-acc-operator
 
 == 配置 Astra 控制中心
 
-. 编辑 Astra 控制中心自定义资源（ CR ）文件（`Astra_control_center_min.yaml` ）以进行帐户， AutoSupport ，注册表和其他必要配置：
+. 编辑Astra Control Center自定义资源(CR)文件 (`astra_control_center.yaml`)进行帐户、AutoSupport 、注册表和其他必要配置：
 +
 
-NOTE: `Astra_control_center_min.yaml` 是默认 CR ，适用于大多数安装。熟悉所有内容 link:../get-started/acc_cluster_cr_options.html["CR选项及其潜在值"] 以确保为您的环境正确部署Astra控制中心。如果您的环境需要其他自定义设置，您可以使用 `Astra_control_center.yaml` 作为替代 CR 。
+NOTE: 有关其他自定义设置、请熟悉所有 link:../get-started/acc_cluster_cr_options.html["CR选项及其潜在值"^] 以确保为您的环境正确部署Astra控制中心。
 
 +
-[source, sh]
+[source, console]
 ----
-vim astra_control_center_min.yaml
+vim astra_control_center.yaml
 ----
 +
 
-IMPORTANT: 如果您使用的注册表不需要授权，则必须删除 `imageRegistry` 中的 `secret` 行，否则安装将失败。
+NOTE: 以下步骤将提供一个标注的YAML示例。
 
 +
-.. 将 ` [yor_registry_path]` 更改为上一步中用于推送映像的注册表路径。
-.. 将 `accountName` 字符串更改为要与帐户关联的名称。
-.. 将 `astraAddress` 字符串更改为要在浏览器中使用的 FQDN 以访问 Astra 。请勿在此地址中使用 `http ： //` 或 `https ： //` 。复制此 FQDN 以在中使用  in to the Astra Control Center UI,后续步骤。
-.. 将 `email` 字符串更改为默认的初始管理员地址。复制此电子邮件地址以在中使用  in to the Astra Control Center UI,后续步骤。
-.. 将 AutoSupport 的 `已注册` 更改为 `false` 对于无 Internet 连接的站点，或者将已连接站点的 `true` 保留。
-.. 如果使用外部证书管理器、请将以下行添加到`sPec`中：
+.. *帐户名称*：更改 `accountName` 字符串、表示要与帐户关联的名称。
+.. * AstraAddress*：更改 `astraAddress` 指向要在浏览器中访问Astra控制中心的FQDN (建议)或IP地址的字符串。此FQDN或IP地址与您在完成时从负载平衡器配置的FQDN或IP地址相同 link:requirements.html["Astra 控制中心要求"]。
 +
-[source, sh]
-----
-spec:
-  crds:
-    externalCertManager: true
-----
-.. （可选）添加与帐户关联的用户的名字 `firstName` 和姓氏 `lastName` 。您可以在用户界面中立即或稍后执行此步骤。
-.. （可选）如果您的安装需要，请将 `storageClass` 值更改为另一个 Trident storageClass 资源。
-.. （可选）如果您希望集群在安装后由 Astra 控制中心自动管理，并且您已经这样了 ,已为此集群创建包含 kubeconfig 的密钥，通过在此 YAML 文件中添加一个名为 `astraKubeConfigSecret 的新字段来提供此机密的名称： "Acc-kubeconfig-cred 或自定义机密名称 "`
-.. 完成以下步骤之一：
-+
-*** * 其他传入控制器（ ingressType ： Generic ） * ：这是 Astra 控制中心的默认操作。部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。
-+
-默认的 Astra 控制中心安装会将其网关（ `sservice/traefik` ）设置为类型 `ClusterIP` 。此默认安装要求您另外设置一个 Kubernetes IngressController/Ingress ，以便向其路由流量。如果要使用入口，请参见 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["设置传入以进行负载平衡"]。
 
-*** * 服务负载平衡器（ ingressType ： AccTraefik ） * ：如果您不想安装 IngressController 或创建 Ingress 资源，请将 `ingressType` 设置为 `AccTraefik` 。
+NOTE: 请勿使用 `http://` 或 `https://` 地址中。复制此 FQDN 以在中使用  in to the Astra Control Center UI,后续步骤。
+
+.. * AutoSupport *：更改 `enrolled` 用于将AutoSupport 连接到 `false` 对于不具有Internet连接或保留的站点 `true` 对于已连接站点。
+.. *电子邮件*：更改 `email` 字符串到默认的初始管理员地址。复制此电子邮件地址以在中使用  in to the Astra Control Center UI,后续步骤。
+.. *(可选) firstName和LastName*：添加名字 `firstName` 和姓氏 `lastName` 与帐户关联的用户的。您可以在用户界面中立即或稍后执行此步骤。
+.. * imageRegistries*：更改 `[your_registry_path]` 到中将映像推送到的注册表路径  the Astra Control Center operator,上一步。
 +
-这会将 Astra 控制中心 `traefik` 网关部署为 Kubernetes 负载平衡器类型的服务。
+
+IMPORTANT: 如果您使用的注册表不需要授权、则必须删除 `secret` 行内 `imageRegistry` 否则安装将失败。
+
+.. *(可选) storageClass*：更改 `storageClass` 根据安装要求从"ontap-gold"到另一个Trident存储类资源的值。运行命令 `kubectl get sc` 以确定已配置的现有存储类。
+.. *输入类型*：使用以下入口类型之一：
++
+*** *通用* (`ingressType: "Generic"`)(默认)
++
+如果您正在使用另一个入口控制器或希望使用您自己的入口控制器、请使用此选项。部署Astra控制中心后、您需要配置 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["入口控制器"] 以使用URL公开Astra控制中心。
+
+*** * AccTraefik* (`ingressType: "AccTraefik"`）
++
+如果您不希望配置入口控制器、请使用此选项。这将部署Astra控制中心 `traefik` 网关作为Kubernetes loadbalancer类型的服务。
 
 +
-Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为 `svC/traefik` ），并要求为其分配可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个平衡器，则可以使用 MetalLB 或其他外部服务负载平衡器为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
+Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并要求为其分配可访问的外部IP地址。如果您的环境允许使用负载平衡器、但您尚未配置一个平衡器、则可以使用MetalLB或其他外部服务负载平衡器为该服务分配外部IP地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
 
 +
 
@@ -432,9 +462,15 @@ NOTE: 有关 "loadbalancer" 服务类型和入口的详细信息，请参见 lin
 
 
 
+.. * crds*：如果使用外部证书管理器、请更改 `externalCertManager` to `true`。默认值 `false` 使Astra控制中心在安装期间安装自己的证书管理器。
 
 
-+
+
+
+[source, subs="specialcharacters,quotes"]
+----
+*astra_control_center.yaml*
+----
 [listing, subs="+quotes"]
 ----
 apiVersion: astra.netapp.io/v1
@@ -445,8 +481,6 @@ spec:
   *accountName: "Example"*
   astraVersion: "ASTRA_VERSION"
   *astraAddress: "astra.example.com"*
-  *astraKubeConfigSecret: "acc-kubeconfig-cred or custom secret name"*
-  *ingressType: "Generic"*
   autoSupport:
     *enrolled: true*
   *email: "[admin@example.com]"*
@@ -456,16 +490,21 @@ spec:
     *name: "[your_registry_path]"*
     *secret: "astra-registry-cred"*
   *storageClass: "ontap-gold"*
+  volumeReclaimPolicy: "Retain"
+  *ingressType: "Generic"*
+  astraResourcesScaler: "Default"
+  additionalValues: {}
+  crds:
+    externalTraefik: false
+    *externalCertManager: false*
 ----
-
-
 
 
 == 完成 Astra 控制中心和操作员安装
 
 . 如果您在上一步中尚未创建，请创建 `NetApp-Accc` （或自定义）命名空间：
 +
-[source, sh]
+[source, console]
 ----
 kubectl create ns [netapp-acc or custom namespace]
 ----
@@ -479,9 +518,9 @@ namespace/netapp-acc created
 ----
 . 在 `NetApp-Accc` （或您的自定义）命名空间中安装 Astra Control Center ：
 +
-[source, sh]
+[source, console]
 ----
-kubectl apply -f astra_control_center_min.yaml -n [netapp-acc or custom namespace]
+kubectl apply -f astra_control_center.yaml -n [netapp-acc or custom namespace]
 ----
 +
 响应示例：
@@ -497,12 +536,12 @@ astracontrolcenter.astra.netapp.io/astra created
 
 == 验证系统状态
 
+您可以使用kubectl命令验证系统状态。如果您更喜欢使用 OpenShift ，则可以使用同等的 oc 命令执行验证步骤。
 
-NOTE: 如果您更喜欢使用 OpenShift ，则可以使用同等的 oc 命令执行验证步骤。
-
+.步骤
 . 验证是否已成功安装所有系统组件。
 +
-[source, sh]
+[source, console]
 ----
 kubectl get pods -n [netapp-acc or custom namespace]
 ----
@@ -514,90 +553,97 @@ kubectl get pods -n [netapp-acc or custom namespace]
 ====
 [listing, subs="+quotes"]
 ----
-NAME                                     READY  STATUS   RESTARTS AGE
-acc-helm-repo-6b44d68d94-d8m55           1/1    Running  0        13m
-activity-78f99ddf8-hltct                 1/1    Running  0        10m
-api-token-authentication-457nl           1/1    Running  0        9m28s
-api-token-authentication-dgwsz           1/1    Running  0        9m28s
-api-token-authentication-hmqqc           1/1    Running  0        9m28s
-asup-75fd554dc6-m6qzh                    1/1    Running  0        9m38s
-authentication-6779b4c85d-92gds          1/1    Running  0        8m11s
-bucketservice-7cc767f8f8-lqwr8           1/1    Running  0        9m31s
-certificates-549fd5d6cb-5kmd6            1/1    Running  0        9m56s
-certificates-549fd5d6cb-bkjh9            1/1    Running  0        9m56s
-cloud-extension-7bcb7948b-hn8h2          1/1    Running  0        10m
-cloud-insights-service-56ccf86647-fgg69  1/1    Running  0        9m46s
-composite-compute-677685b9bb-7vgsf       1/1    Running  0        10m
-composite-volume-657d6c5585-dnq79        1/1    Running  0        9m49s
-credentials-755fd867c8-vrlmt             1/1    Running  0        11m
-entitlement-86495cdf5b-nwhh2             1/1    Running  2        10m
-features-5684fb8b56-8d6s8                1/1    Running  0        10m
-fluent-bit-ds-rhx7v                      1/1    Running  0        7m48s
-fluent-bit-ds-rjms4                      1/1    Running  0        7m48s
-fluent-bit-ds-zf5ph                      1/1    Running  0        7m48s
-graphql-server-66d895f544-w6hjd          1/1    Running  0        3m29s
-identity-744df448d5-rlcmm                1/1    Running  0        10m
-influxdb2-0                              1/1    Running  0        13m
-keycloak-operator-75c965cc54-z7csw       1/1    Running  0        8m16s
-krakend-798d6df96f-9z2sk                 1/1    Running  0        3m26s
-license-5fb7d75765-f8mjg                 1/1    Running  0        9m50s
-login-ui-7d5b7df85d-l2s7s                1/1    Running  0        3m20s
-loki-0                                   1/1    Running  0        13m
-metrics-facade-599b9d7fcc-gtmgl          1/1    Running  0        9m40s
-monitoring-operator-67cc74f844-cdplp     2/2    Running  0        8m11s
-nats-0                                   1/1    Running  0        13m
-nats-1                                   1/1    Running  0        13m
-nats-2                                   1/1    Running  0        12m
-nautilus-769f5b74cd-k5jxm                1/1    Running  0        9m42s
-nautilus-769f5b74cd-kd9gd                1/1    Running  0        8m59s
-openapi-84f6ccd8ff-76kvp                 1/1    Running  0        9m34s
-packages-6f59fc67dc-4g2f5                1/1    Running  0        9m52s
-polaris-consul-consul-server-0           1/1    Running  0        13m
-polaris-consul-consul-server-1           1/1    Running  0        13m
-polaris-consul-consul-server-2           1/1    Running  0        13m
-polaris-keycloak-0                       1/1    Running  0        8m7s
-polaris-keycloak-1                       1/1    Running  0        5m49s
-polaris-keycloak-2                       1/1    Running  0        5m15s
-polaris-keycloak-db-0                    1/1    Running  0        8m6s
-polaris-keycloak-db-1                    1/1    Running  0        5m49s
-polaris-keycloak-db-2                    1/1    Running  0        4m57s
-polaris-mongodb-0                        2/2    Running  0        13m
-polaris-mongodb-1                        2/2    Running  0        12m
-polaris-mongodb-2                        2/2    Running  0        12m
-polaris-ui-565f56bf7b-zwr8b              1/1    Running  0        3m19s
-polaris-vault-0                          1/1    Running  0        13m
-polaris-vault-1                          1/1    Running  0        13m
-polaris-vault-2                          1/1    Running  0        13m
-public-metrics-6d86d66444-2wbzl          1/1    Running  0        9m30s
-storage-backend-metrics-77c5d98dcd-dbhg5 1/1    Running  0        9m44s
-storage-provider-78c885f57c-6zcv4        1/1    Running  0        9m36s
-telegraf-ds-2l2m9                        1/1    Running  0        7m48s
-telegraf-ds-qfzgh                        1/1    Running  0        7m48s
-telegraf-ds-shrms                        1/1    Running  0        7m48s
-telegraf-rs-bjpkt                        1/1    Running  0        7m48s
-telemetry-service-6684696c64-qzfdf       1/1    Running  0        10m
-tenancy-6596b6c54d-vmpsm                 1/1    Running  0        10m
-traefik-7489dc59f9-6mnst                 1/1    Running  0        3m19s
-traefik-7489dc59f9-xrkgg                 1/1    Running  0        3m4s
-trident-svc-6c8dc458f5-jswcl             1/1    Running  0        10m
-vault-controller-6b954f9b76-gz9nm        1/1    Running  0        11m
+NAME                                       READY   STATUS    RESTARTS        AGE
+acc-helm-repo-76d8d845c9-ggds2             1/1     Running   0               14m
+activity-6cc67ff9f4-z48mr                  1/1     Running   2 (8m32s ago)   9m
+api-token-authentication-7s67v             1/1     Running   0               8m56s
+api-token-authentication-bplb4             1/1     Running   0               8m56s
+api-token-authentication-p2c9z             1/1     Running   0               8m56s
+asup-6cdfbc6795-md8vn                      1/1     Running   0               9m14s
+authentication-9477567db-8hnc9             1/1     Running   0               7m4s
+bucketservice-f4dbdfcd6-wqzkw              1/1     Running   0               8m48s
+cert-manager-bb756c7c4-wm2cv               1/1     Running   0               14m
+cert-manager-cainjector-c9bb86786-8wrf5    1/1     Running   0               14m
+cert-manager-webhook-dd465db99-j2w4x       1/1     Running   0               14m
+certificates-68dff9cdd6-kcvml              1/1     Running   2 (8m43s ago)   9m2s
+certificates-68dff9cdd6-rsnsb              1/1     Running   0               9m2s
+cloud-extension-69d48c956c-2s8dt           1/1     Running   3 (8m43s ago)   9m24s
+cloud-insights-service-7c4f48b978-7gvlh    1/1     Running   3 (8m50s ago)   9m28s
+composite-compute-7d9ff5f68-nxbhl          1/1     Running   0               8m51s
+composite-volume-57b4756d64-nl66d          1/1     Running   0               9m13s
+credentials-6dbc55f89f-qpzff               1/1     Running   0               11m
+entitlement-67bfb6d7-gl6kp                 1/1     Running   4 (8m33s ago)   9m38s
+features-856cc4dccc-mxbdb                  1/1     Running   0               9m20s
+fluent-bit-ds-4rtsp                        1/1     Running   0               6m54s
+fluent-bit-ds-9rqll                        1/1     Running   0               6m54s
+fluent-bit-ds-w5mp7                        1/1     Running   0               6m54s
+graphql-server-7c7cc49776-jz2kn            1/1     Running   0               2m29s
+identity-87c59c975-9jpnf                   1/1     Running   0               9m6s
+influxdb2-0                                1/1     Running   0               13m
+keycloak-operator-84ff6d59d4-qcnmc         1/1     Running   0               7m1s
+krakend-cbf6c7df9-mdtzv                    1/1     Running   0               2m30s
+license-5b888b78bf-plj6j                   1/1     Running   0               9m32s
+login-ui-846b4664dd-fz8hv                  1/1     Running   0               2m24s
+loki-0                                     1/1     Running   0               13m
+metrics-facade-779cc9774-n26rw             1/1     Running   0               9m18s
+monitoring-operator-974db78f-pkspq         2/2     Running   0               6m58s
+nats-0                                     1/1     Running   0               13m
+nats-1                                     1/1     Running   0               13m
+nats-2                                     1/1     Running   0               13m
+nautilus-7bdc7ddc54-49tfn                  1/1     Running   0               7m50s
+nautilus-7bdc7ddc54-cwc79                  1/1     Running   0               9m36s
+openapi-5584ff9f46-gbrdj                   1/1     Running   0               9m17s
+openapi-5584ff9f46-z9mzk                   1/1     Running   0               9m17s
+packages-bfc58cc98-lpxq9                   1/1     Running   0               8m58s
+polaris-consul-consul-server-0             1/1     Running   0               13m
+polaris-consul-consul-server-1             1/1     Running   0               13m
+polaris-consul-consul-server-2             1/1     Running   0               13m
+polaris-keycloak-0                         1/1     Running   3 (6m15s ago)   6m56s
+polaris-keycloak-1                         1/1     Running   0               4m22s
+polaris-keycloak-2                         1/1     Running   0               3m41s
+polaris-keycloak-db-0                      1/1     Running   0               6m56s
+polaris-keycloak-db-1                      1/1     Running   0               4m23s
+polaris-keycloak-db-2                      1/1     Running   0               3m36s
+polaris-mongodb-0                          2/2     Running   0               13m
+polaris-mongodb-1                          2/2     Running   0               13m
+polaris-mongodb-2                          2/2     Running   0               12m
+polaris-ui-5ccff47897-8rzgh                1/1     Running   0               2m33s
+polaris-vault-0                            1/1     Running   0               13m
+polaris-vault-1                            1/1     Running   0               13m
+polaris-vault-2                            1/1     Running   0               13m
+public-metrics-6cb7bfc49b-p54xm            1/1     Running   1 (8m29s ago)   9m31s
+storage-backend-metrics-5c77994586-kjn48   1/1     Running   0               8m52s
+storage-provider-769fdc858c-62w54          1/1     Running   0               8m54s
+task-service-9ffc484c5-kx9f4               1/1     Running   3 (8m44s ago)   9m34s
+telegraf-ds-bphb9                          1/1     Running   0               6m54s
+telegraf-ds-rtsm2                          1/1     Running   0               6m54s
+telegraf-ds-s9h5h                          1/1     Running   0               6m54s
+telegraf-rs-lbpv7                          1/1     Running   0               6m54s
+telemetry-service-57cfb998db-zjx78         1/1     Running   1 (8m40s ago)   9m26s
+tenancy-5d5dfbcf9f-vmbxh                   1/1     Running   0               9m5s
+traefik-7b87c4c474-jmgp2                   1/1     Running   0               2m24s
+traefik-7b87c4c474-t9k8x                   1/1     Running   0               2m24s
+trident-svc-c78f5b6bd-nwdsq                1/1     Running   0               9m22s
+vault-controller-55bbc96668-c6425          1/1     Running   0               11m
+vault-controller-55bbc96668-lq9n9          1/1     Running   0               11m
+vault-controller-55bbc96668-rfkgg          1/1     Running   0               11m
 ----
 ====
 . （可选）为确保安装完成，您可以使用以下命令查看 `Acc-operator` 日志。
 +
-[source, sh]
+[source, console]
 ----
 kubectl logs deploy/acc-operator-controller-manager -n netapp-acc-operator -c manager -f
 ----
 +
 
-NOTE: `AccHost` 集群注册是最后一项操作，如果失败，发生原因 部署不会失败。如果日志中指示集群注册失败，您可以通过添加集群工作流再次尝试注册 link:../get-started/setup_overview.html#add-cluster["在 UI 中"] 或 API 。
+NOTE: `accHost` 集群注册是最后一项操作、如果失败、发生原因 部署不会失败。如果日志中指示的集群注册失败、您可以尝试通过重新注册 link:../get-started/setup_overview.html#add-cluster["在UI中添加集群工作流"] 或 API 。
 
-. 运行所有Pod时、请确认安装成功(`reADY` Is `True`)、并获取登录到Astra控制中心时要使用的一次性密码：
+. 在所有Pod运行时、验证安装是否成功 (`READY` 为 `True`)并获取登录到Astra控制中心时要使用的初始设置密码：
 +
-[source, sh]
+[source, console]
 ----
-kubectl get AstraControlCenter -n netapp-acc
+kubectl get AstraControlCenter -n [netapp-acc or custom namespace]
 ----
 +
 响应：
@@ -605,8 +651,8 @@ kubectl get AstraControlCenter -n netapp-acc
 +
 [listing]
 ----
-NAME    UUID                                      VERSION     ADDRESS         READY
-astra   ACC-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f  22.08.1-26  10.111.111.111  True
+NAME    UUID                                  VERSION     ADDRESS         READY
+astra   9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f  22.11.0-82  10.111.111.111  True
 ----
 +
 
@@ -618,14 +664,11 @@ IMPORTANT: 复制UUID值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或�
 
 == 设置传入以进行负载平衡
 
-您可以设置 Kubernetes 入口控制器，用于管理对服务的外部访问，例如集群中的负载平衡。
+您可以设置一个Kubernetes入口控制器、用于管理对服务的外部访问。如果您使用的是默认值、则以下过程提供了入口控制器的设置示例 `ingressType: "Generic"` 在Astra Control Center自定义资源中 (`astra_control_center.yaml`）。如果指定、则不需要使用此操作步骤 `ingressType: "AccTraefik"` 在Astra Control Center自定义资源中 (`astra_control_center.yaml`）。
 
-此操作步骤 介绍了如何设置入口控制器（`ingressType ： Generic` ）。这是 Astra 控制中心的默认操作。部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。
+部署 Astra 控制中心后，您需要配置入口控制器，以便使用 URL 公开 Astra 控制中心。
 
-
-NOTE: 如果您不想设置入口控制器，可以设置 `ingressType ： AccTraefik ）` 。Astra 控制中心使用类型为 "loadbalancer" 的服务（在 Astra 控制中心命名空间中为 `svC/traefik` ），并要求为其分配可访问的外部 IP 地址。如果您的环境允许使用负载平衡器，但您尚未配置一个平衡器，则可以使用 MetalLB 或其他外部服务负载平衡器为该服务分配外部 IP 地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。有关 "loadbalancer" 服务类型和入口的详细信息，请参见 link:../get-started/requirements.html["要求"]。
-
-根据您使用的入口控制器类型，步骤会有所不同：
+设置步骤因所使用的入口控制器类型而异。Astra控制中心支持多种传入控制器类型。这些设置过程提供了以下传入控制器类型的示例步骤：
 
 * Istio入口
 * nginx 入口控制器
@@ -635,89 +678,40 @@ NOTE: 如果您不想设置入口控制器，可以设置 `ingressType ： AccTr
 .您需要什么？ #8217 ；将需要什么
 * 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/["入口控制器"] 应已部署。
 * 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
-* 您使用的是介于 v1.19 和 v1.22 之间的 Kubernetes 版本，包括 v1.19 和 v1.22 。
 
 
 .Istio入口的步骤
 . 配置Istio入口。
 +
 
-NOTE: 此操作步骤 假定使用"默认"配置文件部署Istio。 
+NOTE: 此操作步骤 假定使用"默认"配置文件部署Istio。
 
 . 为传入网关收集或创建所需的证书和专用密钥文件。
 +
 您可以使用CA签名或自签名证书。公用名必须为Astra地址(FQDN)。
 
 +
-命令示例： 
+命令示例：
 
 +
-[source, sh]
+[source, console]
 ----
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 
--keyout tls.key -out tls.crt
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
 ----
-. 在`istio-system namespace`中为TLS私钥和证书创建类型为`Kubernetes。IO/TLS`的`TLS机密名称`、如TLS机密中所述。
+. 创建密钥 `tls secret name` 类型 `kubernetes.io/tls` 中的TLS专用密钥和证书 `istio-system namespace` 如TLS机密中所述。
 +
-命令示例： 
+命令示例：
 
 +
-[source, sh]
+[source, console]
 ----
-kubectl create secret tls [tls secret name] 
---key="tls.key"
---cert="tls.crt" -n istio-system
+kubectl create secret tls [tls secret name] --key="tls.key" --cert="tls.crt" -n istio-system
 ----
 +
 
 TIP: 密钥名称应与`istio-Infile.yaml`文件中提供的`spec.tls.secretName`匹配。
 
-. 使用v1beta1 (在Kubernetes版本低于或1.22的情况下已弃用)或v1资源类型在`NetApp-Accc`(或自定义命名)命名空间中为已弃用或新模式部署入站资源：
-+
-输出：
-
-+
-[listing]
-----
-apiVersion: networking.k8s.io/v1beta1
-kind: IngressClass
-metadata:
-  name: istio
-spec:
-  controller: istio.io/ingress-controller
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: ingress
-  namespace: istio-system
-spec:
-  ingressClassName: istio
-  tls:
-  - hosts:
-    - <ACC addess>
-    secretName: [tls secret name]
-  rules:
-  - host: [ACC addess]
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          serviceName: traefik
-          servicePort: 80
-----
-+
-对于v1新模式、请遵循以下示例：
-
-+
-[source, sh]
-----
-kubectl apply -f istio-Ingress.yaml
-----
-+
-输出：
-
+. 在中部署入站资源 `netapp-acc` (或自定义命名的)命名空间 (`istio-Ingress.yaml` 在此示例中使用)：
 +
 [listing]
 ----
@@ -732,7 +726,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  namespace: istio-system
+  namespace: [netapp-acc or custom namespace]
 spec:
   ingressClassName: istio
   tls:
@@ -751,10 +745,15 @@ spec:
             port:
               number: 80
 ----
-. 照常部署Astra控制中心。
+. 应用更改：
++
+[source, console]
+----
+kubectl apply -f istio-Ingress.yaml
+----
 . 检查入口状态：
 +
-[source, sh]
+[source, console]
 ----
 kubectl get ingress -n netapp-acc
 ----
@@ -767,38 +766,12 @@ kubectl get ingress -n netapp-acc
 NAME    CLASS HOSTS             ADDRESS         PORTS   AGE
 ingress istio astra.example.com 172.16.103.248  80, 443 1h
 ----
+.  Astra Control Center,完成Astra控制中心安装。
 
 
 .nginx 入口控制器的步骤
-. 创建类型的密钥 http://kubernetes.io/tls["8a637503539b25b68130b6e8003579d9"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
-. 使用`v1beta1`(在Kubernetes版本低于或1.22的情况下已弃用)或`v1`资源类型为已弃用或新模式在`NetApp-Accc`(或自定义命名)命名空间中部署入站资源：
-+
-.. 对于 `v1bea1` 已弃用的架构，请遵循以下示例：
-+
-[source, yaml]
-----
-apiVersion: extensions/v1beta1
-Kind: IngressClass
-metadata:
-  name: ingress-acc
-  namespace: [netapp-acc or custom namespace]
-  annotations:
-    kubernetes.io/ingress.class: [class name for nginx controller]
-spec:
-  tls:
-  - hosts:
-    - <ACC address>
-    secretName: [tls secret name]
-  rules:
-  - host: [ACC address]
-    http:
-      paths:
-      - backend:
-        serviceName: traefik
-        servicePort: 80
-        pathType: ImplementationSpecific
-----
-.. 对于 `v1` 新架构，请遵循以下示例：
+. 创建类型的密钥 `kubernetes.io/tls` 中的TLS专用密钥和证书 `netapp-acc` (或自定义命名的)命名空间、如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
+. 在中部署传入资源 `netapp-acc` (或自定义命名的)命名空间 (`nginx-Ingress.yaml` 在此示例中使用)：
 +
 [source, yaml]
 ----
@@ -825,20 +798,24 @@ spec:
                 number: 80
           pathType: ImplementationSpecific
 ----
+. 应用更改：
++
+[source, console]
+----
+kubectl apply -f nginx-Ingress.yaml
+----
 
 
 
+WARNING: NetApp建议将nginx控制器安装为部署、而不是"demonSet"。
 
 .OpenShift 入口控制器的步骤
 . 获取证书并获取密钥，证书和 CA 文件，以供 OpenShift 路由使用。
 . 创建 OpenShift 路由：
 +
-[source, sh]
+[source, console]
 ----
-oc create route edge --service=traefik
---port=web -n [netapp-acc or custom namespace]
---insecure-policy=Redirect --hostname=<ACC address>
---cert=cert.pem --key=key.pem
+oc create route edge --service=traefik --port=web -n [netapp-acc or custom namespace] --insecure-policy=Redirect --hostname=<ACC address> --cert=cert.pem --key=key.pem
 ----
 
 
@@ -849,13 +826,13 @@ oc create route edge --service=traefik
 安装 Astra 控制中心后，您将更改默认管理员的密码并登录到 Astra 控制中心 UI 信息板。
 
 .步骤
-. 在浏览器中，输入在 `Astra_control_center_min.YAML` CR when 的 `AstraAddress` 中使用的 FQDN  Astra Control Center,您安装了 Astra 控制中心。
-. 出现提示时接受自签名证书。
+. 在浏览器中、输入FQDN (`https://<FQDN>`)您在中使用的 `astraAddress` 在中 `astra_control_center.yaml` CR时间  Astra Control Center,您安装了 Astra 控制中心。
+. 如果出现提示、请接受自签名证书。
 +
 
 NOTE: 您可以在登录后创建自定义证书。
 
-. 在 Astra Control Center 登录页面上，在 `Astra_control_center_min.yaml` CR when 中输入您用于 `email` 的值  Astra Control Center,您安装了 Astra 控制中心，后跟一次性密码（`Acc-UUID` ）。
+. 在Astra Control Center登录页面上、输入您用于的值 `email` 在中 `astra_control_center.yaml` CR时间  Astra Control Center,您安装了 Astra 控制中心、后跟初始设置密码 (`ACC-[UUID]`）。
 +
 
 NOTE: 如果您输入的密码三次不正确，管理员帐户将锁定 15 分钟。
@@ -864,7 +841,7 @@ NOTE: 如果您输入的密码三次不正确，管理员帐户将锁定 15 分�
 . 根据提示更改密码。
 +
 
-NOTE: 如果您是首次登录，但忘记了密码，并且尚未创建任何其他管理用户帐户，请联系 NetApp 支持部门以获得密码恢复帮助。
+NOTE: 如果这是您第一次登录、但您忘记了密码、并且尚未创建任何其他管理用户帐户、请联系 https://mysupport.netapp.com/site/["NetApp 支持"] 以获得密码恢复帮助。
 
 . （可选）删除现有自签名 TLS 证书并将其替换为 link:../get-started/add-custom-tls-certificate.html["由证书颁发机构（ CA ）签名的自定义 TLS 证书"]。
 
@@ -878,9 +855,9 @@ NOTE: 如果您是首次登录，但忘记了密码，并且尚未创建任何�
 .步骤
 . 要检查 Astra 控制中心操作员日志，请输入以下内容：
 +
-[source, sh]
+[source, console]
 ----
-kubectl logs --follow -n netapp-acc-operator $(kubectl get pods -n netapp-acc-operator -o name) -c manager
+kubectl logs deploy/acc-operator-controller-manager -n netapp-acc-operator -c manager -f
 ----
 
 
@@ -888,4 +865,6 @@ kubectl logs --follow -n netapp-acc-operator $(kubectl get pods -n netapp-acc-op
 
 == 下一步行动
 
-执行以完成部署 link:setup_overview.html["设置任务"]。
+* (可选)根据您的环境、完成安装后操作 link:configure-after-install.html["配置步骤"]。
+* 执行以完成部署 link:setup_overview.html["设置任务"]。
+

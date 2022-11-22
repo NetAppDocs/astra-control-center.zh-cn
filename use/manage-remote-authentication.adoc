@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: use/manage-remote-authentication.html 
+keywords: enable ldap authentication, disable, ldap, authentication, configure, manage 
+summary: 在Astra Control系统上管理LDAP身份验证。 
+---
+= 管理远程身份验证
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+LDAP是一种用于访问分布式目录信息的行业标准协议、也是企业身份验证的常见选择。您可以将Astra控制中心连接到LDAP服务器、以便对选定的Astra控制用户执行身份验证。
+
+从较高层面来看、该配置涉及将Astra与LDAP集成、并定义与LDAP定义对应的Astra Control用户和组。您可以使用Astra Control API或Web UI配置LDAP身份验证以及LDAP用户和组。
+
+
+
+== 添加用于LDAPS身份验证的证书
+
+为LDAP服务器添加专用TLS证书、以便在使用LDAPS连接时、Astra控制中心可以向LDAP服务器进行身份验证。您只需要执行一次此操作、或者在安装的证书过期时执行此操作。
+
+.步骤
+. 转到*帐户*。
+. 选择*证书*选项卡。
+. 选择 * 添加 * 。
+. 上传 `.pem` 将文件内容归档或粘贴到剪贴板中。
+. 选中*可信*复选框。
+. 选择*添加证书*。
+
+
+
+
+== 启用远程身份验证
+
+您可以启用LDAP身份验证并配置Astra Control与远程LDAP服务器之间的连接。
+
+如果您计划使用LDAPS、请确保将LDAP服务器的专用TLS证书安装在Astra控制中心中、以便Astra控制中心能够向LDAP服务器进行身份验证。请参见  a certificate for LDAPS authentication 有关说明，请参见。
+
+.步骤
+. 转至*帐户>连接*。
+. 在*远程身份验证*窗格中、选择配置菜单。
+. 选择 * 连接 * 。
+. 输入服务器IP地址、端口和首选连接协议(LDAP或LDAPS)。
++
+
+NOTE: 作为最佳实践、请在与LDAP服务器连接时使用LDAPS。在连接到LDAPS之前、您需要在Astra控制中心安装LDAP服务器的专用TLS证书。
+
+. 以电子邮件格式输入服务帐户凭据(administrator@example.com)。在与LDAP服务器连接时、Astra Control将使用这些凭据。
+. 在*用户匹配*部分中、输入在从LDAP服务器检索用户信息时要使用的基础DN和相应的用户搜索筛选器。
+. 在*组匹配*部分中、输入组搜索基础DN和相应的自定义组搜索筛选器。
++
+
+NOTE: 请务必对*用户匹配*和*组匹配*使用正确的基本可分辨名称(DN)和适当的搜索筛选器。基础DN用于指示Astra Control在目录树的哪个级别开始搜索、而搜索筛选器用于限制目录树Astra Control搜索的各个部分。
+
+. 选择 * 提交 * 。
+
+
+与LDAP服务器建立连接后、*远程身份验证*窗格状态将移至*待定*、然后移至*已连接*。
+
+
+
+== 禁用远程身份验证
+
+您可以暂时禁用与LDAP服务器的活动连接。
+
+
+NOTE: 禁用与LDAP服务器的连接时、将保存所有设置、并保留从该LDAP服务器添加到Astra Control中的所有远程用户和组。您可以随时重新连接到此LDAP服务器。
+
+.步骤
+. 转至*帐户>连接*。
+. 在*远程身份验证*窗格中、选择配置菜单。
+. 选择 * 禁用 * 。
+
+
+"*远程身份验证*"窗格状态将移至"*已禁用"。所有远程身份验证设置、远程用户和远程组都会保留下来、您可以随时重新启用连接。
+
+
+
+== 编辑远程身份验证设置
+
+如果禁用了与LDAP服务器的连接或*远程身份验证*窗格处于"连接错误"状态、则可以编辑配置设置。
+
+
+NOTE: 如果*远程身份验证*窗格处于"已禁用"状态、则无法编辑LDAP服务器URL或IP地址。您需要  remote authentication 第一个。
+
+.步骤
+. 转至*帐户>连接*。
+. 在*远程身份验证*窗格中、选择配置菜单。
+. 选择 * 编辑 * 。
+. 进行必要的更改、然后选择*编辑*。
+
+
+
+
+== 断开远程身份验证
+
+您可以从LDAP服务器断开连接、并从Astra Control中删除配置设置。
+
+
+CAUTION: 断开与LDAP服务器的连接后、该LDAP服务器的所有配置设置以及从该LDAP服务器添加的任何远程用户和组都会从Astra Control中删除。
+
+.步骤
+. 转至*帐户>连接*。
+. 在*远程身份验证*窗格中、选择配置菜单。
+. 选择*断开连接*。
+
+
+"*远程身份验证*"窗格状态将移至"*已断开连接"。远程身份验证设置、远程用户和远程组将从Astra Control中删除。

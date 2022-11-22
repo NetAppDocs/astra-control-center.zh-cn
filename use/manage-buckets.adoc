@@ -11,9 +11,10 @@ summary: 如果要备份应用程序和永久性存储，或者要跨集群克�
 :imagesdir: ../media/use/
 
 
+[role="lead"]
 如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则对象存储分段提供程序至关重要。使用 Astra 控制中心，添加一个对象存储提供程序作为应用程序的集群外备份目标。
 
-如果要将应用程序配置和永久性存储克隆到同一集群，则不需要存储分段。
+如果要将应用程序配置和永久性存储克隆到同一集群、则不需要存储分段。
 
 使用以下 Amazon Simple Storage Service （ S3 ）存储分段提供商之一：
 
@@ -27,7 +28,7 @@ NOTE: Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存�
 
 +
 
-NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段提供商，但 Astra 控制中心可能不支持声称支持 Amazon S3 的所有对象存储供应商。
+NOTE: 虽然Astra控制中心支持将Amazon S3作为通用S3存储分段提供商、但Astra控制中心可能不支持声称支持Amazon S3的所有对象存储供应商。
 
 
 
@@ -44,6 +45,7 @@ NOTE: 虽然 Astra 控制中心支持将 Amazon S3 作为通用 S3 存储分段�
 
 * link:../get-started/setup_overview.html#add-a-bucket["添加存储分段"]
 *  a bucket
+*  the default bucket
 *  or remove bucket credentials
 *  a bucket
 
@@ -62,13 +64,27 @@ NOTE: 添加存储分段时，请选择正确的存储分段提供程序，并�
 
 .步骤
 . 从左侧导航栏中、选择*分段*。
-. 从选项菜单的 * 操作 * 列中，选择 * 编辑 * 。
+. 从菜单的*操作*列中、选择*编辑*。
 . 更改存储分段类型以外的任何信息。
 +
 
 TIP: 您无法修改存储分段类型。
 
 . 选择 * 更新 * 。
+
+
+
+
+== 设置默认分段
+
+在集群间执行克隆时、Astra Control需要一个默认分段。按照以下步骤为所有集群设置默认存储分段。
+
+.步骤
+. 转至*云实例*。
+. 在列表中的*操作*列中为云实例选择菜单。
+. 选择 * 编辑 * 。
+. 在*分段*列表中、选择要用作默认分段的分段。
+. 选择 * 保存 * 。
 
 
 

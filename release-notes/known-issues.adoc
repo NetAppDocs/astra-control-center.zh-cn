@@ -12,6 +12,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 :imagesdir: ../media/release-notes/
 
 
+[role="lead"]
 已知问题可确定可能妨碍您成功使用此版本产品的问题。
 
 以下已知问题会影响当前版本：
@@ -29,8 +30,8 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 
 .其他问题
+*  clusters do not appear in NetApp Cloud Insights when connecting through a proxy
 *  data management operations fail with Internal Service Error (500) when Astra Trident is offline
-*  might fail with snapshot controller version 4.2.0
 
 
 
@@ -71,26 +72,31 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 
 
+== 通过代理进行连接时、NetApp Cloud Insights 中不会显示受管集群
+
+当Astra控制中心通过代理连接到NetApp Cloud Insights 时、受管集群可能不会显示在Cloud Insights 中。作为临时解决策 、在每个受管集群上运行以下命令：
+
+[source, console]
+----
+kubectl get cm telegraf-conf -o yaml -n netapp-monitoring | sed '/\[\[outputs.http\]\]/c\    [[outputs.http]]\n    use_system_proxy = true' | kubectl replace -f -
+----
+[source, console]
+----
+kubectl get cm telegraf-conf-rs -o yaml -n netapp-monitoring | sed '/\[\[outputs.http\]\]/c\    [[outputs.http]]\n    use_system_proxy = true' | kubectl replace -f -
+----
+[source, console]
+----
+kubectl get pods -n netapp-monitoring --no-headers=true | grep 'telegraf-ds\|telegraf-rs' | awk '{print $1}' | xargs kubectl delete -n netapp-monitoring pod
+----
+
+
 == 当 Astra Trident 脱机时，应用程序数据管理操作失败，并显示内部服务错误（ 500 ）
 
 如果应用程序集群上的 Astra Trident 脱机（并恢复联机），并且在尝试应用程序数据管理时遇到 500 个内部服务错误，请重新启动应用程序集群中的所有 Kubernetes 节点以还原功能。
 
 
 
-== 使用 Snapshot 控制器 4.2.0 版时，快照可能会失败
-
-如果将 Kubernetes Snapshot-controller （也称为外部快照程序） 4.2.0 与 Kubernetes 1.20 或 1.21 结合使用，则快照最终可能会开始失败。要防止出现这种情况，请使用其他 https://kubernetes-csi.github.io/docs/snapshot-controller.html["支持的版本"^] 使用 Kubernetes 版本 1.20 或 1.21 的外部快照程序，例如 4.2.1 版。
-
-. 运行 POST 调用，将更新后的 kubeconfig 文件添加到 ` 凭据` 端点，并从响应正文中检索分配的 `id` 。
-. 使用适当的集群 ID 从 ` 集群` 端点运行 PUT 调用，并将 `credentialId` 设置为上一步中的 `id` 值。
-
-
-完成这些步骤后，将更新与集群关联的凭据，集群应重新连接并将其状态更新为 `Available` 。
-
-
-
 == 了解更多信息
 
-* link:../release-notes/known-issues-ads.html["有关 Astra Data Store 预览版和此 Astra 控制中心版本的已知问题"]
 * link:../release-notes/known-limitations.html["已知限制"]
 

@@ -11,27 +11,28 @@ summary: 如果您使用的是 Red Hat OpenShift ，则可以使用操作员安�
 :imagesdir: ../media/get-started/
 
 
+[role="lead"]
 如果您使用的是 Red Hat OpenShift ，则可以使用 Red Hat 认证操作员安装 Astra Control Center 。使用此操作步骤从安装 Astra 控制中心 https://catalog.redhat.com/software/operators/explore["Red Hat 生态系统目录"^] 或使用 Red Hat OpenShift 容器平台。
 
 完成此操作步骤后，您必须返回到安装操作步骤以完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"] 以验证安装是否成功并登录。
 
 .您需要什么？ #8217 ；将需要什么
 * link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
-* 在 OpenShift 集群中，确保所有集群操作员均处于运行状况良好的状态（`Available` is `true` ）：
+* 在OpenShift集群中、确保所有集群操作员均处于运行状况良好的状态：
 +
-[source, sh]
+[source, console]
 ----
 oc get clusteroperators
 ----
-* 在 OpenShift 集群中，确保所有 API 服务均处于运行状况良好的状态（`Available` is `true` ）：
+* 在OpenShift集群中、确保所有API服务均处于运行状况良好的状态：
 +
-[source, sh]
+[source, console]
 ----
 oc get apiservices
 ----
 * 在数据中心中为Astra控制中心创建FQDN地址。
 * 获取对Red Hat OpenShift容器平台的必要权限和访问权限、以执行所述的安装步骤。
-* 如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"] 这样、Astra控制中心就不会安装自己的证书管理器。
+* 如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"] 这样、Astra控制中心就不会安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
 
 
 .步骤
@@ -49,15 +50,15 @@ oc get apiservices
 
 . 从下载 Astra 控制中心捆绑包（`Astra-control-center-[version].tar.gz` ） https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
 . 从下载 Astra 控制中心证书和密钥的 zip https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。
-. （可选）使用以下命令验证捆绑包的签名：
+. （可选）验证捆绑包的签名：
 +
-[source, sh]
+[source, console]
 ----
 openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
 . 提取映像：
 +
-[source, sh]
+[source, console]
 ----
 tar -vxzf astra-control-center-[version].tar.gz
 ----
@@ -67,20 +68,24 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 == 安装NetApp Astra kubectl插件
 
-NetApp Astra `kubectl`命令行插件可在执行与部署和升级Astra控制中心相关的常见任务时节省时间。
+NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
 
-NetApp为不同CPU架构和操作系统的插件提供二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。在Linux和Mac操作系统上、您可以使用`uname -a`命令收集此信息。
+NetApp可为不同的CPU架构和操作系统提供插件二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。
 
 .步骤
-. 列出可用的NetApp Astra `kubectl`插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
+. 列出可用的NetApp Astra kubectl插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
 +
-[source, sh]
+
+NOTE: kubectl插件库是tar包的一部分、并会解压缩到文件夹中 `kubectl-astra`。
+
++
+[source, console]
 ----
 ls kubectl-astra/
 ----
-. 将此文件复制到与标准`kubectl`实用程序相同的位置。在此示例中、`kubectl`实用程序位于`/usr/local/bin`目录中。将`<二进制名称>`替换为所需文件的名称：
+. 将正确的二进制文件移动到当前路径并重命名为 `kubectl-astra`：
 +
-[source, sh]
+[source, console]
 ----
 cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ----
@@ -97,22 +102,26 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ====
 .Docker
 --
-. 更改为Astra目录：
+. 更改为 `acc` 从tar包中提取的目录：
 +
-[source, sh]
+示例
+
+
+
+[listing]
 ----
-cd acc
+cd ../acc
 ----
 . [substep_image_local_registry_push]]将Astra控制中心映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
 +
-** 将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.Manifest.YAML`)。
-** 将my_regRegistry替换为Docker存储库的URL。
-** 将my_registry_user替换为用户名。
-** 将my_registry_token替换为注册表的授权令牌。
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.yaml`）。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
+** 将<MY_REGISTRY_USER> 替换为用户名。
+** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
 +
-[source, sh]
+[source, console]
 ----
-kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_TOKEN
+kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -u <MY_REGISTRY_USER> -p <MY_REGISTRY_TOKEN>
 ----
 
 
@@ -123,13 +132,13 @@ kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_
 --
 . 登录到注册表：
 +
-[source, sh]
+[source, console]
 ----
-podman login [your_registry_path]
+podman login <MY_FULL_REGISTRY_PATH>
 ----
 . 运行以下脚本、按照注释中的说明替换<your_registry>：
 +
-[source, sh]
+[source, console]
 ----
 # You need to be at the root of the tarball.
 # You should see these files to confirm correct location:
@@ -139,7 +148,7 @@ podman login [your_registry_path]
 # Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
 export REGISTRY=<YOUR_REGISTRY>
 export PACKAGENAME=acc
-export PACKAGEVERSION=22.08.1-26
+export PACKAGEVERSION=22.11.0-82
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
   # Load to local cache

@@ -2,64 +2,35 @@
 sidebar: sidebar 
 permalink: get-started/acc_cluster_cr_options.html 
 keywords: astra cr, cluster cr, astra control center, how to configure, deploy 
-summary: 了解部署期间用于自定义配置的Astra控制中心集群CR选项。 
+summary: 有关部署期间的自定义配置、请参见Astra控制中心集群CR选项。 
 ---
-= 了解Astra控制中心集群CR选项
+= Astra控制中心集群自定义资源选项
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/get-started/
 
 
-您可以使用以下Astra控制中心集群CR选项在部署期间创建自定义配置。
+[role="lead"]
+您可以使用以下Astra控制中心集群自定义资源(CR)选项在部署期间创建自定义配置。
 
 |===
 | 正在设置 ... | Type | 使用 ... | 值示例 | Description 
 
 
-| AstraVersion | string | Required | 1.5.2 | 要部署的AstraControlCenter版本。系统会为您提供一个Helm存储库、其中包含相应的版本。 
+| 帐户名称 | string | Required | 示例 | Astra控制中心帐户名称。只能有一个。 
 
 
 | AstraAddress | string | Required | astra.example.com | 定义如何在数据中心中找到Astra。必须在配置Astra控制中心之前创建此IP地址和/或DNS A记录。 
 
 
-| 帐户名称 | string | Required | 示例 | Astra控制中心帐户名称。只能有一个。 
-
-
-| email | string | Required | admin@example.com | 要添加为Astra的第一个用户的管理员的用户名。如果事件需要、Astra Control将通知此电子邮件地址。 
-
-
-| firstName | string | Required | SRE | 支持Astra的管理员的名字。 
-
-
-| lastName | string | Required | 管理员 | 支持Astra的管理员的姓氏。 
-
-
-| 存储类 | string | 可选(这是默认值) | ontap-gold | 要用于PVC的存储类。如果未设置、将使用默认存储类。 
-
-
-| volumeReclaimPolicy | 未定义 | 可选 | 保留 | 回收要为永久性卷设置的策略。 
+| AstraKubeConfigSecret | string | Required | Acc-kubeconfig-cred. | 如果此值存在且存在密钥、则操作员将尝试添加该KubeConfig以成为第一个受管集群。 
 
 
 | AstraResourcesScal | string | Required | Default | AstraControlCenter资源限制的扩展选项。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
 
 
-| AstraKubeConfigSecret | string | Required | Acc-kubeconfig-cred. | 如果此值存在且存在密钥、则操作员将尝试添加该KubeConfig以成为第一个受管集群。 
-
-
-| 正在载入类型 | string | 可选 | 通用(这是默认值) | 应为配置入口Astra控制中心的类型。有效值为`Generic`和`AccTraefik`。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
-
-
-| avpDeploy | 布尔值 | 可选 | true (这是默认值) | 允许用户禁用适用于VMware vSphere的Astra插件操作员部署的选项。 
-
-
-| imageRegistry | 未定义 | 可选 |  | 托管Astra应用程序映像、Astra控制中心操作员和Astra控制中心Helm存储库的容器映像注册表。 
-
-
-| imageRegistry.name | string | 如果使用的是imageRegistry、则为必需项 | example.registry.com/astra | 映像注册表的名称。请勿使用协议作为前缀。 
-
-
-| imageRegistry.secret | string | 如果使用的是imageRegistry、则为必需项 | ast-registry-cred. | 用于通过映像注册表进行身份验证的Kubernetes密钥的名称。 
+| AstraVersion | string | Required | 1.5.2 | 要部署的AstraControlCenter版本。系统会为您提供一个Helm存储库、其中包含相应的版本。 
 
 
 | AutoSupport | 未定义 | Required |  | 表示NetApp主动支持应用程序NetApp Active IQ 的参与状态。需要互联网连接(端口442)、所有支持数据均会匿名化。 
@@ -71,25 +42,46 @@ summary: 了解部署期间用于自定义配置的Astra控制中心集群CR选�
 | AutoSupport.URL | string | 可选、但必须选择`enrolled`或`URL`字段 | https://support.netapp.com/asupprod/post/1.0/postAsup[] | URL用于确定匿名数据的发送位置。 
 
 
+| avpDeploy | 布尔值 | 可选 | true (这是默认值) | 允许用户禁用插件操作员部署的选项。 
+
+
 | CRD | 未定义 | 未定义 |  | 有关Astra控制中心应如何处理CRD的选项。 
-
-
-| CRDs.externalTraefik | 布尔值 | 可选 | true (此值为默认值) | 默认情况下、Astra控制中心将安装所需的Traefik CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。 
 
 
 | CRDs.externalCertManager | 布尔值 | 可选 | true (此值为默认值) | 默认情况下、Astra控制中心将安装所需的证书管理器CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。 
 
 
+| CRDs.externalTraefik | 布尔值 | 可选 | true (此值为默认值) | 默认情况下、Astra控制中心将安装所需的Traefik CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。 
+
+
 | CRDs.shouldUpgrade | 布尔值 | 可选 | 未定义 | 确定升级Astra控制中心时是否应升级CRD。 
 
 
-| MTLS |  |  |  | 有关Astra控制中心应如何实施服务以在集群中为MTLS提供服务的选项。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置 
+| email | string | Required | admin@example.com | 要添加为Astra的第一个用户的管理员的用户名。如果事件需要、Astra Control将通知此电子邮件地址。 
 
 
-| 已启用MTLS.enabled | 布尔值 | 可选 | true (此值为默认值) | 默认情况下、Astra控制中心使用MTLS进行服务到服务通信。在使用服务网格对服务到服务通信进行加密时、应禁用此选项。 
+| firstName | string | Required | SRE | 支持Astra的管理员的名字。 
 
 
-| MTLS.certDuration | string | 可选 | 2140h (此值为默认持续时间) | 颁发服务TLS证书时用作证书生命周期的持续时间(以小时为单位)。只有当`mtls.enabled`设置为`true`时、此设置才起作用。 
+| imageRegistry | 未定义 | 可选 |  | 托管Astra应用程序映像、Astra控制中心操作员和Astra控制中心Helm存储库的容器映像注册表。 
+
+
+| imageRegistry.name | string | 如果使用的是imageRegistry、则为必需项 | example.registry.com/astra | 映像注册表的名称。请勿使用协议作为前缀。 
+
+
+| imageRegistry.secret | string | 如果使用的imageRegistry需要密钥、则此参数为必需项 | ast-registry-cred. | 用于通过映像注册表进行身份验证的Kubernetes密钥的名称。 
+
+
+| 正在载入类型 | string | 可选 | 通用(这是默认值) | 应为配置入口Astra控制中心的类型。有效值为`Generic`和`AccTraefik`。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
+
+
+| lastName | string | Required | 管理员 | 支持Astra的管理员的姓氏。 
+
+
+| 存储类 | string | 可选(这是默认值) | ontap-gold | 要用于PVC的存储类。如果未设置、将使用默认存储类。 
+
+
+| volumeReclaimPolicy | 未定义 | 可选 | 保留 | 回收要为永久性卷设置的策略。 
 |===
 
 
@@ -103,7 +95,7 @@ summary: 了解部署期间用于自定义配置的Astra控制中心集群CR选�
 
 默认情况下、Astra控制中心会进行部署、并为Astra中的大多数组件设置了资源请求。通过这种配置、Astra控制中心软件堆栈可以在应用程序负载和扩展性增加的环境中更好地运行。
 
-但是、在使用较小的开发或测试集群的情况下、CR字段`AstraResourcesScalear`可能会设置为`off`。此操作将禁用资源请求、并允许在较小的集群上部署。
+但是、在使用较小的开发或测试集群的情况下、CR字段为 `AstraResourcesScalar` 可设置为 `Off`。此操作将禁用资源请求、并允许在较小的集群上部署。
 
 
 
@@ -142,28 +134,4 @@ spec:
                 number: 80
           pathType: ImplementationSpecific
 ----
-
-WARNING: 如果使用CR中的MTLS.enabled设置禁用了MTLS、则必须使用`ingressType：generic`。
-
 如果将`ingType`设置为`AccesTraefik`、则Astra控制中心会将其Traefik网关部署为Kubernetes负载平衡器类型的服务。用户需要提供外部负载平衡器(如MetalLB)、以使Astra控制中心获得外部IP。
-
-
-
-=== MTLS
-
-CR中使用的设置决定了应用程序内通信的安全保护方式。用户提前了解是否将使用服务网格非常重要。
-
-* `enables=true`：启用此设置后、Astra将部署一个内部服务到服务通信网络、以保护应用程序中的所有流量。
-
-
-
-WARNING: 如果此设置为`true`、则不要在服务网格中覆盖Astra控制中心。
-
-* `enables=false`：禁用此设置后、Astra控制中心将无法保护内部流量、您必须使用服务网格独立保护Astra命名空间。
-
-
-
-WARNING: 如果使用CR中的MTLS.enabled设置禁用了MTLS、则必须使用`ingressType：generic`。
-
-
-WARNING: 如果未使用任何服务网格且此设置已禁用、则内部通信将不安全。

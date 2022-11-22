@@ -7,8 +7,5 @@ entries:
   url: "/release-notes/whats-new.html"
 - title: 已知问题
   url: "/release-notes/known-issues.html"
-  entries:
-  - title: Astra 数据存储和此 Astra 控制中心版本的已知问题
-    url: "/release-notes/known-issues-ads.html"
 - title: 已知限制
   url: "/release-notes/known-limitations.html"

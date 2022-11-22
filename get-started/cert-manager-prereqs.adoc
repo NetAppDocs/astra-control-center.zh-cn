@@ -11,12 +11,13 @@ summary: 如果集群中已存在证书管理器、则需要执行一些前提�
 :imagesdir: ../media/get-started/
 
 
+[role="lead"]
 如果Kubernetes集群中已存在证书管理器、则需要执行一些前提步骤、以使Astra控制中心不会安装自己的证书管理器。
 
 .步骤
 . 确认已安装证书管理器：
 +
-[source, sh]
+[source, console]
 ----
 kubectl get pods -A | grep 'cert-manager'
 ----
@@ -32,7 +33,7 @@ cert-manager   essential-cert-manager-webhook-56b76db9cc-fjqrq      1/1     Runn
 ----
 . 为astraAddress FQDN创建证书/密钥对：
 +
-[source, sh]
+[source, console]
 ----
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
 ----
@@ -49,7 +50,7 @@ writing new private key to 'tls.key'
 ----
 . 使用先前生成的文件创建密钥：
 +
-[source, sh]
+[source, console]
 ----
 kubectl create secret tls selfsigned-tls --key tls.key --cert tls.crt -n <cert-manager-namespace>
 ----
@@ -75,7 +76,7 @@ spec:
     secretName: selfsigned-tls
 ----
 +
-[source, sh]
+[source, console]
 ----
 kubectl apply -f ClusterIssuer.yaml
 ----
@@ -89,7 +90,7 @@ clusterissuer.cert-manager.io/astra-ca-clusterissuer created
 ----
 . 验证Cluster颁发 程序是否已正确启动。`就绪`必须为`True`、然后才能继续：
 +
-[source, sh]
+[source, console]
 ----
 kubectl get ClusterIssuer
 ----

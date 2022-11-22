@@ -11,11 +11,32 @@ summary: 要升级 Astra 控制中心，您需要下载此捆绑包并按照所�
 :imagesdir: ../media/get-started/
 
 
-要升级 Astra 控制中心，请从 NetApp 支持站点下载安装包，然后按照以下说明升级环境中的 Astra 控制中心组件。您可以使用此操作步骤在互联网连接或通风环境中升级 Astra 控制中心。
+[role="lead"]
+要升级Astra控制中心、请从NetApp 支持站点 下载安装包并完成以下说明。您可以使用此操作步骤在互联网连接或通风环境中升级 Astra 控制中心。
 
 .您需要什么？ #8217 ；将需要什么
-* link:../get-started/requirements.html["开始升级之前，请确保您的环境仍满足 Astra Control Center 部署的最低要求"]。
-* 确保所有集群操作员均处于运行状况良好且可用。
+* 升级之前、请参见 link:../get-started/requirements.html#operational-environment-requirements["操作环境要求"^] 确保您的环境仍满足Astra Control Center部署的最低要求。您的环境应具有以下内容：
++
+** 支持的Astra Trident版本要确定您正在运行的版本、请对现有的Astra控制中心运行以下命令：
++
+[listing]
+----
+../../trident-installer/tridentctl -n trident version
+----
++
+请参见 https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html#determine-the-version-to-upgrade-to["Astra Trident 文档"] 从旧版本升级。
+
++
+
+WARNING: 要升级到Kubernetes 1.25、您必须升级到Astra Trident 22.10 *先前版本*。
+
+** 支持的Kubernetes分发版要确定您运行的版本、请对现有Astra控制中心运行以下命令： `kubectl get nodes -o wide`
+** 有足够的集群资源来确定集群资源、请在现有Astra控制中心集群中运行以下命令： `kubectl describe node <node name>`
+** 可用于推送和上传Astra控制中心映像的注册表
+** 默认存储类要确定默认存储类、请对现有Astra控制中心运行以下命令： `kubectl get storageclass`
+
+
+* (仅限OpenShift)确保所有集群操作员均处于运行状况良好且可用。
 +
 [listing]
 ----
@@ -27,36 +48,31 @@ kubectl get clusteroperators
 ----
 kubectl get apiservices
 ----
-* 从 Astra 控制中心注销。
+* 在开始升级之前、请从Astra控制中心用户界面中注销。
 
 
 Astra 控制中心升级过程将指导您完成以下高级步骤：
 
 *  the Astra Control Center bundle
-*  the bundle and change directory
+*  the bundle
 *  the images to your local registry
 *  the updated Astra Control Center operator
 *  Astra Control Center
-*  third-party services (Optional)
 *  system status
-*  up ingress for load balancing
 
 
 
-IMPORTANT: 请勿在整个升级过程中执行以下命令以避免删除所有 Astra 控制中心 Pod ： `kubectl delete -f Astra_control_center_operator_deploy.yaml`
+IMPORTANT: 请勿删除Astra Control Center运算符(例如、 `kubectl delete -f astra_control_center_operator_deploy.yaml`)、以避免删除Pod。
 
 
 TIP: 如果计划，备份和快照未运行，请在维护窗口中执行升级。
 
 
-NOTE: 如果您使用的是 Red Hat 的 Podman 而不是 Docker 引擎，则可以使用 Podman 命令代替 Docker 命令。
-
-
 
 == 下载 Astra Control Center 捆绑包
 
-. 从https：mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab[NetApp支持站点^下载Astra Control Center升级包(`Astra-control-center-[version].tar.gz`)。
-. （可选）使用以下命令验证捆绑包的签名：
+. 从下载Astra控制中心捆绑包 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。文件名类似于以下内容： `astra-control-center-[version].tar.gz`。
+. （可选）验证捆绑包的签名：
 +
 [listing]
 ----
@@ -66,7 +82,7 @@ openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-cont
 
 
 
-== 打开软件包的包装并更改目录
+== 打开捆绑包的包装
 
 . 提取映像：
 +
@@ -75,6 +91,22 @@ openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-cont
 tar -vxzf astra-control-center-[version].tar.gz
 ----
 
+
+
+
+== 确认已安装NetApp Astra kubectl插件
+
+NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
+
+. 使用以下命令确定是否已安装此插件：
++
+[listing]
+----
+kubectl astra
+----
+
+
+此命令应提供kubectl插件帮助。如果命令返回错误、请使用这些安装插件 link:../get-started/install_acc.html#install-the-netapp-astra-kubectl-plugin["说明"]。
 
 
 
@@ -87,22 +119,26 @@ tar -vxzf astra-control-center-[version].tar.gz
 ====
 .Docker
 --
-. 更改为Astra目录：
+. 更改为 `acc` 从tar包中提取的目录：
 +
-[source, sh]
+示例
+
+
+
+[listing]
 ----
-cd acc
+cd ../acc
 ----
-. [substep_image_local_registry_push]]将Astra控制中心映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
+. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
 +
-** 将bundle_file替换为Astra Control捆绑包文件的名称(例如、`Acc.Manifest.YAML`)。
-** 将my_regRegistry替换为Docker存储库的URL。
-** 将my_registry_user替换为用户名。
-** 将my_registry_token替换为注册表的授权令牌。
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.yaml`）。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
+** 将<MY_REGISTRY_USER> 替换为用户名。
+** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
 +
-[source, sh]
+[source, console]
 ----
-kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_TOKEN
+kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -u <MY_REGISTRY_USER> -p <MY_REGISTRY_TOKEN>
 ----
 
 
@@ -113,13 +149,13 @@ kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_
 --
 . 登录到注册表：
 +
-[source, sh]
+[source, console]
 ----
-podman login [your_registry_path]
+podman login <MY_FULL_REGISTRY_PATH>
 ----
 . 运行以下脚本、按照注释中的说明替换<your_registry>：
 +
-[source, sh]
+[source, console]
 ----
 # You need to be at the root of the tarball.
 # You should see these files to confirm correct location:
@@ -129,7 +165,7 @@ podman login [your_registry_path]
 # Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
 export REGISTRY=<YOUR_REGISTRY>
 export PACKAGENAME=acc
-export PACKAGEVERSION=22.08.1-26
+export PACKAGEVERSION=22.11.0-82
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
   # Load to local cache
@@ -166,15 +202,15 @@ cd manifests
 vim astra_control_center_operator_deploy.yaml
 ----
 +
-.. 如果您使用的注册表需要身份验证，请将默认行 `imagePullSecs ： []` 替换为以下内容：
+.. 如果您使用的注册表需要身份验证、请替换或编辑的默认行 `imagePullSecrets: []` 使用以下命令：
 +
 [listing]
 ----
 imagePullSecrets:
-- name: <name_of_secret_with_creds_to_local_registry>
+- name: <astra-registry-cred_or_custom_name_of_secret>
 ----
-.. 将 `Kube-RBAC 代理` 映像的 ` [yor_registry_path]` 更改为将映像推入的注册表路径 ,上一步。
-.. 将 `Acc-operator-controller-manager` 映像的 ` [yor_registry_path]` 更改为在中推送映像的注册表路径 ,上一步。
+.. 更改 `[your_registry_path]` 。 `kube-rbac-proxy` 将映像推送到注册表路径中  the images to your local registry,上一步。
+.. 更改 `[your_registry_path]` 。 `acc-operator` 将映像推送到注册表路径中  the images to your local registry,上一步。
 .. 将以下值添加到 `env` 部分：
 +
 [listing]
@@ -197,6 +233,8 @@ spec:
   selector:
     matchLabels:
       control-plane: controller-manager
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -217,8 +255,6 @@ spec:
         - --health-probe-bind-address=:8081
         - --metrics-bind-address=127.0.0.1:8080
         - --leader-elect
-        command:
-        - /manager
         env:
         - name: ACCOP_LOG_LEVEL
           value: "2"
@@ -226,7 +262,32 @@ spec:
           *value: 300m*
         *image: [your_registry_path]/acc-operator:[version x.y.z]*
         imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        name: manager
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          limits:
+            cpu: 300m
+            memory: 750Mi
+          requests:
+            cpu: 100m
+            memory: 75Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       *imagePullSecrets: []*
+      securityContext:
+        runAsUser: 65532
+      terminationGracePeriodSeconds: 10
 ----
 
 
@@ -267,16 +328,34 @@ kubectl get pods -n netapp-acc-operator
 
 == 升级 Astra 控制中心
 
-. 编辑 Astra 控制中心自定义资源（ CR ）（`Astra_control_center_min.yaml` ），并将 Astra 版本（`AstraVersion` Insidem of `SPec` ）编号更改为最新：
+. 编辑Astra Control Center自定义资源(CR)：
 +
 [listing]
 ----
-kubectl edit acc -n [netapp-acc or custom namespace]
+kubectl edit AstraControlCenter -n [netapp-acc or custom namespace]
 ----
+. 更改Astra版本号 (`astraVersion` 在中 `Spec`)升级到要升级到的版本：
 +
-
-NOTE: 注册表路径必须与中推送映像的注册表路径匹配 ,上一步。
-
+[listing, subs="+quotes"]
+----
+spec:
+  accountName: "Example"
+  *astraVersion: "[Version number]"*
+----
+. 验证您的映像注册表路径是否与您在中将映像推送到的注册表路径匹配  the images to your local registry,上一步。更新 `imageRegistry` 在中 `Spec` 注册表自上次安装以来是否发生了更改。
++
+[listing]
+----
+  imageRegistry:
+    name: "[your_registry_path]"
+----
+. 将以下内容添加到 `CRDs` 中的配置 `Spec`：
++
+[listing]
+----
+crds:
+  shouldUpgrade: true
+----
 . 在 Astra 控制中心 CR 的 `SPec` 内的 `addtionalValues` 中添加以下行：
 +
 [listing]
@@ -287,37 +366,20 @@ additionalValues:
         periodSeconds: 30
         failureThreshold: 600
 ----
-. 执行以下操作之一：
 +
-.. 如果您没有自己的 InvorsController 或入口，并且一直使用带有其 Traefik 网关的 Astra 控制中心作为负载平衡器类型的服务，并且希望继续进行此设置，请指定另一个字段 `ingressType` （如果尚未显示）并将其设置为 `AccTraefik` 。
-+
-[listing]
-----
-ingressType: AccTraefik
-----
-.. 如果您要切换到默认的 Astra 控制中心通用传入部署，请提供您自己的内部控制器 / 传入设置（采用 TLS 终止等），打开通往 Astra 控制中心的路由，并将 `ingressType` 设置为 `Generic` 。
-+
-[listing]
-----
-ingressType: Generic
-----
-+
-
-TIP: 如果省略此字段，则此过程将成为通用部署。如果您不希望使用通用部署，请务必添加此字段。
-
-
+保存并退出文件编辑器后、将应用所做的更改并开始升级。
 
 . （可选）验证 Pod 是否终止并重新可用：
 +
 [listing]
 ----
-watch kubectl get po -n [netapp-acc or custom namespace]
+watch kubectl get pods -n [netapp-acc or custom namespace]
 ----
-. 等待 Astra 状态条件指示升级已完成且准备就绪：
+. 等待Astra状态条件指示升级已完成且准备就绪 (`True`）：
 +
 [listing]
 ----
-kubectl get -o yaml -n [netapp-acc or custom namespace] astracontrolcenters.astra.netapp.io astra
+kubectl get AstraControlCenter -n [netapp-acc or custom namespace]
 ----
 +
 响应：
@@ -325,57 +387,18 @@ kubectl get -o yaml -n [netapp-acc or custom namespace] astracontrolcenters.astr
 +
 [listing]
 ----
-conditions:
-  - lastTransitionTime: "2021-10-25T18:49:26Z"
-    message: Astra is deployed
-    reason: Complete
-    status: "True"
-    type: Ready
-  - lastTransitionTime: "2021-10-25T18:49:26Z"
-    message: Upgrading succeeded.
-    reason: Complete
-    status: "False"
-    type: Upgrading
+NAME    UUID                                      VERSION     ADDRESS         READY
+astra   9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f  22.11.0-24  10.111.111.111  True
 ----
-. 重新登录并验证所有受管集群和应用程序是否仍然存在并受到保护。
-. 如果操作员未更新证书管理器，请接下来升级第三方服务。
-
-
-
-
-== 升级第三方服务（可选）
-
-在先前的升级步骤中，不会升级第三方服务 Traefik 和 Cert-manager 。您可以选择使用此处所述的操作步骤对其进行升级，也可以在系统需要时保留现有服务版本。
-
-* * 任务期限 * ：默认情况下， Astra 控制中心负责管理任务期限部署的生命周期。如果将 `externalTraefik` 设置为 `false` （默认），则表示系统中不存在外部 Traefik ，并且 Astra 控制中心正在安装和管理 Traefik 。在这种情况下， `externalTraefik` 设置为 `false` 。
 +
-另一方面，如果您有自己的 Traefik 部署，请将 `externalTraefik` 设置为 `true` 。在这种情况下，您将保持部署状态，并且 Astra 控制中心不会升级 CRD ，除非 `shouldUpgrade` 设置为 `true` 。
 
-* * 证书管理器 * ：默认情况下， Astra 控制中心会安装证书管理器（和 CRD ），除非您将 `externalCertManager` 设置为 `true` 。将 `shoulldUpgrade` 设置为 `true` 让 Astra Control Center 升级 CRD 。
+NOTE: 要在操作期间监控升级状态、请运行以下命令： `kubectl get AstraControlCenter -o yaml -n [netapp-acc or custom namespace]`
 
-
-如果满足以下任一条件，则升级 Traefik ：
-
-* externalTraefik：false
-* externalTraefik ： true ， shouldUpgrade ： true 。
-
-
-.步骤
-. 编辑 `Acc` CR ：
 +
-[listing]
-----
-kubectl edit acc -n [netapp-acc or custom namespace]
-----
-. 根据需要将 `externalTraefik` 字段和 `shouldUpgrade` 字段更改为 `true` 或 `false` 。
-+
-[listing]
-----
-crds:
-    externalTraefik: false
-    externalCertManager: false
-    shouldUpgrade: false
-----
+
+NOTE: 要检查Astra控制中心操作员日志、请运行以下命令：
+`kubectl logs deploy/acc-operator-controller-manager -n netapp-acc-operator -c manager -f`
+
 
 
 
@@ -383,134 +406,6 @@ crds:
 == 验证系统状态
 
 . 登录到 Astra 控制中心。
+. 验证此版本是否已升级。请参见用户界面中的*支持*页面。
 . 验证所有受管集群和应用程序是否仍存在并受到保护。
-
-
-
-
-== 设置传入以进行负载平衡
-
-您可以设置 Kubernetes 入口对象，用于管理对服务的外部访问，例如集群中的负载平衡。
-
-* 默认升级使用通用传入部署。在这种情况下，您还需要设置入口控制器或入口资源。
-* 如果您不需要入口控制器，但希望保留现有控制器，请将 `ingressType` 设置为 `AccTraefik` 。
-
-
-
-NOTE: 有关 "loadbalancer" 服务类型和入口的其他详细信息，请参见 link:../get-started/requirements.html["要求"]。
-
-根据您使用的入口控制器类型，步骤会有所不同：
-
-* nginx 入口控制器
-* OpenShift 入口控制器
-
-
-.您需要什么？ #8217 ；将需要什么
-* 在 CR 规范中，
-+
-** 如果存在 `crd.externalTraefik` ，则应将其设置为 `false` 或
-** 如果 `crd.externalTraefik` 为 `true` ，则 `crd.shouldUpgrade` 也应为 `true` 。
-
-
-* 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers["入口控制器"] 应已部署。
-* 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
-* 您使用的是介于 v1.19 和 v1.21 之间的 Kubernetes 版本，包括 v1.19 和 v1.21 。
-
-
-.nginx 入口控制器的步骤
-. 使用现有密钥 `secure-testing-cert` 或创建类型的密钥 http://kubernetes.io/tls["8a637503539b25b68130b6e8003579d9"] 用于 `NetApp-Accc` （或自定义命名）命名空间中的 TLS 专用密钥和证书，如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
-. 在 `NetApp-Accc` （或自定义命名）命名空间中为已弃用或新模式部署入站资源：
-+
-.. 对于已弃用的模式，请遵循以下示例：
-+
-[listing]
-----
-apiVersion: extensions/v1beta1
-kind: IngressClass
-metadata:
-  name: ingress-acc
-  namespace: [netapp-acc or custom namespace]
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  tls:
-  - hosts:
-    - <ACC address>
-    secretName: [tls secret name]
-  rules:
-  - host: [ACC address]
-    http:
-      paths:
-      - backend:
-        serviceName: traefik
-        servicePort: 80
-        pathType: ImplementationSpecific
-----
-.. 对于新模式，请遵循以下示例：
-
-
-+
-[listing]
-----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: netapp-acc-ingress
-  namespace: [netapp-acc or custom namespace]
-spec:
-  ingressClassName: [class name for nginx controller]
-  tls:
-  - hosts:
-    - <ACC address>
-    secretName: [tls secret name]
-  rules:
-  - host: <ACC address>
-    http:
-      paths:
-        - path:
-          backend:
-            service:
-              name: traefik
-              port:
-                number: 80
-          pathType: ImplementationSpecific
-----
-
-
-.OpenShift 入口控制器的步骤
-. 获取证书并获取密钥，证书和 CA 文件，以供 OpenShift 路由使用。
-. 创建 OpenShift 路由：
-+
-[listing]
-----
-oc create route edge --service=traefik
---port=web -n [netapp-acc or custom namespace]
---insecure-policy=Redirect --hostname=<ACC address>
---cert=cert.pem --key=key.pem
-----
-
-
-
-
-=== 验证入口设置
-
-您可以先验证入口设置，然后再继续操作。
-
-. 确保已将负载平衡器中的 Traefik 更改为 `clusterIP` ：
-+
-[listing]
-----
-kubectl get service traefik -n [netapp-acc or custom namespace]
-----
-. 验证 Traefik 中的路由：
-+
-[listing]
-----
-Kubectl get ingressroute ingressroutetls -n [netapp-acc or custom namespace]
--o yaml | grep "Host("
-----
-+
-
-NOTE: 结果应为空。
-
 

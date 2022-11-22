@@ -2,6 +2,8 @@
 section: get-started
 title: 入门
 entries:
+- title: 了解 Astra 控制中心
+  url: "/get-started/intro.html"
 - title: Astra 控制中心要求
   url: "/get-started/requirements.html"
 - title: Astra 控制中心快速入门
@@ -12,24 +14,17 @@ entries:
   - title: 安装 Astra 控制中心
     url: "/get-started/install_acc.html"
     entries:
-    - title: 了解Astra控制中心集群CR选项
+    - title: Astra控制中心集群自定义资源选项
       url: "/get-started/acc_cluster_cr_options.html"
-    - title: 了解POD安全策略限制
-      url: "/get-started/understand-psp-restrictions.html"
     - title: 配置外部证书管理器
       url: "/get-started/cert-manager-prereqs.html"
   - title: 使用 OpenShift OperatorHub 安装 Astra 控制中心
     url: "/get-started/acc_operatorhub_install.html"
   - title: 使用 Cloud Volumes ONTAP 存储后端安装 Astra 控制中心
     url: "/get-started/install_acc-cvo.html"
+  - title: 安装后配置Astra控制中心
+    url: "/get-started/configure-after-install.html"
 - title: 设置 Astra 控制中心
   url: "/get-started/setup_overview.html"
-  entries:
-  - title: 添加集群的前提条件
-    url: "/get-started/add-cluster-reqs.html"
-  - title: 添加自定义 TLS 证书
-    url: "/get-started/add-custom-tls-certificate.html"
-  - title: 创建自定义 POD 安全策略
-    url: "/get-started/acc-create-podsecuritypolicy.html"
 - title: 常见问题解答
   url: "/get-started/faq.html"

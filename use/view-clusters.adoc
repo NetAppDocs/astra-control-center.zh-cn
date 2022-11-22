@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: use/view-clusters.html 
-keywords: view cluster, cluster storage, cluster overview 
-summary: 将集群添加到 Astra 控制中心后，您可以查看有关集群的详细信息，例如集群的位置，工作节点，永久性卷和存储类。 
+keywords: view cluster, edit storage class, storage class, cluster storage, cluster overview 
+summary: 将集群添加到 Astra 控制中心后，您可以查看有关集群的详细信息，例如集群的位置，工作节点，永久性卷和存储类。您还可以更改默认存储类。 
 ---
-= 查看集群的运行状况和详细信息
+= 查看集群运行状况并管理存储类
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,7 +12,13 @@ summary: 将集群添加到 Astra 控制中心后，您可以查看有关集群�
 
 
 [role="lead"]
-添加要由 Astra 控制中心管理的集群后，您可以查看有关集群的详细信息，例如集群的位置，工作节点，永久性卷和存储类。
+添加要由 Astra 控制中心管理的集群后，您可以查看有关集群的详细信息，例如集群的位置，工作节点，永久性卷和存储类。您还可以更改受管集群的默认存储类。
+
+
+
+== 查看集群运行状况和详细信息
+
+您可以查看有关集群的详细信息、例如集群的位置、工作节点、永久性卷和存储类。
 
 .步骤
 . 在 Astra 控制中心 UI 中，选择 * 集群 * 。
@@ -32,3 +38,21 @@ NOTE: 如果集群处于 `removed` 状态，而集群和网络连接运行状况
 
 
 NOTE: 您还可以从 Astra 控制中心 * 信息板 * 开始查看集群信息。在 * 资源摘要 * 下的 * 集群 * 选项卡上，您可以选择受管集群，此操作将转到 * 集群 * 页面。进入 * 集群 * 页面后，请按照上述步骤进行操作。
+
+
+
+== 更改默认存储类
+
+您可以更改集群的默认存储类。当Astra Control管理集群时、它会跟踪集群的默认存储类。
+
+
+NOTE: 请勿使用kubectl命令更改存储类。请改用此操作步骤。如果使用kubectl进行更改、则Astra Control将还原这些更改。
+
+.步骤
+. 在Astra控制中心Web UI中、选择*集群*。
+. 在*集群*页面上、选择要更改的集群。
+. 选择 * 存储 * 选项卡。
+. 选择*存储类*类别。
+. 选择要设置为默认值的存储类的*操作*菜单。
+. 选择*设置为默认值*。
+

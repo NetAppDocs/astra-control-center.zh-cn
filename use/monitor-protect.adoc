@@ -11,17 +11,16 @@ summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体�
 :imagesdir: ../media/use/
 
 
+[role="lead"]
 您可以配置多种可选设置来增强您的 Astra 控制中心体验。要监控和深入了解整个基础架构，请与 NetApp Cloud Insights 建立连接。要从 Astra 控制中心监控的系统收集 Kubernetes 事件，请添加 Fluentd 连接。
 
-如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet （将支持包上传到 NetApp 支持站点或建立与 Cloud Insights 的连接），则应在 Astra 控制中心中配置一个代理服务器。
-
-您还可以从Astra控制中心存储后端页面监控Astra Data Store存储后端吞吐量、IOPS和容量。请参见 link:../use/manage-backend.html["管理存储后端"]。
+如果运行Astra控制中心的网络需要一个代理来连接到Internet (将支持包上传到NetApp 支持站点 或建立与Cloud Insights 的连接)、则应在Astra控制中心中配置一个代理服务器。
 
 
 
-== 添加代理服务器以连接到Cloud Insight或NetApp支持站点
+== 添加一个代理服务器、用于连接到Cloud Insights 或NetApp 支持站点
 
-如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet （将支持包上传到 NetApp 支持站点或建立与 Cloud Insights 的连接），则应在 Astra 控制中心中配置一个代理服务器。
+如果运行Astra控制中心的网络需要一个代理来连接到Internet (将支持包上传到NetApp 支持站点 或建立与Cloud Insights 的连接)、则应在Astra控制中心中配置一个代理服务器。
 
 
 IMPORTANT: Astra 控制中心不会验证您为代理服务器输入的详细信息。请确保输入正确的值。
@@ -78,8 +77,6 @@ image:proxy-new.png["显示代理服务器已成功连接。"]
 Cloud Insights 应可从 Astra 控制中心使用的网络访问，也可通过代理服务器间接访问。
 
 当 Astra 控制中心连接到 Cloud Insights 时，将创建采集单元 POD 。此 POD 从由 Astra 控制中心管理的存储后端收集数据并将其推送到 Cloud Insights 。此 POD 需要 8 GB RAM 和 2 个 CPU 核。
-
-此外、如果您在Astra Control (连接到Cloud Insights)上管理Astra数据存储集群、则会在Astra数据存储上为每个Astra数据存储集群创建一个采集单元POD、并将指标从Astra数据存储发送到配对的Cloud Insights 系统。每个POD需要8 GB RAM和2个CPU核。
 
 
 NOTE: 启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从该处连接到 Cloud Insights 。

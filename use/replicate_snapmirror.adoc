@@ -43,7 +43,30 @@ NOTE: 您可以同时按相反方向复制另一个应用程序(在另一个集�
 
 == 复制前提条件
 
-请参见 link:../get-started/requirements.html#replication-prerequisites["复制前提条件"] 开始之前。
+Astra Control应用程序复制要求在开始之前必须满足以下前提条件：
+
+* 为了实现无缝灾难恢复、我们建议您在第三个故障域或二级站点中部署Astra控制中心。
+* 应用程序的主机Kubernetes集群和目标Kubernetes集群必须与其ONTAP 集群一起进行管理、最好在不同的故障域或站点进行管理。
+* ONTAP 集群和主机SVM必须已配对。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^]。
+* 配对的远程SVM必须可供目标集群上的Astra Trident使用。
+* 源和目标ONTAP 集群上必须同时存在Astra Trident 22.07或更高版本。
+* 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^]。
+* 将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+* 源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。
++
+
+NOTE: 您可以同时按相反方向复制另一个应用程序(在另一个集群或站点上运行)。例如、应用程序A、B、C可以从数据中心1复制到数据中心2；应用程序X、Y、Z可以从数据中心2复制到数据中心1。
+
+* * 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持由Astra Trident提供的以下ONTAP 驱动程序进行复制：
++
+** ontap-NAS
+** ontap-nas-flexgroup
+** ontap-san
+
+
+
+
+了解操作方法 link:../use/replicate_snapmirror.html["使用SnapMirror技术将应用程序复制到远程系统"^]。
 
 
 
@@ -62,14 +85,11 @@ NOTE: 您可以同时按相反方向复制另一个应用程序(在另一个集�
 . 在Data Protection > Replication选项卡中、选择*配置复制策略*。或者、从应用程序保护框中、选择操作选项并选择*配置复制策略*。
 . 输入或选择以下信息：
 +
-** 目标集群
+** *目标集群*：输入与源集群不同的目标集群。
 ** *目标存储类*：选择或输入在目标ONTAP 集群上使用配对SVM的存储类。
 ** *复制类型*："异步"是当前唯一可用的复制类型。 
 ** *目标命名空间*：为目标集群输入新的或现有的目标命名空间。
-+
-
-NOTE: 选定命名空间中任何冲突的资源都将被覆盖。 
-
+** (可选)通过选择*添加命名空间*并从下拉列表中选择命名空间来添加其他命名空间。
 ** *复制频率*：设置Astra Control创建Snapshot并将其复制到目标的频率。
 ** *偏移*：设置从Astra Control创建快照的小时数开始的分钟数。您可能希望使用偏移量、以便它不会与其他计划的操作保持一致。例如、如果要从10：02开始每5分钟创建一次Snapshot、请输入"02"作为偏移分钟数。结果为10：02、10：07、10：12等
 
@@ -102,7 +122,7 @@ Snapshot名称使用"replication-schedule-<string>"格式。Astra Control会保�
 
 例如：normal | established.
 
-在下方了解有关复制状态和状态的更多信息。
+在本主题末尾了解有关复制状态和状态的更多信息。
 
 
 

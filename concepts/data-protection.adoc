@@ -11,6 +11,7 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 :imagesdir: ../media/concepts/
 
 
+[role="lead"]
 了解 Astra 控制中心提供的数据保护类型，以及如何以最佳方式使用它们来保护您的应用程序。
 
 

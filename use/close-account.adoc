@@ -11,6 +11,7 @@ summary: 如果您不再需要 Astra 帐户，可以随时关闭该帐户。
 :imagesdir: ../media/use/
 
 
+[role="lead"]
 如果您不再需要 Astra 帐户，可以随时关闭该帐户。
 
 .步骤

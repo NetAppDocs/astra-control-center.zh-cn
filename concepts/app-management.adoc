@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: learn/app-management.html 
+permalink: concepts/app-management.html 
 keywords: app, labels, kubernetes labels, kubernetes resources, pods, define app 
 summary: 介绍了Astra Control中的受管应用程序类型。 
 ---
@@ -18,11 +18,11 @@ summary: 介绍了Astra Control中的受管应用程序类型。
 +
 image:diagram-managed-app1.png["一个概念映像，显示 Astra 管理命名空间中的所有资源。"]
 
-* 在命名空间中部署的单个应用程序(在此示例中使用了helm3)
+* 部署在一个或多个命名空间中的单个应用程序(在此示例中使用了helm3)
 +
 image:diagram-managed-app2.png["一个概念映像，用于显示 Astra 管理在包含其他应用程序的命名空间中部署的单个应用程序。"]
 
-* 命名空间中一组通过Kubernetes标签标识的资源
+* 一组通过一个或多个命名空间中的Kubernetes标签标识的资源
 +
 image:diagram-managed-app3.png["一个概念映像、显示Astra根据Kubernetes标签管理应用程序。"]
 
