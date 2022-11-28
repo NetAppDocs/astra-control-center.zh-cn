@@ -1414,7 +1414,6 @@
   <block id="878d04283184abd2b8ea5f813a053078" category="list-text">ONTAP AFF 和FAS。作为存储软件和硬件平台， ONTAP 可提供核心存储服务，支持多个存储访问协议以及快照和镜像等存储管理功能。</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="list-text">Cloud Volumes ONTAP</block>
   <block id="a7da53d86332105dcae80a12f3e8b7a5" category="summary">介绍了Astra Control中的受管应用程序类型。</block>
-  <block id="0aec310f3808bce2063a2292e6052cf8" category="doc">了解应用程序管理</block>
   <block id="848f207b3c4594754aa82fd21b5fc5e0" category="paragraph">当Astra Control发现集群时、这些集群上的应用程序将不受管理、直到您选择要如何管理它们为止。Astra Control 中的受管应用程序可以是以下任一项：</block>
   <block id="3757d3597962f660c54cb3f9ed5ba251" category="list-text">命名空间，包括该命名空间中的所有资源</block>
   <block id="99185f9c0e1b271b9c7c1684898a4b91" category="inline-image-macro">一个概念映像，显示 Astra 管理命名空间中的所有资源。</block>
@@ -2598,4 +2597,5 @@
   <block id="fcd1b815fb4ca6cac38239194b4c8a5f" category="admonition">请勿使用kubectl命令更改存储类。请改用此操作步骤。如果使用kubectl进行更改、则Astra Control将还原这些更改。</block>
   <block id="b42200f7280deb01c16bf89a68f5395d" category="sidebar">使用Astra Control REST API</block>
   <block id="f789b438cbc1e82cd52918fc029eeb85" category="sidebar">使用Astra Control REST API实现自动化</block>
+  <block id="934c5edffa8e732ecb866cb319c8454a" category="doc">应用程序管理</block>
 </blocks>
