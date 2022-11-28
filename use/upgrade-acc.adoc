@@ -21,7 +21,7 @@ summary: 要升级 Astra 控制中心，您需要下载此捆绑包并按照所�
 +
 [listing]
 ----
-../../trident-installer/tridentctl -n trident version
+kubectl get tridentversion -n trident
 ----
 +
 请参见 https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html#determine-the-version-to-upgrade-to["Astra Trident 文档"] 从旧版本升级。
