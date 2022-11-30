@@ -38,7 +38,7 @@ pod-security.kubernetes.io/enforce: privileged
 
 === 在安装期间创建的Psps
 
-在安装Astra控制中心期间、Astra控制中心操作员会安装一个自定义POD安全策略、一个角色对象和一个RoleBinding.对象、以支持在Astra控制中心命名空间中部署Astra控制中心服务。
+在安装Astra控制中心期间、Astra控制中心操作员会安装自定义POD安全策略A `Role` 对象和 `RoleBinding` 用于支持在Astra控制中心命名空间中部署Astra控制中心服务的对象。
 
 新策略和对象具有以下属性：
 
@@ -63,7 +63,7 @@ netapp-astra-deployment-rb               Role/netapp-astra-deployment-role      
 
 === 备份操作期间创建的Psps
 
-在备份操作期间、Astra控制中心会创建一个动态POD安全策略、一个ClusterRole对象和一个RoleBinding.它们支持备份过程、该过程会在单独的命名空间中进行。
+在备份操作期间、Astra控制中心会创建一个动态POD安全策略、即 `ClusterRole` 对象和 `RoleBinding` 对象。它们支持备份过程、该过程会在单独的命名空间中进行。
 
 新策略和对象具有以下属性：
 
@@ -88,7 +88,7 @@ netapp-astra-backup   Role/netapp-astra-backup   62s
 
 === 在集群管理期间创建的Psps
 
-管理集群时、Astra控制中心会在受管集群中安装NetApp监控操作员。此运算符将创建Pod安全策略、ClusterRole对象和RoleBinding对象、以便在Astra Control Center命名空间中部署遥测服务。
+管理集群时、Astra控制中心会在受管集群中安装NetApp监控操作员。此运算符将创建一个POD安全策略、即 `ClusterRole` 对象和 `RoleBinding` 用于在Astra控制中心命名空间中部署遥测服务的对象。
 
 新策略和对象具有以下属性：
 
