@@ -16,7 +16,8 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 试用！如果您要试用 Astra Control Center ，可以使用 90 天评估许可证。请参见 link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["许可信息"] 了解详细信息。
 
-.跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] Alt-one"></span> 查看 Kubernetes 集群要求
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一个"] 查看 Kubernetes 集群要求
+[role="quick-margin-list"]
 * Astra可与使用基于Trident的存储类和ONTAP 存储后端的Kubernetes集群结合使用。
 * 集群必须以运行状况良好的状态运行，并且至少有三个联机辅助节点。
 
@@ -24,7 +25,8 @@ summary: 只需几步即可开始使用 Astra Control 。
 [role="quick-margin-para"]
 了解更多信息 link:../get-started/requirements.html["Astra 控制中心要求"]。
 
-.跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png"[] Alt-twe"></span> 下载并安装 Astra 控制中心
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 下载并安装Astra控制中心
+[role="quick-margin-list"]
 * 从下载 Astra 控制中心 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点 Astra 控制中心下载页面"^]。
 * 在本地环境中安装 Astra Control Center 。
 +
@@ -33,7 +35,8 @@ summary: 只需几步即可开始使用 Astra Control 。
 * 根据您的环境情况、也可以完成其他操作 link:configure-after-install.html["配置步骤"]。了解更多信息 link:../get-started/install_overview.html["安装Astra控制中心"]。
 
 
-.跨度 class="image><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] Alt-Three </span> 完成一些初始设置任务
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三个"] 完成一些初始设置任务
+[role="quick-margin-list"]
 * 添加Astra Control许可证和任何支持的ONTAP 许可证。
 * 添加Kubernetes集群。
 * 添加 ONTAP 存储后端。
@@ -43,15 +46,18 @@ summary: 只需几步即可开始使用 Astra Control 。
 [role="quick-margin-para"]
 详细了解 link:../get-started/setup_overview.html["初始设置过程"]。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"] 使用 Astra 控制中心
 [role="quick-margin-list"]
 设置完 Astra 控制中心后，您接下来可能会执行以下操作：
 
+[role="quick-margin-list"]
 * 管理应用程序。了解更多信息 link:../use/manage-apps.html["如何管理应用程序"]。
 * 通过为应用程序配置保护策略、将应用程序复制到远程系统、克隆应用程序和迁移应用程序来保护应用程序。了解更多信息 link:../use/protection-overview.html["如何保护应用程序"]。
 * 管理帐户(包括用户、角色、用于用户身份验证的LDAP、凭据等)。了解更多信息 link:../use/manage-local-users-and-roles.html["如何管理本地用户、角色和LDAP"]。
 * 或者，也可以连接到 NetApp Cloud Insights ，以便在 Astra 控制中心 UI 中显示有关系统运行状况，容量和吞吐量的指标。了解更多信息 link:../use/monitor-protect.html["如何连接到Cloud Insights"]。
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五个"] 从此快速入门继续
 [role="quick-margin-para"]
 link:../get-started/install_overview.html["安装 Astra 控制中心"]。
 

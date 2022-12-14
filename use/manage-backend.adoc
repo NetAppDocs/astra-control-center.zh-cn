@@ -19,9 +19,9 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 您可以完成以下与管理存储后端相关的任务：
 
 * link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"]
-*  storage backend details
-*  a storage backend
-*  a storage backend
+* <<查看存储后端详细信息>>
+* <<取消管理存储后端>>
+* <<删除存储后端>>
 
 
 
@@ -86,7 +86,7 @@ image:../use/acc_backends_ci_connection2.png["后端页面的屏幕截图"]
 
 您可以删除不再使用的存储后端。您可能需要执行此操作，以使您的配置简单且最新。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 确保存储后端未受管。
 * 确保存储后端没有与集群关联的任何卷。
 

@@ -22,7 +22,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 
 ====
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
 * 如果您已在环境中配置或希望配置POD安全策略、请熟悉POD安全策略及其对Astra Control Center安装的影响。请参见 link:../concepts/understand-pod-security.html["了解POD安全策略限制"]。
 * 确保所有 API 服务均处于运行状况良好且可用：
@@ -35,6 +35,7 @@ kubectl get apiservices
 * 如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"] 这样、Astra控制中心就不会尝试安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
 
 
+.关于此任务
 Astra控制中心安装过程可帮助您执行以下操作：
 
 * 将Astra组件安装到中 `netapp-acc` (或自定义命名的)命名空间。
@@ -47,18 +48,19 @@ Astra控制中心安装过程可帮助您执行以下操作：
 
 IMPORTANT: 请勿删除Astra Control Center运算符(例如、 `kubectl delete -f astra_control_center_operator_deploy.yaml`)、以避免删除Pod。
 
+.步骤
 要安装 Astra 控制中心，请执行以下步骤：
 
-*  and unpack the Astra Control Center bundle
-*  the NetApp Astra kubectl plugin
-*  the images to your local registry
-*  up namespace and secret for registries with auth requirements
-*  the Astra Control Center operator
-*  Astra Control Center
-*  Astra Control Center and operator installation
-*  system status
-*  up ingress for load balancing
-*  in to the Astra Control Center UI
+* <<下载并解包Astra Control Center软件包>>
+* <<安装NetApp Astra kubectl插件>>
+* <<将映像添加到本地注册表>>
+* <<为具有身份验证要求的注册表设置命名空间和密钥>>
+* <<安装 Astra 控制中心操作员>>
+* <<配置 Astra 控制中心>>
+* <<完成 Astra 控制中心和操作员安装>>
+* <<验证系统状态>>
+* <<设置传入以进行负载平衡>>
+* <<登录到 Astra 控制中心 UI>>
 
 
 
@@ -87,6 +89,7 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
 
+.您需要的内容
 NetApp可为不同的CPU架构和操作系统提供插件二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。
 
 .步骤
@@ -119,19 +122,14 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ====
 .Docker
 --
-. 更改为 `acc` 从tar包中提取的目录：
+. 更改为tarball的根目录。您应看到此文件和目录：
 +
-示例
+`acc.manifest.bundle.yaml`
+`acc/`
 
-
-
-[listing]
-----
-cd ../acc
-----
-. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
+. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +
-** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.yaml`）。
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
 ** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
 ** 将<MY_REGISTRY_USER> 替换为用户名。
 ** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
@@ -147,6 +145,11 @@ kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -
 --
 .Podman
 --
+. 更改为tarball的根目录。您应看到此文件和目录：
++
+`acc.manifest.bundle.yaml`
+`acc/`
+
 . 登录到注册表：
 +
 [source, console]
@@ -157,12 +160,6 @@ podman login <MY_FULL_REGISTRY_PATH>
 +
 [source, console]
 ----
-# You need to be at the root of the tarball.
-# You should see these files to confirm correct location:
-#   acc.manifest.yaml
-#   acc/
-
-# Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
 export REGISTRY=<YOUR_REGISTRY>
 export PACKAGENAME=acc
 export PACKAGEVERSION=22.11.0-82
@@ -297,8 +294,8 @@ NOTE: 以下步骤将提供一个标注的YAML示例。
 imagePullSecrets:
 - name: astra-registry-cred
 ----
-.. 更改 `[your_registry_path]` 。 `kube-rbac-proxy` 将映像推送到注册表路径中  the images to your local registry,上一步。
-.. 更改 `[your_registry_path]` 。 `acc-operator-controller-manager` 将映像推送到注册表路径中  the images to your local registry,上一步。
+.. 更改 `[your_registry_path]` 。 `kube-rbac-proxy` 将映像推送到注册表路径中 <<将映像添加到本地注册表,上一步>>。
+.. 更改 `[your_registry_path]` 。 `acc-operator-controller-manager` 将映像推送到注册表路径中 <<将映像添加到本地注册表,上一步>>。
 +
 [source, subs="specialcharacters,quotes"]
 ----
@@ -433,12 +430,12 @@ NOTE: 以下步骤将提供一个标注的YAML示例。
 .. * AstraAddress*：更改 `astraAddress` 指向要在浏览器中访问Astra控制中心的FQDN (建议)或IP地址的字符串。此FQDN或IP地址与您在完成时从负载平衡器配置的FQDN或IP地址相同 link:requirements.html["Astra 控制中心要求"]。
 +
 
-NOTE: 请勿使用 `http://` 或 `https://` 地址中。复制此 FQDN 以在中使用  in to the Astra Control Center UI,后续步骤。
+NOTE: 请勿使用 `http://` 或 `https://` 地址中。复制此 FQDN 以在中使用 <<登录到 Astra 控制中心 UI,后续步骤>>。
 
 .. * AutoSupport *：更改 `enrolled` 用于将AutoSupport 连接到 `false` 对于不具有Internet连接或保留的站点 `true` 对于已连接站点。
-.. *电子邮件*：更改 `email` 字符串到默认的初始管理员地址。复制此电子邮件地址以在中使用  in to the Astra Control Center UI,后续步骤。
+.. *电子邮件*：更改 `email` 字符串到默认的初始管理员地址。复制此电子邮件地址以在中使用 <<登录到 Astra 控制中心 UI,后续步骤>>。
 .. *(可选) firstName和LastName*：添加名字 `firstName` 和姓氏 `lastName` 与帐户关联的用户的。您可以在用户界面中立即或稍后执行此步骤。
-.. * imageRegistries*：更改 `[your_registry_path]` 到中将映像推送到的注册表路径  the Astra Control Center operator,上一步。
+.. * imageRegistries*：更改 `[your_registry_path]` 到中将映像推送到的注册表路径 <<安装 Astra 控制中心操作员,上一步>>。
 +
 
 IMPORTANT: 如果您使用的注册表不需要授权、则必须删除 `secret` 行内 `imageRegistry` 否则安装将失败。
@@ -677,7 +674,7 @@ IMPORTANT: 复制UUID值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或�
 * OpenShift 入口控制器
 
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/["入口控制器"] 应已部署。
 * 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
 
@@ -757,7 +754,7 @@ kubectl apply -f istio-Ingress.yaml
 +
 [source, console]
 ----
-kubectl get ingress -n netapp-acc
+kubectl get ingress -n [netapp-acc or custom namespace]
 ----
 +
 响应：
@@ -768,7 +765,7 @@ kubectl get ingress -n netapp-acc
 NAME    CLASS HOSTS             ADDRESS         PORTS   AGE
 ingress istio astra.example.com 172.16.103.248  80, 443 1h
 ----
-.  Astra Control Center,完成Astra控制中心安装。
+. <<配置 Astra 控制中心,完成Astra控制中心安装>>。
 
 
 .nginx 入口控制器的步骤
@@ -828,13 +825,13 @@ oc create route edge --service=traefik --port=web -n [netapp-acc or custom names
 安装 Astra 控制中心后，您将更改默认管理员的密码并登录到 Astra 控制中心 UI 信息板。
 
 .步骤
-. 在浏览器中、输入FQDN (`https://<FQDN>`)您在中使用的 `astraAddress` 在中 `astra_control_center.yaml` CR时间  Astra Control Center,您安装了 Astra 控制中心。
+. 在浏览器中、输入FQDN (`https://<FQDN>`)您在中使用的 `astraAddress` 在中 `astra_control_center.yaml` CR时间 <<配置 Astra 控制中心,您安装了 Astra 控制中心>>。
 . 如果出现提示、请接受自签名证书。
 +
 
 NOTE: 您可以在登录后创建自定义证书。
 
-. 在Astra Control Center登录页面上、输入您用于的值 `email` 在中 `astra_control_center.yaml` CR时间  Astra Control Center,您安装了 Astra 控制中心、后跟初始设置密码 (`ACC-[UUID]`）。
+. 在Astra Control Center登录页面上、输入您用于的值 `email` 在中 `astra_control_center.yaml` CR时间 <<配置 Astra 控制中心,您安装了 Astra 控制中心>>、后跟初始设置密码 (`ACC-[UUID]`）。
 +
 
 NOTE: 如果您输入的密码三次不正确，管理员帐户将锁定 15 分钟。

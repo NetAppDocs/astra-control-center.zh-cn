@@ -14,34 +14,49 @@ summary: 如果您使用的是 Red Hat OpenShift ，则可以使用操作员安�
 [role="lead"]
 如果您使用的是 Red Hat OpenShift ，则可以使用 Red Hat 认证操作员安装 Astra Control Center 。使用此操作步骤从安装 Astra 控制中心 https://catalog.redhat.com/software/operators/explore["Red Hat 生态系统目录"^] 或使用 Red Hat OpenShift 容器平台。
 
-完成此操作步骤后，您必须返回到安装操作步骤以完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"] 以验证安装是否成功并登录。
+完成此操作步骤后，您必须返回到安装操作步骤以完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"^] 以验证安装是否成功并登录。
 
-.您需要什么？ #8217 ；将需要什么
-* link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
-* 在OpenShift集群中、确保所有集群操作员均处于运行状况良好的状态：
+.您需要的内容
+* *满足环境前提条件*： link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"^]。
+* *运行状况良好的集群操作员和API服务*：
++
+** 在OpenShift集群中、确保所有集群操作员均处于运行状况良好的状态：
 +
 [source, console]
 ----
 oc get clusteroperators
 ----
-* 在OpenShift集群中、确保所有API服务均处于运行状况良好的状态：
+** 在OpenShift集群中、确保所有API服务均处于运行状况良好的状态：
 +
 [source, console]
 ----
 oc get apiservices
 ----
-* 在数据中心中为Astra控制中心创建FQDN地址。
-* 获取对Red Hat OpenShift容器平台的必要权限和访问权限、以执行所述的安装步骤。
-* 如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"] 这样、Astra控制中心就不会安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
+
+
+* * FQDN地址*：获取数据中心中Astra控制中心的FQDN地址。
+* * OpenShift权限*：获取对Red Hat OpenShift容器平台的必要权限和访问权限、以执行所述的安装步骤。
+* *已配置证书管理器*：如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"^] 这样、Astra控制中心就不会安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
+* * Kubernetes入口控制器*：如果您的Kubernetes入口控制器负责管理对服务的外部访问、例如集群中的负载平衡、则需要将其设置为与Astra控制中心配合使用：
++
+.. 创建操作员命名空间：
++
+[listing]
+----
+oc create namespace netapp-acc-operator
+----
+.. link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["完成设置"^] 适用于您的入口控制器类型。
+
+
 
 
 .步骤
-*  and unpack the Astra Control Center bundle
-*  the NetApp Astra kubectl plugin
-*  the images to your local registry
-*  the operator install page
-*  the operator
-*  Astra Control Center
+* <<下载并解包Astra Control Center软件包>>
+* <<安装NetApp Astra kubectl插件>>
+* <<将映像添加到本地注册表>>
+* <<找到操作员安装页面>>
+* <<安装操作员>>
+* <<安装 Astra 控制中心>>
 
 
 
@@ -70,6 +85,7 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
 
+.您需要的内容
 NetApp可为不同的CPU架构和操作系统提供插件二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。
 
 .步骤
@@ -102,19 +118,14 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ====
 .Docker
 --
-. 更改为 `acc` 从tar包中提取的目录：
+. 更改为tarball的根目录。您应看到此文件和目录：
 +
-示例
+`acc.manifest.bundle.yaml`
+`acc/`
 
-
-
-[listing]
-----
-cd ../acc
-----
-. [substep_image_local_registry_push]]将Astra控制中心映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
+. [substep_image_local_registry_push]]将Astra控制中心映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +
-** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.yaml`）。
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
 ** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
 ** 将<MY_REGISTRY_USER> 替换为用户名。
 ** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
@@ -130,6 +141,11 @@ kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -
 --
 .Podman
 --
+. 更改为tarball的根目录。您应看到此文件和目录：
++
+`acc.manifest.bundle.yaml`
+`acc/`
+
 . 登录到注册表：
 +
 [source, console]
@@ -140,12 +156,6 @@ podman login <MY_FULL_REGISTRY_PATH>
 +
 [source, console]
 ----
-# You need to be at the root of the tarball.
-# You should see these files to confirm correct location:
-#   acc.manifest.yaml
-#   acc/
-
-# Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
 export REGISTRY=<YOUR_REGISTRY>
 export PACKAGENAME=acc
 export PACKAGEVERSION=22.11.0-82
@@ -174,21 +184,26 @@ done
 
 . 要访问操作员安装页面，请完成以下过程之一：
 +
-** 从 Red Hat OpenShift Web 控制台：image:openshift_operatorhub.png["Astra 控制中心安装页面"]
+** 从 Red Hat OpenShift Web 控制台：
 +
 ... 登录到 OpenShift 容器平台 UI 。
 ... 从侧面菜单中，选择 * 运算符 > OperatorHub * 。
-... 选择 NetApp Astra Control Center 操作员。
-... 选择 * 安装 * 。
+... 搜索并选择NetApp Astra Control Center运算符。
 
 
-** 从 Red Hat 生态系统目录：image:red_hat_catalog.png["Astra 控制中心概述页面"]
 +
-... 选择 NetApp Astra 控制中心 https://catalog.redhat.com/software/operators/detail/611fd22aaf489b8bb1d0f274["运算符"]。
+image:openshift_operatorhub.png["Astra 控制中心安装页面"]
+
+** 从 Red Hat 生态系统目录：
++
+... 选择 NetApp Astra 控制中心 https://catalog.redhat.com/software/operators/detail/611fd22aaf489b8bb1d0f274["运算符"^]。
 ... 选择 * 部署并使用 * 。
 
 
 
+
++
+image:red_hat_catalog.png["Astra 控制中心概述页面"]
 
 
 
@@ -222,28 +237,86 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 
 == 安装 Astra 控制中心
 
-. 在 Astra 控制中心操作员的详细信息视图的控制台中，在提供的 API 部分中选择 `Create instance` 。
+. 从Astra Control Center操作员的* Astra Control Center*选项卡中的控制台中、选择*创建AstraControlCenter*。image:openshift_acc-operator_details.png["Astra控制中心操作员页面"]
 . 填写 `Create AstraControlCenter` Form 字段：
 +
 .. 保留或调整 Astra 控制中心名称。
-.. （可选）启用或禁用自动支持。建议保留自动支持功能。
-.. 输入 Astra 控制中心地址。请勿在此地址中输入 `http ： //` 或 `https ： //` 。
-.. 输入 Astra 控制中心版本；例如 21.12.60 。
+.. 为Astra控制中心添加标签。
+.. 启用或禁用自动支持。建议保留自动支持功能。
+.. 输入Astra控制中心FQDN或IP地址。请止步 `http://` 或 `https://` 在地址字段中。
+.. 输入Astra控制中心版本；例如22.04.1。
 .. 输入帐户名称，电子邮件地址和管理员姓氏。
-.. 保留默认卷回收策略。
-.. 在 * 映像注册表 * 中，输入本地容器映像注册表路径。请勿在此地址中输入 `http ： //` 或 `https ： //` 。
-.. 如果您使用的注册表需要身份验证，请输入密钥。
+.. 选择的卷回收策略 `Retain`， `Recycle`或 `Delete`。默认值为 `Retain`。
+.. 选择入口类型：
++
+*** *通用* (`ingressType: "Generic"`)(默认)
++
+如果您正在使用另一个入口控制器或希望使用您自己的入口控制器、请使用此选项。部署Astra控制中心后、您需要配置 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["入口控制器"^] 以使用URL公开Astra控制中心。
+
+*** * AccTraefik* (`ingressType: "AccTraefik"`）
++
+如果您不希望配置入口控制器、请使用此选项。这将部署Astra控制中心 `traefik` 网关作为Kubernetes loadbalancer类型的服务。
+
++
+Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并要求为其分配可访问的外部IP地址。如果您的环境允许使用负载平衡器、但您尚未配置一个平衡器、则可以使用MetalLB或其他外部服务负载平衡器为该服务分配外部IP地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
+
++
+
+NOTE: 有关 "loadbalancer" 服务类型和入口的详细信息，请参见 link:../get-started/requirements.html["要求"^]。
+
+
+
+.. 在 * 映像注册表 * 中，输入本地容器映像注册表路径。请止步 `http://` 或 `https://` 在地址字段中。
+.. 如果您使用的映像注册表需要身份验证、请输入映像密钥。
++
+
+NOTE: 如果您使用的注册表需要身份验证、 <<创建注册表密钥,在集群上创建密钥>>。
+
 .. 输入管理员的名字。
 .. 配置资源扩展。
-.. 保留默认存储类。
+.. 提供默认存储类。
++
+
+NOTE: 如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
+
 .. 定义 CRD 处理首选项。
++
+
+NOTE: 有关CRD选项的详细信息、请参见 https://docs.netapp.com/us-en/astra-control-center/get-started/acc_cluster_cr_options.html["本节"^]。
 
 
+
+. 选择YAML视图以查看您选择的设置。
 . 选择 `Create` 。
+
+
+
+
+== 创建注册表密钥
+
+如果您使用的注册表需要身份验证、请在OpenShift集群上创建一个密钥、然后在中输入该密钥名称 `Create AstraControlCenter` 表单字段。
+
+. 为Astra控制中心操作员创建命名空间：
++
+[listing]
+----
+oc create ns [netapp-acc-operator or custom namespace]
+----
+. 在此命名空间中创建密钥：
++
+[listing]
+----
+oc create secret docker-registry astra-registry-cred n [netapp-acc-operator or custom namespace] --docker-server=[your_registry_path] --docker username=[username] --docker-password=[token]
+----
++
+
+NOTE: Astra Control仅支持Docker注册表机密。
+
+. 完成中的其余字段 <<安装 Astra 控制中心,创建AstraControlCenter表单字段>>。
 
 
 
 
 == 下一步行动
 
-验证是否已成功安装 Astra 控制中心并完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"] 登录。此外，您还可以通过执行来完成部署 link:setup_overview.html["设置任务"]。
+完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"^] 要验证是否已成功安装Astra控制中心、请设置一个入口控制器(可选)并登录到UI。此外、您还需要执行 link:setup_overview.html["设置任务"^] 完成安装后。

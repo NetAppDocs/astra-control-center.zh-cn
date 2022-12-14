@@ -15,30 +15,30 @@ summary: 已知限制确定了本产品版本不支持的平台、设备或功�
 已知限制确定了本产品版本不支持的平台、设备或功能、或者这些平台、设备或功能无法与产品正确交互操作。仔细审查这些限制。
 
 .集群管理限制
-*  same cluster cannot be managed by two Astra Control Center instances
-*  Control Center cannot manage two identically named clusters
+* <<同一集群不能由两个 Astra Control Center 实例管理>>
+* <<Astra 控制中心无法管理两个命名相同的集群>>
 
 
 .基于角色的访问控制（ Role-Based Access Control ， RBAC ）限制
-*  user with namespace RBAC constraints can add and unmanage a cluster
-*  member with namespace constraints cannot access the cloned or restored apps until admin adds the namespace to the constraint
+* <<具有命名空间 RBAC 限制的用户可以添加和取消管理集群>>
+* <<具有命名空间约束的成员无法访问克隆或还原的应用程序，直到管理员将命名空间添加到此限制中为止>>
 
 
 .应用程序管理限制
-*  applications in a single namespace cannot be restored collectively to a different namespace
-*  Control does not automatically assign default buckets for cloud instances
-*  of apps installed using pass-by-reference operators can fail
-*  restore operations of apps that use a certificate manager are not supported
-*  and cluster-scoped operator deployed apps not supported
-*  deployed with Helm 2 are not supported
+* <<一个命名空间中的多个应用程序无法一起还原到另一个命名空间>>
+* <<Astra Control不会自动为云实例分配默认分段>>
+* <<使用按参考传递操作符安装的应用程序克隆可能会失败>>
+* <<不支持对使用证书管理器的应用程序执行原位还原操作>>
+* <<不支持已部署的应用程序，这些应用程序已启用 olm ，并且已部署集群范围>>
+* <<不支持使用 Helm 2 部署的应用程序>>
 
 
 .一般限制
-*  buckets in Astra Control Center do not report available capacity
-*  Control Center does not validate the details you enter for your proxy server
-*  connections to a Postgres pod causes failures
-*  and snapshots might not be retained during removal of an Astra Control Center instance
-*  user and group limitations
+* <<Astra 控制中心中的 S3 存储分段不会报告可用容量>>
+* <<Astra 控制中心不会验证您为代理服务器输入的详细信息>>
+* <<与 Postgres Pod 的现有连接导致故障>>
+* <<删除 Astra Control Center 实例期间，备份和快照可能不会保留>>
+* <<LDAP用户和组限制>>
 
 
 

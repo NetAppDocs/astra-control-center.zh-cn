@@ -14,16 +14,16 @@ summary: 通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支
 [role="lead"]
 首先验证操作环境，应用程序集群，应用程序，许可证和 Web 浏览器的就绪情况。
 
-*  environment requirements
-*  storage backends
-*  to the internet
-* 
-*  for on-premises Kubernetes clusters
-*  requirements
-*  web browsers
-*  requirements for application clusters
-*  Anthos cluster requirements
-*  Tanzu Kubernetes Grid cluster requirements
+* <<操作环境要求>>
+* <<支持的存储后端>>
+* <<访问 Internet>>
+* <<许可证>>
+* <<内部 Kubernetes 集群的传入>>
+* <<网络要求>>
+* <<支持的 Web 浏览器>>
+* <<应用程序集群的其他要求>>
+* <<Google Anthos集群要求>>
+* <<VMware Tanzu Kubernetes Grid 集群要求>>
 
 
 
@@ -33,7 +33,7 @@ summary: 通过验证对 Kubernetes 集群，应用程序和 Web 浏览器的支
 Astra控制中心已在以下类型的操作环境中进行了验证：
 
 * 采用Kubernetes 1.22的Cisco IKS
-* Google Anthos 1.11或1.12 (请参见  Anthos cluster requirements）
+* Google Anthos 1.11或1.12 (请参见 <<Google Anthos集群要求>>）
 * Rancher Kubernetes Engine (RKE）：
 +
 ** RKE1.3.12与Rancher 2.6.5和2.6.6
@@ -44,7 +44,7 @@ Astra控制中心已在以下类型的操作环境中进行了验证：
 
 * Red Hat OpenShift容器平台4.8至4.11
 * 上游Kubernetes 1.23到1.25 (Kubernetes 1.25需要Astra Trident 22.10或更高版本)
-* VMware Tanzu Kubernetes网格：(请参见  Tanzu Kubernetes Grid cluster requirements）
+* VMware Tanzu Kubernetes网格：(请参见 <<VMware Tanzu Kubernetes Grid 集群要求>>）
 +
 ** VMware Tanzu Kubernetes网格1.5
 ** VMware Tanzu Kubernetes Grid Integrated Edition 1.13和1.14

@@ -15,11 +15,11 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
 
 .任务
-*  a license for Astra Control Center
-*  your environment for cluster management using Astra Control
-*  cluster
-*  a storage backend
-*  a bucket
+* <<添加 Astra 控制中心的许可证>>
+* <<使用Astra Control准备用于集群管理的环境>>
+* <<添加集群>>
+* <<添加存储后端>>
+* <<添加存储分段>>
 
 
 
@@ -36,7 +36,7 @@ NOTE: 如果您的安装增长到超过许可的 CPU 单元数，则 Astra 控�
 
 NOTE: 要更新现有评估版或完整许可证、请参见 link:../use/update-licenses.html["更新现有许可证"^]。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 访问新安装的Astra Control Center实例。
 * 管理员角色权限。
 * 答 link:../concepts/licensing.html["NetApp 许可证文件"^] (nlf)。
@@ -61,7 +61,7 @@ NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据�
 
 在添加集群之前、应确保满足以下前提条件。您还应运行资格检查、以确保集群已准备好添加到Astra控制中心并创建集群管理角色。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您的环境符合 link:../get-started/requirements.html#operational-environment-requirements["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
 * 一个版本的Astra Trident link:../get-started/requirements.html#operational-environment-requirements["受Astra控制中心支持"^] 已安装：
 +
@@ -151,6 +151,7 @@ ontap-gold (default)  csi.trident.netapp.io  Delete         Immediate          t
 
 您可以选择为Astra控制中心创建有限的管理员角色。这不是Astra控制中心设置所需的操作步骤。此操作步骤 有助于创建一个单独的kubeconfig、以限制Astra Control对其管理的集群的权限。
 
+.您需要的内容
 在完成操作步骤 步骤之前、请确保您对要管理的集群具有以下信息：
 
 * 已安装kubectl v1.23或更高版本
@@ -460,7 +461,7 @@ mv kubeconfig-sa YOUR_CLUSTER_NAME_kubeconfig
 
 === 下一步是什么？
 
-现在、您已确认满足了这些前提条件、您已做好准备  cluster,添加集群。
+现在、您已确认满足了这些前提条件、您已做好准备 <<添加集群,添加集群>>。
 
 
 
@@ -471,8 +472,8 @@ mv kubeconfig-sa YOUR_CLUSTER_NAME_kubeconfig
 
 TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。
 
-.您需要什么？ #8217 ；将需要什么
-* 在添加集群之前，请查看并执行必要的操作  your environment for cluster management using Astra Control,前提条件任务。
+.您需要的内容
+* 在添加集群之前，请查看并执行必要的操作 <<使用Astra Control准备用于集群管理的环境,前提条件任务>>。
 
 
 .步骤
@@ -489,7 +490,7 @@ NOTE: `kubeconfig.yaml` 文件应仅包含一个集群的集群凭据 * 。
 
 +
 
-IMPORTANT: 创建自己的 `kubeconfig` file中、您只能定义*一*上下文元素。请参见 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Kubernetes 文档"^] 有关创建的信息 `kubeconfig` 文件。如果您使用为有限集群角色创建了kubeconfig  a limited cluster role kubeconfig,上述过程、请务必在此步骤中上传或粘贴kubeconfig。
+IMPORTANT: 创建自己的 `kubeconfig` file中、您只能定义*一*上下文元素。请参见 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Kubernetes 文档"^] 有关创建的信息 `kubeconfig` 文件。如果您使用为有限集群角色创建了kubeconfig <<创建一个有限的集群角色kubeconfig,上述过程>>、请务必在此步骤中上传或粘贴kubeconfig。
 
 . 请提供凭据名称。默认情况下，凭据名称会自动填充为集群的名称。
 . 选择 * 下一步 * 。
@@ -501,6 +502,7 @@ NOTE: 您应选择一个由 ONTAP 存储提供支持的 Trident 存储类。
 . 查看相关信息、如果一切正常、请选择*添加*。
 
 
+.结果
 集群将进入*正在发现*状态、然后更改为*运行状况良好*。现在、您正在使用Astra控制中心管理集群。
 
 
@@ -531,6 +533,7 @@ NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上�
 . 确认后端详细信息并选择 * 管理 * 。
 
 
+.结果
 后端将显示在中 `Healthy` 包含摘要信息的列表中的状态。
 
 
@@ -544,7 +547,7 @@ NOTE: 您可能需要刷新页面才能显示后端。
 
 如果您要将应用程序配置和永久性存储克隆到同一集群、则无需在Astra Control中使用存储分段。应用程序快照功能不需要存储分段。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 可从由Astra控制中心管理的集群访问的存储分段。
 * 存储分段的凭据。
 * 包含以下类型的存储分段：

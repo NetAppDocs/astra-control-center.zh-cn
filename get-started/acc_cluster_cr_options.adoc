@@ -27,7 +27,7 @@ summary: 有关部署期间的自定义配置、请参见Astra控制中心集群
 | AstraKubeConfigSecret | string | Required | Acc-kubeconfig-cred. | 如果此值存在且存在密钥、则操作员将尝试添加该KubeConfig以成为第一个受管集群。 
 
 
-| AstraResourcesScal | string | Required | Default | AstraControlCenter资源限制的扩展选项。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
+| AstraResourcesScal | string | Required | Default | AstraControlCenter资源限制的扩展选项。请参见 <<配置组合和不兼容性,设置复杂性>> 了解此设置如何影响其他设置。 
 
 
 | AstraVersion | string | Required | 1.5.2 | 要部署的AstraControlCenter版本。系统会为您提供一个Helm存储库、其中包含相应的版本。 
@@ -72,7 +72,7 @@ summary: 有关部署期间的自定义配置、请参见Astra控制中心集群
 | imageRegistry.secret | string | 如果使用的imageRegistry需要密钥、则此参数为必需项 | ast-registry-cred. | 用于通过映像注册表进行身份验证的Kubernetes密钥的名称。 
 
 
-| 正在载入类型 | string | 可选 | 通用(这是默认值) | 应为配置入口Astra控制中心的类型。有效值为`Generic`和`AccTraefik`。请参见  combinations and incompatibilities,设置复杂性 了解此设置如何影响其他设置。 
+| 正在载入类型 | string | 可选 | 通用(这是默认值) | 应为配置入口Astra控制中心的类型。有效值为`Generic`和`AccTraefik`。请参见 <<配置组合和不兼容性,设置复杂性>> 了解此设置如何影响其他设置。 
 
 
 | lastName | string | Required | 管理员 | 支持Astra的管理员的姓氏。 
@@ -107,6 +107,7 @@ ingressType有两个有效值：
 * AccTraefik
 
 
+.通用(默认)
 如果将`ingressType`设置为`Generic`、则Astra Control不会安装任何传入资源。假设用户有一种通用方法来保护流量并通过其网络将流量路由到Kubernetes集群上运行的应用程序、他们希望在此使用相同的机制。当用户创建入口以将流量路由到Astra Control时、该入口需要指向端口80上的内部trafik服务。以下是一个使用Generic ingressType设置的nginx入口资源示例。
 
 [listing]
@@ -134,4 +135,5 @@ spec:
                 number: 80
           pathType: ImplementationSpecific
 ----
+.AccTraefik
 如果将`ingType`设置为`AccesTraefik`、则Astra控制中心会将其Traefik网关部署为Kubernetes负载平衡器类型的服务。用户需要提供外部负载平衡器(如MetalLB)、以使Astra控制中心获得外部IP。

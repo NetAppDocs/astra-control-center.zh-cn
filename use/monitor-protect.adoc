@@ -37,6 +37,7 @@ image:proxy-connect.png["显示了用于启用代理连接的 Connect 选项。"
 . 选择 * 连接 * 。
 
 
+.结果
 如果您输入的代理信息已保存，则 * 帐户 * > * 连接 * 页面的 * HTTP 代理 * 部分将指示它已连接，并显示服务器名称。
 
 image:proxy-new.png["显示代理服务器已成功连接。"]
@@ -81,7 +82,7 @@ Cloud Insights 应可从 Astra 控制中心使用的网络访问，也可通过�
 
 NOTE: 启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从该处连接到 Cloud Insights 。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 具有 * 管理 */* 所有者 * 权限的 Astra 控制中心帐户。
 * 有效的 Astra Control Center 许可证。
 * 如果运行 Astra 控制中心的网络需要使用代理连接到 Internet ，则为代理服务器。
@@ -196,7 +197,7 @@ image:fluentbit.png["显示了从 Astra 到 Fluentd 的事件日志概念图。"
 
 NOTE: 只有受管集群中的事件日志才会转发到 Fluentd 。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 具有 * 管理 */* 所有者 * 权限的 Astra 控制中心帐户。
 * 已在 Kubernetes 集群上安装并运行 Astra Control Center 。
 
@@ -215,6 +216,7 @@ image:connect-fluentd.png["显示了用于启用与 Fluentd 连接的 UI 屏幕�
 . 选择 * 连接 * 。
 
 
+.结果
 如果您为 Fluentd 服务器输入的详细信息已保存，则 * 帐户 * > * 连接 * 页面的 * 通量 * 部分将指示它已连接。现在，您可以访问已连接的 Fluentd 服务器并查看事件日志。
 
 如果连接因某种原因失败，则状态将显示 * 失败 * 。您可以在用户界面右上角的 * 通知 * 下找到失败的原因。

@@ -14,7 +14,7 @@ summary: 要升级 Astra 控制中心，您需要下载此捆绑包并按照所�
 [role="lead"]
 要升级Astra控制中心、请从NetApp 支持站点 下载安装包并完成以下说明。您可以使用此操作步骤在互联网连接或通风环境中升级 Astra 控制中心。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 升级之前、请参见 link:../get-started/requirements.html#operational-environment-requirements["操作环境要求"^] 确保您的环境仍满足Astra Control Center部署的最低要求。您的环境应具有以下内容：
 +
 ** 支持的Astra Trident版本要确定您正在运行的版本、请对现有的Astra控制中心运行以下命令：
@@ -51,14 +51,15 @@ kubectl get apiservices
 * 在开始升级之前、请从Astra控制中心用户界面中注销。
 
 
+.关于此任务
 Astra 控制中心升级过程将指导您完成以下高级步骤：
 
-*  the Astra Control Center bundle
-*  the bundle
-*  the images to your local registry
-*  the updated Astra Control Center operator
-*  Astra Control Center
-*  system status
+* <<下载 Astra Control Center 捆绑包>>
+* <<打开捆绑包的包装>>
+* <<将映像添加到本地注册表>>
+* <<安装更新后的 Astra 控制中心操作员>>
+* <<升级 Astra 控制中心>>
+* <<验证系统状态>>
 
 
 
@@ -106,7 +107,7 @@ kubectl astra
 ----
 
 
-此命令应提供kubectl插件帮助。如果命令返回错误、请使用这些安装插件 link:../get-started/install_acc.html#install-the-netapp-astra-kubectl-plugin["说明"]。
+此命令应提供kubectl插件帮助。如果命令返回错误、请使用这些安装插件 link:../get-started/install_acc.html#install-the-netapp-astra-kubectl-plugin["说明"^]。
 
 
 
@@ -119,19 +120,14 @@ kubectl astra
 ====
 .Docker
 --
-. 更改为 `acc` 从tar包中提取的目录：
+. 更改为tarball的根目录。您应看到此文件和目录：
 +
-示例
+`acc.manifest.bundle.yaml`
+`acc/`
 
-
-
-[listing]
-----
-cd ../acc
-----
-. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行命令之前、请执行以下替换操作：
+. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +
-** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.yaml`）。
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
 ** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
 ** 将<MY_REGISTRY_USER> 替换为用户名。
 ** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
@@ -147,6 +143,11 @@ kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -
 --
 .Podman
 --
+. 更改为tarball的根目录。您应看到此文件和目录：
++
+`acc.manifest.bundle.yaml`
+`acc/`
+
 . 登录到注册表：
 +
 [source, console]
@@ -157,12 +158,6 @@ podman login <MY_FULL_REGISTRY_PATH>
 +
 [source, console]
 ----
-# You need to be at the root of the tarball.
-# You should see these files to confirm correct location:
-#   acc.manifest.yaml
-#   acc/
-
-# Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
 export REGISTRY=<YOUR_REGISTRY>
 export PACKAGENAME=acc
 export PACKAGEVERSION=22.11.0-82
@@ -209,8 +204,8 @@ vim astra_control_center_operator_deploy.yaml
 imagePullSecrets:
 - name: <astra-registry-cred_or_custom_name_of_secret>
 ----
-.. 更改 `[your_registry_path]` 。 `kube-rbac-proxy` 将映像推送到注册表路径中  the images to your local registry,上一步。
-.. 更改 `[your_registry_path]` 。 `acc-operator` 将映像推送到注册表路径中  the images to your local registry,上一步。
+.. 更改 `[your_registry_path]` 。 `kube-rbac-proxy` 将映像推送到注册表路径中 <<将映像添加到本地注册表,上一步>>。
+.. 更改 `[your_registry_path]` 。 `acc-operator` 将映像推送到注册表路径中 <<将映像添加到本地注册表,上一步>>。
 .. 将以下值添加到 `env` 部分：
 +
 [listing]
@@ -342,7 +337,7 @@ spec:
   accountName: "Example"
   *astraVersion: "[Version number]"*
 ----
-. 验证您的映像注册表路径是否与您在中将映像推送到的注册表路径匹配  the images to your local registry,上一步。更新 `imageRegistry` 在中 `Spec` 注册表自上次安装以来是否发生了更改。
+. 验证您的映像注册表路径是否与您在中将映像推送到的注册表路径匹配 <<将映像添加到本地注册表,上一步>>。更新 `imageRegistry` 在中 `Spec` 注册表自上次安装以来是否发生了更改。
 +
 [listing]
 ----
