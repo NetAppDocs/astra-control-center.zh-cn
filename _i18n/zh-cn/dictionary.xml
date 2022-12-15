@@ -960,7 +960,6 @@
   <block id="c9bcb1e1ffd0a3c4060e93553536017d" category="admonition">如果您是 Cloud Insights 的新用户，请熟悉其特性和功能。请参见 <block ref="c0165bf1c80302323bce293718326d03" category="inline-link-macro-rx"></block>。</block>
   <block id="0f21509577569fcfd44247652db09da1" category="list-text">在 Cloud Insights 中，单击 * 管理 * &gt; * API 访问 * 以生成 * 读 / 写 * 和 * 只读 * API 访问令牌。</block>
   <block id="7a3ef7b3d20368f22318e140ed0c8bf5" category="list-text">复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。对于读取 API 访问令牌密钥权限，请选择：资产，警报，采集单元和数据收集。</block>
-  <block id="3471dafa540ad99cab68490eddb48830" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读 / 写 API 访问令牌密钥权限，请选择： Assets ， Data Inestion ， Log ingestion ， Acquisition Unit ， 和数据收集。</block>
   <block id="a514c0ae3c82c51ee5b4cd862c3c6ae5" category="paragraph">您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。</block>
   <block id="30e9f9c381fe23f7ce3650c2587f95e5" category="list-text">列出集群上安装的 Traefik CRD ：</block>
   <block id="61f5bc231326b2369e71b3e4d9f8c986" category="paragraph">删除现有的自签名 TLS 证书。</block>
@@ -2619,4 +2618,5 @@
   <block id="d1141e4fbef627d770ba551621d0f9ba" category="list-text">如果您为参与Istio服务网格的应用程序创建执行连接、请确保该连接与原始应用程序容器而非服务网格容器相连。您可以通过对使用Istio服务网格的应用程序运行的每个执行连接应用程序应用筛选器regex来排除Istio服务网格容器。</block>
   <block id="6f0d5941d5a6edfad3a1597fae5c8340" category="list-text">由于执行挂钩通常会减少或完全禁用其所运行的应用程序的功能，因此您应始终尽量缩短自定义执行挂钩运行所需的时间。</block>
   <block id="678c0d401fe58fc5c33f7d717ff8c970" category="list-text">如果使用关联的执行挂钩启动备份或快照操作、但随后将其取消、则在备份或快照操作已开始时、仍允许运行这些挂钩。这意味着、备份后执行挂钩不能假定备份已完成。</block>
+  <block id="f83cc958d14f90620b7ffdf9923fe440" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读/写API访问令牌密钥权限、请选择：数据载入、日志载入、采集单元和数据收集。</block>
 </blocks>
