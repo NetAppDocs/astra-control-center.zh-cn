@@ -1617,7 +1617,6 @@
   <block id="7fdb6925e171ac617262d69ebf119664" category="list-text">Astra Control使用执行挂钩设置和任何匹配条件来确定哪些挂钩适用于快照、备份或还原操作。</block>
   <block id="71bd0199539278d83c2eb3eaf817b710" category="list-text">所有执行挂钩故障均为软故障；即使某个挂钩发生故障、仍会尝试执行其他挂钩和数据保护操作。但是，如果挂机发生故障，则会在 * 活动 * 页面事件日志中记录一个警告事件。</block>
   <block id="7b1a9d930edd4676e6aca05c81245d86" category="list-text">对于临时数据保护操作、所有挂机事件都会生成并保存在*活动*页面事件日志中。但是、对于计划的数据保护操作、事件日志中仅会记录挂钩故障事件(计划的数据保护操作本身生成的事件仍会记录下来)。</block>
-  <block id="e44e874b44364a30ee06654e352ede59" category="paragraph">由于执行挂钩通常会减少或完全禁用其所运行的应用程序的功能，因此您应始终尽量缩短自定义执行挂钩运行所需的时间。如果使用关联的执行挂钩启动备份或快照操作、但随后将其取消、则在备份或快照操作已开始时、仍允许运行这些挂钩。这意味着、备份后执行挂钩不能假定备份已完成。</block>
   <block id="a9f57378169166a88acf61a71442e5fb" category="section-title">执行顺序</block>
   <block id="e8132483e0cae3565c87c193b3fd8f57" category="paragraph">运行数据保护操作时、执行钩事件按以下顺序发生：</block>
   <block id="4a6ccf1757fd10978b3fb28d81187dcc" category="list-text">任何适用的自定义操作前执行挂钩都会在相应的容器上运行。您可以根据需要创建和运行任意数量的自定义操作前挂钩、但操作前这些挂钩的执行顺序既不能保证也不可配置。</block>
@@ -2617,4 +2616,7 @@
   <block id="1e24416e12dc76c10b1a5d91e4001b23" category="paragraph">您可以为应用程序创建自定义执行挂钩。请参见 <block ref="17e166b6ef6242446312ff693caa559b" category="inline-xref-macro-rx"></block> 有关挂机示例。要创建执行挂钩，您需要拥有所有者，管理员或成员权限。</block>
   <block id="9ad3989601b59e755170866a5329554c" category="list-text"><block ref="9ad3989601b59e755170866a5329554c" category="inline-link-rx"></block></block>
   <block id="53c5fac0ba78b08ca3f0a270b746c5d2" category="section-title">重置其他用户的密码</block>
+  <block id="d1141e4fbef627d770ba551621d0f9ba" category="list-text">如果您为参与Istio服务网格的应用程序创建执行连接、请确保该连接与原始应用程序容器而非服务网格容器相连。您可以通过对使用Istio服务网格的应用程序运行的每个执行连接应用程序应用筛选器regex来排除Istio服务网格容器。</block>
+  <block id="6f0d5941d5a6edfad3a1597fae5c8340" category="list-text">由于执行挂钩通常会减少或完全禁用其所运行的应用程序的功能，因此您应始终尽量缩短自定义执行挂钩运行所需的时间。</block>
+  <block id="678c0d401fe58fc5c33f7d717ff8c970" category="list-text">如果使用关联的执行挂钩启动备份或快照操作、但随后将其取消、则在备份或快照操作已开始时、仍允许运行这些挂钩。这意味着、备份后执行挂钩不能假定备份已完成。</block>
 </blocks>
