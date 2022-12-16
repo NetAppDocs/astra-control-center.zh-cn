@@ -73,5 +73,6 @@ summary: 只需几步即可开始使用 Astra Control 。
 == 有关详细信息 ...
 
 * https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^]
-* https://review.docs.netapp.com/us-en/astra-control-center_acc-pi7-review/use/upgrade-acc.html["升级 Astra 控制中心"^]
+* link:../use/upgrade-acc.html["升级 Astra 控制中心"^]
+* link:../support/get-help.html["获取有关Astra Control的帮助"^]
 
