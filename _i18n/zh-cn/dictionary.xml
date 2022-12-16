@@ -2283,7 +2283,6 @@
   <block id="f1cf4d02378fa61bb8bd57679ffc6235" category="list-text">* Helm已部署应用程序*：完全支持克隆使用Helm 3部署的应用程序(或从Helm 2升级到Helm 3)。不支持使用 Helm 2 部署的应用程序。</block>
   <block id="8d7c216bc17d281838efafaa3704677b" category="list-text">选择还原类型：</block>
   <block id="90d21d98503ddae05ddf0a1a34b7d790" category="list-text">*还原到原始命名空间*：使用此操作步骤 将应用程序原位还原到原始集群。</block>
-  <block id="d6163245aff1d495d4414480b1d33f38" category="admonition">在与其他应用程序共享资源的应用程序上执行原位还原操作可能会产生意外结果。</block>
   <block id="eb543a53c7bc9830323c1e31b5a68dc4" category="list-text">选择用于原位还原应用程序的快照、此操作会将应用程序还原到其自身的早期版本。</block>
   <block id="3b015c7e8b671c5a6b88a902ad59e853" category="list-text">查看有关还原操作的详细信息、键入"restore"、然后选择*还原*。</block>
   <block id="440c25a54f1d6be365d93551da3bc3f9" category="list-text">*还原到新命名空间*：使用此操作步骤 将应用程序还原到另一个集群或使用与源不同的命名空间。</block>
@@ -2642,4 +2641,10 @@
   <block id="d562c4dd354cbcb5a399ecd947d57a28" category="list-text"><block ref="d562c4dd354cbcb5a399ecd947d57a28" category="inline-link-macro-rx"></block></block>
   <block id="749c18da581d94e0dd92db056f0ede8d" category="inline-link-macro">获取有关Astra Control的帮助</block>
   <block id="8a06e7781d9c301da6075deb2bbbe145" category="list-text"><block ref="8a06e7781d9c301da6075deb2bbbe145" category="inline-link-macro-rx"></block></block>
+  <block id="4ca05a6d3d72f01a88f8a67a5c8cfac4" category="paragraph">在与其他应用程序共享资源的应用程序上执行原位还原操作可能会产生意外结果。对其中一个应用程序执行原位还原时、这些应用程序之间共享的任何资源都会被替换。例如、以下情形会在使用NetApp SnapMirror复制时造成不希望出现的情况：</block>
+  <block id="4b93bc85a66000cfca0c6e537323e417" category="list-text">您可以定义应用程序<block ref="f92ea1839dc16d7396db358365da7066" prefix=" " category="inline-code"></block> 使用命名空间<block ref="bfed25f845e5220adacaaf3b86228910" prefix=" " category="inline-code"></block>。</block>
+  <block id="86b8799dbebc7080c1d4f349601f66d1" category="list-text">您可以为配置复制关系<block ref="f92ea1839dc16d7396db358365da7066" prefix=" " category="inline-code"></block>。</block>
+  <block id="2aabf9d19e05830c03047e81303050b7" category="list-text">您可以定义应用程序<block ref="ec8d838607528268a4e435628ea9f709" prefix=" " category="inline-code"></block> (在同一集群上)使用命名空间<block ref="bfed25f845e5220adacaaf3b86228910" prefix=" " category="inline-code"></block> 和<block ref="7b3f4e5e8a4b234605eb5c242254ab09" prefix=" " category="inline-code"></block>。</block>
+  <block id="baf10238a72efe4a1aab077cb3c4d82e" category="list-text">您可以为配置复制关系<block ref="ec8d838607528268a4e435628ea9f709" prefix=" " category="inline-code"></block>。</block>
+  <block id="34a13245622ec7d6c1a19ea86462ba96" category="list-text">反向复制<block ref="ec8d838607528268a4e435628ea9f709" prefix=" " category="inline-code"></block>。这将导致<block ref="f92ea1839dc16d7396db358365da7066" prefix=" " category="inline-code"></block> 要停用的源集群上的应用程序。</block>
 </blocks>
