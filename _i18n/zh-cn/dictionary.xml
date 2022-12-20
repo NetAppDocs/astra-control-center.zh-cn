@@ -762,8 +762,6 @@
   <block id="fc114aea788191ed2996fd8985c43178" category="inline-link-macro">添加集群</block>
   <block id="d61a39ecf1d91497b3661f1969243d18" category="summary">只需几步即可开始使用 Astra Control 。</block>
   <block id="a87da1b8e8afc29470ac85cf788e125c" category="doc">Astra 控制中心快速入门</block>
-  <block id="15dd8f83e9a999edc6eae56c5aec726e" category="paragraph">此页面简要概述了开始使用 Astra 控制中心所需的步骤。每个步骤中的链接将转到一个页面，其中提供了更多详细信息。</block>
-  <block id="b777e6ba4555d404b00c2436d03ae649" category="inline-link-macro">许可信息</block>
   <block id="efb8331a92b47dc173e5cbcd8ae1a87b" category="summary">安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。</block>
   <block id="d507eb4e66b24d44edccbe2de081c8ee" category="doc">设置 Astra 控制中心</block>
   <block id="ef615563c8e8ea902c7fcac3cd2c4246" category="list-title">任务</block>
@@ -1907,9 +1905,6 @@
   <block id="4ab759267d2877902a521921e10f5f5b" category="list-text">创建名为`asacontrol service-account.yaml`的服务帐户文件。</block>
   <block id="85d4813220dc61b1558025981ecb0a0c" category="paragraph"><block ref="85d4813220dc61b1558025981ecb0a0c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="de57d5c9dad5ff2e5621f7541a798fe9" category="paragraph"><block ref="de57d5c9dad5ff2e5621f7541a798fe9" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="9f034b63948763d489f944319c2eb3de" category="inline-link-macro">features</block>
-  <block id="67de198544887d5fd6bd366f67305ff4" category="paragraph">您需要一个许可证来保护应用程序和数据。请参见Astra控制中心 <block ref="9c6ba53976c6f467204fe6057d6ccf7a" category="inline-link-macro-rx"></block> 了解详细信息。</block>
-  <block id="166a298c42736e336f80574cf9433db7" category="paragraph">您还可以使用评估版许可证试用 Astra 控制中心，这样，您可以在自下载此许可证之日起的 90 天内使用 Astra 控制中心。有关详细信息，请参见 <block ref="ec43fa96d69fa714ee8406758839eaf7" category="inline-link-macro-rx"></block>。</block>
   <block id="40c5eb63f5dc254aeb1e6c3a7b34d15d" category="inline-link-macro">支持的存储后端</block>
   <block id="3e55b813dfc77f5a692ec8411b86bba6" category="paragraph">有关ONTAP 存储后端所需许可证的详细信息、请参见 <block ref="dff615b80497dbcbaf9794a9900b6f10" category="inline-link-macro-rx"></block>。</block>
   <block id="a26876e2ece0b6007cf03e315d57d9d2" category="admonition">您可以在没有许可证的情况下添加集群、添加存储分段以及管理存储后端。</block>
@@ -1923,7 +1918,6 @@
   <block id="f79830bec9b778f1cf3c950471bafb95" category="inline-link-macro">Astra控制中心功能</block>
   <block id="ae49257ca8c170cdd9b892d435d60a14" category="paragraph">要实现全部功能， Astra 控制中心需要获得 Astra 控制中心许可证。从 NetApp 获取评估版许可证或完整许可证。您需要一个许可证来保护应用程序和数据。请参见 <block ref="7fcc59b1843f920708fc18c7727f8745" category="inline-link-macro-rx"></block> 了解详细信息。</block>
   <block id="32c2e315eb3384a5835e26a647684aec" category="paragraph">有关ONTAP 存储后端所需许可证的详细信息、请参见 <block ref="8e7dadcc6edcd7a6649fd7bd3abadd5f" category="inline-link-macro-rx"></block>。</block>
-  <block id="f06853bf12dc9a7737fb9921535d6e83" category="paragraph">购买产品后、您将收到序列号和许可证。您可以从生成NetApp许可证文件(NLF)<block ref="fcc52edac3ce57829c48ee35d97a295d" category="inline-link-rx"></block>。</block>
   <block id="34c08446234edc37b22fa4ed2230f6fe" category="paragraph">您可以使用评估版许可证试用Astra控制中心、这样、您可以在自下载此许可证之日起的90天内使用Astra控制中心。您可以通过注册注册注册免费试用版 <block ref="94c4952ff767dc7f2318bf778dfb79d4" category="inline-link-macro-rx"></block>。</block>
   <block id="6db4db93a9c2608b2abfc46bb675e283" category="paragraph">要设置和管理Kubernetes应用程序、您可以使用Astra Control Center UI或Astra Control API。</block>
   <block id="c39526014b70f5854cf3c59ceb0b89d3" category="list-text"><block ref="c39526014b70f5854cf3c59ceb0b89d3" category="inline-link-macro-rx"></block></block>
@@ -2591,7 +2585,6 @@
   <block id="6f0d5941d5a6edfad3a1597fae5c8340" category="list-text">由于执行挂钩通常会减少或完全禁用其所运行的应用程序的功能，因此您应始终尽量缩短自定义执行挂钩运行所需的时间。</block>
   <block id="678c0d401fe58fc5c33f7d717ff8c970" category="list-text">如果使用关联的执行挂钩启动备份或快照操作、但随后将其取消、则在备份或快照操作已开始时、仍允许运行这些挂钩。这意味着、备份后执行挂钩不能假定备份已完成。</block>
   <block id="f83cc958d14f90620b7ffdf9923fe440" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读/写API访问令牌密钥权限、请选择：数据载入、日志载入、采集单元和数据收集。</block>
-  <block id="50eac7a8226d30ab336bd2f68c81d5d7" category="paragraph">试用！如果您要试用 Astra Control Center ，可以使用 90 天评估许可证。请参见 <block ref="63bc3e673bda1b27140b6b5b88199732" category="inline-link-macro-rx"></block> 了解详细信息。</block>
   <block id="a8a5da0c5d62ec5f7225e0ce27261da7" category="paragraph">确保您的环境满足这些要求。</block>
   <block id="b5233b1e8c04e10566734b9cecfc92b1" category="paragraph">* Kubernetes集群*</block>
   <block id="b3617c5929e3cf6406a5cdcd1eea0a9c" category="inline-link-macro">确保您的环境满足运营环境要求</block>
@@ -2607,8 +2600,6 @@
   <block id="8f233a56a0bbc57a073461b666b439e1" category="list-text"><block ref="8f233a56a0bbc57a073461b666b439e1" category="inline-link-rx"></block></block>
   <block id="2d2c9a29bb271a0bf15559829b91147a" category="inline-link">安装Astra Trident卷快照控制器和快照类</block>
   <block id="6c4528e739169720eefd2bff769e1da1" category="list-text"><block ref="6c4528e739169720eefd2bff769e1da1" category="inline-link-rx"></block></block>
-  <block id="527fdd132db746b3b10c377fcc937a6b" category="inline-link">配置Astra Trident存储卷快照控制器和快照类</block>
-  <block id="d0b095d6aa400765f2fd9213267791a8" category="list-text"><block ref="d0b095d6aa400765f2fd9213267791a8" category="inline-link-rx"></block></block>
   <block id="ae0a6f81e3ab19bb5bb4cc16ba804b6d" category="paragraph">* ONTAP 凭据*</block>
   <block id="cff9e873ecc35abb358c9f43ad1d3dcf" category="inline-link-macro">配置ONTAP 凭据</block>
   <block id="27912e4366edb4ee86aa373395b590f5" category="list-text"><block ref="27912e4366edb4ee86aa373395b590f5" category="inline-link-macro-rx"></block></block>
@@ -2647,4 +2638,14 @@
   <block id="2aabf9d19e05830c03047e81303050b7" category="list-text">您可以定义应用程序<block ref="ec8d838607528268a4e435628ea9f709" prefix=" " category="inline-code"></block> (在同一集群上)使用命名空间<block ref="bfed25f845e5220adacaaf3b86228910" prefix=" " category="inline-code"></block> 和<block ref="7b3f4e5e8a4b234605eb5c242254ab09" prefix=" " category="inline-code"></block>。</block>
   <block id="baf10238a72efe4a1aab077cb3c4d82e" category="list-text">您可以为配置复制关系<block ref="ec8d838607528268a4e435628ea9f709" prefix=" " category="inline-code"></block>。</block>
   <block id="34a13245622ec7d6c1a19ea86462ba96" category="list-text">反向复制<block ref="ec8d838607528268a4e435628ea9f709" prefix=" " category="inline-code"></block>。这将导致<block ref="f92ea1839dc16d7396db358365da7066" prefix=" " category="inline-code"></block> 要停用的源集群上的应用程序。</block>
+  <block id="c05d7f375daa05c9c20834d303b00fd0" category="paragraph">下面简要介绍了开始使用Astra控制中心所需的步骤。每个步骤中的链接将转到一个页面，其中提供了更多详细信息。</block>
+  <block id="7df63225a687cdbb0704d94ef53a4983" category="inline-link">创建卷快照类</block>
+  <block id="dd131b9996426baf36db91cd0e7d6281" category="list-text"><block ref="dd131b9996426baf36db91cd0e7d6281" category="inline-link-rx"></block></block>
+  <block id="c4002b4ebee895edc6f5898ff73a5ad8" category="list-text">获取NetApp许可证文件：</block>
+  <block id="e1d57bb99f6ac53ae4d1e4ead1d86a3c" category="paragraph">您可以通过以下方式之一获取许可证：</block>
+  <block id="6004daa4ba0df7760d75bccaccd9cdeb" category="list-text"><block ref="1ac362ab549aa84c347d7d5271314ad6" category="inline-link-macro-rx"></block>。评估版许可证允许您从下载此许可证之日起90天内使用Astra控制中心。</block>
+  <block id="b5172acff46c1ccd4ef355f7c403ba48" category="inline-link-macro">如果您已购买Astra Control Center、请生成NetApp许可证文件(NLF)</block>
+  <block id="5e83d0e22710b5fb10a24a55f0464eab" category="list-text"><block ref="be01b2f45d5e5a31b2acb026a0c1fc3d" category="inline-link-macro-rx"></block> 从NetApp 支持站点。购买产品后、您将收到序列号和许可证、您可以在支持站点上使用这些序列号和许可证。</block>
+  <block id="89eae3d9e27253b30e1b76d62008b32d" category="inline-link-macro">首次设置Astra控制中心时添加许可证</block>
+  <block id="117e62f8841c871dc009220d6b7e5401" category="list-text"><block ref="117e62f8841c871dc009220d6b7e5401" category="inline-link-macro-rx"></block></block>
 </blocks>
