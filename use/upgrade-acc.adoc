@@ -54,8 +54,7 @@ kubectl get apiservices
 .关于此任务
 Astra 控制中心升级过程将指导您完成以下高级步骤：
 
-* <<下载 Astra Control Center 捆绑包>>
-* <<打开捆绑包的包装>>
+* <<下载并提取Astra控制中心>>
 * <<将映像添加到本地注册表>>
 * <<安装更新后的 Astra 控制中心操作员>>
 * <<升级 Astra 控制中心>>
@@ -70,24 +69,23 @@ TIP: 如果计划，备份和快照未运行，请在维护窗口中执行升级
 
 
 
-== 下载 Astra Control Center 捆绑包
+== 下载并提取Astra控制中心
 
-. 从下载Astra控制中心捆绑包 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp 支持站点"^]。文件名类似于以下内容： `astra-control-center-[version].tar.gz`。
-. （可选）验证捆绑包的签名：
+. 转至 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center产品下载页面"^] 页面。您可以从下拉菜单中选择所需的最新版本或其他版本。
+. 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`）。
+. (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证捆绑包的签名：
 +
-[listing]
+[source, console]
 ----
-openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
+tar -vxzf astra-control-center-certs-[version].tar.gz
+openssl dgst -sha256 -verify certs/AstraControlCenter-public.pub -signature certs/astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
-
-
-
-
-== 打开捆绑包的包装
-
-. 提取映像：
 +
-[listing]
+此时将显示输出 `Verified OK` 验证成功后。
+
+. 从Astra Control Center捆绑包中提取映像：
++
+[source, console]
 ----
 tar -vxzf astra-control-center-[version].tar.gz
 ----

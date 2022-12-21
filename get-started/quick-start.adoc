@@ -40,7 +40,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 下载并安装Astra控制中心
 完成这些安装任务。
 
-* https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["从NetApp 支持站点 下载页面下载Astra控制中心"^]
+* https://mysupport.netapp.com/site/downloads/evaluation/astra-control-center["从NetApp 支持站点 评估下载页面下载Astra控制中心"^]
 * 获取NetApp许可证文件：
 +
 ** link:https://mysupport.netapp.com/site/downloads/evaluation/astra-control-center["如果您正在评估Astra控制中心、请下载评估版许可证文件"^]
