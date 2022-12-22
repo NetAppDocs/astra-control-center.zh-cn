@@ -1,0 +1,96 @@
+= 将映像添加到本地注册表
+:allow-uri-read: 
+
+
+
+
+== 将映像添加到本地注册表
+
+. 为容器引擎完成相应的步骤顺序：
+
+
+[role="tabbed-block"]
+====
+.Docker
+--
+. 更改为tarball的根目录。您应看到此文件和目录：
++
+`acc.manifest.bundle.yaml`
+`acc/`
+
+. 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
++
+** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 "https://<docker-registry>"[]。
+** 将<MY_REGISTRY_USER> 替换为用户名。
+** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
++
+[source, console]
+----
+kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -u <MY_REGISTRY_USER> -p <MY_REGISTRY_TOKEN>
+----
+
+
+
+
+--
+.Podman
+--
+. 更改为tarball的根目录。您应看到此文件和目录：
++
+`acc.manifest.bundle.yaml`
+`acc/`
+
+. 登录到注册表：
++
+[source, console]
+----
+podman login <YOUR_REGISTRY>
+----
+. 准备并运行以下针对您使用的Podman版本自定义的脚本之一。将<MY_FULL_REGISTRY_PATH> 替换为包含任何子目录的存储库的URL。
++
+[source, subs="specialcharacters,quotes"]
+----
+*Podman 4*
+----
++
+[source, console]
+----
+export REGISTRY=<MY_FULL_REGISTRY_PATH>
+export PACKAGENAME=acc
+export PACKAGEVERSION=22.11.0-82
+export DIRECTORYNAME=acc
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
+astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
+----
++
+[source, subs="specialcharacters,quotes"]
+----
+*Podman 3*
+----
++
+[source, console]
+----
+export REGISTRY=<MY_FULL_REGISTRY_PATH>
+export PACKAGENAME=acc
+export PACKAGEVERSION=22.11.0-82
+export DIRECTORYNAME=acc
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image(s): //')
+astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
+----
++
+
+NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于以下内容： `https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/22.11.0-82/image:version`
+
+
+
+--
+====

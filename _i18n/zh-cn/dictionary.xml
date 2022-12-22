@@ -689,7 +689,6 @@
   <block id="8321592ce24c8a122ecf26a63cfca407" category="list-text">ontap-NAS</block>
   <block id="844e84da8e822b4a33c4d8188da97937" category="list-text">ontap-nas-flexgroup</block>
   <block id="73a3350a1b91aeb6e2836fdf5975672c" category="list-text">ontap-san</block>
-  <block id="cbde2df6a7c89370edc449dc5705d30c" category="inline-link">说明</block>
   <block id="c62e13b3973df086f7d17eeaf006b535" category="section-title">访问 Internet</block>
   <block id="46cce64fca5b60351328e94ed2b72255" category="paragraph">您应确定是否可以从外部访问 Internet 。否则，某些功能可能会受到限制，例如从 NetApp Cloud Insights 接收监控和指标数据或向发送支持包<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
   <block id="794df3791a8c800841516007427a2aa3" category="section-title">许可证</block>
@@ -1822,7 +1821,6 @@
   <block id="c5fd214cdd0d2b3b4272e73b022ba5c2" category="open-title">Docker</block>
   <block id="455cbd59356abfa16dcf7666d4ae6c2b" category="open-title">Podman</block>
   <block id="e8c44728c041065d90e7029dec2e142c" category="list-text">登录到注册表：</block>
-  <block id="c330f6e98afeb2bb5f8da986c24088ee" category="list-text">运行以下脚本、按照注释中的说明替换&lt;your_registry&gt;：</block>
   <block id="1c90591655cdfe7d885b02ed72ae2509" category="summary">NetApp 以多种方式为 Astra Control 提供支持。全天候提供广泛的免费自助支持选项、例如知识库(KB)文章和不和渠道。您的 Astra Control 帐户包括通过 Web 服务单提供的远程技术支持。</block>
   <block id="e63bdfa6fe9dccaf39b5d028f12a4a15" category="admonition">如果您拥有 Astra 控制中心的评估许可证，则可以获得技术支持。但是，无法通过 NetApp 支持站点（ NSS ）创建案例。您可以通过反馈选项联系支持部门、也可以使用不和渠道自助服务。</block>
   <block id="35cdc0acd4828a4d409d79a5f18ee353" category="inline-link">*通过不和获得帮助*</block>
@@ -1972,7 +1970,6 @@
   <block id="18f40e403e21c47db1d640c681eb60c1" category="list-text">列出可用的NetApp Astra kubectl插件二进制文件、并记下操作系统和CPU架构所需的文件名称：</block>
   <block id="04663e125a4b7af87fb04b1c90f3981c" category="admonition">kubectl插件库是tar包的一部分、并会解压缩到文件夹中<block ref="90432a9da14d46e4d20c4b841576b1ee" prefix=" " category="inline-code"></block>。</block>
   <block id="70c1282aae344c7012022e40f12892d7" category="list-text">将正确的二进制文件移动到当前路径并重命名为<block ref="90432a9da14d46e4d20c4b841576b1ee" prefix=" " category="inline-code"></block>：</block>
-  <block id="1fc880ef4f8b3cc45475542399bd1928" category="list-text">将&lt;MY_FULL_REGISTRY_PATH&gt; 替换为Docker存储库的URL；例如<block ref="2f83a38130745792f380ff2448ba7723" category="inline-link-rx"></block>。</block>
   <block id="f65f53e091cb29cf07faf1ce22c7b7af" category="list-text">将&lt;MY_REGISTRY_USER&gt; 替换为用户名。</block>
   <block id="942beacf5a707600cdbf9c51118da46f" category="list-text">将&lt;MY_REGISTRY_TOKEN&gt; 替换为注册表的授权令牌。</block>
   <block id="739ad756d2571ec4c01ae0e2a5a259ff" category="admonition">在完成安装之前、请确保您的KUBECONFIG指向要安装Astra控制中心的集群。KUBECONFIG只能包含一个上下文。</block>
@@ -2238,8 +2235,6 @@
   <block id="f84aae8dfc7421a333e4e7e836c130c7" category="list-text">(仅限OpenShift)确保所有集群操作员均处于运行状况良好且可用。</block>
   <block id="825d372ea32aac53c3ee57e9a6a5bbc6" category="list-text">在开始升级之前、请从Astra控制中心用户界面中注销。</block>
   <block id="a7cd7e89d9e646b3bc6c32ee6ac752b0" category="admonition">请勿删除Astra Control Center运算符(例如、<block ref="dfe54be7b1dbab0ff279802517dca055" prefix=" " category="inline-code"></block>)、以避免删除Pod。</block>
-  <block id="4fa6fdd44c10c16a714b8f15d294dafa" category="section-title">确认已安装NetApp Astra kubectl插件</block>
-  <block id="22752d0c5fc41c072184ec1bf10292a7" category="list-text">使用以下命令确定是否已安装此插件：</block>
   <block id="9cdaf3a6ae59eb2faabcb002cfc1bd4b" category="list-text">如果您使用的注册表需要身份验证、请替换或编辑的默认行<block ref="e90e0b4a41dde5f038023d33ee45ad34" prefix=" " category="inline-code"></block> 使用以下命令：</block>
   <block id="ddfa64b94159cbde6c02f2aa3ae5598c" category="list-text">更改<block ref="a3d1b23e7abf0f3b3ca5fcf7e61860cd" prefix=" " category="inline-code"></block> 。<block ref="4b559e0a1b6f68f62c5edecea8c35c7e" prefix=" " category="inline-code"></block> 将映像推送到注册表路径中 <block ref="7fe0e1ddcc2917e6a216033278119235" category="inline-xref-macro-rx"></block>。</block>
   <block id="49442a4bf304a6a24081fc054a06ba5e" category="list-text">编辑Astra Control Center自定义资源(CR)：</block>
@@ -2523,7 +2518,6 @@
   <block id="060534066f9a22cabf451772f0daf58b" category="list-text">创建操作员命名空间：</block>
   <block id="8f70adb2eebdea2e00d5d57216cd59b5" category="inline-link-macro">完成设置</block>
   <block id="83a21b4b84bec79fb67f25c973cb89d3" category="list-text"><block ref="485506977df8782eb9acff027cc95cf9" category="inline-link-macro-rx"></block> 适用于您的入口控制器类型。</block>
-  <block id="e10b9da8362fecb065da69f3ade6cf7c" category="list-text">[substep_image_local_registry_push]]将Astra控制中心映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换<block ref="2957bfd514a0f16d8946142cd37400fd" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="70f82fe210d70d79ae84c8e57b5baf7f" category="list-text">从 Red Hat OpenShift Web 控制台：</block>
   <block id="eb5ffd4ef5a8aa98e9c36b2c79cea4ed" category="list-text">搜索并选择NetApp Astra Control Center运算符。</block>
   <block id="aa29e3cb75d2e7e5a7c9020ff806205e" category="paragraph"><block ref="aa29e3cb75d2e7e5a7c9020ff806205e" category="inline-image-macro-rx" type="image"></block></block>
@@ -2559,7 +2553,6 @@
   <block id="e20f9875b736f5d534a7c14be355eb06" category="paragraph">完成 <block ref="9908a5e65371462fab8de29e0e8be055" category="inline-link-macro-rx"></block> 要验证是否已成功安装Astra控制中心、请设置一个入口控制器(可选)并登录到UI。此外、您还需要执行 <block ref="76156c33c6c1487a578aad8446a04b02" category="inline-link-macro-rx"></block> 完成安装后。</block>
   <block id="cfe9e43a4e29105f9f24bd0ed639721b" category="paragraph-title">通用(默认)</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">开始之前</block>
-  <block id="52c456ead6bc96bfe1643dfd233cbf2c" category="paragraph">此命令应提供kubectl插件帮助。如果命令返回错误、请使用这些安装插件 <block ref="fbbc714d1fb27025d6c64aea6ddcaf11" category="inline-link-macro-rx"></block>。</block>
   <block id="d94e29dda4626ec2be6ac4f06224f6cf" category="section-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> 保护所有应用程序</block>
   <block id="596a8ca466f62d03c2dfc376a65cac71" category="section-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> 为每个应用程序配置一个保护策略</block>
   <block id="db0ae7eb707500904a523f5186eb92f0" category="section-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> 调整保护策略</block>
@@ -2647,4 +2640,14 @@
   <block id="779308b02cace7345409bae24871be63" category="list-text">转至<block ref="463a64da5039ffbaa330e14a245ba287" category="inline-link-rx"></block> 页面。您可以从下拉菜单中选择所需的最新版本或其他版本。</block>
   <block id="e4a1005c9b913ef4e65af805a3797f79" category="inline-link">安装Astra Trident卷快照控制器</block>
   <block id="93dcbf6be32efef5eec53e28c4ff8075" category="list-text"><block ref="93dcbf6be32efef5eec53e28c4ff8075" category="inline-link-rx"></block></block>
+  <block id="93ad66a46b85e39a2b044839f8f2aa91" category="list-text">将&lt;MY_FULL_REGISTRY_PATH&gt; 替换为Docker存储库的URL；例如 <block ref="d7fe5bd4ab1ec72dd633a9f2fec43513" category="inline-link-rx"></block>。</block>
+  <block id="cf2e3395153844dc4e8c51bf180f6521" category="list-text">准备并运行以下针对您使用的Podman版本自定义的脚本之一。将&lt;MY_FULL_REGISTRY_PATH&gt; 替换为包含任何子目录的存储库的URL。</block>
+  <block id="1c1c5c039da9639f08735d40aaf63a64" category="admonition">根据您的注册表配置、此脚本创建的映像路径应类似于以下内容：<block ref="8929bffa043dcda91696884d35eb8d51" prefix=" " category="inline-code"></block></block>
+  <block id="638283958f0ae559c161db72d114108e" category="list-text"><block ref="2a51122d7bd0346abfa8c6be52c45cf7" category="inline-xref-macro-rx"></block></block>
+  <block id="aedff9adaa71ff103bfa455b6a0fe7f0" category="section-title">删除NetApp Astra kubectl插件并重新安装</block>
+  <block id="cc1f46f2f9e4a1afbedacc4d8ce3c2e3" category="list-text">确定是否已安装此插件：</block>
+  <block id="c8395a903c51ee6b771d7f06ac987978" category="list-text">执行以下操作之一：</block>
+  <block id="d0ff3cbf62dac1b7f8447b852cfe9c4c" category="list-text">如果已安装此插件、则此命令应返回kubectl插件帮助。要删除现有版本的kubectl-Astra、请运行以下命令：<block ref="53504093e13f5f1ec1d1d91d3e1dd05b" prefix=" " category="inline-code"></block>。</block>
+  <block id="1b6605c6bf28deef0dc2970f3179c395" category="list-text">如果此命令返回错误、则表示未安装此插件、您可以继续执行下一步以安装它。</block>
+  <block id="dab1a9c7ecb95d287fc412736d955975" category="list-text">安装插件：</block>
 </blocks>

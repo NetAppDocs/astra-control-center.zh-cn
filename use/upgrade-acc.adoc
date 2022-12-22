@@ -55,6 +55,7 @@ kubectl get apiservices
 Astra 控制中心升级过程将指导您完成以下高级步骤：
 
 * <<下载并提取Astra控制中心>>
+* <<删除NetApp Astra kubectl插件并重新安装>>
 * <<将映像添加到本地注册表>>
 * <<安装更新后的 Astra 控制中心操作员>>
 * <<升级 Astra 控制中心>>
@@ -97,19 +98,43 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 
 
-== 确认已安装NetApp Astra kubectl插件
+== 删除NetApp Astra kubectl插件并重新安装
 
 NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
 
-. 使用以下命令确定是否已安装此插件：
+. 确定是否已安装此插件：
 +
 [listing]
 ----
 kubectl astra
 ----
+. 执行以下操作之一：
++
+** 如果已安装此插件、则此命令应返回kubectl插件帮助。要删除现有版本的kubectl-Astra、请运行以下命令： `delete /usr/local/bin/kubectl-astra`。
+** 如果此命令返回错误、则表示未安装此插件、您可以继续执行下一步以安装它。
 
 
-此命令应提供kubectl插件帮助。如果命令返回错误、请使用这些安装插件 link:../get-started/install_acc.html#install-the-netapp-astra-kubectl-plugin["说明"^]。
+. 安装插件：
++
+.. 列出可用的NetApp Astra kubectl插件二进制文件、并记下操作系统和CPU架构所需的文件名称：
++
+
+NOTE: kubectl插件库是tar包的一部分、并会解压缩到文件夹中 `kubectl-astra`。
+
++
+[source, console]
+----
+ls kubectl-astra/
+----
+.. 将正确的二进制文件移动到当前路径并重命名为 `kubectl-astra`：
++
+[source, console]
+----
+cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
+----
+
+
+
 
 
 
@@ -130,7 +155,7 @@ kubectl astra
 . 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +
 ** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
-** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 https://exampledownloads.jfrog.io/docker-astra-control/v1/[]。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 "https://<docker-registry>"[]。
 ** 将<MY_REGISTRY_USER> 替换为用户名。
 ** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
 +
@@ -154,30 +179,51 @@ kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -
 +
 [source, console]
 ----
-podman login <MY_FULL_REGISTRY_PATH>
+podman login <YOUR_REGISTRY>
 ----
-. 运行以下脚本、按照注释中的说明替换<your_registry>：
+. 准备并运行以下针对您使用的Podman版本自定义的脚本之一。将<MY_FULL_REGISTRY_PATH> 替换为包含任何子目录的存储库的URL。
++
+[source, subs="specialcharacters,quotes"]
+----
+*Podman 4*
+----
 +
 [source, console]
 ----
-export REGISTRY=<YOUR_REGISTRY>
+export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
 export PACKAGEVERSION=22.11.0-82
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
-  # Load to local cache
-  astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image(s): //')
-
-  # Remove path and keep imageName.
-  astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
-
-  # Tag with local image repo.
-  podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
-
-  # Push to the local repo.
-  podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
+astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
 done
 ----
++
+[source, subs="specialcharacters,quotes"]
+----
+*Podman 3*
+----
++
+[source, console]
+----
+export REGISTRY=<MY_FULL_REGISTRY_PATH>
+export PACKAGENAME=acc
+export PACKAGEVERSION=22.11.0-82
+export DIRECTORYNAME=acc
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image(s): //')
+astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
+----
++
+
+NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于以下内容： `https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/22.11.0-82/image:version`
+
 
 
 --
