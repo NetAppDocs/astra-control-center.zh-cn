@@ -28,7 +28,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 * link:../get-started/requirements.html#operational-environment-requirements["确保您的环境包含Astra Trident支持的版本"^]
 * https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["配置Astra Trident存储后端"^]
 * https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["配置Astra Trident存储类"^]
-* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["安装Astra Trident卷快照控制器和快照类"^]
+* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["安装Astra Trident卷快照控制器"^]
 * https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["创建卷快照类"^]
 
 
