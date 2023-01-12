@@ -17,6 +17,9 @@ LDAP是一种用于访问分布式目录信息的行业标准协议、也是企�
 从较高层面来看、该配置涉及将Astra与LDAP集成、并定义与LDAP定义对应的Astra Control用户和组。您可以使用Astra Control API或Web UI配置LDAP身份验证以及LDAP用户和组。
 
 
+IMPORTANT: Astra控制中心使用ldap"mail"属性中的电子邮件地址搜索和跟踪远程用户。此属性可能是目录中的可选字段或空字段。对于要显示在Astra控制中心的任何远程用户、此字段中必须存在电子邮件地址。此电子邮件地址在Astra控制中心中用作用户名进行身份验证。
+
+
 
 == 添加用于LDAPS身份验证的证书
 
