@@ -888,7 +888,6 @@
   <block id="1598aaab2cb9865732925d064c6978c2" category="cell">两个平台上的功能相同，但存储后端或外部服务除外</block>
   <block id="c1d5f7fc5daa2ea9189ee2df5ca15da2" category="cell">什么是存储后端支持？</block>
   <block id="6adefb23833ae29ed830d55a8a9ae713" category="list-text">添加在添加集群时发现的存储后端。</block>
-  <block id="df819717a2baf5b48925d2b4cdaf4745" category="list-text">* 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
   <block id="ed6be01d66e94b422222a328f085d0bc" category="list-text">创建 `create-kubeconfig.sh` 文件。将以下脚本开头的 `token_index` 替换为正确的值。</block>
   <block id="242b16009698fe8de90e3b0966885de7" category="summary">了解 Astra 控制中心提供的数据保护类型，以及如何以最佳方式使用它们来保护您的应用程序。</block>
   <block id="4af39b8c609e94299d6c11ef13a2428c" category="doc">保护概述</block>
@@ -2651,4 +2650,9 @@
   <block id="dab1a9c7ecb95d287fc412736d955975" category="list-text">安装插件：</block>
   <block id="51867b2a71ff7c3e5393cf8bb442defc" category="admonition">如果系统上已存在具有相同电子邮件地址的本地用户、则无法添加远程用户。要将此用户添加为远程用户、请先从系统中删除此本地用户。</block>
   <block id="e6bc00cd8c52affb4292616facc440da" category="admonition">Astra控制中心使用ldap"mail"属性中的电子邮件地址搜索和跟踪远程用户。此属性可能是目录中的可选字段或空字段。对于要显示在Astra控制中心的任何远程用户、此字段中必须存在电子邮件地址。此电子邮件地址在Astra控制中心中用作用户名进行身份验证。</block>
+  <block id="a2c7a68a6d213a38c0c96fe34df9fe2e" category="list-text">* Astra Trident / ONTAP 配置*：</block>
+  <block id="abcbb80528af555f9a3f5981771386f8" category="list-text">Astra 控制中心要求创建一个存储类并将其设置为默认存储类。</block>
+  <block id="2a09fd1da71158929da8e53a8b3b41b7" category="list-text">确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
+  <block id="d7dde07915bbe8056e6854c2b5e50480" category="inline-link">准备工作节点</block>
+  <block id="2facff43cb177de168322dab6df7d48c" category="list-text"><block ref="2facff43cb177de168322dab6df7d48c" category="inline-link-rx"></block></block>
 </blocks>

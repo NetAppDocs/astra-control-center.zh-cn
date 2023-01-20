@@ -80,12 +80,17 @@ Astra控制中心已在以下类型的操作环境中进行了验证：
 NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
 
 * * 映像注册表 * ：您必须具有可将 Astra 控制中心构建映像推送到的现有私有 Docker 映像注册表。您需要提供要将映像上传到的映像注册表的 URL 。
-* * 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：
+* * Astra Trident / ONTAP 配置*：
 +
-** ontap-NAS
-** ontap-nas-flexgroup
-** ontap-san
-** ontap-san-economy.(不支持应用程序复制)
+** Astra 控制中心要求创建一个存储类并将其设置为默认存储类。
+** 确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：
++
+*** ontap-NAS
+*** ontap-nas-flexgroup
+*** ontap-san
+*** ontap-san-economy.(不支持应用程序复制)
+
+
 
 
 
