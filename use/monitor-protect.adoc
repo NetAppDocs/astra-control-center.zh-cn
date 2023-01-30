@@ -30,7 +30,7 @@ IMPORTANT: Astra 控制中心不会验证您为代理服务器输入的详细信
 . 选择 * 帐户 * > * 连接 * 。
 . 从下拉列表中选择 * 连接 * 以添加代理服务器。
 +
-image:proxy-connect.png["显示了用于启用代理连接的 Connect 选项。"]
+image:proxy-connect.png["此图显示了用于启用代理连接的\"Connect\"选项。"]
 
 . 输入代理服务器名称或 IP 地址以及代理端口号。
 . 如果代理服务器需要身份验证，请选中此复选框，然后输入用户名和密码。
@@ -40,7 +40,7 @@ image:proxy-connect.png["显示了用于启用代理连接的 Connect 选项。"
 .结果
 如果您输入的代理信息已保存，则 * 帐户 * > * 连接 * 页面的 * HTTP 代理 * 部分将指示它已连接，并显示服务器名称。
 
-image:proxy-new.png["显示代理服务器已成功连接。"]
+image:proxy-new.png["此图显示代理服务器已成功连接。"]
 
 
 
@@ -96,7 +96,7 @@ TIP: 如果您是 Cloud Insights 的新用户，请熟悉其特性和功能。�
 . 选择 * 帐户 * > * 连接 * 。
 . 选择 * 连接 * ，其中下拉列表中显示 * 已断开连接 * 以添加连接。
 +
-image:ci-connect.png["显示了用于启用 Cloud Insights 连接的下拉列表中的 \"Connect\" 选项。"]
+image:ci-connect.png["此图显示了下拉列表中用于启用Cloud Insights 连接的\"Connect\"选项。"]
 
 . 输入 Cloud Insights API 令牌和租户 URL 。例如，租户 URL 采用以下格式：
 +
@@ -111,7 +111,7 @@ https://<environment-name>.c01.cloudinsights.netapp.com/
 .. 以获取 link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-access-tokens["API 令牌"^]，登录到您的 Cloud Insights 租户 URL 。
 .. 在 Cloud Insights 中，单击 * 管理 * > * API 访问 * 以生成 * 读 / 写 * 和 * 只读 * API 访问令牌。
 +
-image:cloud-insights-api.png["显示了 Cloud Insights API 令牌生成页面。"]
+image:cloud-insights-api.png["此图显示了Cloud Insights API令牌生成页面。"]
 
 .. 复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。对于读取 API 访问令牌密钥权限，请选择：资产，警报，采集单元和数据收集。
 .. 复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读/写API访问令牌密钥权限、请选择：数据载入、日志载入、采集单元和数据收集。
@@ -137,21 +137,21 @@ NOTE: 要在 Astra 控制中心和 Cloud Insights UI 之间轻松来回切换，
 
 如果连接成功，则 * 帐户 * > * 连接 * 页面的 * Cloud Insights * 部分将指示已连接，并显示租户 URL 。您可以访问 Cloud Insights 以查看成功接收和显示的数据。
 
-image:cloud-insights.png["显示了在 Astra 控制中心 UI 中启用的 Cloud Insights 连接。"]
+image:cloud-insights.png["此图显示了在Astra控制中心UI中启用的Cloud Insights 连接。"]
 
 如果连接因某种原因失败，则状态将显示 * 失败 * 。您可以在用户界面右上角的 * 通知 * 下找到失败的原因。
 
-image:cloud-insights-notifications.png["显示 Cloud Insights 连接失败时的错误消息。"]
+image:cloud-insights-notifications.png["此图显示了Cloud Insights 连接失败时的错误消息。"]
 
 您还可以在 * 帐户 * > * 通知 * 下找到相同的信息。
 
-在 Astra 控制中心中，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。image:throughput.png["显示了 Astra 控制中心后端页面上的吞吐量信息。"]
+在 Astra 控制中心中，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。image:throughput.png["此图显示了Astra控制中心的后端页面上的吞吐量信息。"]
 
 要直接转到 Cloud Insights ，请选择指标图像旁边的 * Cloud Insights * 图标。
 
 您还可以在 * 信息板 * 上找到相关信息。
 
-image:dashboard-ci.png["显示信息板上的 Cloud Insights 图标。"]
+image:dashboard-ci.png["此图显示信息板上的Cloud Insights 图标。"]
 
 
 IMPORTANT: 启用 Cloud Insights 连接后，如果删除在 Astra 控制中心添加的后端，后端将停止向 Cloud Insights 报告。
@@ -192,7 +192,7 @@ NOTE: 您只能编辑 API 密钥。要更改 Cloud Insights 租户 URL ，我们
 
 您可以将日志（ Kubernetes 事件）从 Astra 控制中心发送到 Fluentd 端点。默认情况下， Fluentd 连接处于禁用状态。
 
-image:fluentbit.png["显示了从 Astra 到 Fluentd 的事件日志概念图。"]
+image:fluentbit.png["这是从Astra到Fluentd的事件日志概念图。"]
 
 
 NOTE: 只有受管集群中的事件日志才会转发到 Fluentd 。
@@ -210,7 +210,7 @@ IMPORTANT: Astra 控制中心不会验证您为 Fluentd 服务器输入的详细
 . 选择 * 帐户 * > * 连接 * 。
 . 从显示 * 已断开连接 * 的下拉列表中选择 * 连接 * 以添加连接。
 +
-image:connect-fluentd.png["显示了用于启用与 Fluentd 连接的 UI 屏幕。"]
+image:connect-fluentd.png["此图显示了用于启用与Fluentd连接的UI屏幕。"]
 
 . 输入 Fluentd 服务器的主机 IP 地址，端口号和共享密钥。
 . 选择 * 连接 * 。

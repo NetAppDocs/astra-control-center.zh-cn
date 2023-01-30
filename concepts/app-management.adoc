@@ -16,14 +16,14 @@ summary: 介绍了Astra Control中的受管应用程序类型。
 
 * 命名空间，包括该命名空间中的所有资源
 +
-image:diagram-managed-app1.png["一个概念映像，显示 Astra 管理命名空间中的所有资源。"]
+image:diagram-managed-app1.png["一个概念图像、显示了Astra Control管理命名空间中的所有资源。"]
 
 * 部署在一个或多个命名空间中的单个应用程序(在此示例中使用了helm3)
 +
-image:diagram-managed-app2.png["一个概念映像，用于显示 Astra 管理在包含其他应用程序的命名空间中部署的单个应用程序。"]
+image:diagram-managed-app2.png["一个概念映像、显示Astra Control管理部署在包含其他应用程序的命名空间中的单个应用程序。"]
 
 * 一组通过一个或多个命名空间中的Kubernetes标签标识的资源
 +
-image:diagram-managed-app3.png["一个概念映像、显示Astra根据Kubernetes标签管理应用程序。"]
+image:diagram-managed-app3.png["一个概念映像、显示Astra Control基于Kubernetes标签管理应用程序。"]
 
 

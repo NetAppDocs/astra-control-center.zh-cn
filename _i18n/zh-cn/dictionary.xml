@@ -5,7 +5,6 @@
   <block id="2078e9477d0ff8458806513c3f7ae341" category="inline-link">Astra Control Center 21.08 文档</block>
   <block id="51d249216b03414f10b242b851af7951" category="doc">Astra Control 组件</block>
   <block id="60f694f21643599c137f6c610e48124e" category="paragraph">下面简要介绍了 Astra Control 环境的各个组件。</block>
-  <block id="2325c645f4d2112a8e96b127fbad7bf2" category="inline-image-macro">Astra Control 架构图和组件</block>
   <block id="a8d77bbb11d2e1a349811767d194e9ba" category="list-text">* Kubernetes 集群 * ： Kubernetes 是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，便于进行声明性配置和自动化。Astra 为 Kubernetes 集群中托管的应用程序提供管理服务。</block>
   <block id="951fe18cc6e59e05fca3c0ca7de399fa" category="list-text">* 存储后端 * ：</block>
   <block id="a3b5183ae6f5c3f1d6644448f795b5cb" category="inline-link">适用于 Google Cloud 的 NetApp Cloud Volumes Service</block>
@@ -368,13 +367,9 @@
   <block id="33e25013c351d84e30f58671009577d3" category="list-text">使用具有 * 管理员 */* 所有者 * 权限的帐户登录到 Astra 控制中心。</block>
   <block id="bc19da5189cc32f27d8b9761272305cd" category="list-text">选择 * 帐户 * &gt; * 连接 * 。</block>
   <block id="61ba00adf80e33f4a06350b8ca656cc4" category="list-text">从下拉列表中选择 * 连接 * 以添加代理服务器。</block>
-  <block id="2179b7b2a88ef2e506e76d57c25fa237" category="inline-image-macro">显示了用于启用代理连接的 Connect 选项。</block>
-  <block id="7ff85d76f103065032d94a8c68974092" category="paragraph"><block ref="7ff85d76f103065032d94a8c68974092" category="inline-image-macro-rx" type="image"></block></block>
   <block id="ea0e7e79990da962999dce45447bba55" category="list-text">输入代理服务器名称或 IP 地址以及代理端口号。</block>
   <block id="0f265823a78c858e83b858d5e6089fce" category="list-text">选择 * 连接 * 。</block>
   <block id="867f3b9a2a85b4e5b34de33b997d7b7c" category="paragraph">如果您输入的代理信息已保存，则 * 帐户 * &gt; * 连接 * 页面的 * HTTP 代理 * 部分将指示它已连接，并显示服务器名称。</block>
-  <block id="42b67f9f298a9aeaa29b219aa2f29a90" category="inline-image-macro">显示代理服务器已成功连接。</block>
-  <block id="f0f7f1a8be3a2342c23b9810a3769c99" category="paragraph"><block ref="f0f7f1a8be3a2342c23b9810a3769c99" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1c209e4bb243a7664e81ccb259e9703e" category="section-title">编辑代理服务器设置</block>
   <block id="cc559a612d121e504b6603fdf97805d6" category="paragraph">您可以编辑代理服务器设置。</block>
   <block id="d5ba2be736cb80743973a43318142edb" category="list-text">从下拉列表中选择 * 编辑 * 以编辑连接。</block>
@@ -393,32 +388,20 @@
   <block id="1bdb819abf27f345e251d7d74bd13432" category="list-text">如果运行 Astra 控制中心的网络需要使用代理连接到 Internet ，则为代理服务器。</block>
   <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">此处</block>
   <block id="c83c4a85c1f411531560f13476d42d8a" category="list-text">选择 * 连接 * ，其中下拉列表中显示 * 已断开连接 * 以添加连接。</block>
-  <block id="c588327a11cf77e3d35f9fea2f6da70f" category="inline-image-macro">显示了用于启用 Cloud Insights 连接的下拉列表中的 "Connect" 选项。</block>
-  <block id="f2045802e1db2626118073af019ba192" category="paragraph"><block ref="f2045802e1db2626118073af019ba192" category="inline-image-macro-rx" type="image"></block></block>
   <block id="daf520ac523717e78fa182acb623be60" category="list-text">输入 Cloud Insights API 令牌和租户 URL 。例如，租户 URL 采用以下格式：</block>
   <block id="3897b2a4ac4a4ef4f11715fcf865f739" category="paragraph">获取 Cloud Insights 许可证后，您将获得租户 URL 。如果您没有租户 URL ，请参见 <block ref="2afd17eb985e67d361b768309fdff3cf" category="inline-link-macro-rx"></block>。</block>
   <block id="51408f1c75ab7bcc90f67b3ab1801733" category="inline-link-macro">API 令牌</block>
   <block id="434bddda84600d6af976eacbebbfcf8d" category="list-text">以获取 <block ref="466720263e1cfd612e0752298c39ffb4" category="inline-link-macro-rx"></block>，登录到您的 Cloud Insights 租户 URL 。</block>
-  <block id="1510025929fc977562c0c445934e3ab5" category="inline-image-macro">显示了 Cloud Insights API 令牌生成页面。</block>
-  <block id="0297da739425ffb4582516e5cde91975" category="paragraph"><block ref="0297da739425ffb4582516e5cde91975" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5d81b6bdee197be668fe2348e55a8d14" category="admonition">建议您生成 * 只读 * 密钥和 * 读 / 写 * 密钥，不要将同一密钥用于这两种用途。默认情况下，令牌到期期限设置为一年。我们建议您保留默认选择，以便为令牌提供到期前的最长持续时间。如果令牌过期，遥测将停止。</block>
   <block id="a086aaec8aa524f4ce0a74b48df64bcd" category="list-text">将从 Cloud Insights 复制的密钥粘贴到 Astra 控制中心。</block>
   <block id="eaae7a4b072e6c1469d18740d72675ab" category="admonition">选择 * 连接后，在 Cloud Insights * 帐户 * &gt; * 连接 * 页面的 * 连接 * 部分中，连接状态将更改为 * 待定 * 。可以在几分钟内启用连接并将状态更改为 * 已连接 * 。</block>
   <block id="43de6aafea6c660a2d69482b910c0bfb" category="admonition">要在 Astra 控制中心和 Cloud Insights UI 之间轻松来回切换，请确保您已登录这两个。</block>
   <block id="46ded58f5fa86b93f6fed80f7597e45e" category="section-title">在 Cloud Insights 中查看数据</block>
   <block id="aa7711aa5ef4fc913e7d4849d49004a8" category="paragraph">如果连接成功，则 * 帐户 * &gt; * 连接 * 页面的 * Cloud Insights * 部分将指示已连接，并显示租户 URL 。您可以访问 Cloud Insights 以查看成功接收和显示的数据。</block>
-  <block id="d0715a0b071062148d1884938ffc1939" category="inline-image-macro">显示了在 Astra 控制中心 UI 中启用的 Cloud Insights 连接。</block>
-  <block id="f7f944dc9f63ad54dbe734477503a6cb" category="paragraph"><block ref="f7f944dc9f63ad54dbe734477503a6cb" category="inline-image-macro-rx" type="image"></block></block>
   <block id="d2ec190866f031171cf0a69e5c077394" category="paragraph">如果连接因某种原因失败，则状态将显示 * 失败 * 。您可以在用户界面右上角的 * 通知 * 下找到失败的原因。</block>
-  <block id="e0c60e2b8f76562add536b99661d2b67" category="inline-image-macro">显示 Cloud Insights 连接失败时的错误消息。</block>
-  <block id="dd27247602177d32f792cd643a225a07" category="paragraph"><block ref="dd27247602177d32f792cd643a225a07" category="inline-image-macro-rx" type="image"></block></block>
   <block id="7da64ad5299c8b00ca21c382463c9f63" category="paragraph">您还可以在 * 帐户 * &gt; * 通知 * 下找到相同的信息。</block>
-  <block id="454f31294c9715a898c98f2afa2685ad" category="inline-image-macro">显示了 Astra 控制中心后端页面上的吞吐量信息。</block>
-  <block id="84472b02df9ecb9ff5c688b0c08245ca" category="paragraph">在 Astra 控制中心中，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。<block ref="9afc157986307cd94450fd30a9b1855a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="3374692e1399d9e6be7479a27b1dc3f3" category="paragraph">要直接转到 Cloud Insights ，请选择指标图像旁边的 * Cloud Insights * 图标。</block>
   <block id="7927c7f1a09ecdcf3826102214946bf9" category="paragraph">您还可以在 * 信息板 * 上找到相关信息。</block>
-  <block id="5572d82343396e3131940f274197b002" category="inline-image-macro">显示信息板上的 Cloud Insights 图标。</block>
-  <block id="ba1adb88cab95f0607254af7e647a803" category="paragraph"><block ref="ba1adb88cab95f0607254af7e647a803" category="inline-image-macro-rx" type="image"></block></block>
   <block id="23d51d0a843cd66f535de41fac2eb934" category="admonition">启用 Cloud Insights 连接后，如果删除在 Astra 控制中心添加的后端，后端将停止向 Cloud Insights 报告。</block>
   <block id="1e76c10ef43f6d891a3204c61a8642d3" category="section-title">编辑 Cloud Insights 连接</block>
   <block id="25dcc2e3891265564a74533dbe1910b5" category="paragraph">您可以编辑 Cloud Insights 连接。</block>
@@ -429,14 +412,10 @@
   <block id="7b47e5cca580c15b73298814e6dc3043" category="list-text">在打开的对话框中，确认操作。确认此操作后，在 * 帐户 * &gt; * 连接 * 页面上， Cloud Insights 状态将更改为 * 待定 * 。要将状态更改为 * 已断开连接 * ，需要几分钟的时间。</block>
   <block id="e3ef410032c04be22479d1f57535cd7c" category="section-title">连接到 Fluentd</block>
   <block id="53aa734867da8d80d801799743769150" category="paragraph">您可以将日志（ Kubernetes 事件）从 Astra 控制中心发送到 Fluentd 端点。默认情况下， Fluentd 连接处于禁用状态。</block>
-  <block id="50ae7b2f449579ca9d0620c3718a2419" category="inline-image-macro">显示了从 Astra 到 Fluentd 的事件日志概念图。</block>
-  <block id="92dbde6bbc73c8dacd1545fffe889415" category="paragraph"><block ref="92dbde6bbc73c8dacd1545fffe889415" category="inline-image-macro-rx" type="image"></block></block>
   <block id="78f449881ce819a79127ab380ec8f5f0" category="admonition">只有受管集群中的事件日志才会转发到 Fluentd 。</block>
   <block id="f49f4c26cb983eb5089296d1c29bd573" category="list-text">已在 Kubernetes 集群上安装并运行 Astra Control Center 。</block>
   <block id="d3ebfa34d5e7c2c879271b1ab8424d9e" category="admonition">Astra 控制中心不会验证您为 Fluentd 服务器输入的详细信息。请确保输入正确的值。</block>
   <block id="f1514cb8570b20e845f548246b841eb3" category="list-text">从显示 * 已断开连接 * 的下拉列表中选择 * 连接 * 以添加连接。</block>
-  <block id="9222f03acbb41c941f4e1c0737a40a85" category="inline-image-macro">显示了用于启用与 Fluentd 连接的 UI 屏幕。</block>
-  <block id="6dc61e2a65c7005e4eae3e77aba8d8fb" category="paragraph"><block ref="6dc61e2a65c7005e4eae3e77aba8d8fb" category="inline-image-macro-rx" type="image"></block></block>
   <block id="8ab642391b4550bdfa0f2fe5a9dab2b5" category="list-text">输入 Fluentd 服务器的主机 IP 地址，端口号和共享密钥。</block>
   <block id="96e5a93d89478d68d86d192ede312f4c" category="paragraph">如果您为 Fluentd 服务器输入的详细信息已保存，则 * 帐户 * &gt; * 连接 * 页面的 * 通量 * 部分将指示它已连接。现在，您可以访问已连接的 Fluentd 服务器并查看事件日志。</block>
   <block id="d95b383228097cdda62fce9da86acceb" category="admonition">如果您在收集日志时遇到问题，应登录到工作节点，并确保日志在 ` /var/log/containers/` 中可用。</block>
@@ -853,11 +832,9 @@
   <block id="3cc546d35377f25093968cba1e8c0fc6" category="list-text"><block ref="27fe6aaf425c0f95213ec6c507a97d2d" category="inline-xref-macro-rx"></block></block>
   <block id="55c6b9fd6efcd18e0f53c34459084a3f" category="section-title">找到操作员安装页面</block>
   <block id="396cd1df886b31da3577b40fa6f7cf0f" category="list-text">要访问操作员安装页面，请完成以下过程之一：</block>
-  <block id="fd8cbefedde3fbeeb2817b2484ff0e38" category="inline-image-macro">Astra 控制中心安装页面</block>
   <block id="1b37bd82bf53c89bcedcfc65519416b2" category="list-text">登录到 OpenShift 容器平台 UI 。</block>
   <block id="d23202f3a841766e7b5d6b37777fc6c3" category="list-text">从侧面菜单中，选择 * 运算符 &gt; OperatorHub * 。</block>
   <block id="6d20ba1f906a03b7657514dee48eb121" category="list-text">选择 * 安装 * 。</block>
-  <block id="89bb9ef577ff373ba97cf5d87b3cbfa2" category="inline-image-macro">Astra 控制中心概述页面</block>
   <block id="4b583376b2767b923c3e1da60d10de59" category="inline-link">运算符</block>
   <block id="13191ff715c85f59fd2da330d31c4e9f" category="list-text">选择 * 部署并使用 * 。</block>
   <block id="a961f7d3b56fe3f9b072af70813d6f82" category="section-title">安装操作员</block>
@@ -1141,8 +1118,6 @@
   <block id="e5c5351f3ea6206a7f110205b4155acc" category="list-text">创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。</block>
   <block id="6da6782dc02c8e2ffb3f2eeb0c8f4f10" category="list-text">将这些 Accc 映像推送到您定义的注册表。</block>
   <block id="d0d3a0a6bbae566c1e61c2fc0d0377ad" category="paragraph">以下是 AWS 部署示例：</block>
-  <block id="00e2fab6bb1c1ddf5a08853aa2b05595" category="inline-image-macro">采用 Cloud Volumes ONTAP 的 Astra 控制中心部署示例</block>
-  <block id="a5f9219af3aa469c4909489aee2c2362" category="paragraph"><block ref="a5f9219af3aa469c4909489aee2c2362" category="inline-image-macro-rx" type="image"></block></block>
   <block id="f7bba7b010fcf309ed99329ba3de1d34" category="inline-link">AWS 中的 Cloud Volumes ONTAP 入门</block>
   <block id="875986068fd60999889e672086c4a739" category="list-text"><block ref="c7ce1d84b369179362f6c701fb404ff4" category="inline-link-rx"></block>。</block>
   <block id="050e0fc66b4a702f2c0bcd4593f2022d" category="list-text">创建工作空间。</block>
@@ -1352,12 +1327,6 @@
   <block id="a7da53d86332105dcae80a12f3e8b7a5" category="summary">介绍了Astra Control中的受管应用程序类型。</block>
   <block id="848f207b3c4594754aa82fd21b5fc5e0" category="paragraph">当Astra Control发现集群时、这些集群上的应用程序将不受管理、直到您选择要如何管理它们为止。Astra Control 中的受管应用程序可以是以下任一项：</block>
   <block id="3757d3597962f660c54cb3f9ed5ba251" category="list-text">命名空间，包括该命名空间中的所有资源</block>
-  <block id="99185f9c0e1b271b9c7c1684898a4b91" category="inline-image-macro">一个概念映像，显示 Astra 管理命名空间中的所有资源。</block>
-  <block id="5f5e029c480c6d454f7077a350ea7051" category="paragraph"><block ref="5f5e029c480c6d454f7077a350ea7051" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="bc02e113923823bd80cf4509ac5dd0ea" category="inline-image-macro">一个概念映像，用于显示 Astra 管理在包含其他应用程序的命名空间中部署的单个应用程序。</block>
-  <block id="aaa30264edbceaac1a9c4ae46e684508" category="paragraph"><block ref="aaa30264edbceaac1a9c4ae46e684508" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="e79c66d32821cf7f9dadf70f95c95f46" category="inline-image-macro">一个概念映像、显示Astra根据Kubernetes标签管理应用程序。</block>
-  <block id="42e713fefe57640d4cb0e9c071431be5" category="paragraph"><block ref="42e713fefe57640d4cb0e9c071431be5" category="inline-image-macro-rx" type="image"></block></block>
   <block id="7bae362ecd78982068db2938cc07dff6" category="section-title">复制到远程集群</block>
   <block id="db36c1f6d107c3e886b3f731d4f40400" category="paragraph">使用Astra Control、您可以使用NetApp SnapMirror技术的异步复制功能、以低RPO (恢复点目标)和低RTO (恢复时间目标)为应用程序构建业务连续性。配置完成后、应用程序便可将数据和应用程序更改从一个集群复制到另一个集群。</block>
   <block id="fdd9ffdc3a0486a64b5e96644b02f7c8" category="paragraph">Astra Control异步将应用程序Snapshot副本复制到远程集群。复制过程包括SnapMirror复制的永久性卷中的数据以及受Astra Control保护的应用程序元数据。</block>
@@ -1367,9 +1336,7 @@
   <block id="229c7c759f13c80c6aa16940d599fb67" category="inline-link-macro">使用SnapMirror技术将应用程序复制到远程系统</block>
   <block id="2e67b4ffa9856ed714ace3c83ce69b11" category="paragraph">下图显示了计划的备份和还原过程与复制过程的对比情况。</block>
   <block id="0684163543dd8c63ba059f860287849a" category="paragraph">备份过程会将数据复制到S3存储分段、并从S3存储分段进行还原：</block>
-  <block id="81cddeedfe823c0b5ecc3077e6dafc47" category="inline-image-macro">计划备份和还原映像</block>
   <block id="af71b68b2a3d17f7141855dcd02a56ca" category="paragraph">另一方面、复制是通过复制到ONTAP 来完成的、然后故障转移将创建Kubernetes资源：</block>
-  <block id="a5f8603aae16ddbbbcfc6f63de01008d" category="inline-image-macro">复制和故障转移映像</block>
   <block id="74456513b7ca75af96c4b1316688791f" category="inline-link">Astra Control Center 22.04 文档</block>
   <block id="d67f74fb6e72ced888adb1c93e92fead" category="list-text"><block ref="d67f74fb6e72ced888adb1c93e92fead" category="inline-link-rx"></block></block>
   <block id="3ec365dd533ddb7ef3d1c111186ce872" category="example-title">详细信息</block>
@@ -1893,8 +1860,6 @@
   <block id="06e1b0116459bf681b32b65360e38671" category="list-text">如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.8</block>
   <block id="c2c28b59e21cbd4b3d6c78dbdf1db70f" category="list-text">* Astra Trident * ：作为 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。在使用 Astra 控制中心部署时， Trident 会包括一个已配置的 ONTAP 存储后端。</block>
   <block id="4ab759267d2877902a521921e10f5f5b" category="list-text">创建名为`asacontrol service-account.yaml`的服务帐户文件。</block>
-  <block id="85d4813220dc61b1558025981ecb0a0c" category="paragraph"><block ref="85d4813220dc61b1558025981ecb0a0c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="de57d5c9dad5ff2e5621f7541a798fe9" category="paragraph"><block ref="de57d5c9dad5ff2e5621f7541a798fe9" category="inline-image-macro-rx" type="image"></block></block>
   <block id="40c5eb63f5dc254aeb1e6c3a7b34d15d" category="inline-link-macro">支持的存储后端</block>
   <block id="3e55b813dfc77f5a692ec8411b86bba6" category="paragraph">有关ONTAP 存储后端所需许可证的详细信息、请参见 <block ref="dff615b80497dbcbaf9794a9900b6f10" category="inline-link-macro-rx"></block>。</block>
   <block id="a26876e2ece0b6007cf03e315d57d9d2" category="admonition">您可以在没有许可证的情况下添加集群、添加存储分段以及管理存储后端。</block>
@@ -2155,12 +2120,6 @@
   <block id="53e06493a0f9e186146ff53d8404521e" category="list-text">添加适用于 Azure 的连接器。请参见<block ref="6d10c0b16ff75eab2b0592f6238ce259" category="inline-link-rx"></block>。</block>
   <block id="7009f92960c4bd616ffd0e2e8bbaa4cf" category="inline-link">从BlueXPr.在Azure中创建连接器</block>
   <block id="e8ff9cc14c42d1ea2de410aca63bd5b7" category="paragraph">请参见<block ref="aaf2ee578bc85f6c53b28aac20a7756c" category="inline-link-rx"></block>。</block>
-  <block id="40cad368ca5806ced7d6878e36d39351" category="inline-image-macro">在BlueXP中切换连接器</block>
-  <block id="65bd02c333199872cc44e0f11c0de104" category="paragraph"><block ref="65bd02c333199872cc44e0f11c0de104" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a551c3cf4219da80f9670f43e5d9d268" category="inline-image-macro">在BlueXP中创建工作环境</block>
-  <block id="b71e231cf400059d004baed1644d0ece" category="paragraph"><block ref="b71e231cf400059d004baed1644d0ece" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="24a2b49332b20b6b4dba60ffd761ddb5" category="inline-image-macro">已在BlueXP中导入集群</block>
-  <block id="641d2e351c547ec3f919c306b63afc6c" category="paragraph"><block ref="641d2e351c547ec3f919c306b63afc6c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b24ff57a65ef73f0fc117dd330a967f3" category="section-title">安装和配置适用于Azure的Astra控制中心</block>
   <block id="7a06675f408aed2dabe52a3645059966" category="list-text">在OpenShift集群中、确保所有集群操作员均处于运行状况良好的状态：</block>
   <block id="845e2368c3a6b9728a9fa15096c62bd0" category="list-text">在OpenShift集群中、确保所有API服务均处于运行状况良好的状态：</block>
@@ -2179,7 +2138,6 @@
   <block id="9fec972e16132554b3f6d7a367b20c12" category="paragraph">Astra控制中心支持具有基于Trident的存储类以及ONTAP 9.5及更高版本的存储后端的Kubernetes集群。</block>
   <block id="46d0a394f0b8bd48b4ad9f07551cc671" category="paragraph">您可以使用 90 天评估许可证试用 Astra Control Center 。评估版可通过电子邮件和社区选项获得支持。此外，您还可以从产品支持信息板访问知识库文章和文档。</block>
   <block id="624cfce99f1f72da4d8c5d67b46d357b" category="paragraph">在安装Astra Control Center期间(如果指定)<block ref="5ef3c13da1e4fcb9a76fc8f568eee144" prefix=" " category="inline-code"></block> 适用于<block ref="5398d7dab242bfea13c044912cacfd10" prefix=" " category="inline-code"></block> 在Astra控制中心自定义资源(CR)文件中 <block ref="70b058e54d2bda749060070a7f9c4e5c" prefix="(" category="inline-code"></block>)、则会自动将每日支持包上传到<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
-  <block id="6ef5565e71b748d07e8a7b0699a73b5a" category="paragraph"><block ref="6ef5565e71b748d07e8a7b0699a73b5a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a62af64f81e65194efb6011308308c81" category="list-text">部署在一个或多个命名空间中的单个应用程序(在此示例中使用了helm3)</block>
   <block id="5200a678b94ac14cf371f3073027246a" category="list-text">一组通过一个或多个命名空间中的Kubernetes标签标识的资源</block>
   <block id="a2bbd5d6b932fb5a7f8ebfec6951f1f2" category="summary">Astra控制中心支持由ONTAP 存储提供支持的Trident存储类。您应了解存储类和永久性卷大小如何帮助您实现性能目标。</block>
@@ -2518,12 +2476,8 @@
   <block id="83a21b4b84bec79fb67f25c973cb89d3" category="list-text"><block ref="485506977df8782eb9acff027cc95cf9" category="inline-link-macro-rx"></block> 适用于您的入口控制器类型。</block>
   <block id="70f82fe210d70d79ae84c8e57b5baf7f" category="list-text">从 Red Hat OpenShift Web 控制台：</block>
   <block id="eb5ffd4ef5a8aa98e9c36b2c79cea4ed" category="list-text">搜索并选择NetApp Astra Control Center运算符。</block>
-  <block id="aa29e3cb75d2e7e5a7c9020ff806205e" category="paragraph"><block ref="aa29e3cb75d2e7e5a7c9020ff806205e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="6f711eb57d6111094b5030c8f526d269" category="list-text">从 Red Hat 生态系统目录：</block>
   <block id="91ec9a89e3a33fa6bc118cf53ef60c2e" category="list-text">选择 NetApp Astra 控制中心<block ref="e9d5520af4877fc40e9611f3ebf55be3" category="inline-link-rx"></block>。</block>
-  <block id="5698ddd18c8f6cab72a468c7cfa4eeec" category="paragraph"><block ref="5698ddd18c8f6cab72a468c7cfa4eeec" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ebba57f57d5e5b122328701846bed429" category="inline-image-macro">Astra控制中心操作员页面</block>
-  <block id="c8d7734b1f32bc2769d028defe4768af" category="list-text">从Astra Control Center操作员的* Astra Control Center*选项卡中的控制台中、选择*创建AstraControlCenter*。<block ref="4b62ec811b7f534bf6133b7281cc1006" category="inline-image-macro-rx" type="image"></block></block>
   <block id="20133d30eea258b6c1550d612eb75dfc" category="list-text">为Astra控制中心添加标签。</block>
   <block id="a90dd656b7a6b8d695097aab7d876d0e" category="list-text">启用或禁用自动支持。建议保留自动支持功能。</block>
   <block id="4039227203056b7dfe2f76bcb9aedef4" category="list-text">输入Astra控制中心FQDN或IP地址。请止步<block ref="dbd7790bcd23fde7607101ef6a633779" prefix=" " category="inline-code"></block> 或<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block> 在地址字段中。</block>
@@ -2655,4 +2609,50 @@
   <block id="2a09fd1da71158929da8e53a8b3b41b7" category="list-text">确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
   <block id="d7dde07915bbe8056e6854c2b5e50480" category="inline-link">准备工作节点</block>
   <block id="2facff43cb177de168322dab6df7d48c" category="list-text"><block ref="2facff43cb177de168322dab6df7d48c" category="inline-link-rx"></block></block>
+  <block id="8dcf3121a9c80a937dfc06bc5fd4e5e3" category="inline-image-macro">此图显示了用于启用代理连接的"Connect"选项。</block>
+  <block id="3e659c38f14d2c0b95bd77bdd854bd85" category="paragraph"><block ref="3e659c38f14d2c0b95bd77bdd854bd85" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd180d52d96c0ebe62f487b84c2d789f" category="inline-image-macro">此图显示代理服务器已成功连接。</block>
+  <block id="689a14f9780ff330d7c3aedf834175d5" category="paragraph"><block ref="689a14f9780ff330d7c3aedf834175d5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2df1a0b35f35656f62b5546dd35d1fc5" category="inline-image-macro">此图显示了下拉列表中用于启用Cloud Insights 连接的"Connect"选项。</block>
+  <block id="c85206515206584aaee44979bb1c41dc" category="paragraph"><block ref="c85206515206584aaee44979bb1c41dc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="578a387f1f8e86b4cd4668959ab7287b" category="inline-image-macro">此图显示了Cloud Insights API令牌生成页面。</block>
+  <block id="4b1189d2248f8a4f61e3601f01c69998" category="paragraph"><block ref="4b1189d2248f8a4f61e3601f01c69998" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ff78c299289641ea8c98a5bd3d1d9f14" category="inline-image-macro">此图显示了在Astra控制中心UI中启用的Cloud Insights 连接。</block>
+  <block id="863e5d03d8276e6ec0e91d90362ba6fc" category="paragraph"><block ref="863e5d03d8276e6ec0e91d90362ba6fc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="61beccf9a144fb9a169b932ec10e00da" category="inline-image-macro">此图显示了Cloud Insights 连接失败时的错误消息。</block>
+  <block id="89f4116267c0b38a50714fb79e4dc52b" category="paragraph"><block ref="89f4116267c0b38a50714fb79e4dc52b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0693a381c51a4d797366db02bab07c85" category="inline-image-macro">此图显示了Astra控制中心的后端页面上的吞吐量信息。</block>
+  <block id="8546879ad37538b080bb2017fb6a59b2" category="paragraph">在 Astra 控制中心中，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。<block ref="d70136cc2e2ff773a9985b636fa21877" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a3a7dcfbde4fa6707602db24edc4decc" category="inline-image-macro">此图显示信息板上的Cloud Insights 图标。</block>
+  <block id="282be9d39c31d0227d619a8545c323cf" category="paragraph"><block ref="282be9d39c31d0227d619a8545c323cf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d9f3a4876cc5135e711d40d1ce9d90e0" category="inline-image-macro">这是从Astra到Fluentd的事件日志概念图。</block>
+  <block id="690dfd75b6f39f7266559fe8a0bf7e59" category="paragraph"><block ref="690dfd75b6f39f7266559fe8a0bf7e59" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e09e6628893acd91e43aa689b73d666e" category="inline-image-macro">此图显示了用于启用与Fluentd连接的UI屏幕。</block>
+  <block id="983ce575b1bbce4c353117acb64736a9" category="paragraph"><block ref="983ce575b1bbce4c353117acb64736a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="89f828fc0373897c24df33390dd05a71" category="inline-image-macro">此图显示了采用Cloud Volumes ONTAP 部署的Astra控制中心示例</block>
+  <block id="a022db6a8f02885ee71752a15ca989d2" category="paragraph"><block ref="a022db6a8f02885ee71752a15ca989d2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a887a250e32580febb9e88a148e98b6d" category="inline-image-macro">此图显示了BlueXP中的连接器</block>
+  <block id="2e8c307a4769b3012d46947b310e8933" category="paragraph"><block ref="2e8c307a4769b3012d46947b310e8933" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2692c49aedcd034aebf5aada7fd9ddea" category="inline-image-macro">此图显示了BlueXP中的工作环境位置</block>
+  <block id="2f3dcbcb13f9b55a6871541e299ab5dd" category="paragraph"><block ref="2f3dcbcb13f9b55a6871541e299ab5dd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="64ab5ed989081d11abcb25c80eef9d3e" category="inline-image-macro">此图显示了BlueXP中已导入的集群</block>
+  <block id="433f94af9370edd5cebefd49c137cde8" category="paragraph"><block ref="433f94af9370edd5cebefd49c137cde8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ad33954d9b6a97c5e3d83a747222ea5c" category="inline-image-macro">此图显示了OpenShift容器平台UI中的Astra Control Center安装页面</block>
+  <block id="c1461863db43079243c4c84fb794292c" category="paragraph"><block ref="c1461863db43079243c4c84fb794292c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ae94e6397160111c3d2cf22d9a8ca3ec" category="inline-image-macro">此图显示了可从RedHat生态系统目录获取的Astra Control Center概述页面</block>
+  <block id="a4503954adc0dc79a485e6b85ec3e042" category="paragraph"><block ref="a4503954adc0dc79a485e6b85ec3e042" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f70a3f4d7ff63162b39fd497d3ca41a2" category="inline-image-macro">此图显示了已选择Astra控制中心选项卡的Astra控制中心操作员页面</block>
+  <block id="9fc00961e95dc124bf940a69051c6811" category="list-text">从Astra Control Center操作员的* Astra Control Center*选项卡中的控制台中、选择*创建AstraControlCenter*。<block ref="17c57d9e244946cd3aa5005781885a19" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5ddd50ee81b614308861ff77d7830f09" category="inline-image-macro">描述Astra Control架构及其组件的概念映像</block>
+  <block id="9a5af8d21a89c12b2cbe1b8eef81601d" category="paragraph"><block ref="9a5af8d21a89c12b2cbe1b8eef81601d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0f46081f2feaf078f0f3439194dbfeaa" category="inline-image-macro">一个概念图像、显示了Astra Control管理命名空间中的所有资源。</block>
+  <block id="96cda0463e67936e4be90b32cd9b2037" category="paragraph"><block ref="96cda0463e67936e4be90b32cd9b2037" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9ac437c5476362c9f204a18336bd8521" category="inline-image-macro">一个概念映像、显示Astra Control管理部署在包含其他应用程序的命名空间中的单个应用程序。</block>
+  <block id="8febc48974d939835115b3cec245a741" category="paragraph"><block ref="8febc48974d939835115b3cec245a741" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="878f8e36f6cbd825352ce35e02170a9e" category="inline-image-macro">一个概念映像、显示Astra Control基于Kubernetes标签管理应用程序。</block>
+  <block id="959c3f7b4bbcebb70e2a9561abf23064" category="paragraph"><block ref="959c3f7b4bbcebb70e2a9561abf23064" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c006b18484871e444511008d4048c4e5" category="inline-image-macro">此图显示了使用S3存储分段的两个Kubernetes集群之间的计划备份和还原</block>
+  <block id="6b5e0e55ce84f7fa138aa402d59fb2ad" category="paragraph"><block ref="6b5e0e55ce84f7fa138aa402d59fb2ad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4501b2d5d28c830c20c2907834215405" category="inline-image-macro">此图显示了两个Kubernetes集群和两个ONTAP 集群之间的复制和故障转移</block>
+  <block id="620eb6fdfd4e651d0246b5b8f2fb119e" category="paragraph"><block ref="620eb6fdfd4e651d0246b5b8f2fb119e" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>

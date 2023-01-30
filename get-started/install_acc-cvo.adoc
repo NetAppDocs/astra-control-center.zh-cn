@@ -170,7 +170,7 @@ NOTE: AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并�
 
 以下是 AWS 部署示例：
 
-image:acc-cvo-aws2.png["采用 Cloud Volumes ONTAP 的 Astra 控制中心部署示例"]
+image:acc-cvo-aws2.png["此图显示了采用Cloud Volumes ONTAP 部署的Astra控制中心示例"]
 
 
 
@@ -652,7 +652,7 @@ done < astra-control-center-22.04.41.manifest
 
 . 确保连接器正在运行，然后切换到该连接器。
 +
-image:acc-cvo-azure-connectors.png["在BlueXP中切换连接器"]
+image:acc-cvo-azure-connectors.png["此图显示了BlueXP中的连接器"]
 
 . 为您的云环境创建一个工作环境。
 +
@@ -661,13 +661,13 @@ image:acc-cvo-azure-connectors.png["在BlueXP中切换连接器"]
 
 
 +
-image:acc-cvo-azure-working-environment.png["在BlueXP中创建工作环境"]
+image:acc-cvo-azure-working-environment.png["此图显示了BlueXP中的工作环境位置"]
 
 . 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
 +
 .. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
 +
-image:acc-cvo-azure-connected.png["已在BlueXP中导入集群"]
+image:acc-cvo-azure-connected.png["此图显示了BlueXP中已导入的集群"]
 
 .. 在右上角，记下 Trident 版本。
 .. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。

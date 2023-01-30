@@ -221,7 +221,7 @@ NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于�
 
 
 +
-image:openshift_operatorhub.png["Astra 控制中心安装页面"]
+image:openshift_operatorhub.png["此图显示了OpenShift容器平台UI中的Astra Control Center安装页面"]
 
 ** 从 Red Hat 生态系统目录：
 +
@@ -232,7 +232,7 @@ image:openshift_operatorhub.png["Astra 控制中心安装页面"]
 
 
 +
-image:red_hat_catalog.png["Astra 控制中心概述页面"]
+image:red_hat_catalog.png["此图显示了可从RedHat生态系统目录获取的Astra Control Center概述页面"]
 
 
 
@@ -266,7 +266,7 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 
 == 安装 Astra 控制中心
 
-. 从Astra Control Center操作员的* Astra Control Center*选项卡中的控制台中、选择*创建AstraControlCenter*。image:openshift_acc-operator_details.png["Astra控制中心操作员页面"]
+. 从Astra Control Center操作员的* Astra Control Center*选项卡中的控制台中、选择*创建AstraControlCenter*。image:openshift_acc-operator_details.png["此图显示了已选择Astra控制中心选项卡的Astra控制中心操作员页面"]
 . 填写 `Create AstraControlCenter` Form 字段：
 +
 .. 保留或调整 Astra 控制中心名称。
