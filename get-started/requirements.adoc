@@ -86,7 +86,6 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 ** 确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：
 +
 *** ontap-NAS
-*** ontap-nas-flexgroup
 *** ontap-san
 *** ontap-san-economy.(不支持应用程序复制)
 
