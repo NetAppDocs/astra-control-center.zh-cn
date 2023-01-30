@@ -309,10 +309,6 @@ NOTE: 如果您使用的注册表需要身份验证、 <<创建注册表密钥,�
 NOTE: 如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
 
 .. 定义 CRD 处理首选项。
-+
-
-NOTE: 有关CRD选项的详细信息、请参见 https://docs.netapp.com/us-en/astra-control-center/get-started/acc_cluster_cr_options.html["本节"^]。
-
 
 
 . 选择YAML视图以查看您选择的设置。

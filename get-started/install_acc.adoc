@@ -442,10 +442,6 @@ kubectl get pods -n netapp-acc-operator
 
 . 编辑Astra Control Center自定义资源(CR)文件 (`astra_control_center.yaml`)进行帐户、AutoSupport 、注册表和其他必要配置：
 +
-
-NOTE: 有关其他自定义设置、请熟悉所有 link:../get-started/acc_cluster_cr_options.html["CR选项及其潜在值"^] 以确保为您的环境正确部署Astra控制中心。
-
-+
 [source, console]
 ----
 vim astra_control_center.yaml
@@ -454,44 +450,169 @@ vim astra_control_center.yaml
 
 NOTE: 以下步骤将提供一个标注的YAML示例。
 
+. 修改或确认以下设置：
 +
-.. *帐户名称*：更改 `accountName` 字符串、表示要与帐户关联的名称。
-.. * AstraAddress*：更改 `astraAddress` 指向要在浏览器中访问Astra控制中心的FQDN (建议)或IP地址的字符串。此FQDN或IP地址与您在完成时从负载平衡器配置的FQDN或IP地址相同 link:requirements.html["Astra 控制中心要求"]。
+.帐户名称
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 示例 
+
+
+| 帐户名称 | 更改 `accountName` 字符串、表示要与Astra Control Center帐户关联的名称。只能有一个accountName。 | string | 示例 
+|===
+====
 +
+.AstraVersion
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 示例 
 
-NOTE: 请勿使用 `http://` 或 `https://` 地址中。复制此 FQDN 以在中使用 <<登录到 Astra 控制中心 UI,后续步骤>>。
 
-.. * AutoSupport *：更改 `enrolled` 用于将AutoSupport 连接到 `false` 对于不具有Internet连接或保留的站点 `true` 对于已连接站点。
-.. *电子邮件*：更改 `email` 字符串到默认的初始管理员地址。复制此电子邮件地址以在中使用 <<登录到 Astra 控制中心 UI,后续步骤>>。
-.. *(可选) firstName和LastName*：添加名字 `firstName` 和姓氏 `lastName` 与帐户关联的用户的。您可以在用户界面中立即或稍后执行此步骤。
-.. * imageRegistries*：更改 `[your_registry_path]` 到中将映像推送到的注册表路径 <<安装 Astra 控制中心操作员,上一步>>。
+| AstraVersion | 要部署的Astra控制中心版本。无需对此设置执行任何操作、因为此值将预先填充。 | string | 22.11.0-82 
+|===
+====
 +
+.AstraAddress
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 示例 
 
-IMPORTANT: 如果您使用的注册表不需要授权、则必须删除 `secret` 行内 `imageRegistry` 否则安装将失败。
 
-.. *(可选) storageClass*：更改 `storageClass` 根据安装要求从"ontap-gold"到另一个Trident存储类资源的值。运行命令 `kubectl get sc` 以确定已配置的现有存储类。
-.. *输入类型*：使用以下入口类型之一：
+| AstraAddress | 更改 `astraAddress` 指向要在浏览器中访问Astra控制中心的FQDN (建议)或IP地址的字符串。此地址用于定义如何在数据中心中找到Astra控制中心、并且与您在完成后从负载平衡器配置的FQDN或IP地址相同 link:requirements.html["Astra 控制中心要求"^]。注意：请勿使用 `http://` 或 `https://` 地址中。复制此 FQDN 以在中使用 <<登录到 Astra 控制中心 UI,后续步骤>>。 | string | astra.example.com 
+|===
+====
 +
-*** *通用* (`ingressType: "Generic"`)(默认)
+.AutoSupport
+[%collapsible]
+====
+您在本节中的选择将决定您是否要参与NetApp主动支持应用程序NetApp Active IQ 以及数据的发送位置。需要互联网连接(端口442)、所有支持数据均会匿名化。
+
+|===
+| 正在设置 ... | 使用 ... | 指导 | Type | 示例 
+
+
+| 已注册AutoSupport.enrolled | 两者之一 `enrolled` 或 `url` 必须选择字段 | 更改 `enrolled` 用于将AutoSupport 连接到 `false` 对于不具有Internet连接或保留的站点 `true` 对于已连接站点。的设置 `true` 允许将匿名数据发送给NetApp以供支持。默认选择为 `false` 和表示不会向NetApp发送任何支持数据。 | 布尔值 | false (此值为默认值) 
+
+
+| AutoSupport.URL | 两者之一 `enrolled` 或 `url` 必须选择字段 | 此URL用于确定匿名数据的发送位置。 | string | https://support.netapp.com/asupprod/post/1.0/postAsup[] 
+|===
+====
 +
-如果您正在使用另一个入口控制器或希望使用您自己的入口控制器、请使用此选项。部署Astra控制中心后、您需要配置 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["入口控制器"] 以使用URL公开Astra控制中心。
+.email
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 示例 
 
-*** * AccTraefik* (`ingressType: "AccTraefik"`）
+
+| email | 更改 `email` 字符串到默认的初始管理员地址。复制此电子邮件地址以在中使用 <<登录到 Astra 控制中心 UI,后续步骤>>。此电子邮件地址将用作初始帐户的用户名、用于登录到UI、并在Astra Control中收到事件通知。 | string | admin@example.com 
+|===
+====
 +
-如果您不希望配置入口控制器、请使用此选项。这将部署Astra控制中心 `traefik` 网关作为Kubernetes loadbalancer类型的服务。
+.FirstName和LastName
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 示例 
 
+
+| firstName | 与Astra帐户关联的默认初始管理员的名字。首次登录后、此处使用的名称将显示在用户界面的标题中。 | string | SRE 
+
+
+| lastName | 与Astra帐户关联的默认初始管理员的姓氏。首次登录后、此处使用的名称将显示在用户界面的标题中。 | string | 管理员 
+|===
+====
 +
-Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并要求为其分配可访问的外部IP地址。如果您的环境允许使用负载平衡器、但您尚未配置一个平衡器、则可以使用MetalLB或其他外部服务负载平衡器为该服务分配外部IP地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。
+.imageRegistry
+[%collapsible]
+====
+您在本节中的选择定义了托管Astra应用程序映像、Astra控制中心操作员和Astra控制中心Helm存储库的容器映像注册表。
 
+|===
+| 正在设置 ... | 使用 ... | 指导 | Type | 示例 
+
+
+| imageRegistry.name | Required | 在中推送映像的映像注册表的名称 <<安装 Astra 控制中心操作员,上一步>>。请勿使用 `http://` 或 `https://` 注册表名称。 | string | example.registry.com/astra 
+
+
+| imageRegistry.secret | 如果使用的imageRegistry需要密钥、则此参数为必需项。重要信息：如果您使用的注册表不需要授权、则必须删除此注册表 `secret` 行内 `imageRegistry` 否则安装将失败。 | 用于通过映像注册表进行身份验证的Kubernetes密钥的名称。 | string | ast-registry-cred. 
+|===
+====
 +
+.存储类
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 示例 
 
-NOTE: 有关 "loadbalancer" 服务类型和入口的详细信息，请参见 link:../get-started/requirements.html["要求"]。
+
+| 存储类 | 更改 `storageClass` 价值来自 `ontap-gold` 安装所需的其他Trident storageClass资源。运行命令 `kubectl get sc` 以确定已配置的现有存储类。必须在清单文件(Astra-control-center-Astra-PV.manifest)中输入一个基于Trident的存储类、此类存储类将用于<version>。如果未设置、则会使用默认存储类。注意：如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。 | string | ontap-gold 
+|===
+====
++
+.volumeReclaimPolicy
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 选项 
 
 
+| volumeReclaimPolicy | 这将为Astra的PV设置回收策略。将此策略设置为 `Retain` 删除Astra后保留永久性卷。将此策略设置为 `Delete` 删除Astra后删除永久性卷。如果未设置此值、则会保留PV。 | string  a| 
+** Retain (这是默认值)
+** 删除
 
-.. * crds*：如果使用外部证书管理器、请更改 `externalCertManager` to `true`。默认值 `false` 使Astra控制中心在安装期间安装自己的证书管理器。
+
+|===
+====
++
+.正在载入类型
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 选项 
 
 
+| 正在载入类型 | 请使用以下入口类型之一：*通用* (`ingressType: "Generic"`)(默认)如果您正在使用另一个入口控制器或希望使用自己的入口控制器、请使用此选项。部署Astra控制中心后、您需要配置 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["入口控制器"^] 以使用URL公开Astra控制中心。* AccTraefik* (`ingressType: "AccTraefik"`)如果您不想配置入口控制器、请使用此选项。这将部署Astra控制中心 `traefik` 网关作为Kubernetes loadbalancer类型的服务。Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并要求为其分配可访问的外部IP地址。如果您的环境允许使用负载平衡器、但您尚未配置一个平衡器、则可以使用MetalLB或其他外部服务负载平衡器为该服务分配外部IP地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。注意：有关"loadbalancer"服务类型和入口的详细信息、请参见 link:../get-started/requirements.html["要求"^]。 | string  a| 
+** 通用(这是默认值)
+** AccTraefik
+
+
+|===
+====
++
+.AstraResourcesScal
+[%collapsible]
+====
+|===
+| 正在设置 ... | 指导 | Type | 选项 
+
+
+| AstraResourcesScal | AstraControlCenter资源限制的扩展选项。默认情况下、Astra控制中心会进行部署、并为Astra中的大多数组件设置了资源请求。通过这种配置、Astra控制中心软件堆栈可以在应用程序负载和扩展性增加的环境中更好地运行。但是、在使用较小的开发或测试集群的情况下、CR字段为 `astraResourcesScalar` 可设置为 `Off`。此操作将禁用资源请求、并允许在较小的集群上部署。 | string  a| 
+** 默认(这是默认值)
+** 关闭
+
+
+|===
+====
++
+.CRD
+[%collapsible]
+====
+您在本节中的选择决定了Astra控制中心应如何处理CRD。
+
+|===
+| 正在设置 ... | 指导 | Type | 示例 
+
+
+| CRDs.externalCertManager | 如果使用外部证书管理器、请进行更改 `externalCertManager` to `true`。默认值 `false` 使Astra控制中心在安装期间安装自己的证书管理器CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。 | 布尔值 | false (此值为默认值) 
+
+
+| CRDs.externalTraefik | 默认情况下、Astra控制中心将安装所需的Traefik CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。 | 布尔值 | false (此值为默认值) 
+|===
+====
 
 
 [source, subs="specialcharacters,quotes"]
@@ -505,25 +626,25 @@ kind: AstraControlCenter
 metadata:
   name: astra
 spec:
-  *accountName: "Example"*
+  accountName: "Example"
   astraVersion: "ASTRA_VERSION"
-  *astraAddress: "astra.example.com"*
+  astraAddress: "astra.example.com"
   autoSupport:
-    *enrolled: true*
-  *email: "[admin@example.com]"*
-  *firstName: "SRE"*
-  *lastName: "Admin"*
+    enrolled: true
+  email: "[admin@example.com]"
+  firstName: "SRE"
+  lastName: "Admin"
   imageRegistry:
-    *name: "[your_registry_path]"*
-    *secret: "astra-registry-cred"*
-  *storageClass: "ontap-gold"*
+    name: "[your_registry_path]"
+    secret: "astra-registry-cred"
+  storageClass: "ontap-gold"
   volumeReclaimPolicy: "Retain"
-  *ingressType: "Generic"*
+  ingressType: "Generic"*
   astraResourcesScaler: "Default"
   additionalValues: {}
   crds:
     externalTraefik: false
-    *externalCertManager: false*
+    externalCertManager: false
 ----
 
 
