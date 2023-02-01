@@ -35,26 +35,19 @@
   <block id="0a5245490d6d6f511bbdb3db35acfe54" category="list-text">创建应用程序感知型按需快照和备份</block>
   <block id="f107a6e34d3d0df36d460bc5b3a5fe8b" category="list-text">自动执行策略驱动的快照和备份操作</block>
   <block id="ae3099cc177fc161f80c6965fe89a71a" category="list-text">将应用程序和数据从一个 Kubernetes 集群迁移到另一个集群</block>
-  <block id="053d6e036cc8c9d7a8c57234d6bfc574" category="list-text">轻松地将应用程序从生产环境克隆到暂存环境</block>
   <block id="1c26e7db082840fcbfcd87527c92e1aa" category="list-text">直观显示应用程序运行状况和保护状态</block>
-  <block id="3e09a55ad40337db37927865855151a9" category="list-text">使用用户界面或 API 实施备份和迁移工作流</block>
   <block id="6762973af9b127d271f0d2b2aea0bc96" category="section-title">部署模式</block>
   <block id="db1905d057dd6fde6f8b7bd6afe60e41" category="paragraph">Astra Control 有两种部署模式：</block>
-  <block id="ddbf9f0ee6e908772df862b9cb9312d3" category="list-text">* Astra Control Center* ：自管理软件，可为内部环境中运行的 Kubernetes 集群提供应用程序感知型数据管理。</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="cell"></block>
   <block id="35b46e301702b6fcb16192f9f4cf4533" category="cell">Astra 控制服务</block>
   <block id="9c634046a90a62883b122e76b9afcef2" category="cell">Astra 控制中心</block>
   <block id="72fa0b165b80dd423c3cca71e56e6e85" category="cell">如何提供？</block>
   <block id="f7b1d494056b7a9289f329a721d9f318" category="cell">作为 NetApp 提供的一项完全托管的云服务</block>
-  <block id="aff53210beade5ba79414ae13eb6b73d" category="paragraph">作为您下载，安装和管理的软件</block>
   <block id="7cae1429bdc4131db46365e8fc893a77" category="cell">它托管在何处？</block>
   <block id="7ab48d8d90e46b91aa73c1832b7681f9" category="cell">基于 NetApp 选择的公有云</block>
-  <block id="6cc0042ffe94d2cdea2bf7b80705f4ef" category="paragraph">在您提供的 Kubernetes 集群上</block>
   <block id="a564f860d9dd9df279c4ea80b08d026a" category="cell">如何更新？</block>
   <block id="b2929741e98ca2c366d8d7dfda36e2b9" category="cell">由 NetApp 管理</block>
   <block id="091f846d60c1037c90ba7580f37ef9fa" category="paragraph">您可以管理任何更新</block>
-  <block id="cef5c6ab0b7d20ab7cd426689afb9fa5" category="cell">应用程序数据管理功能是什么？</block>
-  <block id="d1c86529e5adfef0855455a2e0bd54bd" category="cell">NetApp 云服务产品</block>
   <block id="d6fc0eb1930e7e56affc953c237c5514" category="list-text">NetApp ONTAP AFF 和 FAS 系统</block>
   <block id="5f4b9e6660ba4e73dc9c6aa214e60cde" category="section-title">Astra 控制服务的工作原理</block>
   <block id="972dbc054c14df6a8a668ad2c71b9afa" category="paragraph">Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于启用状态，并使用最新功能进行更新。它利用多个组件实现应用程序数据生命周期管理。</block>
@@ -862,8 +855,6 @@
   <block id="8810f3085242ca927538791ec7fc8110" category="list-text"><block ref="8810f3085242ca927538791ec7fc8110" category="inline-link-macro-rx"></block></block>
   <block id="3366964e7a216dba2d0ba31b76ba649c" category="inline-link-macro">（如果使用 Red Hat OpenShift ）使用 OpenShift OperatorHub 安装 Astra 控制中心</block>
   <block id="dbcbff2a607cc46b36bf41219a49e1a4" category="list-text"><block ref="dbcbff2a607cc46b36bf41219a49e1a4" category="inline-link-macro-rx"></block></block>
-  <block id="1598aaab2cb9865732925d064c6978c2" category="cell">两个平台上的功能相同，但存储后端或外部服务除外</block>
-  <block id="c1d5f7fc5daa2ea9189ee2df5ca15da2" category="cell">什么是存储后端支持？</block>
   <block id="6adefb23833ae29ed830d55a8a9ae713" category="list-text">添加在添加集群时发现的存储后端。</block>
   <block id="ed6be01d66e94b422222a328f085d0bc" category="list-text">创建 `create-kubeconfig.sh` 文件。将以下脚本开头的 `token_index` 替换为正确的值。</block>
   <block id="242b16009698fe8de90e3b0966885de7" category="summary">了解 Astra 控制中心提供的数据保护类型，以及如何以最佳方式使用它们来保护您的应用程序。</block>
@@ -894,7 +885,6 @@
   <block id="2d917589e4367d5e3e965e02872e555b" category="doc">此版本的 Astra 控制中心中的新增功能</block>
   <block id="863333fc6964aae7ff1cd85ff324bdad" category="list-text">如果您使用的注册表需要身份验证，则需要执行以下操作：</block>
   <block id="052766753c4902f7b4dda44f55923c85" category="list-text">对于 GKE- 集群， Astra Control Service 使用<block ref="33441d63a8e7ace6860eab2024320819" category="inline-link-rx"></block> 或 Google Persistent Disk 作为永久性卷的存储后端。</block>
-  <block id="53a30ad173bc821551d7bc21cfd2f4c8" category="list-text">如果您使用 Azure NetApp Files 或 NetApp Cloud Volumes Service for Google Cloud 作为存储后端，则 Astra 控制服务将使用 Astra Trident 为应用程序配置永久性卷。</block>
   <block id="231cf4c70d866b616c21baddaeed0696" category="doc">故障排除</block>
   <block id="36e2bd9e7950f46d3ea6d2bca4c50ba1" category="paragraph">了解如何解决您可能遇到的一些常见问题。</block>
   <block id="c24664a07eb6e40162f3e96c142b0bdc" category="summary">您可以在 Astra Control 帐户中查看有关活动的详细信息。例如，邀请新用户时，添加集群时或创建快照时。您还可以将帐户活动导出到 CSV 文件。</block>
@@ -946,7 +936,6 @@
   <block id="5d9c523a0997c65517bdf38e2f85aecd" category="list-text">* 存储类 * ：如果您安装的应用程序明确设置了 StorageClass ，并且需要克隆该应用程序，则克隆操作的目标集群必须具有最初指定的 StorageClass 。将显式设置了 StorageClass 的应用程序克隆到不具有相同 StorageClass 的集群将失败。</block>
   <block id="508704b5a40f45083050ce024bcadbd2" category="list-text">* Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：</block>
   <block id="8385440fe17d036a98c18fc4c23e2a74" category="paragraph">托管 Astra 控制中心的操作环境使用以下 TCP 端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口需要在托管 Astra 控制中心的环境与每个受管集群之间进行双向连接（请在适用时注明）。</block>
-  <block id="570fa99ce4fbf8deb198b97a6931d63a" category="list-text">Cloud Volumes ONTAP 存储后端</block>
   <block id="ea2708b459fc0cad6936ec216bd9405e" category="paragraph">Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，可为用户和 NetApp 支持提供故障排除和使用信息。</block>
   <block id="9b73abdb19845a598990585584e1f1d0" category="list-text"><block ref="fc1a41947de37bff42a791f65840061b" category="inline-xref-macro-rx"></block></block>
   <block id="675b47686d83e0cfe62b904d27803024" category="list-text">从左侧导航栏中，选择 * 后端 * 。</block>
@@ -2067,7 +2056,6 @@
   <block id="36c884b69a5d1e5a404eca027f6ca471" category="paragraph">根据您的环境、安装Astra控制中心后可能需要进行其他配置：</block>
   <block id="747bf8100668838f9a411ea795df98d2" category="list-text"><block ref="747bf8100668838f9a411ea795df98d2" category="inline-link-macro-rx"></block></block>
   <block id="c4d3bd82a4066f0e523ba618e438bc51" category="summary">Astra Control是Kubernetes应用程序数据生命周期管理服务、可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。</block>
-  <block id="26816f4f023579253517240a64829a70" category="list-text">* Astra Control Service*：NetApp管理的一项服务、可为多个云提供商环境中的Kubernetes集群提供应用程序感知型数据管理。</block>
   <block id="450dcc356e2c75be5bfea7bc913558bb" category="list-text">对于 AKS 集群， Astra Control Service 使用<block ref="16e1ab965c1d673c5cb3b5a28e77c1c1" category="inline-link-rx"></block> 或Azure受管磁盘作为永久性卷的存储后端。</block>
   <block id="181e1260b62d0667dd25d8e26eba83f5" category="paragraph">Astra Control的免费计划支持您管理帐户中多达10个命名空间。如果您要管理10个以上的计划、则需要通过从"免费计划"升级到"高级计划"来设置计费。</block>
   <block id="9fec972e16132554b3f6d7a367b20c12" category="paragraph">Astra控制中心支持具有基于Trident的存储类以及ONTAP 9.5及更高版本的存储后端的Kubernetes集群。</block>
@@ -2617,4 +2605,25 @@
   <block id="15158f2541ef87a6d0bffe5a0141e4ca" category="cell">如果使用外部证书管理器、请进行更改<block ref="277c0561d457e7aad53dcd2e4ba8051d" prefix=" " category="inline-code"></block> to<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>。默认值<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block> 使Astra控制中心在安装期间安装自己的证书管理器CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。</block>
   <block id="241f958366d57581f03932e9f7c77a76" category="cell">false (此值为默认值)</block>
   <block id="c227fa0621e3f1f87571da78dd03ca6f" category="cell">默认情况下、Astra控制中心将安装所需的Traefik CRD。CRD是集群范围的对象、安装它们可能会影响集群的其他部分。您可以使用此标志向Astra控制中心发出信号、指示这些CRD将由Astra控制中心以外的集群管理员安装和管理。</block>
+  <block id="4f508b1a632fa280de99843b2fe48176" category="list-text">轻松地将应用程序从暂存克隆到生产环境</block>
+  <block id="6c4ff7542dcef16bc12bbbab0c160e9a" category="list-text">使用Web UI或API实施备份和迁移工作流</block>
+  <block id="662f909cd182f2c19a1b5da86174d75f" category="list-text">* Astra Control Service*：NetApp管理的服务、可为多个云提供商环境中的Kubernetes集群以及自管理Kubernetes集群提供应用程序感知型数据管理。</block>
+  <block id="a301d7b978ad27dd47b48aac714d81ef" category="list-text">* Astra Control Center* ：自管理软件，可为内部环境中运行的 Kubernetes 集群提供应用程序感知型数据管理。Astra控制中心还可以安装在多个云提供商环境中、并具有一个NetApp Cloud Volumes ONTAP 存储后端。</block>
+  <block id="8b9e0c5eab1aafdd0008e7d94a979a00" category="paragraph">作为可下载、安装和管理的软件</block>
+  <block id="384c577b472799aa8cd781ce64f2bb34" category="paragraph">在您自己的Kubernetes集群上</block>
+  <block id="a3060d8563d84f399ad045a8f074e953" category="cell">支持哪些存储后端？</block>
+  <block id="7c8ee67c5d264bc13cdb41c37af356c8" category="list-text">Amazon Web Services：</block>
+  <block id="516729a7c0562425406a22cfe6a2c163" category="list-text">Amazon EBS</block>
+  <block id="26ee644c2b0c0d7a061dc960838350a3" category="list-text">Google Cloud</block>
+  <block id="4ea21227490cfda88113ac9e09c3d896" category="list-text">Google 持久磁盘</block>
+  <block id="1a4c7c9b6e3157ccd0101fd0836c0bfc" category="list-text">NetApp Cloud Volumes Service</block>
+  <block id="38e3b2d02a57ef89462103f8dcf36ab0" category="list-text"><block ref="38e3b2d02a57ef89462103f8dcf36ab0" category="inline-link-rx"></block></block>
+  <block id="4bce0cadbd95655804d72e0df4ac6d7b" category="list-text">Microsoft Azure</block>
+  <block id="79c9c43a409053927cc323915dbf1c06" category="list-text">Azure受管磁盘</block>
+  <block id="ab819072ff4cb02cb39723b20e2ec373" category="list-text"><block ref="ab819072ff4cb02cb39723b20e2ec373" category="inline-link-rx"></block></block>
+  <block id="55b6146ebe43b01a290a7aad48a66943" category="list-text">自管理集群：</block>
+  <block id="ec2e9418f579c84a41733c6bb0adb789" category="list-text"><block ref="ec2e9418f579c84a41733c6bb0adb789" category="inline-link-rx"></block></block>
+  <block id="d55b05877d0dd6743f47d3442323323e" category="inline-link-macro">设置Amazon Web Services</block>
+  <block id="87716101cfca255da11056a624dbce47" category="inline-link-macro">使用 Azure 受管磁盘设置 Microsoft Azure</block>
+  <block id="55a5776613a7a49b0fb7fc4800c3065f" category="list-text">如果您使用NetApp云服务存储产品作为存储后端、则Astra Control Service将使用Astra Trident为应用程序配置永久性卷。如果您使用Amazon EBS或Azure托管磁盘作为存储后端、则需要安装特定于提供商的CSI驱动程序。中提供了安装说明 <block ref="ebf2a7f1b6295b0b8e4d97b888cb809e" category="inline-link-macro-rx"></block> 和 <block ref="1938f6af50a8259a0bb98bac4f34eeeb" category="inline-link-macro-rx"></block>。</block>
 </blocks>

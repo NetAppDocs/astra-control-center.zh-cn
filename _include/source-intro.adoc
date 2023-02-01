@@ -13,9 +13,9 @@ Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键
 * 自动执行策略驱动的快照和备份操作
 * 使用NetApp SnapMirror技术将应用程序复制到远程系统
 * 将应用程序和数据从一个 Kubernetes 集群迁移到另一个集群
-* 轻松地将应用程序从生产环境克隆到暂存环境
+* 轻松地将应用程序从暂存克隆到生产环境
 * 直观显示应用程序运行状况和保护状态
-* 使用用户界面或 API 实施备份和迁移工作流
+* 使用Web UI或API实施备份和迁移工作流
 
 
 
@@ -24,8 +24,8 @@ Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键
 
 Astra Control 有两种部署模式：
 
-* * Astra Control Service*：NetApp管理的一项服务、可为多个云提供商环境中的Kubernetes集群提供应用程序感知型数据管理。
-* * Astra Control Center* ：自管理软件，可为内部环境中运行的 Kubernetes 集群提供应用程序感知型数据管理。
+* * Astra Control Service*：NetApp管理的服务、可为多个云提供商环境中的Kubernetes集群以及自管理Kubernetes集群提供应用程序感知型数据管理。
+* * Astra Control Center* ：自管理软件，可为内部环境中运行的 Kubernetes 集群提供应用程序感知型数据管理。Astra控制中心还可以安装在多个云提供商环境中、并具有一个NetApp Cloud Volumes ONTAP 存储后端。
 
 
 [cols="1h,2d,2a"]
@@ -34,12 +34,12 @@ Astra Control 有两种部署模式：
 
 
 | 如何提供？ | 作为 NetApp 提供的一项完全托管的云服务  a| 
-作为您下载，安装和管理的软件
+作为可下载、安装和管理的软件
 
 
 
 | 它托管在何处？ | 基于 NetApp 选择的公有云  a| 
-在您提供的 Kubernetes 集群上
+在您自己的Kubernetes集群上
 
 
 
@@ -48,14 +48,37 @@ Astra Control 有两种部署模式：
 
 
 
-| 应用程序数据管理功能是什么？ | 两个平台上的功能相同，但存储后端或外部服务除外  a| 
-两个平台上的功能相同，但存储后端或外部服务除外
+| 支持哪些存储后端？  a| 
+* Amazon Web Services：
++
+** Amazon EBS
+** 适用于 NetApp ONTAP 的 Amazon FSX
+
+
+* Google Cloud
++
+** Google 持久磁盘
+** NetApp Cloud Volumes Service
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
+
+
+* Microsoft Azure
++
+** Azure受管磁盘
+** Azure NetApp Files
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Cloud Volumes ONTAP"^]
+
+
+* 自管理集群：
++
+** NetApp ONTAP AFF 和 FAS 系统
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
 
-| 什么是存储后端支持？ | NetApp 云服务产品  a| 
+ a| 
 * NetApp ONTAP AFF 和 FAS 系统
-* Cloud Volumes ONTAP 存储后端
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
 |===
@@ -82,7 +105,7 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 ** 在集群上创建新的管理员角色和 Kubernetes 服务帐户。
 ** 使用此新管理员角色进行安装 https://docs.netapp.com/us-en/trident/index.html["Astra Trident"^] 以创建一个或多个存储类。
-** 如果您使用 Azure NetApp Files 或 NetApp Cloud Volumes Service for Google Cloud 作为存储后端，则 Astra 控制服务将使用 Astra Trident 为应用程序配置永久性卷。
+** 如果您使用NetApp云服务存储产品作为存储后端、则Astra Control Service将使用Astra Trident为应用程序配置永久性卷。如果您使用Amazon EBS或Azure托管磁盘作为存储后端、则需要安装特定于提供商的CSI驱动程序。中提供了安装说明 link:set-up-amazon-web-services.html["设置Amazon Web Services"^] 和 link:set-up-microsoft-azure-with-amd.html["使用 Azure 受管磁盘设置 Microsoft Azure"^]。
 
 
 * 此时，您可以向集群添加应用程序。将在新的默认存储类上配置永久性卷。

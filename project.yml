@@ -20,7 +20,7 @@ settings:
   - name: Astra 控制中心
     url: "/astra-control-center-2112"
     version-number: '21.12'
-  langs: zh-cn,us-en,ja-jp,zh-tw,ko-kr,fr-fr,de-de
+  langs: zh-cn,us-en,ja-jp,ko-kr,zh-tw,de-de,fr-fr
 sidebar:
   entries:
   - title: Astra 控制中心文档
