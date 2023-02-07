@@ -278,13 +278,13 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 .. 选择的卷回收策略 `Retain`， `Recycle`或 `Delete`。默认值为 `Retain`。
 .. 选择入口类型：
 +
-*** *通用* (`ingressType: "Generic"`)(默认)
+*** *`Generic`* (`ingressType: "Generic"`)(默认)
 +
 如果您正在使用另一个入口控制器或希望使用您自己的入口控制器、请使用此选项。部署Astra控制中心后、您需要配置 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["入口控制器"^] 以使用URL公开Astra控制中心。
 
-*** * AccTraefik* (`ingressType: "AccTraefik"`）
+*** *`AccTraefik`* (`ingressType: "AccTraefik"`）
 +
-如果您不希望配置入口控制器、请使用此选项。这将部署Astra控制中心 `traefik` 网关作为Kubernetes loadbalancer类型的服务。
+如果您不希望配置入口控制器、请使用此选项。这将部署Astra控制中心 `traefik` 网关作为Kubernetes的"loadbalancer"类型服务。
 
 +
 Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并要求为其分配可访问的外部IP地址。如果您的环境允许使用负载平衡器、但您尚未配置一个平衡器、则可以使用MetalLB或其他外部服务负载平衡器为该服务分配外部IP地址。在内部 DNS 服务器配置中，您应将为 Astra 控制中心选择的 DNS 名称指向负载平衡的 IP 地址。

@@ -418,7 +418,7 @@ additionalValues:
 ----
 watch kubectl get pods -n [netapp-acc or custom namespace]
 ----
-. 等待Astra状态条件指示升级已完成且准备就绪 (`True`）：
+. 等待Astra Control状态条件指示升级已完成且准备就绪 (`True`）：
 +
 [listing]
 ----

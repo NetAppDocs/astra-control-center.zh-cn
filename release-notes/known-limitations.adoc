@@ -61,7 +61,7 @@ oc get pods n -netapp-monitoring
 
 作为临时解决策，请执行以下操作：
 
-. 编辑 kubeadm-config 配置映射：
+. 编辑 `kubeadm-config` 配置映射：
 +
 [listing]
 ----
