@@ -2478,7 +2478,6 @@
   <block id="51867b2a71ff7c3e5393cf8bb442defc" category="admonition">如果系统上已存在具有相同电子邮件地址的本地用户、则无法添加远程用户。要将此用户添加为远程用户、请先从系统中删除此本地用户。</block>
   <block id="e6bc00cd8c52affb4292616facc440da" category="admonition">Astra控制中心使用ldap"mail"属性中的电子邮件地址搜索和跟踪远程用户。此属性可能是目录中的可选字段或空字段。对于要显示在Astra控制中心的任何远程用户、此字段中必须存在电子邮件地址。此电子邮件地址在Astra控制中心中用作用户名进行身份验证。</block>
   <block id="a2c7a68a6d213a38c0c96fe34df9fe2e" category="list-text">* Astra Trident / ONTAP 配置*：</block>
-  <block id="abcbb80528af555f9a3f5981771386f8" category="list-text">Astra 控制中心要求创建一个存储类并将其设置为默认存储类。</block>
   <block id="2a09fd1da71158929da8e53a8b3b41b7" category="list-text">确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。Astra 控制中心支持由 Astra Trident 提供的以下 ONTAP 驱动程序：</block>
   <block id="d7dde07915bbe8056e6854c2b5e50480" category="inline-link">准备工作节点</block>
   <block id="2facff43cb177de168322dab6df7d48c" category="list-text"><block ref="2facff43cb177de168322dab6df7d48c" category="inline-link-rx"></block></block>
@@ -2637,4 +2636,6 @@
   <block id="09930d02b4263b689db66fae209a4662" category="list-text">验证是否已<block ref="9811be5c3399611059862e90521bc73f" prefix=" " category="inline-code"></block> 已正确启动。<block ref="e7d31fc0602fb2ede144d18cdffd816b" prefix=" " category="inline-code"></block> 必须为<block ref="f827cf462f62848df37c5e1e94a4da74" prefix=" " category="inline-code"></block> 在继续操作之前：</block>
   <block id="7c6e61d3114053fdcbb584a6afb80f0b" category="list-text">完成 <block ref="4f6226316b347cad073b05d4198e6b67" category="inline-link-macro-rx"></block>。有一个 <block ref="b10b5b361802ada39ab534d37e156fb1" category="inline-link-macro-rx"></block> 其中、您可以更改CRD值以指示证书管理器是外部安装的。您必须在安装期间完成此步骤、以使Astra控制中心能够识别外部证书管理器。</block>
   <block id="9b180301de1547cfb79fd365792a5407" category="list-text">编辑<block ref="b9d73b065c599559f2852e4f2e265934" prefix=" " category="inline-code"></block> 配置映射：</block>
+  <block id="192a0e17e823e018d9d9b67cd6dbde3a" category="list-text">您需要在集群上至少配置一个Astra Trident存储类。如果配置了默认存储类、请确保它是唯一具有默认指定的存储类。</block>
+  <block id="f7dff2bfbfe240ed80ab3ffd13689474" category="list-text">确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。</block>
 </blocks>
