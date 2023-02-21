@@ -2664,4 +2664,5 @@
   <block id="4409c1c59948e2b1fc006b492343b77d" category="list-text">要查看随时间推移的样本擦除了、请选择*图形*。</block>
   <block id="4e86b3f4151280eb07fe543c3b9974f2" category="admonition">如果收集了多个集群数据、则每个集群的指标将以不同的颜色显示。</block>
   <block id="039788d35f35e7e6b801a37b1b602f56" category="paragraph">您可以将日志(Kubernetes事件)从Astra控制中心监控的系统发送到Fluentd端点。默认情况下， Fluentd 连接处于禁用状态。</block>
+  <block id="2fae9bf7af2c006788415b299aad1207" category="admonition">对使用NetApp ONTAP 存储的应用程序执行原位还原时、还原的应用程序使用的空间可能会增加一倍。执行原位还原后、从还原的应用程序中删除所有不需要的快照以释放存储空间。</block>
 </blocks>
