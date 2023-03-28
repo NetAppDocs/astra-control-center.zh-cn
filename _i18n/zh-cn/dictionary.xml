@@ -847,12 +847,8 @@
   <block id="2afcb2016ee556b04a072d6535bbab55" category="paragraph">随着应用程序及其使用模式的变化，根据需要调整保护策略以提供最佳保护。</block>
   <block id="7ce9ebbb5de6892ca270cea878bd99d1" category="inline-link-macro">还原最新备份</block>
   <block id="646e605e86066bd9485e0c23704757f2" category="section-title">快照，备份和保护策略</block>
-  <block id="0ff3a63f501bdc56779548c1895a7830" category="paragraph">_snapshot_ 是应用程序的时间点副本，它与应用程序存储在同一个已配置卷上。通常速度较快。您可以使用本地快照将应用程序还原到较早的时间点。快照对于快速克隆很有用；快照包括应用程序的所有 Kubernetes 对象，包括配置文件。</block>
-  <block id="8088bcbdd6f32dd97af613eaa18dbfc9" category="paragraph">_backup_ 存储在外部对象存储中，与本地快照相比，创建速度可能较慢。您可以将应用程序备份还原到同一集群，也可以通过将应用程序备份还原到其他集群来迁移应用程序。您还可以选择较长的备份保留期限。由于备份存储在外部对象存储中，因此在发生服务器故障或数据丢失时，备份通常比快照提供更好的保护。</block>
-  <block id="1cf677982e8ac99f55d7314cb3a51d20" category="paragraph">保护策略 _ 是一种通过根据您为应用程序定义的计划自动创建快照和 / 或备份来保护应用程序的方法。此外，您还可以通过保护策略选择要在计划中保留的快照和备份数量。使用保护策略自动执行备份和快照是确保每个应用程序都根据组织需求受到保护的最佳方式。</block>
   <block id="33bb9df0e608c1dab17890f54a41a8db" category="admonition">_You can't be Fully protected until you have a recent backup_ 。这一点非常重要，因为备份存储在对象存储中，而不是永久性卷。如果发生故障或意外事件会擦除集群及其关联的永久性存储，则需要备份才能恢复。快照无法让您恢复。</block>
   <block id="999cc42b236c7aee1157ff02d6f1bcd5" category="section-title">克隆</block>
-  <block id="3e92f2df0bda8968dc6665778c2f9b99" category="paragraph">_clone_ 是应用程序，其配置及其永久性存储的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。</block>
   <block id="bd48cb856a5ec10f9c3c2bf8d62fc86c" category="paragraph">Astra Control 可以从快照或备份还原应用程序。将应用程序还原到同一集群时，从现有快照进行还原的速度会更快。您可以使用 Astra Control UI 或<block ref="c3bdc3d9b521474044010a53b984c85e" category="inline-link-rx"></block> 还原应用程序。</block>
   <block id="22ec3951623db87fb800ca769fec5e8f" category="paragraph">作为临时解决策，请执行以下操作：</block>
   <block id="33fe94a78e4fc743a279dacacc468c5d" category="list-text">将 `clustername` 字段值从 `Kubernetes` （ Kubernetes 默认名称）更改为唯一的自定义名称。</block>
@@ -2665,4 +2661,12 @@
   <block id="4e86b3f4151280eb07fe543c3b9974f2" category="admonition">如果收集了多个集群数据、则每个集群的指标将以不同的颜色显示。</block>
   <block id="039788d35f35e7e6b801a37b1b602f56" category="paragraph">您可以将日志(Kubernetes事件)从Astra控制中心监控的系统发送到Fluentd端点。默认情况下， Fluentd 连接处于禁用状态。</block>
   <block id="2fae9bf7af2c006788415b299aad1207" category="admonition">对使用NetApp ONTAP 存储的应用程序执行原位还原时、还原的应用程序使用的空间可能会增加一倍。执行原位还原后、从还原的应用程序中删除所有不需要的快照以释放存储空间。</block>
+  <block id="cca8aaa6dccaa81bdbc26387b1f1bc63" category="paragraph">快照和备份均可保护以下类型的数据：</block>
+  <block id="adac08ac006f9d65c559347c106461c7" category="list-text">应用程序本身</block>
+  <block id="6c94a6e4d564092b6e6d44dbc8e77b07" category="list-text">与应用程序关联的任何永久性数据卷</block>
+  <block id="7dfd52c396a70e3d3406a3363ed74be4" category="list-text">属于应用程序的任何资源项目</block>
+  <block id="8d2f06a986c63f2706decd28b4e24967" category="paragraph">_snapshot_ 是应用程序的时间点副本，它与应用程序存储在同一个已配置卷上。通常速度较快。您可以使用本地快照将应用程序还原到较早的时间点。快照对于快速克隆很有用；快照包括应用程序的所有 Kubernetes 对象，包括配置文件。快照对于克隆或还原同一集群中的应用程序非常有用。</block>
+  <block id="d3472e0a53fc9484c0dd7ec15e76da1d" category="paragraph">_backup_基于快照。它存储在外部对象存储中、因此、与本地快照相比、创建速度可能会较慢。您可以将应用程序备份还原到同一集群，也可以通过将应用程序备份还原到其他集群来迁移应用程序。您还可以选择较长的备份保留期限。由于备份存储在外部对象存储中，因此在发生服务器故障或数据丢失时，备份通常比快照提供更好的保护。</block>
+  <block id="5becefddd70e438fb63cc4c816b5f6cc" category="paragraph">保护策略 _ 是一种通过根据您为应用程序定义的计划自动创建快照和 / 或备份来保护应用程序的方法。此外、您还可以通过保护策略选择要在计划中保留多少个快照和备份、并设置不同的计划粒度级别。使用保护策略自动执行备份和快照是确保每个应用程序根据组织的需求和服务级别协议(Service Level Agreement、SLA)要求进行保护的最佳方式。</block>
+  <block id="5d18a3d426ac931bca06d705d79d80cf" category="paragraph">_cloner_是应用程序、其配置及其永久性数据卷的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。</block>
 </blocks>
