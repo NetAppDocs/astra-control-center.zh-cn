@@ -100,9 +100,11 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 Astra 控制中心支持以下存储后端。
 
-* NetApp ONTAP 9.5 或更高版本的 AFF 和 FAS 系统
-* NetApp ONTAP 9.8或更高版本的AFF 和FAS 系统、用于基于SnapMirror的应用程序复制
-* NetApp Cloud Volumes ONTAP
+* NetApp ONTAP 9.5或更高版本的AFF 、FAS 和ASA 系统
+* NetApp ONTAP 9.8或更高版本的AFF 、FAS 和ASA 系统、用于基于SnapMirror的应用程序复制
+* NetApp ONTAP Select 9.5或更高版本
+* 适用于基于SnapMirror的应用程序复制的NetApp ONTAP Select 9.8或更高版本
+* NetApp Cloud Volumes ONTAP 9.5或更高版本
 
 
 要使用Astra控制中心、请根据您需要完成的任务、验证您是否具有以下ONTAP 许可证：

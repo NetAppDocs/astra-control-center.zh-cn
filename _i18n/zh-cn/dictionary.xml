@@ -1151,8 +1151,6 @@
   <block id="1c48088dc1732bdac3e27be1a94c191a" category="inline-link">VMware NSX-T 数据中心产品文档。</block>
   <block id="783d1a3e740eff9085416ec3f709793f" category="section-title">支持的存储后端</block>
   <block id="160a276b6627d6a6aa9859d6c2835948" category="paragraph">Astra 控制中心支持以下存储后端。</block>
-  <block id="dfac4790f1edf6101275f3ef6bff1bf3" category="list-text">NetApp ONTAP 9.5 或更高版本的 AFF 和 FAS 系统</block>
-  <block id="0f0b99ea2f70cd363c2c6a279f74e760" category="list-text">NetApp Cloud Volumes ONTAP</block>
   <block id="a935ac1929664c98f15473ff54019d68" category="section-title">内部 Kubernetes 集群的传入</block>
   <block id="3535d3befb15db2a6b9a1413eed8204e" category="admonition">如果要在 Tanzu Kubernetes 网格集群上托管 Astra 控制中心，请使用 `kubectl get nssxlbmonitors -a` 命令查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。</block>
   <block id="9094bc8efffaaa3a7bff5aba20de1ca7" category="admonition">您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 Astra 控制中心则可以管理为双堆栈操作配置的应用程序和存储后端。有关双堆栈集群要求的详细信息，请参见<block ref="4e26c1cd22436fb9612733bcd727160e" category="inline-link-rx"></block>。</block>
@@ -1670,7 +1668,6 @@
   <block id="ed78458df917d6da9f19cca23d8468cd" category="paragraph"><block ref="c229e392652cddf73148e5c65f706c6d" category="inline-link-macro-rx"></block> 使用NetApp SnapMirror技术连接到远程集群。Astra Control可将快照复制到远程集群、从而提供异步灾难恢复功能。</block>
   <block id="ca5eff8f4c2396bf09558b428d91e9f3" category="section-title">2022年9月8日(22.08.1)</block>
   <block id="322f8233054cca6c9d6204f1aa1d1f7f" category="paragraph">适用于Astra控制中心(22.08.0)的此修补程序版本(22.08.1)修复了使用NetApp SnapMirror复制应用程序时出现的小错误。</block>
-  <block id="419590ef59b29bd36215f285b4098a7c" category="list-text">NetApp ONTAP 9.8或更高版本的AFF 和FAS 系统、用于基于SnapMirror的应用程序复制</block>
   <block id="eb507cd0bc5d12259c54a50f248a2049" category="list-text">为了实现无缝灾难恢复、我们建议您在第三个故障域或二级站点中部署Astra控制中心。</block>
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">所有Astra文档</block>
   <block id="cc76a05fe8cbb45b45b1139e841822bd" category="admonition">Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。</block>
@@ -2669,4 +2666,9 @@
   <block id="d3472e0a53fc9484c0dd7ec15e76da1d" category="paragraph">_backup_基于快照。它存储在外部对象存储中、因此、与本地快照相比、创建速度可能会较慢。您可以将应用程序备份还原到同一集群，也可以通过将应用程序备份还原到其他集群来迁移应用程序。您还可以选择较长的备份保留期限。由于备份存储在外部对象存储中，因此在发生服务器故障或数据丢失时，备份通常比快照提供更好的保护。</block>
   <block id="5becefddd70e438fb63cc4c816b5f6cc" category="paragraph">保护策略 _ 是一种通过根据您为应用程序定义的计划自动创建快照和 / 或备份来保护应用程序的方法。此外、您还可以通过保护策略选择要在计划中保留多少个快照和备份、并设置不同的计划粒度级别。使用保护策略自动执行备份和快照是确保每个应用程序根据组织的需求和服务级别协议(Service Level Agreement、SLA)要求进行保护的最佳方式。</block>
   <block id="5d18a3d426ac931bca06d705d79d80cf" category="paragraph">_cloner_是应用程序、其配置及其永久性数据卷的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。</block>
+  <block id="f4830a7c07883165a7a5c8d341286873" category="list-text">NetApp ONTAP 9.5或更高版本的AFF 、FAS 和ASA 系统</block>
+  <block id="a6c8aa58cced8f18c41300f47bec2c86" category="list-text">NetApp ONTAP 9.8或更高版本的AFF 、FAS 和ASA 系统、用于基于SnapMirror的应用程序复制</block>
+  <block id="2f69a705b60cbc3d6bba3c41c6be8810" category="list-text">NetApp ONTAP Select 9.5或更高版本</block>
+  <block id="8ccf427f70709789c9c7a4f0ffd8f8cc" category="list-text">适用于基于SnapMirror的应用程序复制的NetApp ONTAP Select 9.8或更高版本</block>
+  <block id="bfd904fc0dcf06a45fdb48323bd3a82d" category="list-text">NetApp Cloud Volumes ONTAP 9.5或更高版本</block>
 </blocks>
