@@ -21,7 +21,7 @@ image:astra-architecture-diagram-v5.png["描述Astra Control架构及其组件�
 
 ** Astra 控制中心使用以下存储后端：
 +
-*** ONTAP AFF 和FAS。作为存储软件和硬件平台， ONTAP 可提供核心存储服务，支持多个存储访问协议以及快照和镜像等存储管理功能。
+*** ONTAP AFF 、FAS 和ASA。作为存储软件和硬件平台， ONTAP 可提供核心存储服务，支持多个存储访问协议以及快照和镜像等存储管理功能。
 *** Cloud Volumes ONTAP
 
 

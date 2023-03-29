@@ -22,6 +22,8 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 
 ====
+有关Astra控制中心安装过程的演示、请参见 https://www.youtube.com/watch?v=eurMV80b0Ks&list=PLdXI3bZJEw7mJz13z7YdiGCS6gNQgV_aN&index=5["此视频"^]。
+
 .您需要的内容
 * link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
 * 如果您已在环境中配置或希望配置POD安全策略、请熟悉POD安全策略及其对Astra Control Center安装的影响。请参见 link:../concepts/understand-pod-security.html["了解POD安全策略限制"]。
