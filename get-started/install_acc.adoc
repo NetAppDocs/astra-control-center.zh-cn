@@ -987,7 +987,7 @@ oc create route edge --service=traefik --port=web -n [netapp-acc or custom names
 安装 Astra 控制中心后，您将更改默认管理员的密码并登录到 Astra 控制中心 UI 信息板。
 
 .步骤
-. 在浏览器中、输入FQDN (`https://[FQDN]`)您在中使用的 `astraAddress` 在中 `astra_control_center.yaml` CR时间 <<配置 Astra 控制中心,您安装了 Astra 控制中心>>。
+. 在浏览器中、输入FQDN (包括 `https://` 前缀) `astraAddress` 在中 `astra_control_center.yaml` CR时间 <<配置 Astra 控制中心,您安装了 Astra 控制中心>>。
 . 如果出现提示、请接受自签名证书。
 +
 
