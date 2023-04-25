@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: get-started/setup_overview.html 
 keywords: set up astra control, astra control license, add cluster, add storage backend, import storage, add bucket 
-summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。 
+summary: 安装Astra Control Center、登录到UI并更改密码后、您需要设置许可证、添加集群、启用身份验证、管理存储以及添加存储分段。 
 ---
 = 设置 Astra 控制中心
 :hardbreaks:
@@ -12,12 +12,13 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 
 
 [role="lead"]
-安装 Astra 控制中心，登录到 UI 并更改密码后，您将需要设置许可证，添加集群，管理存储以及添加存储分段。
+安装Astra Control Center、登录到UI并更改密码后、您需要设置许可证、添加集群、启用身份验证、管理存储以及添加存储分段。
 
 .任务
 * <<添加 Astra 控制中心的许可证>>
 * <<使用Astra Control准备用于集群管理的环境>>
 * <<添加集群>>
+* <<在ONTAP 存储后端启用身份验证>>
 * <<添加存储后端>>
 * <<添加存储分段>>
 
@@ -26,7 +27,9 @@ summary: 安装 Astra 控制中心，登录到 UI 并更改密码后，您将需
 
 == 添加 Astra 控制中心的许可证
 
-您可以使用Astra Control UI或添加新许可证 https://docs.netapp.com/us-en/astra-automation/index.html["API"^] 获得完整的 Astra 控制中心功能。如果没有许可证，则只能使用 Astra 控制中心来管理用户和添加新集群。
+安装Astra Control Center时、已安装嵌入式评估版许可证。如果您正在评估Astra Control Center、则可以跳过此步骤。
+
+您可以使用Astra Control UI或添加新许可证 https://docs.netapp.com/us-en/astra-automation/index.html["API"^]。
 
 Astra控制中心许可证使用Kubernetes CPU单元测量CPU资源、并计算分配给所有受管Kubernetes集群的工作节点的CPU资源。许可证基于vCPU使用量。有关如何计算许可证的详细信息、请参见 link:../concepts/licensing.html["许可"^]。
 
@@ -36,7 +39,7 @@ NOTE: 如果您的安装增长到超过许可的 CPU 单元数，则 Astra 控�
 
 NOTE: 要更新现有评估版或完整许可证、请参见 link:../use/update-licenses.html["更新现有许可证"^]。
 
-.您需要的内容
+.开始之前
 * 访问新安装的Astra Control Center实例。
 * 管理员角色权限。
 * 答 link:../concepts/licensing.html["NetApp 许可证文件"^] (nlf)。
@@ -61,17 +64,17 @@ NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据�
 
 在添加集群之前、应确保满足以下前提条件。您还应运行资格检查、以确保集群已准备好添加到Astra控制中心并创建集群管理角色。
 
-.您需要的内容
+.开始之前
 * 确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。
-* 您的环境符合 link:../get-started/requirements.html#operational-environment-requirements["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
-* 一个版本的Astra Trident link:../get-started/requirements.html#operational-environment-requirements["受Astra控制中心支持"^] 已安装：
+* 您的环境符合 link:../get-started/requirements.html["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
+* 一个版本的Astra Trident link:../get-started/requirements.html#astra-trident-requirements["受Astra控制中心支持"^] 已安装：
 +
 
-NOTE: 您可以 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#choose-the-deployment-method["部署Astra Trident"^] 使用Trident运算符(手动或使用Helm图表)或 `tridentctl`。在安装或升级Astra Trident之前、请查看 https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["支持的前端、后端和主机配置"^]。
+NOTE: 您可以 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#choose-the-deployment-method["部署Astra Trident"^] 使用Asta三端图运算符(手动或使用Helm图表)或 `tridentctl`。在安装或升级Astra Trident之前、请查看 https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["支持的前端、后端和主机配置"^]。
 
 +
-** *已配置Trident存储后端*：至少必须有一个Astra Trident存储后端 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["已配置"^] 在集群上。
-** *已配置Trident存储类*：至少必须有一个Astra Trident存储类 https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["已配置"^] 在集群上。如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
+** *已配置Astra三端存储后端*：必须至少配置一个Astra三端存储后端 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["已配置"^] 在集群上。
+** *已配置Astra三端存储类*：必须至少有一个Astra三端存储类 https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["已配置"^] 在集群上。如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
 ** 已安装并配置* Astra Trident卷快照控制器和卷快照类*：卷快照控制器必须为 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["已安装"^] 以便可以在Astra Control中创建快照。至少一个Astra Trident `VolumeSnapshotClass` 已经 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-set-up-a-volumesnapshotclass["设置"^] 由管理员执行。
 
 
@@ -96,14 +99,14 @@ export-policy rule modify -vserver <storage virtual machine name> -policyname <p
 运行以下资格检查，以确保您的集群已准备好添加到 Astra 控制中心。
 
 .步骤
-. 检查 Trident 版本。
+. 检查Astra Trident版本。
 +
 [source, console]
 ----
 kubectl get tridentversions -n trident
 ----
 +
-如果存在 Trident ，您将看到类似于以下内容的输出：
+如果存在Asta三项功能、您将看到类似于以下内容的输出：
 
 +
 [listing]
@@ -112,7 +115,7 @@ NAME      VERSION
 trident   22.10.0
 ----
 +
-如果 Trident 不存在，您将看到类似于以下内容的输出：
+如果Astra三端存储不存在、则会显示类似于以下内容的输出：
 
 +
 [listing]
@@ -121,7 +124,7 @@ error: the server doesn't have a resource type "tridentversions"
 ----
 +
 
-NOTE: 如果未安装 Trident 或安装的版本不是最新的，则需要先安装最新版本的 Trident ，然后再继续操作。请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Trident 文档"^] 有关说明，请参见。
+NOTE: 如果未安装Astra三端到酒店或安装的版本不是最新版本、则需要先安装Astra三端到酒店的最新版本、然后再继续操作。请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Astra Trident 文档"^] 有关说明，请参见。
 
 . 确保Pod正在运行：
 +
@@ -129,7 +132,7 @@ NOTE: 如果未安装 Trident 或安装的版本不是最新的，则需要先�
 ----
 kubectl get pods -n trident
 ----
-. 确定存储类是否正在使用受支持的Trident驱动程序。配置程序名称应为 `csi.trident.netapp.io`。请参见以下示例：
+. 确定存储类是否正在使用受支持的Asta三端驱动程序。配置程序名称应为 `csi.trident.netapp.io`。请参见以下示例：
 +
 [source, console]
 ----
@@ -152,7 +155,7 @@ ontap-gold (default)  csi.trident.netapp.io  Delete         Immediate          t
 
 您可以选择为Astra控制中心创建有限的管理员角色。这不是Astra控制中心设置所需的操作步骤。此操作步骤 有助于创建一个单独的kubeconfig、以限制Astra Control对其管理的集群的权限。
 
-.您需要的内容
+.开始之前
 在完成操作步骤 步骤之前、请确保您对要管理的集群具有以下信息：
 
 * 已安装kubectl v1.23或更高版本
@@ -473,7 +476,7 @@ mv kubeconfig-sa YOUR_CLUSTER_NAME_kubeconfig
 
 TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。
 
-.您需要的内容
+.开始之前
 * 在添加集群之前，请查看并执行必要的操作 <<使用Astra Control准备用于集群管理的环境,前提条件任务>>。
 
 
@@ -498,7 +501,7 @@ IMPORTANT: 创建自己的 `kubeconfig` file中、您只能定义*一*上下文�
 . 选择要用于此Kubernetes集群的默认存储类、然后选择*下一步*。
 +
 
-NOTE: 您应选择一个由 ONTAP 存储提供支持的 Trident 存储类。
+NOTE: 您应选择一个由ONTAP 存储提供支持的Asta三端存储类。
 
 . 查看相关信息、如果一切正常、请选择*添加*。
 
@@ -511,31 +514,322 @@ IMPORTANT: 添加要在 Astra 控制中心中管理的集群后，部署监控�
 
 
 
+== 在ONTAP 存储后端启用身份验证
+
+Astra控制中心提供了两种对ONTAP 后端进行身份验证的模式：
+
+* *基于凭据的身份验证*：具有所需权限的ONTAP 用户的用户名和密码。您应使用预定义的安全登录角色(如admin或vsadmin)、以确保与ONTAP 版本的最大兼容性。
+* *基于证书的身份验证*：Astra控制中心还可以使用后端安装的证书与ONTAP 集群进行通信。您应使用客户端证书、密钥和可信CA证书(如果使用)(建议)。
+
+
+您可以稍后更新现有后端、以便从一种身份验证类型迁移到另一种身份验证方法。一次仅支持一种身份验证方法。
+
+
+
+=== 启用基于凭据的身份验证
+
+ASRA控制中心需要集群范围的凭据 `admin` 与ONTAP 后端通信。您应使用标准的预定义角色、例如 `admin`。这样可以确保与未来的ONTAP 版本向前兼容、这些版本可能会公开功能API、以供未来的Astra控制中心版本使用。
+
+
+NOTE: 可以创建自定义安全登录角色并将其用于Astra Control Center、但不建议这样做。
+
+示例后端定义如下所示：
+
+[listing]
+----
+{
+  "version": 1,
+  "backendName": "ExampleBackend",
+  "storageDriverName": "ontap-nas",
+  "managementLIF": "10.0.0.1",
+  "dataLIF": "10.0.0.2",
+  "svm": "svm_nfs",
+  "username": "admin",
+  "password": "secret"
+}
+----
+后端定义是以纯文本格式存储凭据的唯一位置。创建或更新后端是唯一需要了解凭据的步骤。因此、这是一项仅由管理员执行的操作、由Kubornetes或存储管理员执行。
+
+
+
+=== 启用基于证书的身份验证
+
+Astra控制中心可以使用证书与新的和现有的ONTAP 后端进行通信。您应在后端定义中输入以下信息。
+
+* `clientCertificate`：客户端证书。
+* `clientPrivateKey`:关联的私钥。
+* `trustedCACertificate`：可信CA证书。如果使用可信 CA ，则必须提供此参数。如果不使用可信 CA ，则可以忽略此设置。
+
+
+您可以使用以下类型的证书之一：
+
+* 自签名证书
+* 第三方证书
+
+
+
+
+==== 使用自签名证书启用身份验证
+
+典型的工作流包括以下步骤。
+
+.步骤
+. 生成客户端证书和密钥。生成时、请将公用名(Common Name、CN)设置为ONTAP 用户、以进行身份验证。
++
+[source, Console]
+----
+openssl req -x509 -nodes -days 1095 -newkey rsa:2048 -keyout k8senv.key -out k8senv.pem -subj "/C=US/ST=NC/L=RTP/O=NetApp/CN=<common-name>"
+----
+. 安装类型为的客户端证书 `client-ca` 和键ONTAP。
++
+[source, Console]
+----
+security certificate install -type client-ca -cert-name <certificate-name> -vserver <vserver-name>
+security ssl modify -vserver <vserver-name> -client-enabled true
+----
+. 确认ONTAP 安全登录角色支持证书身份验证方法。
++
+[source, Console]
+----
+security login create -user-or-group-name vsadmin -application ontapi -authentication-method cert -vserver <vserver-name>
+security login create -user-or-group-name vsadmin -application http -authentication-method cert -vserver <vserver-name>
+----
+. 使用生成的证书测试身份验证。将<SVM ManagementLIF> and <vserver name> 替换为管理LIF IP和ONTAP 名称。您必须确保LIF的服务策略设置为 `default-data-management`。
++
+[source, Curl]
+----
+curl -X POST -Lk https://<ONTAP-Management-LIF>/servlets/netapp.servlets.admin.XMLrequest_filer --key k8senv.key --cert ~/k8senv.pem -d '<?xml version="1.0" encoding="UTF-8"?><netapp xmlns=http://www.netapp.com/filer/admin version="1.21" vfiler="<vserver-name>"><vserver-get></vserver-get></netapp>
+----
+. 使用上一步中获得的值、在Astra Control Center UI中添加存储后端。
+
+
+
+
+==== 使用第三方证书启用身份验证
+
+如果您拥有第三方证书、则可以使用以下步骤设置基于证书的身份验证。
+
+.步骤
+. 生成私钥和CSR：
++
+[source, Console]
+----
+openssl req -new -newkey rsa:4096 -nodes -sha256 -subj "/" -outform pem -out ontap_cert_request.csr -keyout ontap_cert_request.key -addext "subjectAltName = DNS:<ONTAP_CLUSTER_FQDN_NAME>,IP:<ONTAP_MGMT_IP>”
+----
+. 将CSR传递到Windows CA (第三方CA)、然后问题描述 签名证书。
+. 下载签名证书并将其命名为`ONTAP signed_cert.crt
+. 从Windows CA (第三方CA)导出根证书。
+. 为此文件命名 `ca_root.crt`
++
+现在、您已有以下三个文件：
+
++
+** *私钥*： `ontap_signed_request.key` (这是ONTAP 中服务器证书对应的密钥。安装服务器证书时需要此证书。)
+** *签名证书*： `ontap_signed_cert.crt` (在ONTAP 中也称为_server certificATE _。)
+** *根CA证书*： `ca_root.crt` (在ONTAP 中也称为_server-ca certific存在_。)
+
+
+. 在ONTAP 中安装这些证书。生成并安装 `server` 和 `server-ca` ONTAP 上的证书。
++
+详细信息请参见sSample。yaml
+
++
+[%collapsible]
+====
+[listing]
+----
+# Copy the contents of ca_root.crt and use it here.
+
+security certificate install -type server-ca
+
+Please enter Certificate: Press <Enter> when done
+
+-----BEGIN CERTIFICATE-----
+<certificate details>
+-----END CERTIFICATE-----
+
+
+You should keep a copy of the CA-signed digital certificate for future reference.
+
+The installed certificate's CA and serial number for reference:
+
+CA:
+serial:
+
+The certificate's generated name for reference:
+
+
+===
+
+# Copy the contents of ontap_signed_cert.crt and use it here. For key, use the contents of ontap_cert_request.key file.
+security certificate install -type server
+Please enter Certificate: Press <Enter> when done
+
+-----BEGIN CERTIFICATE-----
+<certificate details>
+-----END CERTIFICATE-----
+
+Please enter Private Key: Press <Enter> when done
+
+-----BEGIN PRIVATE KEY-----
+<private key details>
+-----END PRIVATE KEY-----
+
+Enter certificates of certification authorities (CA) which form the certificate chain of the server certificate. This starts with the issuing CA certificate of the server certificate and can range up to the root CA certificate.
+Do you want to continue entering root and/or intermediate certificates {y|n}: n
+
+The provided certificate does not have a common name in the subject field.
+Enter a valid common name to continue installation of the certificate: <ONTAP_CLUSTER_FQDN_NAME>
+
+You should keep a copy of the private key and the CA-signed digital certificate for future reference.
+The installed certificate's CA and serial number for reference:
+CA:
+serial:
+The certificate's generated name for reference:
+
+
+==
+# Modify the vserver settings to enable SSL for the installed certificate
+
+ssl modify -vserver <vserver_name> -ca <CA>  -server-enabled true -serial <serial number>       (security ssl modify)
+
+==
+# Verify if the certificate works fine:
+
+openssl s_client -CAfile ca_root.crt -showcerts -servername server -connect <ONTAP_CLUSTER_FQDN_NAME>:443
+CONNECTED(00000005)
+depth=1 DC = local, DC = umca, CN = <CA>
+verify return:1
+depth=0
+verify return:1
+write W BLOCK
+---
+Certificate chain
+0 s:
+   i:/DC=local/DC=umca/<CA>
+
+-----BEGIN CERTIFICATE-----
+<Certificate details>
+
+----
+====
+. 为同一主机创建客户端证书、以实现无密码通信。Asta控制中心使用此过程与ONTAP 进行通信。
+. 在ONTAP 上生成并安装客户端证书：
++
+详细信息请参见sSample。yaml
+
++
+[%collapsible]
+====
+[listing]
+----
+# Use /CN=admin or use some other account which has privileges.
+openssl req -x509 -nodes -days 1095 -newkey rsa:2048 -keyout ontap_test_client.key -out ontap_test_client.pem -subj "/CN=admin"
+
+Copy the content of ontap_test_client.pem file and use it in the below command:
+security certificate install -type client-ca -vserver <vserver_name>
+
+Please enter Certificate: Press <Enter> when done
+
+-----BEGIN CERTIFICATE-----
+<Certificate details>
+-----END CERTIFICATE-----
+
+You should keep a copy of the CA-signed digital certificate for future reference.
+The installed certificate’s CA and serial number for reference:
+
+CA:
+serial:
+The certificate’s generated name for reference:
+
+
+==
+
+ssl modify -vserver <vserver_name> -client-enabled true
+(security ssl modify)
+
+# Setting permissions for certificates
+security login create -user-or-group-name admin -application ontapi -authentication-method cert -role admin -vserver <vserver_name>
+
+security login create -user-or-group-name admin -application http -authentication-method cert -role admin -vserver <vserver_name>
+
+==
+
+#Verify passwordless communication works fine with the use of only certificates:
+
+curl --cacert ontap_signed_cert.crt  --key ontap_test_client.key --cert ontap_test_client.pem https://<ONTAP_CLUSTER_FQDN_NAME>/api/storage/aggregates
+{
+"records": [
+{
+"uuid": "f84e0a9b-e72f-4431-88c4-4bf5378b41bd",
+"name": "<aggr_name>",
+"node": {
+"uuid": "7835876c-3484-11ed-97bb-d039ea50375c",
+"name": "<node_name>",
+"_links": {
+"self": {
+"href": "/api/cluster/nodes/7835876c-3484-11ed-97bb-d039ea50375c"
+}
+}
+},
+"_links": {
+"self": {
+"href": "/api/storage/aggregates/f84e0a9b-e72f-4431-88c4-4bf5378b41bd"
+}
+}
+}
+],
+"num_records": 1,
+"_links": {
+"self": {
+"href": "/api/storage/aggregates"
+}
+}
+}%
+
+
+
+----
+====
+. 在Asta Control Center UI中添加存储后端、并提供以下值：
++
+** *客户端证书*：ONATP_TEST_client.prom
+** *私钥*：ontap_test_client.key
+** *可信CA证书*：ONATP_signed_cert.crt
+
+
+
+
+
+
 == 添加存储后端
 
 您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
 
 通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。
 
+设置凭据或证书身份验证信息后、您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
+
 .步骤
 . 从左侧导航区域的信息板中、选择*后端*。
-. 执行以下操作之一：
+. 选择 * 添加 * 。
+. 在添加存储后端页面的使用现有部分中，选择* ONTAP *。
+. 选择以下选项之一：
 +
-** *新建后端*：选择*添加*以管理现有后端、选择* ONTAP *、然后选择*下一步*。
-** *已发现后端*：从操作菜单中、从受管集群中的已发现后端选择*管理*。
-
-
-. 输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。
+** *使用管理员凭据*：输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。
 +
 
 NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `ontapi` 和 `http`、在源和目标ONTAP 集群上。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+
+** *使用证书*：上传证书 `.pem` file、证书密钥 `.key` 文件、以及证书颁发机构文件(可选)。
+
 
 . 选择 * 下一步 * 。
 . 确认后端详细信息并选择 * 管理 * 。
 
 
 .结果
-后端将显示在中 `Healthy` 包含摘要信息的列表中的状态。
+后端将显示在中 `online` 包含摘要信息的列表中的状态。
 
 
 NOTE: 您可能需要刷新页面才能显示后端。
@@ -548,7 +842,7 @@ NOTE: 您可能需要刷新页面才能显示后端。
 
 如果您要将应用程序配置和永久性存储克隆到同一集群、则无需在Astra Control中使用存储分段。应用程序快照功能不需要存储分段。
 
-.您需要的内容
+.开始之前
 * 可从由Astra控制中心管理的集群访问的存储分段。
 * 存储分段的凭据。
 * 包含以下类型的存储分段：
@@ -614,7 +908,7 @@ NOTE: 添加存储分段时、Astra Control会使用默认存储分段指示符�
 * link:../use/protection-overview.html["保护应用程序"]
 * link:../use/manage-notifications.html["管理通知"]
 * link:../use/monitor-protect.html#connect-to-cloud-insights["连接到 Cloud Insights"]
-* link:../get-started/add-custom-tls-certificate.html["添加自定义 TLS 证书"]
+* link:../get-started/configure-after-install.html#add-a-custom-tls-certificate["添加自定义 TLS 证书"]
 * link:../use/view-clusters.html#change-the-default-storage-class["更改默认存储类"]
 
 

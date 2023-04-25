@@ -19,13 +19,13 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 * Kubernetes集群*
 
-* link:../get-started/requirements.html#operational-environment-requirements["确保您的环境满足运营环境要求"^]
+* link:../get-started/requirements.html#host-cluster-resource-requirements["确保主机集群满足操作环境要求"^]
 * link:../get-started/requirements.html#ingress-for-on-premises-kubernetes-clusters["为内部Kubernetes集群的负载平衡配置传入"^]
 
 
 *存储集成*
 
-* link:../get-started/requirements.html#operational-environment-requirements["确保您的环境包含Astra Trident支持的版本"^]
+* link:../get-started/requirements.html#astra-trident-requirements["确保您的环境包含Astra Trident支持的版本"^]
 * https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html["准备工作节点"^]
 * https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["配置Astra Trident存储后端"^]
 * https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["配置Astra Trident存储类"^]
@@ -41,10 +41,10 @@ summary: 只需几步即可开始使用 Astra Control 。
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 下载并安装Astra控制中心
 完成这些安装任务。
 
-* https://mysupport.netapp.com/site/downloads/evaluation/astra-control-center["从NetApp 支持站点 评估下载页面下载Astra控制中心"^]
+* https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["从NetApp 支持站点 下载页面下载Astra控制中心"^]
 * 获取NetApp许可证文件：
 +
-** link:https://mysupport.netapp.com/site/downloads/evaluation/astra-control-center["如果您正在评估Astra控制中心、请下载评估版许可证文件"^]
+** 如果您正在评估Astra Control Center、则已包含嵌入式评估许可证。
 ** link:../concepts/licensing.html["如果您已购买Astra Control Center、请生成许可证文件"^]
 
 

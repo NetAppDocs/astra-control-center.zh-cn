@@ -85,9 +85,12 @@ Cloud Insights 应可从 Astra 控制中心使用的网络访问，也可通过�
 当 Astra 控制中心连接到 Cloud Insights 时，将创建采集单元 POD 。此 POD 从由 Astra 控制中心管理的存储后端收集数据并将其推送到 Cloud Insights 。此 POD 需要 8 GB RAM 和 2 个 CPU 核。
 
 
-NOTE: 启用 Cloud Insights 连接后，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。您还可以在 "Cluster" 部分的 * 信息板 * 中找到相关信息，并从该处连接到 Cloud Insights 。
+NOTE: 当Astra控制中心与Cloud Insights 配对时，不应使用Cloud Insights 中的“*修改部署”选项。 
 
-.您需要的内容
+
+NOTE: 启用Cloud Insights 连接后，您可以在*Backends*页面上查看吞吐量信息，并在选择存储后端后连接到Cloud Insights。您还可以在"Cluster"(集群)部分的*Dashboard (仪表板)*中找到相关信息，并从此处连接到Cloud Insights。
+
+.开始之前
 * 具有 * 管理 */* 所有者 * 权限的 Astra 控制中心帐户。
 * 有效的 Astra Control Center 许可证。
 * 如果运行 Astra 控制中心的网络需要使用代理连接到 Internet ，则为代理服务器。
@@ -272,14 +275,14 @@ NOTE: 如果收集了多个集群数据、则每个集群的指标将以不同�
 
 == 连接到 Fluentd
 
-您可以将日志(Kubernetes事件)从Astra控制中心监控的系统发送到Fluentd端点。默认情况下， Fluentd 连接处于禁用状态。
+您可以将日志(Kubennet事件)从Astra Control Center监控的系统发送到Fluentd端点。默认情况下， Fluentd 连接处于禁用状态。
 
 image:fluentbit.png["这是从Astra到Fluentd的事件日志概念图。"]
 
 
 NOTE: 只有受管集群中的事件日志才会转发到 Fluentd 。
 
-.您需要的内容
+.开始之前
 * 具有 * 管理 */* 所有者 * 权限的 Astra 控制中心帐户。
 * 已在 Kubernetes 集群上安装并运行 Astra Control Center 。
 

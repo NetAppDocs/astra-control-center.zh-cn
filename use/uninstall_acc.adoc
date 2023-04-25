@@ -16,8 +16,9 @@ summary: 介绍如何删除 Astra 控制中心和 Astra 控制中心操作员。
 
 如果您在卸载时遇到任何问题，请参见 <<对卸载问题进行故障排除>>。
 
-.您需要的内容
-* 使用 Astra 控制中心 UI 取消全部管理 link:../use/unmanage.html#stop-managing-compute["集群"]。
+.开始之前
+. link:../use/unmanage.html#unmanage-an-app["取消管理所有应用程序"^] 。
+. link:../use/unmanage.html#unmanage-a-cluster["取消管理所有集群"^]。
 
 
 .步骤
@@ -35,14 +36,14 @@ kubectl delete -f astra_control_center.yaml -n netapp-acc
 ----
 astracontrolcenter.astra.netapp.io "astra" deleted
 ----
-. 使用以下命令删除 `NetApp-Accc` 命名空间：
+. 使用以下命令删除 `netapp-acc` (或自定义名称)命名空间：
 +
 [listing]
 ----
-kubectl delete ns netapp-acc
+kubectl delete ns [netapp-acc or custom namespace]
 ----
 +
-结果
+结果示例：
 
 +
 [listing]

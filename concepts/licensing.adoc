@@ -12,18 +12,38 @@ summary: 了解如何根据许可证状态对 Astra 控制中心执行不同的�
 
 
 [role="lead"]
-要启用完整的应用程序数据管理功能、需要安装Astra Control Center许可证。如果在没有许可证的情况下部署 Astra 控制中心，则 Web UI 中会显示一个横幅，警告系统功能受限。
+在部署Astra Control Center时、它会安装一个嵌入式90天评估版许可证、可用于4、800个CPU单元。如果您需要更多容量或更长的评估期、或者要升级到完整许可证、则可以从NetApp获得不同的评估许可证或完整许可证。
 
 您可以通过以下方式之一获取许可证：
 
-* link:https://mysupport.netapp.com/site/downloads/evaluation/astra-control-center["如果您正在评估Astra控制中心、请下载评估版许可证文件"^]。评估版许可证允许您从下载此许可证之日起90天内使用Astra控制中心。
+* 如果您正在评估Astra Control Center、并且需要与嵌入式评估许可证中包含的评估条款不同的评估条款、请与NetApp联系以申请不同的评估许可证文件。
 * link:https://mysupport.netapp.com/site/["如果您已购买Astra Control Center、请生成NetApp许可证文件(NLF)"^] 从NetApp 支持站点。购买产品后、您将收到序列号和许可证、您可以在支持站点上使用这些序列号和许可证。
 
 
 有关ONTAP 存储后端所需许可证的详细信息、请参见 link:../get-started/requirements.html["支持的存储后端"]。
 
 
-NOTE: 您可以在没有许可证的情况下添加集群、添加存储分段以及管理存储后端。
+NOTE: 请确保您的许可证至少启用所需数量的CPU单元。如果Astra Control Center当前管理的CPU单元数超过所应用新许可证中的可用CPU单元数、您将无法应用新许可证。
+
+
+
+== 评估版许可证和完全许可证
+
+新安装的Astra Control Center会提供嵌入式评估许可证。评估版许可证可实现与完整许可证相同的功能和特性、有效期为90天。评估期结束后、需要完整许可证才能继续执行完整功能。
+
+
+
+== 许可证到期
+
+如果活动A作用 中的Astra Control Center许可证过期、则以下功能的UI和API功能将不可用：
+
+* 手动创建本地快照和备份
+* 计划本地快照和备份
+* 从快照或备份还原
+* 从快照或当前状态克隆
+* 管理新应用程序
+* 配置复制策略
+
 
 
 
@@ -31,7 +51,10 @@ NOTE: 您可以在没有许可证的情况下添加集群、添加存储分段�
 
 在将新集群添加到 Astra 控制中心时，只有在集群上运行的至少一个应用程序由 Astra 控制中心管理之后，该集群才会计入已用许可证。
 
-开始管理集群上的应用程序时、该集群的所有CPU单元都会包含在Astra Control Center许可证使用中。
+开始管理集群上的应用程序时、该集群的所有CPU单元都会计入Astra Control Center许可证使用量中、但使用标签报告的Red Hat OpenShift集群节点CPU单元除外 `node-role.kubernetes.io/infra: ""`。
+
+
+NOTE: Red Hat OpenShift基础架构节点不使用Astra Control Center中的许可证。要将节点标记为基础架构节点、请应用此标签 `node-role.kubernetes.io/infra: ""` 连接到节点。
 
 
 

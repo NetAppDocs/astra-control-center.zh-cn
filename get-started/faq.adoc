@@ -34,20 +34,21 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 == 许可
 
-* 我正在使用评估版许可证。如何更改为完整许可证？ *
+*我使用的是评估版许可证。如何更改为完全许可证？*
 
-您可以通过获取 NetApp 许可证文件（ NLF ）轻松更改为完整许可证。
+您可以通过从NetApp获取NetApp许可证文件(NLG)轻松更改为完整许可证。
 
 * 步骤 *
 
 . 从左侧导航栏中，选择 * 帐户 * > * 许可证 * 。
-. 选择 * 添加许可证 * 。
+. 在许可证概述中、选择许可证信息右侧的选项菜单。
+. 选择*替换*。
 . 浏览到下载的许可证文件并选择 * 添加 * 。
 
 
-* 我正在使用评估版许可证。我是否仍能管理应用程序？ *
+*我使用的是评估版许可证。我是否仍能管理应用程序？ *
 
-可以，您可以使用评估版许可证测试管理应用程序功能。
+可以、您可以使用评估版许可证(包括默认安装的嵌入式评估版许可证)测试管理应用程序功能。评估版许可证与完整版许可证在功能上没有区别；评估版许可证的使用寿命更短。请参见 link:../concepts/licensing.html["许可"^] 有关详细信息 ...
 
 
 
@@ -70,7 +71,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。
 
-* 取消管理集群时是否自动从集群中卸载 NetApp Trident ？ * 从 Astra 控制中心取消管理集群时，不会自动从集群中卸载 Trident 。要卸载 Trident ，您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照 Trident 文档中的以下步骤进行操作"^]。
+*取消管理NetApp Asta Dent时是否会自动从集群中卸载？*从Asta Control Center取消管理集群时、Asta Dent不会自动从集群中卸载。要卸载 Astra Trident ，您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照 Astra Trident 文档中的以下步骤进行操作"^]。
 
 
 
@@ -88,9 +89,13 @@ Astra Control 不会部署应用程序。应用程序必须部署在 Astra Contr
 
 否虽然 Astra Control 可以发现使用非 NetApp 存储的应用程序，但它无法管理使用非 NetApp 存储的应用程序。
 
-* 我是否应该管理 Astra Control 本身？ * 不，您不应该管理 Astra Control 本身，因为它是一个 " 系统应用程序 " 。
+*我应该自行管理Astra Control吗？*
 
-* 运行状况不正常的 Pod 是否影响应用程序管理？ * 如果受管应用程序中的 Pod 处于运行状况不正常的状态，则 Astra Control 无法创建新的备份和克隆。
+不能、您不应管理Astra Control本身、因为它是一个"系统应用程序"。
+
+*运行状况不正常的Pod是否会影响应用程序管理？*
+
+不会、Pod的运行状况不会影响应用程序管理。
 
 
 

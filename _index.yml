@@ -1,0 +1,65 @@
+---
+indexpage:
+  lead: Astra Control Center 软件可为内部环境中的 Kubernetes 集群提供应用程序感知型数据管理。轻松备份 Kubernetes
+    应用程序，将数据迁移到其他集群以及即时创建有效的应用程序克隆。如果您需要管理在公有云中运行的 Kubernetes 应用程序，请转至 Astra 控制服务的文档。
+  tiles:
+  - title: 开始使用 Astra 控制中心
+    links:
+    - title: 了解 Astra 控制中心
+      url: "/get-started/intro.html"
+    - title: Astra 控制中心的新增功能
+      url: "/release-notes/whats-new.html"
+    - title: 发行说明
+      url: "/release-notes/rn_overview.html"
+    - title: 试用
+      url: "/get-started/quick-start.html"
+    - title: 安装 Astra 控制中心
+      url: "/get-started/install_acc.html"
+  - title: 使用 Astra 控制中心
+    links:
+    - title: 管理帐户
+      url: "/use/manage-local-users-and-roles.html"
+    - title: 管理应用程序
+      url: "/use/manage-apps.html"
+    - title: 保护应用程序
+      url: "/use/protect-apps.html"
+    - title: 克隆和迁移应用程序
+      url: "/use/clone-apps.html"
+    - title: 将应用程序复制到远程系统
+      url: "/use/replicate_snapmirror.html"
+  - title: 使用Astra Control REST API
+    links:
+    - title: 开始使用 Astra Control API
+      url: https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html
+    - title: API 参考
+      url: https://docs.netapp.com/us-en/astra-automation/reference/overview.html
+    - title: API 工作流
+      url: https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html
+  - title: 使用 Astra 控制服务
+    links:
+    - title: 了解 Astra Control Service
+      url: https://docs.netapp.com/us-en/astra/get-started/intro.html
+    - title: Astra控制服务的新增功能
+      url: https://docs.netapp.com/us-en/astra/release-notes/whats-new.html
+    - title: Astra 控制服务快速入门
+      url: https://docs.netapp.com/us-en/astra/get-started/quick-start.html
+  - title: 解决方案简介
+    links:
+    - title: 采用 Astra Control 的 PostgreSQL DBaaS
+      url: https://cloud.netapp.com/hubfs/SB-4122-0221-PostgresSQL-DBaaS-with-Astra%20(2).pdf
+    - title: 采用 Astra Control 的 MySQL DBaaS
+      url: https://cloud.netapp.com/hubfs/SB-4110-0221-MySQL-Astra%20(2).pdf
+    - title: 简化 Jenkins 生命周期管理
+      url: https://cloud.netapp.com/hubfs/SB-4100-Jenkins%20(2).pdf
+  - title: 博客社区
+    links:
+    - title: 渠道不和
+      url: https://discord.gg/NetApp
+    - title: Astra Control 博客
+      url: https://cloud.netapp.com/blog/topic/astra
+    - title: NetApp 社区
+      url: https://community.netapp.com/
+    - title: Kubernetes Hub
+      url: https://cloud.netapp.com/kubernetes-hub
+    - title: 如何获取帮助
+      url: "/support/get-help.html"

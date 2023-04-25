@@ -108,7 +108,7 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 ** 在集群上创建新的管理员角色和 Kubernetes 服务帐户。
 ** 使用此新管理员角色进行安装 https://docs.netapp.com/us-en/trident/index.html["Astra Trident"^] 以创建一个或多个存储类。
-** 如果您使用NetApp云服务存储产品作为存储后端、则Astra Control Service将使用Astra Trident为应用程序配置永久性卷。如果您使用Amazon EBS或Azure托管磁盘作为存储后端、则需要安装特定于提供商的CSI驱动程序。中提供了安装说明 link:set-up-amazon-web-services.html["设置Amazon Web Services"^] 和 link:set-up-microsoft-azure-with-amd.html["使用 Azure 受管磁盘设置 Microsoft Azure"^]。
+** 如果您使用NetApp云服务存储产品作为存储后端、则Astra Control Service将使用Astra Trident为应用程序配置永久性卷。如果您使用Amazon EBS或Azure托管磁盘作为存储后端、则需要安装特定于提供商的CSI驱动程序。中提供了安装说明 https://docs.netapp.com/us-en/astra-control-service/get-started/set-up-amazon-web-services.html["设置Amazon Web Services"^] 和 https://docs.netapp.com/us-en/astra-control-service/get-started/set-up-microsoft-azure-with-amd.html["使用 Azure 受管磁盘设置 Microsoft Azure"^]。
 
 
 * 此时，您可以向集群添加应用程序。将在新的默认存储类上配置永久性卷。
@@ -123,19 +123,19 @@ Astra Control的免费计划支持您管理帐户中多达10个命名空间。�
 
 Astra 控制中心在您自己的私有云中本地运行。
 
-Astra控制中心支持具有基于Trident的存储类以及ONTAP 9.5及更高版本的存储后端的Kubernetes集群。
+Astra控制中心支持Kubnetes集群、其中包含基于Astra三端的存储类以及ONTAP 9.5及更高版本的存储后端。
 
 在云互联环境中， Astra 控制中心使用 Cloud Insights 提供高级监控和遥测功能。如果没有 Cloud Insights 连接，则 Astra 控制中心可提供有限的（ 7 天的指标）监控和遥测功能，并通过开放式指标端点导出到 Kubernetes 原生监控工具（例如 Prometheus 和 Grafana ）。
 
 Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，可为用户和 NetApp 支持提供故障排除和使用信息。
 
-您可以使用 90 天评估许可证试用 Astra Control Center 。评估版可通过电子邮件和社区选项获得支持。此外，您还可以从产品支持信息板访问知识库文章和文档。
+您可以使用90天嵌入式评估许可证试用Astra Control Center。在评估Astra Control Center时、您可以通过电子邮件和社区选项获得支持。此外，您还可以从产品支持信息板访问知识库文章和文档。
 
-要安装和使用 Astra 控制中心，您需要满足特定的要求 https://docs.netapp.com/us-en/astra-control-center/get-started/requirements.html["要求"]。
+要安装和使用 Astra 控制中心，您需要满足特定的要求 https://docs.netapp.com/us-en/astra-control-center/get-started/requirements.html["要求"^]。
 
 从较高的层面来看， Astra 控制中心的工作原理如下：
 
-* 您可以在本地环境中安装 Astra Control Center 。详细了解如何操作 https://docs.netapp.com/us-en/astra-control-center/get-started/install_acc.html["安装 Astra 控制中心"]。
+* 您可以在本地环境中安装 Astra Control Center 。详细了解如何操作 https://docs.netapp.com/us-en/astra-control-center/get-started/install_acc.html["安装 Astra 控制中心"^]。
 * 您可以完成一些设置任务，例如：
 +
 ** 设置许可
@@ -146,7 +146,7 @@ Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，�
 
 
 
-详细了解如何操作 https://docs.netapp.com/us-en/astra-control-center/get-started/setup_overview.html["设置 Astra 控制中心"]。
+详细了解如何操作 https://docs.netapp.com/us-en/astra-control-center/get-started/setup_overview.html["设置 Astra 控制中心"^]。
 
 您可以将应用程序添加到集群中。或者、如果要管理的集群中已有一些应用程序、则可以使用Astra控制中心对其进行管理。然后、使用Astra控制中心创建快照、备份、克隆和复制关系。
 

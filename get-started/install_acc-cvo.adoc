@@ -197,10 +197,10 @@ image:acc-cvo-aws2.png["此图显示了采用Cloud Volumes ONTAP 部署的Astra�
 . 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
 +
 .. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
-.. 在右上角，记下 Trident 版本。
+.. 请注意右上角的Asta三端版本。
 .. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
 +
-此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。
+此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。
 
 
 
@@ -403,7 +403,7 @@ done < astra-control-center-22.04.41.manifest
 
 按照BlueXP文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_gcp.html["GCP中的Cloud Volumes ONTAP 入门"^]。
 
-.您需要的内容
+.开始之前
 * 使用所需的IAM权限和角色访问GCP服务帐户
 
 
@@ -428,7 +428,7 @@ done < astra-control-center-22.04.41.manifest
 .. 在右上角，记下 Trident 版本。
 .. 记下显示为"netapp"作为配置程序的Cloud Volumes ONTAP 集群存储类。
 +
-此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。
+此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。
 
 
 
@@ -483,7 +483,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 除了环境的资源要求之外， Astra 控制中心还需要以下资源：
 
-请参见 link:../get-started/requirements.html#operational-environment-requirements["Astra 控制中心运营环境要求"]。
+请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"]。
 
 [cols="1h,2a"]
 |===
@@ -636,7 +636,7 @@ done < astra-control-center-22.04.41.manifest
 
 按照BlueXP文档完成以下步骤。请参见 https://docs.netapp.com/us-en/occm/task_getting_started_azure.html["Azure中的BlueXP入门"^]。
 
-.您需要的内容
+.开始之前
 使用所需的 IAM 权限和角色访问 Azure 帐户
 
 .步骤
@@ -669,12 +669,12 @@ image:acc-cvo-azure-working-environment.png["此图显示了BlueXP中的工作�
 +
 image:acc-cvo-azure-connected.png["此图显示了BlueXP中已导入的集群"]
 
-.. 在右上角，记下 Trident 版本。
+.. 请注意右上角的Asta三端版本。
 .. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
 
 
 +
-此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Trident 会在导入和发现过程中自动安装。
+此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。
 
 . 记下此Cloud Volumes ONTAP 部署中的所有永久性卷和卷。
 . Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 Azure 中运行的 HA 状态和节点部署状态。

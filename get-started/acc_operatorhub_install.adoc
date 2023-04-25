@@ -16,7 +16,7 @@ summary: 如果您使用的是 Red Hat OpenShift ，则可以使用操作员安�
 
 完成此操作步骤后，您必须返回到安装操作步骤以完成 link:../get-started/install_acc.html#verify-system-status["剩余步骤"^] 以验证安装是否成功并登录。
 
-.您需要的内容
+.开始之前
 * *满足环境前提条件*： link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"^]。
 * *运行状况良好的集群操作员和API服务*：
 +
@@ -63,7 +63,7 @@ oc create namespace netapp-acc-operator
 
 == 下载并提取Astra控制中心
 
-. 转至 https://mysupport.netapp.com/site/downloads/evaluation/astra-control-center["Astra Control Center评估下载页面"^] 页面。
+. 转至 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^] 页面。
 . 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`）。
 . (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证捆绑包的签名：
 +
@@ -91,9 +91,9 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 == 安装NetApp Astra kubectl插件
 
-NetApp Astra kubectl命令行插件可节省执行与部署和升级Astra控制中心相关的常见任务所需的时间。
+您可以使用NetApp Asta kubect命令行插件将映像推送到本地Docker存储库。
 
-.您需要的内容
+.开始之前
 NetApp可为不同的CPU架构和操作系统提供插件二进制文件。在执行此任务之前、您需要了解您的CPU和操作系统。
 
 .步骤
@@ -171,7 +171,7 @@ podman login <YOUR_REGISTRY>
 ----
 export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
-export PACKAGEVERSION=22.11.0-82
+export PACKAGEVERSION=23.04.0-22
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
 astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
@@ -190,7 +190,7 @@ done
 ----
 export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
-export PACKAGEVERSION=22.11.0-82
+export PACKAGEVERSION=23.04.0-22
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
 astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
@@ -201,8 +201,13 @@ done
 ----
 +
 
-NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于以下内容： `https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/22.11.0-82/image:version`
+NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于以下内容：
 
++
+[listing]
+----
+https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/23.04.0-22/image:version
+----
 
 
 --

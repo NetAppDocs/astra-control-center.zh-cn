@@ -27,6 +27,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 .集群
 * <<如果默认的 kubeconfig 文件包含多个上下文，则使用 Astra 控制中心管理集群将失败>>
+* <<升级到Astra Control Center 23.04后、某些Pod无法启动>>
 
 
 .其他问题
@@ -69,6 +70,34 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 == 如果默认的 kubeconfig 文件包含多个上下文，则使用 Astra 控制中心管理集群将失败
 
 不能将 kubeconfig 与多个集群和上下文结合使用。请参见 link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/Managing_cluster_with_Astra_Control_Center_may_fail_when_using_default_kubeconfig_file_contains_more_than_one_context["知识库文章"^] 有关详细信息 ...
+
+
+
+== 升级到Astra Control Center 23.04后、某些Pod无法启动
+
+升级到Astra Control Center 23.04后、某些Pod可能无法启动。对于临时解决策 、请按照以下步骤手动重新启动受影响的Pod：
+
+. 查找受影响的Pod、将<namespace> 替换为当前命名空间：
++
+[listing]
+----
+kubectl get pods -n <namespace> | grep au-pod
+----
++
+受影响的Pod的结果如下所示：
+
++
+[listing]
+----
+pcloud-astra-control-center-au-pod-0 0/1 CreateContainerConfigError 0 13s
+----
+. 重新启动每个受影响的Pod、将<namespace> 替换为当前命名空间：
++
+[listing]
+----
+kubectl delete pod pcloud-astra-control-center-au-pod-0 -n <namespace>
+----
+
 
 
 

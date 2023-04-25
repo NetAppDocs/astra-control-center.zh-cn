@@ -23,11 +23,11 @@ summary: 根据您的环境、安装Astra控制中心后可能需要进行其他
 您可以使用以下步骤检索和删除这些配额和限制。在这些示例中、命令输出会立即显示在命令后面。
 
 .步骤
-. 在中获取资源配额 `netapp-acc` 命名空间：
+. 在中获取资源配额 `netapp-acc` (或自定义名称)命名空间：
 +
 [source, console]
 ----
-kubectl get quota -n netapp-acc
+kubectl get quota -n [netapp-acc or custom namespace]
 ----
 +
 响应：
@@ -44,23 +44,23 @@ pods-medium   16s   requests.cpu: 0/10, requests.memory: 0/20Gi    limits.cpu: 0
 +
 [source, console]
 ----
-kubectl delete resourcequota  pods-high -n netapp-acc
+kubectl delete resourcequota pods-high -n [netapp-acc or custom namespace]
 ----
 +
 [source, console]
 ----
-kubectl delete resourcequota  pods-low -n netapp-acc
+kubectl delete resourcequota pods-low -n [netapp-acc or custom namespace]
 ----
 +
 [source, console]
 ----
-kubectl delete resourcequota  pods-medium -n netapp-acc
+kubectl delete resourcequota pods-medium -n [netapp-acc or custom namespace]
 ----
-. 在中获取限制范围 `netapp-acc` 命名空间：
+. 在中获取限制范围 `netapp-acc` (或自定义名称)命名空间：
 +
 [source, console]
 ----
-kubectl get limits -n netapp-acc
+kubectl get limits -n [netapp-acc or custom namespace]
 ----
 +
 响应：
@@ -75,7 +75,7 @@ cpu-limit-range   2022-06-27T19:01:23Z
 +
 [source, console]
 ----
-kubectl delete limitrange cpu-limit-range -n netapp-acc
+kubectl delete limitrange cpu-limit-range -n [netapp-acc or custom namespace]
 ----
 
 
@@ -90,13 +90,13 @@ kubectl delete limitrange cpu-limit-range -n netapp-acc
 +
 [source, console]
 ----
-kubectl get networkpolicy -n netapp-acc
+kubectl get networkpolicy -n [netapp-acc or custom namespace]
 ----
-. 对于上述命令返回的每个NetworkPolicy对象、请使用以下命令将其删除。将<object_name>替换为返回对象的名称：
+. 对于上述命令返回的每个NetworkPolicy对象、请使用以下命令将其删除。将[object_name]替换为返回对象的名称：
 +
 [source, console]
 ----
-kubectl delete networkpolicy <OBJECT_NAME> -n netapp-acc
+kubectl delete networkpolicy [OBJECT_NAME] -n [netapp-acc or custom namespace]
 ----
 . 应用以下资源文件以配置 `acc-avp-network-policy` 允许Astra插件服务向Astra控制中心服务发出请求的对象。将括号<>中的信息替换为您环境中的信息：
 +
@@ -155,7 +155,7 @@ spec:
 替换默认TLS证书将替换用于对这些连接进行身份验证的证书。
 
 ====
-.您需要的内容
+.开始之前
 * 安装了 Astra 控制中心的 Kubernetes 集群
 * 对集群上的命令 Shell 进行管理访问，以运行 `kubectl` 命令
 * CA 中的专用密钥和证书文件

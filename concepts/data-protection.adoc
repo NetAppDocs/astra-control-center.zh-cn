@@ -65,3 +65,9 @@ image:acc-backup_4in.png["此图显示了使用S3存储分段的两个Kubernetes
 另一方面、复制是通过复制到ONTAP 来完成的、然后故障转移将创建Kubernetes资源：
 
 image:acc-replication_4in.png["此图显示了两个Kubernetes集群和两个ONTAP 集群之间的复制和故障转移"]
+
+
+
+== 许可证已过期的备份、快照和克隆
+
+如果许可证过期、只有当要添加或保护的应用程序是另一个Asta Control Center实例时、您才能添加新应用程序或执行应用程序保护操作(例如快照、备份、克隆和还原操作)。

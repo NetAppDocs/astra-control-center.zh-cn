@@ -20,11 +20,11 @@ Astra控制中心支持使用ONTAP 作为存储后端。
 
 Astra 控制中心支持以下功能：
 
-* * 由 ONTAP 存储提供支持的 Trident 存储类 * ：如果您使用的是 ONTAP 后端，则 Astra 控制中心可以导入 ONTAP 后端以报告各种监控信息。
+* *Astra三端存储类由ONTAP 存储提供支持*：如果使用ONTAP 后端，Astra控制中心可以导入ONTAP 后端以报告各种监控信息。
 
 
 
-NOTE: 应在 Astra 控制中心之外预先配置 Trident 存储类。
+NOTE: 应在Asta Control Center之外预配置Asta三项存储类。
 
 
 

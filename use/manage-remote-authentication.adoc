@@ -40,7 +40,7 @@ IMPORTANT: Astra控制中心使用ldap"mail"属性中的电子邮件地址搜索
 
 您可以启用LDAP身份验证并配置Astra Control与远程LDAP服务器之间的连接。
 
-.您需要的内容
+.开始之前
 如果您计划使用LDAPS、请确保将LDAP服务器的专用TLS证书安装在Astra控制中心中、以便Astra控制中心能够向LDAP服务器进行身份验证。请参见 <<添加用于LDAPS身份验证的证书>> 有关说明，请参见。
 
 .步骤

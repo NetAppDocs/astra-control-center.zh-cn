@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: use/manage-backend.html 
 keywords: how to use astra control, what is astra storage, how to set up astra storage backend, ontap storage in astra, backend storage in astra 
-summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现并使用已部署的资源，包括 Trident ， ONTAP 以及关联的存储类。 
+summary: 通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。您可以监控存储容量和运行状况详细信息，包括当 Astra 控制中心连接到 Cloud Insights 时的性能。 
 ---
 = 管理存储后端
 :hardbreaks:
@@ -20,6 +20,8 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 
 * link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"]
 * <<查看存储后端详细信息>>
+* <<编辑存储后端身份验证详细信息>>
+* <<管理已发现的存储后端>>
 * <<取消管理存储后端>>
 * <<删除存储后端>>
 
@@ -51,7 +53,7 @@ summary: 为内部 Kubernetes 应用程序添加存储。Astra Control 可发现
 
 查看有关后端运行状况，容量和性能（ IOPS 吞吐量和 / 或延迟）的信息。
 
-您可以查看Kubernetes应用程序正在使用的卷、这些卷存储在选定的存储后端。使用Cloud Insights 、您可以看到追加信息。请参见 https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"]。
+您可以查看Kubernetes应用程序正在使用的卷、这些卷存储在选定的存储后端。使用Cloud Insights 、您可以看到追加信息。请参见 https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"^]。
 
 .步骤
 . 在左侧导航区域中，选择 * 后端 * 。
@@ -64,6 +66,52 @@ TIP: 如果您连接到 NetApp Cloud Insights ，则 Cloud Insights 中的数据
 image:../use/acc_backends_ci_connection2.png["后端页面的屏幕截图"]
 
 . 要直接转到 Cloud Insights ，请选择指标图像旁边的 * Cloud Insights * 图标。
+
+
+
+
+== 编辑存储后端身份验证详细信息
+
+Astra控制中心提供了两种对ONTAP 后端进行身份验证的模式。
+
+* *基于凭据的身份验证*：具有所需权限的ONTAP 用户的用户名和密码。您应使用预定义的安全登录角色(如admin)、以确保与ONTAP 版本的最大兼容性。
+* *基于证书的身份验证*：Astra控制中心还可以使用后端安装的证书与ONTAP 集群进行通信。您应使用客户端证书、密钥和可信CA证书(如果使用)(建议)。
+
+
+您可以更新现有后端、以便从一种身份验证类型迁移到另一种身份验证方法。一次仅支持一种身份验证方法。
+
+有关启用基于证书的身份验证的详细信息、请参见 link:../get-started/setup_overview.html#enable-authentication-on-the-ontap-storage-backend["在ONTAP 存储后端启用身份验证"]。
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 选择存储后端。
+. 在“凭据”字段中，选择*Edit*图标。
+. 在编辑页面中、选择以下选项之一。
++
+** *使用管理员凭据*：输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。
++
+
+NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `ontapi` 和 `http`、在源和目标ONTAP 集群上。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+
+** *使用证书*：上传证书 `.pem` file、证书密钥 `.key` 文件、以及证书颁发机构文件(可选)。
+
+
+. 选择 * 保存 * 。
+
+
+
+
+== 管理已发现的存储后端
+
+您可以选择管理未受管理但已发现的存储后端。管理存储后端时、Astra Control会指示用于身份验证的证书是否已过期。
+
+.步骤
+. 从左侧导航栏中，选择 * 后端 * 。
+. 选择*已发现*选项。
+. 选择存储后端。
+. 从“选项”菜单的“*操作*”列中，选择“*管理*”。
+. 进行更改。
+. 选择 * 保存 * 。
 
 
 
@@ -86,7 +134,7 @@ image:../use/acc_backends_ci_connection2.png["后端页面的屏幕截图"]
 
 您可以删除不再使用的存储后端。您可能需要执行此操作，以使您的配置简单且最新。
 
-.您需要的内容
+.开始之前
 * 确保存储后端未受管。
 * 确保存储后端没有与集群关联的任何卷。
 
