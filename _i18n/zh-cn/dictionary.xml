@@ -2160,7 +2160,6 @@
   <block id="20133d30eea258b6c1550d612eb75dfc" category="list-text">为Astra控制中心添加标签。</block>
   <block id="a90dd656b7a6b8d695097aab7d876d0e" category="list-text">启用或禁用自动支持。建议保留自动支持功能。</block>
   <block id="4039227203056b7dfe2f76bcb9aedef4" category="list-text">输入Astra控制中心FQDN或IP地址。请止步<block ref="dbd7790bcd23fde7607101ef6a633779" prefix=" " category="inline-code"></block> 或<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block> 在地址字段中。</block>
-  <block id="54fb7a05fbdd98f00caaf5eaa1a5becc" category="list-text">输入Astra控制中心版本；例如22.04.1。</block>
   <block id="dcfdd5754023d297c0d864d5eb1bf301" category="list-text">选择的卷回收策略<block ref="afece4245269582cb2f1009d4fb52047" prefix=" " category="inline-code"></block>，<block ref="6b2724e1fdbbcc2065b002943d831972" prefix=" " category="inline-code"></block>或<block ref="f2a6c498fb90ee345d997f888fce3b18" prefix=" " category="inline-code"></block>。默认值为<block ref="afece4245269582cb2f1009d4fb52047" prefix=" " category="inline-code"></block>。</block>
   <block id="a650850a843a62d902c5720a572d392d" category="list-text">选择入口类型：</block>
   <block id="c122f0572e72207cecd5efd0f12fdf10" category="paragraph">如果您正在使用另一个入口控制器或希望使用您自己的入口控制器、请使用此选项。部署Astra控制中心后、您需要配置 <block ref="7d074c32e6c49929382498ad8c5637bd" category="inline-link-macro-rx"></block> 以使用URL公开Astra控制中心。</block>
@@ -2872,4 +2871,7 @@
   <block id="070b3d3a153094a5ee57ed5e75530780" category="inline-link">Astra控制中心22.11文档</block>
   <block id="58f23be5f86622d0993f8478be889f05" category="list-text"><block ref="58f23be5f86622d0993f8478be889f05" category="inline-link-rx"></block></block>
   <block id="f4431fb507c16341e3a99f8f031779bc" category="list-text"><block ref="f4431fb507c16341e3a99f8f031779bc" category="inline-link-macro-rx"></block></block>
+  <block id="8275cc29d67faf18fe540b46358fde84" category="list-text">输入Asta Control Center版本、例如23.04.0-22。</block>
+  <block id="9c71eb65f92b7f4fbb85f88f644c6613" category="list-text">选择安装的可扩展大小。</block>
+  <block id="f8ac7e69f7496989a600589a0a35ce94" category="admonition">默认情况下、Astra将使用高可用性(HA)<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 的<block ref="87f8a6ab85c9ced3702b4ea641ad4bb5" prefix=" " category="inline-code"></block>，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 作为<block ref="2660064e68655415da2628c2ae2f7592" prefix=" " category="inline-code"></block>A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。</block>
 </blocks>

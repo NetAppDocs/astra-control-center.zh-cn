@@ -278,9 +278,14 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 .. 为Astra控制中心添加标签。
 .. 启用或禁用自动支持。建议保留自动支持功能。
 .. 输入Astra控制中心FQDN或IP地址。请止步 `http://` 或 `https://` 在地址字段中。
-.. 输入Astra控制中心版本；例如22.04.1。
+.. 输入Asta Control Center版本、例如23.04.0-22。
 .. 输入帐户名称，电子邮件地址和管理员姓氏。
 .. 选择的卷回收策略 `Retain`， `Recycle`或 `Delete`。默认值为 `Retain`。
+.. 选择安装的可扩展大小。
++
+
+NOTE: 默认情况下、Astra将使用高可用性(HA) `scaleSize` 的 `Medium`，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用 `scaleSize` 作为 `Small`A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。
+
 .. 选择入口类型：
 +
 *** *`Generic`* (`ingressType: "Generic"`)(默认)
