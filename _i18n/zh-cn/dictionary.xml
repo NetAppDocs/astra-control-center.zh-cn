@@ -2500,7 +2500,6 @@
   <block id="259f3be9b6c8eefb44e844c2b70333dc" category="paragraph">有关Astra控制中心安装过程的演示、请参见<block ref="cbbdec23221803dc148346abe5a297c0" category="inline-link-rx"></block>。</block>
   <block id="f7173fff9a92f2bab2648f86282ab07c" category="list-text">使用NetApp SnapMirror技术(Astra Control Center)将应用程序复制到远程系统</block>
   <block id="631928ccc601c8e49976a8d73af28304" category="list-text">将应用程序从暂存克隆到生产</block>
-  <block id="71bf3827c9b969b454eaf3d5987aad95" category="list-text"><block ref="097c36d7e339c9c56e3325b9bd9b1890" category="inline-link-macro-rx"></block> 从NetApp 支持站点。购买产品后、您将收到序列号和许可证、您可以在支持站点上使用这些序列号和许可证。</block>
   <block id="6ae1ccb3dd6df141f3444a3da56ae986" category="list-text">在浏览器中、输入FQDN (包括<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block> 前缀)<block ref="d27903c79b643b2f565c31e894abb568" prefix=" " category="inline-code"></block> 在中<block ref="70b058e54d2bda749060070a7f9c4e5c" prefix=" " category="inline-code"></block> CR时间 <block ref="356be5820e2645bace29d82a8018f43d" category="inline-xref-macro-rx"></block>。</block>
   <block id="2af1f66f8f47d8339a96c1cd543cd3a8" category="list-text">* Astra Trident * ：作为由 NetApp 维护的完全受支持的开源存储配置程序和编排程序， Astra Trident 使您能够为 Docker 和 Kubernetes 管理的容器化应用程序创建存储卷。使用Astra控制中心部署时、Astra Trident会包括一个已配置的ONTAP 存储后端。</block>
   <block id="a779180fd0b24eabbab889560a1bd808" category="inline-link">Astra Control Center下载页面</block>
@@ -2874,4 +2873,5 @@
   <block id="8275cc29d67faf18fe540b46358fde84" category="list-text">输入Asta Control Center版本、例如23.04.0-22。</block>
   <block id="9c71eb65f92b7f4fbb85f88f644c6613" category="list-text">选择安装的可扩展大小。</block>
   <block id="f8ac7e69f7496989a600589a0a35ce94" category="admonition">默认情况下、Astra将使用高可用性(HA)<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 的<block ref="87f8a6ab85c9ced3702b4ea641ad4bb5" prefix=" " category="inline-code"></block>，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 作为<block ref="2660064e68655415da2628c2ae2f7592" prefix=" " category="inline-code"></block>A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。</block>
+  <block id="9b846b7f30a8509224caa21eb61515be" category="list-text"><block ref="097c36d7e339c9c56e3325b9bd9b1890" category="inline-link-macro-rx"></block> 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。</block>
 </blocks>
