@@ -2721,8 +2721,6 @@
   <block id="846a7e14007c3c26ac57947eaedc4c61" category="list-text"><block ref="846a7e14007c3c26ac57947eaedc4c61" category="inline-link-macro-rx"></block></block>
   <block id="25f2cff6a812654b1394f53034bcf564" category="inline-link-macro">现在、可以使用Asta Control Center在复制故障转移后运行执行挂钩</block>
   <block id="6d60c4f196979c4b445f94bc2daa72b2" category="list-text"><block ref="6d60c4f196979c4b445f94bc2daa72b2" category="inline-link-macro-rx"></block></block>
-  <block id="051b353228cf5818b61e6086ed61834f" category="inline-link-macro">支持NAS经济型存储类类型</block>
-  <block id="a96e178908b7562b4e8dd9a107d4bb3b" category="list-text"><block ref="a96e178908b7562b4e8dd9a107d4bb3b" category="inline-link-macro-rx"></block></block>
   <block id="e230abda83cb11e7b7ac9992ed62766e" category="inline-link-macro">支持在还原操作期间包括或排除应用程序资源</block>
   <block id="c615097b74f61376d422e9fa5af786b5" category="list-text"><block ref="c615097b74f61376d422e9fa5af786b5" category="inline-link-macro-rx"></block></block>
   <block id="b909803838dd775bd8b8dcfbaf82fb87" category="inline-link-macro">支持管理纯数据应用程序</block>
@@ -2874,4 +2872,6 @@
   <block id="9c71eb65f92b7f4fbb85f88f644c6613" category="list-text">选择安装的可扩展大小。</block>
   <block id="f8ac7e69f7496989a600589a0a35ce94" category="admonition">默认情况下、Astra将使用高可用性(HA)<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 的<block ref="87f8a6ab85c9ced3702b4ea641ad4bb5" prefix=" " category="inline-code"></block>，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 作为<block ref="2660064e68655415da2628c2ae2f7592" prefix=" " category="inline-code"></block>A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。</block>
   <block id="9b846b7f30a8509224caa21eb61515be" category="list-text"><block ref="097c36d7e339c9c56e3325b9bd9b1890" category="inline-link-macro-rx"></block> 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。</block>
+  <block id="385a524cc6007fc04ac1f61b90b72fa0" category="inline-link-macro">支持将卷从&lt;block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category='inline-code'/&gt; 存储类迁移到"ONTAP NAS "存储类</block>
+  <block id="30070e59814ec1fda4c30c1c31eefb74" category="list-text"><block ref="8b33402cf5fbcddbe249556483cf0cc5" category="inline-link-macro-rx"></block></block>
 </blocks>
