@@ -27,9 +27,9 @@ IMPORTANT: 如果您拥有 Astra 控制中心的评估许可证，则可以获�
 
 这些选项全天候免费提供：
 
-* https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra["* 知识库 * （需要登录）"^]：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。
+* https://["* 知识库 * （需要登录）"^]：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。
 * * 文档中心 * ：这是您当前正在查看的文档站点。
-* https://discord.gg/NetApp["*通过不和获得帮助*"^]：转到"Pub类别"中的Astra、与同行和专家建立联系。
+* https://["*通过不和获得帮助*"^]：转到"Pub类别"中的Astra、与同行和专家建立联系。
 * * 创建支持案例 * ：生成支持包以提供给 NetApp 支持部门进行故障排除。
 * * 提供有关 Astra Control* 的反馈：发送电子邮件至 astra.feedback@netapp.com ，告知我们您的想法，想法或顾虑。
 
@@ -38,7 +38,7 @@ IMPORTANT: 如果您拥有 Astra 控制中心的评估许可证，则可以获�
 
 == 启用每日计划的支持包上传至 NetApp 支持
 
-在安装Astra Control Center期间(如果指定) `enrolled: true` 适用于 `autoSupport` 在Astra控制中心自定义资源(CR)文件中 (`astra_control_center.yaml`)、则会自动将每日支持包上传到 https://mysupport.netapp.com/site/["NetApp 支持站点"^]。
+在安装Astra Control Center期间(如果指定) `enrolled: true` 适用于 `autoSupport` 在Astra控制中心自定义资源(CR)文件中 (`astra_control_center.yaml`)、则会自动将每日支持包上传到 https://["NetApp 支持站点"^]。
 
 
 
@@ -98,7 +98,7 @@ TIP: 用户界面右上角的通知图标提供了有关与支持包相关的事
 您可以使用以下方法之一执行此操作：
 
 +
-** 使用 ... https://upload.netapp.com/sg["NetApp 身份验证文件上传（需要登录）"^]。
+** 使用 ... https://["NetApp 身份验证文件上传（需要登录）"^]。
 ** 将捆绑包直接附加到 NSS 上的案例。
 ** 使用 NetApp Active IQ 。
 
@@ -108,6 +108,6 @@ TIP: 用户界面右上角的通知图标提供了有关与支持包相关的事
 [discrete]
 == 了解更多信息
 
-* https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/How_to_upload_a_file_to_NetApp["如何将文件上传到 NetApp （需要登录）"^]
-* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_manually_upload_AutoSupport_messages_to_NetApp_in_ONTAP_9["如何手动将文件上传到 NetApp （需要登录）"^]
+* https://["如何将文件上传到 NetApp （需要登录）"^]
+* https://["如何手动将文件上传到 NetApp （需要登录）"^]
 

@@ -12,10 +12,10 @@ summary: 您可以将评估版许可证转换为完整许可证，也可以使�
 
 
 [role="lead"]
-您可以将评估版许可证转换为完整许可证，也可以使用新许可证更新现有评估版许可证或完整许可证。如果您没有完整的许可证，请与 NetApp 销售联系人联系以获取完整的许可证和序列号。您可以使用Astra控制中心UI或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 更新现有许可证。
+您可以将评估版许可证转换为完整许可证，也可以使用新许可证更新现有评估版许可证或完整许可证。如果您没有完整的许可证，请与 NetApp 销售联系人联系以获取完整的许可证和序列号。您可以使用Astra控制中心UI或 https://["Astra Control API"^] 更新现有许可证。
 
 .步骤
-. 登录到 https://mysupport.netapp.com/site/["NetApp 支持站点"^]。
+. 登录到 https://["NetApp 支持站点"^]。
 . 访问 Astra 控制中心下载页面，输入序列号，然后下载完整的 NetApp 许可证文件（ NLF ）。
 . 登录到 Astra 控制中心 UI 。
 . 从左侧导航栏中，选择 * 帐户 * > * 许可证 * 。

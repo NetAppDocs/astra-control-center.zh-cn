@@ -53,7 +53,7 @@ summary: 通过将 Astra Control 中的存储集群作为存储后端进行管�
 
 查看有关后端运行状况，容量和性能（ IOPS 吞吐量和 / 或延迟）的信息。
 
-您可以查看Kubernetes应用程序正在使用的卷、这些卷存储在选定的存储后端。使用Cloud Insights 、您可以看到追加信息。请参见 https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"^]。
+您可以查看Kubernetes应用程序正在使用的卷、这些卷存储在选定的存储后端。使用Cloud Insights 、您可以看到追加信息。请参见 https://["Cloud Insights 文档"^]。
 
 .步骤
 . 在左侧导航区域中，选择 * 后端 * 。
@@ -91,7 +91,7 @@ Astra控制中心提供了两种对ONTAP 后端进行身份验证的模式。
 ** *使用管理员凭据*：输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。
 +
 
-NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `ontapi` 和 `http`、在源和目标ONTAP 集群上。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `ontapi` 和 `http`、在源和目标ONTAP 集群上。请参见 https://["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
 
 ** *使用证书*：上传证书 `.pem` file、证书密钥 `.key` 文件、以及证书颁发机构文件(可选)。
 
@@ -164,5 +164,5 @@ NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上�
 
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+* https://["使用 Astra Control API"^]
 

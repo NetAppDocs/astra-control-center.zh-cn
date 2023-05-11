@@ -71,7 +71,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。
 
-*取消管理NetApp Asta Dent时是否会自动从集群中卸载？*从Asta Control Center取消管理集群时、Asta Dent不会自动从集群中卸载。要卸载 Astra Trident ，您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照 Astra Trident 文档中的以下步骤进行操作"^]。
+*取消管理NetApp Asta Dent时是否会自动从集群中卸载？*从Asta Control Center取消管理集群时、Asta Dent不会自动从集群中卸载。要卸载 Astra Trident ，您需要 https://["请按照 Astra Trident 文档中的以下步骤进行操作"^]。
 
 
 

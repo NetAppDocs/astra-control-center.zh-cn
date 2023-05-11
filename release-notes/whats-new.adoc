@@ -32,16 +32,16 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 == 2022年11月22日(22.11.0)
 
 .新增功能和支持
-* https://docs.netapp.com/us-en/astra-control-center-2211/use/manage-apps.html#define-apps["支持跨多个命名空间的应用程序"^]
-* https://docs.netapp.com/us-en/astra-control-center-2211/use/manage-apps.html#define-apps["支持在应用程序定义中包括集群资源"^]
-* https://docs.netapp.com/us-en/astra-control-center-2211/use/manage-remote-authentication.html["通过基于角色的访问控制(Role-Based Access Control、RBAC)集成增强了LDAP身份验证功能"^]
-* https://docs.netapp.com/us-en/astra-control-center-2211/get-started/requirements.html["增加了对Kubernetes 1.25和Pod安全准入(PSA)的支持"^]
-* https://docs.netapp.com/us-en/astra-control-center-2211/use/monitor-running-tasks.html["增强了备份、还原和克隆操作的进度报告功能"^]
+* https://["支持跨多个命名空间的应用程序"^]
+* https://["支持在应用程序定义中包括集群资源"^]
+* https://["通过基于角色的访问控制(Role-Based Access Control、RBAC)集成增强了LDAP身份验证功能"^]
+* https://["增加了对Kubernetes 1.25和Pod安全准入(PSA)的支持"^]
+* https://["增强了备份、还原和克隆操作的进度报告功能"^]
 
 
 .已知问题和限制
-* https://docs.netapp.com/us-en/astra-control-center-2211/release-notes/known-issues.html["此版本的已知问题"^]
-* https://docs.netapp.com/us-en/astra-control-center-2211/release-notes/known-limitations.html["此版本的已知限制"^]
+* https://["此版本的已知问题"^]
+* https://["此版本的已知限制"^]
 
 
 
@@ -58,21 +58,21 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 [%collapsible]
 ====
 .新增功能和支持
-* https://docs.netapp.com/us-en/astra-control-center-2208/use/replicate_snapmirror.html["使用NetApp SnapMirror技术复制应用程序"^]
-* https://docs.netapp.com/us-en/astra-control-center-2208/use/manage-apps.html#define-apps["改进了应用程序管理工作流"^]
-* https://docs.netapp.com/us-en/astra-control-center-2208/use/execution-hooks.html["增强的自行执行挂钩功能"^]
+* https://["使用NetApp SnapMirror技术复制应用程序"^]
+* https://["改进了应用程序管理工作流"^]
+* https://["增强的自行执行挂钩功能"^]
 +
 
-NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和快照后执行挂钩。如果您升级到此版本、但没有为快照提供自己的执行挂钩、则Astra Control将仅创建崩溃状态一致的快照。请访问 https://github.com/NetApp/Verda["NetApp Verda"^] GitHub存储库、用于创建示例执行钩脚本、您可以根据环境进行修改。
+NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和快照后执行挂钩。如果您升级到此版本、但没有为快照提供自己的执行挂钩、则Astra Control将仅创建崩溃状态一致的快照。请访问 https://["NetApp Verda"^] GitHub存储库、用于创建示例执行钩脚本、您可以根据环境进行修改。
 
-* https://docs.netapp.com/us-en/astra-control-center-2208/get-started/requirements.html["支持VMware Tanzu Kubernetes Grid Integrated Edition (TKGI)"^]
-* https://docs.netapp.com/us-en/astra-control-center-2208/get-started/requirements.html#operational-environment-requirements["支持Google Anthos"^]
-* https://docs.netapp.com/us-en/astra-automation-2208/workflows_infra/ldap_prepare.html["LDAP配置(通过Astra Control API)"^]
+* https://["支持VMware Tanzu Kubernetes Grid Integrated Edition (TKGI)"^]
+* https://["支持Google Anthos"^]
+* https://["LDAP配置(通过Astra Control API)"^]
 
 
 .已知问题和限制
-* https://docs.netapp.com/us-en/astra-control-center-2208/release-notes/known-issues.html["此版本的已知问题"^]
-* https://docs.netapp.com/us-en/astra-control-center-2208/release-notes/known-limitations.html["此版本的已知限制"^]
+* https://["此版本的已知问题"^]
+* https://["此版本的已知限制"^]
 
 
 ====
@@ -84,16 +84,16 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 [%collapsible]
 ====
 .新增功能和支持
-* https://docs.netapp.com/us-en/astra-control-center-2204/concepts/user-roles-namespaces.html["命名空间基于角色的访问控制（ RBAC ）"^]
-* https://docs.netapp.com/us-en/astra-control-center-2204/get-started/install_acc-cvo.html["支持 Cloud Volumes ONTAP"^]
-* https://docs.netapp.com/us-en/astra-control-center-2204/get-started/requirements.html#ingress-for-on-premises-kubernetes-clusters["为 Astra 控制中心启用通用传入"^]
-* https://docs.netapp.com/us-en/astra-control-center-2204/use/manage-buckets.html#remove-a-bucket["从 Astra Control 中删除存储分段"^]
-* https://docs.netapp.com/us-en/astra-control-center-2204/get-started/requirements.html#tanzu-kubernetes-grid-cluster-requirements["支持 VMware Tanzu 产品组合"^]
+* https://["命名空间基于角色的访问控制（ RBAC ）"^]
+* https://["支持 Cloud Volumes ONTAP"^]
+* https://["为 Astra 控制中心启用通用传入"^]
+* https://["从 Astra Control 中删除存储分段"^]
+* https://["支持 VMware Tanzu 产品组合"^]
 
 
 .已知问题和限制
-* https://docs.netapp.com/us-en/astra-control-center-2204/release-notes/known-issues.html["此版本的已知问题"^]
-* https://docs.netapp.com/us-en/astra-control-center-2204/release-notes/known-limitations.html["此版本的已知限制"^]
+* https://["此版本的已知问题"^]
+* https://["此版本的已知限制"^]
 
 
 ====
@@ -105,21 +105,21 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 [%collapsible]
 ====
 .新增功能和支持
-* https://docs.netapp.com/us-en/astra-control-center-2112/use/restore-apps.html["应用程序还原"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/use/execution-hooks.html["执行挂钩"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html#supported-app-installation-methods["支持使用命名空间范围的运算符部署的应用程序"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/requirements.html["对上游 Kubernetes 和 Rancher 的其他支持"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/use/upgrade-acc.html["Astra 控制中心升级"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/get-started/acc_operatorhub_install.html["用于安装的 Red Hat OperatorHub 选项"^]
+* https://["应用程序还原"^]
+* https://["执行挂钩"^]
+* https://["支持使用命名空间范围的运算符部署的应用程序"^]
+* https://["对上游 Kubernetes 和 Rancher 的其他支持"^]
+* https://["Astra 控制中心升级"^]
+* https://["用于安装的 Red Hat OperatorHub 选项"^]
 
 
 .已解决的问题
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/resolved-issues.html["此版本已解决的问题"^]
+* https://["此版本已解决的问题"^]
 
 
 .已知问题和限制
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-issues.html["此版本的已知问题"^]
-* https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-limitations.html["此版本的已知限制"^]
+* https://["此版本的已知问题"^]
+* https://["此版本的已知限制"^]
 
 
 ====
@@ -132,14 +132,14 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 ====
 初始版本的 Astra 控制中心。
 
-* https://docs.netapp.com/us-en/astra-control-center-2108/concepts/intro.html["它是什么"^]
-* https://docs.netapp.com/us-en/astra-control-center-2108/concepts/architecture.html["了解架构和组件"^]
-* https://docs.netapp.com/us-en/astra-control-center-2108/get-started/requirements.html["入门所需的资源"^]
-* https://docs.netapp.com/us-en/astra-control-center-2108/get-started/install_acc.html["安装"^] 和 https://docs.netapp.com/us-en/astra-control-center-2108/get-started/setup_overview.html["设置"^]
-* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-apps.html["管理"^] 和 https://docs.netapp.com/us-en/astra-control-center-2108/use/protect-apps.html["保护"^] 应用程序
-* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-buckets.html["管理存储分段"^] 和 https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-backend.html["存储后端"^]
-* https://docs.netapp.com/us-en/astra-control-center-2108/use/manage-users.html["管理帐户"^]
-* https://docs.netapp.com/us-en/astra-control-center-2108/rest-api/api-intro.html["利用 API 实现自动化"^]
+* https://["它是什么"^]
+* https://["了解架构和组件"^]
+* https://["入门所需的资源"^]
+* https://["安装"^] 和 https://["设置"^]
+* https://["管理"^] 和 https://["保护"^] 应用程序
+* https://["管理存储分段"^] 和 https://["存储后端"^]
+* https://["管理帐户"^]
+* https://["利用 API 实现自动化"^]
 
 
 ====

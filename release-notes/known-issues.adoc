@@ -51,7 +51,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 == 使用服务帐户级别 OCP 安全上下文限制（ SCC ）时应用程序克隆失败
 
-如果在 OpenShift 容器平台集群的命名空间中的服务帐户级别配置了原始安全上下文约束，则应用程序克隆可能会失败。如果应用程序克隆失败，它将显示在 Astra 控制中心的受管应用程序区域中，状态为 `removed` 。请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/Application_clone_is_failing_for_an_application_in_Astra_Control_Center["知识库文章"^] 有关详细信息 ...
+如果在 OpenShift 容器平台集群的命名空间中的服务帐户级别配置了原始安全上下文约束，则应用程序克隆可能会失败。如果应用程序克隆失败、它将显示在Astra控制中心的受管应用程序区域中、并显示状态 `Removed`。请参见 https://["知识库文章"^] 有关详细信息 ...
 
 
 
@@ -69,7 +69,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 == 如果默认的 kubeconfig 文件包含多个上下文，则使用 Astra 控制中心管理集群将失败
 
-不能将 kubeconfig 与多个集群和上下文结合使用。请参见 link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/Managing_cluster_with_Astra_Control_Center_may_fail_when_using_default_kubeconfig_file_contains_more_than_one_context["知识库文章"^] 有关详细信息 ...
+不能将 kubeconfig 与多个集群和上下文结合使用。请参见 link:https://kb.netapp.com/Cloud/Astra/Control/Managing_cluster_with_Astra_Control_Center_may_fail_when_using_default_kubeconfig_file_contains_more_than_one_context["知识库文章"^] 有关详细信息 ...
 
 
 

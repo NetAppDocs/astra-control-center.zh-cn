@@ -21,7 +21,7 @@
 . 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +
 ** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
-** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 "https://<docker-registry>"[]。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 "https://[]。
 ** 将<MY_REGISTRY_USER> 替换为用户名。
 ** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
 +

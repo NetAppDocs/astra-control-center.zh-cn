@@ -73,10 +73,10 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 * *工作节点*：总共至少3个工作节点、每个节点具有4个CPU核心和12 GB RAM
 * *VMware Tanzu Kubernetes Grid集群要求*：在VMware Tanzu Kubernetes Grid (TKG)或Tanzu Kubernetes Grid Integrated Edition (TKGi)集群上托管Astra Control Center时，请记住以下注意事项。
 +
-** 默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时过期。如果您使用的是 Tanzu 产品组合，则必须使用未过期的令牌生成 Tanzu Kubernetes 集群配置文件，以防止 Astra 控制中心与受管应用程序集群之间出现连接问题。有关说明，请访问 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/nsx-application-platform/GUID-52A52C0B-9575-43B6-ADE2-E8640E22C29F.html["VMware NSX-T 数据中心产品文档。"^]
+** 默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时过期。如果您使用的是 Tanzu 产品组合，则必须使用未过期的令牌生成 Tanzu Kubernetes 集群配置文件，以防止 Astra 控制中心与受管应用程序集群之间出现连接问题。有关说明，请访问 https://["VMware NSX-T 数据中心产品文档。"^]
 ** 使用 `kubectl get nsxlbmonitors -A` 命令以查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。
 ** 在任何要由 Astra Control 管理的应用程序集群上禁用 TKG 或 TKGi 默认存储类强制实施。为此，您可以编辑命名空间集群上的 `TanuKubernetes Cluster` 资源。
-** 在 TKG 或 TKGi 环境中部署 Astra 控制中心时，请注意 Astra Trident 的特定要求。有关详细信息，请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#other-known-configuration-options["Astra Trident 文档"^]。
+** 在 TKG 或 TKGi 环境中部署 Astra 控制中心时，请注意 Astra Trident 的特定要求。有关详细信息，请参见 https://["Astra Trident 文档"^]。
 
 
 
@@ -128,11 +128,11 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 要使用Astra控制中心、请根据您需要完成的任务、验证您是否具有以下ONTAP 许可证：
 
 * FlexClone
-* SnapMirror：可选。只有在使用SnapMirror技术复制到远程系统时才需要。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["SnapMirror许可证信息"^]。
+* SnapMirror：可选。只有在使用SnapMirror技术复制到远程系统时才需要。请参见 https://["SnapMirror许可证信息"^]。
 * S3许可证：可选。只有ONTAP S3存储分段才需要
 
 
-要检查ONTAP 系统是否具有所需的许可证、请参见 https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["管理ONTAP 许可证"^]。
+要检查ONTAP 系统是否具有所需的许可证、请参见 https://["管理ONTAP 许可证"^]。
 
 
 
@@ -159,12 +159,12 @@ Astra Control Center需要Astra Control Center许可证。安装Astra Control Ce
 配置操作环境以确保Astra Control Center可以正确通信。需要以下网络配置：
 
 * *FQDN地址*:您必须拥有Astra Control Center的FQDN地址。
-* *访问互联网*：您应确定是否可以从外部访问互联网。否则，某些功能可能会受到限制，例如从 NetApp Cloud Insights 接收监控和指标数据或向发送支持包 https://mysupport.netapp.com/site/["NetApp 支持站点"^]。
+* *访问互联网*：您应确定是否可以从外部访问互联网。否则，某些功能可能会受到限制，例如从 NetApp Cloud Insights 接收监控和指标数据或向发送支持包 https://["NetApp 支持站点"^]。
 * *端口访问*：Astra Control Center的运行环境使用以下TCP端口进行通信。您应确保允许这些端口通过任何防火墙，并将防火墙配置为允许来自 Astra 网络的任何 HTTPS 传出流量。某些端口需要在托管 Astra 控制中心的环境与每个受管集群之间进行双向连接（请在适用时注明）。
 
 
 
-NOTE: 您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 Astra 控制中心则可以管理为双堆栈操作配置的应用程序和存储后端。有关双堆栈集群要求的详细信息，请参见 https://kubernetes.io/docs/concepts/services-networking/dual-stack/["Kubernetes 文档"^]。
+NOTE: 您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 Astra 控制中心则可以管理为双堆栈操作配置的应用程序和存储后端。有关双堆栈集群要求的详细信息，请参见 https://["Kubernetes 文档"^]。
 
 |===
 | 源 | 目标 | Port | 协议 | 目的 
@@ -176,13 +176,13 @@ NOTE: 您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 
 | 指标使用者 | Astra 控制中心工作节点 | 9090 | HTTPS | 指标数据通信—确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 （需要双向通信） 
 
 
-| Astra 控制中心 | 托管 Cloud Insights 服务 (https://www.netapp.com/cloud-services/cloud-insights/)[] | 443. | HTTPS | Cloud Insights 通信 
+| Astra 控制中心 | 托管 Cloud Insights 服务  | 443. | HTTPS | Cloud Insights 通信 
 
 
 | Astra 控制中心 | Amazon S3 存储分段提供商 | 443. | HTTPS | Amazon S3 存储通信 
 
 
-| Astra 控制中心 | NetApp AutoSupport (https://support.netapp.com)[] | 443. | HTTPS | NetApp AutoSupport 通信 
+| Astra 控制中心 | NetApp AutoSupport  | 443. | HTTPS | NetApp AutoSupport 通信 
 |===
 
 

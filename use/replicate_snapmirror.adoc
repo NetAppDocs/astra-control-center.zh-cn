@@ -47,11 +47,11 @@ Astra Control应用程序复制要求在开始之前必须满足以下前提条�
 
 * 为了实现无缝灾难恢复、我们建议您在第三个故障域或二级站点中部署Astra控制中心。
 * 应用程序的主机Kubernetes集群和目标Kubernetes集群必须与其ONTAP 集群一起进行管理、最好在不同的故障域或站点进行管理。
-* ONTAP 集群和主机SVM必须已配对。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^]。
+* ONTAP 集群和主机SVM必须已配对。请参见 https://["集群和 SVM 对等概述"^]。
 * 配对的远程SVM必须可供目标集群上的Astra Trident使用。
 * 源和目标ONTAP 集群上必须同时存在Astra Trident 22.07或更高版本。
-* 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^]。
-* 将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+* 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://["ONTAP 中的SnapMirror许可概述"^]。
+* 将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
 * 源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。
 +
 

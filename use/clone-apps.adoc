@@ -14,7 +14,7 @@ summary: 克隆现有应用程序以在同一个 Kubernetes 集群或另一个�
 [role="lead"]
 您可以克隆现有应用程序、以便在同一个Kubernetes集群或另一个集群上创建重复的应用程序。当 Astra Control 克隆应用程序时，它会为您的应用程序配置和永久性存储创建一个克隆。
 
-如果您需要将应用程序和存储从一个 Kubernetes 集群移动到另一个集群，则克隆可以助您一臂之力。例如，您可能希望通过 CI/CD 管道以及在 Kubernetes 命名空间之间移动工作负载。您可以使用Astra控制中心UI或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 克隆和迁移应用程序。
+如果您需要将应用程序和存储从一个 Kubernetes 集群移动到另一个集群，则克隆可以助您一臂之力。例如，您可能希望通过 CI/CD 管道以及在 Kubernetes 命名空间之间移动工作负载。您可以使用Astra控制中心UI或 https://["Astra Control API"^] 克隆和迁移应用程序。
 
 
 NOTE: 如果将命名空间筛选器添加到在还原或克隆操作之后运行的执行挂钩、并且还原或克隆源和目标位于不同的命名空间中、则命名空间筛选器仅会应用于目标命名空间。

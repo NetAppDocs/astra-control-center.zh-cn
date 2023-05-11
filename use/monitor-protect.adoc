@@ -200,12 +200,12 @@ NOTE: 您只能编辑 API 密钥。要更改 Cloud Insights 租户 URL ，我们
 
 您可以使用Prometheus监控Astra控制中心数据。您可以将Prometheus配置为从Kubernetes集群指标端点收集指标、也可以使用Prometheus可视化指标数据。
 
-有关使用Prometheus的详细信息、请参见其文档、网址为 https://prometheus.io/docs/prometheus/latest/getting_started/["Prometheus入门"]。
+有关使用Prometheus的详细信息、请参见其文档、网址为 https://["Prometheus入门"]。
 
 .您将需要什么
 确保已在Astra控制中心集群或可与Astra控制中心集群通信的其他集群上下载并安装Prometheus软件包。
 
-按照官方文档中的说明进行操作 https://prometheus.io/docs/prometheus/latest/installation/["安装 Prometheus"]。
+按照官方文档中的说明进行操作 https://["安装 Prometheus"]。
 
 Prometheus需要能够与Astra控制中心Kubernetes集群进行通信。如果Astra控制中心集群上未安装Prometheus、您需要确保这些模块能够与Astra控制中心集群上运行的指标服务进行通信。
 

@@ -36,5 +36,5 @@ NOTE: 应在Asta Control Center之外预配置Asta三项存储类。
 
 == 有关详细信息 ...
 
-* https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
+* https://["Astra Trident 文档"^]
 
