@@ -100,7 +100,7 @@ IMPORTANT: 如果您的应用使用由支持的存储类 `ontap-nas-economy` 驱
 NOTE: Astra 控制中心中的 S3 存储分段不会报告可用容量。在备份或克隆由 Astra 控制中心管理的应用程序之前，请检查 ONTAP 或 StorageGRID 管理系统中的存储分段信息。
 
 
-IMPORTANT: 如果您的应用使用由支持的存储类 `ontap-nas-economy` 驱动程序、备份会中断、应用程序将不可用、直到备份操作完成为止。
+IMPORTANT: 如果您的应用使用由支持的存储类 `ontap-nas-economy` 驱动程序、请确保您已定义 `backendType` 中的参数 https://["Kubbernetes存储对象"^] 值为 `ontap-nas-economy` 在执行任何保护操作之前。备份由支持的应用程序 `ontap-nas-economy` 会造成系统中断、应用程序将不可用、直到备份操作完成。
 
 .步骤
 . 选择 * 应用程序 * 。
