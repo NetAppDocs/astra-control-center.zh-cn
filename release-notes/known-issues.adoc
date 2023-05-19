@@ -28,6 +28,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 .集群
 * <<如果默认的 kubeconfig 文件包含多个上下文，则使用 Astra 控制中心管理集群将失败>>
 * <<升级到Astra Control Center 23.04后、某些Pod无法启动>>
+* <<在Isio环境中、监控POD可能会崩溃>>
 
 
 .其他问题
@@ -96,6 +97,58 @@ pcloud-astra-control-center-au-pod-0 0/1 CreateContainerConfigError 0 13s
 [listing]
 ----
 kubectl delete pod pcloud-astra-control-center-au-pod-0 -n <namespace>
+----
+
+
+
+
+== 在Isio环境中、监控POD可能会崩溃
+
+如果在Istio环境中将Astra控制中心与Cloud Insights 配对、则 `telegraf-rs` POD可能会崩溃。作为临时解决策，请执行以下步骤：
+
+. 找到崩溃的POD：
++
+[listing]
+----
+kubectl -n netapp-monitoring get pod | grep Error
+----
++
+您应看到类似于以下内容的输出：
+
++
+[listing]
+----
+NAME READY STATUS RESTARTS AGE
+telegraf-rs-fhhrh 1/2 Error 2 (26s ago) 32s
+----
+. 重新启动崩溃的Pod、更换 `<pod_name_from_output>` 使用受影响POD的名称：
++
+[listing]
+----
+kubectl -n netapp-monitoring delete pod <pod_name_from_output>
+----
++
+您应看到类似于以下内容的输出：
+
++
+[listing]
+----
+pod "telegraf-rs-fhhrh" deleted
+----
+. 确认POD已重新启动且未处于错误状态：
++
+[listing]
+----
+kubectl -n netapp-monitoring get pod
+----
++
+您应看到类似于以下内容的输出：
+
++
+[listing]
+----
+NAME READY STATUS RESTARTS AGE
+telegraf-rs-rrnsb 2/2 Running 0 11s
 ----
 
 
