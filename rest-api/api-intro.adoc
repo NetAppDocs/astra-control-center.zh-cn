@@ -16,4 +16,4 @@ Astra Control 具有一个 REST API ，可用于使用编程语言或 Curl 等�
 
 要设置和管理Kubernetes应用程序、您可以使用Astra Control Center UI或Astra Control API。
 
-要了解更多信息，请转到 https://["Astra 自动化文档"^]。
+要了解更多信息，请转到 https://docs.netapp.com/us-en/astra-automation/["Astra 自动化文档"^]。

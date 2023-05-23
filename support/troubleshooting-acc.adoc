@@ -14,11 +14,11 @@ summary: NetApp 以多种方式为 Astra Control 提供支持。全天候提供�
 [role="lead"]
 了解如何解决您可能遇到的一些常见问题。
 
-https://["适用于Astra的NetApp知识库"^]
+https://kb.netapp.com/Cloud/Astra/Control["适用于Astra的NetApp知识库"^]
 
 [discrete]
 == 了解更多信息
 
-* https://["如何将文件上传到 NetApp （需要登录）"^]
-* https://["如何手动将文件上传到 NetApp （需要登录）"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/How_to_upload_a_file_to_NetApp["如何将文件上传到 NetApp （需要登录）"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_manually_upload_AutoSupport_messages_to_NetApp_in_ONTAP_9["如何手动将文件上传到 NetApp （需要登录）"^]
 

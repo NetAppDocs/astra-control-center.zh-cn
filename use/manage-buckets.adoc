@@ -116,7 +116,7 @@ Astra Control使用存储分段凭据获取访问权限、并为S3存储分段�
 TIP: 添加到 Astra Control 的第一组凭据始终处于使用状态，因为 Astra Control 使用这些凭据对备份存储分段进行身份验证。如果存储分段正在使用中、请勿删除这些凭据、因为这会导致备份失败和备份不可用。
 
 
-NOTE: 如果删除了活动存储分段凭据、请参见 https://["对删除存储分段凭据进行故障排除"]。
+NOTE: 如果删除了活动存储分段凭据、请参见 https://kb.netapp.com/Cloud/Astra/Control/Deleting_active_S3_bucket_credentials_leads_to_spurious_500_errors_reported_in_the_UI["对删除存储分段凭据进行故障排除"]。
 
 有关如何使用Astra Control API删除S3凭据的说明、请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
 
@@ -151,5 +151,5 @@ NOTE: Astra Control 可首先确保没有使用存储分段进行备份的计划
 
 == 了解更多信息
 
-* https://["使用 Astra Control API"^]
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
 

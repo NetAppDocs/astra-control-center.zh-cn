@@ -14,9 +14,9 @@ summary: 如果您未运行最新版本、可以参考先前版本的文档。
 [role="lead"]
 可提供先前版本的文档。
 
-* https://["Astra控制中心22.11文档"^]
-* https://["Astra Control Center 22.08文档"^]
-* https://["Astra Control Center 22.04 文档"^]
-* https://["Astra Control Center 21.12 文档"^]
-* https://["Astra Control Center 21.08 文档"^]
+* https://docs.netapp.com/us-en/astra-control-center-2211/index.html["Astra控制中心22.11文档"^]
+* https://docs.netapp.com/us-en/astra-control-center-2208/index.html["Astra Control Center 22.08文档"^]
+* https://docs.netapp.com/us-en/astra-control-center-2204/index.html["Astra Control Center 22.04 文档"^]
+* https://docs.netapp.com/us-en/astra-control-center-2112/index.html["Astra Control Center 21.12 文档"^]
+* https://docs.netapp.com/us-en/astra-control-center-2108/index.html["Astra Control Center 21.08 文档"^]
 

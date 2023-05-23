@@ -22,7 +22,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 
 ====
-有关Astra控制中心安装过程的演示、请参见 https://["此视频"^]。
+有关Astra控制中心安装过程的演示、请参见 https://www.youtube.com/watch?v=eurMV80b0Ks&list=PLdXI3bZJEw7mJz13z7YdiGCS6gNQgV_aN&index=5["此视频"^]。
 
 .开始之前
 * link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。
@@ -69,7 +69,7 @@ IMPORTANT: 请勿删除Astra Control Center运算符(例如、 `kubectl delete -
 
 == 下载并提取Astra控制中心
 
-. 转至 https://["Astra Control Center下载页面"^] 页面。
+. 转至 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^] 页面。
 . 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`）。
 . (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证捆绑包的签名：
 +
@@ -142,7 +142,7 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 . 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +
 ** 将<BUNDLE_FILE> 替换为Astra Control捆绑包文件的名称 (`acc.manifest.bundle.yaml`）。
-** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 "https://[]。
+** 将<MY_FULL_REGISTRY_PATH> 替换为Docker存储库的URL；例如 "https://<docker-registry>"[]。
 ** 将<MY_REGISTRY_USER> 替换为用户名。
 ** 将<MY_REGISTRY_TOKEN> 替换为注册表的授权令牌。
 +
@@ -917,8 +917,8 @@ IMPORTANT: 复制UUID值。密码为 `Acc-` ，后跟 UUID 值（`Acc-UUID` 或�
 
 
 .开始之前
-* 所需 https://["入口控制器"] 应已部署。
-* 。 https://["入口类"] 应已创建与入口控制器对应的。
+* 所需 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/["入口控制器"] 应已部署。
+* 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入口类"] 应已创建与入口控制器对应的。
 
 
 .Istio入口的步骤
@@ -1011,7 +1011,7 @@ ingress istio astra.example.com 172.16.103.248  80, 443 1h
 
 
 .nginx 入口控制器的步骤
-. 创建类型的密钥 `kubernetes.io/tls` 中的TLS专用密钥和证书 `netapp-acc` (或自定义命名的)命名空间、如中所述 https://["TLS 密钥"]。
+. 创建类型的密钥 `kubernetes.io/tls` 中的TLS专用密钥和证书 `netapp-acc` (或自定义命名的)命名空间、如中所述 https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS 密钥"]。
 . 在中部署传入资源 `netapp-acc` (或自定义命名的)命名空间 (`nginx-Ingress.yaml` 在此示例中使用)：
 +
 [source, yaml]
@@ -1082,7 +1082,7 @@ NOTE: 如果您输入的密码三次不正确，管理员帐户将锁定 15 分�
 . 根据提示更改密码。
 +
 
-NOTE: 如果这是您第一次登录、但您忘记了密码、并且尚未创建任何其他管理用户帐户、请联系 https://["NetApp 支持"] 以获得密码恢复帮助。
+NOTE: 如果这是您第一次登录、但您忘记了密码、并且尚未创建任何其他管理用户帐户、请联系 https://mysupport.netapp.com/site/["NetApp 支持"] 以获得密码恢复帮助。
 
 . （可选）删除现有自签名 TLS 证书并将其替换为 link:../get-started/configure-after-install.html#add-a-custom-tls-certificate["由证书颁发机构（ CA ）签名的自定义 TLS 证书"^]。
 

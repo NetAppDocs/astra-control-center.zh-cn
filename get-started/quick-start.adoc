@@ -26,11 +26,11 @@ summary: 只需几步即可开始使用 Astra Control 。
 *存储集成*
 
 * link:../get-started/requirements.html#astra-trident-requirements["确保您的环境包含Astra Trident支持的版本"^]
-* https://["准备工作节点"^]
-* https://["配置Astra Trident存储后端"^]
-* https://["配置Astra Trident存储类"^]
-* https://["安装Astra Trident卷快照控制器"^]
-* https://["创建卷快照类"^]
+* https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html["准备工作节点"^]
+* https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["配置Astra Trident存储后端"^]
+* https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["配置Astra Trident存储类"^]
+* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["安装Astra Trident卷快照控制器"^]
+* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["创建卷快照类"^]
 
 
 * ONTAP 凭据*
@@ -41,7 +41,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 下载并安装Astra控制中心
 完成这些安装任务。
 
-* https://["从NetApp 支持站点 下载页面下载Astra控制中心"^]
+* https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["从NetApp 支持站点 下载页面下载Astra控制中心"^]
 * 获取NetApp许可证文件：
 +
 ** 如果您正在评估Astra Control Center、则已包含嵌入式评估许可证。
@@ -63,7 +63,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"] 使用 Astra 控制中心
-设置完Astra控制中心后、您接下来可以执行以下操作。您可以使用Astra Control用户界面(UI)或 https://["Astra Control API"^]。
+设置完Astra控制中心后、您接下来可以执行以下操作。您可以使用Astra Control用户界面(UI)或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^]。
 
 * link:../use/manage-apps.html["管理应用程序"^]
 * link:../use/protection-overview.html["保护应用程序"^]：配置保护策略以及复制、克隆和迁移应用程序。
@@ -75,7 +75,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 == 有关详细信息 ...
 
-* https://["Astra Control API"^]
+* https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^]
 * link:../use/upgrade-acc.html["升级 Astra 控制中心"^]
 * link:../support/get-help.html["获取有关Astra Control的帮助"^]
 

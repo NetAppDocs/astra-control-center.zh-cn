@@ -26,9 +26,9 @@ image:astra-architecture-diagram-v5.png["描述Astra Control架构及其组件�
 +
 ** Astra控制服务使用以下存储后端：
 +
-*** https://["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 或Google Persistent Disk作为GKE集群的存储后端
-*** https://["Azure NetApp Files"^] 或Azure受管磁盘作为AKS集群的存储后端。
-*** https://["Amazon Elastic Block Store (EBS)"^] 或 https://["适用于 NetApp ONTAP 的 Amazon FSX"^] 作为EKS集群的后端存储选项。
+*** https://www.netapp.com/cloud-services/cloud-volumes-service-for-google-cloud/["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 或Google Persistent Disk作为GKE集群的存储后端
+*** https://www.netapp.com/cloud-services/azure-netapp-files/["Azure NetApp Files"^] 或Azure受管磁盘作为AKS集群的存储后端。
+*** https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store (EBS)"^] 或 https://docs.aws.amazon.com/fsx/["适用于 NetApp ONTAP 的 Amazon FSX"^] 作为EKS集群的后端存储选项。
 
 
 ** Astra 控制中心使用以下存储后端：
@@ -58,10 +58,10 @@ image:astra-architecture-diagram-v5.png["描述Astra Control架构及其组件�
 
 == 有关详细信息 ...
 
-* https://["Astra Control Service 文档"^]
-* https://["Astra 控制中心文档"^]
-* https://["Astra Trident 文档"^]
-* https://["使用 Astra Control API"^]
-* https://["Cloud Insights 文档"^]
-* https://["ONTAP 文档"^]
+* https://docs.netapp.com/us-en/astra/index.html["Astra Control Service 文档"^]
+* https://docs.netapp.com/us-en/astra-control-center/index.html["Astra 控制中心文档"^]
+* https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
+* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+* https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"^]
+* https://docs.netapp.com/us-en/ontap/index.html["ONTAP 文档"^]
 

@@ -52,7 +52,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 == 使用服务帐户级别 OCP 安全上下文限制（ SCC ）时应用程序克隆失败
 
-如果在 OpenShift 容器平台集群的命名空间中的服务帐户级别配置了原始安全上下文约束，则应用程序克隆可能会失败。如果应用程序克隆失败、它将显示在Astra控制中心的受管应用程序区域中、并显示状态 `Removed`。请参见 https://["知识库文章"^] 有关详细信息 ...
+如果在 OpenShift 容器平台集群的命名空间中的服务帐户级别配置了原始安全上下文约束，则应用程序克隆可能会失败。如果应用程序克隆失败、它将显示在Astra控制中心的受管应用程序区域中、并显示状态 `Removed`。请参见 https://kb.netapp.com/Cloud/Astra/Control/Application_clone_is_failing_for_an_application_in_Astra_Control_Center["知识库文章"^] 有关详细信息 ...
 
 
 
