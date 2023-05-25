@@ -119,7 +119,7 @@ TIP: 标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进
 
 .关于此任务
 * 开始之前、您还应了解相关信息 link:../use/manage-apps.html#what-about-system-namespaces["管理标准命名空间和系统命名空间"]。
-* 如果您计划在Astra Control中对应用程序使用多个命名空间、 link:../use/manage-roles.html#add-a-namespace-constraint-to-a-role["修改具有命名空间限制的用户角色"] 升级到支持多命名空间的Astra Control Center版本后。
+* 如果您计划在Astra Control中对应用程序使用多个命名空间、 link:../use/manage-local-users-and-roles.html#add-a-namespace-constraint-to-a-role["修改具有命名空间限制的用户角色"] 升级到支持多命名空间的Astra Control Center版本后。
 * 有关如何使用 Astra Control API 管理应用程序的说明，请参见 link:https://docs.netapp.com/us-en/astra-automation/["Astra Automation 和 API 信息"^]。
 
 
@@ -132,7 +132,7 @@ TIP: 标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进
 
 === 定义要作为应用程序进行管理的资源
 
-您可以指定 link:../learn/app-management.html["构成应用程序的Kubernetes资源"] 要使用Astra Control进行管理的。通过定义应用程序、您可以将Kubernetes集群中的元素分组到一个应用程序中。此Kubernetes资源集合按命名空间和标签选择器标准进行组织。
+您可以指定 link:../concepts/app-management.html["构成应用程序的Kubernetes资源"] 要使用Astra Control进行管理的。通过定义应用程序、您可以将Kubernetes集群中的元素分组到一个应用程序中。此Kubernetes资源集合按命名空间和标签选择器标准进行组织。
 
 通过定义应用程序、您可以更精细地控制要包含在Astra Control操作中的内容、包括克隆、快照和备份。
 

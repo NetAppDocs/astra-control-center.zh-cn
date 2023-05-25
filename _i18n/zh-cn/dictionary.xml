@@ -559,7 +559,6 @@
   <block id="b75ca60736c6893f52a9d2f551270a1a" category="list-text">使用以下命令删除 Astra 控制中心操作员系统组件：</block>
   <block id="09722d284b5ee32968e0df627e09c55d" category="inline-link-macro">卸载的已知问题</block>
   <block id="59f23566b748f4ca524f9008bc7ad2be" category="list-text"><block ref="59f23566b748f4ca524f9008bc7ad2be" category="inline-link-macro-rx"></block></block>
-  <block id="cae4ab898e0de6e692eb3d10b6a95dbf" category="inline-link-macro">Astra 控制中心通知</block>
   <block id="1266a5a3fd194fe421f8d3d701b44de7" category="doc">存储类和永久性卷大小</block>
   <block id="2a48cd265597705926220f5e81d03941" category="paragraph">Astra 控制中心支持以下功能：</block>
   <block id="7672a092783c4348b96b40ea2dcf6681" category="section-title">存储类</block>
@@ -982,9 +981,7 @@
   <block id="b4504a5af800e56b2ac7bc310c520499" category="paragraph">您可以在 Amazon Web Services （ AWS ）公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。</block>
   <block id="a5a36964a87d94d5ac0851af923c64fc" category="paragraph">在 AWS 中部署 Astra 控制中心之前，您需要满足以下条件：</block>
   <block id="e7e1ddd48b888f0547b40d916ec5553d" category="inline-link-macro">Astra 控制中心许可要求</block>
-  <block id="b488bebfd7a3a01cdcc54ea5856291cb" category="list-text">Astra Control Center 许可证。请参见 <block ref="fc4957629b78fc8c58b84966810cc78b" category="inline-link-macro-rx"></block>。</block>
   <block id="962a965cf88e3974508a49a177bfab16" category="inline-link-macro">满足 Astra 控制中心的要求</block>
-  <block id="432bc10b47ea475ecbbc50fb50d0978a" category="list-text"><block ref="cdf0380926240bc589ee0ad782ff731a" category="inline-link-macro-rx"></block>。</block>
   <block id="3a6435e71d5b3aaba8dfb2b39bf255c9" category="list-text">NetApp Cloud Central account</block>
   <block id="21b6348603465642d3b74890973e2947" category="list-text">AWS 凭据，访问 ID 和机密密钥，具有用于创建存储分段和连接器的权限</block>
   <block id="b9724bca640bb00ddfd17050c789c0c6" category="list-text">AWS 帐户弹性容器注册（ Elastic Container Registry ， ECR ）访问和登录</block>
@@ -1023,7 +1020,6 @@
   <block id="455960d50b151ff6ed28fa01f3d6356f" category="inline-link">AWS 安装文档</block>
   <block id="e874bd0f330d9513016dc844dfd62e6f" category="paragraph">按照 AWS 文档完成以下步骤。请参见<block ref="b5a7979c22035fe192b9eb8d0cab1e4a" category="inline-link-rx"></block>。</block>
   <block id="92d9212a67ec9da982a091cf92cb4347" category="list-text">查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。</block>
-  <block id="b881f78be517f5315cfb2d556f3448f7" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 <block ref="32be9c8362ea42075ea0b5d43bb3b5d0" category="inline-link-macro-rx"></block>。</block>
   <block id="b109e192f966bb3bb3e8cd30e1a59bfa" category="list-text">至少创建一个 AWS S3 存储分段来存储备份。</block>
   <block id="e5c5351f3ea6206a7f110205b4155acc" category="list-text">创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。</block>
   <block id="6da6782dc02c8e2ffb3f2eeb0c8f4f10" category="list-text">将这些 Accc 映像推送到您定义的注册表。</block>
@@ -1041,7 +1037,6 @@
   <block id="879166e5d3ed3d9886dcb671dee52d57" category="list-text">记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。</block>
   <block id="022f3cb861d350bac16e19b15e4f1f9c" category="admonition">Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 AWS 中运行的 HA 状态和节点部署状态。</block>
   <block id="d35cd0582def6a18a65ff02ce2d5ff77" category="inline-link-macro">Astra 控制中心安装说明</block>
-  <block id="1cb58fa5a8f36029f128e85d88276810" category="paragraph">请遵循标准 <block ref="ef8e47848fa28ef11d8d85ade3f221ee" category="inline-link-macro-rx"></block>。</block>
   <block id="4d9093ca668edda8a4b7f1d5efe8d4bd" category="section-title">在 Microsoft Azure 中部署 Astra 控制中心</block>
   <block id="7f18f262f0f4112be8239133aa15cff4" category="paragraph">您可以在 Microsoft Azure 公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。</block>
   <block id="0868fde25a786c798cfe63227a2e632c" category="paragraph">在 Azure 中部署 Astra 控制中心之前，您需要满足以下条件：</block>
@@ -1072,8 +1067,6 @@
   <block id="ac5af645cec8d25669a5a9893f571bcc" category="paragraph">请参见<block ref="47e48c38bbba09ad0234959e4f70e6b5" category="inline-link-rx"></block>。</block>
   <block id="ffe7dbf60b2fbe9ee35b02eca9bedb83" category="section-title">配置 Azure</block>
   <block id="d03589157dd63e1aaf5497955f5058f5" category="list-text">查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。</block>
-  <block id="b82f3e0352c4295f8db3114c4d861a92" category="inline-link-macro">Astra 控制中心要求</block>
-  <block id="8a803e817d15e18f4c26de7531681f8c" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 <block ref="69ebc365ae107089b5acea91d6e6ce3d" category="inline-link-macro-rx"></block>。</block>
   <block id="307374e80fc7db1b05d765029543d9c8" category="list-text">创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。</block>
   <block id="a9d92f56cc3dae134fc1ee53e8136378" category="list-text">创建存储分段访问所需的密钥。</block>
   <block id="7d8431378165cbd970da3a000187a79e" category="list-text">创建 Azure 容器注册表（ ACR ）以托管所有 Astra 控制中心映像。</block>
@@ -1089,9 +1082,7 @@
   <block id="882ed833487b96a9be53006e9ad9ffa5" category="list-text">键入： Cloud Volumes ONTAP HA 。</block>
   <block id="a4f1bc6952ef35fa4b362d48d0bae5cf" category="list-text">Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 Azure 中运行的 HA 状态和节点部署状态。</block>
   <block id="7586dbf5f3ac1a66383f6c201a17a341" category="inline-link-macro">安装说明</block>
-  <block id="5381969706e609f872c366c6e1a670a3" category="paragraph">按照标准安装 Astra 控制中心 <block ref="3dc99e8ac5a903068ed044215599aeeb" category="inline-link-macro-rx"></block>。</block>
   <block id="22a505b5cbfe40e35bb7fb0543690f0e" category="inline-link-macro">设置 Astra 控制中心并添加存储分段</block>
-  <block id="7a971c76db7e65f29d30288ac83cec37" category="paragraph">使用 Astra 控制中心添加 Azure 存储分段。请参见 <block ref="84c85bd9149d8879a472dbef331261f3" category="inline-link-macro-rx"></block>。</block>
   <block id="db199481bf6cf2d5e29909b07d83a660" category="summary">您可以选择安装 Astra Control Center 。</block>
   <block id="29a22a050bd07366c87409e65a0fd0cd" category="list-text"><block ref="29a22a050bd07366c87409e65a0fd0cd" category="inline-link-macro-rx"></block></block>
   <block id="883a74644c0071959dda599b0318b7ca" category="list-text">在任何要由 Astra Control 管理的应用程序集群上禁用 TKG 或 TKGi 默认存储类强制实施。为此，您可以编辑命名空间集群上的 `TanuKubernetes Cluster` 资源。</block>
@@ -1306,7 +1297,6 @@
   <block id="7baf29270925b2581439dadd21326420" category="list-text"><block ref="44b69c9ef9afbcb785098111df100723" category="inline-xref-macro-rx"></block></block>
   <block id="3266a93a7b63a8c6c37526e40a7dbcfc" category="section-title">定义要作为应用程序进行管理的资源</block>
   <block id="563818c781ab1eb635e013aa8f69b063" category="inline-link-macro">构成应用程序的Kubernetes资源</block>
-  <block id="36601193b249cfe8bc9e8a7e3ab3748b" category="paragraph">您可以指定 <block ref="94e1e30856d1b3d474ebefb4ba344d8b" category="inline-link-macro-rx"></block> 要使用Astra Control进行管理的。通过定义应用程序、您可以将Kubernetes集群中的元素分组到一个应用程序中。此Kubernetes资源集合按命名空间和标签选择器标准进行组织。</block>
   <block id="b5202d03441313e6d97a124668dc3249" category="paragraph">通过定义应用程序、您可以更精细地控制要包含在Astra Control操作中的内容、包括克隆、快照和备份。</block>
   <block id="3e88b428d08b8d89b8283702d678db03" category="list-text">从应用程序页面中、选择*定义*。</block>
   <block id="e2d8d6d70aac2542d44827bfcb764051" category="list-text">在*定义应用程序*窗口中、输入应用程序名称。</block>
@@ -1608,7 +1598,6 @@
   <block id="c578b94b33bf07e688365d51671b2a15" category="paragraph">按照GCP文档完成以下步骤。请参见在GCP中安装OpenShift集群。</block>
   <block id="70f9b4bc984c8a51ae2377e7357c3f9c" category="list-text">在GCP中创建一个GCP项目和VPC、该项目和VPC计划用于具有CVO后端的OCP集群。</block>
   <block id="79b77f6749b1fd6847f3c81051c1a461" category="list-text">查看计算实例。此服务器可以是GCP中的裸机服务器或VM。</block>
-  <block id="80400c768a12e5693e6fb733e0ac97a6" category="list-text">如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 <block ref="a41c664e3d2520e4c4deb907d0286272" category="inline-link-macro-rx"></block>。</block>
   <block id="84e3433d1da2695e582ef2f2de7e3312" category="list-text">至少创建一个GCP Cloud Storage Bucket以存储备份。</block>
   <block id="2dd9e1f422bf892345f5cec3f5b2b2c2" category="list-text">创建Google容器注册表以托管所有Astra控制中心映像。</block>
   <block id="033b1ecf3fb0416aaad3238723dff2c9" category="list-text">为所有Astra控制中心映像设置用于Docker推/拉的Google容器注册表访问权限。</block>
@@ -1636,7 +1625,6 @@
   <block id="1243c7149b271191003a5b7144418842" category="list-text">SnapMirror：可选。只有在使用SnapMirror技术复制到远程系统时才需要。请参见<block ref="35fcc11d8e33331eed4ebcd52f56173a" category="inline-link-rx"></block>。</block>
   <block id="12b8055741d62426337fd360f342bc4f" category="list-text">S3许可证：可选。只有ONTAP S3存储分段才需要</block>
   <block id="af0e614701190854322a2cbf66479b6f" category="inline-link">管理ONTAP 许可证</block>
-  <block id="f79830bec9b778f1cf3c950471bafb95" category="inline-link-macro">Astra控制中心功能</block>
   <block id="6db4db93a9c2608b2abfc46bb675e283" category="paragraph">要设置和管理Kubernetes应用程序、您可以使用Astra Control Center UI或Astra Control API。</block>
   <block id="996ae349b503c8bd355d8986597a6d49" category="paragraph">对于URL、在浏览器中、在安装Astra控制中心时、输入在Astra_control_center.YAML自定义资源(CR)文件的spec.astraAddress字段中设置的完全限定域名(FQDN)。电子邮件是您在Astra_control_center.YAML CR的spec.email字段中设置的值。</block>
   <block id="bda0a7ba5f9ad395d8fbd5eadadb95db" category="paragraph">* 我的应用程序使用多个 PV 。Astra Control是否会为这些PV创建快照和备份？*</block>
@@ -2016,7 +2004,6 @@
   <block id="f336f8b0ae53675b065c0d6186baab21" category="list-text">已添加到Astra Control的Kubernetes集群上的现有命名空间。</block>
   <block id="44e843a0117ca07fcd81196eb3d8ccca" category="list-text">(可选) Any上的Kubernetes标签 <block ref="35cac6ae488aa1ef0053c9b9d6c5461a" category="inline-link-macro-rx"></block>。</block>
   <block id="5024ae05715714a1f77019a1d3570662" category="inline-link-macro">修改具有命名空间限制的用户角色</block>
-  <block id="a43c92b1987868b5e14cb513230d1758" category="list-text">如果您计划在Astra Control中对应用程序使用多个命名空间、 <block ref="1285c07b4a10103552b4ca251af3682f" category="inline-link-macro-rx"></block> 升级到支持多命名空间的Astra Control Center版本后。</block>
   <block id="c4cb46a2957e787f5e4e5299782270f6" category="inline-xref">阅读示例中的更多内容。</block>
   <block id="e5d509b8ad96124cb3a6b0df8e2a6299" category="admonition">定义应用程序时、请确保不在具有保护策略的多个应用程序中包含Kubernetes资源。Kubernetes资源上重叠的保护策略可能会发生发生原因 数据冲突。 <block ref="e641e59a56328c9fa4038a349ab4087c" category="inline-xref-macro-rx"></block></block>
   <block id="86584cfcf6ac47eda80aaeeb3808d02b" category="paragraph">您不能排除Astra Control自动包含的任何集群范围的资源。</block>
@@ -2529,8 +2516,6 @@
   <block id="171433e2526efce8b1737d99d3009d01" category="paragraph">您可以使用NetApp Asta kubect命令行插件将映像推送到本地Docker存储库。</block>
   <block id="98016541b6bcbcde44d14e389d2de1c7" category="inline-link-macro">确保您已安装最新版本</block>
   <block id="facfdbaac18c6d5cc79696a2d9f83b3c" category="paragraph">如果您已从先前安装中安装了插件、 <block ref="5204d923de32c2f85273b21668cccfc3" category="inline-link-macro-rx"></block> 在完成这些步骤之前。</block>
-  <block id="26f4146beb059d78839181aff15a98e0" category="admonition">占位符<block ref="facf912114e23f5e3f2192e508b5894a" prefix=" " category="inline-code"></block> 应与您先前上传的映像的位置匹配(例如、<block ref="147d5bc425e907e8d0d5059c73d111dd" prefix=" " category="inline-code"></block>）。</block>
-  <block id="8ed96e019e1c613c2d6462c9d2df5228" category="cell"><block ref="fce24731ab09e877fbbef5b1b0c2f81f" prefix="" category="inline-code"></block></block>
   <block id="9b04595717abfabfd6d1f300254ee46d" category="cell">更改<block ref="78ec9b60245b46a4f05158076962ace9" prefix=" " category="inline-code"></block> 价值来自<block ref="e3bccceaf53ea80a4685ac9b974016f3" prefix=" " category="inline-code"></block> 另一个A作用 于安装所需的Astra三端存储类资源。运行命令<block ref="f7a6266d561ed7e94ff1f45bb43a2f5d" prefix=" " category="inline-code"></block> 以确定已配置的现有存储类。必须在清单文件中输入一个基于Astra三端的存储类 <block ref="a18a8eda5e9ff8aa5e2094148dafbb33" prefix="(" category="inline-code"></block>)、并将用于Astra PV。如果未设置、则会使用默认存储类。注意：如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。</block>
   <block id="9bf855be9033b0de8f79fd169a65b189" category="example-title">&lt;code&gt;scaleSize&lt;/code&gt;</block>
   <block id="990643f0b5bc141bd0437891aec59a8b" category="cell"><block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix="" category="inline-code"></block></block>
@@ -2554,7 +2539,6 @@
   <block id="f6a3d39ded3dc2a43b37e0af1cc54e54" category="list-text">对于上述命令返回的每个NetworkPolicy对象、请使用以下命令将其删除。将[object_name]替换为返回对象的名称：</block>
   <block id="2946ad5b585e25a6265a7c6cd68fddcf" category="list-text">请注意右上角的Asta三端版本。</block>
   <block id="0a8d6a85933f0f1967973d4753b4c395" category="paragraph">此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。</block>
-  <block id="1e9270e08207b5c7936ac24a81e7b095" category="paragraph">请参见 <block ref="f28f34e5e5f49b6efcb4b06ae1514632" category="inline-link-macro-rx"></block>。</block>
   <block id="8cf442a8f3b56c7c3499cf63b521ae93" category="paragraph">此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。</block>
   <block id="95194bdb953452cf1caaea66c45550d2" category="paragraph">首先验证操作环境，应用程序集群，应用程序，许可证和 Web 浏览器的就绪情况。确保您的环境满足这些要求、以部署和运行Astra Control Center。</block>
   <block id="be407666b46c45d6e81f1f55d83b1ebe" category="list-text"><block ref="ecfbbfdc2d87cbced20f30e05e0a78cc" category="inline-xref-macro-rx"></block></block>
@@ -2610,7 +2594,6 @@
   <block id="646e71de883359482601b2b06a9a799b" category="section-title">ONTAP 许可证</block>
   <block id="25f1b9b80430f180d844c37c0d1dd611" category="paragraph">您必须具有现有的私有Docker映像注册表、可以将Astra Control Center构建映像推送到该注册表中。您需要提供要将映像上传到的映像注册表的 URL 。</block>
   <block id="315bffcf2d808a710c1be00a7f5890ca" category="section-title">Asta Control Center许可证</block>
-  <block id="c6cd6c471555bdf8c2b0cd993805ad22" category="paragraph">Astra Control Center需要Astra Control Center许可证。安装Astra Control Center时、已激活4、800个CPU单元的嵌入式90天评估版许可证。如果您需要更多容量或不同的评估条款、或者要升级到完整许可证、则可以从NetApp获得不同的评估许可证或完整许可证。您需要一个许可证来保护应用程序和数据。请参见 <block ref="7fcc59b1843f920708fc18c7727f8745" category="inline-link-macro-rx"></block> 了解详细信息。</block>
   <block id="00411e483ab00aafe1621b371178684f" category="paragraph">您可以通过注册获取免费试用版来试用Astra Control Center。您可以通过注册进行注册 <block ref="40bbeef53dcd6be322547bd3e190782a" category="inline-link-macro-rx"></block>。</block>
   <block id="d0e9a63f3ba20cd7f503535539755175" category="paragraph">配置操作环境以确保Astra Control Center可以正确通信。需要以下网络配置：</block>
   <block id="79583a5fa84815eb392bad180a875a7d" category="list-text">*FQDN地址*:您必须拥有Astra Control Center的FQDN地址。</block>
@@ -2831,7 +2814,6 @@
   <block id="e9f8a964cfe8d148cfb0e30848e5fa69" category="admonition">您可以根据需要创建任意数量的资源包含和排除规则。这些规则将显示在启动操作之前的还原应用程序摘要中。</block>
   <block id="c54289096cda6c9fdce6630f9c6f8915" category="section-title">从ONTAP经济型存储迁移到ONTAP NAS存储</block>
   <block id="4b2c74380ba4764db896a5663121f69c" category="inline-link-macro">应用程序还原</block>
-  <block id="b92759a8cbd45e95d0289536b80bbf56" category="paragraph">您可以使用Astra控件 <block ref="8a5873c85b30e3ecf46411b2e0542bf9" category="inline-link-macro-rx"></block> 从支持的存储类迁移应用程序卷的操作<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>，允许对支持的存储类使用有限的应用程序保护选项<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> 提供全系列A作用 力控制保护选项。还原操作会迁移使用的基于qtree的卷<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 后端到由支持的标准卷<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>。卷、而不管它们是不是<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 仅备份或混合备份、将迁移到目标存储类。迁移完成后、保护选项将不再受限。</block>
   <block id="5ca4648f1bb1157edc69a1a2d478b1ec" category="section-title">如果某个应用程序与其他应用程序共享资源、则就地恢复会变得非常复杂</block>
   <block id="b9c5aa5f0760c46a33739ee66fcb84b7" category="paragraph">您可以对与其他应用共享资源并产生意外结果的应用程序执行原位还原操作。对其中一个应用程序执行原位还原时、这些应用程序之间共享的任何资源都会被替换。</block>
   <block id="76d6e00a16a4b5b026bf5cd77e765048" category="paragraph">以下示例情形会在使用NetApp SnapMirror复制进行还原时产生不希望出现的情况：</block>
@@ -2856,12 +2838,8 @@
   <block id="c8db55f1f82b638cb7198b184e6e5928" category="list-text">选择*已发现*选项。</block>
   <block id="e7fc419034767a406f96771bc7baa569" category="list-text">从“选项”菜单的“*操作*”列中，选择“*管理*”。</block>
   <block id="99ba824432d96de1a57be0f8b681d518" category="list-text">进行更改。</block>
-  <block id="4b81f371a950b4164e976fd95ff29363" category="admonition">如果您的应用使用由支持的存储类<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 驱动程序、无法使用保护策略。如果需要保护策略、请使用备用存储类。</block>
-  <block id="c1a51552670bd89a555dfc498d58f040" category="admonition">如果您的应用使用由支持的存储类<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 驱动程序、无法使用快照。为快照使用备用存储类。</block>
   <block id="070b3d3a153094a5ee57ed5e75530780" category="inline-link">Astra控制中心22.11文档</block>
   <block id="58f23be5f86622d0993f8478be889f05" category="list-text"><block ref="58f23be5f86622d0993f8478be889f05" category="inline-link-rx"></block></block>
-  <block id="f4431fb507c16341e3a99f8f031779bc" category="list-text"><block ref="f4431fb507c16341e3a99f8f031779bc" category="inline-link-macro-rx"></block></block>
-  <block id="8275cc29d67faf18fe540b46358fde84" category="list-text">输入Asta Control Center版本、例如23.04.0-22。</block>
   <block id="9c71eb65f92b7f4fbb85f88f644c6613" category="list-text">选择安装的可扩展大小。</block>
   <block id="f8ac7e69f7496989a600589a0a35ce94" category="admonition">默认情况下、Astra将使用高可用性(HA)<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 的<block ref="87f8a6ab85c9ced3702b4ea641ad4bb5" prefix=" " category="inline-code"></block>，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 作为<block ref="2660064e68655415da2628c2ae2f7592" prefix=" " category="inline-code"></block>A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。</block>
   <block id="9b846b7f30a8509224caa21eb61515be" category="list-text"><block ref="097c36d7e339c9c56e3325b9bd9b1890" category="inline-link-macro-rx"></block> 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。</block>
@@ -2882,4 +2860,52 @@
   <block id="d0848afd8553c34945705222a97a4553" category="paragraph">您应看到类似于以下内容的输出：</block>
   <block id="a01baa463ac1e6fef15fc9bb46970008" category="list-text">重新启动崩溃的Pod、更换<block ref="4e9cb364ac6a8e38c717de332e5ab544" prefix=" " category="inline-code"></block> 使用受影响POD的名称：</block>
   <block id="8698a79136323b081bc992e5c4a76411" category="list-text">确认POD已重新启动且未处于错误状态：</block>
+  <block id="fee805c99a52d5e0d8310f481585c349" category="paragraph">Astra Control Center需要Astra Control Center许可证。安装Astra Control Center时、已激活4、800个CPU单元的嵌入式90天评估版许可证。如果您需要更多容量或不同的评估条款、或者要升级到完整许可证、则可以从NetApp获得不同的评估许可证或完整许可证。您需要一个许可证来保护应用程序和数据。</block>
+  <block id="f1f90d86552f62434ab368655ada65bf" category="admonition">占位符<block ref="facf912114e23f5e3f2192e508b5894a" prefix=" " category="inline-code"></block> 应与您先前上传的映像的位置匹配(例如、<block ref="9d25f36f928ac74d96f680647f332dbe" prefix=" " category="inline-code"></block>）。</block>
+  <block id="934bb7959df7a88b3c9ec1d63747aa1b" category="cell"><block ref="f112ce7ab8899f4d86606a72f7fe081d" prefix="" category="inline-code"></block></block>
+  <block id="93cd878af59f865741137a58e05f2144" category="list-text">Astra Control Center 许可证。请参见 <block ref="9d8392b3d3d69d5854b01bcce1e67dcc" category="inline-link-macro-rx"></block>。</block>
+  <block id="7288e3952a556db34096b24b93385dc1" category="list-text"><block ref="c62908faf3447493ca66c05b06a828e1" category="inline-link-macro-rx"></block>。</block>
+  <block id="4231339cdb4dfc13c6b0eed298e2c3ed" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 <block ref="09f78935ac7c88e2178fe1d6a911634a" category="inline-link-macro-rx"></block>。</block>
+  <block id="e5517a467afb2d95f1d64912b2e0f6c0" category="paragraph">请遵循标准 <block ref="62ba019c882e8ef47d6d25ebcbcb2b75" category="inline-link-macro-rx"></block>。</block>
+  <block id="0ba39587ea86ef82dbfa624a5a1c23e1" category="list-text">如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 <block ref="09f78935ac7c88e2178fe1d6a911634a" category="inline-link-macro-rx"></block>。</block>
+  <block id="f2f0350406c1bdc0c1a8124fa3d6123d" category="paragraph">请参见 <block ref="d8e9010862e75ec2b8a867657011da93" category="inline-link-macro-rx"></block>。</block>
+  <block id="08f3193ed3d3e1e4eea12f65c3f8da59" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 <block ref="09f78935ac7c88e2178fe1d6a911634a" category="inline-link-macro-rx"></block>。</block>
+  <block id="677baadfa6fa8bc8c46459c6fa0cd3a1" category="paragraph">按照标准安装 Astra 控制中心 <block ref="b6ac4cfeef1c22bcb70d1621ddcd2c5f" category="inline-link-macro-rx"></block>。</block>
+  <block id="1225b0a363e426c053436d4be21d15d6" category="paragraph">使用 Astra 控制中心添加 Azure 存储分段。请参见 <block ref="89e4f3ed5a430daa461d5b5082fe9398" category="inline-link-macro-rx"></block>。</block>
+  <block id="d01bb03e88099369194f670cc934880d" category="list-text">输入Asta Control Center版本、例如23.04.2-7。</block>
+  <block id="dc9d2d10b22b9ec46b7f5c5aa778f8d4" category="list-text"><block ref="54dff5fba7d0e1b6a0d5e1b1616a1d91" category="inline-xref-macro-rx"></block></block>
+  <block id="0f8e8b596b378fec7ec9a60a322624c9" category="section-title">在从23.04升级到23.04.2的清除阶段之后、某些Pod会显示错误状态</block>
+  <block id="f48dc887cf479ce835ef8e2bce6d51b4" category="paragraph">升级到Astra Control Center 23.04.2后、某些Pod可能会在与相关的日志中显示错误<block ref="d48635051cf3e3bbf27ad6abca07abae" prefix=" " category="inline-code"></block>：</block>
+  <block id="adcb6f2c38c61918c42adaa1885c97e8" category="paragraph">此错误状态表示清理步骤未正确执行。已成功整体升级到23.04.2。运行以下命令以清理任务并删除错误状态：</block>
+  <block id="b37bd23859984896c3d3f841546dac73" category="section-title">2023年5月18日(23.04.2)</block>
+  <block id="d9464d9b156be28ce8802bc6d5f12d80" category="inline-link">Kubernetes CSI外部快照程序v6.1.0</block>
+  <block id="a16843a9cef62fd03908d0f2034b198a" category="paragraph">此修补程序版本(23.04.2)用于Astra Control Center (23.04.0)提供对的支持<block ref="9e98f82546df6be7f59de83a3fc62f08" category="inline-link-rx"></block> 并修复了以下问题：</block>
+  <block id="28c76783b8a39506949484919683e33a" category="list-text">使用执行挂钩时的原位应用程序还原错误</block>
+  <block id="9f1fbfbfc46f190c286a0f82a934ff86" category="list-text">存储分段服务存在连接问题</block>
+  <block id="d42b75fe19dabf326e6063949f271820" category="list-text"><block ref="d42b75fe19dabf326e6063949f271820" category="inline-link-macro-rx"></block></block>
+  <block id="15f99de9fca4a87464f86c86d87cfca2" category="list-text"><block ref="15f99de9fca4a87464f86c86d87cfca2" category="inline-link-macro-rx"></block></block>
+  <block id="665427957f63c3991e12d21b78eebbe5" category="list-text"><block ref="891e82a20a9e21c6525280edc929ce07" category="inline-xref-macro-rx"></block></block>
+  <block id="5a5355eda2f1cf003d25254ee2c311a3" category="section-title">使用某些Snapshot控制器版本的Kubernetes 1.25或更高版本集群的快照可能会失败</block>
+  <block id="4cacedb738b5537e9f99998854279c84" category="paragraph">如果在运行1.25或更高版本的Kubernetes集群上安装了v1beta1版本的快照控制器API、则该集群的快照可能会失败。</block>
+  <block id="2ad74d9f76ccccd37e4f9c6cb27f1cbd" category="paragraph">作为临时解决策 、在升级现有Kubernetes 1.25或更高版本的安装时、请执行以下操作：</block>
+  <block id="d5d53109cd766da789a263c6e2051051" category="list-text">删除任何现有的Snapshot CRD和任何现有的Snapshot控制器。</block>
+  <block id="43f17763173fe230bdd78477152f5f7d" category="inline-link">卸载 Astra Trident</block>
+  <block id="478393a7bc00211c00b84b91bd7270e1" category="list-text"><block ref="ae36d1cdd520df7c3eaefc0ce2deb814" category="inline-link-rx"></block>。</block>
+  <block id="a9b10c3e99be35f3f8a9c7dc7fadd754" category="inline-link">安装快照CRD和快照控制器</block>
+  <block id="fc49eec2e1350c70e0ee83082938896c" category="list-text"><block ref="40a914e8068809539f086034e13549c6" category="inline-link-rx"></block>。</block>
+  <block id="e5b001692c70f874108d4c3517741181" category="inline-link">安装最新版本的Astra Trdent</block>
+  <block id="a303c00b0d0d4a1b4adf9ac86b7be2cc" category="list-text"><block ref="6b04d2c2cadce52e000fe64978797f65" category="inline-link-rx"></block>。</block>
+  <block id="48d0b044dd9368b2691ff16393a31d86" category="inline-link">创建卷快照类</block>
+  <block id="0fa487fe8680011a1e8590273692a729" category="list-text"><block ref="7780c580e1dcefaf97af849cafb81d68" category="inline-link-rx"></block>。</block>
+  <block id="03c93e76d1da3f91157a4ff3e62f2e96" category="inline-link-macro">Astra Control Center的通知23.04.1</block>
+  <block id="13d17b4f7df69833bce96d36f023a8e6" category="list-text"><block ref="13d17b4f7df69833bce96d36f023a8e6" category="inline-link-macro-rx"></block></block>
+  <block id="8ffc20042a078d24d744309f9d7244d1" category="inline-link-macro">Astra Control Center的通知23.04.2</block>
+  <block id="cd7ec3ea252e4bdb4b19d7d7757c6550" category="list-text"><block ref="cd7ec3ea252e4bdb4b19d7d7757c6550" category="inline-link-macro-rx"></block></block>
+  <block id="7b7d629ee3a588d6b640e7a6fda185b4" category="admonition">如果您的应用使用由支持的存储类<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 驱动程序、无法使用保护策略。如果要计划备份和快照、请迁移到Asta Control支持的存储类。</block>
+  <block id="f48fcbd3913b071dd3dde66b31c0287b" category="admonition">如果您的应用使用由支持的存储类<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 驱动程序、无法创建快照。为快照使用备用存储类。</block>
+  <block id="76b712662caf9fbe541b9d649fa54d92" category="list-text">如果您计划在Astra Control中对应用程序使用多个命名空间、 <block ref="f6af6b7c10e981a9dabaa6d78121021d" category="inline-link-macro-rx"></block> 升级到支持多命名空间的Astra Control Center版本后。</block>
+  <block id="10bfff3333d286348ab49dd4a34016c2" category="paragraph">您可以指定 <block ref="a8d926c4017c694588fa4dcb4d7e2733" category="inline-link-macro-rx"></block> 要使用Astra Control进行管理的。通过定义应用程序、您可以将Kubernetes集群中的元素分组到一个应用程序中。此Kubernetes资源集合按命名空间和标签选择器标准进行组织。</block>
+  <block id="41a4570187d06828a974d60a4651a66b" category="admonition">您可以将应用程序的存储类迁移到本机云提供商存储类或其他受支持的存储类、 <block ref="f8d9b94d50b5e98113fcda35456f34c9" category="inline-link-macro-rx"></block> 存储类<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> 在同一集群上、或者将应用程序复制到存储类由支持的另一集群<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 驱动程序。</block>
+  <block id="9e3a6ce1ccfacb25ac629fb54543636a" category="inline-link-macro">应用程序克隆</block>
+  <block id="90ad44e959c6022cbe5ffd18d92a13f4" category="paragraph">您可以使用Astra控件 <block ref="8a5873c85b30e3ecf46411b2e0542bf9" category="inline-link-macro-rx"></block> 或 <block ref="4fe412ff620daeb2de5c384ec9480b70" category="inline-link-macro-rx"></block> 从支持的存储类迁移应用程序卷的操作<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>，允许对支持的存储类使用有限的应用程序保护选项<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> 提供全系列A作用 力控制保护选项。克隆或还原操作会迁移使用的基于qtree的卷<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 后端到由支持的标准卷<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>。卷、而不管它们是不是<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 仅备份或混合备份、将迁移到目标存储类。迁移完成后、保护选项将不再受限。</block>
 </blocks>

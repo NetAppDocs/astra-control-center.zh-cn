@@ -169,7 +169,7 @@ TIP: 您可以根据需要创建任意数量的资源包含和排除规则。这
 
 == 从ONTAP经济型存储迁移到ONTAP NAS存储
 
-您可以使用Astra控件 link:../use/restore-apps.html["应用程序还原"] 从支持的存储类迁移应用程序卷的操作 `ontap-nas-economy`，允许对支持的存储类使用有限的应用程序保护选项 `ontap-nas` 提供全系列A作用 力控制保护选项。还原操作会迁移使用的基于qtree的卷 `ontap-nas-economy` 后端到由支持的标准卷 `ontap-nas`。卷、而不管它们是不是 `ontap-nas-economy` 仅备份或混合备份、将迁移到目标存储类。迁移完成后、保护选项将不再受限。
+您可以使用Astra控件 link:../use/restore-apps.html["应用程序还原"] 或 link:../use/clone-apps.html["应用程序克隆"^] 从支持的存储类迁移应用程序卷的操作 `ontap-nas-economy`，允许对支持的存储类使用有限的应用程序保护选项 `ontap-nas` 提供全系列A作用 力控制保护选项。克隆或还原操作会迁移使用的基于qtree的卷 `ontap-nas-economy` 后端到由支持的标准卷 `ontap-nas`。卷、而不管它们是不是 `ontap-nas-economy` 仅备份或混合备份、将迁移到目标存储类。迁移完成后、保护选项将不再受限。
 
 
 

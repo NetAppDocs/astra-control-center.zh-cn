@@ -16,6 +16,16 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 
 
 
+== 2023年5月18日(23.04.2)
+
+此修补程序版本(23.04.2)用于Astra Control Center (23.04.0)提供对的支持 https://newreleases.io/project/github/kubernetes-csi/external-snapshotter/release/v6.1.0["Kubernetes CSI外部快照程序v6.1.0"^] 并修复了以下问题：
+
+* 使用执行挂钩时的原位应用程序还原错误
+* 存储分段服务存在连接问题
+
+
+
+
 == 2023年4月25日(23.04.0)
 
 .新增功能和支持
@@ -25,6 +35,11 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 * 
 * link:../use/restore-apps.html#filter-resources-during-an-application-restore["支持在还原操作期间包括或排除应用程序资源"^]
 * link:../use/manage-apps.html["支持管理纯数据应用程序"]
+
+
+.已知问题和限制
+* link:../release-notes/known-issues.html["此版本的已知问题"^]
+* link:../release-notes/known-limitations.html["此版本的已知限制"^]
 
 
 

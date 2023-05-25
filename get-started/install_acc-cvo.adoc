@@ -37,8 +37,8 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 在 AWS 中部署 Astra 控制中心之前，您需要满足以下条件：
 
-* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
-* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
 * NetApp Cloud Central account
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
 * AWS 凭据，访问 ID 和机密密钥，具有用于创建存储分段和连接器的权限
@@ -155,7 +155,7 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 
 . 创建AWS虚拟网络。
 . 查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。
-. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 link:../requirements.html["Astra 控制中心要求"]。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个 AWS S3 存储分段来存储备份。
 . 创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。
 +
@@ -214,7 +214,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用�
 
 === 安装适用于AWS的Astra控制中心
 
-请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
+请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"^]。
 
 
 NOTE: AWS使用通用S3存储分段类型。
@@ -231,8 +231,8 @@ NOTE: AWS使用通用S3存储分段类型。
 
 在GCP中部署Astra控制中心之前、您需要满足以下条件：
 
-* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
-* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
 * NetApp Cloud Central account
 * 如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.10
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
@@ -356,7 +356,7 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 
 . 在GCP中创建一个GCP项目和VPC、该项目和VPC计划用于具有CVO后端的OCP集群。
 . 查看计算实例。此服务器可以是GCP中的裸机服务器或VM。
-. 如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
+. 如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个GCP Cloud Storage Bucket以存储备份。
 . 创建存储分段访问所需的密钥。
 . 创建Google容器注册表以托管所有Astra控制中心映像。
@@ -442,7 +442,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行、也可以在高可用�
 
 === 安装适用于GCP的Astra控制中心
 
-请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
+请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"^]。
 
 
 NOTE: GCP使用通用S3存储分段类型。
@@ -467,8 +467,8 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 在 Azure 中部署 Astra 控制中心之前，您需要满足以下条件：
 
-* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
-* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
 * NetApp Cloud Central account
 * 如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.8
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
@@ -483,7 +483,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 除了环境的资源要求之外， Astra 控制中心还需要以下资源：
 
-请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"]。
+请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"^]。
 
 [cols="1h,2a"]
 |===
@@ -593,7 +593,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 . 创建Azure虚拟网络。
 . 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
-. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个Azure Blob容器以存储备份。
 . 创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。
 . 创建存储分段访问所需的密钥。
@@ -684,6 +684,6 @@ image:acc-cvo-azure-connected.png["此图显示了BlueXP中已导入的集群"]
 
 === 安装和配置适用于Azure的Astra控制中心
 
-按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"]。
+按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"^]。
 
-使用 Astra 控制中心添加 Azure 存储分段。请参见 link:../get-started/setup_overview.html["设置 Astra 控制中心并添加存储分段"]。
+使用 Astra 控制中心添加 Azure 存储分段。请参见 link:../get-started/setup_overview.html["设置 Astra 控制中心并添加存储分段"^]。

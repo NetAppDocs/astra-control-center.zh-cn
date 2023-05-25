@@ -144,7 +144,7 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 == Asta Control Center许可证
 
-Astra Control Center需要Astra Control Center许可证。安装Astra Control Center时、已激活4、800个CPU单元的嵌入式90天评估版许可证。如果您需要更多容量或不同的评估条款、或者要升级到完整许可证、则可以从NetApp获得不同的评估许可证或完整许可证。您需要一个许可证来保护应用程序和数据。请参见 link:../concepts/intro.html["Astra控制中心功能"] 了解详细信息。
+Astra Control Center需要Astra Control Center许可证。安装Astra Control Center时、已激活4、800个CPU单元的嵌入式90天评估版许可证。如果您需要更多容量或不同的评估条款、或者要升级到完整许可证、则可以从NetApp获得不同的评估许可证或完整许可证。您需要一个许可证来保护应用程序和数据。
 
 您可以通过注册获取免费试用版来试用Astra Control Center。您可以通过注册进行注册 link:https://bluexp.netapp.com/astra-register["此处"^]。
 

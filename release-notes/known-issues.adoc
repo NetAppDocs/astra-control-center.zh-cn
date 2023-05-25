@@ -28,6 +28,7 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 .集群
 * <<如果默认的 kubeconfig 文件包含多个上下文，则使用 Astra 控制中心管理集群将失败>>
 * <<升级到Astra Control Center 23.04后、某些Pod无法启动>>
+* <<在从23.04升级到23.04.2的清除阶段之后、某些Pod会显示错误状态>>
 * <<在Isio环境中、监控POD可能会崩溃>>
 
 
@@ -100,6 +101,24 @@ kubectl delete pod pcloud-astra-control-center-au-pod-0 -n <namespace>
 ----
 
 
+
+
+== 在从23.04升级到23.04.2的清除阶段之后、某些Pod会显示错误状态
+
+升级到Astra Control Center 23.04.2后、某些Pod可能会在与相关的日志中显示错误 `task-service-task-purge`：
+
+[listing]
+----
+kubectl get all -n netapp-acc -o wide|grep purge
+
+pod/task-service-task-purge-28282828-ab1cd     0/1     Error       0             48m     10.111.0.111   openshift-clstr-ol-07-zwlj8-worker-jhp2b   <none>           <none>
+----
+此错误状态表示清理步骤未正确执行。已成功整体升级到23.04.2。运行以下命令以清理任务并删除错误状态：
+
+[listing]
+----
+kubectl delete job task-service-task-purge-[system-generated task ID] -n <netapp-acc or custom namespace>
+----
 
 
 == 在Isio环境中、监控POD可能会崩溃
