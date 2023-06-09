@@ -150,7 +150,7 @@ Astra Control Center需要Astra Control Center许可证。安装Astra Control Ce
 
 要设置许可证、请参见 link:setup_overview.html["使用 90 天评估许可证"^]。
 
-要了解有关许可证工作原理的详细信息，请参见 link:../concepts/licensing.html["许可"^]。
+要了解有关许可证工作原理的详细信息、请参见 link:../concepts/licensing.html["许可"^]。
 
 
 

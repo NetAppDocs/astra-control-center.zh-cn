@@ -155,7 +155,7 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 
 . 创建AWS虚拟网络。
 . 查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。
-. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个 AWS S3 存储分段来存储备份。
 . 创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。
 +
@@ -593,7 +593,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 . 创建Azure虚拟网络。
 . 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
-. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个Azure Blob容器以存储备份。
 . 创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。
 . 创建存储分段访问所需的密钥。

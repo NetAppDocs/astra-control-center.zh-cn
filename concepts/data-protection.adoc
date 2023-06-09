@@ -50,7 +50,7 @@ Astra Control异步将应用程序Snapshot副本复制到远程集群。复制�
 
 应用程序复制与应用程序备份和还原在以下方面有所不同：
 
-* *应用程序复制*：Astra Control要求源和目标Kubernetes集群可用并进行管理、并将其各自的ONTAP 存储后端配置为启用NetApp SnapMirror。Astra Control会获取策略驱动型应用程序Snapshot并将其复制到远程集群。NetApp SnapMirror技术用于复制永久性卷数据。要进行故障转移、Astra Control可以在目标Kubernetes集群上重新创建应用程序对象、并在目标ONTAP 集群上创建复制的卷、从而使复制的应用程序联机。由于目标ONTAP 集群上已存在永久性卷数据、因此Astra Control可以为故障转移提供快速恢复时间。
+* *应用程序复制*：Astra Control要求源和目标Kubernetes集群可用并进行管理、并将其各自的ONTAP存储后端配置为启用NetApp SnapMirror。Asta Control创建策略驱动型应用程序Snapshot并将其复制到远程集群。NetApp SnapMirror技术用于复制永久性卷数据。要进行故障转移、Astra Control可以在目标Kubernetes集群上重新创建应用程序对象、并在目标ONTAP 集群上创建复制的卷、从而使复制的应用程序联机。由于目标ONTAP集群上已存在永久性卷数据、因此Astra Control可以为故障转移提供快速恢复时间。
 * *应用程序备份和还原*：在备份应用程序时、Astra Control会为应用程序数据创建Snapshot并将其存储在对象存储分段中。需要还原时、必须将存储分段中的数据复制到ONTAP 集群上的永久性卷。备份/还原操作不要求二级Kubernetes或ONTAP集群可用并进行管理、但额外的数据复制可能会导致还原时间较长。
 
 
@@ -62,7 +62,7 @@ Astra Control异步将应用程序Snapshot副本复制到远程集群。复制�
 
 image:acc-backup_4in.png["此图显示了使用S3存储分段的两个Kubernetes集群之间的计划备份和还原"]
 
-另一方面、复制是通过复制到ONTAP 来完成的、然后故障转移将创建Kubernetes资源：
+另一方面、复制是通过复制到ONTAP来完成的、然后故障转移会创建Kubrenetes资源：
 
 image:acc-replication_4in.png["此图显示了两个Kubernetes集群和两个ONTAP 集群之间的复制和故障转移"]
 

@@ -43,36 +43,47 @@ NOTE: 您可以同时按相反方向复制另一个应用程序(在另一个集�
 
 == 复制前提条件
 
-Astra Control应用程序复制要求在开始之前必须满足以下前提条件：
+Astra Control应用程序复制要求在开始之前满足以下前提条件：
 
-* 为了实现无缝灾难恢复、我们建议您在第三个故障域或二级站点中部署Astra控制中心。
-* 应用程序的主机Kubernetes集群和目标Kubernetes集群必须与其ONTAP 集群一起进行管理、最好在不同的故障域或站点进行管理。
-* ONTAP 集群和主机SVM必须已配对。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^]。
-* 配对的远程SVM必须可供目标集群上的Astra Trident使用。
-* 源和目标ONTAP 集群上必须同时存在Astra Trident 22.07或更高版本。
-* 必须在源和目标ONTAP 集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^]。
-* 将ONTAP 存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
-* 源和目标Kubernetes集群以及ONTAP 集群都必须由Astra Control进行管理。
+* * ONTAP集群*：
++
+** *Trident*：使用ONTAP作为后端的源和目标Kubernetes集群上必须同时存在Astra Drident版本22.07或更高版本。
+** *许可证*：必须在源和目标ONTAP集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^] 有关详细信息 ...
+
+
+* *配对*：
++
+** *集群和SVM*：ONTAP集群和主机SVM必须配对。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^] 有关详细信息 ...
+** *三 端到端和SVM*：配对的远程SVM必须可供目标集群上的Astra三端到端使用。
+
+
+* *Astra控制中心*：
 +
 
-NOTE: 您可以同时按相反方向复制另一个应用程序(在另一个集群或站点上运行)。例如、应用程序A、B、C可以从数据中心1复制到数据中心2；应用程序X、Y、Z可以从数据中心2复制到数据中心1。
+TIP: link:../get-started/install_acc.html["部署Asta Control Center"^] 在第三个故障域或二级站点中、以实现无缝灾难恢复。
 
-* * 天文学 Trident / ONTAP 配置 * ：天文学控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持由Astra Trident提供的以下ONTAP 驱动程序进行复制：
 +
-** ontap-NAS
-** ONTAP—NAS经济型(Asta Control的SnapMirror复制功能不适用于此存储类)
-** ontap-san
+** *受管集群*：必须将以下集群添加到Astra Control并由Astra Control进行管理、最好是在不同的故障域或站点上：
++
+*** 源Kubbernetes集群
+*** 目标Kubbernetes集群
+*** 关联的ONTAP集群
+
+
+** *用户帐户*：将ONTAP存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据。此角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+
+
+* *Astra三端/ ONTAP配置*：Astra控制中心要求您至少配置一个支持源集群和目标集群复制的存储类。
 
 
 
-
-了解操作方法 link:../use/replicate_snapmirror.html["使用SnapMirror技术将应用程序复制到远程系统"^]。
+IMPORTANT: Astra Control复制支持使用单个存储类的应用程序。将应用程序添加到命名空间时、请确保该应用程序与命名空间中的其他应用程序具有相同的存储类。向复制的应用程序添加PVC时、请确保新PVC与命名空间中的其他PVC具有相同的存储类。
 
 
 
 == 设置复制关系
 
-设置复制关系涉及到构成复制策略的以下内容；
+设置复制关系涉及以下方面：
 
 * 选择Astra Control创建应用程序快照的频率(包括应用程序的Kubernetes资源以及应用程序每个卷的卷快照)
 * 选择复制计划(包括Kubernetes资源以及永久性卷数据)
@@ -108,7 +119,7 @@ Astra Control会创建用于复制的应用程序Snapshot。
 
 . 要查看应用程序Snapshot状态、请选择*应用程序*>*快照*选项卡。
 +
-Snapshot名称使用"replication-schedule-<string>"格式。Astra Control会保留用于复制的最后一个Snapshot。成功完成复制后、所有较早的复制Snapshot都会被删除。
+Snapshot名称使用的格式 `replication-schedule-<string>`。Astra Control会保留用于复制的最后一个Snapshot。成功完成复制后、所有较早的复制Snapshot都会被删除。
 
 
 
@@ -133,7 +144,7 @@ Snapshot名称使用"replication-schedule-<string>"格式。Astra Control会保�
 
 == 在目标集群上使复制的应用程序联机(故障转移)
 
-使用Astra Control、您可以将复制的应用程序"故障转移"到目标集群。此操作步骤 将停止复制关系并使应用程序在目标集群上联机。如果应用程序正常运行、则此操作步骤 不会停止源集群上的应用程序。
+使用Astra Control、您可以将复制的应用程序故障转移到目标集群。此操作步骤 将停止复制关系并使应用程序在目标集群上联机。如果应用程序正常运行、则此操作步骤 不会停止源集群上的应用程序。
 
 .步骤
 . 从Astra Control左侧导航栏中、选择*应用程序*。
@@ -143,7 +154,7 @@ Snapshot名称使用"replication-schedule-<string>"格式。Astra Control会保�
 
 
 .结果
-故障转移操作步骤 会执行以下操作：
+故障转移操作步骤后会执行以下操作：
 
 * 在目标集群上、应用程序将基于最新复制的快照启动。
 * 源集群和应用程序(如果运行正常)不会停止、并且将继续运行。
@@ -215,7 +226,7 @@ CAUTION: 请仔细选择重新同步源、因为目标上的数据将被覆盖�
 
 == 将应用程序故障恢复到原始源集群
 
-使用Astra Control、您可以通过以下操作序列在"故障转移"操作后实现"故障恢复"。在此恢复原始复制方向的工作流中、Astra Control会将所有应用程序更改复制(重新同步)回原始源集群、然后再反转复制方向。
+使用Astra Control、您可以通过以下操作序列在故障转移操作后实现"故障恢复"。在此恢复原始复制方向的工作流中、Astra Control会将所有应用程序更改复制(重新同步)回原始源集群、然后再反转复制方向。
 
 此过程从已完成故障转移到目标的关系开始、涉及以下步骤：
 
@@ -228,7 +239,7 @@ CAUTION: 请仔细选择重新同步源、因为目标上的数据将被覆盖�
 . 从Astra Control左侧导航栏中、选择*应用程序*。
 . 在应用程序页面中、选择*数据保护*>*复制*选项卡。
 . 在"Data Protection">"Replication"选项卡中、从"Actions"菜单中选择*重新同步*。
-. 对于故障恢复操作、请选择故障转移应用程序作为重新同步操作的源(保留故障转移后写入的任何数据)。
+. 对于故障恢复操作、请选择故障转移应用程序作为重新同步操作的源(在故障转移后保留写入的任何数据)。
 . 键入"resync-"进行确认。
 . 选择*是、重新同步*以完成。
 . 重新同步完成后、在"Data Protection">"Replication"选项卡中、从"Actions"菜单中选择*反向复制*。

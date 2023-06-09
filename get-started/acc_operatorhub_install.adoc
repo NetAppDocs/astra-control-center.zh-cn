@@ -301,7 +301,7 @@ Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并�
 
 +
 
-NOTE: 有关 "loadbalancer" 服务类型和入口的详细信息，请参见 link:../get-started/requirements.html["要求"^]。
+NOTE: 有关"负载平衡器"和传入服务类型的详细信息、请参见 link:../get-started/requirements.html["要求"^]。
 
 
 

@@ -32,7 +32,7 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 * link:../concepts/licensing.html["默认情况下、新Astra Control Center安装启用了90天评估许可证"^]
 * link:../use/execution-hooks.html["增强的执行挂钩功能以及其他筛选选项"^]
 * link:../use/execution-hooks.html["现在、可以使用Asta Control Center在复制故障转移后运行执行挂钩"^]
-* 
+* link:../use/restore-apps.html#migrate-from-ontap-nas-economy-storage-to-ontap-nas-storage["支持将卷从"ONTAP - NAS经济型存储"类迁移到"ONTAP - NAS "存储类"^]
 * link:../use/restore-apps.html#filter-resources-during-an-application-restore["支持在还原操作期间包括或排除应用程序资源"^]
 * link:../use/manage-apps.html["支持管理纯数据应用程序"]
 
