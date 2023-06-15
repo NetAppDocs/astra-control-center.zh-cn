@@ -15,7 +15,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 下面简要介绍了开始使用Astra控制中心所需的步骤。每个步骤中的链接将转到一个页面，其中提供了更多详细信息。
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一个"] 查看 Kubernetes 集群要求
-确保您的环境满足这些要求。
+确保您的环境满足以下要求：
 
 * Kubernetes集群*
 
@@ -39,12 +39,12 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 下载并安装Astra控制中心
-完成这些安装任务。
+完成以下安装任务：
 
 * https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["从NetApp 支持站点 下载页面下载Astra控制中心"^]
 * 获取NetApp许可证文件：
 +
-** 如果您正在评估Astra Control Center、则已包含嵌入式评估许可证。
+** 如果您正在评估Astra Control Center、则已包含嵌入式评估许可证
 ** link:../concepts/licensing.html["如果您已购买Astra Control Center、请生成许可证文件"^]
 
 
@@ -53,7 +53,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三个"] 完成一些初始设置任务
-完成一些基本任务以开始使用。
+完成一些基本任务以开始使用：
 
 * link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["添加许可证"^]
 * link:../get-started/setup_overview.html#prepare-your-environment-for-cluster-management-using-astra-control["准备用于集群管理的环境"^]
@@ -63,11 +63,11 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"] 使用 Astra 控制中心
-设置完Astra控制中心后、您接下来可以执行以下操作。您可以使用Astra Control用户界面(UI)或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^]。
+完成Asta Control Center设置后、请使用Asta Control UI或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 要开始管理和保护应用程序、请执行以下操作：
 
-* link:../use/manage-apps.html["管理应用程序"^]
+* link:../use/manage-apps.html["管理应用程序"^]：定义要管理的资源。
 * link:../use/protection-overview.html["保护应用程序"^]：配置保护策略以及复制、克隆和迁移应用程序。
-* link:../use/manage-local-users-and-roles.html["管理帐户"^]：用户、角色、LDAP、凭据等
+* link:../use/manage-local-users-and-roles.html["管理帐户"^]：用户、角色、LDAP、凭据等。
 * link:../use/monitor-protect.html#connect-to-cloud-insights["(可选)连接到Cloud Insights"^]：查看有关系统运行状况的指标。
 
 

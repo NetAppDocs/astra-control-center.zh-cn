@@ -308,7 +308,6 @@
   <block id="b8f3bc1c4097cf013ff9bb82ec30af2e" category="section-title">支持的应用程序安装方法</block>
   <block id="a90a8c7f23b615986d59344298e29223" category="paragraph">Astra Control 支持以下应用程序安装方法：</block>
   <block id="1633320139361ee32414ab0910725238" category="list-text">* 清单文件 * ： Astra Control 支持使用 kubectl 从清单文件安装的应用程序。例如：</block>
-  <block id="a117e5ae155bb69285242a4c89875dd6" category="list-text">* Helm 3* ：如果使用 Helm 安装应用程序，则 Astra Control 需要 Helm 版本 3 。完全支持管理和克隆随 Helm 3 安装的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持管理随 Helm 2 安装的应用程序。</block>
   <block id="262c2c7b16c416e39567678b2dfa52c1" category="section-title">在集群上安装应用程序</block>
   <block id="0fae08f8fcd64cec619ae5065fc2aa88" category="section-title">管理应用程序</block>
   <block id="eeda690c7ce6ed8c1c0aa2b723a685bf" category="inline-link-macro">Astra Automation 和 API 信息</block>
@@ -1269,7 +1268,6 @@
   <block id="091880150353e9b5462ebfe9e5007deb" category="list-text">按名称删除限制范围：</block>
   <block id="5fed03116ab579cfabba1dfd68c70bab" category="inline-link">适用于Astra的NetApp知识库</block>
   <block id="721ed1f27b3163d26010e9d99872bd47" category="summary">将Kubernetes集群添加到Astra Control后、您可以在该集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的"Applications"页面开始管理这些应用程序。</block>
-  <block id="456907dc64f076d8c8ed113ea6a4ac8f" category="list-text">*操作员部署的应用程序*：Astra Control支持使用命名空间范围的操作员安装的应用程序、这些应用程序通常采用"按价值传递"而不是"按参考传递"架构设计。操作员及其安装的应用程序必须使用相同的命名空间；您可能需要为操作员修改部署 .yaml 文件，以确保情况确实如此。</block>
   <block id="be4629edbb6c58ee13cd278ee7ec5a4f" category="paragraph">以下是一些遵循这些模式的操作员应用程序：</block>
   <block id="8cff84c3972d27d6ae049edd6c88a417" category="inline-link-macro">已添加集群</block>
   <block id="b925c8597a323502e4cdfe7a75f013d4" category="admonition">例如、您可能希望为"Maria"设置一个每周节奏的备份策略、但您可能需要比该策略更频繁地备份"MariaDB"(位于同一命名空间中)。根据这些需求、您需要单独管理这些应用程序、而不是作为单命名空间应用程序来管理。</block>
@@ -2134,7 +2132,6 @@
   <block id="9ad3989601b59e755170866a5329554c" category="list-text"><block ref="9ad3989601b59e755170866a5329554c" category="inline-link-rx"></block></block>
   <block id="53c5fac0ba78b08ca3f0a270b746c5d2" category="section-title">重置其他用户的密码</block>
   <block id="f83cc958d14f90620b7ffdf9923fe440" category="list-text">复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读/写API访问令牌密钥权限、请选择：数据载入、日志载入、采集单元和数据收集。</block>
-  <block id="a8a5da0c5d62ec5f7225e0ce27261da7" category="paragraph">确保您的环境满足这些要求。</block>
   <block id="b5233b1e8c04e10566734b9cecfc92b1" category="paragraph">* Kubernetes集群*</block>
   <block id="9075e632fc6c099653c3c60ce5f635c5" category="inline-link-macro">为内部Kubernetes集群的负载平衡配置传入</block>
   <block id="737d5c48f1830eb81614b8f6e0e6b6cc" category="list-text"><block ref="737d5c48f1830eb81614b8f6e0e6b6cc" category="inline-link-macro-rx"></block></block>
@@ -2147,13 +2144,11 @@
   <block id="ae0a6f81e3ab19bb5bb4cc16ba804b6d" category="paragraph">* ONTAP 凭据*</block>
   <block id="cff9e873ecc35abb358c9f43ad1d3dcf" category="inline-link-macro">配置ONTAP 凭据</block>
   <block id="27912e4366edb4ee86aa373395b590f5" category="list-text"><block ref="27912e4366edb4ee86aa373395b590f5" category="inline-link-macro-rx"></block></block>
-  <block id="7ae94f3e29fb1789e466d68ff3b7719d" category="paragraph">完成这些安装任务。</block>
   <block id="fbc059a4c4dca73352b8c2d2b522c031" category="inline-link-macro">如果您已购买Astra Control Center、请生成许可证文件</block>
   <block id="d3e8fd495d55bcc11d404a5401147b55" category="list-text"><block ref="d3e8fd495d55bcc11d404a5401147b55" category="inline-link-macro-rx"></block></block>
   <block id="28d87c90870047c51935e011ce5611a2" category="list-text"><block ref="28d87c90870047c51935e011ce5611a2" category="inline-link-macro-rx"></block></block>
   <block id="50fd68f173baa5875cfb4c4f956ed966" category="inline-link-macro">执行其他可选配置步骤</block>
   <block id="8a2d0b5d3ae0c64a9bbd6f907fdd49a9" category="list-text"><block ref="8a2d0b5d3ae0c64a9bbd6f907fdd49a9" category="inline-link-macro-rx"></block></block>
-  <block id="fc902c0e2ec2761be704bc86d6da6195" category="paragraph">完成一些基本任务以开始使用。</block>
   <block id="ec01ce5d7a75843507cddc0f1e980f6a" category="inline-link-macro">添加许可证</block>
   <block id="9cd5bd1af078069458de7df94bbb3c5a" category="list-text"><block ref="9cd5bd1af078069458de7df94bbb3c5a" category="inline-link-macro-rx"></block></block>
   <block id="e615e4db7ab4de24645d9fa039b73e02" category="inline-link-macro">准备用于集群管理的环境</block>
@@ -2162,10 +2157,7 @@
   <block id="3020dd08728680c8a3e10602b33cd923" category="list-text"><block ref="3020dd08728680c8a3e10602b33cd923" category="inline-link-macro-rx"></block></block>
   <block id="8316c4ee552ed64f43cc8c5453b6dc90" category="list-text"><block ref="8316c4ee552ed64f43cc8c5453b6dc90" category="inline-link-macro-rx"></block></block>
   <block id="9e263ce7e6d16d802d4f5fdb961973cb" category="list-text"><block ref="9e263ce7e6d16d802d4f5fdb961973cb" category="inline-link-macro-rx"></block></block>
-  <block id="a06e11c328de2e8797a5126bacc41f4a" category="paragraph">设置完Astra控制中心后、您接下来可以执行以下操作。您可以使用Astra Control用户界面(UI)或<block ref="c076c843349c85837d82b7f2e26fe2bf" category="inline-link-rx"></block>。</block>
-  <block id="6fe79d58f8a8b720433194a3efe0f398" category="list-text"><block ref="6fe79d58f8a8b720433194a3efe0f398" category="inline-link-macro-rx"></block></block>
   <block id="ea0df431e9a218f5a0629b3821a462af" category="list-text"><block ref="a31feca3886e9400a923ff8b2642373f" category="inline-link-macro-rx"></block>：配置保护策略以及复制、克隆和迁移应用程序。</block>
-  <block id="a17247e8a3b531331724f69e1e71949a" category="list-text"><block ref="442a8ba322bd53d625de068878060461" category="inline-link-macro-rx"></block>：用户、角色、LDAP、凭据等</block>
   <block id="d9379e355ade43c04f76c0b075ef6732" category="inline-link-macro">(可选)连接到Cloud Insights</block>
   <block id="cd0049b5789664729fdfe7d5fc0b4f40" category="list-text"><block ref="bf4c77b3020a0bd5cc9fb63a5d3fb351" category="inline-link-macro-rx"></block>：查看有关系统运行状况的指标。</block>
   <block id="e84bb7e947a5b25481546110f575734a" category="list-text"><block ref="e84bb7e947a5b25481546110f575734a" category="inline-link-rx"></block></block>
@@ -2566,7 +2558,6 @@
   <block id="3881c3bffcc8a7541f238ffd9bd110e8" category="list-text"><block ref="3881c3bffcc8a7541f238ffd9bd110e8" category="inline-link-macro-rx"></block></block>
   <block id="f79c72229ccb3aeca03756bbe7324c9e" category="inline-link">从NetApp 支持站点 下载页面下载Astra控制中心</block>
   <block id="15dc068a0743eecccf27c4a805c80f21" category="list-text"><block ref="15dc068a0743eecccf27c4a805c80f21" category="inline-link-rx"></block></block>
-  <block id="b73cdf72d6d55064ddff88092ae6133b" category="list-text">如果您正在评估Astra Control Center、则已包含嵌入式评估许可证。</block>
   <block id="b076c1f761d0b92929621e81c3c931c3" category="summary">安装Astra Control Center、登录到UI并更改密码后、您需要设置许可证、添加集群、启用身份验证、管理存储以及添加存储分段。</block>
   <block id="9dff1d917a2ab55f9b011693f3edb2e6" category="list-text"><block ref="57bfe64ccef32c62c91778f81d22de6e" category="inline-xref-macro-rx"></block></block>
   <block id="9b9a4bad5c62667ce507fae6527af6a1" category="paragraph">安装Astra Control Center时、已安装嵌入式评估版许可证。如果您正在评估Astra Control Center、则可以跳过此步骤。</block>
@@ -2924,4 +2915,13 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="ef13295b074595a0d0b8611526c15d76" category="list-text">如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。  请参见 <block ref="09f78935ac7c88e2178fe1d6a911634a" category="inline-link-macro-rx"></block>。</block>
   <block id="e8322268b8f0ad7381af9899d339e2ff" category="paragraph">使用 Astra 控制中心添加 Azure 存储分段。请参见 <block ref="89e4f3ed5a430daa461d5b5082fe9398" category="inline-link-macro-rx"></block>。</block>
   <block id="94c24f2fdb5fcc8ac662287d8f22040b" category="admonition">有关"负载平衡器"和传入服务类型的详细信息、请参见 <block ref="f326683052260ae8ea69adae62a4336c" category="inline-link-macro-rx"></block>。</block>
+  <block id="d029da9201b0669cba4f3b93daf90afe" category="list-text">* Helm 3* ：如果使用 Helm 安装应用程序，则 Astra Control 需要 Helm 版本 3 。完全支持管理和克隆随 Helm 3 安装的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持管理随 Helm 2 安装的应用程序。</block>
+  <block id="fda2313c80662faccdf8a7b0c8a9d3a5" category="list-text">*操作员部署的应用程序*：Astra Control支持使用命名空间范围的操作符安装的应用程序，这些操作符通常采用"传递值"而不是"传递参考"架构设计。操作员及其安装的应用程序必须使用相同的命名空间；您可能需要为操作员修改部署YAML文件、以确保情况确实如此。</block>
+  <block id="ebe354daa850c07255922b36c38442da" category="paragraph">确保您的环境满足以下要求：</block>
+  <block id="48b5d328b123f4e05f5a4f65f897189d" category="paragraph">完成以下安装任务：</block>
+  <block id="838fcb8e71dcfbd66a61fc27b2cfb4cc" category="list-text">如果您正在评估Astra Control Center、则已包含嵌入式评估许可证</block>
+  <block id="2c6dff9a92bbcef6a5083cd35891c541" category="paragraph">完成一些基本任务以开始使用：</block>
+  <block id="0c39f9a137a0a9c47a6f520e25815ae4" category="paragraph">完成Asta Control Center设置后、请使用Asta Control UI或<block ref="c076c843349c85837d82b7f2e26fe2bf" category="inline-link-rx"></block> 要开始管理和保护应用程序、请执行以下操作：</block>
+  <block id="a104969737461afdb4fd0f2b1121cbf5" category="list-text"><block ref="6fe79d58f8a8b720433194a3efe0f398" category="inline-link-macro-rx"></block>：定义要管理的资源。</block>
+  <block id="caffc5ba1163dd0a5508fd1eae34a69c" category="list-text"><block ref="442a8ba322bd53d625de068878060461" category="inline-link-macro-rx"></block>：用户、角色、LDAP、凭据等。</block>
 </blocks>
