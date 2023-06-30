@@ -1855,7 +1855,6 @@
   <block id="9f2575c7294e3dcf402f9b05eaa5de17" category="list-text">在列表中的*操作*列中为云实例选择菜单。</block>
   <block id="071ef8ace6c74c9a1515550077974172" category="list-text">选择 * 编辑 * 。</block>
   <block id="b85164189cdb62d5e96f45c18758496b" category="list-text">在*分段*列表中、选择要用作默认分段的分段。</block>
-  <block id="dad130a6ad30a7802e5df566fbf9e7fc" category="list-text">*检查目标卷*：如果要还原到其他集群、请确保此集群使用相同的永久性卷访问模式(例如ReadWriteMany)。如果目标永久性卷访问模式不同，还原操作将失败。</block>
   <block id="2c51b9df5322dddc1dfcfd7ef670ac07" category="list-text">*(仅限OpenShift集群)添加策略*：在OpenShift集群上创建用于托管应用程序的项目时、系统会为该项目(或Kubernetes命名空间)分配一个SecurityContext UID。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。</block>
   <block id="8d7c216bc17d281838efafaa3704677b" category="list-text">选择还原类型：</block>
   <block id="90d21d98503ddae05ddf0a1a34b7d790" category="list-text">*还原到原始命名空间*：使用此操作步骤 将应用程序原位还原到原始集群。</block>
@@ -2924,4 +2923,7 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="0c39f9a137a0a9c47a6f520e25815ae4" category="paragraph">完成Asta Control Center设置后、请使用Asta Control UI或<block ref="c076c843349c85837d82b7f2e26fe2bf" category="inline-link-rx"></block> 要开始管理和保护应用程序、请执行以下操作：</block>
   <block id="a104969737461afdb4fd0f2b1121cbf5" category="list-text"><block ref="6fe79d58f8a8b720433194a3efe0f398" category="inline-link-macro-rx"></block>：定义要管理的资源。</block>
   <block id="caffc5ba1163dd0a5508fd1eae34a69c" category="list-text"><block ref="442a8ba322bd53d625de068878060461" category="inline-link-macro-rx"></block>：用户、角色、LDAP、凭据等。</block>
+  <block id="30136395f01879792198317c11831ea4" category="inline-link">Kubernetes</block>
+  <block id="501a7b3c879675fb528c68e904b076d1" category="list-text">*检查目标卷*：如果要还原到其他存储类、请确保该存储类使用相同的永久性卷访问模式(例如ReadWriteMany)。如果目标永久性卷访问模式不同，还原操作将失败。例如、如果源永久性卷使用rwx访问模式、请选择无法提供rwx的目标存储类、例如Azure托管磁盘、AWS EBS、Google持久磁盘或<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>，发生原因则还原操作是否会失败。有关永久性卷访问模式的详细信息、请参阅<block ref="051768f02ea3f9f1a6b86b9d9b060248" category="inline-link-rx"></block> 文档。</block>
+  <block id="0f707c2e2c303edecbc57b2a451ad8a9" category="list-text">*检查目标卷*：如果克隆到其他存储类、请确保该存储类使用相同的永久性卷访问模式(例如ReadWriteMany)。如果目标永久性卷访问模式不同、则克隆操作将失败。例如、如果源永久性卷使用rwx访问模式、请选择无法提供rwx的目标存储类、例如Azure托管磁盘、AWS EBS、Google持久磁盘或<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>，发生原因将使克隆操作失败。有关永久性卷访问模式的详细信息、请参阅<block ref="051768f02ea3f9f1a6b86b9d9b060248" category="inline-link-rx"></block> 文档。</block>
 </blocks>
