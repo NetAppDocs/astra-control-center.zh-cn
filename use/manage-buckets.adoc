@@ -151,5 +151,5 @@ NOTE: Astra Control 可首先确保没有使用存储分段进行备份的计划
 
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+* https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]
 

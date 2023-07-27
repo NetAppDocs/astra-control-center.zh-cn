@@ -12,7 +12,7 @@ entries:
     url: "/use/protect-apps.html"
   - title: 还原应用程序
     url: "/use/restore-apps.html"
-  - title: 将应用程序复制到远程系统
+  - title: 在存储后端之间复制应用程序
     url: "/use/replicate_snapmirror.html"
   - title: 克隆和迁移应用程序
     url: "/use/clone-apps.html"

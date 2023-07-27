@@ -164,5 +164,5 @@ NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上�
 
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+* https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]
 

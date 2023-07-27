@@ -63,22 +63,23 @@ oc create namespace netapp-acc-operator
 
 == 下载并提取Astra控制中心
 
-. 转至 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^] 页面。
-. 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`）。
-. (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证捆绑包的签名：
+. 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`) https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^]。
+. (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证分发包的签名。
 +
+.展开以查看详细信息
+[%collapsible]
+====
 [source, console]
 ----
 tar -vxzf astra-control-center-certs-[version].tar.gz
 ----
-+
 [source, console]
 ----
 openssl dgst -sha256 -verify certs/AstraControlCenter-public.pub -signature certs/astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
-+
 此时将显示输出 `Verified OK` 验证成功后。
 
+====
 . 从Astra Control Center捆绑包中提取映像：
 +
 [source, console]
@@ -171,7 +172,7 @@ podman login <YOUR_REGISTRY>
 ----
 export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
-export PACKAGEVERSION=23.04.2-7
+export PACKAGEVERSION=23.07.0-24
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
 astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
@@ -190,7 +191,7 @@ done
 ----
 export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
-export PACKAGEVERSION=23.04.2-7
+export PACKAGEVERSION=23.07.0-24
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
 astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
@@ -206,7 +207,7 @@ NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于�
 +
 [listing]
 ----
-https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/23.04.2-7/image:version
+https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/23.07.0-24/image:version
 ----
 
 
@@ -222,6 +223,10 @@ https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/23.0
 +
 ... 登录到 OpenShift 容器平台 UI 。
 ... 从侧面菜单中，选择 * 运算符 > OperatorHub * 。
++
+
+NOTE: 使用此运算符只能升级到Astra Control Center的当前版本。
+
 ... 搜索并选择NetApp Astra Control Center运算符。
 
 
@@ -278,7 +283,7 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 .. 为Astra控制中心添加标签。
 .. 启用或禁用自动支持。建议保留自动支持功能。
 .. 输入Astra控制中心FQDN或IP地址。请止步 `http://` 或 `https://` 在地址字段中。
-.. 输入Asta Control Center版本、例如23.04.2-7。
+.. 输入ASRA控制中心版本、例如23.07.0-24。
 .. 输入帐户名称，电子邮件地址和管理员姓氏。
 .. 选择的卷回收策略 `Retain`， `Recycle`或 `Delete`。默认值为 `Retain`。
 .. 选择安装的可扩展大小。

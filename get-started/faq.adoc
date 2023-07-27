@@ -91,7 +91,7 @@ Astra Control 不会部署应用程序。应用程序必须部署在 Astra Contr
 
 *我应该自行管理Astra Control吗？*
 
-不能、您不应管理Astra Control本身、因为它是一个"系统应用程序"。
+Astra Control Center默认情况下不会显示为您可以管理的应用程序、但您可以使用另一个Astra Control Center实例备份和还原Astra Control Center实例。
 
 *运行状况不正常的Pod是否会影响应用程序管理？*
 

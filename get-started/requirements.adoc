@@ -40,25 +40,22 @@ NOTE: 确保您选择托管Astra Control Center的Kubennet环境满足环境官�
 | 主机集群上的Kubnetes分发 | 支持的版本 
 
 
-| 基于Azure堆栈HCI的Azure Kubnetes Service | 采用AKS 1.23和1.24的Azure Stack HCI 21H2和22H2 
+| 基于Azure堆栈HCI的Azure Kubnetes Service | 采用AKS 1.24.x和1.25x的Azure Stack HCI 21H2和22H2 
 
 
-| Google Anthos | 1.12至1.14 (请参见 <<Google Anthos入口要求>>） 
+| Google Anthos | 1.14至1.16 (请参见 <<Google Anthos入口要求>>） 
 
 
-| Kubnetes (上游) | 1.24到1.26 (Kubirnetes 1.25或更高版本需要Asta Trident 22.10或更高版本) 
+| Kubnetes (上游) | 1.25到1.27 (对于Kubornetes 1.25或更高版本、需要Asta Trident 22.10或更高版本) 
 
 
-| Rancher Kubernetes Engine （ RKE） | RKE 1.3与R能 手2.6 RKE 1.4与R能 手2.7 RKE 2 (v1.23.x)与R能 手2.6 RKE 2 (v1.24.x)与R能 手2.7 
+| Rancher Kubernetes Engine （ RKE） | RKE 1.3与R能 手管理器2.6
+RKE 1.4与R能 手管理器2.7
+RKE 2 (v1.24.x)与R能 手2.6
+RKE 2 (v1.25x)与R能 手2.7 
 
 
-| Red Hat OpenShift 容器平台 | 4.10至4.12 
-
-
-| VMware Tanzu Kubernetes网格 | 1.6 (请参见 <<主机集群资源要求>>） 
-
-
-| VMware Tanzu Kubernetes Grid Integrated Edition | 1.14和1.15 (请参见 <<主机集群资源要求>>） 
+| Red Hat OpenShift 容器平台 | 4.11至4.13 
 |===
 
 
@@ -71,14 +68,6 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 * *CPU扩展*：托管环境中所有节点的CPU都必须启用AVX扩展。
 * *工作节点*：总共至少3个工作节点、每个节点具有4个CPU核心和12 GB RAM
-* *VMware Tanzu Kubernetes Grid集群要求*：在VMware Tanzu Kubernetes Grid (TKG)或Tanzu Kubernetes Grid Integrated Edition (TKGi)集群上托管Astra Control Center时，请记住以下注意事项。
-+
-** 默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时过期。如果您使用的是 Tanzu 产品组合，则必须使用未过期的令牌生成 Tanzu Kubernetes 集群配置文件，以防止 Astra 控制中心与受管应用程序集群之间出现连接问题。有关说明，请访问 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.2/nsx-application-platform/GUID-52A52C0B-9575-43B6-ADE2-E8640E22C29F.html["VMware NSX-T 数据中心产品文档。"^]
-** 使用 `kubectl get nsxlbmonitors -A` 命令以查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。
-** 在任何要由 Astra Control 管理的应用程序集群上禁用 TKG 或 TKGi 默认存储类强制实施。为此，您可以编辑命名空间集群上的 `TanuKubernetes Cluster` 资源。
-** 在 TKG 或 TKGi 环境中部署 Astra 控制中心时，请注意 Astra Trident 的特定要求。有关详细信息，请参见 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#other-known-configuration-options["Astra Trident 文档"^]。
-
-
 
 
 
@@ -87,8 +76,8 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 确保您满足以下特定于您环境需求的Astra三项要求：
 
-* *与Astra Control Center*一起使用的最低版本：已安装并配置Astra Drident 22.04或更高版本。
-* *SnapMirror复制*：安装了A作用 于基于SnapMirror的应用程序复制的Asta Drident 22.07或更高版本。
+* *与Astra Control Center*一起使用的最低版本：已安装并配置Astra Drident 22.10或更高版本。
+* *SnapMirror复制*：安装了A作用 于基于SnapMirror的应用程序复制的Asta Drident 22.10或更高版本。
 * *对于Kubernetes 1.25或更高版本的支持*：为Kubernetes 1.25或更高版本的集群安装了Asta Trident 22.10或更高版本(您必须先升级到Asta Trident 22.10、然后再升级到Kubernetes 1.25或更高版本)
 * *采用Astra三端的ONTAP 配置*：
 +
@@ -111,14 +100,24 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 请确保您有一个受支持的后端、并具有足够的容量。
 
+* *所需存储后端容量*：至少500 GB可用
 * *支持的后端*：Astra Control Center支持以下存储后端：
 +
 ** NetApp ONTAP 9.8或更高版本的AFF 、FAS 和ASA 系统
 ** NetApp ONTAP Select 9.8或更高版本
 ** NetApp Cloud Volumes ONTAP 9.8或更高版本
+** Longhorn 1.5.0或更高版本
++
+*** 需要手动创建卷SnapshotClass对象。请参见 https://longhorn.io/docs/1.5.0/snapshots-and-backups/csi-snapshot-support/csi-volume-snapshot-associated-with-longhorn-snapshot/#create-a-csi-volumesnapshot-associated-with-longhorn-snapshot["Longhorn文档"^] 有关说明，请参见。
 
 
-* *所需存储后端容量*：至少500 GB可用
+** NetApp MetroCluster
++
+*** 受管Kubbernetes集群必须采用延伸型配置。
+
+
+
+
 
 
 
@@ -133,6 +132,19 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 
 要检查ONTAP 系统是否具有所需的许可证、请参见 https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["管理ONTAP 许可证"^]。
+
+
+
+=== NetApp MetroCluster
+
+如果使用NetApp MetroCluster作为存储后端、则需要在所使用的Astra三端驱动程序中将SVM管理LIF指定为后端选项。
+
+要配置MetroCluster LIF、请参阅Astra三端驱动程序文档、了解有关每个驱动程序的详细信息：
+
+* https://docs.netapp.com/us-en/trident/trident-use/ontap-san-examples.html["SAN"^]
+* https://docs.netapp.com/us-en/trident/trident-use/ontap-nas-examples.html["NAS"^]
+* https://docs.netapp.com/us-en/trident/trident-use/trident-fsx-examples.html["FSx"^]
+
 
 
 

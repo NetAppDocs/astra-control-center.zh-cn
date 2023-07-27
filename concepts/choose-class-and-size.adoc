@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: concepts/choose-class-and-size.html 
 keywords: service level, storage class, storage classes, pv size, persistent volume size, volume size, bandwidth, performance, persistent, volume, kubernetes, containers 
-summary: Astra控制中心支持由ONTAP 存储提供支持的Trident存储类。您应了解存储类和永久性卷大小如何帮助您实现性能目标。 
+summary: Astra Control Center支持各种存储后端。  您应了解存储类和永久性卷大小如何帮助您实现性能目标。 
 ---
 = 存储类和永久性卷大小
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: Astra控制中心支持由ONTAP 存储提供支持的Trident存储类�
 
 
 [role="lead"]
-Astra控制中心支持使用ONTAP 作为存储后端。
+Astra控制中心支持NetApp ONTAP和Longhorn作为存储后端。
 
 
 
@@ -21,6 +21,7 @@ Astra控制中心支持使用ONTAP 作为存储后端。
 Astra 控制中心支持以下功能：
 
 * *Astra三端存储类由ONTAP 存储提供支持*：如果使用ONTAP 后端，Astra控制中心可以导入ONTAP 后端以报告各种监控信息。
+* *Longhorn*支持的基于CSI的存储类：可以将Longhorn与Longhorn容器存储接口(CSI)驱动程序结合使用。
 
 
 

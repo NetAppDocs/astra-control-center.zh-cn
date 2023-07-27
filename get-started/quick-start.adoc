@@ -63,7 +63,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"] 使用 Astra 控制中心
-完成Asta Control Center设置后、请使用Asta Control UI或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 要开始管理和保护应用程序、请执行以下操作：
+完成Asta Control Center设置后、请使用Asta Control UI或 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^] 要开始管理和保护应用程序、请执行以下操作：
 
 * link:../use/manage-apps.html["管理应用程序"^]：定义要管理的资源。
 * link:../use/protection-overview.html["保护应用程序"^]：配置保护策略以及复制、克隆和迁移应用程序。
@@ -75,7 +75,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 == 有关详细信息 ...
 
-* https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^]
+* https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]
 * link:../use/upgrade-acc.html["升级 Astra 控制中心"^]
 * link:../support/get-help.html["获取有关Astra Control的帮助"^]
 

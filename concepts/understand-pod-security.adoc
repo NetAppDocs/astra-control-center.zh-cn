@@ -22,7 +22,7 @@ Astra控制中心通过POD安全策略(PSP)和POD安全允许(PSA)支持权限�
 
 == 由Astra控制中心强制实施的PSAS
 
-在安装期间、Astra控制中心通过向添加以下标签来强制实施POD安全准入 `netapp-acc` 或自定义命名空间：
+Asta Control Center可通过向安装Asta的命名空间(NetApp-ACC或自定义命名空间)以及为备份创建的命名空间添加以下标签来强制实施POD安全许可。
 
 [listing]
 ----

@@ -6,22 +6,23 @@
 
 == 下载并提取Astra控制中心
 
-. 转至 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^] 页面。
-. 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`）。
-. (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证捆绑包的签名：
+. 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`) https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^]。
+. (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证分发包的签名。
 +
+.展开以查看详细信息
+[%collapsible]
+====
 [source, console]
 ----
 tar -vxzf astra-control-center-certs-[version].tar.gz
 ----
-+
 [source, console]
 ----
 openssl dgst -sha256 -verify certs/AstraControlCenter-public.pub -signature certs/astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
-+
 此时将显示输出 `Verified OK` 验证成功后。
 
+====
 . 从Astra Control Center捆绑包中提取映像：
 +
 [source, console]

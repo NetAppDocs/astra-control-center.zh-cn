@@ -61,7 +61,7 @@ image:astra-architecture-diagram-v5.png["描述Astra Control架构及其组件�
 * https://docs.netapp.com/us-en/astra/index.html["Astra Control Service 文档"^]
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Astra 控制中心文档"^]
 * https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
-* https://docs.netapp.com/us-en/astra-automation/index.html["使用 Astra Control API"^]
+* https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]
 * https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights 文档"^]
 * https://docs.netapp.com/us-en/ontap/index.html["ONTAP 文档"^]
 

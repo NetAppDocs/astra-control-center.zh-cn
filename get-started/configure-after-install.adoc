@@ -81,65 +81,6 @@ kubectl delete limitrange cpu-limit-range -n [netapp-acc or custom namespace]
 
 
 
-== 在命名空间之间启用网络通信
-
-某些环境使用NetworkPolicy构造来限制命名空间之间的流量。Astra控制中心操作员和Astra控制中心位于不同的命名空间中。这些不同命名空间中的服务需要能够彼此通信。要启用此通信、请执行以下步骤。
-
-.步骤
-. 删除Astra控制中心命名空间中的任何NetworkPolicy资源：
-+
-[source, console]
-----
-kubectl get networkpolicy -n [netapp-acc or custom namespace]
-----
-. 对于上述命令返回的每个NetworkPolicy对象、请使用以下命令将其删除。将[object_name]替换为返回对象的名称：
-+
-[source, console]
-----
-kubectl delete networkpolicy [OBJECT_NAME] -n [netapp-acc or custom namespace]
-----
-. 应用以下资源文件以配置 `acc-avp-network-policy` 允许Astra插件服务向Astra控制中心服务发出请求的对象。将括号<>中的信息替换为您环境中的信息：
-+
-[source, yaml]
-----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: acc-avp-network-policy
-  namespace: <ACC_NAMESPACE_NAME> # REPLACE THIS WITH THE ASTRA CONTROL CENTER NAMESPACE NAME
-spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
-  ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: <PLUGIN_NAMESPACE_NAME> # REPLACE THIS WITH THE ASTRA PLUGIN NAMESPACE NAME
-----
-. 应用以下资源文件以配置 `acc-operator-network-policy` 允许Astra控制中心操作员与Astra控制中心服务进行通信的对象。将括号<>中的信息替换为您环境中的信息：
-+
-[source, yaml]
-----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: acc-operator-network-policy
-  namespace: <ACC_NAMESPACE_NAME> # REPLACE THIS WITH THE ASTRA CONTROL CENTER NAMESPACE NAME
-spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
-  ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: <NETAPP-ACC-OPERATOR> # REPLACE THIS WITH THE OPERATOR NAMESPACE NAME
-----
-
-
-
-
 == 添加自定义 TLS 证书
 
 默认情况下、Astra控制中心对传入控制器流量(仅在某些配置中)和Web浏览器的Web UI身份验证使用自签名TLS证书。您可以删除现有的自签名 TLS 证书，并将其替换为由证书颁发机构（ CA ）签名的 TLS 证书。
@@ -179,6 +120,10 @@ kubectl get certificate -n <ACC-deployment-namespace>
 [source, console]
 ----
 kubectl delete cert cert-manager-certificates -n <ACC-deployment-namespace>
+----
++
+[source, console]
+----
 kubectl delete secret secure-testing-cert -n <ACC-deployment-namespace>
 ----
 
@@ -197,11 +142,16 @@ kubectl create secret tls <secret-name> --key <private-key-filename> --cert <cer
 ----
 . 使用以下命令和示例编辑集群自定义资源定义（ CRD ）文件，并将 `spec.selfSigned` 值更改为 `spec.ca.secretName` ，以引用您先前创建的 TLS 密钥：
 +
-[listing]
+[source, console]
 ----
 kubectl edit clusterissuers.cert-manager.io/cert-manager-certificates -n <ACC-deployment-namespace>
-....
+----
++
+CRD：
 
++
+[listing]
+----
 #spec:
 #  selfSigned: {}
 
@@ -211,11 +161,16 @@ spec:
 ----
 . 使用以下命令和示例输出验证所做的更改是否正确以及集群是否已准备好验证证书，并将 ` <Acc-deployment-namespace>` 替换为 Astra Control Center 部署命名空间：
 +
-[listing]
+[source, yaml]
 ----
 kubectl describe clusterissuers.cert-manager.io/cert-manager-certificates -n <ACC-deployment-namespace>
-....
+----
++
+响应：
 
++
+[listing]
+----
 Status:
   Conditions:
     Last Transition Time:  2021-07-01T23:50:27Z
@@ -224,23 +179,22 @@ Status:
     Status:                True
     Type:                  Ready
 Events:                    <none>
-
 ----
 . 使用以下示例创建 `certificate.yaml` 文件，将括号中的占位值替换为相应的信息：
 +
-[source, yaml]
+[source, yaml, subs="+quotes"]
 ----
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: <certificate-name>
+  *name: <certificate-name>*
   namespace: <ACC-deployment-namespace>
 spec:
-  secretName: <certificate-secret-name>
+  *secretName: <certificate-secret-name>*
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   dnsNames:
-  - <astra.dnsname.example.com> #Replace with the correct Astra Control Center DNS address
+  *- <astra.dnsname.example.com>* #Replace with the correct Astra Control Center DNS address
   issuerRef:
     kind: ClusterIssuer
     name: cert-manager-certificates
@@ -253,11 +207,16 @@ kubectl apply -f certificate.yaml
 ----
 . 使用以下命令和示例输出，验证是否已正确创建证书以及是否使用您在创建期间指定的参数（例如名称，持续时间，续订截止日期和 DNS 名称）。
 +
-[listing]
+[source, console]
 ----
 kubectl describe certificate -n <ACC-deployment-namespace>
-....
+----
++
+响应：
 
++
+[listing]
+----
 Spec:
   Dns Names:
     astra.example.com
@@ -280,26 +239,38 @@ Status:
   Revision:                1
 Events:                    <none>
 ----
+. 使用以下命令和示例编辑TLS存储CRD以指向新证书密钥名称、并将括号<>中的占位符值替换为适当的信息
++
+[listing]
+----
+kubectl edit tlsstores.traefik.io -n <ACC-deployment-namespace>
+----
++
+CRD：
+
++
+[listing]
+----
+...
+spec:
+  defaultCertificate:
+    secretName: <certificate-secret-name>
+----
 . 使用以下命令和示例编辑传入 CRD TLS 选项以指向新的证书密钥，并将括号 <> 中的占位符值替换为相应的信息：
 +
 [listing]
 ----
-kubectl edit ingressroutes.traefik.containo.us -n <ACC-deployment-namespace>
-....
+kubectl edit ingressroutes.traefik.io -n <ACC-deployment-namespace>
+----
++
+CRD：
 
-# tls:
-#    options:
-#      name: default
-#    secretName: secure-testing-cert
-#    store:
-#      name: default
-
++
+[listing]
+----
+...
  tls:
-    options:
-      name: default
     secretName: <certificate-secret-name>
-    store:
-      name: default
 ----
 . 使用 Web 浏览器浏览到 Astra 控制中心的部署 IP 地址。
 . 验证证书详细信息是否与您安装的证书的详细信息匹配。

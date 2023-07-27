@@ -12,7 +12,7 @@ summary: 通过使用自动保护策略或临时创建快照和备份来保护�
 
 
 [role="lead"]
-通过使用自动保护策略或临时创建快照和备份来保护所有应用程序。您可以使用Astra控制中心UI或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 保护应用程序。
+通过使用自动保护策略或临时创建快照和备份来保护所有应用程序。您可以使用Astra控制中心UI或 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^] 保护应用程序。
 
 .关于此任务
 * * Helm部署的应用程序*：如果您使用Helm部署应用程序、则Astra控制中心需要Helm版本3。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。不支持使用 Helm 2 部署的应用程序。

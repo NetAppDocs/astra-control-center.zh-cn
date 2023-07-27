@@ -14,10 +14,7 @@ summary: 克隆现有应用程序以在同一个 Kubernetes 集群或另一个�
 [role="lead"]
 您可以克隆现有应用程序、以便在同一个Kubernetes集群或另一个集群上创建重复的应用程序。当 Astra Control 克隆应用程序时，它会为您的应用程序配置和永久性存储创建一个克隆。
 
-如果您需要将应用程序和存储从一个 Kubernetes 集群移动到另一个集群，则克隆可以助您一臂之力。例如，您可能希望通过 CI/CD 管道以及在 Kubernetes 命名空间之间移动工作负载。您可以使用Astra控制中心UI或 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^] 克隆和迁移应用程序。
-
-
-NOTE: 如果将命名空间筛选器添加到在还原或克隆操作之后运行的执行挂钩、并且还原或克隆源和目标位于不同的命名空间中、则命名空间筛选器仅会应用于目标命名空间。
+如果您需要将应用程序和存储从一个 Kubernetes 集群移动到另一个集群，则克隆可以助您一臂之力。例如，您可能希望通过 CI/CD 管道以及在 Kubernetes 命名空间之间移动工作负载。您可以使用Astra控制中心UI或 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^] 克隆和迁移应用程序。
 
 .开始之前
 * *检查目标卷*：如果克隆到其他存储类、请确保该存储类使用相同的永久性卷访问模式(例如ReadWriteMany)。如果目标永久性卷访问模式不同、则克隆操作将失败。例如、如果源永久性卷使用rwx访问模式、请选择无法提供rwx的目标存储类、例如Azure托管磁盘、AWS EBS、Google持久磁盘或 `ontap-san`，发生原因将使克隆操作失败。有关永久性卷访问模式的详细信息、请参阅 https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes["Kubernetes"^] 文档。
@@ -41,6 +38,7 @@ NOTE: 如果将命名空间筛选器添加到在还原或克隆操作之后运�
 * *克隆使用默认分段*：在应用程序备份或应用程序还原期间、您可以选择指定分段ID。但是，应用程序克隆操作始终使用已定义的默认分段。没有选项可用于更改克隆的分段。如果要控制使用哪个存储分段，您可以选择 link:../use/manage-buckets.html#edit-a-bucket["更改存储分段默认值"] 或者执行 link:../use/protect-apps.html#create-a-backup["backup"] 后跟 A link:../use/restore-apps.html["还原"] 请单独使用。
 * *使用Jenkins CI*：如果克隆操作员部署的Jenkins CI实例、则需要手动还原持久数据。这是应用程序部署模式的一个限制。
 * *对于S3存储分段*：Astra控制中心中的S3存储分段不报告可用容量。在备份或克隆由 Astra 控制中心管理的应用程序之前，请检查 ONTAP 或 StorageGRID 管理系统中的存储分段信息。
+* *使用特定版本的PostgreSQL时*：同一集群中的应用程序克隆始终失败，并显示BitNami PostgreSQL 11.5.0图表。要成功克隆，请使用图表的早期或更高版本。
 
 
 .OpenShift 注意事项
@@ -68,12 +66,6 @@ NOTE: 如果将命名空间筛选器添加到在还原或克隆操作之后运�
 +
 
 NOTE: 在克隆操作中、Astra Control会创建新的目标命名空间。指定的目标命名空间不能已存在于目标集群上。
-
-** 选择 * 下一步 * 。
-** 选择是要从现有快照还是备份创建克隆。如果不选择此选项，则 Astra 控制中心将根据应用程序的当前状态创建克隆。
-+
-*** 如果选择从现有快照或备份克隆、请选择要使用的快照或备份。
-
 
 ** 选择 * 下一步 * 。
 ** 选择将原始存储类与应用程序保持关联、或者选择其他存储类。

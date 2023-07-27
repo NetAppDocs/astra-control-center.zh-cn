@@ -47,8 +47,7 @@ https://www.netapp.com/us/legal/privacypolicy/index.aspx[]
 
 通知文件提供有关 NetApp 软件中使用的第三方版权和许可证的信息。
 
-* link:NOTICE_AstraControlCenter_23.04.1.pdf["Astra Control Center的通知23.04.1"^]
-* link:NOTICE_AstraControlCenter_23.04.2.pdf["Astra Control Center的通知23.04.2"^]
+* link:NOTICE_AstraControlCenter_23.07.0.pdf["Astra Control Center的通知23.07.0"^]
 
 
 

@@ -52,7 +52,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 Astra 控制中心需要以下 AWS 操作环境：
 
-* Red Hat OpenShift 容器平台 4.8
+* Red Hat OpenShift Container Platform 4.11至4.13
 
 
 
@@ -86,12 +86,16 @@ NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方�
 
 
 | Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
-安装并配置了 Astra Trident 21.04 或更高版本，并将 NetApp ONTAP 9.5 或更高版本作为存储后端
+已安装并配置Asta Trident 22.10或更高版本、并将NetApp ONTAP 9.8或更高版本用作存储后端[AWS注册表]]
 
 
 
 | 映像注册表  a| 
-您必须拥有一个现有的私有注册表，例如 AWS 弹性容器注册表，您可以将 Astra Control Center 构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
+NetApp提供了一个注册表、可用于获取Astra控制中心内部版本映像：
+`http://netappdownloads.jfrog.io/docker-astra-control-prod`
+请联系NetApp支持部门、获取有关在Astra控制中心安装过程中使用此映像注册表的说明。
+
+如果您无法访问NetApp映像注册表、则必须具有现有的私有注册表、例如AWS Elastic Container Registry (ECR)、您可以将Astra控制中心构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
 
 
 NOTE: Astra 控制中心托管的集群和受管集群必须能够访问同一映像注册表，才能使用基于 Restic 的映像备份和还原应用程序。
@@ -143,26 +147,30 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 
 在 AWS 上安装 RedHat OpenShift 容器平台集群。
 
-有关安装说明，请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-aws-default.html["在 OpenShift 容器平台中的 AWS 上安装集群"^]。
+有关安装说明，请参见 https://docs.openshift.com/container-platform/4.13/installing/installing_aws/installing-aws-default.html["在 OpenShift 容器平台中的 AWS 上安装集群"^]。
 
 
 
 === 配置 AWS
 
-接下来、将AWS配置为创建虚拟网络、设置EC2计算实例、创建AWS S3存储分段、创建弹性容器注册表(ECR)以托管Astra控制中心映像、并将这些映像推送到此注册表。
+接下来、将AWS配置为创建虚拟网络、设置EC2计算实例以及创建AWS S3存储分段。如果无法访问 <<aws-registry,NetApp Asta控制中心映像注册表>>，您还需要创建一个Elastic Container Registry (ECR)来托管Astra Control Center映像，并将这些映像推送到该注册表。
 
-按照 AWS 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-aws-default.html["AWS 安装文档"^]。
+按照 AWS 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.13/installing/installing_aws/installing-aws-default.html["AWS 安装文档"^]。
 
 . 创建AWS虚拟网络。
 . 查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。
 . 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个 AWS S3 存储分段来存储备份。
-. 创建 AWS 弹性容器注册表（ ECR ）以托管所有 AccR 映像。
+. (可选)如果无法访问 <<aws-registry,NetApp映像注册表>>，请执行以下操作：
++
+.. 创建AWS Elastic Container Registry (ECR)以托管所有Astra Control Center映像。
 +
 
 NOTE: 如果不创建ECR、则Astra控制中心无法从包含Cloud Volumes ONTAP 且具有AWS后端的集群访问监控数据。如果您尝试使用 Astra 控制中心发现和管理的集群没有 AWS ECR 访问权限，则会导致出现问题描述 。
 
-. 将这些 Accc 映像推送到您定义的注册表。
+.. 将A作用 力控制中心图像推送到您定义的注册表。
+
+
 
 
 
@@ -234,7 +242,7 @@ NOTE: AWS使用通用S3存储分段类型。
 * Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
 * link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
 * NetApp Cloud Central account
-* 如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.10
+* 如果使用OCP、则为Red Hat OpenShift Container Platform (OCP) 4.11至4.13
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
 * GCP服务帐户、具有创建存储分段和连接器的权限
 
@@ -274,12 +282,16 @@ NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方�
 
 
 | Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
-安装并配置了 Astra Trident 21.04 或更高版本，并将 NetApp ONTAP 9.5 或更高版本作为存储后端
+已安装并配置Astra Trident 22.10或更高版本、并将NetApp ONTAP 9.8或更高版本用作存储后端[[gcp-reRegistry ]
 
 
 
 | 映像注册表  a| 
-您必须具有现有的专用注册表、例如Google Container Registry、您可以将Astra Control Center构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
+NetApp提供了一个注册表、可用于获取Astra控制中心内部版本映像：
+`http://netappdownloads.jfrog.io/docker-astra-control-prod`
+请联系NetApp支持部门、获取有关在Astra控制中心安装过程中使用此映像注册表的说明。
+
+如果您无法访问NetApp映像注册表、则必须具有现有的私有注册表、例如Google容器注册表、您可以将Astra控制中心构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
 
 
 NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
@@ -323,7 +335,7 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 有关安装说明，请参见以下内容：
 
-* https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html-single/installing/index#installing-on-gcp["在GCP中安装OpenShift集群"^]
+* https://access.redhat.com/documentation/en-us/openshift_container_platform/4.13/html/installing/index#installing-on-gcp["在GCP中安装OpenShift集群"^]
 * https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["创建GCP服务帐户"^]
 
 
@@ -350,7 +362,7 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 
 === 配置GCP
 
-接下来、将GCP配置为创建VPC、设置计算实例、创建Google Cloud Object Storage、创建用于托管Astra控制中心映像的Google Container Register并将这些映像推送到此注册表。
+接下来、配置GCP以创建VPC、设置计算实例以及创建Google Cloud Object Storage。如果无法访问 <<gcp-registry,NetApp Asta控制中心映像注册表>>，您还需要创建一个Google容器注册表来托管Astra Control Center映像，并将这些映像推送到该注册表。
 
 按照GCP文档完成以下步骤。请参见在GCP中安装OpenShift集群。
 
@@ -359,10 +371,12 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 . 如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
 . 至少创建一个GCP Cloud Storage Bucket以存储备份。
 . 创建存储分段访问所需的密钥。
-. 创建Google容器注册表以托管所有Astra控制中心映像。
-. 为所有Astra控制中心映像设置用于Docker推/拉的Google容器注册表访问权限。
+. (可选)如果无法访问 <<gcp-registry,NetApp映像注册表>>，请执行以下操作：
 +
-示例：输入以下脚本可将Accc映像推送到此注册表：
+.. 创建Google容器注册表以托管Asta Control Center映像。
+.. 为所有Astra控制中心映像设置用于Docker推/拉的Google容器注册表访问权限。
++
+示例：可以通过输入以下脚本将Astra Control Center映像推送到此注册表：
 
 +
 [listing]
@@ -373,15 +387,20 @@ gcloud auth activate-service-account <service account email address>
 +
 此脚本需要一个Astra控制中心清单文件以及您的Google映像注册表位置。
 
+
+
 +
 示例
+
++
++
 
 +
 [listing]
 ----
 manifestfile=astra-control-center-<version>.manifest
-GCP_CR_REGISTRY=<target image repository>
-ASTRA_REGISTRY=<source ACC image repository>
+GCP_CR_REGISTRY=<target image registry>
+ASTRA_REGISTRY=<source Astra Control Center image registry>
 
 while IFS= read -r image; do
     echo "image: $ASTRA_REGISTRY/$image $GCP_CR_REGISTRY/$image"
@@ -470,7 +489,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 * Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
 * link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
 * NetApp Cloud Central account
-* 如果使用的是OCP、则为Red Hat OpenShift Container Platform (OCP) 4.8
+* 如果使用OCP、则为Red Hat OpenShift Container Platform (OCP) 4.11至4.13
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
 * 具有用于创建存储分段和连接器的权限的 Azure 凭据
 
@@ -511,12 +530,16 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 | Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装)  a| 
-安装和配置的 Astra Trident 21.04 或更高版本以及 NetApp ONTAP 9.5 或更高版本将用作存储后端
+已安装并配置Asta Trident 22.10或更高版本、NetApp ONTAP 9.8或更高版本将用作存储后端[[azure-Registry ]]
 
 
 
 | 映像注册表  a| 
-您必须具有一个现有的专用注册表，例如 Azure 容器注册表（ ACR ），您可以将 Astra Control Center 构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
+NetApp提供了一个注册表、可用于获取Astra控制中心内部版本映像：
+`http://netappdownloads.jfrog.io/docker-astra-control-prod`
+请联系NetApp支持部门、获取有关在Astra控制中心安装过程中使用此映像注册表的说明。
+
+如果您无法访问NetApp映像注册表、则必须具有一个现有的私有注册表、例如Azure容器注册表(ACR)、您可以将Astra控制中心构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
 
 
 NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
@@ -560,8 +583,8 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 有关安装说明，请参见以下内容：
 
-* https://docs.openshift.com/container-platform/4.8/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
-* https://docs.openshift.com/container-platform/4.8/installing/installing_azure/installing-azure-account.html#installing-azure-account["安装 Azure 帐户"^]。
+* https://docs.openshift.com/container-platform/4.13/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
+* https://docs.openshift.com/container-platform/4.13/installing/installing_azure/installing-azure-account.html["安装 Azure 帐户"^]。
 
 
 
@@ -587,9 +610,9 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 === 配置 Azure
 
-接下来、将Azure配置为创建虚拟网络、设置计算实例、创建Azure Blob容器、创建Azure容器注册表(ACR)以托管Astra控制中心映像、并将这些映像推送到此注册表。
+接下来、将Azure配置为创建虚拟网络、设置计算实例以及创建Azure Blb容器。如果无法访问 <<azure-registry,NetApp Asta控制中心映像注册表>>，您还需要创建Azure容器注册表(ACR)来托管Astra控制中心映像，并将这些映像推送到此注册表。
 
-按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.8/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
+按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.13/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
 
 . 创建Azure虚拟网络。
 . 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
@@ -597,14 +620,16 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 . 至少创建一个Azure Blob容器以存储备份。
 . 创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。
 . 创建存储分段访问所需的密钥。
-. 创建 Azure 容器注册表（ ACR ）以托管所有 Astra 控制中心映像。
-. 为 Docker 推送 / 拉所有 Astra 控制中心映像设置 ACR 访问。
-. 输入以下脚本，将 Accc 映像推送到此注册表：
+. (可选)如果无法访问 <<azure-registry,NetApp映像注册表>>，请执行以下操作：
++
+.. 创建Azure容器注册表(ACR)以托管Asta控制中心映像。
+.. 为所有Astra Control Center映像设置Docker推送/拉取的ACR访问权限。
+.. 使用以下脚本将Astra Control Center映像推送到此注册表：
 +
 [listing]
 ----
 az acr login -n <AZ ACR URL/Location>
-This script requires ACC manifest file and your Azure ACR location.
+This script requires the Astra Control Center manifest file and your Azure ACR location.
 ----
 +
 * 示例 * ：
@@ -613,8 +638,8 @@ This script requires ACC manifest file and your Azure ACR location.
 [listing]
 ----
 manifestfile=astra-control-center-<version>.manifest
-AZ_ACR_REGISTRY=<target image repository>
-ASTRA_REGISTRY=<source ACC image repository>
+AZ_ACR_REGISTRY=<target image registry>
+ASTRA_REGISTRY=<source Astra Control Center image registry>
 
 while IFS= read -r image; do
     echo "image: $ASTRA_REGISTRY/$image $AZ_ACR_REGISTRY/$image"
@@ -625,6 +650,8 @@ while IFS= read -r image; do
     docker push $AZ_ACR_REGISTRY/$image
 done < astra-control-center-22.04.41.manifest
 ----
+
+
 . 设置 DNS 区域。
 
 

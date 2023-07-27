@@ -17,7 +17,7 @@ LDAP是一种用于访问分布式目录信息的行业标准协议、也是企�
 从较高层面来看、该配置涉及将Astra与LDAP集成、并定义与LDAP定义对应的Astra Control用户和组。您可以使用Astra Control API或Web UI配置LDAP身份验证以及LDAP用户和组。
 
 
-IMPORTANT: Astra控制中心使用ldap"mail"属性中的电子邮件地址搜索和跟踪远程用户。此属性可能是目录中的可选字段或空字段。对于要显示在Astra控制中心的任何远程用户、此字段中必须存在电子邮件地址。此电子邮件地址在Astra控制中心中用作用户名进行身份验证。
+IMPORTANT: Astra Control Center使用用户登录属性(在启用远程身份验证时配置)来搜索和跟踪远程用户。对于您希望在Astra Control Center中显示的任何远程用户、此字段中必须存在电子邮件地址("mail")或用户主体名称("userPrincipalName")的属性。此属性在Astra Control Center中用作用户名以进行身份验证，并在搜索远程用户时使用。
 
 
 
@@ -53,7 +53,12 @@ IMPORTANT: Astra控制中心使用ldap"mail"属性中的电子邮件地址搜索
 NOTE: 作为最佳实践、请在与LDAP服务器连接时使用LDAPS。在连接到LDAPS之前、您需要在Astra控制中心安装LDAP服务器的专用TLS证书。
 
 . 以电子邮件格式输入服务帐户凭据(administrator@example.com)。在与LDAP服务器连接时、Astra Control将使用这些凭据。
-. 在*用户匹配*部分中、输入在从LDAP服务器检索用户信息时要使用的基础DN和相应的用户搜索筛选器。
+. 在*用户匹配*部分，执行以下操作：
++
+.. 输入基本DN和相应的用户搜索筛选器、以便从LDAP服务器检索用户信息时使用。
+.. (可选)如果目录使用用户登录属性 `userPrincipalName` 而不是 `mail`、输入 `userPrincipalName` 在“*用户登录属性*”字段的正确属性中。
+
+
 . 在*组匹配*部分中、输入组搜索基础DN和相应的自定义组搜索筛选器。
 +
 
@@ -106,7 +111,7 @@ NOTE: 如果*远程身份验证*窗格处于"已禁用"状态、则无法编辑L
 您可以从LDAP服务器断开连接、并从Astra Control中删除配置设置。
 
 
-CAUTION: 断开与LDAP服务器的连接后、该LDAP服务器的所有配置设置以及从该LDAP服务器添加的任何远程用户和组都会从Astra Control中删除。
+CAUTION: 如果您是LDAP用户并断开连接、则会话将立即结束断开与LDAP服务器的连接后、该LDAP服务器的所有配置设置以及从该LDAP服务器添加的任何远程用户和组都会从Astra Control中删除。
 
 .步骤
 . 转至*帐户>连接*。
