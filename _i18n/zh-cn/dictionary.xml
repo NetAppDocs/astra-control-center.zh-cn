@@ -2829,7 +2829,6 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="2b751178c5ccb62da62318c7ba67bcb7" category="list-text">下载包含Astra Control Center的软件包 <block ref="f38ca01b4c2fe15aa06076beb2ee98ff" prefix="(" category="inline-code"></block>)<block ref="ad7a4184e43a3f62f1a8252e7d3ef71f" category="inline-link-rx"></block>。</block>
   <block id="56a360133c3f49b082fb3e559dc6c359" category="paragraph">如果某个LDAP实体(用户或组)的DN包含一个RDN、并且该RDN带有尾随空格、则Astra Control不支持该实体。</block>
   <block id="3b4c39fc71daebe02ce601e0e52cb002" category="paragraph">Astra Control Activity页面最多可显示100、000个事件。要查看所有记录的事件、请使用检索这些事件 <block ref="cc52bf3aaccbc518b140a6ab7d8d53a9" category="inline-link-macro-rx"></block>。</block>
-  <block id="342146f49f3dbf04f3f41cdd047ee611" category="section-title">2023年7月26日(23.07.0)</block>
   <block id="00f23e3f73f2ff6910e3c1c923caed3b" category="inline-link-macro">支持在延伸型配置中使用NetApp MetroCluster作为存储后端</block>
   <block id="d8ff8e6d69947f9d7ee57077dfe0e3ee" category="list-text"><block ref="d8ff8e6d69947f9d7ee57077dfe0e3ee" category="inline-link-macro-rx"></block></block>
   <block id="7857e72e296955e1be96bd0c04406cbe" category="inline-link-macro">支持使用Longhorn作为存储后端</block>
@@ -2885,7 +2884,6 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="24c356496f4f777434b1554b8c1ce87e" category="list-text">为所有Astra Control Center映像设置Docker推送/拉取的ACR访问权限。</block>
   <block id="80647e7e0bb86f8566d4cda7efd6ba2b" category="list-text">使用以下脚本将Astra Control Center映像推送到此注册表：</block>
   <block id="e9e74ff4b7d306a6d494267203d879d8" category="admonition">使用此运算符只能升级到Astra Control Center的当前版本。</block>
-  <block id="6f9a41c50e286a2a3eb1249e34e3b034" category="list-text">输入ASRA控制中心版本、例如23.07.0-24。</block>
   <block id="ce75759d9f826b61ea1a10ccd4fec6c4" category="paragraph">完成Asta Control Center设置后、请使用Asta Control UI或<block ref="bd25eec94181cb8a1c6322299b11a4e5" category="inline-link-rx"></block> 要开始管理和保护应用程序、请执行以下操作：</block>
   <block id="ce0f35f37592c103c45f7f61252c9305" category="paragraph">您可以使用Astra Control UI或添加新许可证<block ref="bd25eec94181cb8a1c6322299b11a4e5" category="inline-link-rx"></block>。</block>
   <block id="1fc721e2d5dd058eff74433a513547f9" category="inline-link-macro">您在安装期间配置的</block>
@@ -2944,11 +2942,9 @@ RKE 2 (v1.25x)与R能 手2.7</block>
   <block id="0e4c628a5a8957cfc5bfe05ab3d4cade" category="list-text">将操作系统和CPU架构所需的文件移至当前路径、并将其重命名为<block ref="90432a9da14d46e4d20c4b841576b1ee" prefix=" " category="inline-code"></block>：</block>
   <block id="509e9a9c4ddecec71646527fad155699" category="list-text">导出Astra Control Center主机集群的kubeconfig:</block>
   <block id="4757e8443e86513707f05c0d519574c8" category="admonition">在完成安装之前、请确保您的kubeconfig"指向要安装Astra Control Center的集群。</block>
-  <block id="eb4ae875392779932df9d5d2fbb9ccaf" category="admonition">占位符<block ref="facf912114e23f5e3f2192e508b5894a" prefix=" " category="inline-code"></block> 应与您先前上传的映像的位置匹配(例如、<block ref="fb729bc0081792c3577384b3c4b3710a" prefix=" " category="inline-code"></block>）。</block>
   <block id="6a81830068d10bff560d62bc97f3c053" category="list-text">更改<block ref="e7fbb61ffc587682a801796b46db408a" prefix=" " category="inline-code"></block> 。<block ref="83f93b05da174976bd534cc67ad9f7b4" prefix=" " category="inline-code"></block> 将映像推送到注册表路径中 <block ref="7fe0e1ddcc2917e6a216033278119235" category="inline-xref-macro-rx"></block>。</block>
   <block id="87b9501fe070f005832572ffd2aba4ae" category="example-title">展开以获取示例Astra_control_cCenter_operator_Deploy。yaml</block>
   <block id="a8f13cd419087c3fb4f7d66dde9dadda" category="example-title">展开样本响应：</block>
-  <block id="98908576b345537859881e0fbe16b44a" category="cell"><block ref="141b2e73605e12a2ae1bb4fb0b4221ca" prefix="" category="inline-code"></block></block>
   <block id="3297ea664e090716a24f598d90bc398c" category="example-title">展开示例Astra_control_cCenter.yaml</block>
   <block id="d3e309a143a3ce8e127ce3e32a113e5d" category="example-title">展开以显示样本响应</block>
   <block id="980370488ee5e5166f21d62e451f7039" category="list-text">(可选)观看<block ref="4b559e0a1b6f68f62c5edecea8c35c7e" prefix=" " category="inline-code"></block> 用于监控进度的日志：</block>
@@ -2957,4 +2953,8 @@ RKE 2 (v1.25x)与R能 手2.7</block>
   <block id="692bef51c3cefb709496e672979fafda" category="list-text"><block ref="c3444bf1f6ccff644809494fcfe68216" category="inline-xref-macro-rx"></block></block>
   <block id="8164f139371aabdbe264f5f85a178858" category="section-title">具有命名空间约束的成员无法访问克隆或还原的应用程序，直到管理员将命名空间添加到此限制中为止</block>
   <block id="33e9a46dfde5bb0f5a8b8327623cb998" category="paragraph">任意<block ref="aa08769cdcb26674c6706093503ff0a3" prefix=" " category="inline-code"></block> 使用命名空间名称/ID限制RBAC的用户可以将应用程序克隆或还原到同一集群上的新命名空间或其组织帐户中的任何其他集群。但是，同一用户无法访问新命名空间中的克隆或还原应用程序。通过克隆或还原操作创建新命名空间后、帐户管理员/所有者可以编辑<block ref="aa08769cdcb26674c6706093503ff0a3" prefix=" " category="inline-code"></block> 受影响用户的用户帐户和更新角色约束、以授予对新命名空间的访问权限。</block>
+  <block id="0cb712ec711a0ca7c7b006e073338a3f" category="section-title">2023年7月31日(23.07.0)</block>
+  <block id="fa7403eec50d35b5a484623b60ab5bdd" category="list-text">输入ASRA控制中心版本、例如23.07.0-25。</block>
+  <block id="a35ec6e52d1ea46e15e5890b9f04b338" category="admonition">占位符<block ref="facf912114e23f5e3f2192e508b5894a" prefix=" " category="inline-code"></block> 应与您先前上传的映像的位置匹配(例如、<block ref="ed714721ea39215dfe5e8dfa919a906a" prefix=" " category="inline-code"></block>）。</block>
+  <block id="fa202cf5d815f8dd19123dbdb19b51e6" category="cell"><block ref="c0004ca895ff57b100007a4b52125d05" prefix="" category="inline-code"></block></block>
 </blocks>
