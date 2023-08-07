@@ -464,6 +464,11 @@ additionalValues:
       startupProbe:
         periodSeconds: 30
         failureThreshold: 600
+    polaris-keycloak:
+      livenessProbe:
+        initialDelaySeconds: 180
+      readinessProbe:
+        initialDelaySeconds: 180
 ----
 . 保存并退出文件编辑器。此时将应用所做的更改、并开始升级。
 . （可选）验证 Pod 是否终止并重新可用：

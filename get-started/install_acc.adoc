@@ -610,6 +610,18 @@ Astra控制中心使用类型为"loadbalancer"的服务 (`svc/traefik` )、并�
 .<code>additionalValues</code>
 [%collapsible]
 ====
+
+IMPORTANT: 向Astra控制中心CR添加以下附加值、以防止在23.07安装中出现已知问题描述：
+
+[listing]
+----
+additionalValues:
+    polaris-keycloak:
+      livenessProbe:
+        initialDelaySeconds: 180
+      readinessProbe:
+        initialDelaySeconds: 180
+----
 ** 对于Astral控制中心和Cloud Insights 通信、默认情况下会禁用TLS证书验证。您可以通过在中添加以下部分来为Cloud Insights 与Astra控制中心主机集群和受管集群之间的通信启用TLS证书验证 `additionalValues`。
 
 
@@ -674,7 +686,12 @@ spec:
   ingressType: "Generic"
   scaleSize: "Medium"
   astraResourcesScaler: "Default"
-  additionalValues: {}
+  additionalValues:
+    polaris-keycloak:
+      livenessProbe:
+        initialDelaySeconds: 180
+      readinessProbe:
+        initialDelaySeconds: 180
   crds:
     externalTraefik: false
     externalCertManager: false
