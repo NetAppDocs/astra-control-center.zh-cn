@@ -143,7 +143,6 @@ NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应�
 
 * https://docs.netapp.com/us-en/trident/trident-use/ontap-san-examples.html["SAN"^]
 * https://docs.netapp.com/us-en/trident/trident-use/ontap-nas-examples.html["NAS"^]
-* https://docs.netapp.com/us-en/trident/trident-use/trident-fsx-examples.html["FSx"^]
 
 
 
