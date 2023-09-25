@@ -67,6 +67,12 @@ NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据�
 .开始之前
 * 确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。
 * 您的环境符合 link:../get-started/requirements.html["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
+* 如果要使用引用私有证书颁发机构(CA)的kubeconfigfile文件添加集群、请将以下行添加到 `cluster` kubeconfig"文件的部分。这样、Astra Control便可添加集群：
++
+[listing]
+----
+insecure-skip-tls-verify: true
+----
 * 一个版本的Astra Trident link:../get-started/requirements.html#astra-trident-requirements["受Astra控制中心支持"^] 已安装：
 +
 
