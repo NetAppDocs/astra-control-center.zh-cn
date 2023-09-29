@@ -1992,7 +1992,6 @@
   <block id="929a65ed5e1201f9d151e32a0971553d" category="paragraph">*存储集成*</block>
   <block id="8ae57878720ba2997fde06ff1c140fe6" category="inline-link-macro">确保您的环境包含Astra Trident支持的版本</block>
   <block id="dd678a0b3a73cdc79d52e5a75a29712a" category="inline-link">配置Astra Trident存储后端</block>
-  <block id="6b836f0beaae8e5e5b3ee7da02492481" category="list-text"><block ref="6b836f0beaae8e5e5b3ee7da02492481" category="inline-link-rx"></block></block>
   <block id="8fa7c146eed93f49403e27757627c1de" category="inline-link">配置Astra Trident存储类</block>
   <block id="8f233a56a0bbc57a073461b666b439e1" category="list-text"><block ref="8f233a56a0bbc57a073461b666b439e1" category="inline-link-rx"></block></block>
   <block id="ae0a6f81e3ab19bb5bb4cc16ba804b6d" category="paragraph">* ONTAP 凭据*</block>
@@ -2961,4 +2960,5 @@ RKE 2 (v1.25x)与R能 手2.7</block>
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="dce58385777428b5d9a30460fe36730a" category="list-text">如果要使用引用私有证书颁发机构(CA)的kubeconfigfile文件添加集群、请将以下行添加到<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> kubeconfig"文件的部分。这样、Astra Control便可添加集群：</block>
+  <block id="6a73c62ec3ca96f8f08220eeac3380d9" category="list-text"><block ref="6a73c62ec3ca96f8f08220eeac3380d9" category="inline-link-rx"></block></block>
 </blocks>
