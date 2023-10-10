@@ -55,6 +55,10 @@ Astra Control应用程序复制要求在开始之前满足以下前提条件：
 * *对等*：
 +
 ** *集群和SVM*：ONTAP存储后端必须建立对等状态。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^] 有关详细信息 ...
++
+
+IMPORTANT: 确保两个ONTAP集群之间的复制关系中使用的SVM名称是唯一的。
+
 ** *Astra三端到子和SVM*：对等远程SVM必须可供目标集群上的Astra三端到子使用。
 
 
