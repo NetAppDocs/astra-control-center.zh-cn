@@ -1443,7 +1443,6 @@
   <block id="ed78458df917d6da9f19cca23d8468cd" category="paragraph"><block ref="c229e392652cddf73148e5c65f706c6d" category="inline-link-macro-rx"></block> 使用NetApp SnapMirror技术连接到远程集群。Astra Control可将快照复制到远程集群、从而提供异步灾难恢复功能。</block>
   <block id="ca5eff8f4c2396bf09558b428d91e9f3" category="section-title">2022年9月8日(22.08.1)</block>
   <block id="322f8233054cca6c9d6204f1aa1d1f7f" category="paragraph">适用于Astra控制中心(22.08.0)的此修补程序版本(22.08.1)修复了使用NetApp SnapMirror复制应用程序时出现的小错误。</block>
-  <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">所有Astra文档</block>
   <block id="cc76a05fe8cbb45b45b1139e841822bd" category="admonition">Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。</block>
   <block id="49f02638b249b496152336fa67d7f9c5" category="paragraph">要在Amazon Web Services (AWS)、Google云平台(GCP)和Microsoft Azure中使用Cloud Volumes ONTAP 存储后端安装Astra控制中心、请根据您的云环境执行以下步骤。</block>
   <block id="cf594d0bb41326e3db7d23f51499a433" category="list-text"><block ref="f25f9d6f8bbda4a323ee7521012b952a" category="inline-xref-macro-rx"></block></block>
@@ -2962,4 +2961,152 @@ RKE 2 (v1.25x)与R能 手2.7</block>
   <block id="dce58385777428b5d9a30460fe36730a" category="list-text">如果要使用引用私有证书颁发机构(CA)的kubeconfigfile文件添加集群、请将以下行添加到<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> kubeconfig"文件的部分。这样、Astra Control便可添加集群：</block>
   <block id="6a73c62ec3ca96f8f08220eeac3380d9" category="list-text"><block ref="6a73c62ec3ca96f8f08220eeac3380d9" category="inline-link-rx"></block></block>
   <block id="94ac6b3955eab183cb88ab17c91000eb" category="admonition">确保两个ONTAP集群之间的复制关系中使用的SVM名称是唯一的。</block>
+  <block id="51ec83fd81ce58f9ea70187b74727aff" category="doc">Astra Control Center 23.07文档</block>
+  <block id="5625dd52348931a3850857d7f3f08b69" category="summary">您可以使用二级Asta控制中心实例或Asta复制(如果底层存储使用ONTAP)备份和还原Asta控制中心。</block>
+  <block id="969f7a76db712779eff5291ca8b43ac7" category="doc">使用Astra Control Center保护Astra Control Center</block>
+  <block id="c9a7b310785e9556ae984aa393db6588" category="paragraph">要更好地确保在运行Astra Control Center的Kuburenet集群上针对致命错误的故障恢复能力、请保护Astra Control Center应用程序本身。您可以使用二级Asta控制中心实例备份和还原Asta控制中心、或者如果底层存储使用ONTAP、则可以使用Asta复制。</block>
+  <block id="6b755da339d1771f5f970f17eecb0565" category="paragraph">在这些情况下、Asta Control Center的第二个实例部署和配置在不同的容错域中、并在与主Asta Control Center实例不同的第二个Kubnetes集群上运行。第二个Asta Control实例用于备份主Asta Control Center实例并可能还原该实例。还原或复制的Astra Control Center实例将继续为应用程序集群应用程序提供应用程序数据管理、并恢复对这些应用程序备份和快照的访问。</block>
+  <block id="69114e1f39ba205e49c3f6602104d621" category="paragraph">在为Astra Control Center设置保护方案之前、请确保您具备以下条件：</block>
+  <block id="896f58b429f78d8109fc3e7c03093aba" category="list-text">*运行主Asta Control Center实例*的Kubernetes集群：此集群托管主Asta Control Center实例、用于管理应用程序集群。</block>
+  <block id="8aa15a1fee5460adea916879ed7d7268" category="list-text">*运行辅助Asta Control Center实例的主Kubernetes分发类型相同的第二个Kubernetes集群*：此集群托管管理主Asta Control Center实例的Asta Control Center实例。</block>
+  <block id="32e73be9be858fa95196efd19be99032" category="list-text">*与主*具有相同Kubernetes分发类型的第三个Kubernetes集群：此集群将托管已还原或复制的Astra Control Center实例。它必须具有当前部署在主系统上的相同可用Asta Control Center命名空间。例如、如果Asta Control Center部署在命名空间中<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 源集群上的命名空间<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 必须可用且未被目标Kubnetes集群上的任何应用程序使用。</block>
+  <block id="49a26f277918e7ec7fcd2b6c725b22db" category="list-text">*S3兼容存储分段*:每个Astra Control Center实例都有一个可访问的S3兼容对象存储分段。</block>
+  <block id="b6a057580445c60da8ca68e040c35359" category="list-text">*已配置的负载平衡器*：负载平衡器为Astra提供IP地址、并且必须与应用程序集群和两个S3分段建立网络连接。</block>
+  <block id="71be9d294d226c86caf4e6d0304e76bc" category="inline-link">Asta Control Center的一般要求</block>
+  <block id="e5f96d86911475b63eda9de332d71989" category="list-text">*集群满足Astra Control Center要求*：Astra Control Center保护中使用的每个集群都满足要求<block ref="b5b2197abd24b9a933084786e7341ea5" category="inline-link-rx"></block>。</block>
+  <block id="26ce8c3f9eb6f4198d7e290f318122b0" category="inline-xref">备份和还原</block>
+  <block id="f29fabe637a472bf5222b12a0bc5df77" category="inline-xref">复制</block>
+  <block id="179e155261916c90c5ba827f30f81009" category="paragraph">这些过程介绍了使用将Asta Control Center还原到新集群所需的步骤 <block ref="ee90a91fd29d312c3755f81256004469" category="inline-xref-macro-rx"></block> 或 <block ref="7f9810b8c245a008d25b1cf6ca6e070c" category="inline-xref-macro-rx"></block>。步骤基于以下示例配置：</block>
+  <block id="085e18a4e893a18eb4b3be644e0d0787" category="inline-image-macro">一个保护工作流图像、其中显示了Astra Control Center复制或备份示例场景中三个Kubornetes集群中的两个集群上的三个Kubornetes集群和Astra Control Center。</block>
+  <block id="3fa6dfe19fa7d9c2568673cfed4aa973" category="paragraph"><block ref="3fa6dfe19fa7d9c2568673cfed4aa973" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d1a92d24a7adeca4e03c1e14f5dbd5ef" category="paragraph">在此示例配置中、显示了以下内容：</block>
+  <block id="5af2adb89714b8e388459fa74d8e3176" category="list-text">*运行主Asta Control Center实例的Kubernetes集群*：</block>
+  <block id="5ca66f0f84413c9635248af29099d016" category="list-text">OpenShift集群：<block ref="c6de64d6df231e6979b9dcb292a4e09e" prefix=" " category="inline-code"></block></block>
+  <block id="5ae9096cdbfa2c5295c888167237bac6" category="list-text">Asta Control Center主实例：<block ref="1e551b4381f3d89f6626ceafdded33bd" prefix=" " category="inline-code"></block></block>
+  <block id="eb833f6af7ead6a0e9464d032755cc83" category="list-text">此集群用于管理应用程序集群。</block>
+  <block id="8361de6458819a4215c0652c8868e68f" category="list-text">*与运行辅助Astra Control Center实例的主集群具有相同Kubernetes分发类型的第二个Kubernetes集群*：</block>
+  <block id="53a83d56e989fcb9c14d3472f11cbb6f" category="list-text">OpenShift集群：<block ref="2c798d6ccc4a7655866b43fbe94b95a5" prefix=" " category="inline-code"></block></block>
+  <block id="801590b559643f9a9f2f607350337edb" category="list-text">Asta Control Center二级实例：<block ref="ae31bcfac9b2be0104f617c5807509e3" prefix=" " category="inline-code"></block></block>
+  <block id="6695b68a353bef262b413bd1c6f1e439" category="list-text">此集群将用于备份主Asta Control Center实例或配置复制到其他集群(在此示例中为<block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix=" " category="inline-code"></block> 集群)。</block>
+  <block id="3da5486b34ef54de60c44461411039d0" category="list-text">*将用于还原操作的与主Kubernetes分发类型相同的第三个Kubernetes集群*：</block>
+  <block id="8d84a986a56f1897f286d501cd51ed79" category="list-text">OpenShift集群：<block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix=" " category="inline-code"></block></block>
+  <block id="c422eacf56b56c6007299895e2d81d87" category="list-text">Asta Control Center第三实例：<block ref="3579b970b0a80f0707d02e4ef2973d55" prefix=" " category="inline-code"></block></block>
+  <block id="7e0372ad48e0b9816b54b95befcb684a" category="list-text">此集群将用于Asta Control Center还原或复制故障转移。</block>
+  <block id="98f78468837601c6ce54ee67eca65c20" category="admonition">理想情况下、应用程序集群应位于上图中Kubernetes和randcher集群所示的三个Astra Control Center集群之外。</block>
+  <block id="602ccad37ebee4ebe450f21cd85f3ec9" category="paragraph">图中未显示：</block>
+  <block id="52e5800681694dd36c1678833c3ebed3" category="list-text">所有集群都安装了ONTAP后端以及三叉式。</block>
+  <block id="41eb2137b66d4ca3d8eab49c3169aafa" category="list-text">在此配置中、OpenShift集群使用MetalLB作为负载平衡器。</block>
+  <block id="b5b8e67d6a37d24ad73c89e4c7ac8c9e" category="inline-link-macro">前提条件</block>
+  <block id="3a6d969276b16565b36a8c5c47ff26af" category="list-text">Snapshot控制器和卷SnapshotClass也会安装在所有集群上、如中所述 <block ref="c7ad65e2d260b81d69f72ee0061ea668" category="inline-link-macro-rx"></block>。</block>
+  <block id="8163401d74ada705f56b234c0334a732" category="section-title">步骤1选项：备份和还原Astra Control Center</block>
+  <block id="0651312a32a51b75f38b06ed41be90ec" category="paragraph">本操作步骤介绍了使用备份和还原将Astra控制中心还原到新集群所需的步骤。</block>
+  <block id="0744a2bfe53bd1f93727419955aac4fe" category="paragraph">在此示例中、Astra Control Center始终安装在下<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 命名空间和操作符安装在下<block ref="cadbba5231afda9b003503d57805b87d" prefix=" " category="inline-code"></block> 命名空间。</block>
+  <block id="5933535c297d6907cd8bb37dc6807ae7" category="admonition">Asta Control Center operator也可以部署在与Asta CR相同的命名空间中、但未进行说明。</block>
+  <block id="2a209b3640899f9ac53a34c7f2998fa9" category="list-text">您已在集群上安装主Asta Control Center。</block>
+  <block id="40167b34ba3c203ad4a89b1783dee4f8" category="list-text">您已在另一个集群上安装辅助Asta Control Center。</block>
+  <block id="ced5ebb83366f4dc6c484cd399df9fa4" category="list-text">从二级Asta Control Center实例(运行于上)管理主Asta Control Center应用程序和目标集群<block ref="2c798d6ccc4a7655866b43fbe94b95a5" prefix=" " category="inline-code"></block> 集群)：</block>
+  <block id="24157c04c090c658365a1a1381733bee" category="list-text">登录到辅助Asta Control Center实例。</block>
+  <block id="905b6595a1144d79054d16d70f241e0c" category="inline-link-macro">添加主Asta Control Center集群</block>
+  <block id="64b9baaed07c5b60ec7fd1209d712850" category="list-text"><block ref="47faa60f4194d98e38c238d529e9f3ba" category="inline-link-macro-rx"></block> <block ref="c6de64d6df231e6979b9dcb292a4e09e" prefix="(" category="inline-code"></block>）。</block>
+  <block id="cce02a27fcc73636fb714a5b4bc12dbe" category="inline-link-macro">添加目标第三个集群</block>
+  <block id="2235e4f2af222fc49c32655c592f7a13" category="list-text"><block ref="e21ec3fc9b132c482f17f04af2363163" category="inline-link-macro-rx"></block> <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>)。</block>
+  <block id="4eb02c6222945af8e35359c90993d745" category="list-text">在辅助Asta Control Center上管理Asta Control Center和Asta Control Center操作员：</block>
+  <block id="f51ffb9c77ca44fd28cb7d10f441ccff" category="list-text">在*Define application*窗口中，输入新的应用程序名称 <block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix="(" category="inline-code"></block>）。</block>
+  <block id="bd86b7d3bce29159ded59cde7d1db272" category="list-text">选择运行主Asta Control Center的集群 <block ref="c6de64d6df231e6979b9dcb292a4e09e" prefix="(" category="inline-code"></block>)。</block>
+  <block id="5e0afc8490cb0f9aef8e7d6aa9c2a95b" category="list-text">选择<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> Astra Control Center的命名空间。</block>
+  <block id="13728b663815d8b9b7f3110a0f6ae3d3" category="list-text">在Cluster Resources页面上，选中*include additional cluster-scope ResResResees*。</block>
+  <block id="de4566456b44943a73dbc9f1d5f4cfb5" category="list-text">选择这些条目，然后选择*Add*：</block>
+  <block id="25a653c17051ef3ca841d953bbc19608" category="list-text">标签选择器：ac-crds</block>
+  <block id="ece2d00e491a614dbc2abe1f851d18eb" category="list-text">组：i扩展.k8s.io</block>
+  <block id="7ad0a964a0623e55a6f1d8cd78457694" category="list-text">版本：V1</block>
+  <block id="5b8e73d5fcf09db630648e42903cd2b0" category="list-text">种类：CustomResourceDefinition</block>
+  <block id="70df6adc26f110b5012bc3980b97ec00" category="list-text">确认应用程序信息。</block>
+  <block id="e69f748bec017b909dbea596f6f8dc81" category="paragraph">选择*defin*后，对运算符重复“定义应用程序”过程 <block ref="cadbba5231afda9b003503d57805b87d" prefix="(" category="inline-code"></block>)、然后选择<block ref="cadbba5231afda9b003503d57805b87d" prefix=" " category="inline-code"></block> 命名空间。</block>
+  <block id="d57219211eee2c9ac61353961ee18a5d" category="list-text">备份Asta控制中心和操作员：</block>
+  <block id="7f4d957664298337c8d5157fa149a990" category="list-text">在辅助Asta控制中心上、选择应用程序选项卡以导航到应用程序页面。</block>
+  <block id="278dad820960e96a9ce6541346dd4ba9" category="inline-link-macro">备份</block>
+  <block id="941c84a0653e644d5ab9ac150fb9c6b7" category="list-text"><block ref="ffec47dbb72ad940d976d493fbb373a6" category="inline-link-macro-rx"></block> Astra Control Center应用程序 <block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix="(" category="inline-code"></block>）。</block>
+  <block id="61519ed400e73a738969e7370bac17ee" category="list-text"><block ref="ffec47dbb72ad940d976d493fbb373a6" category="inline-link-macro-rx"></block> 运算符 <block ref="cadbba5231afda9b003503d57805b87d" prefix="(" category="inline-code"></block>）。</block>
+  <block id="3620c91a5ce84ffd285ec21372cfe15f" category="inline-link-macro">正在卸载Astra Control Center</block>
+  <block id="8372d448a6d84ac9d6457bd1d62e39cd" category="list-text">备份Astra Control Center和操作员之后、使用模拟灾难恢复(DR)场景 <block ref="c0a8da0102c6c1626f1a9bd5b3d39b7e" category="inline-link-macro-rx"></block> 从主集群。</block>
+  <block id="0a06b3d497cd0818ddc4081fd5085a94" category="admonition">您需要将Astra控制中心还原到新集群(本操作步骤中所述的第三个Kubbernetes集群)、并对新安装的Astra控制中心使用与主集群相同的DNS。</block>
+  <block id="614c81b0eeb6c12dd4aaa3bb219365e8" category="list-text">使用辅助Asta控制中心、 <block ref="c187a3e1878878e5987ba2dae2e97e3b" category="inline-link-macro-rx"></block> Asta Control Center应用程序的主实例从其备份中：</block>
+  <block id="f94329559aeea58ade037e247a10a440" category="list-text">选择*Applications*，然后选择Astra Control Center应用程序的名称。</block>
+  <block id="e329c9e9b3f1e5268c38c059d96714a5" category="list-text">选择*还原到新的空间*作为还原类型。</block>
+  <block id="db33cdfe838c8248e7475ea24002e1c5" category="list-text">输入还原名称 <block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix="(" category="inline-code"></block>）。</block>
+  <block id="221cfbda20ceb580c1e53521cb9a8340" category="list-text">选择目标第三个集群 <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>）。</block>
+  <block id="d1285da7ee51ae8f019ffc93064f4ef1" category="list-text">更新目标命名空间、使其与原始命名空间相同。</block>
+  <block id="a1c4429eb9da28aa020c08aef6590a55" category="list-text">在还原源页面上、选择要用作还原源的应用程序备份。</block>
+  <block id="e1929df758ae80ddec3d307d6f8b5c48" category="list-text">选择*使用原始存储类还原*。</block>
+  <block id="7247b0618202329b2ab0af353626c9ab" category="list-text">选择*恢复所有资源*。</block>
+  <block id="c70836f462f4f6702b9a139649608439" category="list-text">查看还原信息，然后选择*Restore*以启动将Astra Control Center还原到目标集群的还原过程 <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>）。应用程序进入后、还原完成<block ref="e4894ca167b08880bfc35862f18575eb" prefix=" " category="inline-code"></block> 状态。</block>
+  <block id="24c4abff05451e6058ec89e05fe3f560" category="list-text">在目标集群上配置Astra Control Center：</block>
+  <block id="8c0181c3c54e924e6c8251f6434552d7" category="list-text">打开终端并使用kubeconfig"连接到目标集群 <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>)、其中包含已恢复的Astra控制中心。</block>
+  <block id="7ccba7a2e64f551441aea8a49495251d" category="list-text">确认<block ref="2664f03ac6b8bb9eee4287720e407db3" prefix=" " category="inline-code"></block> Astra Control Center配置中的列引用了主系统的DNS名称：</block>
+  <block id="2040f7af66253ebbe0667af4c0828762" category="list-text">如果<block ref="2664f03ac6b8bb9eee4287720e407db3" prefix=" " category="inline-code"></block> 上述响应中的字段不具有主Asta Control Center实例的FQDN、请更新此配置以引用Asta Control Center DNS：</block>
+  <block id="6dfa48d4f2467071ce6e0f84fe3006bb" category="list-text">更改<block ref="d27903c79b643b2f565c31e894abb568" prefix=" " category="inline-code"></block> 下<block ref="084d5d41838f6b2d8b0c1f1176d66d01" prefix=" " category="inline-code"></block> 到FQDN <block ref="1e551b4381f3d89f6626ceafdded33bd" prefix="(" category="inline-code"></block> 在本示例中)。</block>
+  <block id="25812ed1432cfe46632186b5957ebe26" category="list-text">保存配置。</block>
+  <block id="3b02ce4030d877283176db26e25cca57" category="list-text">确认地址已更新：</block>
+  <block id="58352934cc7c347e2fd6b8aac19ac694" category="inline-xref">恢复A作用 控制中心操作员</block>
+  <block id="2617a6dc5f64d3041af70a4c660dcdb0" category="list-text">转至 <block ref="c104a16b91349430118376c82eb8b32b" category="inline-xref-macro-rx"></block> 以完成还原过程。</block>
+  <block id="686531f5cdaf39d33f2480c055816558" category="section-title">第1步选项：使用复制保护Astra Control Center</block>
+  <block id="9a1444b1c133e42ccb1d97ee2025cdac" category="inline-link-macro">Asta Control Center复制</block>
+  <block id="9291c718d85e7bcfb0e1411d0b1c9a6e" category="paragraph">本操作步骤介绍了配置所需的步骤 <block ref="90fb6a19cf7930e9ab4b6d3e8bb24100" category="inline-link-macro-rx"></block> 保护主Asta Control Center实例。</block>
+  <block id="5635b44a250915076a5eb24fca6e9950" category="list-text">从二级Asta Control Center实例管理主Asta Control Center应用程序和目标集群：</block>
+  <block id="9207ac3bd12b2fa43f3524815a74cfdd" category="list-text"><block ref="e21ec3fc9b132c482f17f04af2363163" category="inline-link-macro-rx"></block> <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>)。</block>
+  <block id="73a01c3fff16c0348c04f681860fd9d1" category="list-text">选择*群集*，然后选择包含主Astra Control Center的群集 <block ref="c6de64d6df231e6979b9dcb292a4e09e" prefix="(" category="inline-code"></block>）。</block>
+  <block id="b1583f3dc5a5e69c92e9c6428583cb45" category="list-text">选择 ...<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 和<block ref="cadbba5231afda9b003503d57805b87d" prefix=" " category="inline-code"></block> "。</block>
+  <block id="98ef596f9a9a869b5014c601276e1db7" category="list-text">选择操作菜单，然后选择*Define as applications*。</block>
+  <block id="ded592a2dd874d97359c95f2eaa29421" category="list-text">选择*在应用程序中查看*以查看定义的应用程序。</block>
+  <block id="7f5732477ab7b56be355975c7d13c1df" category="list-text">配置用于复制的后端：</block>
+  <block id="a5fdf01a9a15b06aa316075a3525120f" category="admonition">复制要求主Asta Control Center集群和目标集群 <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>)使用不同的对等ONTAP存储后端。
+在每个后端建立对等并添加到Astra Control后，后端将显示在“后端”页面的“*发现*”选项卡中。</block>
+  <block id="91a0f8c844251f5189f5504593539794" category="inline-link-macro">添加对等后端</block>
+  <block id="ab03d90a9fdb3fdf625d9aca81417e46" category="list-text"><block ref="978f815d0ef0db82fc827303a3ad02ca" category="inline-link-macro-rx"></block> 到主集群上的Astra Control Center。</block>
+  <block id="fd826e05ce5b455d7acefde843e26f20" category="list-text"><block ref="978f815d0ef0db82fc827303a3ad02ca" category="inline-link-macro-rx"></block> 到目标集群上的Astra Control Center。</block>
+  <block id="9356fa122297edcda026cd57fdc3d5e3" category="list-text">配置复制：</block>
+  <block id="8beda0998dc29d932cf830815de72ad4" category="list-text">在应用程序屏幕上、选择<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 应用程序。</block>
+  <block id="95eee5643c6ea92bf408bfecd9a7b10b" category="list-text">选择*配置复制策略*。</block>
+  <block id="6378adb28198926b11ac65eb9cea850d" category="list-text">选择 ...<block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix=" " category="inline-code"></block> 作为目标集群。</block>
+  <block id="c803f3bcb9b9fd80a88ad7b1a6db021e" category="list-text">选择存储类。</block>
+  <block id="541bb632fcb2088d2023df5041ddcc6e" category="list-text">输入 ...<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 作为目标命名空间。</block>
+  <block id="9cbdfe3d15f7fd64c6fd610312533b95" category="list-text">根据需要更改复制频率。</block>
+  <block id="eb23f2145c46a18f7c55bc5bb9994af8" category="list-text">确认配置正确，然后选择*Save*。</block>
+  <block id="f684373abd46b45391eb415a770205be" category="paragraph">复制关系将从过渡<block ref="6f5e6e098505ac366a921fdd2e9dfbe8" prefix=" " category="inline-code"></block> to<block ref="072f9734fceb02f516b50d4174ac0f18" prefix=" " category="inline-code"></block>。处于活动状态时、此复制将每五分钟进行一次、直到删除复制配置为止。</block>
+  <block id="f8ac0bf20f4e83443becf25c67c8dd23" category="list-text">如果主系统损坏或无法再访问、请将复制故障转移到另一个集群：</block>
+  <block id="2a5c691cfbc0e53ab9e3c59a54c85440" category="admonition">确保目标集群未安装Astra Control Center、以确保成功进行故障转移。</block>
+  <block id="071a074466d02cd4e0aaa0b4de4bd015" category="list-text">选择垂直省略号图标并选择*故障转移*。</block>
+  <block id="eb6498814838443cb837fec23bd9588c" category="inline-image-macro">显示复制关系中的"故障转移"选项的图像</block>
+  <block id="52613449476ac17405b8af6309067c8d" category="paragraph"><block ref="52613449476ac17405b8af6309067c8d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd0509d535a6917607fc96bea6fb5b05" category="list-text">确认详细信息并选择*故障转移*以开始故障转移过程。</block>
+  <block id="8ace1a586dc143db5ddfbd93ea99332d" category="paragraph">复制关系状态将更改为<block ref="2c8f732ca2bd1b62efb460fa5c2d6e4d" prefix=" " category="inline-code"></block> 然后<block ref="8b9489927c1c03581481cfefcf835120" prefix=" " category="inline-code"></block> 完成后。</block>
+  <block id="82685812b31cfcecb8abcb724f425fa8" category="list-text">完成故障转移配置：</block>
+  <block id="c08a43dadfceec3eb757735076d86287" category="list-text">打开终端并使用第三个集群的kubeconfig <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>）。此集群现在已安装Asta Control Center。</block>
+  <block id="63272416ff671e2cd071cc6fbf47d1ca" category="list-text">确定第三个集群上的Asta Control Center FQDN <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>）。</block>
+  <block id="982e9218f2e08e1fd0f4d400ef3d0e75" category="list-text">更新配置以引用Astra Control Center DNS：</block>
+  <block id="c07ad5d483cf962f73b521090b7ff568" category="list-text">更改<block ref="d27903c79b643b2f565c31e894abb568" prefix=" " category="inline-code"></block> 下<block ref="084d5d41838f6b2d8b0c1f1176d66d01" prefix=" " category="inline-code"></block> 使用FQDN <block ref="3579b970b0a80f0707d02e4ef2973d55" prefix="(" category="inline-code"></block>)。</block>
+  <block id="121944d9253d29f9f083abff9613ddc7" category="list-text">[[mission-traefik-crd]]确认所有必需的traefik CRD都存在：</block>
+  <block id="2d02cb2ce67247a18945ee0b7d49bebe" category="paragraph">所需的traefik CRD：</block>
+  <block id="fcc7cca69eff70efc25ddd0fc3a4acf7" category="list-text">如果上述部分CRD缺失：</block>
+  <block id="bb88971c352167a3a42c197b16ef4465" category="inline-link">Traefik文档</block>
+  <block id="2be174f6f759928d5ba86348e9b1e266" category="list-text">转至<block ref="d290875ab1e38c2569ff86f76b73296b" category="inline-link-rx"></block>。</block>
+  <block id="b5837c59520923ed6dd4fd8ba1cc7e49" category="list-text">将"定义"区域复制到文件中。</block>
+  <block id="ea7463422c1ab87e16568f20144a8f56" category="list-text">应用更改：</block>
+  <block id="30eef5ffc659f1b49b40f3bdac6a81da" category="list-text">重新启动traefik：</block>
+  <block id="250729ff35e6ada8a47a36ef1a6ac694" category="section-title">第2步：恢复Asta Control Center操作员</block>
+  <block id="baa33bb55433337969dadc7d383cff14" category="paragraph">使用辅助Asta控制中心、从备份中还原主Asta控制中心操作员。目标命名空间必须与源命名空间相同。如果从主源集群中删除了Astra Control Center、则仍会存在备份以执行相同的还原步骤。</block>
+  <block id="4c7254ab16d8ef09a273f3d96e69bf1c" category="list-text">选择*应用程序*，然后选择运营商应用程序的名称 <block ref="cadbba5231afda9b003503d57805b87d" prefix="(" category="inline-code"></block>）。</block>
+  <block id="ea2832681a21bc1855e50cfe212e73bd" category="list-text">从“操作”列的“选项”菜单中，选择*Restore*</block>
+  <block id="76d6679f0128260426340811fccf4a8f" category="list-text">将命名空间更改为与主源集群关联的命名空间相同 <block ref="cadbba5231afda9b003503d57805b87d" prefix="(" category="inline-code"></block>）。</block>
+  <block id="7644d571cdb353d1a0235344eb44d2bf" category="list-text">选择先前创建的备份作为还原源。</block>
+  <block id="9d606654f9638f2043447b697898f09c" category="list-text">查看详细信息，然后单击*Restore*开始还原过程。</block>
+  <block id="ac478eb1284026f74c3f5ac74484f605" category="paragraph">"应用程序"页面显示了正在还原到目标第三个集群的A作用 力控制中心操作员 <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>）。此过程完成后、此状态将显示为<block ref="78945de8de090e90045d299651a68a9b" prefix=" " category="inline-code"></block>。十分钟内、页面上的DNS地址应已解析。</block>
+  <block id="b601247b675f590aa27dcdc8134318f2" category="paragraph">现在、目标第三个集群上可以使用Astra Control Center、其注册的集群以及具有其快照和备份的受管应用程序 <block ref="f5a2d3cd2198d56dec960ceb8ccc13a6" prefix="(" category="inline-code"></block>）。您在原始实例上设置的任何保护策略也会位于新实例上。您可以继续创建计划内或按需备份和快照。</block>
+  <block id="76ca73343a876eeb3c91722eb0a00de9" category="paragraph">确定系统运行状况以及保护过程是否成功。</block>
+  <block id="e30b18c15d0e16dfa86486a6e44c0dcf" category="list-text">*Pod未运行*：确认所有Pod均已启动且正在运行：</block>
+  <block id="e714a0eaa24af6b5857a0f2ca298c9f4" category="paragraph">如果中有一些Pod<block ref="9b9a6b49b6ab8fd31c78a10bb618f32b" prefix=" " category="inline-code"></block> 陈述并重新启动它们、它们应过渡到<block ref="5bda814c4aedb126839228f1a3d92f09" prefix=" " category="inline-code"></block> 状态。</block>
+  <block id="d07a1b5feb65868482c68e0ceb9c3c00" category="list-text">*确认系统状态*：确认Astra Control Center系统处于<block ref="b2fdab230a2c39f3595a947861863cb7" prefix=" " category="inline-code"></block> 状态：</block>
+  <block id="04f941910085f8a8e8c42f056eff9594" category="list-text">*确认部署状态*：显示Astra Control Center部署信息以确认<block ref="5e157d538e3ec1b01bf3ba3bd8b358f5" prefix=" " category="inline-code"></block> 为<block ref="ea9823706636090045090bd57654debb" prefix=" " category="inline-code"></block>。</block>
+  <block id="42f792b9c26a4fc874c76169d7b73cf2" category="inline-xref">Traefik CRD</block>
+  <block id="24af7920af161c9a7731c3eb37db9d88" category="list-text">*Restored Asta Control Center UI返回404错误*:如果在选择时发生这种情况<block ref="0a3e1793e4eaf6bd67bdf43d1bca1c74" prefix=" " category="inline-code"></block> 作为入口选项、选中 <block ref="192695547ed338030dabb8777268a730" category="inline-xref-macro-rx"></block> 以确保所有这些组件均已安装。</block>
 </blocks>

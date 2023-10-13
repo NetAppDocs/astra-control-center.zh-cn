@@ -18,6 +18,8 @@ entries:
     url: "/use/clone-apps.html"
   - title: 管理应用程序执行挂钩
     url: "/use/execution-hooks.html"
+  - title: 使用Astra Control Center保护Astra Control Center
+    url: "/use/protect-acc-with-acc.html"
 - title: 监控应用程序和集群运行状况
   entries:
   - title: 信息板摘要
