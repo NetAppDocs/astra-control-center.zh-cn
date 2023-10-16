@@ -194,10 +194,11 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 ====
 .Docker
 --
-. 更改为tarball的根目录。您应看到此文件和目录：
+. 更改为tarball的根目录。您应看到 `acc.manifest.bundle.yaml` 文件和以下目录：
 +
-`acc.manifest.bundle.yaml`
 `acc/`
+`kubectl-astra/`
+`acc.manifest.bundle.yaml`
 
 . 将Astra Control Center映像目录中的软件包映像推送到本地注册表。在运行之前、请进行以下替换 `push-images` 命令：
 +

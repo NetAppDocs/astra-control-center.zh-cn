@@ -3109,4 +3109,6 @@ RKE 2 (v1.25x)与R能 手2.7</block>
   <block id="04f941910085f8a8e8c42f056eff9594" category="list-text">*确认部署状态*：显示Astra Control Center部署信息以确认<block ref="5e157d538e3ec1b01bf3ba3bd8b358f5" prefix=" " category="inline-code"></block> 为<block ref="ea9823706636090045090bd57654debb" prefix=" " category="inline-code"></block>。</block>
   <block id="42f792b9c26a4fc874c76169d7b73cf2" category="inline-xref">Traefik CRD</block>
   <block id="24af7920af161c9a7731c3eb37db9d88" category="list-text">*Restored Asta Control Center UI返回404错误*:如果在选择时发生这种情况<block ref="0a3e1793e4eaf6bd67bdf43d1bca1c74" prefix=" " category="inline-code"></block> 作为入口选项、选中 <block ref="192695547ed338030dabb8777268a730" category="inline-xref-macro-rx"></block> 以确保所有这些组件均已安装。</block>
+  <block id="eccd068ac5b12e3f94d95cd6dee8f5a5" category="list-text">更改为tarball的根目录。您应看到<block ref="1c505200729f6188430504adf03e42f9" prefix=" " category="inline-code"></block> 文件和以下目录：</block>
+  <block id="e6cb4c76250bf1066b942b12cc3881ce" category="paragraph"><block ref="c7dd43fbfc8e7f6b24b6d78aa8c0d7f1" prefix="" category="inline-code"></block><block ref="23e7180d10f1836f68812ac6480f53d1" prefix=" " category="inline-code"></block><block ref="1c505200729f6188430504adf03e42f9" prefix=" " category="inline-code"></block></block>
 </blocks>
