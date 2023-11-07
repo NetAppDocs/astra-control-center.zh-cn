@@ -32,7 +32,7 @@ pod-security.kubernetes.io/enforce: privileged
 
 == 由Astra控制中心安装的Psps
 
-在Kubernetes 1.23或1.24上安装Astra Control Center时、会在安装期间创建多个POD安全策略。其中一些是永久性的、其中一些是在某些操作期间创建的、操作完成后会将其删除。当主机集群运行Kubernetes 1.25或更高版本时、Astra Control Center不会尝试安装PSP、因为这些版本不支持。
+在Kubnetes 1.24上安装Astra Control Center时、安装期间会创建多个POD安全策略。其中一些是永久性的、其中一些是在某些操作期间创建的、操作完成后会将其删除。当主机集群运行Kubernetes 1.25或更高版本时、Astra Control Center不会尝试安装PSP、因为这些版本不支持。
 
 
 

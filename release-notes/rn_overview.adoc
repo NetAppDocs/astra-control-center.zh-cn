@@ -19,4 +19,4 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 * link:../release-notes/known-limitations.html["已知限制"]
 
 
-在 Twitter @NetAppDoc 上关注我们。通过成为发送有关文档的反馈 link:https://docs.netapp.com/us-en/contribute/["GitHub 贡献者"^] 或发送电子邮件至 doccomments@netapp.com 。
+通过成为发送有关文档的反馈 link:https://docs.netapp.com/us-en/contribute/["GitHub 贡献者"^] 或发送电子邮件至 doccomments@netapp.com 。

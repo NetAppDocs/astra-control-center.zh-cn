@@ -43,7 +43,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
 * AWS 凭据，访问 ID 和机密密钥，具有用于创建存储分段和连接器的权限
 * AWS 帐户弹性容器注册（ Elastic Container Registry ， ECR ）访问和登录
-* 要访问 Astra Control UI ，需要 AWS 托管分区和 Route 53 条目
+* 要访问Astra Control UI、需要AWS托管区域和Amazon Route 53条目
 
 
 
@@ -86,7 +86,7 @@ NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方�
 
 
 | Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
-已安装并配置Asta Trident 22.10或更高版本、并将NetApp ONTAP 9.8或更高版本用作存储后端[AWS注册表]]
+已安装并配置Asta Trident 23.01或更高版本、并将NetApp ONTAP 9.9.1或更高版本用作存储后端[AWS注册表]]
 
 
 
@@ -282,7 +282,7 @@ NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方�
 
 
 | Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
-已安装并配置Astra Trident 22.10或更高版本、并将NetApp ONTAP 9.8或更高版本用作存储后端[[gcp-reRegistry ]
+已安装并配置Astra Trident 23.01或更高版本、并将NetApp ONTAP 9.9.1或更高版本用作存储后端[gcp-Registry ]
 
 
 
@@ -385,15 +385,7 @@ gcloud auth activate-service-account <service account email address>
 --key-file=<GCP Service Account JSON file>
 ----
 +
-此脚本需要一个Astra控制中心清单文件以及您的Google映像注册表位置。
-
-
-
-+
-示例
-
-+
-+
+此脚本需要一个Astra控制中心清单文件以及您的Google映像注册表位置。示例
 
 +
 [listing]
@@ -411,6 +403,8 @@ while IFS= read -r image; do
     docker push $GCP_CR_REGISTRY/$image
 done < astra-control-center-22.04.41.manifest
 ----
+
+
 . 设置 DNS 区域。
 
 
@@ -530,7 +524,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 | Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装)  a| 
-已安装并配置Asta Trident 22.10或更高版本、NetApp ONTAP 9.8或更高版本将用作存储后端[[azure-Registry ]]
+已安装并配置Asta Trident 23.01或更高版本、并且NetApp ONTAP 9.9.1或更高版本将用作存储后端[[azure-Registry ]]
 
 
 

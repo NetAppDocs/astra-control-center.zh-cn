@@ -4,7 +4,7 @@ sidebar: sidebar
 permalink: index.html 
 summary: Astra Control Center 软件可为内部环境中的 Kubernetes 集群提供应用程序感知型数据管理。轻松备份 Kubernetes 应用程序，将数据迁移到其他集群以及即时创建有效的应用程序克隆。如果您需要管理在公有云中运行的 Kubernetes 应用程序，请转至 Astra 控制服务的文档。 
 ---
-= Astra Control Center 23.07文档
+= Astra Control Center 23.10文档
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

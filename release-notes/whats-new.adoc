@@ -16,15 +16,33 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 
 
 
-== 2023年7月31日(23.07.0)
+== 2023年11月7日(23.10.0)
 
+[[nas-eco-backup-restore]]
 .新增功能和支持
-* link:../get-started/requirements.html#storage-backends["支持在延伸型配置中使用NetApp MetroCluster作为存储后端"^]
-* link:../get-started/requirements.html#storage-backends["支持使用Longhorn作为存储后端"^]
-* link:../use/replicate_snapmirror.html#delete-an-application-replication-relationship["现在、可以从同一个Kubnetes集群在ONTAP后端之间复制应用程序"]
-* link:../use/manage-remote-authentication.html["Astra Control Center现在支持使用"userPrincipalName"作为远程(LDAP)用户的备用登录属性"^]
-* link:../use/execution-hooks.html["在使用Asta Control Center执行复制故障转移后、可以运行新的执行挂钩类型"故障转移后""^]
-* 克隆工作流现在仅支持实时克隆(托管应用程序的当前状态)。要从快照或备份克隆、请使用 link:../use/restore-apps.html["还原工作流"^]。
+* *使用由ONTAP驱动程序提供支持的存储后端为应用程序提供备份和还原功能*：为启用备份和还原操作 `ontap-nas-economy` 和一些 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["简单的步骤"^]。
+* *不可改变的备份*：Astra Control现在支持 link:../concepts/data-protection.html#immutable-backups["不可更改的只读备份"^] 作为抵御恶意软件和其他威胁的额外安全层。
+* * Astra Control配置程序简介*
++
+在23.10版中、Astra Control引入了一个新的软件组件、称为Astra Control配置程序、该组件可供所有获得许可的Astra Control用户使用。Asta Control配置程序提供对Asta三元数据以外的一组高级管理和存储配置功能的访问。所有Astra Control客户均可免费使用这些功能。
+
++
+** *开始使用Astra Control配置程序*
+您可以 link:../use/enable-acp.html["启用Asta Control配置程序"^] 如果您已安装并配置环境以使用Asta Trident 23.10。
+** *Astra Control配置程序功能*
++
+Astra Control配置程序23.10版提供了以下功能：
+
++
+*** *通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性 link:../use-acp/configure-storage-backend-encryption.html["正在启用加密"^] 托管集群和存储后端之间的流量。A作用 力控制配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密
+*** *使用快照恢复数据*：Astra Control配置程序可使用从快照快速原位还原卷 `TridentActionSnapshotRestore` (TSR) CR。
+*** *SnapMirror增强功能*：在Astra Control无法直接连接到ONTAP集群或访问ONTAP凭据的环境中使用应用程序复制功能。通过此功能、您可以使用复制功能、而无需在Astra Control中管理存储后端或其凭据。
+*** *使用为应用程序提供备份和还原功能 `ontap-nas-economy` 驱动程序支持的存储后端*：如上所述 <<nas-eco-backup-restore,以上>>。
+
+
+
+
+* *默认情况下，执行挂钩处于关闭状态*：从此版本开始，执行挂钩功能可以是 link:../use/execution-hooks.html#enable-the-execution-hooks-feature["enabled"] 或禁用以提高安全性(默认情况下处于禁用状态)。如果尚未创建用于Astra Control的执行挂钩、则需要 link:../use/execution-hooks.html#enable-the-execution-hooks-feature["启用执行挂钩功能"^] 开始创建挂钩。如果您在此版本之前创建了执行挂钩、则执行挂钩功能将保持启用状态、您可以像往常一样使用挂钩。
 
 
 .已知问题和限制
@@ -32,6 +50,28 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 * link:../release-notes/known-limitations.html["此版本的已知限制"^]
 
 
+
+
+== 2023年7月31日(23.07.0)
+
+.详细信息
+[%collapsible]
+====
+.新增功能和支持
+* https://docs.netapp.com/us-en/astra-control-center-2307/get-started/requirements.html#storage-backends["支持在延伸型配置中使用NetApp MetroCluster作为存储后端"^]
+* https://docs.netapp.com/us-en/astra-control-center-2307/get-started/requirements.html#storage-backends["支持使用Longhorn作为存储后端"^]
+* https://docs.netapp.com/us-en/astra-control-center-2307/use/replicate_snapmirror.html#delete-an-application-replication-relationship["现在、可以从同一个Kubnetes集群在ONTAP后端之间复制应用程序"]
+* https://docs.netapp.com/us-en/astra-control-center-2307/use/manage-remote-authentication.html["Astra Control Center现在支持使用"userPrincipalName"作为远程(LDAP)用户的备用登录属性"^]
+* https://docs.netapp.com/us-en/astra-control-center-2307/use/execution-hooks.html["在使用Asta Control Center执行复制故障转移后、可以运行新的执行挂钩类型"故障转移后""^]
+* 克隆工作流现在仅支持实时克隆(托管应用程序的当前状态)。要从快照或备份克隆、请使用 https://docs.netapp.com/us-en/astra-control-center-2307/use/restore-apps.html["还原工作流"^]。
+
+
+.已知问题和限制
+* https://docs.netapp.com/us-en/astra-control-center-2307/release-notes/known-issues.html["此版本的已知问题"^]
+* https://docs.netapp.com/us-en/astra-control-center-2307/release-notes/known-limitations.html["此版本的已知限制"^]
+
+
+====
 
 
 == 2023年5月18日(23.04.2)

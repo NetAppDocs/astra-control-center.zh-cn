@@ -56,5 +56,7 @@ entries:
   url: "/use/unmanage.html"
 - title: 升级 Astra 控制中心
   url: "/use/upgrade-acc.html"
+- title: 启用Asta Control配置程序
+  url: "/use/enable-acp.html"
 - title: 卸载 Astra 控制中心
   url: "/use/uninstall_acc.html"

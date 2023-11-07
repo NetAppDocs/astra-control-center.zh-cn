@@ -65,26 +65,28 @@ NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据�
 在添加集群之前、应确保满足以下前提条件。您还应运行资格检查、以确保集群已准备好添加到Astra控制中心并创建集群管理角色。
 
 .开始之前
-* 确保集群中的工作节点已配置适当的存储驱动程序、以便Pod可以与后端存储进行交互。
-* 您的环境符合 link:../get-started/requirements.html["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
-* 如果要使用引用私有证书颁发机构(CA)的kubeconfigfile文件添加集群、请将以下行添加到 `cluster` kubeconfig"文件的部分。这样、Astra Control便可添加集群：
+* *满足环境前提条件*：您的环境满足 link:../get-started/requirements.html["操作环境要求"^] 适用于Astra Trident和Astra控制中心。
+* *配置工作节点*：确保使用适当的存储驱动程序配置集群中的工作节点、以便Pod可以与后端存储进行交互。
+* *使kubeconfig*可访问*：您可以访问 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["默认集群kubeconfig"^] 那 link:../get-started/install_acc.html#set-up-namespace-and-secret-for-registries-with-auth-requirements["您在安装期间配置的"^]。
+* *证书颁发机构注意事项*：如果使用引用私有证书颁发机构(CA)的kubeconfigfile文件添加集群、请将以下行添加到 `cluster` kubeconfig"文件的部分。这样、Astra Control便可添加集群：
 +
 [listing]
 ----
 insecure-skip-tls-verify: true
 ----
-* 一个版本的Astra Trident link:../get-started/requirements.html#astra-trident-requirements["受Astra控制中心支持"^] 已安装：
+* *Astra三项要求*：
++
+** *安装受支持的版本*：Astra Trdent的版本为 link:../get-started/requirements.html#astra-trident-requirements["受Astra控制中心支持"^] 已安装：
 +
 
 NOTE: 您可以 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#choose-the-deployment-method["部署Astra Trident"^] 使用Asta三端图运算符(手动或使用Helm图表)或 `tridentctl`。在安装或升级Astra Trident之前、请查看 https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["支持的前端、后端和主机配置"^]。
 
-+
-** *已配置Astra三端存储后端*：必须至少配置一个Astra三端存储后端 https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["已配置"^] 在集群上。
-** *已配置Astra三端存储类*：必须至少有一个Astra三端存储类 https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["已配置"^] 在集群上。如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
-** 已安装并配置* Astra Trident卷快照控制器和卷快照类*：卷快照控制器必须为 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["已安装"^] 以便可以在Astra Control中创建快照。至少一个Astra Trident `VolumeSnapshotClass` 已经 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-set-up-a-volumesnapshotclass["设置"^] 由管理员执行。
+** *配置Astra三端存储后端*：必须至少有一个Astra三端存储后端 https://docs.netapp.com/us-en/trident/trident-use/backends.html["已配置"^] 在集群上。
+** *配置Astra三端存储类*：必须至少有一个Astra三端存储类 https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["已配置"^] 在集群上。如果配置了默认存储类、请确保它是唯一具有默认标注的存储类。
+** *配置Asta Trdent卷快照控制器并安装卷快照类*：卷快照控制器必须为 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["已安装"^] 以便可以在Astra Control中创建快照。至少一个Astra Trident `VolumeSnapshotClass` 已经 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-set-up-a-volumesnapshotclass["设置"^] 由管理员执行。
 
 
-* * Kubeconfig accessible*：您可以访问 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["默认集群kubeconfig"^] 那 link:../get-started/install_acc.html#set-up-namespace-and-secret-for-registries-with-auth-requirements["您在安装期间配置的"^]。
+* *Astra Control置备程序*：要使用Astra Control置备程序的高级管理和存储配置功能(仅Astra Control用户可访问这些功能)，必须安装Astra Trandent 23.10或更高版本并启用 link:../use/enable-acp.html["Astra Control配置程序功能"]。
 * * ONTAP 凭据*：您需要在备用ONTAP 系统上设置ONTAP 凭据以及超级用户和用户ID、以便使用Astra控制中心备份和还原应用程序。
 +
 在ONTAP 命令行中运行以下命令：
@@ -607,6 +609,7 @@ TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理�
 
 .开始之前
 * 在添加集群之前，请查看并执行必要的操作 <<使用Astra Control准备用于集群管理的环境,前提条件任务>>。
+* 如果您使用的是ONTAP SAN驱动程序、请确保在所有Kubbernetes集群上启用了多路径。
 
 
 .步骤
@@ -861,11 +864,11 @@ Please enter Certificate: Press <Enter> when done
 -----END CERTIFICATE-----
 
 You should keep a copy of the CA-signed digital certificate for future reference.
-The installed certificate’s CA and serial number for reference:
+The installed certificate's CA and serial number for reference:
 
 CA:
 serial:
-The certificate’s generated name for reference:
+The certificate's generated name for reference:
 
 
 ==
@@ -968,9 +971,9 @@ NOTE: 您可能需要刷新页面才能显示后端。
 如果您要将应用程序配置和永久性存储克隆到同一集群、则无需在Astra Control中使用存储分段。应用程序快照功能不需要存储分段。
 
 .开始之前
-* 可从由Astra控制中心管理的集群访问的存储分段。
-* 存储分段的凭据。
-* 包含以下类型的存储分段：
+* 确保您有一个可从Astra Control Center管理的集群访问的存储分段。
+* 确保您具有此存储分段的凭据。
+* 确保存储分段为以下类型之一：
 +
 ** NetApp ONTAP S3
 ** NetApp StorageGRID S3

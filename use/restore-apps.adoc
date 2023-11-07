@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: use/restore-apps.html 
-keywords: restore app, restoring an app, restore, migrate nas-economy 
-summary: Astra 可以从快照或备份还原应用程序配置和永久性存储。永久性存储备份会从对象存储传输，因此从现有备份还原的速度最快。 
+keywords: restore app, restoring an app, restore, ontap-nas-economy, disruptive, migration 
+summary: Astra 可以从快照或备份还原应用程序配置和永久性存储。永久性存储备份会从对象存储中传输、因此从现有备份还原将以最快的速度完成。 
 ---
 = 还原应用程序
 :hardbreaks:
@@ -14,14 +14,15 @@ summary: Astra 可以从快照或备份还原应用程序配置和永久性存�
 [role="lead"]
 Astra Control 可以从快照或备份还原应用程序。将应用程序还原到同一集群时，从现有快照进行还原的速度会更快。您可以使用 Astra Control UI 或 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^] 还原应用程序。
 
-.关于此任务
-* *首先保护您的应用程序*：强烈建议您在恢复应用程序之前为其创建快照或备份。这样、您可以在还原失败时从快照或备份克隆。
+.开始之前
+* *首先保护您的应用程序*：强烈建议您在恢复应用程序之前为其创建快照或备份。这样、如果还原失败、您就可以从快照或备份克隆。
 * *检查目标卷*：如果要还原到其他存储类、请确保该存储类使用相同的永久性卷访问模式(例如ReadWriteMany)。如果目标永久性卷访问模式不同，还原操作将失败。例如、如果源永久性卷使用rwx访问模式、请选择无法提供rwx的目标存储类、例如Azure托管磁盘、AWS EBS、Google持久磁盘或 `ontap-san`，发生原因则还原操作是否会失败。有关永久性卷访问模式的详细信息、请参阅 https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes["Kubernetes"^] 文档。
 * *规划空间需求*：对使用NetApp ONTAP 存储的应用程序执行原位还原时、还原的应用程序使用的空间可能会增加一倍。执行原位还原后、从还原的应用程序中删除所有不需要的快照以释放存储空间。
-* *(仅限OpenShift集群)添加策略*：在OpenShift集群上创建用于托管应用程序的项目时、系统会为该项目(或Kubernetes命名空间)分配一个SecurityContext UID。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。
+* *(仅限Red Hat OpenShift集群)添加策略*：创建用于在OpenShift集群上托管应用程序的项目时、系统会为该项目(或Kubernetes命名空间)分配SecurityContext UID。要使 Astra 控制中心能够保护您的应用程序并将应用程序移动到 OpenShift 中的其他集群或项目，您需要添加策略，使应用程序能够作为任何 UID 运行。例如，以下 OpenShift 命令行界面命令会为 WordPress 应用程序授予相应的策略。
 +
 `oc new-project WordPress` `oc adm policy add-SCS-to-group anyuid system ： serviceaccounts ： WordPress` `oc adm policy add-SCS-to-user privileged -z default -n WordPress`
 
+* *(仅限ONTA-NAS经济型驱动程序)备份和还原*：备份或还原使用由备份的存储类的应用程序之前 `ontap-nas-economy` 驱动程序、请验证 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["ONTAP存储后端上的Snapshot目录处于隐藏状态"]。如果未能隐藏此目录、可能会导致无法访问您的应用程序、尤其是在使用NFSv3的情况下。
 * * Helm部署的应用程序*：完全支持使用Helm 3部署的应用程序(或从Helm 2升级到Helm 3)。不支持使用 Helm 2 部署的应用程序。
 
 
@@ -50,10 +51,6 @@ NOTE: 如果还原到先前已删除的命名空间、则在还原过程中会�
 
 
 ** *还原到新命名空间*：使用此操作步骤 将应用程序还原到另一个集群或使用与源不同的命名空间。
-+
-
-NOTE: 您可以使用此操作步骤 执行以下任一操作  存储类 `ontap-nas` 在同一集群*或*上、将应用程序复制到存储类由支持的另一集群 `ontap-nas-economy` 驱动程序。
-
 +
 ... 指定已还原应用程序的名称。
 ... 为要还原的应用程序选择目标集群。
@@ -102,7 +99,7 @@ Astra Control 会根据您提供的信息还原应用程序。如果您已原位
 NOTE: 在执行数据保护操作(克隆、备份或还原)并随后调整永久性卷大小后、在Web UI中显示新卷大小之前、最多会有20分钟的延迟。数据保护操作将在几分钟内成功完成，您可以使用存储后端的管理软件确认卷大小的更改。
 
 
-IMPORTANT: 任何按命名空间名称/ID或命名空间标签限制命名空间的成员用户都可以将应用程序克隆或还原到同一集群上的新命名空间或其组织帐户中的任何其他集群。但是，同一用户无法访问新命名空间中的克隆或还原应用程序。通过克隆或还原操作创建新命名空间后，帐户管理员 / 所有者可以编辑成员用户帐户并更新受影响用户的角色约束，以授予对新命名空间的访问权限。
+IMPORTANT: 任何按命名空间名称/ID或命名空间标签限制命名空间的成员用户都可以将应用程序克隆或还原到同一集群上的新命名空间或其组织帐户中的任何其他集群。但是，同一用户无法访问新命名空间中的克隆或还原应用程序。克隆或还原操作创建新命名空间后、帐户管理员/所有者可以编辑成员用户帐户并更新受影响用户的角色约束、以授予对新命名空间的访问权限。
 
 
 
@@ -161,12 +158,6 @@ NOTE: 如果使用GVK筛选器、则必须指定版本和种类。
 TIP: 您可以根据需要创建任意数量的资源包含和排除规则。这些规则将显示在启动操作之前的还原应用程序摘要中。
 
 
-
-
-
-== 从ONTAP经济型存储迁移到ONTAP NAS存储
-
-您可以使用Astra控件 link:../use/restore-apps.html["应用程序还原"] 或 link:../use/clone-apps.html["应用程序克隆"^] 从支持的存储类迁移应用程序卷的操作 `ontap-nas-economy`，允许对支持的存储类使用有限的应用程序保护选项 `ontap-nas` 提供全系列A作用 力控制保护选项。克隆或还原操作会迁移使用的基于qtree的卷 `ontap-nas-economy` 后端到由支持的标准卷 `ontap-nas`。卷、而不管它们是不是 `ontap-nas-economy` 仅备份或混合备份、将迁移到目标存储类。迁移完成后、保护选项将不再受限。
 
 
 

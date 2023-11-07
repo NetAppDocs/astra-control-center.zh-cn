@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: use/replicate_snapmirror.html 
 keywords: replicate, replication, disaster, recovery 
-summary: Astra 可以从快照或备份还原应用程序配置和永久性存储。永久性存储备份会从对象存储传输，因此从现有备份还原的速度最快。 
+summary: Astra 可以从快照或备份还原应用程序配置和永久性存储。永久性存储备份会从对象存储中传输、因此从现有备份还原将以最快的速度完成。 
 ---
 = 使用SnapMirror技术在存储后端之间复制应用程序
 :hardbreaks:
@@ -46,40 +46,46 @@ NOTE: 您可以同时按相反方向复制不同的应用程序。例如、应�
 
 Astra Control应用程序复制要求在开始之前满足以下前提条件：
 
-* * ONTAP集群*：
-+
-** *Astra三端*：Astra三端22.10或更高版本必须位于使用ONTAP作为后端的源和目标Kubernetes集群上。
-** *许可证*：必须在源和目标ONTAP集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^] 有关详细信息 ...
+.ONTAP 集群
+* *Astra三端*：Astra三端22.10或更高版本必须位于使用ONTAP作为后端的源和目标Kubernetes集群上。
+* *许可证*：必须在源和目标ONTAP集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^] 有关详细信息 ...
 
 
-* *对等*：
-+
-** *集群和SVM*：ONTAP存储后端必须建立对等状态。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^] 有关详细信息 ...
+.对等
+* *集群和SVM*：ONTAP存储后端必须建立对等状态。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/peering/index.html["集群和 SVM 对等概述"^] 有关详细信息 ...
 +
 
 IMPORTANT: 确保两个ONTAP集群之间的复制关系中使用的SVM名称是唯一的。
 
-** *Astra三端到子和SVM*：对等远程SVM必须可供目标集群上的Astra三端到子使用。
+* *Astra三端到子和SVM*：对等远程SVM必须可供目标集群上的Astra三端到子使用。
 
 
-* *Astra控制中心*：
+.Astra 控制中心
+* *托管后端*：您需要在Astra控制中心中添加和管理ONTAP存储后端、才能创建复制关系。
 +
+*_Astra Control仅限配置程序_*：如果为Astra Control Center 23.10或更高版本启用了Astra Control配置程序，则可以选择在Astra Control Center中添加和管理ONTAP存储后端。
+
+* *受管集群*：使用Asta Control添加和管理以下集群、最好是在不同的故障域或站点上：
++
+** 源Kubbernetes集群
+** 目标Kubbernetes集群
+** 关联的ONTAP集群
+
+
+* *用户帐户*：将ONTAP存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据。此角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
++
+*_Astra Control仅限配置程序_*：如果启用了Astra Control配置程序功能，则不再需要专门定义“管理员”角色来管理Astra Control Center中的群集，因为Astra Control Center中不再需要这些凭据。
+
+
+
 
 TIP: link:../get-started/install_acc.html["部署Asta Control Center"^] 在第三个故障域或二级站点中、以实现无缝灾难恢复。
 
-+
-** *受管集群*：必须将以下集群添加到Astra Control并由Astra Control进行管理、最好是在不同的故障域或站点上：
-+
-*** 源Kubbernetes集群
-*** 目标Kubbernetes集群
-*** 关联的ONTAP集群
 
+NOTE: 对于使用基于TCP协议的NVMe的存储后端、Astra控制中心不支持NetApp SnapMirror复制。
 
-** *用户帐户*：将ONTAP存储后端添加到Astra控制中心时、请应用具有"admin"角色的用户凭据。此角色具有访问方法 `http` 和 `ontapi` 已在ONTAP 源集群和目标集群上启用。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
-
-
-* *Astra三端/ ONTAP配置*：Astra控制中心要求您至少配置一个存储后端、以支持源集群和目标集群的复制。如果源集群和目标集群相同、则目标应用程序应使用与源应用程序不同的存储后端、以获得最佳故障恢复能力。
-
+.Astra Trident / ONTAP 配置
+Astra Control Center要求您至少配置一个存储后端、以便为源集群和目标集群同时支持复制。如果源集群和目标集群相同、则目标应用程序应使用与源应用程序不同的存储后端、以获得最佳故障恢复能力。
 
 
 IMPORTANT: Astra Control复制支持使用单个存储类的应用程序。将应用程序添加到命名空间时、请确保该应用程序与命名空间中的其他应用程序具有相同的存储类。向复制的应用程序添加PVC时、请确保新PVC与命名空间中的其他PVC具有相同的存储类。

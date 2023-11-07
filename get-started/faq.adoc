@@ -87,11 +87,11 @@ Astra Control 不会部署应用程序。应用程序必须部署在 Astra Contr
 
 * Astra Control 是否可以管理非 NetApp 存储上的应用程序？ *
 
-否虽然 Astra Control 可以发现使用非 NetApp 存储的应用程序，但它无法管理使用非 NetApp 存储的应用程序。
+否虽然Astra Control可以发现使用非NetApp存储的应用程序、但无法管理使用非NetApp存储的应用程序。
 
 *我应该自行管理Astra Control吗？*
 
-Astra Control Center默认情况下不会显示为您可以管理的应用程序、但您可以使用另一个Astra Control Center实例备份和还原Astra Control Center实例。
+Astra Control Center默认情况下不会显示为您可以管理的应用程序、但您可以管理 link:../use/protect-acc-with-acc.html["备份和还原"] 使用另一个Asta Control Center实例的Asta Control Center实例。
 
 *运行状况不正常的Pod是否会影响应用程序管理？*
 
@@ -107,4 +107,78 @@ Astra Control Center默认情况下不会显示为您可以管理的应用程序
 
 * 是否可以直接通过其他接口或对象存储管理 Astra Control 创建的快照？ *
 
-否Astra Control 创建的快照和备份只能使用 Astra Control 进行管理。
+否Asta Control创建的快照和备份只能使用Asta Control进行管理。
+
+
+
+== Asta Control配置程序
+
+*Astra Control配置程序的存储配置功能与Astra Trident中的存储配置功能有何不同？*
+
+Asta Control配置程序作为Asta Control的一部分、支持一组超群的存储配置功能、这些功能在开源Asta三元数据中不可用。这些功能是对开放源码的三元数据可用的所有功能的补充。
+
+*Astra Control配置程序是否取代了Astra三项功能？*
+
+在Asta Control的未来更新中、Asta Control配置程序将取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。因此、强烈建议Astra Control用户使用 link:../use/enable-acp.html["启用Asta Control配置程序"]。Asta三元数据将继续保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。
+
+*我必须为Astra三端安装付费吗？*
+
+否Asta三端技术将继续采用开源方式、并可免费下载。
+
+*在不安装和使用所有Astra Control的情况下，是否可以使用Astra Control中的存储管理和配置功能？*
+
+可以。即使您不想使用Astra Control数据管理功能的完整功能集、也可以升级到Astra Trident 23.10或更高版本并启用Astra Control配置程序功能。
+
+*如何从现有的Drident用户过渡到Astra Control以使用高级存储管理和配置功能？*
+
+如果您是现有的Trident用户(包括公有云中的Asta Trident用户)、则需要先获取Asta Control许可证。完成此操作后、您可以下载Astra Control配置程序捆绑包、升级Astra三端、和 link:../use/enable-acp.html["启用Astra Control配置程序功能"]。
+
+*如何知道Astra Control配置程序是否已取代了我的集群上的Astra Trident？*
+
+安装Asta Control配置程序后、Asta Control UI中的主机集群将显示 `ACP version` 而不是 `Trident version` 字段和当前安装的版本号。
+
+image:use/ac-acp-version.png["显示UI中ACP版本位置的屏幕截图"]
+
+如果您无权访问此UI、则可以使用以下方法确认安装成功：
+
+[role="tabbed-block"]
+====
+.Asta三端操作员
+--
+验证 `trident-acp` 容器正在运行 `acpVersion` 为 `23.10.0` 状态为 `Installed`：
+
+[listing]
+----
+kubectl get torc -o yaml
+----
+响应：
+
+[listing]
+----
+status:
+  acpVersion: 23.10.0
+  currentInstallationParams:
+    ...
+    acpImage: <my_custom_registry>/trident-acp:v23.10.0
+    enableACP: "true"
+    ...
+  ...
+  status: Installed
+----
+--
+.Tridentctl
+--
+确认已启用Asta Control配置程序：
+
+[listing]
+----
+./tridentctl -n trident version
+----
+响应：
+
+[listing]
+----
++----------------+----------------+-------------+ | SERVER VERSION | CLIENT VERSION | ACP VERSION | +----------------+----------------+-------------+ | 23.10.0 | 23.10.0 | 23.10.0. | +----------------+----------------+-------------+
+----
+--
+====

@@ -18,7 +18,7 @@ summary: 如果您使用的是 Red Hat OpenShift ，则可以使用操作员安�
 
 .开始之前
 * *满足环境前提条件*： link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"^]。
-* *运行状况良好的集群操作员和API服务*：
+* *确保集群操作员和API服务运行正常*：
 +
 ** 在OpenShift集群中、确保所有集群操作员均处于运行状况良好的状态：
 +
@@ -34,11 +34,50 @@ oc get apiservices
 ----
 
 
-* * FQDN地址*：获取数据中心中Astra控制中心的FQDN地址。
-* * OpenShift权限*：获取对Red Hat OpenShift容器平台的必要权限和访问权限、以执行所述的安装步骤。
-* *已配置证书管理器*：如果集群中已存在证书管理器、则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"^] 这样、Astra控制中心就不会安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
+* *确保具有可路由的FQDN*：您计划使用的Astra FQDN可以路由到集群。这意味着您的内部 DNS 服务器中有一个 DNS 条目，或者您正在使用已注册的核心 URL 路由。
+* *获取OpenShift权限*：要执行所述的安装步骤、您需要拥有对Red Hat OpenShift容器平台的所有必要权限和访问权限。
+* *配置证书管理器*：如果集群中已存在证书管理器，则需要执行某些操作 link:../get-started/cert-manager-prereqs.html["前提条件步骤"^] 这样、Astra控制中心就不会安装自己的证书管理器。默认情况下、Astra控制中心会在安装期间安装自己的证书管理器。
+* *考虑服务网格*：强烈建议使用保护Astra Control主机集群通信通道的安全 link:requirements.html#service-mesh-requirements["支持的服务网格"^]。
++
+.Isio服务网格详细信息
+[%collapsible]
+====
+要使用Isio服务网格、您需要执行以下操作：
+
+** 添加 `istio-injection:enabled` 在部署Asta Control Center之前、请标记Asta命名空间。
+** 使用 `Generic` <<generic-ingress,入口设置>> 并为提供备用入口 link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["外部负载平衡"^]。
+** 对于Red Hat OpenShift集群、您需要进行定义 `NetworkAttachmentDefinition` 在所有关联的Astra Control Center名空间上 (`netapp-acc-operator`， `netapp-acc`， `netapp-monitoring` 或任何已替换的自定义卷)。
++
+[listing]
+----
+cat <<EOF | oc -n netapp-acc-operator create -f -
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: istio-cni
+EOF
+
+cat <<EOF | oc -n netapp-acc create -f -
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: istio-cni
+EOF
+
+cat <<EOF | oc -n netapp-monitoring create -f -
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: istio-cni
+EOF
+----
+
+
+====
 * * Kubernetes入口控制器*：如果您的Kubernetes入口控制器负责管理对服务的外部访问、例如集群中的负载平衡、则需要将其设置为与Astra控制中心配合使用：
 +
+[%collapsible]
+====
 .. 创建操作员命名空间：
 +
 [listing]
@@ -48,6 +87,8 @@ oc create namespace netapp-acc-operator
 .. link:../get-started/install_acc.html#set-up-ingress-for-load-balancing["完成设置"^] 适用于您的入口控制器类型。
 
 
+====
+* *仅限ONTAP SAN驱动程序*：如果使用的是ONTAP SAN驱动程序、请确保在所有Kubernetes集群上启用了多路径。
 
 
 .步骤
@@ -63,12 +104,18 @@ oc create namespace netapp-acc-operator
 
 == 下载并提取Astra控制中心
 
+您可以选择从NetApp 支持站点 下载Astra控制中心包、也可以使用Docker从Astra控制服务映像注册表中提取该包。
+
+[role="tabbed-block"]
+====
+.NetApp 支持站点
+--
 . 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`) https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^]。
 . (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证分发包的签名。
 +
 .展开以查看详细信息
 [%collapsible]
-====
+=====
 [source, console]
 ----
 tar -vxzf astra-control-center-certs-[version].tar.gz
@@ -79,7 +126,7 @@ openssl dgst -sha256 -verify certs/AstraControlCenter-public.pub -signature cert
 ----
 此时将显示输出 `Verified OK` 验证成功后。
 
-====
+=====
 . 从Astra Control Center捆绑包中提取映像：
 +
 [source, console]
@@ -88,6 +135,16 @@ tar -vxzf astra-control-center-[version].tar.gz
 ----
 
 
+--
+.Astra Control图像注册表
+--
+. 登录Asta Control Service。
+. 在信息板上，选择*Deploy a self-managed instance* of Asta Control*。
+. 按照说明登录到Astra Control映像注册表、提取Astra Control Center安装映像并提取该映像。
+
+
+--
+====
 
 
 == 安装NetApp Astra kubectl插件
@@ -153,8 +210,9 @@ kubectl astra packages push-images -m <BUNDLE_FILE> -r <MY_FULL_REGISTRY_PATH> -
 --
 . 更改为tarball的根目录。您应看到此文件和目录：
 +
-`acc.manifest.bundle.yaml`
 `acc/`
+`kubectl-astra/`
+`acc.manifest.bundle.yaml`
 
 . 登录到注册表：
 +
@@ -173,7 +231,7 @@ podman login <YOUR_REGISTRY>
 ----
 export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
-export PACKAGEVERSION=23.07.0-25
+export PACKAGEVERSION=23.10.0-68
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
 astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
@@ -192,7 +250,7 @@ done
 ----
 export REGISTRY=<MY_FULL_REGISTRY_PATH>
 export PACKAGENAME=acc
-export PACKAGEVERSION=23.07.0-25
+export PACKAGEVERSION=23.10.0-68
 export DIRECTORYNAME=acc
 for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
 astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image: //')
@@ -208,7 +266,7 @@ NOTE: 根据您的注册表配置、此脚本创建的映像路径应类似于�
 +
 [listing]
 ----
-https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/23.07.0-25/image:version
+https://downloads.example.io/docker-astra-control-prod/netapp/astra/acc/23.10.0-68/image:version
 ----
 
 
@@ -220,7 +278,7 @@ https://netappdownloads.jfrog.io/docker-astra-control-prod/netapp/astra/acc/23.0
 
 . 要访问操作员安装页面，请完成以下过程之一：
 +
-** 从 Red Hat OpenShift Web 控制台：
+** 从Red Hat OpenShift Web控制台：
 +
 ... 登录到 OpenShift 容器平台 UI 。
 ... 从侧面菜单中，选择 * 运算符 > OperatorHub * 。
@@ -284,7 +342,7 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 .. 为Astra控制中心添加标签。
 .. 启用或禁用自动支持。建议保留自动支持功能。
 .. 输入Astra控制中心FQDN或IP地址。请止步 `http://` 或 `https://` 在地址字段中。
-.. 输入ASRA控制中心版本、例如23.07.0-25。
+.. 输入Asta Control Center版本；例如23.10.0-68。
 .. 输入帐户名称，电子邮件地址和管理员姓氏。
 .. 选择的卷回收策略 `Retain`， `Recycle`或 `Delete`。默认值为 `Retain`。
 .. 选择安装的可扩展大小。
@@ -292,7 +350,7 @@ NOTE: 如果您选择了手动批准策略，系统将提示您批准此操作�
 
 NOTE: 默认情况下、Astra将使用高可用性(HA) `scaleSize` 的 `Medium`，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用 `scaleSize` 作为 `Small`A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。
 
-.. 选择入口类型：
+.. [[generic-ing]]选择入口类型：
 +
 *** *`Generic`* (`ingressType: "Generic"`)(默认)
 +
@@ -335,7 +393,7 @@ NOTE: 如果配置了默认存储类、请确保它是唯一具有默认标注�
 
 == 创建注册表密钥
 
-如果您使用的注册表需要身份验证、请在OpenShift集群上创建一个密钥、然后在中输入该密钥名称 `Create AstraControlCenter` 表单字段。
+如果您使用的注册表需要进行身份验证、请在OpenShift集群上创建一个密钥、然后在中输入该密钥名称 `Create AstraControlCenter` 表单字段。
 
 . 为Astra控制中心操作员创建命名空间：
 +
