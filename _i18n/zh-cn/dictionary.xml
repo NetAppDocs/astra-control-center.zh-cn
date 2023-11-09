@@ -3426,4 +3426,6 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="9e586fb8e7af6f105f029bce05abcad4" category="section-title">对于保留策略已过期的存储分段、删除后备份数据仍会保留在存储分段中</block>
   <block id="03281739854e4951c0f98529e54a24f2" category="sidebar">使用Astra Control配置程序</block>
   <block id="3c4db63c6115c69942c67f6b04d8e645" category="paragraph">如果在存储分段的保留策略过期后删除应用程序的不可更改备份、则备份将从Astra Control中删除、而不是从存储分段中删除。此问题描述将在即将发布的版本中予以修复。</block>
+  <block id="ac4da6c6894a7c36281036138b93deac" category="list-text">*支持管理使用NVMe/TCP存储的应用程序*
+Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。</block>
 </blocks>

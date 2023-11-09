@@ -42,6 +42,8 @@ Astra Control配置程序23.10版提供了以下功能：
 
 
 
+* *支持管理使用NVMe/TCP存储的应用程序*
+Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。
 * *默认情况下，执行挂钩处于关闭状态*：从此版本开始，执行挂钩功能可以是 link:../use/execution-hooks.html#enable-the-execution-hooks-feature["enabled"] 或禁用以提高安全性(默认情况下处于禁用状态)。如果尚未创建用于Astra Control的执行挂钩、则需要 link:../use/execution-hooks.html#enable-the-execution-hooks-feature["启用执行挂钩功能"^] 开始创建挂钩。如果您在此版本之前创建了执行挂钩、则执行挂钩功能将保持启用状态、您可以像往常一样使用挂钩。
 
 
