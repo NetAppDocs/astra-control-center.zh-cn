@@ -3358,7 +3358,6 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="77786aa5158c2dd5c43d9bc74844fffd" category="admonition">请勿使用Helm启用Asta Control配置程序。如果您在初始安装中使用Helm、并且要升级到23.10、则需要使用啮合式操作符或tridentcdl来启用Asta Control配置程序。</block>
   <block id="531dc1bead45003a393e1e227a07b0fa" category="list-text">编辑TridentOrchestrator CR并进行以下编辑：</block>
   <block id="1dc3b7297d43967b1df8cc5f4718d2b7" category="list-text">启用Asta Control配置程序 <block ref="b146a884950a14beaf7f7c32ccceea96" prefix="(" category="inline-code"></block>）</block>
-  <block id="0d93f0d7110c6fcd946df3239a7be503" category="list-text">设置Asta Control配置程序映像的注册表位置 <block ref="334c0a9162c18d888fae4c3071edcbf0" prefix="(" category="inline-code"></block>）。</block>
   <block id="9f28a023f26c22c040e88a7f3791d0ed" category="inline-xref">图像拉取密钥</block>
   <block id="32c8b1c79820bf7dfd85518c9c748641" category="admonition">如果您已建立 <block ref="565c9dfc4921fbeccbde323bc8a44cad" category="inline-xref-macro-rx"></block> 在本操作步骤的前面部分、您可以在此处使用它们 <block ref="ce73ad6af69d89f0704d72b9000c5650" prefix="(" category="inline-code"></block>）</block>
   <block id="aef1a8f8ac300bc418eb75e7e1e3c426" category="list-text">更新Asta Trdent配置、以便使用新的<block ref="49c9f6c98d04c8c76aee7448fd9136ed" prefix=" " category="inline-code"></block> 容器部署方式：</block>
@@ -3428,4 +3427,5 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="3c4db63c6115c69942c67f6b04d8e645" category="paragraph">如果在存储分段的保留策略过期后删除应用程序的不可更改备份、则备份将从Astra Control中删除、而不是从存储分段中删除。此问题描述将在即将发布的版本中予以修复。</block>
   <block id="ac4da6c6894a7c36281036138b93deac" category="list-text">*支持管理使用NVMe/TCP存储的应用程序*
 Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。</block>
+  <block id="e19d9fd02be50073f892bf959070ea25" category="list-text">设置Asta Control配置程序映像的注册表位置 <block ref="20edfaac0850c3e3743b65fa227b6f0b" prefix="(" category="inline-code"></block>）。</block>
 </blocks>

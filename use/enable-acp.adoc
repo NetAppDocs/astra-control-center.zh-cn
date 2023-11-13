@@ -229,7 +229,7 @@ WARNING: 请勿使用Helm启用Asta Control配置程序。如果您在初始安�
 . 编辑TridentOrchestrator CR并进行以下编辑：
 +
 ** 启用Asta Control配置程序 (`enableACP: true`）
-** 设置Asta Control配置程序映像的注册表位置 (`acpImage: <my_custom_registry>/trident-acp:v23.10.0`）。
+** 设置Asta Control配置程序映像的注册表位置 (`acpImage: <my_custom_registry>/trident-acp:23.10.0`）。
 +
 
 NOTE: 如果您已建立 <<pull-secrets,图像拉取密钥>> 在本操作步骤的前面部分、您可以在此处使用它们 (`cr.astra.netapp.io/astra/trident-acp:23.10.0 imagePullSecrets: - <secret name>`）
@@ -247,7 +247,7 @@ spec:
   debug: true
   namespace: trident
   *enableACP: true*
-  *acpImage: <my_custom_registry>/trident-acp:v23.10.0*
+  *acpImage: <my_custom_registry>/trident-acp:23.10.0*
 ----
 . 应用更改：
 +
@@ -291,7 +291,7 @@ status:
   acpVersion: 23.10.0
   currentInstallationParams:
     ...
-    acpImage: <my_custom_registry>/trident-acp:v23.10.0
+    acpImage: <my_custom_registry>/trident-acp:23.10.0
     enableACP: "true"
     ...
   ...
@@ -307,7 +307,7 @@ status:
 +
 [listing]
 ----
-./tridentctl -n trident install --enable-acp=true --acp-image=mycustomregistry/trident-acp:v23.10
+./tridentctl -n trident install --enable-acp=true --acp-image=mycustomregistry/trident-acp:23.10
 ----
 . 确认已启用Asta Control配置程序：
 +
