@@ -932,11 +932,11 @@ curl --cacert ontap_signed_cert.crt  --key ontap_test_client.key --cert ontap_te
 
 == 添加存储后端
 
-您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
+设置凭据或证书身份验证信息后、您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
 
 通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。
 
-设置凭据或证书身份验证信息后、您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
+*_Astra Control配置程序only_*：如果已在Astra Control Center 23.10或更高版本中启用Astra Control配置程序，则在使用NetApp SnapMirror技术时，可以选择在Astra Control Center中添加和管理ONTAP存储后端。
 
 .步骤
 . 从左侧导航区域的信息板中、选择*后端*。

@@ -1581,7 +1581,6 @@
   <block id="2c2e7fe00f6284e8fe1d5912a2f0bace" category="list-text">选择要用于此Kubernetes集群的默认存储类、然后选择*下一步*。</block>
   <block id="5977f222fbe997f9173cd7c29ba765bc" category="list-text">查看相关信息、如果一切正常、请选择*添加*。</block>
   <block id="f152ec5ba865e7c8d2750571a4baa896" category="paragraph">集群将进入*正在发现*状态、然后更改为*运行状况良好*。现在、您正在使用Astra控制中心管理集群。</block>
-  <block id="ff9492d1695d9e5fe8ee2d412256cd28" category="paragraph">您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。</block>
   <block id="f458d757cde06889f0974a654df0a5b7" category="list-text">从左侧导航区域的信息板中、选择*后端*。</block>
   <block id="6a64c1bcaf700e10eff83e4b3e6a72a0" category="inline-link">管理ONTAP 文档中的用户帐户</block>
   <block id="801b71ec9b9ddb9cd61c5b2a99553262" category="admonition">您在此处输入凭据的用户必须具有<block ref="045ed0306c61104cb0777ccd31ce648b" prefix=" " category="inline-code"></block> 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法<block ref="045ed0306c61104cb0777ccd31ce648b" prefix=" " category="inline-code"></block> 和<block ref="80791b3ae7002cb88c246876d9faa8f8" prefix=" " category="inline-code"></block>、在源和目标ONTAP 集群上。请参见<block ref="8a6bfa44d9bdad330c1959698c083f78" category="inline-link-rx"></block> 有关详细信息 ...</block>
@@ -3428,4 +3427,5 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
 Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。</block>
   <block id="e19d9fd02be50073f892bf959070ea25" category="list-text">设置Asta Control配置程序映像的注册表位置 <block ref="20edfaac0850c3e3743b65fa227b6f0b" prefix="(" category="inline-code"></block>）。</block>
   <block id="2e307acdc1434ce81b546c869ac5d37c" category="list-text">标签选择器：&lt;label name&gt;</block>
+  <block id="aa22bb99bde532781940eb4a1e458758" category="paragraph">*_Astra Control配置程序only_*：如果已在Astra Control Center 23.10或更高版本中启用Astra Control配置程序，则在使用NetApp SnapMirror技术时，可以选择在Astra Control Center中添加和管理ONTAP存储后端。</block>
 </blocks>
