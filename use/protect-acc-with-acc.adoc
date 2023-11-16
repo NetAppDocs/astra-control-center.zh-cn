@@ -101,7 +101,7 @@ NOTE: Asta Control Center operator也可以部署在与Asta CR相同的命名空
 .. 选择*添加包含规则*。
 .. 选择这些条目，然后选择*Add*：
 +
-*** 标签选择器：ac-crds
+*** 标签选择器：<label name>
 *** 组：i扩展.k8s.io
 *** 版本：V1
 *** 种类：CustomResourceDefinition

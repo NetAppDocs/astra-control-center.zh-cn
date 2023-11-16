@@ -2879,7 +2879,6 @@
   <block id="5e0afc8490cb0f9aef8e7d6aa9c2a95b" category="list-text">选择<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> Astra Control Center的命名空间。</block>
   <block id="13728b663815d8b9b7f3110a0f6ae3d3" category="list-text">在Cluster Resources页面上，选中*include additional cluster-scope ResResResees*。</block>
   <block id="de4566456b44943a73dbc9f1d5f4cfb5" category="list-text">选择这些条目，然后选择*Add*：</block>
-  <block id="25a653c17051ef3ca841d953bbc19608" category="list-text">标签选择器：ac-crds</block>
   <block id="ece2d00e491a614dbc2abe1f851d18eb" category="list-text">组：i扩展.k8s.io</block>
   <block id="7ad0a964a0623e55a6f1d8cd78457694" category="list-text">版本：V1</block>
   <block id="5b8e73d5fcf09db630648e42903cd2b0" category="list-text">种类：CustomResourceDefinition</block>
@@ -3428,4 +3427,5 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="ac4da6c6894a7c36281036138b93deac" category="list-text">*支持管理使用NVMe/TCP存储的应用程序*
 Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。</block>
   <block id="e19d9fd02be50073f892bf959070ea25" category="list-text">设置Asta Control配置程序映像的注册表位置 <block ref="20edfaac0850c3e3743b65fa227b6f0b" prefix="(" category="inline-code"></block>）。</block>
+  <block id="2e307acdc1434ce81b546c869ac5d37c" category="list-text">标签选择器：&lt;label name&gt;</block>
 </blocks>

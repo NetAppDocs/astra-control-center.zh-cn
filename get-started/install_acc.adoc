@@ -696,7 +696,7 @@ IMPORTANT: 将以下附加值添加到Astra控制中心CR中、以防止安装�
 [listing]
 ----
 additionalValues:
-    polaris-keycloak:
+    keycloak-operator:
       livenessProbe:
         initialDelaySeconds: 180
       readinessProbe:
@@ -767,7 +767,7 @@ spec:
   scaleSize: "Medium"
   astraResourcesScaler: "Default"
   additionalValues:
-    polaris-keycloak:
+    keycloak-operator:
       livenessProbe:
         initialDelaySeconds: 180
       readinessProbe:
