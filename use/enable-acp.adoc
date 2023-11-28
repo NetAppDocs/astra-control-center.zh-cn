@@ -26,7 +26,7 @@ Astra Trident 23.10及更高版本提供了使用Astra Control配置程序的选
 
 [role="tabbed-block"]
 ====
-.Asta Control为用户提供Asta Control Center
+.使用Asta Control Center的Asta Control配置程序用户
 * *获取Astra控制中心许可证*：您需要 link:../concepts/licensing.html["Asta Control Center许可证"] 启用Astra Control配置程序并访问它提供的功能。
 * *安装或升级到Astra Control Center 23.10*：如果计划将Astra Control配置程序与Astra Control结合使用，则需要此版本。
 * *确认集群具有一个AMD64*系统架构：Astra Control配置程序映像在amd64和ARM64 CPU架构中都提供，但Astra Control Center仅支持amd64。

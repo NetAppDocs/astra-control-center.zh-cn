@@ -3313,11 +3313,9 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="cb902cabe05f2e75ccb2bfe8f46e3e1d" category="list-text">在"一次写入、多次读取"(WORM)分段的云提供程序保留期限到期之前、您不能删除该分段。WORm分段名称旁用"已锁定"表示。</block>
   <block id="261f0b7f37f0dd290043aab033357d32" category="summary">启用Asta Control配置程序以访问高级存储配置和管理功能。</block>
   <block id="bd748c545b83229576e1ff062aaacf08" category="paragraph">Astra Trident 23.10及更高版本提供了使用Astra Control配置程序的选项、允许获得许可的Astra Control用户访问高级存储配置功能。除了基于标准Asta三端CSI的功能之外、Asta Control配置程序还提供了此扩展功能。</block>
-  <block id="ea513a4deb2445ac25d1082dc1af99e1" category="paragraph">在Asta Control的未来更新中、Asta Control配置程序将取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。因此、强烈建议Asta Control用户启用Asta Control配置程序。Asta三元数据将继续保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。</block>
   <block id="80bb20cedf78b8489265ff8e9b411cb2" category="paragraph">如果您是Astra控制中心的许可用户、并且希望使用Astra控制配置程序功能、则应遵循此操作步骤。如果您是Astra三端数据库的用户、并且希望使用Astra Control配置程序提供的其他功能、而不同时使用Astra Control、则还应遵循此操作步骤。</block>
   <block id="16185b8c95bafd08c429f8e30bcc7054" category="paragraph">对于每种情况、默认情况下在Astra Trident 23.10中不会启用配置程序功能、但可以使用此过程启用此功能。</block>
   <block id="aae97e973132b3157377d72e07afb848" category="paragraph">如果要启用Asta Control配置程序、请先执行以下操作：</block>
-  <block id="49c36796227bb74be6548ae6950546e0" category="list-title">Asta Control为用户提供Asta Control Center</block>
   <block id="7005abad8b98fad0575f3c9af4fc49fa" category="list-text">*获取Astra控制中心许可证*：您需要 <block ref="d2e976b6271caffc0309faf092075998" category="inline-link-macro-rx"></block> 启用Astra Control配置程序并访问它提供的功能。</block>
   <block id="b4ee3c2dba27e2f04db76cfd397012cb" category="list-text">*安装或升级到Astra Control Center 23.10*：如果计划将Astra Control配置程序与Astra Control结合使用，则需要此版本。</block>
   <block id="ad3dcfab7172a482308ac0917ba2ac42" category="list-text">*确认集群具有一个AMD64*系统架构：Astra Control配置程序映像在amd64和ARM64 CPU架构中都提供，但Astra Control Center仅支持amd64。</block>
@@ -3428,4 +3426,6 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="e19d9fd02be50073f892bf959070ea25" category="list-text">设置Asta Control配置程序映像的注册表位置 <block ref="20edfaac0850c3e3743b65fa227b6f0b" prefix="(" category="inline-code"></block>）。</block>
   <block id="2e307acdc1434ce81b546c869ac5d37c" category="list-text">标签选择器：&lt;label name&gt;</block>
   <block id="aa22bb99bde532781940eb4a1e458758" category="paragraph">*_Astra Control配置程序only_*：如果已在Astra Control Center 23.10或更高版本中启用Astra Control配置程序，则在使用NetApp SnapMirror技术时，可以选择在Astra Control Center中添加和管理ONTAP存储后端。</block>
+  <block id="4985a3b824e2fb63f86dcaa415a32c2d" category="paragraph">在Asta Control的未来更新中、Asta Control配置程序将取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。因此、强烈建议Asta Control用户启用Asta Control配置程序。Asta三元数据将继续保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。</block>
+  <block id="8af227b0e0743a7dba6ed339a67722c9" category="list-title">使用Asta Control Center的Asta Control配置程序用户</block>
 </blocks>
