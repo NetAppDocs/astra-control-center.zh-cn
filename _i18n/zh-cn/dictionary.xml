@@ -3428,4 +3428,8 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="aa22bb99bde532781940eb4a1e458758" category="paragraph">*_Astra Control配置程序only_*：如果已在Astra Control Center 23.10或更高版本中启用Astra Control配置程序，则在使用NetApp SnapMirror技术时，可以选择在Astra Control Center中添加和管理ONTAP存储后端。</block>
   <block id="4985a3b824e2fb63f86dcaa415a32c2d" category="paragraph">在Asta Control的未来更新中、Asta Control配置程序将取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。因此、强烈建议Asta Control用户启用Asta Control配置程序。Asta三元数据将继续保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。</block>
   <block id="8af227b0e0743a7dba6ed339a67722c9" category="list-title">使用Asta Control Center的Asta Control配置程序用户</block>
+  <block id="cd27a1715aac859bc2a48a86ed2000c0" category="inline-link">Longhorn</block>
+  <block id="1752f949f63eb1f41cea70be24a2a732" category="list-text"><block ref="1752f949f63eb1f41cea70be24a2a732" category="inline-link-rx"></block></block>
+  <block id="d5bd450a47d2497dc5f133703c0fab95" category="list-text">内部部署集群：</block>
+  <block id="00ae925249b1dcd734cdb679b48bf8f7" category="list-text">NetApp ONTAP Select</block>
 </blocks>
