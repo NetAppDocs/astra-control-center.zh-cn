@@ -14,6 +14,8 @@ summary: '将Kubernetes集群添加到Astra Control后、您可以在该集群�
 [role="lead"]
 你先请 link:../get-started/setup_overview.html#add-cluster["将集群添加到 Astra Control 管理中"]、您可以在集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的应用程序页面来定义应用程序及其资源。
 
+您可以定义和管理包含存储资源且运行Pod的应用程序、或者包含存储资源且未运行任何Pod的应用程序。没有运行Pod的应用程序称为纯数据应用程序。
+
 
 
 == 应用程序管理要求
