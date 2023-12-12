@@ -31,13 +31,13 @@ Astra Trident 23.10及更高版本提供了使用Astra Control配置程序的选
 * *安装或升级到Astra Control Center 23.10*：如果计划将Astra Control配置程序与Astra Control结合使用，则需要此版本。
 * *确认集群具有一个AMD64*系统架构：Astra Control配置程序映像在amd64和ARM64 CPU架构中都提供，但Astra Control Center仅支持amd64。
 * *获取用于注册表访问的Asta Control服务帐户*：如果要使用Asta Control注册表而不是NetApp 支持站点 来下载Asta Control配置程序映像、请完成的注册 https://bluexp.netapp.com/astra-register["Asta Control Service帐户"^]。填写并提交表单并创建BlueXP帐户后、您将收到Astra Control Service欢迎电子邮件。
-* *确认您的Astra Dent版本在四个版本的窗口内*：如果您的Astra Dent版本在23.10的四个版本窗口内、则可以使用Astra Control配置程序直接升级到Astra Dent 23.10。例如、您可以直接从Asta三端到22.10升级到23.10。
+* *如果您安装了Astra三端安装程序，请确认其版本在四个版本的窗口内*：如果您的Astra三端安装程序在23.10版本的四个版本窗口内，则可以使用Astra Control置备程序直接升级到Astra三端安装程序23.10。例如、您可以直接从Asta三端到22.10升级到23.10。
 
 
 .仅适用于Asta Control配置程序用户
 --
 * *获取Astra控制中心许可证*：您需要 link:../concepts/licensing.html["Asta Control Center许可证"] 启用Astra Control配置程序并访问它提供的功能。
-* *确认您的Astra Dent版本在四个版本的窗口内*：如果您的Astra Dent版本在23.10的四个版本窗口内、则可以使用Astra Control配置程序直接升级到Astra Dent 23.10。例如、您可以直接从Asta三端到22.10升级到23.10。
+* *如果您安装了Astra三端安装程序，请确认其版本在四个版本的窗口内*：如果您的Astra三端安装程序在23.10版本的四个版本窗口内，则可以使用Astra Control置备程序直接升级到Astra三端安装程序23.10。例如、您可以直接从Asta三端到22.10升级到23.10。
 * *获取Astra Control Service帐户以访问注册表*：您需要访问注册表才能下载Astra Control配置程序映像。要开始使用、请完成的注册 https://bluexp.netapp.com/astra-register["Asta Control Service帐户"^]。填写并提交表单并创建BlueXP帐户后、您将收到Astra Control Service欢迎电子邮件。
 
 
@@ -194,21 +194,16 @@ WARNING: 请勿使用Helm启用Asta Control配置程序。如果您在初始安�
 ====
 .Asta三端操作员
 --
-. 如果从初始部署中删除了操作员、请重新创建Asta三端流程编排程序CRD：
+. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["下载Asta三端安装程序并解压缩"^]。
+. 如果您尚未安装Astra三端安装程序、或者您从初始Astra三端安装程序中删除了操作员、请完成以下步骤：
 +
-.. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["下载安装程序并将其解压缩"^]。
-.. 重新创建CRD：
+.. 创建客户需求日：
 +
 [source, console]
 ----
 kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
 ----
-.. 创建 `trident` 命名空间(如果需要)：
-+
-[source, console]
-----
-kubectl create namespace trident
-----
+.. 创建三项命名空间 (`kubectl create namespace trident`)或确认三项命名空间仍然存在 (`kubectl get all -n trident`）。如果已删除此命名空间、请重新创建它。
 
 
 . 将Astra Trdent更新为23.10.0：
@@ -309,8 +304,9 @@ status:
 --
 .Tridentctl
 --
-. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["从托管Asta三端到端的集群中卸载Asta三端到端"^]。
-. 在启用Asta Control配置程序的情况下重新安装Asta Trent (`--enable-acp=true`）：
+. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["下载Asta三端安装程序并解压缩"^]。
+. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["如果您已有Asta Trident、请从托管它的集群中将其卸载"^]。
+. 在启用Asta Control配置程序的情况下安装Asta Trent (`--enable-acp=true`）：
 +
 [source, console]
 ----
