@@ -27,8 +27,8 @@ IMPORTANT: 如果您拥有 Astra 控制中心的评估许可证，则可以获�
 
 这些选项全天候免费提供：
 
-* https://kb.netapp.com/Cloud/Astra/Control["* 知识库 * （需要登录）"^]：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。
-* * 文档中心 * ：这是您当前正在查看的文档站点。
+* https://kb.netapp.com/Cloud/Astra/Control["*使用知识库*(需要登录)"^]：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。
+* *请参阅产品文档*：这是您当前正在查看的文档站点。
 * https://discord.gg/NetApp["*通过不和获得帮助*"^]：转到"Pub类别"中的Astra、与同行和专家建立联系。
 * * 创建支持案例 * ：生成支持包以提供给 NetApp 支持部门进行故障排除。
 * * 提供有关 Astra Control* 的反馈：发送电子邮件至 astra.feedback@netapp.com ，告知我们您的想法，想法或顾虑。

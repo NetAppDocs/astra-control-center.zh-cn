@@ -1064,8 +1064,6 @@
   <block id="f64cab133147d09d35d2708459ada555" category="section-title">当 Astra Trident 脱机时，应用程序数据管理操作失败，并显示内部服务错误（ 500 ）</block>
   <block id="5ffd50b83740bc0749b40034cddea615" category="paragraph">如果应用程序集群上的 Astra Trident 脱机（并恢复联机），并且在尝试应用程序数据管理时遇到 500 个内部服务错误，请重新启动应用程序集群中的所有 Kubernetes 节点以还原功能。</block>
   <block id="9d795eb350d2c42a03b181a4bc513987" category="paragraph">这些选项全天候免费提供：</block>
-  <block id="68f269105158a82f8e06dd324631610e" category="inline-link">* 知识库 * （需要登录）</block>
-  <block id="54fb836d65dfa963fa159aa13bf9fe60" category="list-text">* 文档中心 * ：这是您当前正在查看的文档站点。</block>
   <block id="2d1cdbb35250ece1f1e88fdafee9d683" category="list-text">* 创建支持案例 * ：生成支持包以提供给 NetApp 支持部门进行故障排除。</block>
   <block id="5a7e155bd663e7d6145fbd05e0908d7e" category="list-text">* 提供有关 Astra Control* 的反馈：发送电子邮件至 astra.feedback@netapp.com ，告知我们您的想法，想法或顾虑。</block>
   <block id="8c32a73fa8e487b617354c9f67eced24" category="paragraph">确定将捆绑包上传到 NSS 是否需要代理连接。如果需要代理连接，请验证是否已将 Astra 控制中心配置为使用代理服务器。</block>
@@ -2518,7 +2516,6 @@
   <block id="9c71eb65f92b7f4fbb85f88f644c6613" category="list-text">选择安装的可扩展大小。</block>
   <block id="f8ac7e69f7496989a600589a0a35ce94" category="admonition">默认情况下、Astra将使用高可用性(HA)<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 的<block ref="87f8a6ab85c9ced3702b4ea641ad4bb5" prefix=" " category="inline-code"></block>，可在HA中部署大多数服务，并部署多个副本以实现冗余。使用<block ref="dc2f257f4eea1d3b6b3a1d35e1719508" prefix=" " category="inline-code"></block> 作为<block ref="2660064e68655415da2628c2ae2f7592" prefix=" " category="inline-code"></block>A作用 是减少所有服务的副本数量，但主要服务除外，以减少使用量。</block>
   <block id="9b846b7f30a8509224caa21eb61515be" category="list-text"><block ref="097c36d7e339c9c56e3325b9bd9b1890" category="inline-link-macro-rx"></block> 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。</block>
-  <block id="8dd1f225c8914473641273beab27cfb5" category="list-text"><block ref="48b751d095184607defa7b45448cfbd4" category="inline-link-rx"></block>：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。</block>
   <block id="150c473dfbcbc21128b1b0163082e277" category="paragraph">不能将 kubeconfig 与多个集群和上下文结合使用。请参见 <block ref="a221b9db35a895d6b52e9dd52f69851e" category="inline-link-macro-rx"></block> 有关详细信息 ...</block>
   <block id="17aaff3db5ad600ae90d1c45f82a9ce8" category="list-text">Removed：当前无法访问存储分段。</block>
   <block id="a5e4709506a688389ca2ed37bb81ac98" category="admonition">如果删除了活动存储分段凭据、请参见<block ref="8270c6fae649ca696475ea8dc76c4710" category="inline-link-rx"></block>。</block>
@@ -3339,27 +3336,18 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="28478864077d4a55fa88e064f317cc13" category="list-text">选择* API访问*。</block>
   <block id="054eff009cdf03269a420a2370e7dea5" category="list-text">记下您的帐户ID。</block>
   <block id="98720da814dca1d713a7ea34c223cc71" category="list-text">使用您的首选方法登录Astra Control注册表：</block>
-  <block id="504f7722d368dc922a957e7f67a889b9" category="list-text">按照首选方法的步骤将映像移动到自定义注册表。如果您不使用注册表、请按照三端修复程序操作步骤设置密钥。</block>
   <block id="be1ad1396eeb1a14ec670f22fa8db431" category="admonition">以下命令可以使用Podman、而不是Docker。如果您使用的是Windows环境、建议使用PowerShell。</block>
   <block id="dfd1625b65bec1b019b2006f2a2d6f7f" category="list-text">从注册表中提取Asta Control配置程序映像：</block>
   <block id="e6fa19c87424a75415bf86154af17fd6" category="admonition">提取的映像不支持多个平台、只支持与提取映像的主机相同的平台、例如Linux amd64。</block>
   <block id="91c18a5dec9cf1fbb20ffffd101409cd" category="open-title">起重机</block>
   <block id="1165b577af138b2a4ee1e0d044eea398" category="list-text">将Asta Control配置程序清单复制到自定义注册表：</block>
-  <block id="6bfac0d4d60794ceed5540ed9c92b46a" category="list-text">确保Docker配置中存在此块：</block>
-  <block id="07f6b362fad08add2146df68c7293231" category="list-text">[[pull机密]]在中创建密钥<block ref="47cb44be55a0dffa15dfc900a4c687be" prefix=" " category="inline-code"></block> 命名空间：</block>
-  <block id="68cf8879a7fec166cec9837ca39b81d7" category="list-text">将此密钥添加到Torc (Asta Trident流程编排程序)：</block>
   <block id="fd4492f5185090d06f007b4d15ef5b06" category="section-title">(第2步)在Asta Trdent中启用Asta Control配置程序</block>
   <block id="b948a23f0cbc4ea95e165a5489a3b7ce" category="inline-link">运算符(手动或使用Helm)或&lt;Block ref="c67fd1b99934afa248dfeb285a9a4191" prefref="" CATEGORI='inline-code'/&gt;</block>
   <block id="db339c3069eb97a3f8268234b2a50ea2" category="paragraph">确定原始安装方法是否使用<block ref="a1a09c66ad6b9d6162d6a0a2aaef123f" category="inline-link-rx"></block> 并根据原始方法完成相应的步骤。</block>
   <block id="77786aa5158c2dd5c43d9bc74844fffd" category="admonition">请勿使用Helm启用Asta Control配置程序。如果您在初始安装中使用Helm、并且要升级到23.10、则需要使用啮合式操作符或tridentcdl来启用Asta Control配置程序。</block>
   <block id="531dc1bead45003a393e1e227a07b0fa" category="list-text">编辑TridentOrchestrator CR并进行以下编辑：</block>
-  <block id="1dc3b7297d43967b1df8cc5f4718d2b7" category="list-text">启用Asta Control配置程序 <block ref="b146a884950a14beaf7f7c32ccceea96" prefix="(" category="inline-code"></block>）</block>
   <block id="9f28a023f26c22c040e88a7f3791d0ed" category="inline-xref">图像拉取密钥</block>
-  <block id="32c8b1c79820bf7dfd85518c9c748641" category="admonition">如果您已建立 <block ref="565c9dfc4921fbeccbde323bc8a44cad" category="inline-xref-macro-rx"></block> 在本操作步骤的前面部分、您可以在此处使用它们 <block ref="ce73ad6af69d89f0704d72b9000c5650" prefix="(" category="inline-code"></block>）</block>
-  <block id="aef1a8f8ac300bc418eb75e7e1e3c426" category="list-text">更新Asta Trdent配置、以便使用新的<block ref="49c9f6c98d04c8c76aee7448fd9136ed" prefix=" " category="inline-code"></block> 容器部署方式：</block>
   <block id="84b3a17dd4da0cadee9516d2c742e8e1" category="admonition">对于运行Kubornetes 1.24或更早版本的集群、请使用<block ref="bd2cc8575fe69c7f775292759380c838" prefix=" " category="inline-code"></block>。对于运行Kubernetes 1.25或更高版本的集群、请使用<block ref="5a02ebff4889c2de0379a0fb10bed282" prefix=" " category="inline-code"></block>。</block>
-  <block id="806742cccf8380250ffb871d582a0a03" category="list-text">验证是否已创建操作员、部署和副本集。</block>
-  <block id="a770ca95121cc795b602f9af6af024fb" category="admonition">在 Kubernetes 集群中只能有 * 一个操作符实例 * 。请勿创建 Trident 操作员的多个部署。</block>
   <block id="1257262228f3dbf25c74f93d6a909b66" category="inline-link">从托管Asta三端到端的集群中卸载Asta三端到端</block>
   <block id="950c9e864a976ae66bddc56b29094b99" category="list-text"><block ref="996278c098e8e1003fc70dc3df897bb1" category="inline-link-rx"></block>。</block>
   <block id="5dcdd9d11fd62dd1ee60a5366592f2c7" category="list-text">在启用Asta Control配置程序的情况下重新安装Asta Trent <block ref="87d6b9737ff6f9e44e3dd25c182cf495" prefix="(" category="inline-code"></block>）：</block>
@@ -3423,7 +3411,6 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="3c4db63c6115c69942c67f6b04d8e645" category="paragraph">如果在存储分段的保留策略过期后删除应用程序的不可更改备份、则备份将从Astra Control中删除、而不是从存储分段中删除。此问题描述将在即将发布的版本中予以修复。</block>
   <block id="ac4da6c6894a7c36281036138b93deac" category="list-text">*支持管理使用NVMe/TCP存储的应用程序*
 Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。</block>
-  <block id="e19d9fd02be50073f892bf959070ea25" category="list-text">设置Asta Control配置程序映像的注册表位置 <block ref="20edfaac0850c3e3743b65fa227b6f0b" prefix="(" category="inline-code"></block>）。</block>
   <block id="2e307acdc1434ce81b546c869ac5d37c" category="list-text">标签选择器：&lt;label name&gt;</block>
   <block id="aa22bb99bde532781940eb4a1e458758" category="paragraph">*_Astra Control配置程序only_*：如果已在Astra Control Center 23.10或更高版本中启用Astra Control配置程序，则在使用NetApp SnapMirror技术时，可以选择在Astra Control Center中添加和管理ONTAP存储后端。</block>
   <block id="4985a3b824e2fb63f86dcaa415a32c2d" category="paragraph">在Asta Control的未来更新中、Asta Control配置程序将取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。因此、强烈建议Asta Control用户启用Asta Control配置程序。Asta三元数据将继续保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。</block>
@@ -3433,4 +3420,26 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="d5bd450a47d2497dc5f133703c0fab95" category="list-text">内部部署集群：</block>
   <block id="00ae925249b1dcd734cdb679b48bf8f7" category="list-text">NetApp ONTAP Select</block>
   <block id="4aa0f8ba3923a0c903137a6f7e329b63" category="paragraph">您可以定义和管理包含存储资源且运行Pod的应用程序、或者包含存储资源且未运行任何Pod的应用程序。没有运行Pod的应用程序称为纯数据应用程序。</block>
+  <block id="c3ca8e473fcc08b80feb32d2ad5b1966" category="inline-link">Astra Control API文档</block>
+  <block id="46aa6f3fa88c010a00c195a597264284" category="list-text"><block ref="46aa6f3fa88c010a00c195a597264284" category="inline-link-rx"></block></block>
+  <block id="f4f2cbde24e2e81e6262dad2bd2eb04c" category="inline-link">*使用知识库*(需要登录)</block>
+  <block id="cc4db15538b57b46c1cc2fc5814b41d6" category="list-text"><block ref="ead354048112e0b2e37ea1a31234b87d" category="inline-link-rx"></block>：搜索与 Astra Control 相关的文章，常见问题解答或中断修复信息。</block>
+  <block id="7ad80befa0338511c04f74508bd4ae90" category="list-text">*请参阅产品文档*：这是您当前正在查看的文档站点。</block>
+  <block id="977fd3ce7eb29010ea4e3dc0d7208e35" category="list-text">如果您有自定义注册表、请按照以下步骤操作、以便使用首选方法将映像移动到自定义注册表。如果您不使用注册表、请按照中的三端修复操作符步骤进行操作 <block ref="01fbfb5dd1fa78257a7d2545aa849232" category="inline-link-macro-rx"></block>。</block>
+  <block id="81eeab9506186e2dca8faefa78d54067" category="paragraph">示例</block>
+  <block id="05a850d8b9bbf8f985d56783d24b4ef8" category="list-text">如果从初始部署中删除了操作员、请重新创建Asta三端流程编排程序CRD：</block>
+  <block id="c5ef2e8ef77f84391fa266f923ba567f" category="inline-link">下载安装程序并将其解压缩</block>
+  <block id="bfae990a3fa05e9fc309d9270c1b0bdf" category="list-text"><block ref="1762ff5119022dd6aa9e3a3693ff4c9a" category="inline-link-rx"></block>。</block>
+  <block id="6dfb05d57e00d495a2626742c5794d45" category="list-text">重新创建CRD：</block>
+  <block id="74e1b3ec60a1e85ea67710e2dc1cd343" category="list-text">创建<block ref="47cb44be55a0dffa15dfc900a4c687be" prefix=" " category="inline-code"></block> 命名空间(如果需要)：</block>
+  <block id="f2b891f09ee711b58bdd7005fd757210" category="list-text">将Astra Trdent更新为23.10.0：</block>
+  <block id="4cf0920f58032b65295d4d0255354879" category="list-text">验证Astra trident是否正在运行：</block>
+  <block id="70da7fdb746f99191502821d5d3b6d53" category="list-text">[[pull机密]]如果您有一个使用机密的注册表，请创建一个用于提取Astra Control置备程序映像的密钥：</block>
+  <block id="611316b2831d2091db014867dff4dbb5" category="list-text">为Astra三端映像设置自定义注册表位置或从Astra Control注册表中提取该映像 <block ref="c38ea817861c4f6d81ef59a478e24f43" prefix="(" category="inline-code"></block> 或<block ref="178c284f8a84efb70436e676da8ba21e" prefix=" " category="inline-code"></block>）。</block>
+  <block id="8b1959e0a8b41248dad790a861dbfdd9" category="list-text">启用Asta Control配置程序 <block ref="b146a884950a14beaf7f7c32ccceea96" prefix="(" category="inline-code"></block>）。</block>
+  <block id="1a7a4d068f08c144a6e5d715290a1623" category="list-text">设置Asta Control配置程序映像的自定义注册表位置或将其从Asta Control注册表中提取 <block ref="20edfaac0850c3e3743b65fa227b6f0b" prefix="(" category="inline-code"></block> 或<block ref="d1885d745ce46027d5b7a7684a69fd31" prefix=" " category="inline-code"></block>）。</block>
+  <block id="f3a11fe989360f45110df3758e7f0641" category="list-text">如果您已建立 <block ref="565c9dfc4921fbeccbde323bc8a44cad" category="inline-xref-macro-rx"></block> 在本操作步骤的前面部分、您可以在此处设置它们 <block ref="bafdae7aa6abb1556ef1b0d17efe7509" prefix="(" category="inline-code"></block>）。使用您在前面步骤中创建的相同名称机密名称。</block>
+  <block id="aa3ae8b6c1e4a29f9314a8bbc401330f" category="list-text">保存并退出文件。部署过程将自动开始。</block>
+  <block id="4f27e6f7f8f95f32f55540801c5f6db0" category="list-text">验证是否已创建操作员、部署和副本集。</block>
+  <block id="6849b59104c35075b063cf35570fde13" category="admonition">在 Kubernetes 集群中只能有 * 一个操作符实例 * 。请勿创建多个部署的Asta三端操作员。</block>
 </blocks>
