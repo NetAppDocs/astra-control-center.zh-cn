@@ -74,6 +74,24 @@ NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据�
 ----
 insecure-skip-tls-verify: true
 ----
+
+
+* [[enber-psa]]*启用PSA限制*：如果集群启用了POD安全准入强制(这是Kubernetes 1.25及更高版本集群的标准配置)、则需要对以下名称空间启用PSA限制：
++
+** `netapp-acc-operator` 命名空间：
++
+[listing]
+----
+kubectl label --overwrite ns netapp-acc-operator pod-security.kubernetes.io/enforce=privileged
+----
+** `netapp monitoring` 命名空间：
++
+[listing]
+----
+kubectl label --overwrite ns netapp-monitoring pod-security.kubernetes.io/enforce=privileged
+----
+
+
 * *Astra三项要求*：
 +
 ** *安装受支持的版本*：Astra Trdent的版本为 link:../get-started/requirements.html#astra-trident-requirements["受Astra控制中心支持"^] 已安装：

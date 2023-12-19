@@ -2699,7 +2699,6 @@
   <block id="3355b77143abcc47ad763361c0a24b74" category="paragraph">您可以将评估版许可证转换为完整许可证，也可以使用新许可证更新现有评估版许可证或完整许可证。如果您没有完整的许可证，请与 NetApp 销售联系人联系以获取完整的许可证和序列号。您可以使用Astra控制中心UI或<block ref="bd25eec94181cb8a1c6322299b11a4e5" category="inline-link-rx"></block> 更新现有许可证。</block>
   <block id="e2345475f657a83bdb89f0d758173706" category="inline-link">Astra Control Center 23.04文档</block>
   <block id="331507753b11b0196d31031604e3a720" category="list-text"><block ref="331507753b11b0196d31031604e3a720" category="inline-link-rx"></block></block>
-  <block id="9fb980f4590b677cdb520d20933d84f4" category="paragraph">Asta Control Center可通过向安装Asta的命名空间(NetApp-ACC或自定义命名空间)以及为备份创建的命名空间添加以下标签来强制实施POD安全许可。</block>
   <block id="3e2c006717cc8b00761751de7e11d362" category="summary">Astra Control Center支持各种存储后端。  您应了解存储类和永久性卷大小如何帮助您实现性能目标。</block>
   <block id="8cbd2767e7cb5131483f14b9f5693a7c" category="paragraph">Astra控制中心支持NetApp ONTAP和Longhorn作为存储后端。</block>
   <block id="0e1a55abe469167871f67cf77d4a08a7" category="list-text">*Astra三端存储类由ONTAP 存储提供支持*：如果使用ONTAP 后端，Astra控制中心可以导入ONTAP 后端以报告各种监控信息。</block>
@@ -3443,4 +3442,9 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="a65211330b142f51904ccfb3741cc124" category="inline-link">如果您已有Asta Trident、请从托管它的集群中将其卸载</block>
   <block id="00c4331aab8ed2101088511f96b6af8e" category="list-text"><block ref="f21e19b64d79b0da0ff48729d1b28669" category="inline-link-rx"></block>。</block>
   <block id="005a56f182fe268e9f6977b39114eab8" category="list-text">在启用Asta Control配置程序的情况下安装Asta Trent <block ref="87d6b9737ff6f9e44e3dd25c182cf495" prefix="(" category="inline-code"></block>）：</block>
+  <block id="591fd31287d2fc729bd2ed59d856b1e2" category="inline-link-macro">启用强制实施</block>
+  <block id="07d347dcf19fe0ea209afdba6b2c1488" category="paragraph">Astra Control Center允许您 <block ref="5957daf8ac28c5997f77f7cbb0504148" category="inline-link-macro-rx"></block> 通过向添加以下标签来实现Pod安全接入<block ref="cadbba5231afda9b003503d57805b87d" prefix=" " category="inline-code"></block> 和<block ref="aadb900c6eaeed8ade58660fe972acec" prefix=" " category="inline-code"></block> Astra的名称空间：</block>
+  <block id="76356ba85ed09ac1c7a6d1fbf72a3bfe" category="list-text">[[enber-psa]]*启用PSA限制*：如果集群启用了POD安全准入强制(这是Kubernetes 1.25及更高版本集群的标准配置)、则需要对以下名称空间启用PSA限制：</block>
+  <block id="6ec7da0a465c6f281367f7b3cc204a04" category="list-text"><block ref="cadbba5231afda9b003503d57805b87d" prefix="" category="inline-code"></block> 命名空间：</block>
+  <block id="6e9af694d79083d4bda3f226db24b704" category="list-text"><block ref="ab22b85c122f9a24c4ad6781f066be29" prefix="" category="inline-code"></block> 命名空间：</block>
 </blocks>

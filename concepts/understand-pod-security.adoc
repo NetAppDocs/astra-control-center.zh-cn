@@ -22,11 +22,11 @@ Astra控制中心通过POD安全策略(PSP)和POD安全允许(PSA)支持权限�
 
 == 由Astra控制中心强制实施的PSAS
 
-Asta Control Center可通过向安装Asta的命名空间(NetApp-ACC或自定义命名空间)以及为备份创建的命名空间添加以下标签来强制实施POD安全许可。
+Astra Control Center允许您 link:../get-started/setup_overview.html#enable-psa["启用强制实施"] 通过向添加以下标签来实现Pod安全接入 `netapp-acc-operator` 和 `netapp-monitoring` Astra的名称空间：
 
 [listing]
 ----
-pod-security.kubernetes.io/enforce: privileged
+pod-security.kubernetes.io/enforce=privileged
 ----
 
 
