@@ -801,7 +801,6 @@
   <block id="f31bbdd1b3e85bccd652680e16935819" category="cell">源</block>
   <block id="12007e1d59f4d09c87dbe2c438256244" category="cell">目标</block>
   <block id="8304923f61b35eb89581fa0086ed14f5" category="cell">客户端 PC</block>
-  <block id="2d9fec261b12bd71da19f847d4e58d8d" category="cell">UI / API 访问 - 确保托管 Astra 控制中心的集群与每个受管集群之间的此端口是双向开放的</block>
   <block id="24efa4ba853cd9af293a840b0bf27678" category="cell">指标使用者</block>
   <block id="c2b9f54ff75ba870e024a0704429b5a7" category="cell">Astra 控制中心工作节点</block>
   <block id="8c5a91ebed7886a0bcc83fc5b014b1db" category="cell">指标数据通信—确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 （需要双向通信）</block>
@@ -3447,4 +3446,9 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="76356ba85ed09ac1c7a6d1fbf72a3bfe" category="list-text">[[enber-psa]]*启用PSA限制*：如果集群启用了POD安全准入强制(这是Kubernetes 1.25及更高版本集群的标准配置)、则需要对以下名称空间启用PSA限制：</block>
   <block id="6ec7da0a465c6f281367f7b3cc204a04" category="list-text"><block ref="cadbba5231afda9b003503d57805b87d" prefix="" category="inline-code"></block> 命名空间：</block>
   <block id="6e9af694d79083d4bda3f226db24b704" category="list-text"><block ref="ab22b85c122f9a24c4ad6781f066be29" prefix="" category="inline-code"></block> 命名空间：</block>
+  <block id="6d26bffa3f2c51cba98a836beaa92f94" category="cell">UI/API访问-确保Astra控制中心与用于访问Astra控制中心的系统之间的双向端口处于打开状态</block>
+  <block id="95a19d64e8d86d082c85e6f6ffc78968" category="cell">托管Kubbernetes集群</block>
+  <block id="1351c5abff1fb0f0f349af5e26b94ac5" category="cell">443/6443
+*NOTE*：受管集群使用的端口可能因集群而异。请参见集群软件供应商提供的文档。</block>
+  <block id="3f55106e32511a9a3d0948154923bc88" category="cell">与受管集群通信-确保托管Asta Control Center的集群与每个受管集群之间的此端口均处于打开状态</block>
 </blocks>

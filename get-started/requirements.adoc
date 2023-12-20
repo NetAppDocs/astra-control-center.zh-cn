@@ -199,7 +199,7 @@ NOTE: 您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 
 | 源 | 目标 | Port | 协议 | 目的 
 
 
-| 客户端 PC | Astra 控制中心 | 443. | HTTPS | UI / API 访问 - 确保托管 Astra 控制中心的集群与每个受管集群之间的此端口是双向开放的 
+| 客户端 PC | Astra 控制中心 | 443. | HTTPS | UI/API访问-确保Astra控制中心与用于访问Astra控制中心的系统之间的双向端口处于打开状态 
 
 
 | 指标使用者 | Astra 控制中心工作节点 | 9090 | HTTPS | 指标数据通信—确保每个受管集群都可以访问托管 Astra 控制中心的集群上的此端口 （需要双向通信） 
@@ -212,6 +212,10 @@ NOTE: 您可以在双堆栈 Kubernetes 集群中部署 Astra 控制中心，而 
 
 
 | Astra 控制中心 | NetApp AutoSupport  | 443. | HTTPS | NetApp AutoSupport 通信 
+
+
+| Astra 控制中心 | 托管Kubbernetes集群 | 443/6443
+*NOTE*：受管集群使用的端口可能因集群而异。请参见集群软件供应商提供的文档。 | HTTPS | 与受管集群通信-确保托管Asta Control Center的集群与每个受管集群之间的此端口均处于打开状态 
 |===
 
 
