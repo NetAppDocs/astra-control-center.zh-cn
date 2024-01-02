@@ -2782,7 +2782,6 @@
   <block id="96e0534a032f957fed03525ccf5af5e8" category="paragraph">CRD：</block>
   <block id="d471227530b356aec7c6fbcaee9e9319" category="list-text">使用以下命令和示例编辑TLS存储CRD以指向新证书密钥名称、并将括号&lt;&gt;中的占位符值替换为适当的信息</block>
   <block id="61790943e1aa3906439ccf28814ccf38" category="cell">采用AKS 1.24.x和1.25x的Azure Stack HCI 21H2和22H2</block>
-  <block id="7a1e78fd1adb53e6f4397fb295df4f23" category="cell">4.11至4.13</block>
   <block id="d7946d05be60978f2368ce8e5ce14e28" category="list-text">Longhorn 1.5.0或更高版本</block>
   <block id="37cc34ea0413475a49903662efbf2810" category="inline-link">Longhorn文档</block>
   <block id="44d4c1083bf8b94adeda91dc8c74c6a4" category="list-text">需要手动创建卷SnapshotClass对象。请参见<block ref="51655f668612f34d87bb8550343c1042" category="inline-link-rx"></block> 有关说明，请参见。</block>
@@ -3451,4 +3450,5 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="1351c5abff1fb0f0f349af5e26b94ac5" category="cell">443/6443
 *NOTE*：受管集群使用的端口可能因集群而异。请参见集群软件供应商提供的文档。</block>
   <block id="3f55106e32511a9a3d0948154923bc88" category="cell">与受管集群通信-确保托管Asta Control Center的集群与每个受管集群之间的此端口均处于打开状态</block>
+  <block id="89de75d28b7402eb7cc9790aa9e4f669" category="cell">4.11至4.14</block>
 </blocks>

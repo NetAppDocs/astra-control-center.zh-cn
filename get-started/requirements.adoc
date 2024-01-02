@@ -42,7 +42,7 @@ RKE 2 (v1.24.x)与R能 手2.6
 RKE 2 (v1.26.x)与R9cher 2.7 
 
 
-| Red Hat OpenShift 容器平台 | 4.11至4.13 
+| Red Hat OpenShift 容器平台 | 4.11至4.14 
 
 
 | VMware Tanzu Kubernetes Grid Integrated Edition | 1.16.x (请参见 <<主机集群资源要求>>） 
