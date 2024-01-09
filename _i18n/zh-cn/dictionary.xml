@@ -3353,11 +3353,9 @@ Astra控制中心使用类型为"loadbalancer"的服务 <block ref="24ace688122f
   <block id="58a03d8d21572c27eb60cf9bd5c8d43e" category="inline-link">NetApp Astra Control知识库</block>
   <block id="f20acb61cfb1565991cf5d6bd4b2db45" category="paragraph"><block ref="f20acb61cfb1565991cf5d6bd4b2db45" category="inline-link-rx"></block></block>
   <block id="615193f2c37d9fd054a61bf78b73ad01" category="section-title">不可配置的备份</block>
-  <block id="f0e127be77c9992dc0642704c5c451f5" category="paragraph">Astra Control Center支持使用以下平台和存储分段类型创建不可配置的备份：</block>
   <block id="10c409f776da63661445303239e693a2" category="list-text">Amazon Web Services使用配置了S3对象锁定的Amazon S3存储分段</block>
   <block id="2068f70db106b56bd996eac3699fdfcf" category="list-text">使用配置了S3对象锁定的S3存储分段的NetApp StorageGRID</block>
   <block id="81a25fa8f10fc7cec301084797002d71" category="paragraph">使用不可配置备份时、请注意以下事项：</block>
-  <block id="582c23d1f9cff824030194a7519dc569" category="list-text">如果备份到不受支持的平台中的一次写入多次读取(WORM)存储分段或备份到不受支持的存储分段类型、则可能会出现不可预测的结果、例如、即使已过保留时间、备份删除也会失败。</block>
   <block id="046b0dc975ab97773b3ec3307b750bf6" category="list-text">Astra Control不支持数据生命周期管理策略、也不支持手动删除用于不可变备份的存储分段上的对象。确保存储后端未配置为管理Astra Control快照或备份数据的生命周期。</block>
   <block id="7568249152714205d217e48a3ef0bb10" category="paragraph">在Kubnetes 1.24上安装Astra Control Center时、安装期间会创建多个POD安全策略。其中一些是永久性的、其中一些是在某些操作期间创建的、操作完成后会将其删除。当主机集群运行Kubernetes 1.25或更高版本时、Astra Control Center不会尝试安装PSP、因为这些版本不支持。</block>
   <block id="99d812e9a37f17344dd9e9d894e9cb39" category="paragraph">通过成为发送有关文档的反馈 <block ref="78cabac26f0b6e0ce9a3e24d1b749910" category="inline-link-macro-rx"></block> 或发送电子邮件至 doccomments@netapp.com 。</block>
@@ -3451,4 +3449,7 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
 *NOTE*：受管集群使用的端口可能因集群而异。请参见集群软件供应商提供的文档。</block>
   <block id="3f55106e32511a9a3d0948154923bc88" category="cell">与受管集群通信-确保托管Asta Control Center的集群与每个受管集群之间的此端口均处于打开状态</block>
   <block id="89de75d28b7402eb7cc9790aa9e4f669" category="cell">4.11至4.14</block>
+  <block id="e04a358cba8d50694f1716ff3cdb4c21" category="paragraph">不可变备份是指在指定时间段内无法更改或删除的备份。在创建不可更改的备份时、Astra Control会检查以确保您使用的存储分段是一次写入多次读取(Write on时 读取多次、WORM)存储分段、如果是、则会确保备份在Astra Control中不可更改。
+Astra Control Center支持使用以下平台和存储分段类型创建不可配置的备份：</block>
+  <block id="2d0336a0c7896d90ad095dbc30578198" category="list-text">如果备份到不受支持的平台中的WORM存储分段或备份到不受支持的存储分段类型、则可能会出现无法预测的结果、例如、即使已过保留时间、备份删除也会失败。</block>
 </blocks>
