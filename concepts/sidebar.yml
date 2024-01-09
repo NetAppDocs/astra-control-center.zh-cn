@@ -14,5 +14,3 @@ entries:
   url: "/concepts/choose-class-and-size.html"
 - title: 用户角色和命名空间
   url: "/concepts/user-roles-namespaces.html"
-- title: POD安全性
-  url: "/concepts/understand-pod-security.html"

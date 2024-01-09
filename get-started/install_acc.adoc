@@ -30,7 +30,8 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 TIP: 在第三个容错域或二级站点中部署A作用 力控制中心。对于应用程序复制和无缝灾难恢复、建议执行此操作。
 
-* *考虑POD安全策略*：如果您已在环境中配置或希望配置POD安全策略，请熟悉POD安全策略及其对Astra Control Center安装的影响。请参见 link:../concepts/understand-pod-security.html["POD安全限制"^]。
+
+
 * *确保服务运行状况良好*：检查所有API服务是否均处于运行状况良好且可用：
 +
 [source, console]
