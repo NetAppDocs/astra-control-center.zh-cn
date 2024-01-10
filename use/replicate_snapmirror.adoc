@@ -47,7 +47,12 @@ NOTE: 您可以同时按相反方向复制不同的应用程序。例如、应�
 Astra Control应用程序复制要求在开始之前满足以下前提条件：
 
 .ONTAP 集群
-* *Astra三端*：Astra三端22.10或更高版本必须位于使用ONTAP作为后端的源和目标Kubernetes集群上。
+* *Astra三端*：Astra三端22.10或更高版本必须位于使用ONTAP作为后端的源和目标Kubernetes集群上。Astra Control支持使用以下驱动程序支持的存储类通过NetApp SnapMirror技术进行复制：
++
+** `ontap-nas`
+** `ontap-san`
+
+
 * *许可证*：必须在源和目标ONTAP集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^] 有关详细信息 ...
 
 

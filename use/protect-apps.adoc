@@ -79,6 +79,14 @@ Astra Control 通过使用您定义的计划和保留策略创建和保留快照
 
 您可以随时创建按需快照。
 
+.关于此任务
+Astra Control支持使用以下驱动程序支持的存储类创建快照：
+
+* `ontap-nas`
+* `ontap-san`
+* `ontap-san-economy`
+
+
 
 IMPORTANT: 如果您的应用使用由支持的存储类 `ontap-nas-economy` 驱动程序、无法创建快照。为快照使用备用存储类。
 
@@ -103,6 +111,17 @@ Astra Control中的存储分段不报告可用容量。在备份或克隆Asta Co
 
 如果您的应用使用由支持的存储类 `ontap-nas-economy` 驱动程序、您需要这样做 <<为ONTAP NAS经济型操作启用备份和还原,启用备份和还原>> 功能。请确保您已定义 `backendType` 中的参数 https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Kubbernetes存储对象"^] 值为 `ontap-nas-economy` 在执行任何保护操作之前。
 
+[NOTE]
+====
+Astra Control支持使用以下驱动程序支持的存储类创建备份：
+
+* `ontap-nas`
+* `ontap-nas-economy`
+* `ontap-san`
+* `ontap-san-economy`
+
+
+====
 .步骤
 . 选择 * 应用程序 * 。
 . 从所需应用程序的*操作*列的选项菜单中、选择*备份*。

@@ -22,6 +22,14 @@ Astra Control 可以从快照或备份还原应用程序。将应用程序还原
 +
 `oc new-project WordPress` `oc adm policy add-SCS-to-group anyuid system ： serviceaccounts ： WordPress` `oc adm policy add-SCS-to-user privileged -z default -n WordPress`
 
+* *支持的存储类驱动程序*：Astra Control支持使用以下驱动程序支持的存储类还原备份：
++
+** `ontap-nas`
+** `ontap-nas-economy`
+** `ontap-san`
+** `ontap-san-economy`
+
+
 * *(仅限ONTA-NAS经济型驱动程序)备份和还原*：备份或还原使用由备份的存储类的应用程序之前 `ontap-nas-economy` 驱动程序、请验证 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["ONTAP存储后端上的Snapshot目录处于隐藏状态"]。如果未能隐藏此目录、可能会导致无法访问您的应用程序、尤其是在使用NFSv3的情况下。
 * * Helm部署的应用程序*：完全支持使用Helm 3部署的应用程序(或从Helm 2升级到Helm 3)。不支持使用 Helm 2 部署的应用程序。
 
