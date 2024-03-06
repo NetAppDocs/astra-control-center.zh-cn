@@ -2288,7 +2288,6 @@
   <block id="00055dac2ba112b87a95a368075b9561" category="list-text"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block></block>
   <block id="cd17e7ed84c40a0ff5ecb8b625b1f186" category="list-text"><block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix="" category="inline-code"></block></block>
   <block id="3b7cc10179d4a03a32a20e501dfd5870" category="list-text"><block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix="" category="inline-code"></block> (此存储类类型不支持应用程序复制)</block>
-  <block id="64e73248ee4f8bc7259ec69c97e5b190" category="list-text"><block ref="caafdf62a2c609bfa5316118231a1007" prefix="" category="inline-code"></block> (快照、复制策略和保护策略不适用于此存储类类型)</block>
   <block id="bd605fff7af6a2da2d78ab96c4c19217" category="section-title">存储后端</block>
   <block id="e1da14d4a8ef5675e8dac5e30712eaa1" category="paragraph">请确保您有一个受支持的后端、并具有足够的容量。</block>
   <block id="acc45c3104df8c76c1bca22e53694a49" category="list-text">*支持的后端*：Astra Control Center支持以下存储后端：</block>
@@ -3508,4 +3507,5 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="4eecab048a7c90cfb92e0f04884686e8" category="section-title">在ONTAP脱机时更新镜像关系</block>
   <block id="e3b68b1c19a14af5fcb94e147290aec6" category="paragraph">您可以使用CRD执行SnapMirror更新、而Astra Control不直接连接到ONTAP集群。请参阅以下TridentAction镜像 更新的示例格式：</block>
   <block id="bc08468157c4a9e3a30eed7ba64cc309" category="paragraph"><block ref="1f9dfae8a369525bce4996df40963532" prefix="" category="inline-code"></block> 反映TridentAction镜像 更新CRD的状态。它可以从_suced_、_in Progress _或_failed中获取值。</block>
+  <block id="458f5933715ee2e27d64e6d1f508b6ee" category="list-text"><block ref="caafdf62a2c609bfa5316118231a1007" prefix="" category="inline-code"></block> (快照和复制策略不适用于此存储类类型)</block>
 </blocks>
