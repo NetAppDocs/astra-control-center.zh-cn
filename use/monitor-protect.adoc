@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: use/monitor-protect.html 
-keywords: proxy, cloud insights, connections, fluent bit, accounts, protect, security 
-summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体验。如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet ，请在 Astra 控制中心中配置该代理服务器。您可以使用 NetApp Cloud Insights 监控和深入了解整个基础架构。您可以配置多种可选设置来增强您的 Astra 控制中心体验。要监控和深入了解整个基础架构、请创建与NetApp Cloud Insights 的连接、配置Prometheus或添加Fluentd连接。 
+keywords: proxy, connections, fluent bit, accounts, protect, security 
+summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体验。如果运行 Astra 控制中心的网络需要一个代理来连接到 Internet ，请在 Astra 控制中心中配置该代理服务器。您可以配置多种可选设置来增强您的 Astra 控制中心体验。要监控并深入了解您的整个基础架构、请配置Prometheus或添加Fluentd连接。 
 ---
-= 使用Cloud Insights 、Prometheus或Fluentd连接监控基础架构
+= 通过Prometheus或Fluentd连接监控基础架构
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,20 +12,19 @@ summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体�
 
 
 [role="lead"]
-您可以配置多种可选设置来增强您的 Astra 控制中心体验。要监控和深入了解整个基础架构、请创建与NetApp Cloud Insights 的连接、配置Prometheus或添加Fluentd连接。
+您可以配置多种可选设置来增强您的 Astra 控制中心体验。要监控并深入了解您的整个基础架构、请配置Prometheus或添加Fluentd连接。
 
-如果运行Astra控制中心的网络需要一个代理来连接到Internet (将支持包上传到NetApp 支持站点 或建立与Cloud Insights 的连接)、则应在Astra控制中心中配置一个代理服务器。
+如果运行Astra控制中心的网络需要使用代理连接到Internet (以便将支持包上传到NetApp 支持站点)、则应在Astra控制中心中配置代理服务器。
 
-* <<连接到 Cloud Insights>>
 * <<连接到Prometheus>>
 * <<连接到 Fluentd>>
 
 
 
 
-== 添加一个代理服务器、用于连接到Cloud Insights 或NetApp 支持站点
+== 添加用于连接到NetApp 支持站点 的代理服务器
 
-如果运行Astra控制中心的网络需要一个代理来连接到Internet (将支持包上传到NetApp 支持站点 或建立与Cloud Insights 的连接)、则应在Astra控制中心中配置一个代理服务器。
+如果运行Astra控制中心的网络需要使用代理连接到Internet (以便将支持包上传到NetApp 支持站点)、则应在Astra控制中心中配置代理服务器。
 
 
 IMPORTANT: Astra 控制中心不会验证您为代理服务器输入的详细信息。请确保输入正确的值。
@@ -65,133 +64,13 @@ image:proxy-new.png["此图显示代理服务器已成功连接。"]
 
 === 禁用代理服务器连接
 
-您可以禁用代理服务器连接。在禁用之前，系统会警告您可能会对其他连接造成中断。
+您可以禁用代理服务器连接。在禁用之前、系统会警告您可能会中断其他连接。
 
 .步骤
 . 使用具有 * 管理员 */* 所有者 * 权限的帐户登录到 Astra 控制中心。
 . 选择 * 帐户 * > * 连接 * 。
 . 从下拉列表中选择 * 断开连接 * 以禁用连接。
 . 在打开的对话框中，确认操作。
-
-
-
-
-== 连接到 Cloud Insights
-
-要监控和深入了解整个基础架构，请将 NetApp Cloud Insights 与您的 Astra 控制中心实例连接起来。Cloud Insights 包含在您的 Astra 控制中心许可证中。
-
-Cloud Insights 应可从 Astra 控制中心使用的网络访问，也可通过代理服务器间接访问。
-
-当 Astra 控制中心连接到 Cloud Insights 时，将创建采集单元 POD 。此 POD 从由 Astra 控制中心管理的存储后端收集数据并将其推送到 Cloud Insights 。此 POD 需要 8 GB RAM 和 2 个 CPU 核。
-
-
-NOTE: 当Astra控制中心与Cloud Insights 配对时，不应使用Cloud Insights 中的“*修改部署”选项。 
-
-
-NOTE: 启用Cloud Insights 连接后，您可以在*Backends*页面上查看吞吐量信息，并在选择存储后端后连接到Cloud Insights。您还可以在"Cluster"(集群)部分的*Dashboard (仪表板)*中找到相关信息，并从此处连接到Cloud Insights。
-
-.开始之前
-* 具有 * 管理 */* 所有者 * 权限的 Astra 控制中心帐户。
-* 有效的 Astra Control Center 许可证。
-* 如果运行 Astra 控制中心的网络需要使用代理连接到 Internet ，则为代理服务器。
-
-
-
-TIP: 如果您是 Cloud Insights 的新用户，请熟悉其特性和功能。请参见 link:https://docs.netapp.com/us-en/cloudinsights/index.html["Cloud Insights 文档"^]。
-
-.步骤
-. 使用具有 * 管理员 */* 所有者 * 权限的帐户登录到 Astra 控制中心。
-. 选择 * 帐户 * > * 连接 * 。
-. 选择 * 连接 * ，其中下拉列表中显示 * 已断开连接 * 以添加连接。
-+
-image:ci-connect.png["此图显示了下拉列表中用于启用Cloud Insights 连接的\"Connect\"选项。"]
-
-. 输入 Cloud Insights API 令牌和租户 URL 。例如，租户 URL 采用以下格式：
-+
-[listing]
-----
-https://<environment-name>.c01.cloudinsights.netapp.com/
-----
-+
-获取 Cloud Insights 许可证后，您将获得租户 URL 。如果您没有租户 URL ，请参见 link:https://docs.netapp.com/us-en/cloudinsights/task_cloud_insights_onboarding_1.html["Cloud Insights 文档"^]。
-
-+
-.. 以获取 link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-access-tokens["API 令牌"^]，登录到您的 Cloud Insights 租户 URL 。
-.. 在 Cloud Insights 中，单击 * 管理 * > * API 访问 * 以生成 * 读 / 写 * 和 * 只读 * API 访问令牌。
-+
-image:cloud-insights-api.png["此图显示了Cloud Insights API令牌生成页面。"]
-
-.. 复制 * 只读 * 密钥。您需要将其粘贴到 Astra 控制中心窗口中以启用 Cloud Insights 连接。对于读取 API 访问令牌密钥权限，请选择：资产，警报，采集单元和数据收集。
-.. 复制 * 读 / 写 * 密钥。您需要将其粘贴到 Astra 控制中心 * 连接 Cloud Insights * 窗口中。对于读/写API访问令牌密钥权限、请选择：数据载入、日志载入、采集单元和数据收集。
-+
-
-NOTE: 建议您生成 * 只读 * 密钥和 * 读 / 写 * 密钥，不要将同一密钥用于这两种用途。默认情况下，令牌到期期限设置为一年。我们建议您保留默认选择，以便为令牌提供到期前的最长持续时间。如果令牌过期，遥测将停止。
-
-.. 将从 Cloud Insights 复制的密钥粘贴到 Astra 控制中心。
-
-
-. 选择 * 连接 * 。
-
-
-
-IMPORTANT: 选择 * 连接后，在 Cloud Insights * 帐户 * > * 连接 * 页面的 * 连接 * 部分中，连接状态将更改为 * 待定 * 。可以在几分钟内启用连接并将状态更改为 * 已连接 * 。
-
-
-NOTE: 要在 Astra 控制中心和 Cloud Insights UI 之间轻松来回切换，请确保您已登录这两个。
-
-
-
-=== 在 Cloud Insights 中查看数据
-
-如果连接成功，则 * 帐户 * > * 连接 * 页面的 * Cloud Insights * 部分将指示已连接，并显示租户 URL 。您可以访问 Cloud Insights 以查看成功接收和显示的数据。
-
-image:cloud-insights.png["此图显示了在Astra控制中心UI中启用的Cloud Insights 连接。"]
-
-如果连接因某种原因失败，则状态将显示 * 失败 * 。您可以在用户界面右上角的 * 通知 * 下找到失败的原因。
-
-image:cloud-insights-notifications.png["此图显示了Cloud Insights 连接失败时的错误消息。"]
-
-您还可以在 * 帐户 * > * 通知 * 下找到相同的信息。
-
-在 Astra 控制中心中，您可以在 * 后端 * 页面上查看吞吐量信息，并在选择存储后端后从此处连接到 Cloud Insights 。image:throughput.png["此图显示了Astra控制中心的后端页面上的吞吐量信息。"]
-
-要直接转到 Cloud Insights ，请选择指标图像旁边的 * Cloud Insights * 图标。
-
-您还可以在 * 信息板 * 上找到相关信息。
-
-image:dashboard-ci.png["此图显示信息板上的Cloud Insights 图标。"]
-
-
-IMPORTANT: 启用 Cloud Insights 连接后，如果删除在 Astra 控制中心添加的后端，后端将停止向 Cloud Insights 报告。
-
-
-
-=== 编辑 Cloud Insights 连接
-
-您可以编辑 Cloud Insights 连接。
-
-
-NOTE: 您只能编辑 API 密钥。要更改 Cloud Insights 租户 URL ，我们建议您断开 Cloud Insights 连接并使用新 URL 进行连接。
-
-.步骤
-. 使用具有 * 管理员 */* 所有者 * 权限的帐户登录到 Astra 控制中心。
-. 选择 * 帐户 * > * 连接 * 。
-. 从下拉列表中选择*Edit*以编辑连接。
-. 编辑 Cloud Insights 连接设置。
-. 选择 * 保存 * 。
-
-
-
-
-=== 禁用 Cloud Insights 连接
-
-您可以为由 Astra 控制中心管理的 Kubernetes 集群禁用 Cloud Insights 连接。禁用 Cloud Insights 连接不会删除已上传到 Cloud Insights 的遥测数据。
-
-.步骤
-. 使用具有 * 管理员 */* 所有者 * 权限的帐户登录到 Astra 控制中心。
-. 选择 * 帐户 * > * 连接 * 。
-. 从下拉列表中选择 * 断开连接 * 以禁用连接。
-. 在打开的对话框中，确认操作。确认此操作后，在 * 帐户 * > * 连接 * 页面上， Cloud Insights 状态将更改为 * 待定 * 。要将状态更改为 * 已断开连接 * ，需要几分钟的时间。
 
 
 

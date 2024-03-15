@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: get-started/add-license.html 
+keywords: set up astra control, astra control license 
+summary: 安装Astra Control Center、登录到用户界面并更改密码后、您需要设置许可证。 
+---
+= 添加 Astra 控制中心的许可证
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+安装Astra Control Center时、已安装嵌入式评估版许可证。如果您正在评估Astra Control Center、则可以跳过此步骤。
+
+您可以使用Astra Control UI或添加新许可证 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^]。
+
+Astra控制中心许可证使用Kubernetes CPU单元测量CPU资源、并计算分配给所有受管Kubernetes集群的工作节点的CPU资源。许可证基于vCPU使用量。有关如何计算许可证的详细信息、请参见 link:../concepts/licensing.html["许可"]。
+
+
+NOTE: 如果您的安装增长到超过许可的 CPU 单元数，则 Astra 控制中心将阻止您管理新应用程序。超过容量时，将显示警报。
+
+
+NOTE: 要更新现有评估版或完整许可证、请参见 link:../use/update-licenses.html["更新现有许可证"]。
+
+.开始之前
+* 访问新安装的Astra Control Center实例。
+* 管理员角色权限。
+* 答 link:../concepts/licensing.html["NetApp 许可证文件"] (nlf)。
+
+
+.步骤
+. 登录到 Astra 控制中心 UI 。
+. 选择 * 帐户 * > * 许可证 * 。
+. 选择 * 添加许可证 * 。
+. 浏览到您下载的许可证文件（ NLF ）。
+. 选择 * 添加许可证 * 。
+
+
+* 帐户 * > * 许可证 * 页面显示许可证信息，到期日期，许可证序列号，帐户 ID 和使用的 CPU 单元。
+
+
+NOTE: 如果您拥有评估版许可证、并且不向AutoSupport 发送数据、请确保存储您的帐户ID、以避免在Astra控制中心发生故障时丢失数据。

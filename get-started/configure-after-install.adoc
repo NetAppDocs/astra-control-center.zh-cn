@@ -83,7 +83,7 @@ kubectl delete limitrange cpu-limit-range -n [netapp-acc or custom namespace]
 
 == 添加自定义 TLS 证书
 
-默认情况下、Astra控制中心对传入控制器流量(仅在某些配置中)和Web浏览器的Web UI身份验证使用自签名TLS证书。您可以删除现有的自签名 TLS 证书，并将其替换为由证书颁发机构（ CA ）签名的 TLS 证书。
+默认情况下、Astra控制中心对传入控制器流量(仅在某些配置中)和Web浏览器的Web UI身份验证使用自签名TLS证书。对于生产环境、您应删除现有的自签名TLS证书、并将其替换为由证书颁发机构(CA)签名的TLS证书。
 
 [NOTE]
 ====
@@ -181,6 +181,10 @@ Status:
 Events:                    <none>
 ----
 . 使用以下示例创建 `certificate.yaml` 文件，将括号中的占位值替换为相应的信息：
++
+
+NOTE: 此示例使用 `dnsNames` 属性以指定Asta Control Center DNS地址。Astra Control Center不支持使用公用名(Common Name、CN)属性指定DNS地址。
+
 +
 [source, yaml, subs="+quotes"]
 ----

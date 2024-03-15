@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: get-started/add-cluster.html 
+keywords: set up astra control, add cluster 
+summary: 在安装Astra Control Center、设置许可证并准备好环境之后、即可将集群添加到Astra Control管理中。 
+---
+= 添加集群
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+要开始管理应用程序，请添加 Kubernetes 集群并将其作为计算资源进行管理。您必须为 Astra 控制中心添加一个集群，才能发现您的 Kubernetes 应用程序。
+
+
+TIP: 我们建议，在将其他集群添加到 Astra 控制中心进行管理之前，先由 Astra 控制中心管理其部署所在的集群。要发送 Kubemmetrics 数据和集群关联数据以获取指标和故障排除信息，必须对初始集群进行管理。
+
+.开始之前
+* 在添加集群之前，请查看并执行必要的操作 link:../get-started/prep-for-cluster-management.html["前提条件任务"]。
+* 如果您使用的是ONTAP SAN驱动程序、请确保在所有Kubbernetes集群上启用了多路径。
+
+
+.步骤
+. 从信息板或集群菜单导航：
++
+** 从"Resource Summary"的"*信息板*"中、从"Clusters"窗格中选择"*添加*"。
+** 在左侧导航区域中、选择*集群*、然后从集群页面中选择*添加集群*。
+
+
+. 在打开的 * 添加集群 * 窗口中，上传 `kubeconfig.yaml` 文件或粘贴 `kubeconfig.yaml` 文件的内容。
++
+
+NOTE: `kubeconfig.yaml` 文件应仅包含一个集群的集群凭据 * 。
+
++
+
+IMPORTANT: 创建自己的 `kubeconfig` file中、您只能定义*一*上下文元素。请参见 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Kubernetes 文档"^] 有关创建的信息 `kubeconfig` 文件。如果您使用为有限集群角色创建了kubeconfig link:../get-started/add-cluster.html["此过程"]、请务必在此步骤中上传或粘贴kubeconfig。
+
+. 请提供凭据名称。默认情况下，凭据名称会自动填充为集群的名称。
+. 选择 * 下一步 * 。
+. 选择要用于此Kubernetes集群的默认存储类、然后选择*下一步*。
++
+
+NOTE: 您应选择一个存储类、该存储类在Astra控件配置程序中进行配置、并由ONTAP存储提供支持。
+
+. 查看相关信息、如果一切正常、请选择*添加*。
+
+
+.结果
+集群将进入*正在发现*状态、然后更改为*运行状况良好*。现在、您正在使用Astra控制中心管理集群。
+
+
+IMPORTANT: 添加要在 Astra 控制中心中管理的集群后，部署监控操作员可能需要几分钟的时间。在此之前，通知图标将变为红色并记录一个 * 监控代理状态检查失败 * 事件。您可以忽略此问题，因为当 Astra 控制中心获得正确状态时，问题描述将解析。如果问题描述 在几分钟内未解析、请转至集群并运行 `oc get pods -n netapp-monitoring` 作为起点。您需要查看监控操作员日志以调试问题。

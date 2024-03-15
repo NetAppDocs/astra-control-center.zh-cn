@@ -16,25 +16,52 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 
 
 
+== 2023年3月14日(24.02.0)
+
+.新增功能和支持
+* *在没有私有注册表的情况下部署Astra Control Center *：您不再需要将Astra Control Center映像推送到私有注册表或将其用作Astra Control环境的一部分。
+* *小错误修复*
+
+
+.已知问题和限制
+* link:../release-notes/known-issues.html["此版本的已知问题"]
+* link:../release-notes/known-limitations.html["此版本的已知限制"]
+
+
+.(技术预览)声明性Kubarnetes工作流
+此Astra Control Center版本包含声明性Kubarnetes功能、可用于从本机Kubarnetes自定义资源(CR)执行数据管理。
+
+安装后 link:../get-started/install-astra-connector.html["Asta连接器"] 在要管理的集群上、您将能够在UI或CR中执行以下基于CR的集群操作：
+
+* link:../use/manage-apps.html#tech-preview-define-an-application-using-a-kubernetes-custom-resource["使用自定义资源定义应用程序"]
+* link:../use/manage-buckets.html#tech-preview-manage-a-bucket-using-a-custom-resource["定义存储分段"]
+* link:../use/protect-apps.html#create-a-backup["备份应用程序"]
+* link:../use/protect-apps.html#create-a-snapshot["创建快照"]
+* link:../use/protect-apps.html#configure-a-protection-policy["为快照或备份创建计划"]
+* link:../use/restore-apps.html["从快照或备份还原应用程序"]
+
+
+
+
 == 2023年11月7日(23.10.0)
 
 [[nas-eco-backup-restore]]
 .新增功能和支持
-* *使用由ONTAP驱动程序提供支持的存储后端为应用程序提供备份和还原功能*：为启用备份和还原操作 `ontap-nas-economy` 和一些 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["简单的步骤"^]。
-* *不可改变的备份*：Astra Control现在支持 link:../concepts/data-protection.html#immutable-backups["不可更改的只读备份"^] 作为抵御恶意软件和其他威胁的额外安全层。
+* *使用由ONTAP驱动程序提供支持的存储后端为应用程序提供备份和还原功能*：为启用备份和还原操作 `ontap-nas-economy` 和一些 https://docs.netapp.com/us-en/astra-control-center-2310/use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["简单的步骤"^]。
+* *不可改变的备份*：Astra Control现在支持 https://docs.netapp.com/us-en/astra-control-center-2310/concepts/data-protection.html#immutable-backups["不可更改的只读备份"^] 作为抵御恶意软件和其他威胁的额外安全层。
 * * Astra Control配置程序简介*
 +
 在23.10版中、Astra Control引入了一个新的软件组件、称为Astra Control配置程序、该组件可供所有获得许可的Astra Control用户使用。Asta Control配置程序提供对Asta三元数据以外的一组高级管理和存储配置功能的访问。所有Astra Control客户均可免费使用这些功能。
 
 +
 ** *开始使用Astra Control配置程序*
-您可以 link:../use/enable-acp.html["启用Asta Control配置程序"^] 如果您已安装并配置环境以使用Asta Trident 23.10。
+您可以 https://docs.netapp.com/us-en/astra-control-center-2310/use/enable-acp.html["启用Asta Control配置程序"^] 如果您已安装并配置环境以使用Asta Trident 23.10。
 ** *Astra Control配置程序功能*
 +
 Astra Control配置程序23.10版提供了以下功能：
 
 +
-*** *通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性 link:../use-acp/configure-storage-backend-encryption.html["正在启用加密"^] 托管集群和存储后端之间的流量。A作用 力控制配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密
+*** *通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性 https://docs.netapp.com/us-en/astra-control-center-2310/use-acp/configure-storage-backend-encryption.html["正在启用加密"^] 托管集群和存储后端之间的流量。A作用 力控制配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密
 *** *使用快照恢复数据*：Astra Control配置程序可使用从快照快速原位还原卷 `TridentActionSnapshotRestore` (TSR) CR。
 *** *SnapMirror增强功能*：在Astra Control无法直接连接到ONTAP集群或访问ONTAP凭据的环境中使用应用程序复制功能。通过此功能、您可以使用复制功能、而无需在Astra Control中管理存储后端或其凭据。
 *** *使用为应用程序提供备份和还原功能 `ontap-nas-economy` 驱动程序支持的存储后端*：如上所述 <<nas-eco-backup-restore,以上>>。
@@ -44,21 +71,18 @@ Astra Control配置程序23.10版提供了以下功能：
 
 * *支持管理使用NVMe/TCP存储的应用程序*
 Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支持的应用程序。
-* *默认情况下，执行挂钩处于关闭状态*：从此版本开始，执行挂钩功能可以是 link:../use/execution-hooks.html#enable-the-execution-hooks-feature["enabled"] 或禁用以提高安全性(默认情况下处于禁用状态)。如果尚未创建用于Astra Control的执行挂钩、则需要 link:../use/execution-hooks.html#enable-the-execution-hooks-feature["启用执行挂钩功能"^] 开始创建挂钩。如果您在此版本之前创建了执行挂钩、则执行挂钩功能将保持启用状态、您可以像往常一样使用挂钩。
+* *默认情况下，执行挂钩处于关闭状态*：从此版本开始，执行挂钩功能可以是 https://docs.netapp.com/us-en/astra-control-center-2310/use/execution-hooks.html#enable-the-execution-hooks-feature["enabled"^] 或禁用以提高安全性(默认情况下处于禁用状态)。如果尚未创建用于Astra Control的执行挂钩、则需要 https://docs.netapp.com/us-en/astra-control-center-2310/use/execution-hooks.html#enable-the-execution-hooks-feature["启用执行挂钩功能"^] 开始创建挂钩。如果您在此版本之前创建了执行挂钩、则执行挂钩功能将保持启用状态、您可以像往常一样使用挂钩。
 
 
 .已知问题和限制
-* link:../release-notes/known-issues.html["此版本的已知问题"^]
-* link:../release-notes/known-limitations.html["此版本的已知限制"^]
+* https://docs.netapp.com/us-en/astra-control-center-2310/release-notes/known-issues.html["此版本的已知问题"^]
+* https://docs.netapp.com/us-en/astra-control-center-2310/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
 
 
 == 2023年7月31日(23.07.0)
 
-.详细信息
-[%collapsible]
-====
 .新增功能和支持
 * https://docs.netapp.com/us-en/astra-control-center-2307/get-started/requirements.html#storage-backends["支持在延伸型配置中使用NetApp MetroCluster作为存储后端"^]
 * https://docs.netapp.com/us-en/astra-control-center-2307/get-started/requirements.html#storage-backends["支持使用Longhorn作为存储后端"^]
@@ -73,28 +97,20 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
 * https://docs.netapp.com/us-en/astra-control-center-2307/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
-====
 
 
 == 2023年5月18日(23.04.2)
 
-.详细信息
-[%collapsible]
-====
 此修补程序版本(23.04.2)用于Astra Control Center (23.04.0)提供对的支持 https://newreleases.io/project/github/kubernetes-csi/external-snapshotter/release/v6.1.0["Kubernetes CSI外部快照程序v6.1.0"^] 并修复了以下问题：
 
 * 使用执行挂钩时的原位应用程序还原错误
 * 存储分段服务存在连接问题
 
 
-====
 
 
 == 2023年4月25日(23.04.0)
 
-.详细信息
-[%collapsible]
-====
 .新增功能和支持
 * https://docs.netapp.com/us-en/astra-control-center-2304/concepts/licensing.html["默认情况下、新Astra Control Center安装启用了90天评估许可证"^]
 * https://docs.netapp.com/us-en/astra-control-center-2304/use/execution-hooks.html["增强的执行挂钩功能以及其他筛选选项"^]
@@ -109,14 +125,10 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
 * https://docs.netapp.com/us-en/astra-control-center-2304/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
-====
 
 
 == 2022年11月22日(22.11.0)
 
-.详细信息
-[%collapsible]
-====
 .新增功能和支持
 * https://docs.netapp.com/us-en/astra-control-center-2211/use/manage-apps.html#define-apps["支持跨多个命名空间的应用程序"^]
 * https://docs.netapp.com/us-en/astra-control-center-2211/use/manage-apps.html#define-apps["支持在应用程序定义中包括集群资源"^]
@@ -130,24 +142,16 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
 * https://docs.netapp.com/us-en/astra-control-center-2211/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
-====
 
 
 == 2022年9月8日(22.08.1)
 
-.详细信息
-[%collapsible]
-====
 适用于Astra控制中心(22.08.0)的此修补程序版本(22.08.1)修复了使用NetApp SnapMirror复制应用程序时出现的小错误。
 
-====
 
 
 == 2022年8月10日(22.08.0)
 
-.详细信息
-[%collapsible]
-====
 .新增功能和支持
 * https://docs.netapp.com/us-en/astra-control-center-2208/use/replicate_snapmirror.html["使用NetApp SnapMirror技术复制应用程序"^]
 * https://docs.netapp.com/us-en/astra-control-center-2208/use/manage-apps.html#define-apps["改进了应用程序管理工作流"^]
@@ -166,14 +170,10 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 * https://docs.netapp.com/us-en/astra-control-center-2208/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
-====
 
 
 == 2022 年 4 月 26 日（ 22.04.0 ）
 
-.详细信息
-[%collapsible]
-====
 .新增功能和支持
 * https://docs.netapp.com/us-en/astra-control-center-2204/concepts/user-roles-namespaces.html["命名空间基于角色的访问控制（ RBAC ）"^]
 * https://docs.netapp.com/us-en/astra-control-center-2204/get-started/install_acc-cvo.html["支持 Cloud Volumes ONTAP"^]
@@ -187,14 +187,10 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 * https://docs.netapp.com/us-en/astra-control-center-2204/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
-====
 
 
 == 2021 年 12 月 14 日（ 21.12 ）
 
-.详细信息
-[%collapsible]
-====
 .新增功能和支持
 * https://docs.netapp.com/us-en/astra-control-center-2112/use/restore-apps.html["应用程序还原"^]
 * https://docs.netapp.com/us-en/astra-control-center-2112/use/execution-hooks.html["执行挂钩"^]
@@ -213,14 +209,10 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 * https://docs.netapp.com/us-en/astra-control-center-2112/release-notes/known-limitations.html["此版本的已知限制"^]
 
 
-====
 
 
 == 2021 年 8 月 5 日（ 21.08 ）
 
-.详细信息
-[%collapsible]
-====
 初始版本的 Astra 控制中心。
 
 * https://docs.netapp.com/us-en/astra-control-center-2108/concepts/intro.html["它是什么"^]
@@ -233,7 +225,6 @@ NOTE: 此版本已删除NetApp为特定应用程序提供的默认快照前和�
 * https://docs.netapp.com/us-en/astra-control-center-2108/rest-api/api-intro.html["利用 API 实现自动化"^]
 
 
-====
 
 
 == 了解更多信息

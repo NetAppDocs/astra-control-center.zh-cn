@@ -71,7 +71,8 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。
 
-*取消管理NetApp Asta Dent时是否会自动从集群中卸载？*从Asta Control Center取消管理集群时、Asta Dent不会自动从集群中卸载。要卸载 Astra Trident ，您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照 Astra Trident 文档中的以下步骤进行操作"^]。
+*取消管理Astra Control配置程序(或Astra Trdent)时是否会自动从集群中卸载？*
+从Astra Control Center取消管理集群时、Astra Control配置程序或Astra三项功能不会自动从集群中卸载。要卸载Asta Control配置程序及其组件或Asta Trandent、您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照以下步骤卸载包含Astra Control配置程序服务的Astra Trdent实例"^]。
 
 
 
@@ -118,26 +119,25 @@ Astra Control Center默认情况下不会显示为您可以管理的应用程序
 Asta Control配置程序作为Asta Control的一部分、支持一组超群的存储配置功能、这些功能在开源Asta三元数据中不可用。这些功能是对开放源码的三元数据可用的所有功能的补充。
 
 *Astra Control配置程序是否取代了Astra三项功能？*
-
-在Asta Control的未来更新中、Asta Control配置程序将取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。因此、强烈建议Astra Control用户使用 link:../use/enable-acp.html["启用Asta Control配置程序"]。Asta三元数据将继续保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。
+Asta Control配置程序已取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。Asta Control用户应执行此操作 link:../get-started/enable-acp.html["启用Asta Control配置程序"] 使用A作用 力控制。此版本仍支持Asta三项功能、但未来版本不支持此功能。Asta三元数据将保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。但是、只有包含A作用 力三项CSI功能以及扩展存储管理功能的A作用 力控制配置程序才能用于即将推出的A作用 力控制版本。
 
 *我必须为Astra三端安装付费吗？*
 
-否Asta三端技术将继续采用开源方式、并可免费下载。
+否Asta三端技术将继续采用开源方式、并可免费下载。现在、使用Astra Control配置程序功能需要Astra Control许可证。
 
 *在不安装和使用所有Astra Control的情况下，是否可以使用Astra Control中的存储管理和配置功能？*
 
-可以。即使您不想使用Astra Control数据管理功能的完整功能集、也可以升级到Astra Trident 23.10或更高版本并启用Astra Control配置程序功能。
+可以。即使您不想使用Astra Control数据管理功能的完整功能集、也可以升级到Astra Control配置程序并使用其功能。
 
-*如何从现有的Drident用户过渡到Astra Control以使用高级存储管理和配置功能？*
+*如何从现有的Astra Trident用户过渡到Astra Control以使用高级存储管理和配置功能？*
 
-如果您是现有的Trident用户(包括公有云中的Asta Trident用户)、则需要先获取Asta Control许可证。完成此操作后、您可以下载Astra Control配置程序捆绑包、升级Astra三端、和 link:../use/enable-acp.html["启用Astra Control配置程序功能"]。
+如果您是现有的Asta Trident用户(包括公有云中的Asta Trident用户)、则需要先获取Asta Control许可证。完成此操作后、您可以下载Astra Control配置程序捆绑包、升级Astra三端、和 link:../get-started/enable-acp.html["启用Astra Control配置程序功能"]。
 
-*如何知道Astra Control配置程序是否已取代了我的集群上的Astra Trident？*
+[[running-acp.check]]**如何知道Astra Control配置程序是否已取代了我的集群上的Astra Trident？*
 
 安装Asta Control配置程序后、Asta Control UI中的主机集群将显示 `ACP version` 而不是 `Trident version` 字段和当前安装的版本号。
 
-image:use/ac-acp-version.png["显示UI中ACP版本位置的屏幕截图"]
+image:use/ac-acp-version.png["显示用户界面中Astra Control配置程序版本位置的屏幕截图"]
 
 如果您无权访问此UI、则可以使用以下方法确认安装成功：
 
@@ -145,7 +145,7 @@ image:use/ac-acp-version.png["显示UI中ACP版本位置的屏幕截图"]
 ====
 .Asta三端操作员
 --
-验证 `trident-acp` 容器正在运行 `acpVersion` 为 `23.10.0` 状态为 `Installed`：
+验证 `trident-acp` 容器正在运行 `acpVersion` 为 `23.10.0` 或更高版本(最低版本为23.10)、状态为 `Installed`：
 
 [listing]
 ----
@@ -156,10 +156,10 @@ kubectl get torc -o yaml
 [listing]
 ----
 status:
-  acpVersion: 23.10.0
+  acpVersion: 24.10.0
   currentInstallationParams:
     ...
-    acpImage: <my_custom_registry>/trident-acp:23.10.0
+    acpImage: <my_custom_registry>/trident-acp:24.10.0
     enableACP: "true"
     ...
   ...
@@ -178,7 +178,7 @@ status:
 
 [listing]
 ----
-+----------------+----------------+-------------+ | SERVER VERSION | CLIENT VERSION | ACP VERSION | +----------------+----------------+-------------+ | 23.10.0 | 23.10.0 | 23.10.0. | +----------------+----------------+-------------+
++----------------+----------------+-------------+ | SERVER VERSION | CLIENT VERSION | ACP VERSION | +----------------+----------------+-------------+ | 24.10.0 | 24.10.0 | 24.10.0. | +----------------+----------------+-------------+
 ----
 --
 ====

@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: use/cr-manage-options.html 
+keywords: custom resource, cr, manage app, astra 
+summary: '使用Kubbernetes自定义资源(CR)管理Astra Control应用程序。' 
+---
+= [技术预览]使用CRS管理Astra Control应用程序
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+[role="lead"]
+使用Kubbernetes自定义资源(CR)管理Astra Control应用程序。可以使用以下选项：
+
+* link:../use/manage-apps.html#define-an-application-using-a-kubernetes-custom-resource["使用Kubbernetes自定义资源定义应用程序"]
+* link:../use/manage-buckets.html#manage-a-bucket-using-a-custom-resource["使用自定义资源管理存储分段"]
+

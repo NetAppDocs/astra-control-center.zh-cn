@@ -19,24 +19,24 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 * Kubernetes集群*
 
-* link:../get-started/requirements.html#host-cluster-resource-requirements["确保主机集群满足操作环境要求"^]
-* link:../get-started/requirements.html#ingress-for-on-premises-kubernetes-clusters["为内部Kubernetes集群的负载平衡配置传入"^]
+* link:../get-started/requirements.html#host-cluster-resource-requirements["确保主机集群满足操作环境要求"]
+* link:../get-started/requirements.html#ingress-for-on-premises-kubernetes-clusters["为内部Kubernetes集群的负载平衡配置传入"]
 
 
 *存储集成*
 
-* link:../get-started/requirements.html#astra-trident-requirements["确保您的环境包含支持Asta Trdent的版本"^]
-* link:../use/enable-acp.html["启用Astra Control配置程序高级管理和存储配置功能"^]
-* https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html["准备工作节点"^]
-* https://docs.netapp.com/us-en/trident/trident-use/backends.html["配置Astra Trident存储后端"^]
-* https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["配置Astra Trident存储类"^]
-* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["安装Astra Trident卷快照控制器"^]
-* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["创建卷快照类"^]
+* link:../get-started/requirements.html#astra-control-provisioner["确保您的环境包含Astra Control配置程序"]
+* link:../get-started/enable-acp.html["启用Astra Control配置程序高级管理和存储配置功能"]
+* https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html["准备集群工作节点"^]
+* https://docs.netapp.com/us-en/trident/trident-use/backends.html["配置存储后端"^]
+* https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["配置存储类"^]
+* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploy-a-volume-snapshot-controller["安装卷快照控制器"^]
+* https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#create-a-volume-snapshot["创建卷快照类"^]
 
 
 * ONTAP 凭据*
 
-* link:../get-started/setup_overview.html#prepare-your-environment-for-cluster-management-using-astra-control["配置ONTAP 凭据"^]
+* link:../get-started/prep-for-cluster-management.html["配置ONTAP 凭据"]
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 下载并安装Astra控制中心
@@ -46,30 +46,30 @@ summary: 只需几步即可开始使用 Astra Control 。
 * 获取NetApp许可证文件：
 +
 ** 如果您正在评估Astra Control Center、则已包含嵌入式评估许可证
-** link:../concepts/licensing.html["如果您已购买Astra Control Center、请生成许可证文件"^]
+** link:../concepts/licensing.html["如果您已购买Astra Control Center、请生成许可证文件"]
 
 
-* link:../get-started/install_overview.html["安装 Astra 控制中心"^]
-* link:../get-started/configure-after-install.html["执行其他可选配置步骤"^]
+* link:../get-started/install_overview.html["安装 Astra 控制中心"]
+* link:../get-started/configure-after-install.html["执行其他可选配置步骤"]
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三个"] 完成一些初始设置任务
 完成一些基本任务以开始使用：
 
-* link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["添加许可证"^]
-* link:../get-started/setup_overview.html#prepare-your-environment-for-cluster-management-using-astra-control["准备用于集群管理的环境"^]
-* link:../get-started/setup_overview.html#add-cluster["添加集群"^]
-* link:../get-started/setup_overview.html#add-a-storage-backend["添加存储后端"^]
-* link:../get-started/setup_overview.html#add-a-bucket["添加存储分段"^]
+* link:../get-started/add-license.html["添加许可证"]
+* link:../get-started/prep-for-cluster-management.html["准备用于集群管理的环境"]
+* link:../get-started/add-cluster.html["添加集群"]
+* link:../get-started/add-storage-backend.html["添加存储后端"]
+* link:../get-started/add-bucket.html["添加存储分段"]
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"] 使用 Astra 控制中心
 完成Asta Control Center设置后、请使用Asta Control UI或 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^] 要开始管理和保护应用程序、请执行以下操作：
 
-* link:../use/manage-apps.html["管理应用程序"^]：定义要管理的资源。
-* link:../use/protection-overview.html["保护应用程序"^]：配置保护策略以及复制、克隆和迁移应用程序。
-* link:../use/manage-local-users-and-roles.html["管理帐户"^]：用户、角色、LDAP、凭据等。
-* link:../use/monitor-protect.html#connect-to-cloud-insights["(可选)连接到Cloud Insights"^]：查看有关系统运行状况的指标。
+* link:../use/manage-local-users-and-roles.html["管理帐户"]：用户、角色、LDAP、凭据等。
+* link:../use/manage-notifications.html["管理通知"]
+* link:../use/manage-apps.html["管理应用程序"]：定义要管理的资源。
+* link:../use/protection-overview.html["保护应用程序"]：配置保护策略以及复制、克隆和迁移应用程序。
 
 
 
@@ -77,6 +77,6 @@ summary: 只需几步即可开始使用 Astra Control 。
 == 有关详细信息 ...
 
 * https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]
-* link:../use/upgrade-acc.html["升级 Astra 控制中心"^]
-* link:../support/get-help.html["获取有关Astra Control的帮助"^]
+* link:../use/upgrade-acc.html["升级 Astra 控制中心"]
+* link:../support/get-help.html["获取有关Astra Control的帮助"]
 

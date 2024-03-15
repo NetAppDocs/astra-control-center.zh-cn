@@ -1,0 +1,565 @@
+---
+sidebar: sidebar 
+permalink: get-started/prep-for-cluster-management.html 
+keywords: set up astra control, astra control license, add cluster, add storage backend, import storage, add bucket 
+summary: 安装Astra Control Center、登录到UI并更改密码后、您需要确保满足添加集群的前提条件。 
+---
+= 使用Astra Control准备用于集群管理的环境
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+在添加集群之前、应确保满足以下前提条件。此外、您还应运行资格检查、以确保您的集群已准备好添加到Astra Control Center、并根据需要创建kubeconfig"集群角色。
+
+Astra Control允许您根据环境和首选项添加由自定义资源(Custom Resource、CR)或kubeconfig"管理的集群。
+
+.开始之前
+* *满足环境前提条件*：您的环境满足 link:../get-started/requirements.html["操作环境要求"] A作用 控制中心。
+* *配置工作节点*：确保您 https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html["配置工作节点"^] 在集群中使用适当的存储驱动程序、以便Pod可以与后端存储进行交互。
+
+
+* [[enber-psa]]*启用PSA限制*：如果集群启用了POD安全准入强制(这是Kubernetes 1.25及更高版本集群的标准配置)、则需要对以下名称空间启用PSA限制：
++
+** `netapp-acc-operator` 命名空间：
++
+[listing]
+----
+kubectl label --overwrite ns netapp-acc-operator pod-security.kubernetes.io/enforce=privileged
+----
+** `netapp monitoring` 命名空间：
++
+[listing]
+----
+kubectl label --overwrite ns netapp-monitoring pod-security.kubernetes.io/enforce=privileged
+----
+
+
+* * ONTAP 凭据*：您需要在备用ONTAP 系统上设置ONTAP 凭据以及超级用户和用户ID、以便使用Astra控制中心备份和还原应用程序。
++
+在ONTAP 命令行中运行以下命令：
+
++
+[listing]
+----
+export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -superuser sys
+export-policy rule modify -vserver <storage virtual machine name> -policyname <policy name> -ruleindex 1 -anon 65534
+----
+* *kubeconfig-managed cluster requirement *：这些要求特定于由kubeconfig-managed的应用程序集群。
++
+** *使kubeconfig*可访问*：您可以访问 https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["默认集群kubeconfig"^] 那 link:../get-started/install_acc.html#set-up-namespace-and-secret-for-registries-with-auth-requirements["您在安装期间配置的"^]。
+** *证书颁发机构注意事项*：如果使用引用私有证书颁发机构(CA)的kubeconfigfile文件添加集群、请将以下行添加到 `cluster` kubeconfig"文件的部分。这样、Astra Control便可添加集群：
++
+[listing]
+----
+insecure-skip-tls-verify: true
+----
+** *仅Rancher *：在Rancher环境中管理应用程序集群时、请修改Rancher提供的kubeconfig文件中的应用程序集群默认上下文、以使用控制平面上下文、而不是Rancher API服务器上下文。这样可以减少 Rancher API 服务器上的负载并提高性能。
+
+
+* *Astra Control配置程序要求*：要管理集群、您应正确配置Astra Control配置程序(包括其Astra三项功能组件)。
++
+** *查看Astra三端环境要求*：在安装或升级Astra Control配置程序之前、请查看 https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["支持的前端、后端和主机配置"^]。
+** *启用Astra Control配置程序功能*：强烈建议您安装Astra Trident 23.10或更高版本并启用 link:../get-started/enable-acp.html["Asta Control配置程序高级存储功能"]。在未来版本中、如果Asta Control配置程序未启用、则Asta Control将不支持Asta Trent。
+** *配置存储后端*：必须至少有一个存储后端 https://docs.netapp.com/us-en/trident/trident-use/backends.html["已在Asta Trdent中配置"^] 在集群上。
+** *配置存储类*：必须至少有一个存储类 https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["已在Asta Trdent中配置"^] 在集群上。如果配置了默认存储类，请确保该存储类是具有默认标注的*Only"存储类。
+** *配置卷快照控制器并安装卷快照类*： https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploy-a-volume-snapshot-controller["安装卷快照控制器"] 以便可以在Astra Control中创建快照。 https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#create-a-volume-snapshot["创建"^] 至少一个 `VolumeSnapshotClass` 使用Asta三端到功能。
+
+
+
+
+
+
+== 运行资格检查
+
+运行以下资格检查，以确保您的集群已准备好添加到 Astra 控制中心。
+
+.步骤
+. 确定您正在运行的Astra三项目标版本：
++
+[source, console]
+----
+kubectl get tridentversion -n trident
+----
++
+如果存在Asta三项功能、您将看到类似于以下内容的输出：
+
++
+[listing]
+----
+NAME      VERSION
+trident   24.02.0
+----
++
+如果Astra三端存储不存在、则会显示类似于以下内容的输出：
+
++
+[listing]
+----
+error: the server doesn't have a resource type "tridentversions"
+----
+. 执行以下操作之一：
++
+** 如果您运行的是Asta三端凹凸版23.01或更早版本、请使用这些版本 https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["说明"^] 在升级到Asta Control配置程序之前、升级到Asta三端到最新版本。您可以 link:../get-started/enable-acp.html["执行直接升级"] 如果您的Astra三端存储在版本24.02的四个版本的窗口中、则将Astra Control配置程序更新为24.02。例如、您可以直接从Asta三端23.04升级到Asta Control配置程序24.02。
+** 如果您运行的是Astra Trdent 23.10或更高版本、请验证Astra Control配置程序是否已启用 link:../get-started/faq.html#running-acp-check["enabled"]。Asta Control配置程序不能用于23.10之前的Asta Control Center版本。 link:../get-started/enable-acp.html["升级Astra Control配置程序"] 以便它与您要升级的Astra Control Center版本相同、以访问最新功能。
+
+
+. 确保所有Pod (包括 `trident-acp`)正在运行：
++
+[source, console]
+----
+kubectl get pods -n trident
+----
+. 确定存储类是否正在使用受支持的Asta三端驱动程序。配置程序名称应为 `csi.trident.netapp.io`。请参见以下示例：
++
+[source, console]
+----
+kubectl get sc
+----
++
+响应示例：
+
++
+[listing]
+----
+NAME                  PROVISIONER            RECLAIMPOLICY  VOLUMEBINDINGMODE  ALLOWVOLUMEEXPANSION  AGE
+ontap-gold (default)  csi.trident.netapp.io  Delete         Immediate          true                  5d23h
+----
+
+
+
+
+== 创建集群角色kubeconfig
+
+对于使用kubeconfig"管理的集群、您可以选择为Astra Control Center创建有限权限或扩展权限管理员角色。这不是Astra控制中心设置所需的操作步骤、因为您已在中配置了kubeconfig link:../get-started/install_acc.html#set-up-namespace-and-secret-for-registries-with-auth-requirements["安装过程"]。
+
+如果您适用场景的环境发生以下任一情况、则此操作步骤可帮助您创建一个单独的kubeconfig:
+
+* 您希望限制Astra Control对其管理的集群的权限
+* 您使用多个环境、并且不能使用在安装期间配置的默认Asta Control kubeconfig,否则在您的环境中使用单一环境的有限角色将不起作用
+
+
+.开始之前
+在完成操作步骤 步骤之前、请确保您对要管理的集群具有以下信息：
+
+* 已安装kubectl v1.23或更高版本
+* kubectl访问要使用Astra控制中心添加和管理的集群
++
+
+NOTE: 对于此操作步骤 、您不需要对运行Astra控制中心的集群进行kubectl访问。
+
+* 要使用活动环境的集群管理员权限管理的集群的活动kubeconfig
+
+
+.步骤
+. 创建服务帐户：
++
+.. 创建名为`asacontrol service-account.yaml`的服务帐户文件。
++
+根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astracontrol-service-account.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: astracontrol-service-account
+  namespace: default
+----
+.. 应用服务帐户：
++
+[source, console]
+----
+kubectl apply -f astracontrol-service-account.yaml
+----
+
+
+. 创建以下具有足够权限的集群角色之一、以使集群由Astra Control管理：
++
+[role="tabbed-block"]
+====
+.集群角色受限
+--
+此角色包含由Asta Control管理集群所需的最低权限：
+
+.. 创建 `ClusterRole` 文件、例如、 `astra-admin-account.yaml`。
++
+根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astra-admin-account.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: astra-admin-account
+rules:
+
+# Get, List, Create, and Update all resources
+# Necessary to backup and restore all resources in an app
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - create
+  - patch
+
+# Delete Resources
+# Necessary for in-place restore and AppMirror failover
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - crd.projectcalico.org
+  - extensions
+  - networking.k8s.io
+  - policy
+  - rbac.authorization.k8s.io
+  - snapshot.storage.k8s.io
+  - trident.netapp.io
+  resources:
+  - configmaps
+  - cronjobs
+  - daemonsets
+  - deployments
+  - horizontalpodautoscalers
+  - ingresses
+  - jobs
+  - namespaces
+  - networkpolicies
+  - persistentvolumeclaims
+  - poddisruptionbudgets
+  - pods
+  - podtemplates
+  - podsecuritypolicies
+  - replicasets
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - rolebindings
+  - roles
+  - secrets
+  - serviceaccounts
+  - services
+  - statefulsets
+  - tridentmirrorrelationships
+  - tridentsnapshotinfos
+  - volumesnapshots
+  - volumesnapshotcontents
+  verbs:
+  - delete
+
+# Watch resources
+# Necessary to monitor progress
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  verbs:
+  - watch
+
+# Update resources
+- apiGroups:
+  - ""
+  - build.openshift.io
+  - image.openshift.io
+  resources:
+  - builds/details
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - imagestreams/layers
+  - imagestreamtags
+  - imagetags
+  verbs:
+  - update
+
+# Use PodSecurityPolicies
+- apiGroups:
+  - extensions
+  - policy
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+----
+.. (仅适用于OpenShift集群)在末尾附加以下内容 `astra-admin-account.yaml` 文件或之后 `# Use PodSecurityPolicies` 部分。
++
+[source, console]
+----
+# OpenShift security
+- apiGroups:
+  - security.openshift.io
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+----
+.. 应用集群角色：
++
+[source, console]
+----
+kubectl apply -f astra-admin-account.yaml
+----
+
+
+--
+.已扩展集群角色
+--
+此角色包含要由Asta Control管理的集群的扩展权限。如果您使用多个环境，并且无法使用在安装期间配置的默认Asta Control kubeconfig,则可以使用此角色，否则在您的环境中，只使用一个环境的有限角色将不起作用：
+
+
+NOTE: 以下内容 `ClusterRole` 步骤是一个常规Kubbernetes示例。有关特定于您的环境的说明、请参见Kubennetes分发版的文档。
+
+.. 创建 `ClusterRole` 文件、例如、 `astra-admin-account.yaml`。
++
+根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astra-admin-account.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: astra-admin-account
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- nonResourceURLs:
+  - '*'
+  verbs:
+  - '*'
+----
+.. 应用集群角色：
++
+[source, console]
+----
+kubectl apply -f astra-admin-account.yaml
+----
+
+
+--
+====
+. 为集群角色创建与服务帐户的集群角色绑定：
++
+.. 创建一个 `ClusterRoleBindingm` 文件，该文件名为 `astracontrol — clusterrolebind.YAML` 。
++
+根据需要调整创建服务帐户时修改的任何名称和命名空间。
+
++
+[source, subs="specialcharacters,quotes"]
+----
+*astracontrol-clusterrolebinding.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: astracontrol-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: astra-admin-account
+subjects:
+- kind: ServiceAccount
+  name: astracontrol-service-account
+  namespace: default
+----
+.. 应用集群角色绑定：
++
+[source, console]
+----
+kubectl apply -f astracontrol-clusterrolebinding.yaml
+----
+
+
+. 创建并应用令牌密钥：
++
+.. 创建名为的令牌机密文件 `secret-astracontrol-service-account.yaml`。
++
+[source, subs="specialcharacters,quotes"]
+----
+*secret-astracontrol-service-account.yaml*
+----
++
+[source, yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-astracontrol-service-account
+  namespace: default
+  annotations:
+    kubernetes.io/service-account.name: "astracontrol-service-account"
+type: kubernetes.io/service-account-token
+----
+.. 应用令牌密钥：
++
+[source, console]
+----
+kubectl apply -f secret-astracontrol-service-account.yaml
+----
+
+
+. 通过将令牌密钥名称添加到、将其添加到服务帐户 `secrets` 数组(以下示例中的最后一行)：
++
+[source, console]
+----
+kubectl edit sa astracontrol-service-account -n <netapp-acc or custom namespace>
+----
++
+[source, subs="verbatim,quotes"]
+----
+apiVersion: v1
+imagePullSecrets:
+- name: astracontrol-service-account-dockercfg-48xhx
+kind: ServiceAccount
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ServiceAccount","metadata":{"annotations":{},"name":"astracontrol-service-account","namespace":"default"}}
+  creationTimestamp: "2023-06-14T15:25:45Z"
+  name: astracontrol-service-account
+  namespace: default
+  resourceVersion: "2767069"
+  uid: 2ce068c4-810e-4a96-ada3-49cbf9ec3f89
+secrets:
+- name: astracontrol-service-account-dockercfg-48xhx
+*- name: secret-astracontrol-service-account*
+----
+. 列出服务帐户密码，将 ` <context>` 替换为适用于您的安装的正确上下文：
++
+[source, console]
+----
+kubectl get serviceaccount astracontrol-service-account --context <context> --namespace default -o json
+----
++
+输出的结尾应类似于以下内容：
+
++
+[listing]
+----
+"secrets": [
+{ "name": "astracontrol-service-account-dockercfg-48xhx"},
+{ "name": "secret-astracontrol-service-account"}
+]
+----
++
+中每个元素的索引 `secrets` 阵列以0开头。在上面的示例中、是的索引 `astracontrol-service-account-dockercfg-48xhx` 将为0、并为创建索引 `secret-astracontrol-service-account` 将为1。在输出中、记下服务帐户密钥的索引编号。在下一步中、您将需要此索引编号。
+
+. 按如下所示生成 kubeconfig ：
++
+.. 创建 `create-kubeconfig.sh` 文件
+.. 替换 `TOKEN_INDEX` 在以下脚本的开头、使用正确的值。
+.. 替换 `NAMESPACE` 使用Asta Control Center命名空间。
++
+[source, subs="specialcharacters,quotes"]
+----
+*create-kubeconfig.sh*
+----
++
+[source, console]
+----
+# Update these to match your environment.
+# Replace TOKEN_INDEX with the correct value
+# from the output in the previous step. If you
+# didn't change anything else above, don't change
+# anything else here.
+
+SERVICE_ACCOUNT_NAME=astracontrol-service-account
+NAMESPACE=default
+NEW_CONTEXT=astracontrol
+KUBECONFIG_FILE='kubeconfig-sa'
+
+CONTEXT=$(kubectl config current-context)
+
+SECRET_NAME=$(kubectl get serviceaccount ${SERVICE_ACCOUNT_NAME} \
+  --context ${CONTEXT} \
+  --namespace ${NAMESPACE} \
+  -o jsonpath='{.secrets[TOKEN_INDEX].name}')
+TOKEN_DATA=$(kubectl get secret ${SECRET_NAME} \
+  --context ${CONTEXT} \
+  --namespace ${NAMESPACE} \
+  -o jsonpath='{.data.token}')
+
+TOKEN=$(echo ${TOKEN_DATA} | base64 -d)
+
+# Create dedicated kubeconfig
+# Create a full copy
+kubectl config view --raw > ${KUBECONFIG_FILE}.full.tmp
+
+# Switch working context to correct context
+kubectl --kubeconfig ${KUBECONFIG_FILE}.full.tmp config use-context ${CONTEXT}
+
+# Minify
+kubectl --kubeconfig ${KUBECONFIG_FILE}.full.tmp \
+  config view --flatten --minify > ${KUBECONFIG_FILE}.tmp
+
+# Rename context
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  rename-context ${CONTEXT} ${NEW_CONTEXT}
+
+# Create token user
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-credentials ${CONTEXT}-${NAMESPACE}-token-user \
+  --token ${TOKEN}
+
+# Set context to use token user
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-context ${NEW_CONTEXT} --user ${CONTEXT}-${NAMESPACE}-token-user
+
+# Set context to correct namespace
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  set-context ${NEW_CONTEXT} --namespace ${NAMESPACE}
+
+# Flatten/minify kubeconfig
+kubectl config --kubeconfig ${KUBECONFIG_FILE}.tmp \
+  view --flatten --minify > ${KUBECONFIG_FILE}
+
+# Remove tmp
+rm ${KUBECONFIG_FILE}.full.tmp
+rm ${KUBECONFIG_FILE}.tmp
+----
+.. 获取用于将其应用于 Kubernetes 集群的命令。
++
+[source, console]
+----
+source create-kubeconfig.sh
+----
+
+
+. (可选)将kubeconfig重命名为集群的有意义名称。
++
+[listing]
+----
+mv kubeconfig-sa YOUR_CLUSTER_NAME_kubeconfig
+----
+

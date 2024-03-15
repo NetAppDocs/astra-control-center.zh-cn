@@ -19,7 +19,6 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 * <<如果在管理集群后添加了volumesnapshotclass、则应用程序备份和快照将失败>>
 * <<如果kubeconfig"文件包含多个上下文、则使用Asta Control Center管理集群将失败>>
-* <<在Isio环境中、监控POD可能会崩溃>>
 * <<当 Astra Trident 脱机时，应用程序数据管理操作失败，并显示内部服务错误（ 500 ）>>
 * <<对ONTAP NAS经济型存储类的原位还原操作失败>>
 * <<使用Kerberos传输中加密时从备份还原可能会失败>>
@@ -40,58 +39,6 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 
 
 
-== 在Isio环境中、监控POD可能会崩溃
-
-如果在Istio环境中将Astra控制中心与Cloud Insights 配对、则 `telegraf-rs` POD可能会崩溃。作为临时解决策，请执行以下步骤：
-
-. 找到崩溃的POD：
-+
-[listing]
-----
-kubectl -n netapp-monitoring get pod | grep Error
-----
-+
-您应看到类似于以下内容的输出：
-
-+
-[listing]
-----
-NAME READY STATUS RESTARTS AGE
-telegraf-rs-fhhrh 1/2 Error 2 (26s ago) 32s
-----
-. 重新启动崩溃的Pod、更换 `<pod_name_from_output>` 使用受影响POD的名称：
-+
-[listing]
-----
-kubectl -n netapp-monitoring delete pod <pod_name_from_output>
-----
-+
-您应看到类似于以下内容的输出：
-
-+
-[listing]
-----
-pod "telegraf-rs-fhhrh" deleted
-----
-. 确认POD已重新启动且未处于错误状态：
-+
-[listing]
-----
-kubectl -n netapp-monitoring get pod
-----
-+
-您应看到类似于以下内容的输出：
-
-+
-[listing]
-----
-NAME READY STATUS RESTARTS AGE
-telegraf-rs-rrnsb 2/2 Running 0 11s
-----
-
-
-
-
 == 当 Astra Trident 脱机时，应用程序数据管理操作失败，并显示内部服务错误（ 500 ）
 
 如果应用程序集群上的 Astra Trident 脱机（并恢复联机），并且在尝试应用程序数据管理时遇到 500 个内部服务错误，请重新启动应用程序集群中的所有 Kubernetes 节点以还原功能。
@@ -100,7 +47,7 @@ telegraf-rs-rrnsb 2/2 Running 0 11s
 
 == 对ONTAP NAS经济型存储类的原位还原操作失败
 
-如果您对应用程序执行原位还原(将应用程序还原到其原始命名空间)、并且应用程序的存储类使用 `ontap-nas-economy` 驱动程序、如果未隐藏快照目录、则还原操作可能会失败。在原位还原之前、请按照中的说明进行操作 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["为ONTAP NAS经济型操作启用备份和还原"^] 以隐藏快照目录。
+如果您对应用程序执行原位还原(将应用程序还原到其原始命名空间)、并且应用程序的存储类使用 `ontap-nas-economy` 驱动程序、如果未隐藏快照目录、则还原操作可能会失败。在原位还原之前、请按照中的说明进行操作 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["为ONTAP NAS经济型操作启用备份和还原"] 以隐藏快照目录。
 
 
 

@@ -23,6 +23,22 @@ entries:
   - title: 安装后配置Astra控制中心
     url: "/get-started/configure-after-install.html"
 - title: 设置 Astra 控制中心
-  url: "/get-started/setup_overview.html"
+  entries:
+  - title: 添加许可证
+    url: "/get-started/add-license.html"
+  - title: 启用Asta Control配置程序
+    url: "/get-started/enable-acp.html"
+  - title: 准备使用Asta Control进行集群管理
+    url: "/get-started/prep-for-cluster-management.html"
+  - title: 安装适用于受管集群的Asta Connector
+    url: "/get-started/install-astra-connector.html"
+  - title: 添加集群
+    url: "/get-started/add-cluster.html"
+  - title: 启用存储后端身份验证
+    url: "/get-started/enable-auth-ontap-backend.html"
+  - title: 添加存储后端
+    url: "/get-started/add-storage-backend.html"
+  - title: 添加存储分段
+    url: "/get-started/add-bucket.html"
 - title: 常见问题解答
   url: "/get-started/faq.html"

@@ -50,13 +50,13 @@ entries:
   url: "/use/manage-backend.html"
 - title: 监控正在运行的任务
   url: "/use/monitor-running-tasks.html"
-- title: 使用Cloud Insights 和Fluentd监控基础架构
+- title: 使用CRS管理Astra Control应用程序
+  url: "/use/cr-manage-options.html"
+- title: 利用Prometheus和Fluentd监控基础架构
   url: "/use/monitor-protect.html"
 - title: 取消管理应用程序和集群
   url: "/use/unmanage.html"
 - title: 升级 Astra 控制中心
   url: "/use/upgrade-acc.html"
-- title: 启用Asta Control配置程序
-  url: "/use/enable-acp.html"
 - title: 卸载 Astra 控制中心
   url: "/use/uninstall_acc.html"

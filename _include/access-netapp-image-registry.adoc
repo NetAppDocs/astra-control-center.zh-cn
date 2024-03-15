@@ -2,24 +2,17 @@
 :allow-uri-read: 
 
 
-* *访问NetApp Astra控件映像注册表*：
 您可以选择从NetApp映像注册表中获取Astra控件的安装映像和增强功能、例如Astra控件配置程序。
-+
-.展开步骤
-[%collapsible]
-====
-.. 记录您登录注册表所需的Astra Control帐户ID。
+
+. 记录您登录注册表所需的Astra Control帐户ID。
 +
 您可以在Astra Control Service Web UI中查看您的帐户ID。选择页面右上角的图图标，选择*API access*并记下您的帐户ID。
 
-.. 在同一页面中，选择*Generate API t令牌*并将API令牌字符串复制到剪贴板，然后将其保存在编辑器中。
-.. 登录到Asta Control注册表：
+. 在同一页面中，选择*Generate API t令牌*并将API令牌字符串复制到剪贴板，然后将其保存在编辑器中。
+. 登录到Asta Control注册表：
 +
 [source, console]
 ----
 docker login cr.astra.netapp.io -u <account-id> -p <api-token>
 ----
-
-
-====
 

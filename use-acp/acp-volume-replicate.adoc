@@ -25,7 +25,7 @@ summary: Astra Control配置程序支持在源卷和目标卷之间创建镜像�
 开始之前、请确保满足以下前提条件：
 
 .ONTAP 集群
-* *Astra控件配置程序*：Astra控件配置程序版本22.10或更高版本必须同时位于使用ONTAP作为后端的源和目标Kubernetes集群上。
+* *Astra Control配置程序*：Astra Control配置程序23.10或更高版本或A link:../get-started/requirements.html["支持的Asta三项功能"] 必须位于使用ONTAP作为后端的源和目标Kubbernetes集群上。
 * *许可证*：必须在源和目标ONTAP集群上启用使用数据保护包的ONTAP SnapMirror异步许可证。请参见 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-licensing-concept.html["ONTAP 中的SnapMirror许可概述"^] 有关详细信息 ...
 
 

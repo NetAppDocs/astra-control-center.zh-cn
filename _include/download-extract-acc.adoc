@@ -6,43 +6,45 @@
 
 == 下载并提取Astra控制中心
 
-您可以选择从NetApp 支持站点 下载Astra控制中心包、也可以使用Docker从Astra控制服务映像注册表中提取该包。
+从以下位置之一下载Astra Control Center映像：
+
+* *Astra控制服务映像注册表*：如果您不对Astra控制中心映像使用本地注册表，或者如果您更喜欢使用此方法从NetApp 支持站点 下载捆绑包，请使用此选项。
+* *Astra*：如果将本地注册表与NetApp 支持站点 控制中心映像一起使用，请使用此选项。
+
 
 [role="tabbed-block"]
 ====
+.Astra Control图像注册表
+--
+. 登录Asta Control Service。
+. 在信息板上，选择*Deploy a self-managed instance* of Asta Control*。
+. 按照说明登录到Astra Control映像注册表、提取Astra Control Center安装映像并提取该映像。
+
+
+--
 .NetApp 支持站点
 --
 . 下载包含Astra Control Center的软件包 (`astra-control-center-[version].tar.gz`) https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["Astra Control Center下载页面"^]。
 . (建议但可选)下载Astra控制中心的证书和签名包 (`astra-control-center-certs-[version].tar.gz`)以验证分发包的签名。
 +
-.展开以查看详细信息
-[%collapsible]
-=====
 [source, console]
 ----
 tar -vxzf astra-control-center-certs-[version].tar.gz
 ----
++
 [source, console]
 ----
 openssl dgst -sha256 -verify certs/AstraControlCenter-public.pub -signature certs/astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
 ----
++
 此时将显示输出 `Verified OK` 验证成功后。
 
-=====
 . 从Astra Control Center捆绑包中提取映像：
 +
 [source, console]
 ----
 tar -vxzf astra-control-center-[version].tar.gz
 ----
-
-
---
-.Astra Control图像注册表
---
-. 登录Asta Control Service。
-. 在信息板上，选择*Deploy a self-managed instance* of Asta Control*。
-. 按照说明登录到Astra Control映像注册表、提取Astra Control Center安装映像并提取该映像。
 
 
 --

@@ -35,10 +35,10 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 === AWS所需的功能
 
-在 AWS 中部署 Astra 控制中心之前，您需要满足以下条件：
+在AWS中部署Astra Control Center之前、您需要满足以下条件：
 
-* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
-* link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
 * NetApp Cloud Central account
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
 * AWS 凭据，访问 ID 和机密密钥，具有用于创建存储分段和连接器的权限
@@ -55,68 +55,12 @@ Astra 控制中心需要以下 AWS 操作环境：
 * Red Hat OpenShift Container Platform 4.11至4.13
 
 
+确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
 
-NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
-
-除了环境的资源要求之外， Astra 控制中心还需要以下资源：
-
-[cols="1h,2a"]
-|===
-| 组件 | 要求 
+除了环境的资源要求之外、Asta Control Center还需要特定的资源。请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"]。
 
 
-| 后端 NetApp Cloud Volumes ONTAP 存储容量  a| 
-至少 300 GB 可用
-
-
-
-| 工作节点（ AWS EC2 要求）  a| 
-总共至少 3 个辅助节点，每个节点有 4 个 vCPU 核心和 12 GB RAM
-
-
-
-| 负载平衡器  a| 
-服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务
-
-
-
-| FQDN  a| 
-一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
-
-
-
-| Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
-已安装并配置Asta Trident 23.01或更高版本、并将NetApp ONTAP 9.9.1或更高版本用作存储后端[AWS注册表]]
-
-
-
-| 映像注册表  a| 
-NetApp提供了一个注册表、可用于获取Astra控制中心内部版本映像：
-`http://netappdownloads.jfrog.io/docker-astra-control-prod`
-请联系NetApp支持部门、获取有关在Astra控制中心安装过程中使用此映像注册表的说明。
-
-如果您无法访问NetApp映像注册表、则必须具有现有的私有注册表、例如AWS Elastic Container Registry (ECR)、您可以将Astra控制中心构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
-
-
-NOTE: Astra 控制中心托管的集群和受管集群必须能够访问同一映像注册表，才能使用基于 Restic 的映像备份和还原应用程序。
-
-
-
-| Astra Trident / ONTAP 配置  a| 
-Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持以下ONTAP Kubernetes存储类、这些存储类是在将Kubernetes集群导入到NetApp BlueXP (以前称为Cloud Manager)时创建的。这些功能由 Astra Trident 提供：
-
-* `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-Singal-NAS csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-Singon-san csi.trident.netapp.io`
-
-
-|===
-
-NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
-
-
-NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docker 映像注册表密钥。
+NOTE: AWS注册表令牌将在12小时后过期、之后您必须续订Docker映像注册表密钥。
 
 
 
@@ -153,15 +97,15 @@ NOTE: AWS 注册表令牌将在 12 小时后过期，之后您必须续订 Docke
 
 === 配置 AWS
 
-接下来、将AWS配置为创建虚拟网络、设置EC2计算实例以及创建AWS S3存储分段。如果无法访问 <<aws-registry,NetApp Asta控制中心映像注册表>>，您还需要创建一个Elastic Container Registry (ECR)来托管Astra Control Center映像，并将这些映像推送到该注册表。
+接下来、将AWS配置为创建虚拟网络、设置EC2计算实例以及创建AWS S3存储分段。如果无法访问NetApp Astra控制中心映像注册表、则还需要创建一个Elastic Container Registry (ECR)来托管Astra控制中心映像、并将这些映像推送到此注册表。
 
 按照 AWS 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.13/installing/installing_aws/installing-aws-default.html["AWS 安装文档"^]。
 
 . 创建AWS虚拟网络。
 . 查看 EC2 计算实例。这可以是 AWS 中的裸机服务器或 VM 。
-. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请更改 AWS 中的实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
 . 至少创建一个 AWS S3 存储分段来存储备份。
-. (可选)如果无法访问 <<aws-registry,NetApp映像注册表>>，请执行以下操作：
+. (可选)如果无法访问NetApp映像注册表、请执行以下操作：
 +
 .. 创建AWS Elastic Container Registry (ECR)以托管所有Astra Control Center映像。
 +
@@ -178,7 +122,7 @@ NOTE: AWS 弹性容器注册表（ ECR ）令牌将在 12 小时后过期，并�
 
 以下是 AWS 部署示例：
 
-image:acc-cvo-aws2.png["此图显示了采用Cloud Volumes ONTAP 部署的Astra控制中心示例"]
+image:acc-cvo-aws3.png["此图显示了采用Cloud Volumes ONTAP 部署的Astra控制中心示例"]
 
 
 
@@ -205,10 +149,11 @@ image:acc-cvo-aws2.png["此图显示了采用Cloud Volumes ONTAP 部署的Astra�
 . 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
 +
 .. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
-.. 请注意右上角的Asta三端版本。
+.. 请注意右上角的Asta Control配置程序版本。
 .. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
 +
-此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。
+此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。
+Asta Control配置程序会在导入和发现过程中自动安装。
 
 
 
@@ -222,7 +167,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用�
 
 === 安装适用于AWS的Astra控制中心
 
-请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"^]。
+请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
 
 
 NOTE: AWS使用通用S3存储分段类型。
@@ -237,10 +182,10 @@ NOTE: AWS使用通用S3存储分段类型。
 
 === GCP所需的功能
 
-在GCP中部署Astra控制中心之前、您需要满足以下条件：
+在GCP中部署Astra Control Center之前、您需要以下各项：
 
-* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
-* link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
 * NetApp Cloud Central account
 * 如果使用OCP、则为Red Hat OpenShift Container Platform (OCP) 4.11至4.13
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
@@ -251,65 +196,9 @@ NOTE: AWS使用通用S3存储分段类型。
 
 === GCP的操作环境要求
 
+确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
 
-NOTE: 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
-
-除了环境的资源要求之外， Astra 控制中心还需要以下资源：
-
-[cols="1h,2a"]
-|===
-| 组件 | 要求 
-
-
-| 后端 NetApp Cloud Volumes ONTAP 存储容量  a| 
-至少 300 GB 可用
-
-
-
-| 工作节点(GCP计算要求)  a| 
-总共至少 3 个辅助节点，每个节点有 4 个 vCPU 核心和 12 GB RAM
-
-
-
-| 负载平衡器  a| 
-服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务
-
-
-
-| FQDN (GCP DNS区域)  a| 
-一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
-
-
-
-| Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装、以前称为Cloud Manager)  a| 
-已安装并配置Astra Trident 23.01或更高版本、并将NetApp ONTAP 9.9.1或更高版本用作存储后端[gcp-Registry ]
-
-
-
-| 映像注册表  a| 
-NetApp提供了一个注册表、可用于获取Astra控制中心内部版本映像：
-`http://netappdownloads.jfrog.io/docker-astra-control-prod`
-请联系NetApp支持部门、获取有关在Astra控制中心安装过程中使用此映像注册表的说明。
-
-如果您无法访问NetApp映像注册表、则必须具有现有的私有注册表、例如Google容器注册表、您可以将Astra控制中心构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
-
-
-NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
-
-
-
-| Astra Trident / ONTAP 配置  a| 
-Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持在将ONTAP Kubernetes集群导入到NetApp BlueXP中时创建的以下Kubernetes存储类。这些功能由 Astra Trident 提供：
-
-* `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-Singal-NAS csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-Singon-san csi.trident.netapp.io`
-
-
-|===
-
-NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
+除了环境的资源要求之外、Asta Control Center还需要特定的资源。请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"]。
 
 
 
@@ -362,16 +251,16 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 
 === 配置GCP
 
-接下来、配置GCP以创建VPC、设置计算实例以及创建Google Cloud Object Storage。如果无法访问 <<gcp-registry,NetApp Asta控制中心映像注册表>>，您还需要创建一个Google容器注册表来托管Astra Control Center映像，并将这些映像推送到该注册表。
+接下来、配置GCP以创建VPC、设置计算实例以及创建Google Cloud Object Storage。如果无法访问NetApp Astra控制中心映像注册表、您还需要创建一个Google容器注册表来托管Astra控制中心映像、并将这些映像推送到此注册表。
 
 按照GCP文档完成以下步骤。请参见在GCP中安装OpenShift集群。
 
 . 在GCP中创建一个GCP项目和VPC、该项目和VPC计划用于具有CVO后端的OCP集群。
 . 查看计算实例。此服务器可以是GCP中的裸机服务器或VM。
-. 如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
+. 如果实例类型尚未与主节点和工作节点的Astra最低资源要求匹配、请在GCP中更改实例类型以满足Astra要求。请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
 . 至少创建一个GCP Cloud Storage Bucket以存储备份。
 . 创建存储分段访问所需的密钥。
-. (可选)如果无法访问 <<gcp-registry,NetApp映像注册表>>，请执行以下操作：
+. (可选)如果无法访问NetApp映像注册表、请执行以下操作：
 +
 .. 创建Google容器注册表以托管Asta Control Center映像。
 .. 为所有Astra控制中心映像设置用于Docker推/拉的Google容器注册表访问权限。
@@ -438,10 +327,11 @@ done < acc.manifest.bundle.yaml
 . 导入 OpenShift 集群。集群将连接到您刚刚创建的工作环境。
 +
 .. 选择 * K8s* > * 集群列表 * > * 集群详细信息 * ，查看 NetApp 集群详细信息。
-.. 在右上角，记下 Trident 版本。
+.. 请注意右上角的Asta Control配置程序版本。
 .. 记下显示为"netapp"作为配置程序的Cloud Volumes ONTAP 集群存储类。
 +
-此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。
+此操作将导入 Red Hat OpenShift 集群并为其分配默认存储类。您可以选择存储类。
+Asta Control配置程序会在导入和发现过程中自动安装。
 
 
 
@@ -455,7 +345,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行、也可以在高可用�
 
 === 安装适用于GCP的Astra控制中心
 
-请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"^]。
+请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
 
 
 NOTE: GCP使用通用S3存储分段类型。
@@ -478,10 +368,10 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 === Azure所需的功能
 
-在 Azure 中部署 Astra 控制中心之前，您需要满足以下条件：
+在Azure中部署Astra Control Center之前、您需要满足以下条件：
 
-* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"^]。
-* link:../get-started/requirements.html["满足 Astra 控制中心的要求"^]。
+* Astra Control Center 许可证。请参见 link:../get-started/requirements.html["Astra 控制中心许可要求"]。
+* link:../get-started/requirements.html["满足 Astra 控制中心的要求"]。
 * NetApp Cloud Central account
 * 如果使用OCP、则为Red Hat OpenShift Container Platform (OCP) 4.11至4.13
 * 如果使用OCP、则Red Hat OpenShift Container Platform (OCP)权限(在命名空间级别用于创建Pod)
@@ -494,64 +384,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
 
-除了环境的资源要求之外， Astra 控制中心还需要以下资源：
-
-请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"^]。
-
-[cols="1h,2a"]
-|===
-| 组件 | 要求 
-
-
-| 后端 NetApp Cloud Volumes ONTAP 存储容量  a| 
-至少 300 GB 可用
-
-
-
-| 员工节点（ Azure 计算要求）  a| 
-总共至少 3 个辅助节点，每个节点有 4 个 vCPU 核心和 12 GB RAM
-
-
-
-| 负载平衡器  a| 
-服务类型 "loadbalancer" 可用于将传入流量发送到操作环境集群中的服务
-
-
-
-| FQDN （ Azure DNS 区域）  a| 
-一种将 Astra 控制中心的 FQDN 指向负载平衡 IP 地址的方法
-
-
-
-| Astra Trident (在NetApp BlueXP中作为Kubernetes集群发现的一部分安装)  a| 
-已安装并配置Asta Trident 23.01或更高版本、并且NetApp ONTAP 9.9.1或更高版本将用作存储后端[[azure-Registry ]]
-
-
-
-| 映像注册表  a| 
-NetApp提供了一个注册表、可用于获取Astra控制中心内部版本映像：
-`http://netappdownloads.jfrog.io/docker-astra-control-prod`
-请联系NetApp支持部门、获取有关在Astra控制中心安装过程中使用此映像注册表的说明。
-
-如果您无法访问NetApp映像注册表、则必须具有一个现有的私有注册表、例如Azure容器注册表(ACR)、您可以将Astra控制中心构建映像推送到该注册表。您需要提供要将映像上传到的映像注册表的 URL 。
-
-
-NOTE: 您需要启用匿名访问以提取要备份的 Restic 映像。
-
-
-
-| Astra Trident / ONTAP 配置  a| 
-Astra 控制中心要求创建一个存储类并将其设置为默认存储类。Astra控制中心支持在将ONTAP Kubernetes集群导入到NetApp BlueXP中时创建的以下Kubernetes存储类。这些功能由 Astra Trident 提供：
-
-* `vsaworkingenvironment-<>-ha-nas csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-ha-san csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-Singal-NAS csi.trident.netapp.io`
-* `vsaworkingenvironment-<>-Singon-san csi.trident.netapp.io`
-
-
-|===
-
-NOTE: 这些要求假定 Astra 控制中心是运行环境中唯一运行的应用程序。如果环境运行的是其他应用程序，请相应地调整这些最低要求。
+除了环境的资源要求之外、Asta Control Center还需要特定的资源。请参见 link:../get-started/requirements.html["Astra 控制中心运营环境要求"]。
 
 
 
@@ -604,17 +437,17 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 === 配置 Azure
 
-接下来、将Azure配置为创建虚拟网络、设置计算实例以及创建Azure Blb容器。如果无法访问 <<azure-registry,NetApp Asta控制中心映像注册表>>，您还需要创建Azure容器注册表(ACR)来托管Astra控制中心映像，并将这些映像推送到此注册表。
+接下来、将Azure配置为创建虚拟网络、设置计算实例以及创建Azure Blb容器。如果您无法访问NetApp Astra控制中心映像注册表、则还需要创建Azure容器注册表(ACR)来托管Astra控制中心映像、并将这些映像推送到此注册表。
 
 按照 Azure 文档完成以下步骤。请参见 https://docs.openshift.com/container-platform/4.13/installing/installing_azure/preparing-to-install-on-azure.html["在 Azure 上安装 OpenShift 集群"^]。
 
 . 创建Azure虚拟网络。
 . 查看计算实例。这可以是 Azure 中的裸机服务器或 VM 。
-. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"^]。
+. 如果实例类型尚未与主节点和工作节点的 Astra 最低资源要求匹配，请在 Azure 中更改实例类型以满足 Astra 要求。  请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
 . 至少创建一个Azure Blob容器以存储备份。
-. 创建存储帐户。您需要一个存储帐户来创建要用作 Astra 控制中心分段的容器。
+. 创建存储帐户。您需要使用存储帐户来创建要在Astra Control Center中用作存储分段的容器。
 . 创建存储分段访问所需的密钥。
-. (可选)如果无法访问 <<azure-registry,NetApp映像注册表>>，请执行以下操作：
+. (可选)如果无法访问NetApp映像注册表、请执行以下操作：
 +
 .. 创建Azure容器注册表(ACR)以托管Asta控制中心映像。
 .. 为所有Astra Control Center映像设置Docker推送/拉取的ACR访问权限。
@@ -690,12 +523,13 @@ image:acc-cvo-azure-working-environment.png["此图显示了BlueXP中的工作�
 +
 image:acc-cvo-azure-connected.png["此图显示了BlueXP中已导入的集群"]
 
-.. 请注意右上角的Asta三端版本。
+.. 请注意右上角的Asta Control配置程序版本。
 .. 记下显示 NetApp 作为配置程序的 Cloud Volumes ONTAP 集群存储类。
 
 
 +
-此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。Asta三项功能会在导入和发现过程中自动安装。
+此操作将导入 Red Hat OpenShift 集群并分配默认存储类。您可以选择存储类。
+Asta Control配置程序会在导入和发现过程中自动安装。
 
 . 记下此Cloud Volumes ONTAP 部署中的所有永久性卷和卷。
 . Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用性环境下运行。如果已启用 HA ，请记下在 Azure 中运行的 HA 状态和节点部署状态。
@@ -705,6 +539,6 @@ image:acc-cvo-azure-connected.png["此图显示了BlueXP中已导入的集群"]
 
 === 安装和配置适用于Azure的Astra控制中心
 
-按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"^]。
+按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"]。
 
-使用 Astra 控制中心添加 Azure 存储分段。请参见 link:../get-started/setup_overview.html["设置 Astra 控制中心并添加存储分段"^]。
+使用 Astra 控制中心添加 Azure 存储分段。请参见 link:../get-started/add-bucket.html["设置 Astra 控制中心并添加存储分段"]。

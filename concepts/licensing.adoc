@@ -17,7 +17,7 @@ summary: 了解如何根据许可证状态对 Astra 控制中心执行不同的�
 您可以通过以下方式之一获取许可证：
 
 * 如果您正在评估Astra Control Center、并且需要与嵌入式评估许可证中包含的评估条款不同的评估条款、请与NetApp联系以申请不同的评估许可证文件。
-* link:https://mysupport.netapp.com/site/["如果您已购买Astra Control Center、请生成NetApp许可证文件(NLF)"^] 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。
+* https://mysupport.netapp.com/site/["如果您已购买Astra Control Center、请生成NetApp许可证文件(NLF)"^] 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。
 
 
 有关ONTAP 存储后端所需许可证的详细信息、请参见 link:../get-started/requirements.html["支持的存储后端"]。
@@ -60,6 +60,6 @@ NOTE: Red Hat OpenShift基础架构节点不使用Astra Control Center中的许�
 
 == 了解更多信息
 
-* link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["首次设置Astra控制中心时添加许可证"]
+* link:../get-started/add-license.html["首次设置Astra控制中心时添加许可证"]
 * link:../use/update-licenses.html["更新现有许可证"]
 

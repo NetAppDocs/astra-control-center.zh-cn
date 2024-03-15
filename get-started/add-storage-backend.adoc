@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: get-started/add-storage-backend.html 
+keywords: set up astra control, astra control license, add cluster, add storage backend, import storage, add bucket 
+summary: 启用存储后端身份验证后、您应选择要管理的存储后端。 
+---
+= 添加存储后端
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+设置凭据或证书身份验证信息后、您可以将现有ONTAP 存储后端添加到Astra控制中心以管理其资源。
+
+通过将 Astra Control 中的存储集群作为存储后端进行管理，您可以在永久性卷（ PV ）和存储后端之间建立链接，并获得其他存储指标。
+
+如果启用了Astra Control配置程序、则在使用NetApp SnapMirror技术时、可以选择在Astra控制中心中添加和管理ONTAP存储后端。
+
+.步骤
+. 从左侧导航区域的信息板中、选择*后端*。
+. 选择 * 添加 * 。
+. 在添加存储后端页面的使用现有部分中，选择* ONTAP *。
+. 选择以下选项之一：
++
+** *使用管理员凭据*：输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。
++
+
+NOTE: 您在此处输入凭据的用户必须具有 `ontapi` 在ONTAP 集群上的ONTAP 系统管理器中启用用户登录访问方法。如果您计划使用SnapMirror复制、请应用具有"admin"角色的用户凭据、该角色具有访问方法 `ontapi` 和 `http`、在源和目标ONTAP 集群上。请参见 https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_cluster_user_accounts.html#users-list["管理ONTAP 文档中的用户帐户"^] 有关详细信息 ...
+
+** *使用证书*：上传证书 `.pem` file、证书密钥 `.key` 文件、以及证书颁发机构文件(可选)。
+
+
+. 选择 * 下一步 * 。
+. 确认后端详细信息并选择 * 管理 * 。
+
+
+.结果
+后端将显示在中 `online` 包含摘要信息的列表中的状态。
+
+
+NOTE: 您可能需要刷新页面才能显示后端。

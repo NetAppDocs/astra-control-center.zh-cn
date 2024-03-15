@@ -62,9 +62,9 @@ NOTE: 理想情况下、应用程序集群应位于上图中Kubernetes和randche
 
 图中未显示：
 
-* 所有集群都安装了ONTAP后端以及三叉式。
+* 所有集群都安装了ONTAP后端以及Asta三叉型或Asta控制配置程序。
 * 在此配置中、OpenShift集群使用MetalLB作为负载平衡器。
-* Snapshot控制器和卷SnapshotClass也会安装在所有集群上、如中所述 link:../get-started/setup_overview.html#prepare-your-environment-for-cluster-management-using-astra-control["前提条件"^]。
+* Snapshot控制器和卷SnapshotClass也会安装在所有集群上、如中所述 link:../get-started/prep-for-cluster-management.html["前提条件"]。
 
 
 
@@ -87,8 +87,8 @@ NOTE: Asta Control Center operator也可以部署在与Asta CR相同的命名空
 . 从二级Asta Control Center实例(运行于上)管理主Asta Control Center应用程序和目标集群 `ocp-cluster-2` 集群)：
 +
 .. 登录到辅助Asta Control Center实例。
-.. link:../get-started/setup_overview.html#add-cluster["添加主Asta Control Center集群"] (`ocp-cluster-1`）。
-.. link:../get-started/setup_overview.html#add-cluster["添加目标第三个集群"] (`ocp-cluster-3`)。
+.. link:../get-started/add-cluster.html["添加主Asta Control Center集群"] (`ocp-cluster-1`）。
+.. link:../get-started/add-cluster.html["添加目标第三个集群"] (`ocp-cluster-3`)。
 
 
 . 在辅助Asta Control Center上管理Asta Control Center和Asta Control Center操作员：
@@ -117,16 +117,16 @@ NOTE: Asta Control Center operator也可以部署在与Asta CR相同的命名空
 . 备份Asta控制中心和操作员：
 +
 .. 在辅助Asta控制中心上、选择应用程序选项卡以导航到应用程序页面。
-.. link:../use/protect-apps.html#create-a-backup["备份"^] Astra Control Center应用程序 (`netapp-acc`）。
-.. link:../use/protect-apps.html#create-a-backup["备份"^] 运算符 (`netapp-acc-operator`）。
+.. link:../use/protect-apps.html#create-a-backup["备份"] Astra Control Center应用程序 (`netapp-acc`）。
+.. link:../use/protect-apps.html#create-a-backup["备份"] 运算符 (`netapp-acc-operator`）。
 
 
-. 备份Astra Control Center和操作员之后、使用模拟灾难恢复(DR)场景 link:../use/uninstall_acc.html["正在卸载Astra Control Center"^] 从主集群。
+. 备份Astra Control Center和操作员之后、使用模拟灾难恢复(DR)场景 link:../use/uninstall_acc.html["正在卸载Astra Control Center"] 从主集群。
 +
 
-NOTE: 您需要将Astra控制中心还原到新集群(本操作步骤中所述的第三个Kubbernetes集群)、并对新安装的Astra控制中心使用与主集群相同的DNS。
+NOTE: 您需要将Astra控制中心还原到新集群(此操作步骤中所述的第三个Kubbernetes集群)、并对新安装的Astra控制中心使用与主集群相同的DNS。
 
-. 使用辅助Asta控制中心、 link:../use/restore-apps.html["还原"^] Asta Control Center应用程序的主实例从其备份中：
+. 使用辅助Asta控制中心、 link:../use/restore-apps.html["还原"] Asta Control Center应用程序的主实例从其备份中：
 +
 .. 选择*Applications*，然后选择Astra Control Center应用程序的名称。
 .. 从“操作”列的“选项”菜单中，选择*Restore*。
@@ -156,7 +156,7 @@ kubectl get acc -n netapp-acc
 [listing]
 ----
 NAME  UUID                                 VERSION    ADDRESS                             READY
-astra 89f4fd47-0cf0-4c7a-a44e-43353dc96ba8 23.10.0-68 ocp-cluster-1.company.com           True
+astra 89f4fd47-0cf0-4c7a-a44e-43353dc96ba8 24.02.0-65 ocp-cluster-1.company.com           True
 ----
 .. 如果 `ADDRESS` 上述响应中的字段不具有主Asta Control Center实例的FQDN、请更新此配置以引用Asta Control Center DNS：
 +
@@ -184,7 +184,7 @@ kubectl get acc -n netapp-acc
 
 == 第1步选项：使用复制保护Astra Control Center
 
-本操作步骤介绍了配置所需的步骤 link:../use/replicate_snapmirror.html["Asta Control Center复制"^] 保护主Asta Control Center实例。
+本操作步骤介绍了配置所需的步骤 link:../use/replicate_snapmirror.html["Asta Control Center复制"] 保护主Asta Control Center实例。
 
 在此示例中、Astra Control Center始终安装在下 `netapp-acc` 命名空间和操作符安装在下 `netapp-acc-operator` 命名空间。
 
@@ -197,8 +197,8 @@ kubectl get acc -n netapp-acc
 . 从二级Asta Control Center实例管理主Asta Control Center应用程序和目标集群：
 +
 .. 登录到辅助Asta Control Center实例。
-.. link:../get-started/setup_overview.html#add-cluster["添加主Asta Control Center集群"] (`ocp-cluster-1`）。
-.. link:../get-started/setup_overview.html#add-cluster["添加目标第三个集群"] (`ocp-cluster-3`)。
+.. link:../get-started/add-cluster.html["添加主Asta Control Center集群"] (`ocp-cluster-1`）。
+.. link:../get-started/add-cluster.html["添加目标第三个集群"] (`ocp-cluster-3`)。
 
 
 . 在辅助Asta Control Center上管理Asta Control Center和Asta Control Center操作员：
@@ -217,8 +217,8 @@ NOTE: 复制要求主Asta Control Center集群和目标集群 (`ocp-cluster-3`)�
 在每个后端建立对等并添加到Astra Control后，后端将显示在“后端”页面的“*发现*”选项卡中。
 
 +
-.. link:../get-started/setup_overview.html#add-a-storage-backend["添加对等后端"^] 到主集群上的Astra Control Center。
-.. link:../get-started/setup_overview.html#add-a-storage-backend["添加对等后端"^] 到目标集群上的Astra Control Center。
+.. link:../get-started/add-storage-backend.html["添加对等后端"] 到主集群上的Astra Control Center。
+.. link:../get-started/add-storage-backend.html["添加对等后端"] 到目标集群上的Astra Control Center。
 
 
 . 配置复制：
@@ -379,7 +379,7 @@ kubectl get acc -n netapp-acc
 [listing]
 ----
 NAME  UUID                                 VERSION    ADDRESS                             READY
-astra 89f4fd47-0cf0-4c7a-a44e-43353dc96ba8 23.10.0-68 ocp-cluster-1.company.com           True
+astra 89f4fd47-0cf0-4c7a-a44e-43353dc96ba8 24.02.0-65 ocp-cluster-1.company.com           True
 ----
 * *确认部署状态*：显示Astra Control Center部署信息以确认 `Deployment State` 为 `Deployed`。
 +

@@ -20,22 +20,15 @@ Astra控制中心支持NetApp ONTAP和Longhorn作为存储后端。
 
 Astra 控制中心支持以下功能：
 
-* *Astra三端存储类由ONTAP 存储提供支持*：如果使用ONTAP 后端，Astra控制中心可以导入ONTAP 后端以报告各种监控信息。
+* * ONTAP存储支持的存储类*：如果使用ONTAP后端、Astra控制中心可以导入ONTAP后端以报告监控信息。
 * *Longhorn*支持的基于CSI的存储类：可以将Longhorn与Longhorn容器存储接口(CSI)驱动程序结合使用。
 
 
 
-NOTE: 应在Asta Control Center之外预配置Asta三项存储类。
+NOTE: 存储类应为 https://docs.netapp.com/us-en/trident/trident-use/create-stor-class.html["已配置"^] 使用Astra Control配置程序。
 
 
 
 == 存储类
 
 将集群添加到Astra控制中心时、系统会提示您选择该集群上先前配置的一个存储类作为默认存储类。如果在永久性卷请求（ PVC ）中未指定存储类，则会使用此存储类。可以随时在 Astra 控制中心内更改默认存储类，也可以随时通过在 PVC 或 Helm 图表中指定存储类的名称来使用任何存储类。确保您仅为 Kubernetes 集群定义了一个默认存储类。
-
-
-
-== 有关详细信息 ...
-
-* https://docs.netapp.com/us-en/trident/index.html["Astra Trident 文档"^]
-

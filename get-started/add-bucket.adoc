@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: get-started/add-bucket.html 
+keywords: set up astra control, add bucket 
+summary: 安装Astra Control Center后、您应考虑在设置过程中添加存储分段。 
+---
+= 添加存储分段
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+您可以使用Astra Control UI或添加存储分段 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^]。如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则必须添加对象存储分段提供程序。Astra Control 会将这些备份或克隆存储在您定义的对象存储分段中。
+
+如果您要将应用程序配置和永久性存储克隆到同一集群、则无需在Astra Control中使用存储分段。应用程序快照功能不需要存储分段。
+
+.开始之前
+* 确保您有一个可从Astra Control Center管理的集群访问的存储分段。
+* 确保您具有此存储分段的凭据。
+* 确保存储分段为以下类型之一：
++
+** NetApp ONTAP S3
+** NetApp StorageGRID S3
+** Microsoft Azure
+** 通用 S3
+
+
+
+
+
+NOTE: Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。
+
+
+NOTE: 虽然Astra控制中心支持将Amazon S3作为通用S3存储分段提供商、但Astra控制中心可能不支持声称支持Amazon S3的所有对象存储供应商。
+
+.步骤
+. 在左侧导航区域中，选择 * 桶 * 。
+. 选择 * 添加 * 。
+. 选择存储分段类型。
++
+
+NOTE: 添加存储分段时，请选择正确的存储分段提供程序，并为该提供程序提供正确的凭据。例如， UI 接受 NetApp ONTAP S3 作为类型并接受 StorageGRID 凭据；但是，这将发生原因使使用此存储分段执行所有未来应用程序备份和还原失败。
+
+. 输入现有存储分段名称和可选的问题描述。
++
+
+TIP: 存储分段名称和问题描述 显示为备份位置、您可以稍后在创建备份时选择该位置。此名称也会在配置保护策略期间显示。
+
+. 输入 S3 端点的名称或 IP 地址。
+. 在*选择凭据*下、选择*添加*或*使用现有*选项卡。
++
+** 如果选择*添加*：
++
+... 在 Astra Control 中输入凭据名称，以便与其他凭据区分开。
+... 通过粘贴剪贴板中的内容来输入访问 ID 和机密密钥。
+
+
+** 如果选择*使用现有*：
++
+... 选择要用于存储分段的现有凭据。
+
+
+
+
+. 选择 ... `Add`。
++
+
+NOTE: 添加存储分段时、Astra Control会使用默认存储分段指示符标记一个存储分段。您创建的第一个存储分段将成为默认存储分段。添加分段时、您可以稍后决定添加 link:../use/manage-buckets.html#set-the-default-bucket["设置另一个默认存储分段"]。
+
+

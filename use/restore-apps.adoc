@@ -39,6 +39,14 @@ Astra Control 可以从快照或备份还原应用程序。将应用程序还原
 在与其他应用程序共享资源的应用程序上执行原位还原操作可能会产生意外结果。对其中一个应用程序执行原位还原时、这些应用程序之间共享的任何资源都会被替换。有关详细信息，请参见 <<如果某个应用程序与其他应用程序共享资源、则就地恢复会变得非常复杂,此示例>>。
 
 ====
+根据要还原的归档类型、执行以下步骤：
+
+
+
+== 使用Web UI从备份或快照还原数据
+
+您可以使用Asta Control Web UI还原数据。
+
 .步骤
 . 选择 * 应用程序 * ，然后选择应用程序的名称。
 . 从“操作”列的“选项”菜单中，选择*Restore*。
@@ -100,6 +108,303 @@ NOTE: 要了解有关配置包含和排除规则的信息、请参见 <<在应�
 . 请仔细查看有关还原操作的详细信息，键入“restore”(如果出现提示)，然后选择*Restore*。
 
 
+
+
+== [技术预览]使用自定义资源从备份中恢复(CR)
+
+您可以使用自定义资源(CR)文件将备份中的数据还原到其他命名空间或原始源命名空间。
+
+[role="tabbed-block"]
+====
+.使用CR从备份还原
+--
+.步骤
+. 创建自定义资源(CR)文件并将其命名为 `astra-control-backup-restore-cr.yaml`。更新方括号<>中的值以匹配您的Astra Control环境和集群配置：
++
+** <CR_NAME>：此CR操作的名称；为您的环境选择一个合理的名称。
+** <ASTRA_CONNECTOR_NAMESPACE>：安装Asta连接器的命名空间。
+** <APPVAULT_NAME>：存储备份内容的AppVault的名称。
+** <BACKUP_PATH>：AppVault中存储备份内容的路径。例如：
++
+[listing]
+----
+minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
+** <SOURCE_NAMESPACE>：还原操作的源命名空间。
+** <DESTINATION_NAMESPACE>：还原操作的目标命名空间。
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: BackupRestore
+metadata:
+  labels:
+  name: <CR_NAME>
+  namespace: <ASTRA_CONNECTOR_NAMESPACE>
+spec:
+  appVaultRef: <APPVAULT_NAME>
+  appArchivePath: <BACKUP_PATH>
+  namespaceMapping: [{"source": "<SOURCE_NAMESPACE>", "target": "<DESTINATION_NAMESPACE>"}]
+----
+
+
+. (可选)如果只需要选择要还原的应用程序的某些资源、请添加筛选功能、其中包括或排除标记有特定标签的资源：
++
+** <INCLUDE-EXCLUDE>：_(筛选所需)_使用 `include` 或 `exclude` 包括或排除资源匹配备程序中定义的资源。添加以下resourceMatchers参数以定义要包括或排除的资源：
++
+*** <GROUP>：_(可选)_要筛选的资源组。
+*** <KIND>：_(可选)_要筛选的资源种类。
+*** <VERSION>：要筛选的资源的_(可选)_版本。
+*** <NAMES>：要筛选的资源的Kubenetes metadata.name字段中的_(可选)_个名称。
+*** <NAMESPACES>：_(可选)_要筛选的资源的Kubenetes metadata.name字段中的命名区。
+*** <SELECTORS>：中定义的资源的Kubelnetes metadata.name字段中的_(可选)_标签选择器字符串 https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors["Kubernetes 文档"^]。示例 `"trident.netapp.io/os=linux"`。
++
+示例
+
++
+[source, yaml]
+----
+spec:
+    resourceFilter:
+        resourceSelectionCriteria: "<INCLUDE-EXCLUDE>"
+        resourceMatchers:
+           group: <GROUP>
+           kind: <KIND>
+           version: <VERSION>
+           names: <NAMES>
+           namespaces: <NAMESPACES>
+           labelSelectors: <SELECTORS>
+----
+
+
+
+
+. 在您填充之后 `astra-control-backup-restore-cr.yaml` 使用正确值的文件、应用CR：
++
+[source, console]
+----
+kubectl apply -f astra-control-backup-restore-cr.yaml
+----
+
+
+--
+.使用CR从备份还原到原始命名空间
+--
+.步骤
+. 创建自定义资源(CR)文件并将其命名为 `astra-control-backup-ipr-cr.yaml`。更新方括号<>中的值以匹配您的Astra Control环境和集群配置：
++
+** <CR_NAME>：此CR操作的名称；为您的环境选择一个合理的名称。
+** <ASTRA_CONNECTOR_NAMESPACE>：安装Asta连接器的命名空间。此命名空间应为创建备份的命名空间。
+** <APPVAULT_NAME>：存储备份内容的AppVault的名称。
+** <BACKUP_PATH>：AppVault中存储备份内容的路径。例如：
++
+[listing]
+----
+minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: BackupInplaceRestore
+metadata:
+  name: <CR_NAME>
+  namespace: <ASTRA_CONNECTOR_NAMESPACE>
+spec:
+  appVaultRef: <APPVAULT_NAME>
+  appArchivePath: <BACKUP_PATH>
+----
+
+
+. (可选)如果只需要选择要还原的应用程序的某些资源、请添加筛选功能、其中包括或排除标记有特定标签的资源：
++
+** <INCLUDE-EXCLUDE>：_(筛选所需)_使用 `include` 或 `exclude` 包括或排除资源匹配备程序中定义的资源。添加以下resourceMatchers参数以定义要包括或排除的资源：
++
+*** <GROUP>：_(可选)_要筛选的资源组。
+*** <KIND>：_(可选)_要筛选的资源种类。
+*** <VERSION>：要筛选的资源的_(可选)_版本。
+*** <NAMES>：要筛选的资源的Kubenetes metadata.name字段中的_(可选)_个名称。
+*** <NAMESPACES>：_(可选)_要筛选的资源的Kubenetes metadata.name字段中的命名区。
+*** <SELECTORS>：中定义的资源的Kubelnetes metadata.name字段中的_(可选)_标签选择器字符串 https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors["Kubernetes 文档"^]。示例 `"trident.netapp.io/os=linux"`。
++
+示例
+
++
+[source, yaml]
+----
+spec:
+    resourceFilter:
+        resourceSelectionCriteria: "<INCLUDE-EXCLUDE>"
+        resourceMatchers:
+           group: <GROUP>
+           kind: <KIND>
+           version: <VERSION>
+           names: <NAMES>
+           namespaces: <NAMESPACES>
+           labelSelectors: <SELECTORS>
+----
+
+
+
+
+. 在您填充之后 `astra-control-backup-ipr-cr.yaml` 使用正确值的文件、应用CR：
++
+[source, console]
+----
+kubectl apply -f astra-control-backup-ipr-cr.yaml
+----
+
+
+--
+====
+
+
+== [技术预览]使用自定义资源从快照恢复(CR)
+
+您可以使用自定义资源(CR)文件从快照将数据还原到其他命名空间或原始源命名空间。
+
+[role="tabbed-block"]
+====
+.使用CR从快照还原
+--
+.步骤
+. 创建自定义资源(CR)文件并将其命名为 `astra-control-snapshot-restore-cr.yaml`。更新方括号<>中的值以匹配您的Astra Control环境和集群配置：
++
+** <CR_NAME>：此CR操作的名称；为您的环境选择一个合理的名称。
+** <ASTRA_CONNECTOR_NAMESPACE>：安装Asta连接器的命名空间。
+** <APPVAULT_NAME>：存储备份内容的AppVault的名称。
+** <BACKUP_PATH>：AppVault中存储备份内容的路径。例如：
++
+[listing]
+----
+minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
+** <SOURCE_NAMESPACE>：还原操作的源命名空间。
+** <DESTINATION_NAMESPACE>：还原操作的目标命名空间。
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: SnapshotRestore
+metadata:
+  name: <CR_NAME>
+  namespace: <ASTRA_CONNECTOR_NAMESPACE>
+spec:
+  appArchivePath: <BACKUP_PATH>
+  appVaultRef: <APPVAULT_NAME>
+  namespaceMapping: [{"source": "<SOURCE_NAMESPACE>", "destination": "<DESTINATION_NAMESPACE>"}]
+----
+
+
+. (可选)如果只需要选择要还原的应用程序的某些资源、请添加筛选功能、其中包括或排除标记有特定标签的资源：
++
+** <INCLUDE-EXCLUDE>：_(筛选所需)_使用 `include` 或 `exclude` 包括或排除资源匹配备程序中定义的资源。添加以下resourceMatchers参数以定义要包括或排除的资源：
++
+*** <GROUP>：_(可选)_要筛选的资源组。
+*** <KIND>：_(可选)_要筛选的资源种类。
+*** <VERSION>：要筛选的资源的_(可选)_版本。
+*** <NAMES>：要筛选的资源的Kubenetes metadata.name字段中的_(可选)_个名称。
+*** <NAMESPACES>：_(可选)_要筛选的资源的Kubenetes metadata.name字段中的命名区。
+*** <SELECTORS>：中定义的资源的Kubelnetes metadata.name字段中的_(可选)_标签选择器字符串 https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors["Kubernetes 文档"^]。示例 `"trident.netapp.io/os=linux"`。
++
+示例
+
++
+[source, yaml]
+----
+spec:
+    resourceFilter:
+        resourceSelectionCriteria: "<INCLUDE-EXCLUDE>"
+        resourceMatchers:
+           group: <GROUP>
+           kind: <KIND>
+           version: <VERSION>
+           names: <NAMES>
+           namespaces: <NAMESPACES>
+           labelSelectors: <SELECTORS>
+----
+
+
+
+
+. 在您填充之后 `astra-control-snapshot-restore-cr.yaml` 使用正确值的文件、应用CR：
++
+[source, console]
+----
+kubectl apply -f astra-control-snapshot-restore-cr.yaml
+----
+
+
+--
+.使用CR从快照还原到原始命名空间
+--
+.步骤
+. 创建自定义资源(CR)文件并将其命名为 `astra-control-snapshot-ipr-cr.yaml`。更新方括号<>中的值以匹配您的Astra Control环境和集群配置：
++
+** <CR_NAME>：此CR操作的名称；为您的环境选择一个合理的名称。
+** <ASTRA_CONNECTOR_NAMESPACE>：安装Asta连接器的命名空间。此命名空间应为创建快照的命名空间。
+** <APPVAULT_NAME>：存储备份内容的AppVault的名称。
+** <BACKUP_PATH>：AppVault中存储备份内容的路径。例如：
++
+[listing]
+----
+minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: SnapshotInplaceRestore
+metadata:
+  name: <CR_NAME>
+  namespace: <ASTRA_CONNECTOR_NAMESPACE>
+spec:
+  appArchivePath: <BACKUP_PATH>
+  appVaultRef: <APPVAULT_NAME>
+----
+
+
+. (可选)如果只需要选择要还原的应用程序的某些资源、请添加筛选功能、其中包括或排除标记有特定标签的资源：
++
+** <INCLUDE-EXCLUDE>：_(筛选所需)_使用 `include` 或 `exclude` 包括或排除资源匹配备程序中定义的资源。添加以下resourceMatchers参数以定义要包括或排除的资源：
++
+*** <GROUP>：_(可选)_要筛选的资源组。
+*** <KIND>：_(可选)_要筛选的资源种类。
+*** <VERSION>：要筛选的资源的_(可选)_版本。
+*** <NAMES>：要筛选的资源的Kubenetes metadata.name字段中的_(可选)_个名称。
+*** <NAMESPACES>：_(可选)_要筛选的资源的Kubenetes metadata.name字段中的命名区。
+*** <SELECTORS>：中定义的资源的Kubelnetes metadata.name字段中的_(可选)_标签选择器字符串 https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors["Kubernetes 文档"^]。示例 `"trident.netapp.io/os=linux"`。
++
+示例
+
++
+[source, yaml]
+----
+spec:
+    resourceFilter:
+        resourceSelectionCriteria: "<INCLUDE-EXCLUDE>"
+        resourceMatchers:
+           group: <GROUP>
+           kind: <KIND>
+           version: <VERSION>
+           names: <NAMES>
+           namespaces: <NAMESPACES>
+           labelSelectors: <SELECTORS>
+----
+
+
+
+
+. 在您填充之后 `astra-control-snapshot-ipr-cr.yaml` 使用正确值的文件、应用CR：
++
+[source, console]
+----
+kubectl apply -f astra-control-snapshot-ipr-cr.yaml
+----
+
+
+--
+====
 .结果
 Astra Control 会根据您提供的信息还原应用程序。如果您已原位还原应用程序、则现有永久性卷的内容将替换为已还原应用程序中的永久性卷的内容。
 

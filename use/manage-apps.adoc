@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: use/manage-apps.html 
-keywords: how to manage apps with astra control, discover app, how to define kubernetes apps, astra control, astra 
+keywords: how to manage apps with astra control, define app, how to define kubernetes apps, cr, custom resource, astra control 
 summary: '将Kubernetes集群添加到Astra Control后、您可以在该集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的"Applications"页面开始管理这些应用程序。' 
 ---
 = 开始管理应用程序
@@ -12,7 +12,7 @@ summary: '将Kubernetes集群添加到Astra Control后、您可以在该集群�
 
 
 [role="lead"]
-你先请 link:../get-started/setup_overview.html#add-cluster["将集群添加到 Astra Control 管理中"]、您可以在集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的应用程序页面来定义应用程序及其资源。
+你先请 link:../get-started/add-cluster.html["将集群添加到 Astra Control 管理中"]、您可以在集群上安装应用程序(在Astra Control之外)、然后转到Astra Control中的应用程序页面来定义应用程序及其资源。
 
 您可以定义和管理包含存储资源且运行Pod的应用程序、或者包含存储资源且未运行任何Pod的应用程序。没有运行Pod的应用程序称为纯数据应用程序。
 
@@ -95,7 +95,7 @@ Astra Control可能无法克隆使用"按参考传递"架构设计的运算符(�
 
 == 在集群上安装应用程序
 
-你先请 link:../get-started/setup_overview.html#add-cluster["已添加集群"] 对于Astra Control、您可以在集群上安装应用程序或管理现有应用程序。可以管理范围限定为一个或多个命名空间的任何应用程序。
+你先请 link:../get-started/add-cluster.html["已添加集群"] 对于Astra Control、您可以在集群上安装应用程序或管理现有应用程序。可以管理范围限定为一个或多个命名空间的任何应用程序。
 
 
 
@@ -128,6 +128,7 @@ TIP: 标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进
 .应用程序管理选项
 * <<定义要作为应用程序进行管理的资源>>
 * <<定义要作为应用程序进行管理的命名空间>>
+* link:../use/manage-apps.html#tech-preview-define-an-application-using-a-kubernetes-custom-resource["(技术预览)使用Kubnetes自定义资源定义应用程序"]
 
 
 
@@ -239,6 +240,106 @@ NOTE: 选中*显示系统命名空间*复选框以显示默认情况下在应用
 
 
 此过程完成后、与此命名空间关联的应用程序将显示在`Associated applications`列中。
+
+
+
+=== [技术预览]使用Kubernetes自定义资源定义应用程序
+
+您可以通过使用自定义资源(CR)将要使用Asta Control管理的Kubbernetes资源定义为应用程序来指定这些资源。如果要单独管理某个命名空间中的资源、或者要以类似方式并按相同间隔管理和保护某个特定命名空间中的所有资源、则可以添加集群范围的资源。
+
+.步骤
+. 创建自定义资源(CR)文件并将其命名为(例如、 `astra_mysql_app.yaml`）。
+. 在中命名应用程序 `metadata.name`。
+. 定义要管理的应用程序资源：
++
+[role="tabbed-block"]
+====
+.spec.includedClusterScopedResources
+--
+除了Asta Control自动包含的资源类型之外、还包括集群范围的资源类型：
+
+** * spec.includedClusterScopedResources*:_(可选)_要包含的集群范围资源类型列表。
++
+*** *groupVersion Kind*：_(可选)_明确标识一种类型。
++
+**** *group*：_(如果使用groupVersion Kind、则为必需项)_要包含的资源的API组。
+**** *版本*：_(如果使用groupVersionKind、则为必需项)_要包含的资源的API版本。
+**** *kind*：_(如果使用groupVersion Kind、则为必填项)_要包含的资源种类。
+
+
+*** *labelSelecter*：_(可选)_一组资源的标签查询。它仅用于检索与标签匹配的资源。如果不提供标签、则Astra Control将收集为该集群指定的所有资源类型的实例。将对“对等标签”和“对等显示”的结果进行AND运算。
++
+**** *匹配标签*：_(可选)_个｛key、value｝对的映射。在匹配标签映射中，单个{key,value}相当于m匹 配表达式的元素，该元素的键字段为“key”，运算符为“in”，值数组仅包含“value”。这些要求是AND。
+**** *不符合要求*：_(可选)_标签选择器要求列表。这些要求是AND。
++
+***** *key*:_(如果使用了“对等表达式”，则为必需项)_与标签选择器关联的标签键。
+***** *运算符*：_(如果使用的是对等表达式则为必需项)_表示键与一组值的关系。有效运算符为 `In`， `NotIn`， `Exists` 和 `DoesNotExist`。
+***** *values*：_(如果使用的是匹配备用)_字符串值数组。如果运算符为 `In` 或 `NotIn`，值数组必须为空。如果运算符为 `Exists` 或 `DoesNotExist`，值数组必须为空。
+
+
+
+
+
+
+
+
+--
+.spec.includedNamespaces
+--
+在应用程序中的这些资源中包括名称和资源：
+
+** *。spec.includedNamespaces*:_(必需)_用于定义命名空间和可选的资源选择筛选器。
++
+*** *命名空间*：_(必需)_包含要使用Astra Control管理的应用程序资源的命名空间。
+*** *labelSelecter*：_(可选)_一组资源的标签查询。它仅用于检索与标签匹配的资源。如果不提供标签、则Astra Control将收集为该集群指定的所有资源类型的实例。将对“对等标签”和“对等显示”的结果进行AND运算。
++
+**** *匹配标签*：_(可选)_个｛key、value｝对的映射。在匹配标签映射中，单个{key,value}相当于m匹 配表达式的元素，该元素的键字段为“key”，运算符为“in”，值数组仅包含“value”。这些要求是AND。
+**** *不符合要求*：_(可选)_标签选择器要求列表。 `key` 和 `operator` 为必填项。这些要求是AND。
++
+***** *key*:_(如果使用了“对等表达式”，则为必需项)_与标签选择器关联的标签键。
+***** *运算符*：_(如果使用的是对等表达式则为必需项)_表示键与一组值的关系。有效运算符为 `In`， `NotIn`， `Exists` 和 `DoesNotExist`。
+***** *值*：_(如果使用匹配备则为必需项)_字符串值数组。如果运算符为 `In` 或 `NotIn`，值数组必须为空。如果运算符为 `Exists` 或 `DoesNotExist`，值数组必须为空。
+
+
+
+
+
+
+
+
+--
+====
++
+YAML示例：
+
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Application
+metadata:
+  name: astra_mysql_app
+spec:
+  includedNamespaces:
+    - namespace: astra_mysql_app
+      labelSelector:
+        matchLabels:
+          app: nginx
+          env: production
+        matchExpressions:
+          - key: tier
+            operator: In
+            values:
+              - frontend
+              - backend
+----
+. 在您填充之后 `astra_mysql_app.yaml` 使用正确值的文件、应用CR：
++
+[source, console]
+----
+kubectl apply -f astra_mysql_app.yaml -n neptune-system
+----
+
 
 
 
