@@ -158,9 +158,6 @@ NOTE: 对于此操作步骤 、您不需要对运行Astra控制中心的集群�
 +
 .. 创建名为`asacontrol service-account.yaml`的服务帐户文件。
 +
-根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
-
-+
 [source, subs="specialcharacters,quotes"]
 ----
 *astracontrol-service-account.yaml*
@@ -191,9 +188,6 @@ kubectl apply -f astracontrol-service-account.yaml
 此角色包含由Asta Control管理集群所需的最低权限：
 
 .. 创建 `ClusterRole` 文件、例如、 `astra-admin-account.yaml`。
-+
-根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
-
 +
 [source, subs="specialcharacters,quotes"]
 ----
@@ -311,6 +305,7 @@ rules:
   - securitycontextconstraints
   verbs:
   - use
+  - update
 ----
 .. 应用集群角色：
 +
@@ -329,9 +324,6 @@ kubectl apply -f astra-admin-account.yaml
 NOTE: 以下内容 `ClusterRole` 步骤是一个常规Kubbernetes示例。有关特定于您的环境的说明、请参见Kubennetes分发版的文档。
 
 .. 创建 `ClusterRole` 文件、例如、 `astra-admin-account.yaml`。
-+
-根据需要调整名称和命名空间。如果在此处进行了更改，则应在以下步骤中应用相同的更改。
-
 +
 [source, subs="specialcharacters,quotes"]
 ----
@@ -369,9 +361,6 @@ kubectl apply -f astra-admin-account.yaml
 . 为集群角色创建与服务帐户的集群角色绑定：
 +
 .. 创建一个 `ClusterRoleBindingm` 文件，该文件名为 `astracontrol — clusterrolebind.YAML` 。
-+
-根据需要调整创建服务帐户时修改的任何名称和命名空间。
-
 +
 [source, subs="specialcharacters,quotes"]
 ----
@@ -433,7 +422,7 @@ kubectl apply -f secret-astracontrol-service-account.yaml
 +
 [source, console]
 ----
-kubectl edit sa astracontrol-service-account -n <netapp-acc or custom namespace>
+kubectl edit sa astracontrol-service-account
 ----
 +
 [source, subs="verbatim,quotes"]
@@ -479,14 +468,13 @@ kubectl get serviceaccount astracontrol-service-account --context <context> --na
 +
 .. 创建 `create-kubeconfig.sh` 文件
 .. 替换 `TOKEN_INDEX` 在以下脚本的开头、使用正确的值。
-.. 替换 `NAMESPACE` 使用Asta Control Center命名空间。
 +
 [source, subs="specialcharacters,quotes"]
 ----
 *create-kubeconfig.sh*
 ----
 +
-[source, console]
+[source, subs="verbatim,quotes"]
 ----
 # Update these to match your environment.
 # Replace TOKEN_INDEX with the correct value
@@ -504,7 +492,7 @@ CONTEXT=$(kubectl config current-context)
 SECRET_NAME=$(kubectl get serviceaccount ${SERVICE_ACCOUNT_NAME} \
   --context ${CONTEXT} \
   --namespace ${NAMESPACE} \
-  -o jsonpath='{.secrets[TOKEN_INDEX].name}')
+  *-o jsonpath='{.secrets[TOKEN_INDEX].name}')
 TOKEN_DATA=$(kubectl get secret ${SECRET_NAME} \
   --context ${CONTEXT} \
   --namespace ${NAMESPACE} \
