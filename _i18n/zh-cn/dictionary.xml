@@ -2440,7 +2440,6 @@
   <block id="6d71102c1ab33d36986e4d5b5545a278" category="list-text">您使用多个环境、并且不能使用在安装期间配置的默认Asta Control kubeconfig,否则在您的环境中使用单一环境的有限角色将不起作用</block>
   <block id="5a20342984ee9d605acb505095dbcd0a" category="list-text">创建以下具有足够权限的集群角色之一、以使集群由Astra Control管理：</block>
   <block id="d2c5b496305d8a36011fc2b1e55dcde3" category="list-text">创建<block ref="d7d354d0f9d0780e168c895c92a32c24" prefix=" " category="inline-code"></block> 文件、例如、<block ref="b7bb4a27d91c967fbba0bb19f36a3533" prefix=" " category="inline-code"></block>。</block>
-  <block id="27d0c41af3a1135b5aa66dad8883e300" category="list-text">(仅适用于OpenShift集群)在末尾附加以下内容<block ref="b7bb4a27d91c967fbba0bb19f36a3533" prefix=" " category="inline-code"></block> 文件或之后<block ref="7da59f03b6be2daf1bf5fd19ecc78050" prefix=" " category="inline-code"></block> 部分。</block>
   <block id="5e2febea168e23172b29251a6258dec8" category="admonition">以下内容<block ref="d7d354d0f9d0780e168c895c92a32c24" prefix=" " category="inline-code"></block> 步骤是一个常规Kubbernetes示例。有关特定于您的环境的说明、请参见Kubennetes分发版的文档。</block>
   <block id="c1865e8db7245bcc1648e67fb250eba4" category="list-text">创建并应用令牌密钥：</block>
   <block id="11afc91177361b2eafbbec4287518195" category="list-text">创建名为的令牌机密文件<block ref="7cdd7450df0359169a360b93d3cb369f" prefix=" " category="inline-code"></block>。</block>
@@ -3101,8 +3100,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="29e638c426512b56521aa694976562ea" category="list-text">(可选)本地注册表路径。如果您使用的是本地注册表、则为<block ref="97e5914991475a979ee93ba0d709c399" category="inline-link-rx"></block> 可以位于一个注册表或不同的注册表中、但所有CSI映像都必须位于同一注册表中。</block>
   <block id="4795c928314a82e5be360b646a3a3aac" category="list-text">三端名称空间</block>
   <block id="804c8c9903e49e8cab0717f41b883f9a" category="list-text">没有注册表的映像</block>
-  <block id="c4ffea098f78924a9b9331b8f5e9c8b4" category="list-text">一个注册表中的映像</block>
-  <block id="4847c552b2ff9251806e41c8fa907e19" category="list-text">不同注册表中的映像</block>
   <block id="d75fdc8e85ddcd7e9dc9f367168dec11" category="paragraph">您可以使用<block ref="cd4140d3de30b520500459331d08d2bf" prefix=" " category="inline-code"></block> 查看安装详细信息、例如名称、命名空间、图表、状态、应用程序版本、和修订版号。</block>
   <block id="d09a3f23170df63b9065e78b7eb80224" category="paragraph">如果您在使用Helm部署TRIdent时遇到任何问题、请运行此命令以完全卸载Asta TRIdent：</block>
   <block id="3897d04922674a762953f58e38463cb0" category="inline-link">完全删除Asta Trdent CRD</block>
@@ -3282,7 +3279,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="45ff81bf0afcefe9451aab9b611c1934" category="open-title">使用CR从备份还原</block>
   <block id="0291eb75f7d9f722c1c83050970a021f" category="list-text">创建自定义资源(CR)文件并将其命名为<block ref="5cdae9ef2c57d39bfd2be879e506f5ce" prefix=" " category="inline-code"></block>。更新方括号&lt;&gt;中的值以匹配您的Astra Control环境和集群配置：</block>
   <block id="607cb816902b97513f9f07eaf1cf9526" category="list-text">&lt;CR_NAME&gt;：此CR操作的名称；为您的环境选择一个合理的名称。</block>
-  <block id="5e66a070c1e61232e4b5e2974f682cab" category="list-text">&lt;ASTRA_CONNECTOR_NAMESPACE&gt;：安装Asta连接器的命名空间。</block>
   <block id="32c38c61b072ed7be99e03554fcc5dc7" category="list-text">&lt;APPVAULT_NAME&gt;：存储备份内容的AppVault的名称。</block>
   <block id="b6f7c06130923ff859915637bdd832de" category="list-text">&lt;BACKUP_PATH&gt;：AppVault中存储备份内容的路径。例如：</block>
   <block id="98766ce59cde6328ee287141ac6463fc" category="list-text">&lt;SOURCE_NAMESPACE&gt;：还原操作的源命名空间。</block>
@@ -3290,7 +3286,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="fb72d03a8b8ac14ae1e7d9aa1f047e05" category="list-text">在您填充之后<block ref="5cdae9ef2c57d39bfd2be879e506f5ce" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
   <block id="4f6d84376015daa09c05aaa62c5169b3" category="open-title">使用CR从备份还原到原始命名空间</block>
   <block id="d21e7e879c0776ee09e7586ce29d2898" category="list-text">创建自定义资源(CR)文件并将其命名为<block ref="eb9b00b26a03b44f5f2897edcd77fbc2" prefix=" " category="inline-code"></block>。更新方括号&lt;&gt;中的值以匹配您的Astra Control环境和集群配置：</block>
-  <block id="975fe7cbef6128bcc4889aaf1ca76c41" category="list-text">&lt;ASTRA_CONNECTOR_NAMESPACE&gt;：安装Asta连接器的命名空间。此命名空间应为创建备份的命名空间。</block>
   <block id="5348fdd12f57331552ca99bd9874fb9e" category="list-text">在您填充之后<block ref="eb9b00b26a03b44f5f2897edcd77fbc2" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
   <block id="59996d3ba6c2c9c9164c73f5f9dbaaef" category="section-title">[技术预览]使用自定义资源从快照恢复(CR)</block>
   <block id="7708c3b204f347f9a3f6641e7484ab47" category="paragraph">您可以使用自定义资源(CR)文件从快照将数据还原到其他命名空间或原始源命名空间。</block>
@@ -3299,7 +3294,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="9698c53c78d261962a4a1c26b913eee1" category="list-text">在您填充之后<block ref="47c8c017693706f1deca4469c915fc62" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
   <block id="b78248634602cda93bac3dff3aaa9393" category="open-title">使用CR从快照还原到原始命名空间</block>
   <block id="c32ab7b52b53095f9f5158cc1e448576" category="list-text">创建自定义资源(CR)文件并将其命名为<block ref="7789d21ba00a1b12ae9d85f219dabda2" prefix=" " category="inline-code"></block>。更新方括号&lt;&gt;中的值以匹配您的Astra Control环境和集群配置：</block>
-  <block id="ff573d7c36acef9cfb20b75cc375adb3" category="list-text">&lt;ASTRA_CONNECTOR_NAMESPACE&gt;：安装Asta连接器的命名空间。此命名空间应为创建快照的命名空间。</block>
   <block id="375b1db65557163f2d0e23f660a3d7f9" category="list-text">在您填充之后<block ref="7789d21ba00a1b12ae9d85f219dabda2" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
   <block id="d6335a5aece4d08f612f786e74fdb995" category="summary">使用Kubbernetes自定义资源(CR)管理Astra Control应用程序。</block>
   <block id="7247d7030b66ad4ed4eaa523ed6676b0" category="doc">[技术预览]使用CRS管理Astra Control应用程序</block>
@@ -3613,4 +3607,6 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="f768e6dcac13eb19534cf966f45963b6" category="cell"><block ref="f88ff30441dac38b9948d4f74cec7a17" prefix="" category="inline-code"></block></block>
   <block id="a4d0aec7cffdaed0bf8e97e7c30b486b" category="list-text">输入Asta Control Center版本、例如24.02.0-69。</block>
   <block id="da65a49714e715e3103c6d4e4765ad79" category="section-title">2024年3月15日(24.02.0)</block>
+  <block id="3e10c4dd91af2dc1835b50343bc5fbd0" category="list-text">一个或多个注册表中的图像</block>
+  <block id="03af53c262f33cd7a040764e24c068eb" category="list-text">(仅适用于OpenShift集群)在末尾附加以下内容<block ref="b7bb4a27d91c967fbba0bb19f36a3533" prefix=" " category="inline-code"></block> 文件：</block>
 </blocks>
