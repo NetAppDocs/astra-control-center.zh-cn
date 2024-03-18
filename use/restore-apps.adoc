@@ -128,7 +128,7 @@ NOTE: 要了解有关配置包含和排除规则的信息、请参见 <<在应�
 +
 [listing]
 ----
-minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
 ----
 ** <SOURCE_NAMESPACE>：还原操作的源命名空间。
 ** <DESTINATION_NAMESPACE>：还原操作的目标命名空间。
@@ -199,7 +199,7 @@ kubectl apply -f astra-control-backup-restore-cr.yaml
 +
 [listing]
 ----
-minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
 ----
 +
 [source, yaml]
@@ -276,7 +276,7 @@ kubectl apply -f astra-control-backup-ipr-cr.yaml
 +
 [listing]
 ----
-minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
 ----
 ** <SOURCE_NAMESPACE>：还原操作的源命名空间。
 ** <DESTINATION_NAMESPACE>：还原操作的目标命名空间。
@@ -347,7 +347,7 @@ kubectl apply -f astra-control-snapshot-restore-cr.yaml
 +
 [listing]
 ----
-minio_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
 ----
 +
 [source, yaml]
