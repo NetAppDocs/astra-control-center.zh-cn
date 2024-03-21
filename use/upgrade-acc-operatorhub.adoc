@@ -1,0 +1,199 @@
+---
+sidebar: sidebar 
+permalink: use/upgrade-acc-operatorhub.html 
+keywords: upgrade astra, upgrade operator, operatorhub, openshift, upgrade astra control center, service mesh 
+summary: 如果使用Red Hat OpenShift、则可以使用OperatorHub升级Astra Control Center。 
+---
+= 使用OpenShift OperatorHub升级Astra Control Center
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+如果您使用Red Hat认证的操作员安装了Astra Control Center、则可以使用OperatorHub中更新的操作员升级Astra Control Center。使用此操作步骤从升级Astra控制中心 https://catalog.redhat.com/software/operators/explore["Red Hat 生态系统目录"^] 或使用 Red Hat OpenShift 容器平台。
+
+.开始之前
+* *满足环境前提条件*：在升级之前、请确保您的环境仍满足 link:requirements.html["Asta Control Center部署的最低要求"]。
+* *确保已启用 link:../get-started/requirements.html#astra-control-provisioner["Asta Control配置程序"] A作用 于运行Astra三端存储*
++
+.. 确定您正在运行的Astra三项目标版本：
++
+[source, console]
+----
+kubectl get tridentversion -n trident
+----
++
+
+NOTE: 如果您运行的是Asta三端凹凸版23.01或更早版本、请使用这些版本 https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["说明"^] 在升级到Asta Control配置程序之前、升级到Asta三端到最新版本。如果您的Astra三端存储在版本24.02的四个版本窗口中、则可以直接升级到Astra Control置备程序24.02。例如、您可以直接从Asta三端23.04升级到Asta Control配置程序24.02。
+
+.. 确认Asta Control配置程序已配置 link:../get-started/faq.html#running-acp-check["enabled"]。Asta Control配置程序不能用于23.10之前的Asta Control Center版本。升级Astra Control配置程序、使其与要升级的Astra Control Center版本相同、以访问最新功能。
+
+
+* *确保集群操作员和API服务运行正常*：
++
+** 在OpenShift集群中、确保所有集群操作员均处于运行状况良好的状态：
++
+[source, console]
+----
+oc get clusteroperators
+----
+** 在OpenShift集群中、确保所有API服务均处于运行状况良好的状态：
++
+[source, console]
+----
+oc get apiservices
+----
+
+
+* * OpenShift权限*：您拥有执行所述升级步骤所需的所有权限和对Red Hat OpenShift容器平台的访问权限。
+* *(仅限ONTAP SAN驱动程序)启用多路径*：如果使用的是ONTAP SAN驱动程序、请确保在所有Kubernetes集群上启用了多路径。
+
+
+您还应考虑以下事项：
+
+* *获取NetApp Astra控件映像注册表的访问权限*：
++
+您可以选择从NetApp映像注册表中获取Astra控件的安装映像和增强功能、例如Astra控件配置程序。
+
++
+.. 记录您登录注册表所需的Astra Control帐户ID。
++
+您可以在Astra Control Service Web UI中查看您的帐户ID。选择页面右上角的图图标，选择*API access*并记下您的帐户ID。
+
+.. 在同一页面中，选择*Generate API t令牌*并将API令牌字符串复制到剪贴板，然后将其保存在编辑器中。
+.. 登录到Asta Control注册表：
++
+[source, console]
+----
+docker login cr.astra.netapp.io -u <account-id> -p <api-token>
+----
+
+
+
+
+.步骤
+* <<访问操作员安装页面>>
+* <<卸载现有操作员>>
+* <<安装最新的操作员>>
+* <<升级 Astra 控制中心>>
+
+
+
+
+== 访问操作员安装页面
+
+. 完成OpenShift容器平台或生态系统目录对应的操作步骤：
++
+[role="tabbed-block"]
+====
+.Red Hat OpenShift Web控制台
+--
+.. 登录到 OpenShift 容器平台 UI 。
+.. 从侧面菜单中，选择 * 运算符 > OperatorHub * 。
++
+
+NOTE: 使用此运算符只能升级到Astra Control Center的当前版本。
+
+.. 搜索 `netapp-acc` 并选择NetApp Asta控制中心操作员。
++
+image:../use/operatorhub-upgrade-uninstall.png["此图显示了操作员页面中的卸载选项"]
+
+
+
+--
+.Red Hat 生态系统目录
+--
+.. 选择 NetApp Astra 控制中心 https://catalog.redhat.com/software/operators/detail/611fd22aaf489b8bb1d0f274["运算符"^]。
+.. 选择*部署和使用*。
++
+image:red_hat_catalog.png["此图显示了可从RedHat生态系统目录获取的Astra Control Center概述页面"]
+
+
+
+--
+====
+
+
+
+
+== 卸载现有操作员
+
+. 从*NetApp-ACC-OPERATOR *页面中，选择*Uninstall*以删除现有操作员。
++
+image:../use/operatorhub-upgrade-uninstall.png["此图显示了操作员页面中的卸载选项"]
+
+. 确认操作。
++
+
+NOTE: 此操作将删除NetApp-ACC-operator、但会保留原始关联的命名空间和资源、例如机密信息。
+
+
+
+
+
+== 安装最新的操作员
+
+. 导航到 `netapp-acc` 再次显示操作员页面。
+. 完成*安装操作员*页并安装最新的操作员：
++
+image:../use/operatorhub-upgrade-install-page.png["此图显示了操作员页面中的卸载选项"]
+
++
+
+NOTE: 操作员将在所有集群命名空间中可用。
+
++
+.. 选择操作员的 `netapp-acc-operator` 已删除操作员先前安装的命名空间(或自定义命名空间)。
+.. 选择手动或自动批准策略。
++
+
+NOTE: 建议手动批准。每个集群只能运行一个操作员实例。
+
+.. 选择 * 安装 * 。
++
+
+NOTE: 如果您选择了手动批准策略、系统将提示您批准此操作员的手动安装计划。
+
+
+
+. 从控制台中，转到 OperatorHub 菜单并确认操作员已成功安装。
+
+
+
+
+== 升级 Astra 控制中心
+
+. 从Astra Control Center operator选项卡中，选择保留先前安装的Astra Control Center，然后选择*编辑AstraControlCenter*。
+image:../use/operatorhub-upgrade-yaml-edit.png["此图显示了原始Astra控制中心的编辑选项"]
+. 更新 `AstraControlCenter` YAML：
++
+.. 输入最新的Astra Control Center版本；例如24.02.0-69。
+.. 在中 `imageRegistry.name`，根据需要更新映像注册表路径：
++
+*** 如果使用的是Asta Control注册表选项、请将路径更改为 `cr.astra.netapp.io`。
+*** 如果您配置了本地注册表、请更改或保留上一步中推送图像的本地图像注册表路径。
++
+
+NOTE: 请止步 `http://` 或 `https://` 在地址字段中。
+
+
+
+.. 更新 `imageRegistry.secret` 根据需要。
++
+
+NOTE: 操作员卸载过程不会删除现有机密。只有在使用与现有机密不同的名称创建新机密时、才需要更新此字段。
+
+.. 将以下内容添加到 `crds` 配置：
++
+[source, console]
+----
+crds:
+  shouldUpgrade: true
+----
+
+
+. 保存所做的更改。
+. 此UI将确认升级已成功。
+

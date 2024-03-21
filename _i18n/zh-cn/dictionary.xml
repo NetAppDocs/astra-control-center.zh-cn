@@ -675,7 +675,6 @@
   <block id="d23202f3a841766e7b5d6b37777fc6c3" category="list-text">从侧面菜单中，选择 * 运算符 &gt; OperatorHub * 。</block>
   <block id="6d20ba1f906a03b7657514dee48eb121" category="list-text">选择 * 安装 * 。</block>
   <block id="4b583376b2767b923c3e1da60d10de59" category="inline-link">运算符</block>
-  <block id="13191ff715c85f59fd2da330d31c4e9f" category="list-text">选择 * 部署并使用 * 。</block>
   <block id="a961f7d3b56fe3f9b072af70813d6f82" category="section-title">安装操作员</block>
   <block id="80c07a74abae733a8881dd926a32ef70" category="list-text">完成 * 安装操作员 * 页面并安装操作员：</block>
   <block id="1d0cc3a3781d64cc680980dd96e982ab" category="admonition">操作员将在所有集群命名空间中可用。</block>
@@ -1750,7 +1749,6 @@
   <block id="e4f3253ab12e0c60faa03ce6ef1c9784" category="section-title">Azure所需的功能</block>
   <block id="060534066f9a22cabf451772f0daf58b" category="list-text">创建操作员命名空间：</block>
   <block id="8f70adb2eebdea2e00d5d57216cd59b5" category="inline-link-macro">完成设置</block>
-  <block id="eb5ffd4ef5a8aa98e9c36b2c79cea4ed" category="list-text">搜索并选择NetApp Astra Control Center运算符。</block>
   <block id="91ec9a89e3a33fa6bc118cf53ef60c2e" category="list-text">选择 NetApp Astra 控制中心<block ref="e9d5520af4877fc40e9611f3ebf55be3" category="inline-link-rx"></block>。</block>
   <block id="20133d30eea258b6c1550d612eb75dfc" category="list-text">为Astra控制中心添加标签。</block>
   <block id="a90dd656b7a6b8d695097aab7d876d0e" category="list-text">启用或禁用自动支持。建议保留自动支持功能。</block>
@@ -2679,7 +2677,6 @@
   <block id="0f31c8d4b3ae834c0062c8056c4cb5b7" category="inline-link">启用严格的MTLS</block>
   <block id="4c6c19221d15e9ceaf813bb76e0266f7" category="list-text">（建议）<block ref="bf40c5ba89ffee197f368678037a1b36" category="inline-link-rx"></block> 对于Isio service Mesh：</block>
   <block id="842bb2b25b0ccc10b1fb3de7084fc991" category="list-text">*确保集群操作员和API服务运行正常*：</block>
-  <block id="c2f6a0ef27a00211c21a249f0a3b79d5" category="list-text">*获取OpenShift权限*：要执行所述的安装步骤、您需要拥有对Red Hat OpenShift容器平台的所有必要权限和访问权限。</block>
   <block id="1e49b9057d379a0d559e616836652580" category="list-text">添加<block ref="c0261c4509dcb52c25794852cf3367a6" prefix=" " category="inline-code"></block> 在部署Asta Control Center之前、请标记Asta命名空间。</block>
   <block id="4cc3351439de416fee936093cb5a065a" category="list-text">对于Red Hat OpenShift集群、您需要进行定义<block ref="d4ee387f8cc8e4354b61e452ecbf6a15" prefix=" " category="inline-code"></block> 在所有关联的Astra Control Center名空间上 <block ref="cadbba5231afda9b003503d57805b87d" prefix="(" category="inline-code"></block>，<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block>，<block ref="aadb900c6eaeed8ade58660fe972acec" prefix=" " category="inline-code"></block> 或任何已替换的自定义卷)。</block>
   <block id="22851966368f7a8e3c0bf121d7203ca1" category="list-text">[[generic-ing]]选择入口类型：</block>
@@ -3609,4 +3606,43 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="da65a49714e715e3103c6d4e4765ad79" category="section-title">2024年3月15日(24.02.0)</block>
   <block id="3e10c4dd91af2dc1835b50343bc5fbd0" category="list-text">一个或多个注册表中的图像</block>
   <block id="03af53c262f33cd7a040764e24c068eb" category="list-text">(仅适用于OpenShift集群)在末尾附加以下内容<block ref="b7bb4a27d91c967fbba0bb19f36a3533" prefix=" " category="inline-code"></block> 文件：</block>
+  <block id="652aa122a3c8a61f53fecfe7a2e38472" category="summary">如果使用Red Hat OpenShift、则可以使用OperatorHub升级Astra Control Center。</block>
+  <block id="d1810a7b7ece844661c0ebd3f6d6b734" category="doc">使用OpenShift OperatorHub升级Astra Control Center</block>
+  <block id="d65f6afdd601abb375246f62e4d974af" category="paragraph">如果您使用Red Hat认证的操作员安装了Astra Control Center、则可以使用OperatorHub中更新的操作员升级Astra Control Center。使用此操作步骤从升级Astra控制中心<block ref="a0bebb9db4c42678b95afc86229a893d" category="inline-link-rx"></block> 或使用 Red Hat OpenShift 容器平台。</block>
+  <block id="dba0214a5ff4087709345c59f18d5ecc" category="list-text">*满足环境前提条件*：在升级之前、请确保您的环境仍满足 <block ref="a5e730f4eb1e05ab5d051c5fbaad1711" category="inline-link-macro-rx"></block>。</block>
+  <block id="ee69e430ad6ce53b164d990d32171363" category="list-text">*确保已启用 <block ref="253c06b63fbdc34e8258634f6035573c" category="inline-link-macro-rx"></block> A作用 于运行Astra三端存储*</block>
+  <block id="9e7dceeac2c1b47a8a65fc5301cfbc97" category="list-text">* OpenShift权限*：您拥有执行所述升级步骤所需的所有权限和对Red Hat OpenShift容器平台的访问权限。</block>
+  <block id="14d39dcccbea7ad3c78e42b59aea8467" category="list-text"><block ref="ddb3eae04adcef55bc274001e6992ab5" category="inline-xref-macro-rx"></block></block>
+  <block id="7eb5c0427d3e2c95f7a7d55cb263dcad" category="list-text"><block ref="132acb99c1ed8179266ddab65ea75c5b" category="inline-xref-macro-rx"></block></block>
+  <block id="bcbf9322019433e2070bc9f950cdfaf9" category="list-text"><block ref="0ef2d18cbf3f0253133fb82832963633" category="inline-xref-macro-rx"></block></block>
+  <block id="1b36ea2dbec733bbc7b1bcf18df08b61" category="section-title">访问操作员安装页面</block>
+  <block id="c3c26a3600766eef19453ba36cab80bd" category="list-text">完成OpenShift容器平台或生态系统目录对应的操作步骤：</block>
+  <block id="274eca9a1fdbeaf2cd7a241794769214" category="list-text">搜索<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 并选择NetApp Asta控制中心操作员。</block>
+  <block id="b2a595165e0c0ce7d437b83d5749b051" category="inline-image-macro">此图显示了操作员页面中的卸载选项</block>
+  <block id="49ae0d594dc9a41982d54abc03e36805" category="paragraph"><block ref="49ae0d594dc9a41982d54abc03e36805" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="76fe74a55acaaea036adbcecca799a9c" category="list-text">选择*部署和使用*。</block>
+  <block id="0c15ff02cb7be3c55794dcb6ef61a65e" category="section-title">卸载现有操作员</block>
+  <block id="99fdc785f49075cddc07fa753a02366c" category="list-text">从*NetApp-ACC-OPERATOR *页面中，选择*Uninstall*以删除现有操作员。</block>
+  <block id="0d1008fb06b7595c8715c6fbdbf7f070" category="list-text">确认操作。</block>
+  <block id="5ba5f5a565d608a4c86672b4c55d2884" category="admonition">此操作将删除NetApp-ACC-operator、但会保留原始关联的命名空间和资源、例如机密信息。</block>
+  <block id="e6143c3bb511918ab7bc7ab6a4c6313f" category="section-title">安装最新的操作员</block>
+  <block id="49a6422574d0d2c657fdd914194af4bc" category="list-text">导航到<block ref="f156b3af9d1139da01a7b4bb0a5ad8f0" prefix=" " category="inline-code"></block> 再次显示操作员页面。</block>
+  <block id="41091ca348ff3c35ab2e0a3ca76978cb" category="list-text">完成*安装操作员*页并安装最新的操作员：</block>
+  <block id="550520c6515847a3b49e4f21211149bf" category="paragraph"><block ref="550520c6515847a3b49e4f21211149bf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c15c094418b557ddfd8a322d12f0deda" category="list-text">选择操作员的<block ref="cadbba5231afda9b003503d57805b87d" prefix=" " category="inline-code"></block> 已删除操作员先前安装的命名空间(或自定义命名空间)。</block>
+  <block id="48512efbd6cbb72ba05990b4a58edec2" category="inline-image-macro">此图显示了原始Astra控制中心的编辑选项</block>
+  <block id="2c6460dd8a4dbbe1efa73f9ebeefd4ec" category="list-text">从Astra Control Center operator选项卡中，选择保留先前安装的Astra Control Center，然后选择*编辑AstraControlCenter*。
+<block ref="9897d0c5e439746e21018ef6131a3268" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fe17b9a46bce70651034916e5ecbcf12" category="list-text">更新<block ref="1980c0ae033e18fad473fcada20addbd" prefix=" " category="inline-code"></block> YAML：</block>
+  <block id="aa3489d5761937b25dc8cd9ecbf228a7" category="list-text">输入最新的Astra Control Center版本；例如24.02.0-69。</block>
+  <block id="7246877ec7577a15a569ab8756a799b5" category="list-text">在中<block ref="f141c732c6aae0fddd2afdfac3f75f3f" prefix=" " category="inline-code"></block>，根据需要更新映像注册表路径：</block>
+  <block id="c89beb8febcc73c18bcf859e8544a034" category="list-text">如果使用的是Asta Control注册表选项、请将路径更改为<block ref="e943374c8f90757f171b7cd56af795fd" prefix=" " category="inline-code"></block>。</block>
+  <block id="c260a95d05bc62ad161afe8692c68c61" category="list-text">如果您配置了本地注册表、请更改或保留上一步中推送图像的本地图像注册表路径。</block>
+  <block id="8c7b7976b37ce7ebd902a92d017eecc8" category="admonition">请止步<block ref="dbd7790bcd23fde7607101ef6a633779" prefix=" " category="inline-code"></block> 或<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block> 在地址字段中。</block>
+  <block id="790b293d8648860acef001057e8a9691" category="list-text">更新<block ref="c6fe3b36a104e3ea913f9a6b82389050" prefix=" " category="inline-code"></block> 根据需要。</block>
+  <block id="e74609fc41a466140744e1cd3b6029c9" category="admonition">操作员卸载过程不会删除现有机密。只有在使用与现有机密不同的名称创建新机密时、才需要更新此字段。</block>
+  <block id="3523d7bdfad5124dba6032cbc37814c8" category="list-text">将以下内容添加到<block ref="c16ae51f09d668b952e5ab23072ad64e" prefix=" " category="inline-code"></block> 配置：</block>
+  <block id="345e93a96b6e66cb9274dbad975c0db2" category="list-text">保存所做的更改。</block>
+  <block id="622f51a75f238bac126a4e3b58d91991" category="list-text">此UI将确认升级已成功。</block>
+  <block id="ecba1fa6966e7dffc085b7fc45ca2133" category="list-text">*获取OpenShift权限*：要执行所述的安装步骤、您需要拥有对Red Hat OpenShift容器平台的所有必要权限和访问权限。</block>
 </blocks>

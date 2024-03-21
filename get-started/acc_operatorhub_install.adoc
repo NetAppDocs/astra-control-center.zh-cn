@@ -57,6 +57,24 @@ oc create namespace netapp-acc-operator
 
 您还应考虑以下事项：
 
+* *获取NetApp Astra控件映像注册表的访问权限*：
++
+您可以选择从NetApp映像注册表中获取Astra控件的安装映像和增强功能、例如Astra控件配置程序。
+
++
+.. 记录您登录注册表所需的Astra Control帐户ID。
++
+您可以在Astra Control Service Web UI中查看您的帐户ID。选择页面右上角的图图标，选择*API access*并记下您的帐户ID。
+
+.. 在同一页面中，选择*Generate API t令牌*并将API令牌字符串复制到剪贴板，然后将其保存在编辑器中。
+.. 登录到Asta Control注册表：
++
+[source, console]
+----
+docker login cr.astra.netapp.io -u <account-id> -p <api-token>
+----
+
+
 * *安装用于安全通信的服务网格*：强烈建议使用保护Astra Control主机集群通信通道的安全 link:requirements.html#service-mesh-requirements["支持的服务网格"]。
 +
 
@@ -313,7 +331,7 @@ cd manifests
 
 NOTE: 使用此运算符只能升级到Astra Control Center的当前版本。
 
-.. 搜索并选择NetApp Astra Control Center运算符。
+.. 搜索 `netapp-acc` 并选择NetApp Asta控制中心操作员。
 +
 image:openshift_operatorhub.png["此图显示了OpenShift容器平台UI中的Astra Control Center安装页面"]
 
@@ -323,7 +341,7 @@ image:openshift_operatorhub.png["此图显示了OpenShift容器平台UI中的Ast
 .Red Hat 生态系统目录
 --
 .. 选择 NetApp Astra 控制中心 https://catalog.redhat.com/software/operators/detail/611fd22aaf489b8bb1d0f274["运算符"^]。
-.. 选择 * 部署并使用 * 。
+.. 选择*部署和使用*。
 +
 image:red_hat_catalog.png["此图显示了可从RedHat生态系统目录获取的Astra Control Center概述页面"]
 
