@@ -3078,7 +3078,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="8bdcf20b5d7c7cba89c4e9cdaba07ad2" category="list-text">*Astra Control配置程序*：Astra Control配置程序是由NetApp维护的完全受支持的存储配置程序和流程编排程序、包含Astra三项CSI功能以及扩展的存储管理功能、可用于为Docker和Kubernetes管理的容器化应用程序创建存储卷。使用Astra控制中心部署时、Astra控制配置程序包括一个已配置的ONTAP存储后端。</block>
   <block id="f8eb25c26ac0064b456c26bd4bb1642b" category="list-text">将Astra Trdent更新到24.02.0：</block>
   <block id="c88d85553b81a72e9b28005772f27281" category="list-text">为Astra三端映像设置自定义注册表位置或从Astra Control注册表中提取该映像 <block ref="c063da0c4010a4b533407346a02dd83c" prefix="(" category="inline-code"></block> 或<block ref="cad26ce67501baab70dd72ffd03b01e6" prefix=" " category="inline-code"></block>）。</block>
-  <block id="1a94316615bc7bfa28020fb176113eb9" category="list-text">设置Asta Control配置程序映像的自定义注册表位置或将其从Asta Control注册表中提取 <block ref="6fd47d0a38cf5afec555b659aaed6104" prefix="(" category="inline-code"></block> 或<block ref="3a419c3a7ea2390874c7e355a5180c2e" prefix=" " category="inline-code"></block>）。</block>
   <block id="faba39ec34eed502aea6d805d792a9ea" category="list-text">验证<block ref="49c9f6c98d04c8c76aee7448fd9136ed" prefix=" " category="inline-code"></block> 容器正在运行<block ref="507c6bbca2ad57c69e89a97ee8714536" prefix=" " category="inline-code"></block> 为<block ref="50ce33a86e6915635518e9752cf0a12f" prefix=" " category="inline-code"></block> 状态为<block ref="98dd43dfae05b11befe1f140e0ec787a" prefix=" " category="inline-code"></block>：</block>
   <block id="152090ff5e9a05ea7e1cf0c248449638" category="open-title">掌舵</block>
   <block id="fe98497efedbe156ecc4b953aea77e07" category="inline-link">卸载</block>
@@ -3588,7 +3587,6 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="b958ffb6ec0df501d8af8958e6e6886e" category="section-title">(步骤1)获取Asta Control配置程序映像</block>
   <block id="72e3bbaf3c42bb9392b29dab7f3c1fcd" category="paragraph">Asta控制中心用户可以使用Asta控制注册表或NetApp 支持站点 方法获取Asta控制配置程序映像。要在不使用Astra Control的情况下使用Astra Control配置程序的Astra Trent用户应使用注册表方法。</block>
   <block id="bb26b4631543d5a0abc8825972e08f98" category="list-text">(仅限自定义注册表)按照以下步骤将图像移动到自定义注册表。如果您不使用注册表、请按照中的三端修复操作符步骤进行操作 <block ref="2d2b9c949531b9f99c6a28a29b1f0f0f" category="inline-link-macro-rx"></block>。</block>
-  <block id="b15422fe6a04c1756d962ad1805ba054" category="admonition">您可以使用"删除副本"来替代运行以下Docker命令：<block ref="eaad9c7eff5248ae539d1d15dc40f8dd" prefix=" " category="inline-code"></block></block>
   <block id="d1dfc89a8ef8bd6c9cec36534bb87719" category="inline-link">运算符(手动或使用Helm)或trdentcd</block>
   <block id="283c6d5556e7b2c19a19454a5d839d84" category="paragraph">确定原始安装方法是否使用<block ref="239d7749678a5515d5ba8991e8dc37eb" category="inline-link-rx"></block> 并根据原始方法完成相应的步骤。</block>
   <block id="02a9d2702f20af4981fc27f25359bc43" category="paragraph"><block ref="02a9d2702f20af4981fc27f25359bc43" category="inline-image-macro-rx" type="image"></block></block>
@@ -3645,4 +3643,6 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="345e93a96b6e66cb9274dbad975c0db2" category="list-text">保存所做的更改。</block>
   <block id="622f51a75f238bac126a4e3b58d91991" category="list-text">此UI将确认升级已成功。</block>
   <block id="ecba1fa6966e7dffc085b7fc45ca2133" category="list-text">*获取OpenShift权限*：要执行所述的安装步骤、您需要拥有对Red Hat OpenShift容器平台的所有必要权限和访问权限。</block>
+  <block id="4fb568c8c39da9ff518771b8039f3dac" category="admonition">您可以使用"删除副本"来替代运行以下Docker命令：<block ref="db464ced3bc25798a8a58f345be6100d" prefix=" " category="inline-code"></block></block>
+  <block id="1e402f84b3c57afa8aaf19779147556d" category="list-text">设置Asta Control配置程序映像的自定义注册表位置或将其从Asta Control注册表中提取 <block ref="6fd47d0a38cf5afec555b659aaed6104" prefix="(" category="inline-code"></block> 或<block ref="e419be77a3ebdbec678982ec1d2d40b2" prefix=" " category="inline-code"></block>）。</block>
 </blocks>

@@ -58,7 +58,7 @@ kubectl edit torc trident -n trident
 +
 .. 为Astra三端映像设置自定义注册表位置或从Astra Control注册表中提取该映像 (`tridentImage: <my_custom_registry>/trident:24.02.0` 或 `tridentImage: netapp/trident:24.02.0`）。
 .. 启用Asta Control配置程序 (`enableACP: true`）。
-.. 设置Asta Control配置程序映像的自定义注册表位置或将其从Asta Control注册表中提取 (`acpImage: <my_custom_registry>/trident-acp:24.02.0` 或 `acpImage: cr.astra.netapp.io/trident-acp:24.02.0`）。
+.. 设置Asta Control配置程序映像的自定义注册表位置或将其从Asta Control注册表中提取 (`acpImage: <my_custom_registry>/trident-acp:24.02.0` 或 `acpImage: cr.astra.netapp.io/astra/trident-acp:24.02.0`）。
 .. 如果您已建立 <<pull-secrets,图像拉取密钥>> 在本操作步骤的前面部分、您可以在此处设置它们 (`imagePullSecrets: - <secret_name>`）。使用您在前面步骤中创建的相同名称机密名称。
 
 
@@ -226,7 +226,7 @@ netapp-trident/trident-operator 100.2402.0      24.02.0         A
 
 [listing]
 ----
-helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=cr.astra.netapp.io/trident-acp:24.02.0 --set enableACP=true --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident
+helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=cr.astra.netapp.io/astra/trident-acp:24.02.0 --set enableACP=true --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident
 ----
 * 一个或多个注册表中的图像
 
