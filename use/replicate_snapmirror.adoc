@@ -20,8 +20,8 @@ summary: Astra 可以从快照或备份还原应用程序配置和永久性存�
 
 * 内部站点A到内部站点A
 * 内部站点A到内部站点B
-* 使用Cloud Volumes ONTAP 从内部部署到云
-* 采用Cloud Volumes ONTAP 的云到内部部署
+* 借助Cloud Volumes ONTAP从内部环境迁移到云
+* 通过Cloud Volumes ONTAP迁移到内部环境
 * 采用Cloud Volumes ONTAP 的云到云(在同一云提供商的不同区域之间或不同云提供商之间)
 
 

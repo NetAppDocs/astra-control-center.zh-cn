@@ -61,7 +61,7 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 Astra Control配置程序23.10版提供了以下功能：
 
 +
-*** *通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性 https://docs.netapp.com/us-en/astra-control-center-2310/use-acp/configure-storage-backend-encryption.html["正在启用加密"^] 托管集群和存储后端之间的流量。A作用 力控制配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密
+*** *通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性 https://docs.netapp.com/us-en/astra-control-center-2310/use-acp/configure-storage-backend-encryption.html["正在启用加密"^] 托管集群和存储后端之间的流量。Astra Control配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密
 *** *使用快照恢复数据*：Astra Control配置程序可使用从快照快速原位还原卷 `TridentActionSnapshotRestore` (TSR) CR。
 *** *SnapMirror增强功能*：在Astra Control无法直接连接到ONTAP集群或访问ONTAP凭据的环境中使用应用程序复制功能。通过此功能、您可以使用复制功能、而无需在Astra Control中管理存储后端或其凭据。
 *** *使用为应用程序提供备份和还原功能 `ontap-nas-economy` 驱动程序支持的存储后端*：如上所述 <<nas-eco-backup-restore,以上>>。
