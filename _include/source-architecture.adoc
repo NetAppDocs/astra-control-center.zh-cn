@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-image:astra-architecture-diagram-v6.png["描述Astra Control架构及其组件的概念映像"]
+image:astra-architecture-diagram-v7.png["描述Astra Control架构及其组件的概念映像"]
 
 
 

@@ -3064,7 +3064,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="49684a471d9d2c3e43b0340cd823401d" category="list-text">*Astra控制服务映像注册表*：如果您不对Astra控制中心映像使用本地注册表，或者如果您更喜欢使用此方法从NetApp 支持站点 下载捆绑包，请使用此选项。</block>
   <block id="9ff8ac0cba71abefaef6a160e1bcd24c" category="list-text">*Astra*：如果将本地注册表与NetApp 支持站点 控制中心映像一起使用，请使用此选项。</block>
   <block id="9e20715af8d716f80efc8ab273947db0" category="list-text">如果您计划将Astra Control Center捆绑包推送到本地注册表、请为容器引擎完成相应的步骤顺序：</block>
-  <block id="8e6cec5cb70fd73f642f611c0ae2f5f4" category="paragraph"><block ref="8e6cec5cb70fd73f642f611c0ae2f5f4" category="inline-image-macro-rx" type="image"></block></block>
   <block id="8bdcf20b5d7c7cba89c4e9cdaba07ad2" category="list-text">*Astra Control配置程序*：Astra Control配置程序是由NetApp维护的完全受支持的存储配置程序和流程编排程序、包含Astra三项CSI功能以及扩展的存储管理功能、可用于为Docker和Kubernetes管理的容器化应用程序创建存储卷。使用Astra控制中心部署时、Astra控制配置程序包括一个已配置的ONTAP存储后端。</block>
   <block id="f8eb25c26ac0064b456c26bd4bb1642b" category="list-text">将Astra Trdent更新到24.02.0：</block>
   <block id="c88d85553b81a72e9b28005772f27281" category="list-text">为Astra三端映像设置自定义注册表位置或从Astra Control注册表中提取该映像 <block ref="c063da0c4010a4b533407346a02dd83c" prefix="(" category="inline-code"></block> 或<block ref="cad26ce67501baab70dd72ffd03b01e6" prefix=" " category="inline-code"></block>）。</block>
@@ -3645,4 +3644,5 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="ceb069762daa2570f1611c95b2775501" category="list-text">借助Cloud Volumes ONTAP从内部环境迁移到云</block>
   <block id="0db934fe5d747898582ef7b2fe037806" category="list-text">通过Cloud Volumes ONTAP迁移到内部环境</block>
   <block id="e83e31033bbd8a95537d872ec339409c" category="list-text">*通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性<block ref="0a6b595cfc16ab1c35e55d5e4c214ee8" category="inline-link-rx"></block> 托管集群和存储后端之间的流量。Astra Control配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密</block>
+  <block id="ac40c2ee060ee67bf0598e61daec4365" category="paragraph"><block ref="ac40c2ee060ee67bf0598e61daec4365" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>
