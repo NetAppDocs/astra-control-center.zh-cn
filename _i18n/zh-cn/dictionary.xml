@@ -3104,25 +3104,19 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="abb7c3ebf06b3571c54effe000eacb4f" category="paragraph">Astra Control Center提供有限的(7天的指标)监控和遥测功能、还可通过开放式指标端点导出到Kubarnetes本机监控工具(如Prometheus和Grafana)。</block>
   <block id="bbe71981163eb88f46656ae206520076" category="paragraph">详细了解如何操作<block ref="31b8a7a4945fd5ae7cbcb56f7853f12a" category="inline-link-rx"></block>。</block>
   <block id="e3c8bf2347de157b4abad5f780210813" category="list-text"><block ref="e3c8bf2347de157b4abad5f780210813" category="inline-link-macro-rx"></block></block>
-  <block id="079a04c4738a8e0fe552cfb1c79bfcab" category="inline-link-macro">(技术预览)使用自定义资源管理存储分段</block>
-  <block id="9f64819f608bb6d24fce86291cd75b4e" category="list-text"><block ref="9f64819f608bb6d24fce86291cd75b4e" category="inline-link-macro-rx"></block></block>
   <block id="a5ca26c1ce60561cc151f1d680e539d2" category="paragraph">如果存在、您将无法继续。</block>
   <block id="c9d43c9d4ce1936591207cd7ff5311cb" category="section-title">[技术预览]使用自定义资源管理存储分段</block>
   <block id="e2af1d5e5fa116233e71ad721f3e307b" category="paragraph">您可以使用应用程序集群上的Astra Control自定义资源(CR)添加存储分段。如果要备份应用程序和永久性存储，或者要跨集群克隆应用程序，则必须添加对象存储分段提供程序。Astra Control 会将这些备份或克隆存储在您定义的对象存储分段中。如果使用的是自定义资源方法、则应用程序快照功能需要一个存储分段。</block>
   <block id="e397375a1991bd3b78d0436ce29592b7" category="paragraph">如果您要将应用程序配置和永久性存储克隆到同一集群、则无需在Astra Control中使用存储分段。</block>
   <block id="d8b0a07b7fa1af1e74af87346ff33870" category="paragraph">Asta Control的存储分段自定义资源称为AppVault。此CR包含在保护操作中使用存储分段所需的配置。</block>
-  <block id="6689ac5f8250bfb3251ebafd061d6e83" category="list-text">创建自定义资源(CR)文件并将其命名为(例如、<block ref="9ac2f7756ee6a07f372b889fd11538e1" prefix=" " category="inline-code"></block>）。</block>
   <block id="18924d9e76d2dc9a88bddb772904461d" category="list-text">配置以下属性：</block>
   <block id="1224dce1461236a797d84749d37c9491" category="list-text">* metadata.name*:_(必需)_ AppVault自定义资源的名称。</block>
   <block id="69b5be000688679a9ee2fef5a4c0c6e5" category="list-text">*spec.prefix*：_(可选)_一个路径、该路径前缀为存储在AppVault中的所有实体的名称。</block>
   <block id="fcbc6a61a9db33b3fae0293b3f248d8b" category="list-text">*。spec.providerConfig*:_(必需)_用于存储使用指定提供程序访问AppVault所需的配置。</block>
-  <block id="a18bb623149b1b0cdb92de70c655b829" category="list-text">*。spec.providerCredentials*:_(可选)_存储使用指定提供程序访问AppVault所需的任何凭据的引用。</block>
   <block id="343fc86e1ff54e13706200b99b851d91" category="list-text">* spec.providerCredentials.valueFromSecret*:_(可选)_表示凭据值应来自机密。</block>
   <block id="2d32c7aa536ab1e00f078fb24a7eb990" category="list-text">*key*:_(如果使用了valueFroMSecret)密钥的有效密钥_。</block>
   <block id="d1b4714eb6d54919b20d4d6f82d1acb4" category="list-text">*name*:_(如果使用valueF物品 密钥，则为必需项)_包含此字段值的机密的名称。必须位于同一命名空间中。</block>
-  <block id="627ea743649e303af861c29448fa1e18" category="list-text">*。spec.providerType*:_(必需)_用于确定提供备份的内容；例如S3或FileSystem。</block>
   <block id="139f344cca23a89c521bc7cc6c7100b8" category="paragraph">YAML示例：</block>
-  <block id="230df5decc6ffa08ae4102ee7abc0787" category="list-text">在您填充之后<block ref="9ac2f7756ee6a07f372b889fd11538e1" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
   <block id="899ffe13f2bb16a187ce9807836e3d5f" category="paragraph">保护策略通过按定义的计划创建快照，备份或这两者来保护应用程序。您可以选择每小时，每天，每周和每月创建快照和备份，并且可以指定要保留的副本数。您可以使用Astra Control Web UI或自定义资源(CR)文件定义保护策略。</block>
   <block id="d306a8d55f523487d15819734d6cfba4" category="open-title">使用Web UI配置保护策略</block>
   <block id="9f33a2042fc3e70dae9f8c5507596e07" category="list-text">[*技术预览*]从存储分段列表中为备份或快照选择目标分段。</block>
@@ -3677,4 +3671,10 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="823f5a690316e8d8db6de2fd88676b37" category="paragraph">例如、在配置和安装完整集群备份工作流时、任何命名空间中的任何应用程序都将定期进行管理和保护、而无需管理员进一步努力。安装工作流时、命名空间不必存在；如果将来添加命名空间、它将受到保护。</block>
   <block id="20220274e3d349d98f94f4af6c1d54cf" category="paragraph-title">示例：基于标签的保护</block>
   <block id="6a96f7d929fa0abae3976fe12471f4f9" category="sidebar">保护整个集群</block>
+  <block id="55d08039eefc426d5a6685a3feb092fb" category="list-text"><block ref="55d08039eefc426d5a6685a3feb092fb" category="inline-link-macro-rx"></block></block>
+  <block id="01b6447cd56032ea0ac37c19fdaa4224" category="admonition">Amazon Web Services (AWS)使用通用S3存储分段类型。</block>
+  <block id="45a79ca58f818fe6f7e34d3ad01781ce" category="list-text">创建自定义资源(CR)文件并将其命名为(例如、<block ref="056c513f9078872b92d07c3cc704b909" prefix=" " category="inline-code"></block>）。</block>
+  <block id="2bda4ec158506a5cc3faac161d6d620d" category="list-text">* spec.providerCredentials*:_(必需)_存储使用指定提供程序访问AppVault所需的任何凭据的引用。</block>
+  <block id="9c20f9a97f5024f7f0cbeebb01127512" category="list-text">* spec.providerType*:_(必需)_用于确定提供备份的内容；例如、NetApp ONTAP S3或Microsoft Azure。</block>
+  <block id="a7f829a367be9439add4237b61a50388" category="list-text">在您填充之后<block ref="056c513f9078872b92d07c3cc704b909" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
 </blocks>

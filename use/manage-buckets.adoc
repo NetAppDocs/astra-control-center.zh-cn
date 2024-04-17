@@ -48,7 +48,7 @@ NOTE: 虽然Astra控制中心支持将Amazon S3作为通用S3存储分段提供�
 * <<设置默认分段>>
 * <<轮换或删除存储分段凭据>>
 * <<删除存储分段>>
-* link:../use/manage-buckets.html#manage-a-bucket-using-a-custom-resource["(技术预览)使用自定义资源管理存储分段"]
+* link:["[技术预览]使用自定义资源管理存储分段"]
 
 
 
@@ -179,19 +179,19 @@ Asta Control的存储分段自定义资源称为AppVault。此CR包含在保护�
 
 
 
-NOTE: Amazon Web Services (AWS)和Google Cloud Platform (GCP)使用通用S3存储分段类型。
+NOTE: Amazon Web Services (AWS)使用通用S3存储分段类型。
 
 
 NOTE: 虽然Astra控制中心支持将Amazon S3作为通用S3存储分段提供商、但Astra控制中心可能不支持声称支持Amazon S3的所有对象存储供应商。
 
 .步骤
-. 创建自定义资源(CR)文件并将其命名为(例如、 `astra_appvault.yaml`）。
+. 创建自定义资源(CR)文件并将其命名为(例如、 `astra-appvault.yaml`）。
 . 配置以下属性：
 +
 ** * metadata.name*:_(必需)_ AppVault自定义资源的名称。
 ** *spec.prefix*：_(可选)_一个路径、该路径前缀为存储在AppVault中的所有实体的名称。
 ** *。spec.providerConfig*:_(必需)_用于存储使用指定提供程序访问AppVault所需的配置。
-** *。spec.providerCredentials*:_(可选)_存储使用指定提供程序访问AppVault所需的任何凭据的引用。
+** * spec.providerCredentials*:_(必需)_存储使用指定提供程序访问AppVault所需的任何凭据的引用。
 +
 *** * spec.providerCredentials.valueFromSecret*:_(可选)_表示凭据值应来自机密。
 +
@@ -201,7 +201,7 @@ NOTE: 虽然Astra控制中心支持将Amazon S3作为通用S3存储分段提供�
 
 
 
-** *。spec.providerType*:_(必需)_用于确定提供备份的内容；例如S3或FileSystem。
+** * spec.providerType*:_(必需)_用于确定提供备份的内容；例如、NetApp ONTAP S3或Microsoft Azure。
 +
 YAML示例：
 
@@ -211,7 +211,7 @@ YAML示例：
 apiVersion: astra.netapp.io/v1
 kind: AppVault
 metadata:
-  name: astra_appvault
+  name: astra-appvault
 spec:
   providerType: generic-s3
   providerConfig:
@@ -231,11 +231,11 @@ spec:
 ----
 
 
-. 在您填充之后 `astra_appvault.yaml` 使用正确值的文件、应用CR：
+. 在您填充之后 `astra-appvault.yaml` 使用正确值的文件、应用CR：
 +
 [source, console]
 ----
-kubectl apply -f astra_appvault.yaml -n astra-connector
+kubectl apply -f astra-appvault.yaml -n astra-connector
 ----
 +
 
