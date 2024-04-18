@@ -4,7 +4,7 @@ permalink: get-started/faq.html
 keywords: astra faq, astra frequently asked questions, what is astra, astra control, kubernetes, persistent volumes 
 summary: 如果您只是想快速了解问题解答，此常见问题解答会很有帮助。 
 ---
-= 有关 Astra 控制中心的常见问题
+= 常见问题解答
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -24,8 +24,7 @@ summary: 如果您只是想快速了解问题解答，此常见问题解答会�
 
 == 访问 Astra 控制中心
 
-* 什么是 Astra Control URL ？ *
-
+.什么是Asta Control URL？
 Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 对于URL、在浏览器中、在安装Astra控制中心时、输入在Astra_control_center.YAML自定义资源(CR)文件的spec.astraAddress字段中设置的完全限定域名(FQDN)。电子邮件是您在Astra_control_center.YAML CR的spec.email字段中设置的值。
@@ -34,8 +33,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 == 许可
 
-*我使用的是评估版许可证。如何更改为完全许可证？*
-
+.我正在使用评估版许可证。如何更改为完整许可证？
 您可以通过从NetApp获取NetApp许可证文件(NLG)轻松更改为完整许可证。
 
 * 步骤 *
@@ -46,95 +44,79 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 . 浏览到下载的许可证文件并选择 * 添加 * 。
 
 
-*我使用的是评估版许可证。我是否仍能管理应用程序？ *
-
+.我正在使用评估版许可证。我仍然可以管理应用程序吗？
 可以、您可以使用评估版许可证(包括默认安装的嵌入式评估版许可证)测试管理应用程序功能。评估版许可证与完整版许可证在功能上没有区别；评估版许可证的使用寿命更短。请参见 link:../concepts/licensing.html["许可"^] 有关详细信息 ...
 
 
 
 == 注册 Kubernetes 集群
 
-* 在添加到 Astra Control 后，我需要向 Kubernetes 集群添加工作节点。我该怎么办？ *
-
+.在添加到Astra Control后、我需要向Kubbernetes集群添加工作节点。我该怎么办？
 可以将新的工作节点添加到现有池中。这些信息将由 Astra Control 自动发现。如果新节点在 Astra Control 中不可见，请检查新工作节点是否正在运行受支持的映像类型。您也可以使用 `kubectl get nodes` 命令验证新工作节点的运行状况。
 
-* 如何正确取消管理集群？ *
-
+.如何正确取消管理集群？
 . link:../use/unmanage.html["从 Astra Control 取消管理应用程序"]。
 . link:../use/unmanage.html#stop-managing-compute["从 Astra Control 取消管理集群"]。
 
 
-* 从 Astra Control 中删除 Kubernetes 集群后，应用程序和数据会发生什么情况？ *
-
+.从Asta Control中删除Kubbernetes集群后、我的应用程序和数据会发生什么情况？
 从 Astra Control 中删除集群不会对集群的配置（应用程序和永久性存储）进行任何更改。对该集群上的应用程序执行的任何 Astra Control 快照或备份都将无法还原。由 Astra Control 创建的永久性存储备份仍保留在 Astra Control 中，但无法还原。
 
 
 WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。
 
-*取消管理Astra Control配置程序(或Astra Trdent)时是否会自动从集群中卸载？*
+.取消管理Asta Control配置程序(或Asta Tricent)时、它是否会自动从集群中卸载？
 从Astra Control Center取消管理集群时、Astra Control配置程序或Astra三项功能不会自动从集群中卸载。要卸载Asta Control配置程序及其组件或Asta Trandent、您需要 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["请按照以下步骤卸载包含Astra Control配置程序服务的Astra Trdent实例"^]。
 
 
 
 == 管理应用程序
 
-* Astra Control 是否可以部署应用程序？ *
-
+.Astra Control是否可以部署应用程序？
 Astra Control 不会部署应用程序。应用程序必须部署在 Astra Control 之外。
 
-* 停止从 Astra Control 管理应用程序后，应用程序会发生什么情况？ *
-
+.停止从Asta Control管理应用程序后、应用程序会发生什么情况？
 任何现有备份或快照都将被删除。应用程序和数据始终可用。数据管理操作不适用于非受管应用程序或属于该应用程序的任何备份或快照。
 
-* Astra Control 是否可以管理非 NetApp 存储上的应用程序？ *
-
+.Astra Control是否可以管理非NetApp存储上的应用程序？
 否虽然Astra Control可以发现使用非NetApp存储的应用程序、但无法管理使用非NetApp存储的应用程序。
 
-*我应该自行管理Astra Control吗？*
-
+.我应该自行管理Astra Control吗？
 Astra Control Center默认情况下不会显示为您可以管理的应用程序、但您可以管理 link:../use/protect-acc-with-acc.html["备份和还原"] 使用另一个Asta Control Center实例的Asta Control Center实例。
 
-*运行状况不正常的Pod是否会影响应用程序管理？*
-
+.运行状况不正常的Pod是否会影响应用程序管理？
 不会、Pod的运行状况不会影响应用程序管理。
 
 
 
 == 数据管理操作
 
-* 我的应用程序使用多个 PV 。Astra Control是否会为这些PV创建快照和备份？*
-
+.我的应用程序使用多个PV.Astra Control是否会为这些PVs创建快照和备份？
 是的。Astra Control对应用程序执行的快照操作包括绑定到应用程序PVC的所有PV的快照。
 
-* 是否可以直接通过其他接口或对象存储管理 Astra Control 创建的快照？ *
-
+.我是否可以通过其他接口或对象存储直接管理Astra Control拍摄的快照？
 否Asta Control创建的快照和备份只能使用Asta Control进行管理。
 
 
 
 == Asta Control配置程序
 
-*Astra Control配置程序的存储配置功能与Astra Trident中的存储配置功能有何不同？*
-
+.Astra Control配置程序的存储配置功能与Astra Trident中的存储配置功能有何不同？
 Asta Control配置程序作为Asta Control的一部分、支持一组超群的存储配置功能、这些功能在开源Asta三元数据中不可用。这些功能是对开放源码的三元数据可用的所有功能的补充。
 
-*Astra Control配置程序是否取代了Astra三项功能？*
+.Astra Control配置程序是否正在取代Astra Trent？
 Asta Control配置程序已取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。Asta Control用户应执行此操作 link:../get-started/enable-acp.html["启用Asta Control配置程序"] 使用A作用 力控制。此版本仍支持Asta三项功能、但未来版本不支持此功能。Asta三元数据将保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。但是、只有包含A作用 力三项CSI功能以及扩展存储管理功能的A作用 力控制配置程序才能用于即将推出的A作用 力控制版本。
 
-*我必须为Astra三端安装付费吗？*
-
+.我是否必须为Asta三端存储付费？
 否Asta三端技术将继续采用开源方式、并可免费下载。现在、使用Astra Control配置程序功能需要Astra Control许可证。
 
-*在不安装和使用所有Astra Control的情况下，是否可以使用Astra Control中的存储管理和配置功能？*
-
+.是否可以在不安装和使用所有Astra Control的情况下使用Astra Control中的存储管理和配置功能？
 可以。即使您不想使用Astra Control数据管理功能的完整功能集、也可以升级到Astra Control配置程序并使用其功能。
 
-*如何从现有的Astra Trident用户过渡到Astra Control以使用高级存储管理和配置功能？*
-
+.如何从现有Asta Trident用户过渡到Asta Control以使用高级存储管理和配置功能？
 如果您是现有的Asta Trident用户(包括公有云中的Asta Trident用户)、则需要先获取Asta Control许可证。完成此操作后、您可以下载Astra Control配置程序捆绑包、升级Astra三端、和 link:../get-started/enable-acp.html["启用Astra Control配置程序功能"]。
 
-[[running-acp.check]]**如何知道Astra Control配置程序是否已取代了我的集群上的Astra Trident？*
-
+.如何知道Astra Control配置程序是否已取代了集群上的Astra Trident？
 安装Asta Control配置程序后、Asta Control UI中的主机集群将显示 `ACP version` 而不是 `Trident version` 字段和当前安装的版本号。
 
 image:use/ac-acp-version.png["显示用户界面中Astra Control配置程序版本位置的屏幕截图"]

@@ -492,32 +492,23 @@
   <block id="7672a092783c4348b96b40ea2dcf6681" category="section-title">存储类</block>
   <block id="9282ad3aef7e124a3b2b9c7eab52b33d" category="doc">架构和组件</block>
   <block id="b1151aae9531d2f5e85d085e8878cea6" category="summary">如果您只是想快速了解问题解答，此常见问题解答会很有帮助。</block>
-  <block id="cc8bd3e450e22f6551d9874a45cea432" category="doc">有关 Astra 控制中心的常见问题</block>
   <block id="8a3564ec32ac0854b7c7c6d8e81aece8" category="paragraph">以下各节将为您在使用 Astra 控制中心时可能遇到的其他一些问题提供解答。如需更多说明，请联系 astra.feedback@netapp.com</block>
   <block id="beead3f133c7957f259792b82df7e44c" category="section-title">访问 Astra 控制中心</block>
-  <block id="d3999564a67aafe8d2dd2b3396394bf8" category="paragraph">* 什么是 Astra Control URL ？ *</block>
   <block id="c7ce6cb4e4cd6690abeecb2f6c288964" category="paragraph">Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。</block>
   <block id="4839d2f25cc35b249d5db15efa1afd75" category="paragraph">* 步骤 *</block>
   <block id="d113457c08b54c3464e7b9c49945bebd" category="list-text">浏览到下载的许可证文件并选择 * 添加 * 。</block>
   <block id="b892fe302a6a7df4519761ccd72b7c2f" category="section-title">注册 Kubernetes 集群</block>
-  <block id="92c3c3332b432034927e22150f418205" category="paragraph">* 在添加到 Astra Control 后，我需要向 Kubernetes 集群添加工作节点。我该怎么办？ *</block>
   <block id="03ec374fbd6989f16559d4f96d74547e" category="paragraph">可以将新的工作节点添加到现有池中。这些信息将由 Astra Control 自动发现。如果新节点在 Astra Control 中不可见，请检查新工作节点是否正在运行受支持的映像类型。您也可以使用 `kubectl get nodes` 命令验证新工作节点的运行状况。</block>
-  <block id="e35a675dc7fa715089327ba86baa9433" category="paragraph">* 如何正确取消管理集群？ *</block>
   <block id="cdb2726825d8ca6b1fbc495e1769be38" category="inline-link-macro">从 Astra Control 取消管理应用程序</block>
   <block id="bfde4228559e1dc730ccb3f1710371f6" category="list-text"><block ref="819731d94d9a0720df36a3fc1b85d024" category="inline-link-macro-rx"></block>。</block>
   <block id="e63154c624567c5cf9bd389230c703ee" category="inline-link-macro">从 Astra Control 取消管理集群</block>
   <block id="532f06fc1e312d6659de4b8386cc2689" category="list-text"><block ref="fee7c2b0377fd57e3be010ddfbcf91f6" category="inline-link-macro-rx"></block>。</block>
-  <block id="bd9e39df2a4783068ac79eb1cbc3602b" category="paragraph">* 从 Astra Control 中删除 Kubernetes 集群后，应用程序和数据会发生什么情况？ *</block>
   <block id="8ce424856922443bb79c34a944daacaf" category="paragraph">从 Astra Control 中删除集群不会对集群的配置（应用程序和永久性存储）进行任何更改。对该集群上的应用程序执行的任何 Astra Control 快照或备份都将无法还原。由 Astra Control 创建的永久性存储备份仍保留在 Astra Control 中，但无法还原。</block>
   <block id="03d32d7daecae8d532e26e0c040b4ff0" category="admonition">在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。</block>
   <block id="f75d983d4bc87e1a244c894a4357e93a" category="section-title">管理应用程序</block>
-  <block id="eaeb56aabe324b7270ae7355bb58edcb" category="paragraph">* Astra Control 是否可以部署应用程序？ *</block>
   <block id="48df7f09a242df239385ebae869133b8" category="paragraph">Astra Control 不会部署应用程序。应用程序必须部署在 Astra Control 之外。</block>
-  <block id="44379fcc25f304b4401a09a7641dd567" category="paragraph">* 停止从 Astra Control 管理应用程序后，应用程序会发生什么情况？ *</block>
   <block id="61cd231bb056b77c37c6a7acab17451a" category="paragraph">任何现有备份或快照都将被删除。应用程序和数据始终可用。数据管理操作不适用于非受管应用程序或属于该应用程序的任何备份或快照。</block>
-  <block id="b3d3212b84b66c52decacb83fca1191d" category="paragraph">* Astra Control 是否可以管理非 NetApp 存储上的应用程序？ *</block>
   <block id="6b1a3a19f3f025ff9c844910c80c100e" category="section-title">数据管理操作</block>
-  <block id="58042c65f3c67283f15325ab2febd22a" category="paragraph">* 是否可以直接通过其他接口或对象存储管理 Astra Control 创建的快照？ *</block>
   <block id="c1da0c460c22d6fba67aca5373a43cb1" category="doc">添加自定义 TLS 证书</block>
   <block id="70f4c838af25e53e799ffca0c2ea44f5" category="list-text">安装了 Astra 控制中心的 Kubernetes 集群</block>
   <block id="0cb21c23cf46c4ea4707d50d3d396f43" category="list-text">对集群上的命令 Shell 进行管理访问，以运行 `kubectl` 命令</block>
@@ -1369,7 +1360,6 @@
   <block id="af0e614701190854322a2cbf66479b6f" category="inline-link">管理ONTAP 许可证</block>
   <block id="6db4db93a9c2608b2abfc46bb675e283" category="paragraph">要设置和管理Kubernetes应用程序、您可以使用Astra Control Center UI或Astra Control API。</block>
   <block id="996ae349b503c8bd355d8986597a6d49" category="paragraph">对于URL、在浏览器中、在安装Astra控制中心时、输入在Astra_control_center.YAML自定义资源(CR)文件的spec.astraAddress字段中设置的完全限定域名(FQDN)。电子邮件是您在Astra_control_center.YAML CR的spec.email字段中设置的值。</block>
-  <block id="bda0a7ba5f9ad395d8fbd5eadadb95db" category="paragraph">* 我的应用程序使用多个 PV 。Astra Control是否会为这些PV创建快照和备份？*</block>
   <block id="f8f1ef03f08e7d1c3e62dd87dde91f57" category="paragraph">是的。Astra Control对应用程序执行的快照操作包括绑定到应用程序PVC的所有PV的快照。</block>
   <block id="4ea6bce9d2ccc400d97dbda9dbdd1e62" category="paragraph">要检查ONTAP 系统是否具有所需的许可证、请参见<block ref="8ad9b3553a563c3930ce9a2b06714e72" category="inline-link-rx"></block>。</block>
   <block id="fbd7f511b2e75e5ab019b2450e398c1d" category="inline-link-macro">使用 90 天评估许可证</block>
@@ -2112,14 +2102,10 @@
   <block id="b80989470cc425228535bc99be74562e" category="list-text">*使用管理员凭据*：输入ONTAP 集群管理IP地址和管理员凭据。凭据必须是集群范围的凭据。</block>
   <block id="9a64e7c308b15e4a664bdb4c23870806" category="list-text">*使用证书*：上传证书<block ref="bdf46f9562b038d0163af0feba0b1dfa" prefix=" " category="inline-code"></block> file、证书密钥<block ref="ed920f773cac3db0499e1ae2cf4df449" prefix=" " category="inline-code"></block> 文件、以及证书颁发机构文件(可选)。</block>
   <block id="a487ff8cfcbd6271ea37126b1f9a7d45" category="paragraph">后端将显示在中<block ref="7f46165474d11ee5836777d85df2cdab" prefix=" " category="inline-code"></block> 包含摘要信息的列表中的状态。</block>
-  <block id="b95f25e52dab12822cd50293b72cd299" category="paragraph">*我使用的是评估版许可证。如何更改为完全许可证？*</block>
   <block id="f12591a32788d5d1257e2ed5eb6294c2" category="paragraph">您可以通过从NetApp获取NetApp许可证文件(NLG)轻松更改为完整许可证。</block>
   <block id="b630af6f03c85ad51ef7307e7d57ee06" category="list-text">在许可证概述中、选择许可证信息右侧的选项菜单。</block>
   <block id="cb108e519d1f31ecbd41ae4d12645d6d" category="list-text">选择*替换*。</block>
-  <block id="358cdb2a62658ca41dde3545b61102db" category="paragraph">*我使用的是评估版许可证。我是否仍能管理应用程序？ *</block>
   <block id="448e6c24da61f19f223333099def4861" category="paragraph">可以、您可以使用评估版许可证(包括默认安装的嵌入式评估版许可证)测试管理应用程序功能。评估版许可证与完整版许可证在功能上没有区别；评估版许可证的使用寿命更短。请参见 <block ref="33517e0e170e068dfb6f5617810a0372" category="inline-link-macro-rx"></block> 有关详细信息 ...</block>
-  <block id="74014f44bc5ee9e79cd2adb1167b2d8a" category="paragraph">*我应该自行管理Astra Control吗？*</block>
-  <block id="9a37b9eea91cad57070a6757b200a6fa" category="paragraph">*运行状况不正常的Pod是否会影响应用程序管理？*</block>
   <block id="122340512db23eef4128af6d9fd5a597" category="paragraph">不会、Pod的运行状况不会影响应用程序管理。</block>
   <block id="5f19a159b98db30779660d8624ef7fc4" category="section-title">2023年4月25日(23.04.0)</block>
   <block id="b176bb567ff7d20bac0cf1796c175044" category="inline-link-macro">默认情况下、新Astra Control Center安装启用了90天评估许可证</block>
@@ -2609,11 +2595,8 @@
   <block id="bc15f748aeda125acfe188da636ed3d7" category="paragraph">Astra Control Center默认情况下不会显示为您可以管理的应用程序、但您可以管理 <block ref="f5ccadb0ade3a2532769193c6758d5b1" category="inline-link-macro-rx"></block> 使用另一个Asta Control Center实例的Asta Control Center实例。</block>
   <block id="da3896d1bd14d90f23119c4f4e1c15a3" category="paragraph">否Asta Control创建的快照和备份只能使用Asta Control进行管理。</block>
   <block id="4c58fde327564dd131d9bda17203e9c0" category="section-title">Asta Control配置程序</block>
-  <block id="9a0966df6fce07aa3deb33fa2cd5da9f" category="paragraph">*Astra Control配置程序的存储配置功能与Astra Trident中的存储配置功能有何不同？*</block>
   <block id="dc918830fd0bda72f7a7d0f6e208b17e" category="paragraph">Asta Control配置程序作为Asta Control的一部分、支持一组超群的存储配置功能、这些功能在开源Asta三元数据中不可用。这些功能是对开放源码的三元数据可用的所有功能的补充。</block>
   <block id="ad1ed8a22f0b210e932f280697114063" category="inline-link-macro">启用Asta Control配置程序</block>
-  <block id="d4a584de43e0998448679fdc7be156af" category="paragraph">*我必须为Astra三端安装付费吗？*</block>
-  <block id="b8481a0cbd8ab968ce47b6bacfc1ad58" category="paragraph">*在不安装和使用所有Astra Control的情况下，是否可以使用Astra Control中的存储管理和配置功能？*</block>
   <block id="293b9c34fcb89e2353c2b6e75d222693" category="inline-link-macro">启用Astra Control配置程序功能</block>
   <block id="6f04a726f4038aea2cb90f4951cba4a2" category="paragraph">安装Asta Control配置程序后、Asta Control UI中的主机集群将显示<block ref="47f79829be244bd727d1881108343390" prefix=" " category="inline-code"></block> 而不是<block ref="f1112223b41fddc71fd6a626582dfb78" prefix=" " category="inline-code"></block> 字段和当前安装的版本号。</block>
   <block id="77543cbe4b207b1c621cbf48a45b600b" category="paragraph">如果您无权访问此UI、则可以使用以下方法确认安装成功：</block>
@@ -3521,15 +3504,9 @@ RKE 2：版本1.24.17、1.25.14、1.26.9、带RANcher Manager 2.7.9</block>
   <block id="a40c084314b74a686572312dc71c4738" category="list-text">创建<block ref="3d3f9b7a5974a7898593a3d2f5549f15" prefix=" " category="inline-code"></block> 文件</block>
   <block id="23ed633c6130c18f08608b6efce84dc4" category="list-text">替换<block ref="089d02fba2ffcdb49a91320ff506dfa3" prefix=" " category="inline-code"></block> 在以下脚本的开头、使用正确的值。</block>
   <block id="c103c1b613b979158e5cb38bf6ed5f16" category="inline-link">请按照以下步骤卸载包含Astra Control配置程序服务的Astra Trdent实例</block>
-  <block id="2c5e000851530d456765d6ad7069ee9a" category="paragraph">*取消管理Astra Control配置程序(或Astra Trdent)时是否会自动从集群中卸载？*
-从Astra Control Center取消管理集群时、Astra Control配置程序或Astra三项功能不会自动从集群中卸载。要卸载Asta Control配置程序及其组件或Asta Trandent、您需要<block ref="20ce5e359d2a1fb9fe63ec6fbc3432ca" category="inline-link-rx"></block>。</block>
-  <block id="2f5784fa29426b31f780f208859b21ff" category="paragraph">*Astra Control配置程序是否取代了Astra三项功能？*
-Asta Control配置程序已取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。Asta Control用户应执行此操作 <block ref="5dad9d2c063a3c9294af610763bbd8ba" category="inline-link-macro-rx"></block> 使用A作用 力控制。此版本仍支持Asta三项功能、但未来版本不支持此功能。Asta三元数据将保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。但是、只有包含A作用 力三项CSI功能以及扩展存储管理功能的A作用 力控制配置程序才能用于即将推出的A作用 力控制版本。</block>
   <block id="b2e63d361f13f7c7a6953e6d716921b8" category="paragraph">否Asta三端技术将继续采用开源方式、并可免费下载。现在、使用Astra Control配置程序功能需要Astra Control许可证。</block>
   <block id="f7674e11004b268d07981c0956e67fe1" category="paragraph">可以。即使您不想使用Astra Control数据管理功能的完整功能集、也可以升级到Astra Control配置程序并使用其功能。</block>
-  <block id="0fce11b06ff8393942de14dffe7cfb30" category="paragraph">*如何从现有的Astra Trident用户过渡到Astra Control以使用高级存储管理和配置功能？*</block>
   <block id="4819732dc0b6137f78875603196f15aa" category="paragraph">如果您是现有的Asta Trident用户(包括公有云中的Asta Trident用户)、则需要先获取Asta Control许可证。完成此操作后、您可以下载Astra Control配置程序捆绑包、升级Astra三端、和 <block ref="f398c28e822214b2c18876471cc0ff4c" category="inline-link-macro-rx"></block>。</block>
-  <block id="d8272a56355a60a1ca520a3d6649207f" category="paragraph">[[running-acp.check]]**如何知道Astra Control配置程序是否已取代了我的集群上的Astra Trident？*</block>
   <block id="5c06389afe2ac88223b5ed747dc58668" category="inline-image-macro">显示用户界面中Astra Control配置程序版本位置的屏幕截图</block>
   <block id="22e6ee07e818a86ee011191709d10c67" category="paragraph"><block ref="22e6ee07e818a86ee011191709d10c67" category="inline-image-macro-rx" type="image"></block></block>
   <block id="bad9405dfa9ccda5f267eb3d116cc74e" category="paragraph">验证<block ref="49c9f6c98d04c8c76aee7448fd9136ed" prefix=" " category="inline-code"></block> 容器正在运行<block ref="507c6bbca2ad57c69e89a97ee8714536" prefix=" " category="inline-code"></block> 为<block ref="84976609aebb6439476255d5ef8280bb" prefix=" " category="inline-code"></block> 或更高版本(最低版本为23.10)、状态为<block ref="98dd43dfae05b11befe1f140e0ec787a" prefix=" " category="inline-code"></block>：</block>
@@ -3677,4 +3654,27 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="2bda4ec158506a5cc3faac161d6d620d" category="list-text">* spec.providerCredentials*:_(必需)_存储使用指定提供程序访问AppVault所需的任何凭据的引用。</block>
   <block id="9c20f9a97f5024f7f0cbeebb01127512" category="list-text">* spec.providerType*:_(必需)_用于确定提供备份的内容；例如、NetApp ONTAP S3或Microsoft Azure。</block>
   <block id="a7f829a367be9439add4237b61a50388" category="list-text">在您填充之后<block ref="056c513f9078872b92d07c3cc704b909" prefix=" " category="inline-code"></block> 使用正确值的文件、应用CR：</block>
+  <block id="af2a4d2810d86aa0169c117f82682f9a" category="doc">常见问题解答</block>
+  <block id="67c6d74ef64f9532efda9283d05a0e68" category="paragraph-title">什么是Asta Control URL？</block>
+  <block id="277ea85dfda64f824780af7270d81481" category="paragraph-title">我正在使用评估版许可证。如何更改为完整许可证？</block>
+  <block id="865330b45a1c9c871718afa905811d8a" category="paragraph-title">我正在使用评估版许可证。我仍然可以管理应用程序吗？</block>
+  <block id="41d21018ca5e24a29b1d862dfb21ce5d" category="paragraph-title">在添加到Astra Control后、我需要向Kubbernetes集群添加工作节点。我该怎么办？</block>
+  <block id="9d349fb570fda3488ed2c21f247861fd" category="list-title">如何正确取消管理集群？</block>
+  <block id="b2367a0a07b25f3a049fbc1ea89a3636" category="paragraph-title">从Asta Control中删除Kubbernetes集群后、我的应用程序和数据会发生什么情况？</block>
+  <block id="c230e505256a08e1a2b2d1a6164970f4" category="paragraph-title">取消管理Asta Control配置程序(或Asta Tricent)时、它是否会自动从集群中卸载？</block>
+  <block id="6e97758e2a7f18315bc2dd21ba2fb822" category="paragraph">从Astra Control Center取消管理集群时、Astra Control配置程序或Astra三项功能不会自动从集群中卸载。要卸载Asta Control配置程序及其组件或Asta Trandent、您需要<block ref="20ce5e359d2a1fb9fe63ec6fbc3432ca" category="inline-link-rx"></block>。</block>
+  <block id="9c571c6fb937319efe65b3c9d020edc8" category="paragraph-title">Astra Control是否可以部署应用程序？</block>
+  <block id="a7fec8f073e339fb7794287e8e5663a0" category="paragraph-title">停止从Asta Control管理应用程序后、应用程序会发生什么情况？</block>
+  <block id="75b31138dc7d08e2d4b0a691f1c387f5" category="paragraph-title">Astra Control是否可以管理非NetApp存储上的应用程序？</block>
+  <block id="7ddaae6742fd05e4ca66e09897bbee6d" category="paragraph-title">我应该自行管理Astra Control吗？</block>
+  <block id="df3897d7402bb4d935f0cad6b8e0b952" category="paragraph-title">运行状况不正常的Pod是否会影响应用程序管理？</block>
+  <block id="c901ec125a01599d47b36152b81787eb" category="paragraph-title">我的应用程序使用多个PV.Astra Control是否会为这些PVs创建快照和备份？</block>
+  <block id="ca664f9963c561ce6cdc123049835653" category="paragraph-title">我是否可以通过其他接口或对象存储直接管理Astra Control拍摄的快照？</block>
+  <block id="ee8d37ab9ce413b000f7a6f1c6831e25" category="paragraph-title">Astra Control配置程序的存储配置功能与Astra Trident中的存储配置功能有何不同？</block>
+  <block id="36057914e1173ce157bef770560c4d14" category="paragraph-title">Astra Control配置程序是否正在取代Astra Trent？</block>
+  <block id="30d28fd95c3008723df823d63536e917" category="paragraph">Asta Control配置程序已取代Asta Trandent、成为Asta Control架构中的存储配置程序和流程编排程序。Asta Control用户应执行此操作 <block ref="5dad9d2c063a3c9294af610763bbd8ba" category="inline-link-macro-rx"></block> 使用A作用 力控制。此版本仍支持Asta三项功能、但未来版本不支持此功能。Asta三元数据将保持开源状态、并使用NetApp的新CSI和其他功能进行发布、维护、支持和更新。但是、只有包含A作用 力三项CSI功能以及扩展存储管理功能的A作用 力控制配置程序才能用于即将推出的A作用 力控制版本。</block>
+  <block id="6080a9c8227972613444a9ebc88e3b3c" category="paragraph-title">我是否必须为Asta三端存储付费？</block>
+  <block id="369842d22c436a81bf21800576abee8b" category="paragraph-title">是否可以在不安装和使用所有Astra Control的情况下使用Astra Control中的存储管理和配置功能？</block>
+  <block id="daab2094276c52a4b52a45f95303d09e" category="paragraph-title">如何从现有Asta Trident用户过渡到Asta Control以使用高级存储管理和配置功能？</block>
+  <block id="63bdba47639989b6e534ecb34c5f142e" category="paragraph-title">如何知道Astra Control配置程序是否已取代了集群上的Astra Trident？</block>
 </blocks>

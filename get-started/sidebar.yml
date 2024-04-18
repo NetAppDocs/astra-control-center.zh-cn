@@ -40,5 +40,3 @@ entries:
     url: "/get-started/add-storage-backend.html"
   - title: 添加存储分段
     url: "/get-started/add-bucket.html"
-- title: 常见问题解答
-  url: "/get-started/faq.html"
