@@ -1,17 +1,7 @@
----
-sidebar: sidebar 
-permalink: concepts/architecture.html 
-keywords: what is astra, astra control, astra control architecture, astra control center, astra control service, kubernetes, netapp, clusters, astra trident, astra control provisioner 
-summary: 下面简要介绍了 Astra Control 环境的各个组件。 
----
-= 架构和组件
-:hardbreaks:
+= 功能
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/concepts/
 
 
-[role="lead"]
 Asta Control是一款Kubennet应用程序数据生命周期管理解决方案、可简化有状态应用程序的操作、并帮助您在混合和多云环境之间存储、保护和移动Kubennet工作负载。
 
 

@@ -3677,4 +3677,48 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="369842d22c436a81bf21800576abee8b" category="paragraph-title">是否可以在不安装和使用所有Astra Control的情况下使用Astra Control中的存储管理和配置功能？</block>
   <block id="daab2094276c52a4b52a45f95303d09e" category="paragraph-title">如何从现有Asta Trident用户过渡到Asta Control以使用高级存储管理和配置功能？</block>
   <block id="63bdba47639989b6e534ecb34c5f142e" category="paragraph-title">如何知道Astra Control配置程序是否已取代了集群上的Astra Trident？</block>
+  <block id="82ec2cd6fda87713f588da75c3b1d0ed" category="doc">功能</block>
+  <block id="9323549177620e1dd794512ee7cc0748" category="paragraph">Asta Control是一款Kubennet应用程序数据生命周期管理解决方案、可简化有状态应用程序的操作、并帮助您在混合和多云环境之间存储、保护和移动Kubennet工作负载。</block>
+  <block id="953ad711b5d812e3876fb8a28266ba3e" category="paragraph">*存储*：</block>
+  <block id="1cc20f69146066d58ea30c167da06503" category="list-text">为容器化工作负载动态配置存储</block>
+  <block id="40f0627cce837b232dcada830895754a" category="list-text">对从容器到永久性卷的数据进行传输中加密</block>
+  <block id="4d8ebc166f514bc42ed5a5c421a85b7b" category="list-text">跨区域、跨区域复制</block>
+  <block id="f748216a486ca824f2e1350704fdf7cd" category="paragraph">*保护*：</block>
+  <block id="5eea249d5621961399d6b0e6cd549b2a" category="list-text">自动发现整个应用程序及其数据并提供应用程序感知型保护</block>
+  <block id="0905306fb359d754b2fb6b91b4b687b6" category="list-text">根据组织需求从任何Snapshot版本即时恢复应用程序</block>
+  <block id="43130eaaed6187a0c013e3badf7d841a" category="list-text">跨区域、区域和云提供商实现快速故障转移</block>
+  <block id="1b329bb5f586d96aac9b868339b54d3c" category="paragraph">*移动*：</block>
+  <block id="fc1049d8b413380216308212cf5b9cd9" category="list-text">在Kubbernetes集群和云之间实现全面的应用程序和数据移动</block>
+  <block id="1f86e32e0eaaa822d13a5b9730c85ab7" category="list-text">即时克隆整个应用程序和数据</block>
+  <block id="b54bcca0ec823f9bf8916580d0df9186" category="list-text">通过一致的Web UI和API一键迁移应用程序</block>
+  <block id="2d242bb36ec91b32005f9296ff03a912" category="section-title">架构</block>
+  <block id="56da5995454440513c0c0a111bb3b132" category="paragraph">Asta Control的架构支持IT提供高级数据管理功能、以增强Kubbernetes应用程序的功能和可用性、简化容器化工作负载在公有云和内部环境之间的管理、保护和移动。 并通过REST API和SDK提供自动化功能、支持编程访问、以便与现有工作流无缝集成。</block>
+  <block id="f0f6f0fb4331084912739b8873eea074" category="paragraph">Astra Control是Kub联网 原生版本、支持利用自定义资源的数据保护工作流、同时保持与现有API和SDK的向后兼容性。Kubornetes原生数据保护具有显著优势；通过与Kubornetes API和资源无缝集成、数据保护可以通过组织的现有CI/CD和/或GitOps工具成为应用程序生命周期的固有组成部分。</block>
+  <block id="3e9fd553c2a72f2fea1001b682208a54" category="inline-image-macro">Asta Control架构</block>
+  <block id="28a0c6c94cda259516d07dedb9c854ef" category="paragraph"><block ref="28a0c6c94cda259516d07dedb9c854ef" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8103c53d603644d4ee7cc959e53cf3a4" category="paragraph">Astra Control基于四个互补组件构建：</block>
+  <block id="4f16f53fe0ab96995516c186edf87fe6" category="list-text">*Astra Control*：Astra Control是适用于所有托管集群的集中式管理服务，可提供协调的工作负载，以实现云和内部环境中的应用程序保护和移动性以及以下功能：</block>
+  <block id="51fed4624a5a53152693a41ce5efa15a" category="list-text">多个集群和云的组合视图</block>
+  <block id="e046b9c3be3479bde3b3259db738a78f" category="list-text">保护协调一致的工作流</block>
+  <block id="8dc1680125686fe1458b22e1961b1899" category="list-text">精细的资源可视化和选择</block>
+  <block id="4568e5d7e97ee5d6e4866ccd0c1dc770" category="list-text">*Astra Connecter*：Astra Connector与Astra Control相结合、可提供与每个受管集群的安全连接、无论连接状态如何、均可在本地执行计划的操作、并具有以下功能：</block>
+  <block id="7655b1a562ca01e9844b38904e5aa812" category="list-text">本地执行计划的操作、而不管连接状态如何</block>
+  <block id="e41d9e394671a0a661bcca4d52b1926b" category="list-text">在集群之间分布和优化A作用 的系统资源使用的本地操作</block>
+  <block id="579304cbfdd1e8dd005de8205aa02d54" category="list-text">本地安装、允许对集群进行最低权限访问以提高安全性</block>
+  <block id="389aa9334cd9e108116e432d44e3be76" category="list-text">*Astra Control置备程序*：Astra Control置备程序提供核心CSI配置功能和高级存储管理功能，以增加安全性和灾难恢复配置，以及以下功能：</block>
+  <block id="c965b0e84a84d7b5a6b37d24fb0c0ebd" category="list-text">高级存储管理：</block>
+  <block id="6b7d4094418426d522e44a55d578c055" category="list-text">对从容器到PV的数据进行传输中加密</block>
+  <block id="378d291dd5c8d9b13457391d74a1c166" category="list-text">SnapMirror Cloud功能支持跨区域、跨区域复制</block>
+  <block id="0aa3c724313cb48f6cecfc8393736174" category="list-text">*Astra自定义资源*：每个集群上使用的自定义资源提供了一种Kubernetes本机方法来在本地运行操作、简化了与其他Kubernetes友好工具和自动化的集成、并提供了以下功能：</block>
+  <block id="427ee8760fb4e2d4c8d849fa36bab15b" category="list-text">直接的生态系统工具集成和自动化工作流</block>
+  <block id="c7349a414c37176e5941afbe8fd1bf31" category="list-text">用于启用自定义工作流的较低级别的基本功能</block>
+  <block id="15bdafd183c9dcdccccb2ef960342018" category="paragraph">Asta Control有两种部署模式。</block>
+  <block id="e2a57f6b4c1a4fc07e57320580de76c4" category="inline-image-macro">Asta部署模式</block>
+  <block id="ed910480be660ce44964d26abfc6a0d8" category="paragraph"><block ref="ed910480be660ce44964d26abfc6a0d8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b7372905cd310308af0541e07ef5175f" category="list-text">* Astra Control Service*：NetApp管理的服务、可为多个云提供商环境中的Kubernetes集群以及自管理Kubernetes集群提供应用程序感知型数据管理。</block>
+  <block id="db7cdbe16748f17a4795bd3e96b798a0" category="list-text">* Astra Control Center* ：自管理软件，可为内部环境中运行的 Kubernetes 集群提供应用程序感知型数据管理。Astra控制中心还可以安装在多个云提供商环境中、并具有一个NetApp Cloud Volumes ONTAP 存储后端。</block>
+  <block id="281db70ca8dfcac9ebe6166029058548" category="paragraph"><block ref="281db70ca8dfcac9ebe6166029058548" category="inline-link-rx"></block></block>
+  <block id="e84bb7e947a5b25481546110f575734a" category="list-text"><block ref="e84bb7e947a5b25481546110f575734a" category="inline-link-rx"></block></block>
+  <block id="5858ee4031acd7b896faa2d3d2c1a299" category="inline-link">Cloud Insights 文档</block>
+  <block id="2b93b48daf034e4100d00b85950e109d" category="list-text"><block ref="2b93b48daf034e4100d00b85950e109d" category="inline-link-rx"></block></block>
 </blocks>
