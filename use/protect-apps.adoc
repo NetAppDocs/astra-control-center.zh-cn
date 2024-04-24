@@ -286,52 +286,6 @@ Astra Control 会创建应用程序的备份。
 ====
 
 
-=== [技术预览]按计划创建一个卷的备份
-
-您可以为集群上的任何或所有卷创建计划内自动备份。这些工作流由NetApp以CR文件的形式提供、并与Python脚本配对。配置和安装工作流时、系统会按照您在安装期间选择的计划自动创建命名空间备份。您可以使用完整集群备份工作流保护集群上的所有名称空间、也可以使用基于标签的备份工作流仅保护某些名称空间。
-
-将属于备份计划范围的新命名空间或应用程序添加到集群后、该命名空间或应用程序将自动受到保护。
-
-.示例：完整集群备份
-例如、在配置和安装完整集群备份工作流时、系统会定期备份任何命名空间中的任何应用程序、而无需管理员额外努力。安装工作流时、命名空间不必存在；如果将来添加命名空间、它将受到保护。
-
-.示例：基于标签的备份
-要获得更精细的粒度、您可以使用基于标签的工作流。例如、您可以安装此工作流、并告诉用户根据所需的保护级别、将多个标签之一应用于要保护的任何命名区域。这样、用户就可以使用其中一个标签创建命名空间、而无需通知管理员。它们的新命名空间以及其中的所有应用程序都会自动受到保护。
-
-
-
-==== 为所有的名段创建计划备份
-
-您可以使用完整集群备份工作流为集群上的所有名空间创建计划备份。
-
-.步骤
-. 将以下文件下载到可通过网络访问集群的计算机：
-+
-** https://raw.githubusercontent.com/NetApp/netapp-astra-toolkits/main/examples/fullcluster-backup/components.yaml["Components.YAML CRD文件"]
-** https://raw.githubusercontent.com/NetApp/netapp-astra-toolkits/main/examples/fullcluster-backup/protectCluster.py["protectCluster.py Python脚本"]
-
-
-. 要配置和安装此工具包、请执行以下步骤： https://github.com/NetApp/netapp-astra-toolkits/blob/main/examples/fullcluster-backup/README.md["按照附带的说明进行操作"^]。
-
-
-
-
-==== 为特定的名段创建计划备份
-
-您可以使用基于标签的备份工作流按标签为特定命名库创建计划备份。
-
-.步骤
-. 将以下文件下载到可通过网络访问集群的计算机：
-+
-** https://raw.githubusercontent.com/NetApp/netapp-astra-toolkits/main/examples/labelbased-backup/components.yaml["Components.YAML CRD文件"]
-** https://raw.githubusercontent.com/NetApp/netapp-astra-toolkits/main/examples/labelbased-backup/protectCluster.py["protectCluster.py Python脚本"]
-
-
-. 要配置和安装此工具包、请执行以下步骤： https://github.com/NetApp/netapp-astra-toolkits/blob/main/examples/labelbased-backup/README.md["按照附带的说明进行操作"^]。
-
-
-
-
 == 为ONTAP NAS经济型操作启用备份和还原
 
 Asta Control配置程序提供了备份和还原功能、可为使用的存储后端启用这些功能 `ontap-nas-economy` 存储类。
