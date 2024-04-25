@@ -35,6 +35,7 @@ summary: NetApp 会定期更新 Astra 控制中心，为您提供新功能，增
 
 * link:../use/manage-apps.html#tech-preview-define-an-application-using-a-kubernetes-custom-resource["使用自定义资源定义应用程序"]
 * link:../use/manage-buckets.html#tech-preview-manage-a-bucket-using-a-custom-resource["定义存储分段"]
+* link:../use/back-up-full-cluster.html["保护整个集群"]
 * link:../use/protect-apps.html#create-a-backup["备份应用程序"]
 * link:../use/protect-apps.html#create-a-snapshot["创建快照"]
 * link:../use/protect-apps.html#configure-a-protection-policy["为快照或备份创建计划"]

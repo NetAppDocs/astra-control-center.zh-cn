@@ -3616,12 +3616,6 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="0db934fe5d747898582ef7b2fe037806" category="list-text">通过Cloud Volumes ONTAP迁移到内部环境</block>
   <block id="e83e31033bbd8a95537d872ec339409c" category="list-text">*通过Kerberos 5加密增强存储后端安全性*：您可以通过提高存储安全性<block ref="0a6b595cfc16ab1c35e55d5e4c214ee8" category="inline-link-rx"></block> 托管集群和存储后端之间的流量。Astra Control配置程序支持通过NFSv4.1连接从Red Hat OpenShift集群到Azure NetApp Files和内部ONTAP卷进行Kerberos 5加密</block>
   <block id="ac40c2ee060ee67bf0598e61daec4365" category="paragraph"><block ref="ac40c2ee060ee67bf0598e61daec4365" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2f2aafd7c2fcb81833aa47c5d9ab32fe" category="section-title">[技术预览]按计划创建一个卷的备份</block>
-  <block id="765c75085cad598d9581b676be1b0e58" category="paragraph">您可以为集群上的任何或所有卷创建计划内自动备份。这些工作流由NetApp以CR文件的形式提供、并与Python脚本配对。配置和安装工作流时、系统会按照您在安装期间选择的计划自动创建命名空间备份。您可以使用完整集群备份工作流保护集群上的所有名称空间、也可以使用基于标签的备份工作流仅保护某些名称空间。</block>
-  <block id="7ac3cce973f2aa843ace7b4ab0c5bb23" category="paragraph">将属于备份计划范围的新命名空间或应用程序添加到集群后、该命名空间或应用程序将自动受到保护。</block>
-  <block id="261a331215e56ec7ab44a013797d15c5" category="paragraph-title">示例：完整集群备份</block>
-  <block id="737358b56d0c0cdf08e1375d277d2218" category="paragraph">例如、在配置和安装完整集群备份工作流时、系统会定期备份任何命名空间中的任何应用程序、而无需管理员额外努力。安装工作流时、命名空间不必存在；如果将来添加命名空间、它将受到保护。</block>
-  <block id="22359a586ea8864de01cfa7e01782716" category="paragraph-title">示例：基于标签的备份</block>
   <block id="ab9b4add4c2750df9ea518f6cfe58c09" category="paragraph">要获得更精细的粒度、您可以使用基于标签的工作流。例如、您可以安装此工作流、并告诉用户根据所需的保护级别、将多个标签之一应用于要保护的任何命名区域。这样、用户就可以使用其中一个标签创建命名空间、而无需通知管理员。它们的新命名空间以及其中的所有应用程序都会自动受到保护。</block>
   <block id="07b045e6ed11320210f203c982fd829d" category="section-title">为所有的名段创建计划备份</block>
   <block id="8332335e5e8bddc0b81921741539149a" category="paragraph">您可以使用完整集群备份工作流为集群上的所有名空间创建计划备份。</block>
@@ -3721,4 +3715,5 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="e84bb7e947a5b25481546110f575734a" category="list-text"><block ref="e84bb7e947a5b25481546110f575734a" category="inline-link-rx"></block></block>
   <block id="5858ee4031acd7b896faa2d3d2c1a299" category="inline-link">Cloud Insights 文档</block>
   <block id="2b93b48daf034e4100d00b85950e109d" category="list-text"><block ref="2b93b48daf034e4100d00b85950e109d" category="inline-link-rx"></block></block>
+  <block id="adeac59ad1862a3e0c4f40cfe863ae90" category="list-text"><block ref="adeac59ad1862a3e0c4f40cfe863ae90" category="inline-link-macro-rx"></block></block>
 </blocks>
