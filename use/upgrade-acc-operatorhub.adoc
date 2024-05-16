@@ -15,7 +15,7 @@ summary: 如果使用Red Hat OpenShift、则可以使用OperatorHub升级Astra C
 如果您使用Red Hat认证的操作员安装了Astra Control Center、则可以使用OperatorHub中更新的操作员升级Astra Control Center。使用此操作步骤从升级Astra控制中心 https://catalog.redhat.com/software/operators/explore["Red Hat 生态系统目录"^] 或使用 Red Hat OpenShift 容器平台。
 
 .开始之前
-* *满足环境前提条件*：在升级之前、请确保您的环境仍满足 link:requirements.html["Asta Control Center部署的最低要求"]。
+* *满足环境前提条件*：在升级之前、请确保您的环境仍满足 link:../get-started/requirements.html["Asta Control Center部署的最低要求"]。
 * *确保已启用 link:../get-started/requirements.html#astra-control-provisioner["Asta Control配置程序"] A作用 于运行Astra三端存储*
 +
 .. 确定您正在运行的Astra三项目标版本：
