@@ -35,6 +35,7 @@ summary: 已知限制确定了本产品版本不支持的平台、设备或功�
 * <<不支持使用 Helm 2 部署的应用程序>>
 * <<使用某些Snapshot控制器版本的Kubernetes 1.25或更高版本集群的快照可能会失败>>
 * <<删除 Astra Control Center 实例期间，备份和快照可能不会保留>>
+* <<对ONTAP NAS经济型存储类的原位还原操作失败>>
 
 
 .一般限制
@@ -190,6 +191,12 @@ Astra 控制中心不支持使用集群范围的操作员执行应用程序管�
 == 删除 Astra Control Center 实例期间，备份和快照可能不会保留
 
 如果您拥有评估许可证，请务必存储帐户 ID ，以避免在未发送 ASUP 的情况下 Astra 控制中心出现故障时丢失数据。
+
+
+
+== 对ONTAP NAS经济型存储类的原位还原操作失败
+
+如果您对应用程序执行原位还原(将应用程序还原到其原始命名空间)、并且应用程序的存储类使用 `ontap-nas-economy` 驱动程序、如果未隐藏快照目录、则还原操作可能会失败。在原位还原之前、请按照中的说明进行操作 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["为ONTAP NAS经济型操作启用备份和还原"] 以隐藏快照目录。
 
 
 

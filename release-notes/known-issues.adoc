@@ -20,7 +20,6 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 * <<如果在管理集群后添加了volumesnapshotclass、则应用程序备份和快照将失败>>
 * <<如果kubeconfig"文件包含多个上下文、则使用Asta Control Center管理集群将失败>>
 * <<当 Astra Trident 脱机时，应用程序数据管理操作失败，并显示内部服务错误（ 500 ）>>
-* <<对ONTAP NAS经济型存储类的原位还原操作失败>>
 * <<使用Kerberos传输中加密时从备份还原可能会失败>>
 * <<对于保留策略已过期的存储分段、删除后备份数据仍会保留在存储分段中>>
 
@@ -42,12 +41,6 @@ summary: 已知问题可确定可能妨碍您成功使用此版本产品的问�
 == 当 Astra Trident 脱机时，应用程序数据管理操作失败，并显示内部服务错误（ 500 ）
 
 如果应用程序集群上的 Astra Trident 脱机（并恢复联机），并且在尝试应用程序数据管理时遇到 500 个内部服务错误，请重新启动应用程序集群中的所有 Kubernetes 节点以还原功能。
-
-
-
-== 对ONTAP NAS经济型存储类的原位还原操作失败
-
-如果您对应用程序执行原位还原(将应用程序还原到其原始命名空间)、并且应用程序的存储类使用 `ontap-nas-economy` 驱动程序、如果未隐藏快照目录、则还原操作可能会失败。在原位还原之前、请按照中的说明进行操作 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["为ONTAP NAS经济型操作启用备份和还原"] 以隐藏快照目录。
 
 
 
