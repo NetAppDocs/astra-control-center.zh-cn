@@ -100,7 +100,7 @@ TIP: 用户界面右上角的通知图标提供了有关与支持包相关的事
 +
 ** 使用 ... https://upload.netapp.com/sg["NetApp 身份验证文件上传（需要登录）"^]。
 ** 将捆绑包直接附加到 NSS 上的案例。
-** 使用 NetApp Active IQ 。
+** 使用Digital Advisor。
 
 
 

@@ -743,7 +743,6 @@
   <block id="ca6f33719464e2320b44f90d6ae70eb7" category="section-title">应用程序管理要求</block>
   <block id="304f557d4b7e64bda6836386e7c79fc6" category="paragraph">Astra Control 具有以下应用程序管理要求：</block>
   <block id="508704b5a40f45083050ce024bcadbd2" category="list-text">* Kubernetes Resources* ：使用非 Astra Control 收集的 Kubernetes 资源的应用程序可能没有完整的应用程序数据管理功能。Astra Control 收集以下 Kubernetes 资源：</block>
-  <block id="ea2708b459fc0cad6936ec216bd9405e" category="paragraph">Astra 控制中心完全集成到 AutoSupport 和 Active IQ 生态系统中，可为用户和 NetApp 支持提供故障排除和使用信息。</block>
   <block id="9b73abdb19845a598990585584e1f1d0" category="list-text"><block ref="fc1a41947de37bff42a791f65840061b" category="inline-xref-macro-rx"></block></block>
   <block id="675b47686d83e0cfe62b904d27803024" category="list-text">从左侧导航栏中，选择 * 后端 * 。</block>
   <block id="76261f172114b33975a8f2d79841ce74" category="list-text">从选项菜单的 * 操作 * 列中，选择 * 取消管理 * 。</block>
@@ -968,7 +967,6 @@
   <block id="0e53b14ed17cc6702b5e052ed08259b6" category="list-text">选中 * 生成捆绑包时将其上传到 NetApp 支持站点 * 复选框。</block>
   <block id="916abcd023426dbbc4e3b29f0bafe83a" category="paragraph">如果您安装了带风的安装，请在生成支持包后执行以下步骤。当该捆绑包可供下载时，在 * 支持 * 页面的 * 支持捆绑包 * 部分中的 * 生成 * 旁边会显示下载图标。</block>
   <block id="f3ccd882d52648e593d05c699f459f60" category="list-text">选择下载图标以在本地下载此捆绑包。</block>
-  <block id="4345f2150d39e38a6a11ee7ee57bed28" category="list-text">使用 NetApp Active IQ 。</block>
   <block id="a32d618c008b6afc5518ea6d4e48c6e9" category="list-text"><block ref="a32d618c008b6afc5518ea6d4e48c6e9" category="inline-link-rx"></block></block>
   <block id="3b4a30d48038265333402fd0ace2ad01" category="list-text"><block ref="3b4a30d48038265333402fd0ace2ad01" category="inline-link-rx"></block></block>
   <block id="d1bdd7d7be6447d916ca20ce5bf313b6" category="list-text"><block ref="d1bdd7d7be6447d916ca20ce5bf313b6" category="inline-link-rx"></block></block>
@@ -3319,7 +3317,6 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
 
 注意：请勿使用<block ref="dbd7790bcd23fde7607101ef6a633779" prefix=" " category="inline-code"></block> 或<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block> 地址中。复制此 FQDN 以在中使用 <block ref="39c8566ec35b62823c898c5e38a4b78c" category="inline-xref-macro-rx"></block>。</block>
   <block id="5398d7dab242bfea13c044912cacfd10" category="example-title">AutoSupport</block>
-  <block id="0ce9b2186063c7d6c825ba5631c6f471" category="paragraph">您在此部分中所做的选择将决定您是否参与NetApp主动支持应用程序NetApp Active IQ以及数据的发送位置。需要互联网连接(端口442)、所有支持数据均会匿名化。</block>
   <block id="0c83f57c786a0b4a39efab23731c7ebc" category="example-title">email</block>
   <block id="ed89387bcd11937a7a92a99a2cbfb5d7" category="example-title">firstName</block>
   <block id="539c5300bf48f8a3e3009ce33d49a240" category="example-title">姓氏</block>
@@ -3717,4 +3714,7 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="adeac59ad1862a3e0c4f40cfe863ae90" category="list-text"><block ref="adeac59ad1862a3e0c4f40cfe863ae90" category="inline-link-macro-rx"></block></block>
   <block id="a8d3d65f332ebd25e2d0cd4a39fa56bb" category="admonition">使用声明性Kubarnetes工作流管理的集群不支持Fluentd连接。您只能将Fluentd连接到使用非Kubbernetes原生工作流管理的集群。</block>
   <block id="a4c308fa75b477e34ffefe1e02628412" category="list-text">*满足环境前提条件*：在升级之前、请确保您的环境仍满足 <block ref="7b0354d91aa605027490ffc0bb4c260d" category="inline-link-macro-rx"></block>。</block>
+  <block id="a9cf730f8ab04a5b52f1d19c74c1483c" category="paragraph">Astra控制中心完全集成到AutoSupport和Active IQ数字顾问(也称为数字顾问)生态系统中、可为用户和NetApp支持提供故障排除和使用信息。</block>
+  <block id="10c74eb5a029f34a100ad38aab60e5a3" category="paragraph">您在本节中所做的选择将决定您是否参与NetApp的主动支持应用程序Digital Advisor以及数据的发送位置。需要互联网连接(端口442)、所有支持数据均会匿名化。</block>
+  <block id="3cf9bc07c0ae31018d3336b8f32de6c8" category="list-text">使用Digital Advisor。</block>
 </blocks>
