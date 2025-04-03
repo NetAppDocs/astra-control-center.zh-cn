@@ -14,7 +14,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 [role="lead"]
 要安装Astra Control Center、请下载安装映像并执行以下步骤。您可以使用此操作步骤在互联网连接或通风环境中安装 Astra 控制中心。
 
-有关Astra控制中心安装过程的演示、请参见 https://www.youtube.com/watch?v=eurMV80b0Ks&list=PLdXI3bZJEw7mJz13z7YdiGCS6gNQgV_aN&index=5["此视频"^]。
+有关Asta Control Center安装过程的演示，请参见 https://www.youtube.com/watch?v=kfmQDqPi9fU&list=PLdXI3bZJEw7mJz13z7YdiGCS6gNQgV_aN&index=5["此视频"^]。
 
 .开始之前
 * *满足环境前提条件*： link:requirements.html["开始安装之前，请为 Astra Control Center 部署准备您的环境"]。

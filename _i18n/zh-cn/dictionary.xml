@@ -1979,7 +1979,6 @@
   <block id="494f00c4b150eebe7f9548365d575840" category="list-text"><block ref="494f00c4b150eebe7f9548365d575840" category="inline-link-rx"></block></block>
   <block id="11c38116a632436215a6716507c1a287" category="list-text"><block ref="11c38116a632436215a6716507c1a287" category="inline-link-rx"></block></block>
   <block id="201e09e85ad81db8a19ef9f20c05d1a5" category="inline-link">此视频</block>
-  <block id="259f3be9b6c8eefb44e844c2b70333dc" category="paragraph">有关Astra控制中心安装过程的演示、请参见<block ref="cbbdec23221803dc148346abe5a297c0" category="inline-link-rx"></block>。</block>
   <block id="f7173fff9a92f2bab2648f86282ab07c" category="list-text">使用NetApp SnapMirror技术(Astra Control Center)将应用程序复制到远程系统</block>
   <block id="631928ccc601c8e49976a8d73af28304" category="list-text">将应用程序从暂存克隆到生产</block>
   <block id="6ae1ccb3dd6df141f3444a3da56ae986" category="list-text">在浏览器中、输入FQDN (包括<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block> 前缀)<block ref="d27903c79b643b2f565c31e894abb568" prefix=" " category="inline-code"></block> 在中<block ref="70b058e54d2bda749060070a7f9c4e5c" prefix=" " category="inline-code"></block> CR时间 <block ref="356be5820e2645bace29d82a8018f43d" category="inline-xref-macro-rx"></block>。</block>
@@ -3717,4 +3716,5 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="a9cf730f8ab04a5b52f1d19c74c1483c" category="paragraph">Astra控制中心完全集成到AutoSupport和Active IQ数字顾问(也称为数字顾问)生态系统中、可为用户和NetApp支持提供故障排除和使用信息。</block>
   <block id="10c74eb5a029f34a100ad38aab60e5a3" category="paragraph">您在本节中所做的选择将决定您是否参与NetApp的主动支持应用程序Digital Advisor以及数据的发送位置。需要互联网连接(端口442)、所有支持数据均会匿名化。</block>
   <block id="3cf9bc07c0ae31018d3336b8f32de6c8" category="list-text">使用Digital Advisor。</block>
+  <block id="285c7fb54a928cf8e9ca78a83740ce60" category="paragraph">有关Asta Control Center安装过程的演示，请参见<block ref="d97427b76746d487a682c110ed41c817" category="inline-link-rx"></block>。</block>
 </blocks>
