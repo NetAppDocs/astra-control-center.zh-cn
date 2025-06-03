@@ -37,14 +37,6 @@ indexpage:
       url: https://docs.netapp.com/us-en/astra-automation/reference/overview.html
     - title: API 工作流
       url: https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html
-  - title: 使用 Astra 控制服务
-    links:
-    - title: 了解 Astra Control Service
-      url: https://docs.netapp.com/us-en/astra/get-started/intro.html
-    - title: Astra控制服务的新增功能
-      url: https://docs.netapp.com/us-en/astra/release-notes/whats-new.html
-    - title: Astra 控制服务快速入门
-      url: https://docs.netapp.com/us-en/astra/get-started/quick-start.html
   - title: 解决方案简介
     links:
     - title: 采用 Astra Control 的 PostgreSQL DBaaS
