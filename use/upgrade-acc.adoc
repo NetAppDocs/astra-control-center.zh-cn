@@ -127,6 +127,7 @@ IMPORTANT: 请勿删除Astra Control Center运算符(例如、 `kubectl delete -
 
 
 
+[[download-and-extract-astra-control-center]]
 == 下载并提取Astra控制中心
 
 从以下位置之一下载Astra Control Center映像：
@@ -174,12 +175,14 @@ tar -vxzf astra-control-center-[version].tar.gz
 ====
 
 
+[[complete-additional-steps-if-you-use-a-local-registry]]
 == 如果使用本地注册表、请完成其他步骤
 
 如果您计划将Astra控制中心捆绑包推送到本地注册表、则需要使用NetApp Astra kubect命令行插件。
 
 
 
+[[remove-the-netapp-astra-kubectl-plugin-and-install-it-again]]
 === 删除NetApp Astra kubectl插件并重新安装
 
 您需要使用最新版本的NetApp Astra kubect命令行插件将映像推送到本地Docker存储库。
@@ -220,6 +223,7 @@ cp kubectl-astra/<binary-name> /usr/local/bin/kubectl-astra
 
 
 
+[[add-the-images-to-your-registry]]
 === 将映像添加到注册表
 
 . 如果您计划将Astra Control Center捆绑包推送到本地注册表、请为容器引擎完成相应的步骤顺序：
@@ -326,6 +330,7 @@ cd manifests
 
 
 
+[[install-the-updated-astra-control-center-operator]]
 == 安装更新后的 Astra 控制中心操作员
 
 . (仅限本地注册表)如果使用的是本地注册表、请完成以下步骤：
@@ -464,6 +469,7 @@ kubectl get pods -n netapp-acc-operator
 
 
 
+[[upgrade-astra-control-center]]
 == 升级 Astra 控制中心
 
 . 编辑Astra Control Center自定义资源(CR)：
@@ -557,6 +563,7 @@ NOTE: 要检查Astra控制中心操作员日志、请运行以下命令：
 
 
 
+[[verify-system-status]]
 == 验证系统状态
 
 . 登录到 Astra 控制中心。

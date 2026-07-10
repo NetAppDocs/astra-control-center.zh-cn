@@ -6,6 +6,7 @@ image:astra-architecture-diagram-v7.png["描述Astra Control架构及其组件�
 
 
 
+[[astra-control-components]]
 == Astra Control 组件
 
 * * Kubernetes 集群 * ： Kubernetes 是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，便于进行声明性配置和自动化。Astra 为 Kubernetes 集群中托管的应用程序提供管理服务。
@@ -31,6 +32,7 @@ image:astra-architecture-diagram-v7.png["描述Astra Control架构及其组件�
 
 
 
+[[astra-control-interfaces]]
 == Astra Control 接口
 
 您可以使用不同的界面完成任务：
@@ -43,6 +45,7 @@ image:astra-architecture-diagram-v7.png["描述Astra Control架构及其组件�
 
 
 
+[[for-more-information]]
 == 有关详细信息 ...
 
 * https://docs.netapp.com/us-en/astra/index.html["Astra Control Service 文档"^]

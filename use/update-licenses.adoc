@@ -28,6 +28,7 @@ summary: 您可以将评估版许可证转换为完整许可证，也可以使�
 
 
 
+[[for-more-information]]
 == 有关详细信息 ...
 
 * link:../concepts/licensing.html["Astra 控制中心许可"]

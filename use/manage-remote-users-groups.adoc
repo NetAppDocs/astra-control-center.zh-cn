@@ -16,6 +16,7 @@ summary: 管理Astra控制中心系统上的远程LDAP用户和组。
 
 
 
+[[add-a-remote-user]]
 == 添加远程用户
 
 帐户所有者和管理员可以向Astra Control添加远程用户。Astra Control Center支持多达10、000个LDAP远程用户。
@@ -51,6 +52,7 @@ NOTE: 如果通过LDAP组成员资格为用户分配了多个角色、则只有�
 
 
 
+[[add-a-remote-group]]
 == 添加远程组
 
 要一次性添加多个远程用户、帐户所有者和管理员可以向Astra Control添加远程组。添加远程组时、该组中的所有远程用户均可登录到Astra Control、并继承与该组相同的角色。

@@ -18,12 +18,14 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 
 
 
+[[app-protection-workflow]]
 == 应用程序保护工作流
 
 您可以使用以下示例工作流开始保护应用程序。
 
 
 
+[[imagehttpsraw-githubusercontent-comnetappdocscommonmainmedianumber-1-pngone-protect-all-apps]]
 === image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一个"] 保护所有应用程序
 
 [role="quick-margin-para"]
@@ -31,6 +33,7 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 
 
 
+[[imagehttpsraw-githubusercontent-comnetappdocscommonmainmedianumber-2-pngtwo-configure-a-protection-policy-for-each-app]]
 === image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"] 为每个应用程序配置一个保护策略
 
 [role="quick-margin-para"]
@@ -38,6 +41,7 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 
 
 
+[[imagehttpsraw-githubusercontent-comnetappdocscommonmainmedianumber-3-pngthree-adjust-the-protection-policies]]
 === image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三个"] 调整保护策略
 
 [role="quick-margin-para"]
@@ -45,6 +49,7 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 
 
 
+[[imagehttpsraw-githubusercontent-comnetappdocscommonmainmedianumber-4-pngfour-replicate-apps-to-a-remote-cluster]]
 === image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"] 将应用程序复制到远程集群
 
 [role="quick-margin-para"]
@@ -52,6 +57,7 @@ link:replicate_snapmirror.html["复制应用程序"] 使用NetApp SnapMirror技�
 
 
 
+[[imagehttpsraw-githubusercontent-comnetappdocscommonmainmedianumber-5-pngfive-in-case-of-a-disaster-restore-your-apps-with-the-latest-backup-or-replication-to-remote-system]]
 === image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五个"] 发生灾难时、请使用最新备份或复制功能将应用程序还原到远程系统
 
 [role="quick-margin-para"]

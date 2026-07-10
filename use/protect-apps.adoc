@@ -37,6 +37,7 @@ summary: 通过使用自动保护策略或临时创建快照和备份来保护�
 
 
 
+[[configure-a-protection-policy]]
 == 配置保护策略
 
 保护策略通过按定义的计划创建快照，备份或这两者来保护应用程序。您可以选择每小时，每天，每周和每月创建快照和备份，并且可以指定要保留的副本数。您可以使用Astra Control Web UI或自定义资源(CR)文件定义保护策略。
@@ -134,6 +135,7 @@ Astra Control 通过使用您定义的计划和保留策略创建和保留快照
 
 
 
+[[create-a-snapshot]]
 == 创建快照
 
 您可以随时创建按需快照。
@@ -206,6 +208,7 @@ kubectl apply -f astra-control-snapshot-cr.yaml
 
 
 
+[[create-a-backup]]
 == 创建备份
 
 您可以随时备份应用程序。
@@ -286,6 +289,7 @@ Astra Control 会创建应用程序的备份。
 ====
 
 
+[[enable-backup-and-restore-for-ontap-nas-economy-operations]]
 == 为ONTAP NAS经济型操作启用备份和还原
 
 Asta Control配置程序提供了备份和还原功能、可为使用的存储后端启用这些功能 `ontap-nas-economy` 存储类。
@@ -349,6 +353,7 @@ snapshotDirectory: "true"
 
 
 
+[[create-an-immutable-backup]]
 == 创建不可还原的备份
 
 只要存储不可变备份的存储分段上的保留策略禁止、就无法修改、删除或覆盖该备份。您可以通过将应用程序备份到配置了保留策略的存储分段来创建不可配置的备份。请参见 link:../concepts/data-protection.html#immutable-backups["数据保护"] 了解有关使用不可配置备份的重要信息。
@@ -394,6 +399,7 @@ Astra Control可为应用程序创建不可移动的备份。
 ====
 
 
+[[view-snapshots-and-backups]]
 == 查看快照和备份
 
 您可以从数据保护选项卡查看应用程序的快照和备份。
@@ -412,6 +418,7 @@ NOTE: 不可还原备份会在其所使用的存储分段旁边显示状态为"�
 
 
 
+[[delete-snapshots]]
 == 删除快照
 
 删除不再需要的计划快照或按需快照。
@@ -431,6 +438,7 @@ Astra Control 会删除快照。
 
 
 
+[[cancel-backups]]
 == 取消备份
 
 您可以取消正在进行的备份。
@@ -451,6 +459,7 @@ NOTE: 您无法取消正在运行的不可更改备份。
 
 
 
+[[delete-backups]]
 == 删除备份
 
 删除不再需要的计划备份或按需备份。您不能删除对不可更改存储分段所做的备份、除非该存储分段的保留策略允许您这样做。

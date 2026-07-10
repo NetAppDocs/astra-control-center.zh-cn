@@ -16,6 +16,7 @@ Astra Control 是 Kubernetes 应用程序数据生命周期管理解决方案，
 
 
 
+[[features]]
 == 功能
 
 Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键功能：
@@ -32,6 +33,7 @@ Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键
 
 
 
+[[deployment-models]]
 == 部署模式
 
 Astra Control 有两种部署模式：
@@ -159,6 +161,7 @@ Astra Control 有两种部署模式：
 |===
 
 
+[[how-astra-control-service-works]]
 == Astra 控制服务的工作原理
 
 Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于启用状态，并使用最新功能进行更新。它利用多个组件实现应用程序数据生命周期管理。
@@ -167,8 +170,8 @@ Astra Control Service 是一种由 NetApp 管理的云服务，它始终处于�
 
 * 您可以通过设置云提供商并注册 Astra 帐户开始使用 Astra Control Service 。
 +
-** 对于 GKE- 集群， Astra Control Service 使用 https://cloud.netapp.com/cloud-volumes-service-for-gcp["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^] 或 Google Persistent Disk 作为永久性卷的存储后端。
-** 对于 AKS 集群， Astra Control Service 使用 https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] 或Azure受管磁盘作为永久性卷的存储后端。
+** 对于 GKE 集群，Astra Control Service 使用 https://www.netapp.com/google-cloud/netapp-volumes/["适用于 Google Cloud 的 NetApp Cloud Volumes Service"^]或 Google Persistent Disks 作为永久卷的存储后端。
+** 对于 AKS 集群，Astra Control Service 使用 https://www.netapp.com/azure/azure-netapp-files/["Azure NetApp Files"^]或 Azure 托管磁盘作为永久卷的存储后端。
 ** 对于Amazon EKS集群、Astra Control Service使用 https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] 或 https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["适用于 NetApp ONTAP 的 Amazon FSX"^] 作为永久性卷的存储后端。
 
 
@@ -191,6 +194,7 @@ Astra Control的免费计划支持您管理帐户中多达10个命名空间。�
 
 
 
+[[how-astra-control-center-works]]
 == Astra 控制中心的工作原理
 
 Astra 控制中心在您自己的私有云中本地运行。
@@ -224,6 +228,7 @@ Astra控制中心完全集成到AutoSupport和Active IQ数字顾问(也称为数
 
 
 
+[[for-more-information]]
 == 有关详细信息 ...
 
 * https://docs.netapp.com/us-en/astra/index.html["Astra Control Service 文档"^]

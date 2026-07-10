@@ -45,6 +45,7 @@ Astra Trident 23.10及更高版本提供了使用Astra Control配置程序的选
 ====
 
 
+[[step-1-get-the-astra-control-provisioner-image]]
 == (步骤1)获取Asta Control配置程序映像
 
 Asta控制中心用户可以使用Asta控制注册表或NetApp 支持站点 方法获取Asta控制配置程序映像。要在不使用Astra Control的情况下使用Astra Control配置程序的Astra Trent用户应使用注册表方法。
@@ -162,6 +163,7 @@ docker push <my_custom_registry>/trident-acp:24.02.0
 ====
 
 
+[[step-2-enable-astra-control-provisioner-in-astra-trident]]
 == (第2步)在Asta Trdent中启用Asta Control配置程序
 
 确定原始安装方法是否使用 https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html#determine-the-original-installation-method["运算符(手动或使用Helm)或trdentcd"^] 并根据原始方法完成相应的步骤。
@@ -170,7 +172,7 @@ docker push <my_custom_registry>/trident-acp:24.02.0
 ====
 .Asta三端操作员
 --
-. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["下载Asta三端安装程序并解压缩"^]。
+. https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["下载Asta三端安装程序并解压缩"^]。
 . 如果您尚未安装Astra三端安装程序、或者您从初始Astra三端安装程序中删除了操作员、请完成以下步骤：
 +
 .. 创建客户需求日：
@@ -416,6 +418,7 @@ helm install trident netapp-trident/trident-operator --version 100.2402.0 --set 
 ====
 
 
+[[result]]
 == 结果
 
 Asta Control配置程序功能已启用、您可以使用当前运行的版本可用的任何功能。

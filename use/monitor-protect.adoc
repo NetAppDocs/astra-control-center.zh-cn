@@ -22,6 +22,7 @@ summary: 您可以配置多种可选设置来增强您的 Astra 控制中心体�
 
 
 
+[[add-a-proxy-server-for-connections-to-the-netapp-support-site]]
 == 添加用于连接到NetApp 支持站点 的代理服务器
 
 如果运行Astra控制中心的网络需要使用代理连接到Internet (以便将支持包上传到NetApp 支持站点)、则应在Astra控制中心中配置代理服务器。
@@ -48,6 +49,7 @@ image:proxy-new.png["此图显示代理服务器已成功连接。"]
 
 
 
+[[edit-proxy-server-settings]]
 === 编辑代理服务器设置
 
 您可以编辑代理服务器设置。
@@ -62,6 +64,7 @@ image:proxy-new.png["此图显示代理服务器已成功连接。"]
 
 
 
+[[disable-proxy-server-connection]]
 === 禁用代理服务器连接
 
 您可以禁用代理服务器连接。在禁用之前、系统会警告您可能会中断其他连接。
@@ -75,6 +78,7 @@ image:proxy-new.png["此图显示代理服务器已成功连接。"]
 
 
 
+[[connect-to-prometheus]]
 == 连接到Prometheus
 
 您可以使用Prometheus监控Astra控制中心数据。您可以将Prometheus配置为从Kubernetes集群指标端点收集指标、也可以使用Prometheus可视化指标数据。
@@ -90,6 +94,7 @@ Prometheus需要能够与Astra控制中心Kubernetes集群进行通信。如果A
 
 
 
+[[configure-prometheus]]
 === 配置 Prometheus
 
 Astra控制中心会在Kubernetes集群中的TCP端口9090上公开指标服务。您需要配置 Prometheus 以从此服务收集指标。
@@ -123,6 +128,7 @@ sudo systemctl restart prometheus
 
 
 
+[[access-prometheus]]
 === 访问Prometheus
 
 访问Prometheus URL。
@@ -134,6 +140,7 @@ sudo systemctl restart prometheus
 
 
 
+[[view-data-in-prometheus]]
 === 在Prometheus中查看数据
 
 您可以使用Prometheus查看Astra控制中心数据。
@@ -152,6 +159,7 @@ NOTE: 如果收集了多个集群数据、则每个集群的指标将以不同�
 
 
 
+[[connect-to-fluentd]]
 == 连接到 Fluentd
 
 您可以将日志(Kubennet事件)从Astra Control Center监控的系统发送到Fluentd端点。默认情况下， Fluentd 连接处于禁用状态。
@@ -195,6 +203,7 @@ IMPORTANT: 如果您在收集日志时遇到问题，应登录到工作节点，
 
 
 
+[[edit-the-fluentd-connection]]
 === 编辑 Fluentd 连接
 
 您可以编辑与 Astra Control Center 实例的 Fluentd 连接。
@@ -209,6 +218,7 @@ IMPORTANT: 如果您在收集日志时遇到问题，应登录到工作节点，
 
 
 
+[[disable-the-fluentd-connection]]
 === 禁用 Fluentd 连接
 
 您可以禁用与 Astra Control Center 实例的 Fluentd 连接。

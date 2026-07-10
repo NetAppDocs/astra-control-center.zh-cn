@@ -4,6 +4,7 @@
 
 
 
+[[download-and-extract-astra-control-center]]
 == 下载并提取Astra控制中心
 
 从以下位置之一下载Astra Control Center映像：

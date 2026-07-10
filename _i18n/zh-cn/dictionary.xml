@@ -115,8 +115,6 @@
   <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">专利</block>
   <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">有关 NetApp 拥有的专利的最新列表，请访问：</block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">隐私政策</block>
-  <block id="e81b0f8fae224ca0c3d3258b75a989dd" category="section-title">Astra Control API 许可证</block>
-  <block id="f7c79ca7f13fd9da78390d5a97db7042" category="paragraph"><block ref="f7c79ca7f13fd9da78390d5a97db7042" category="inline-link-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">开放源代码</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知文件提供有关 NetApp 软件中使用的第三方版权和许可证的信息。</block>
   <block id="34515f1d88b10d0db0a78eba6c533394" category="summary">已知问题可确定可能妨碍您成功使用此版本产品的问题。</block>
@@ -182,7 +180,6 @@
   <block id="1eba71d64e6c5e410e558530711e835b" category="summary">已知限制确定了本产品版本不支持的平台、设备或功能、或者这些平台、设备或功能无法与产品正确交互操作。仔细审查这些限制。</block>
   <block id="733442372849ffb7318ed29ca9c55aaa" category="section-title">同一集群不能由两个 Astra Control Center 实例管理</block>
   <block id="1bca7607e51d744e7281a7c4772adc9f" category="inline-link-macro">取消管理集群</block>
-  <block id="1f7a30a87f1e03ae9b4e5a75054aea44" category="paragraph">如果要管理另一个 Astra Control Center 实例上的集群，应首先进行管理 <block ref="db506b8ca3f9d6b67f586ae44373200f" category="inline-link-macro-rx"></block> 在另一个实例上管理之前，先从所管理的实例进行管理。从管理中删除集群后，执行以下命令以验证此集群是否未受管理：</block>
   <block id="df968f82e7fe0ad4aa9c7e7fa3f7746b" category="paragraph">此命名空间中不应运行任何 Pod ，或者此命名空间不应存在。如果其中任一项为 true ，则集群不受管理。</block>
   <block id="cee3f7f1743165823d88b27d5998cf00" category="paragraph">Astra Control 支持使用命名空间范围的运算符安装的应用程序。这些操作员通常采用 " 按价值传递 " 架构，而不是 " 按参考传递 " 架构。以下是一些遵循这些模式的操作员应用程序：</block>
   <block id="489435e765db57e2156b5a11839b6533" category="inline-link">Apache K8ssandra</block>
@@ -197,7 +194,6 @@
   <block id="fd1d9e68b00f80c37ad27ceadea7ddb3" category="section-title">不支持使用 Helm 2 部署的应用程序</block>
   <block id="58d79c3b7603eb5b1b4326c3aa1454a6" category="section-title">Astra 控制中心不会验证您为代理服务器输入的详细信息</block>
   <block id="cfefd1cb11182407b9ad42fef18d6118" category="inline-link-macro">输入正确的值</block>
-  <block id="f99f038781fc48aada5865fc36b1d518" category="paragraph">请确保您的安全 <block ref="18fbb20c2dec7dc2c270711d5671f275" category="inline-link-macro-rx"></block> 建立连接时。</block>
   <block id="52613a0e2a34040faff2fa3713d61414" category="section-title">与 Postgres Pod 的现有连接导致故障</block>
   <block id="a3e438b957ae4a8b4731d63d2e88365f" category="paragraph">在 Postgres Pod 上执行操作时，不应直接在 Pod 中连接以使用 psql 命令。Astra Control 需要使用 psql 访问权限来冻结和解冻数据库。如果已建立连接，则快照，备份或克隆将失败。</block>
   <block id="a4f53e5340ac3c6ab0e1234f9f27981c" category="inline-link">Astra Control API</block>
@@ -475,7 +471,6 @@
   <block id="00d6e8bbad1611d4dccac7fead48f1ec" category="section-title">编辑存储分段</block>
   <block id="049863f89bf64849544e3290929262b3" category="paragraph">您可以更改存储分段的访问凭据信息，并更改选定存储分段是否为默认存储分段。</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="inline-link-macro">发行说明</block>
-  <block id="9d51fe0409675ba8d719678581de46d5" category="admonition">添加存储分段时，请选择正确的存储分段提供程序，并为该提供程序提供正确的凭据。例如， UI 接受 NetApp ONTAP S3 作为类型并接受 StorageGRID 凭据；但是，这将发生原因使使用此存储分段执行所有未来应用程序备份和还原失败。请参见 <block ref="6635cf1f59c228488d619bdcf0b3bc55" category="inline-link-macro-rx"></block>。</block>
   <block id="a7233ba4da74285b53997302d9a94817" category="list-text">从左侧导航栏中，选择 * 分段器 * 。</block>
   <block id="a1528454842cc7ec985b647f82dba9ab" category="list-text">更改存储分段类型以外的任何信息。</block>
   <block id="c51988f8486010cfbb76c755dce149bc" category="admonition">您无法修改存储分段类型。</block>
@@ -502,7 +497,6 @@
   <block id="cdb2726825d8ca6b1fbc495e1769be38" category="inline-link-macro">从 Astra Control 取消管理应用程序</block>
   <block id="bfde4228559e1dc730ccb3f1710371f6" category="list-text"><block ref="819731d94d9a0720df36a3fc1b85d024" category="inline-link-macro-rx"></block>。</block>
   <block id="e63154c624567c5cf9bd389230c703ee" category="inline-link-macro">从 Astra Control 取消管理集群</block>
-  <block id="532f06fc1e312d6659de4b8386cc2689" category="list-text"><block ref="fee7c2b0377fd57e3be010ddfbcf91f6" category="inline-link-macro-rx"></block>。</block>
   <block id="8ce424856922443bb79c34a944daacaf" category="paragraph">从 Astra Control 中删除集群不会对集群的配置（应用程序和永久性存储）进行任何更改。对该集群上的应用程序执行的任何 Astra Control 快照或备份都将无法还原。由 Astra Control 创建的永久性存储备份仍保留在 Astra Control 中，但无法还原。</block>
   <block id="03d32d7daecae8d532e26e0c040b4ff0" category="admonition">在通过任何其他方法删除集群之前，请始终从 Astra Control 中删除集群。如果在集群仍由 Astra Control 管理时使用其他工具删除集群，则可能会对您的 Astra Control 帐户出现发生原因问题。</block>
   <block id="f75d983d4bc87e1a244c894a4357e93a" category="section-title">管理应用程序</block>
@@ -707,7 +701,6 @@
   <block id="890a77a8c921a60204701adfa2f5c160" category="list-text">编辑 kubeconfig （` .Kube/config` ）。</block>
   <block id="6c97574dc1b4c1296eabcd490b901dbf" category="list-text">将集群名称从 `Kubernetes` 更新为唯一的自定义名称（在以下示例中使用`xyz-cluster` ）。在 `clusters` 和 `Context` 部分进行更新，如以下示例所示：</block>
   <block id="863333fc6964aae7ff1cd85ff324bdad" category="list-text">如果您使用的注册表需要身份验证，则需要执行以下操作：</block>
-  <block id="052766753c4902f7b4dda44f55923c85" category="list-text">对于 GKE- 集群， Astra Control Service 使用<block ref="33441d63a8e7ace6860eab2024320819" category="inline-link-rx"></block> 或 Google Persistent Disk 作为永久性卷的存储后端。</block>
   <block id="231cf4c70d866b616c21baddaeed0696" category="doc">故障排除</block>
   <block id="36e2bd9e7950f46d3ea6d2bca4c50ba1" category="paragraph">了解如何解决您可能遇到的一些常见问题。</block>
   <block id="c24664a07eb6e40162f3e96c142b0bdc" category="summary">您可以在 Astra Control 帐户中查看有关活动的详细信息。例如，邀请新用户时，添加集群时或创建快照时。您还可以将帐户活动导出到 CSV 文件。</block>
@@ -1443,7 +1436,6 @@
   <block id="80d49eac5df92c5527de1fd14b44adf5" category="list-text">选择要用于存储分段的现有凭据。</block>
   <block id="5b14710f01c3e6173bd4434e71fdcd62" category="list-text">选择 ...<block ref="ec211f7c20af43e742bf2570c3cb84f9" prefix=" " category="inline-code"></block>。</block>
   <block id="e9a2cf6bcc4b5dac4132bd23653461f4" category="inline-link-macro">设置另一个默认存储分段</block>
-  <block id="70c54cfcee3c9263e59ee7de13eaba8a" category="admonition">添加存储分段时、Astra Control会使用默认存储分段指示符标记一个存储分段。您创建的第一个存储分段将成为默认存储分段。添加分段时、您可以稍后决定添加 <block ref="f83337d9020c8fbb1074e1310043d277" category="inline-link-macro-rx"></block>。</block>
   <block id="998b4dab2853378d7a7c2b1789837311" category="inline-link-macro">管理本地用户和角色</block>
   <block id="5420601ecf79fbee6e1e870faab8d5a6" category="list-text"><block ref="5420601ecf79fbee6e1e870faab8d5a6" category="inline-link-macro-rx"></block></block>
   <block id="d6d84559feb3a694ac512a36a46ec5f6" category="admonition">确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。</block>
@@ -1484,7 +1476,6 @@
   <block id="36c884b69a5d1e5a404eca027f6ca471" category="paragraph">根据您的环境、安装Astra控制中心后可能需要进行其他配置：</block>
   <block id="747bf8100668838f9a411ea795df98d2" category="list-text"><block ref="747bf8100668838f9a411ea795df98d2" category="inline-link-macro-rx"></block></block>
   <block id="c4d3bd82a4066f0e523ba618e438bc51" category="summary">Astra Control是Kubernetes应用程序数据生命周期管理服务、可简化有状态应用程序的操作。轻松保护，备份和迁移 Kubernetes 工作负载，并即时创建有效的应用程序克隆。</block>
-  <block id="450dcc356e2c75be5bfea7bc913558bb" category="list-text">对于 AKS 集群， Astra Control Service 使用<block ref="16e1ab965c1d673c5cb3b5a28e77c1c1" category="inline-link-rx"></block> 或Azure受管磁盘作为永久性卷的存储后端。</block>
   <block id="181e1260b62d0667dd25d8e26eba83f5" category="paragraph">Astra Control的免费计划支持您管理帐户中多达10个命名空间。如果您要管理10个以上的计划、则需要通过从"免费计划"升级到"高级计划"来设置计费。</block>
   <block id="624cfce99f1f72da4d8c5d67b46d357b" category="paragraph">在安装Astra Control Center期间(如果指定)<block ref="5ef3c13da1e4fcb9a76fc8f568eee144" prefix=" " category="inline-code"></block> 适用于<block ref="5398d7dab242bfea13c044912cacfd10" prefix=" " category="inline-code"></block> 在Astra控制中心自定义资源(CR)文件中 <block ref="70b058e54d2bda749060070a7f9c4e5c" prefix="(" category="inline-code"></block>)、则会自动将每日支持包上传到<block ref="3725c06f412bedb14ffd610de312875d" category="inline-link-rx"></block>。</block>
   <block id="a62af64f81e65194efb6011308308c81" category="list-text">部署在一个或多个命名空间中的单个应用程序(在此示例中使用了helm3)</block>
@@ -1619,7 +1610,6 @@
   <block id="17439c1f9f454fec6d87cb1c616ca38d" category="paragraph">在Astra Control发现集群上的命名空间后、您可以定义要管理的应用程序。您可以选择 <block ref="a80fd992345d76e393a10bcd2467e533" category="inline-xref-macro-rx"></block> 或 <block ref="960875291bec74576a7861015ee4194f" category="inline-xref-macro-rx"></block>。这一切都可以细化到数据保护操作所需的粒度级别。</block>
   <block id="003a9a2121702606f76c341202d667e5" category="paragraph">虽然您可以使用Astra Control单独管理层次结构的两个级别(命名空间和该命名空间中的应用程序或跨命名空间)、但最佳做法是选择一个或另一个。如果在命名空间和应用程序级别同时执行操作，则在 Astra Control 中执行的操作可能会失败。</block>
   <block id="f336f8b0ae53675b065c0d6186baab21" category="list-text">已添加到Astra Control的Kubernetes集群上的现有命名空间。</block>
-  <block id="44e843a0117ca07fcd81196eb3d8ccca" category="list-text">(可选) Any上的Kubernetes标签 <block ref="35cac6ae488aa1ef0053c9b9d6c5461a" category="inline-link-macro-rx"></block>。</block>
   <block id="5024ae05715714a1f77019a1d3570662" category="inline-link-macro">修改具有命名空间限制的用户角色</block>
   <block id="c4cb46a2957e787f5e4e5299782270f6" category="inline-xref">阅读示例中的更多内容。</block>
   <block id="e5d509b8ad96124cb3a6b0df8e2a6299" category="admonition">定义应用程序时、请确保不在具有保护策略的多个应用程序中包含Kubernetes资源。Kubernetes资源上重叠的保护策略可能会发生发生原因 数据冲突。 <block ref="e641e59a56328c9fa4038a349ab4087c" category="inline-xref-macro-rx"></block></block>
@@ -2390,7 +2380,6 @@
   <block id="6b08504cd5426f752bd7eaae83995d90" category="list-text">创建AWS Elastic Container Registry (ECR)以托管所有Astra Control Center映像。</block>
   <block id="16c607c45e3322cf6601b7787d1f246f" category="list-text">将A作用 力控制中心图像推送到您定义的注册表。</block>
   <block id="d8b0322bc209bdfbc78d7797f99b579f" category="list-text">如果使用OCP、则为Red Hat OpenShift Container Platform (OCP) 4.11至4.13</block>
-  <block id="3d03421efd2f3d3214e202f7d8c4c27c" category="list-text"><block ref="3d03421efd2f3d3214e202f7d8c4c27c" category="inline-link-rx"></block></block>
   <block id="b387f4f6aa69c93f3afbddbe810f081f" category="list-text">创建Google容器注册表以托管Asta Control Center映像。</block>
   <block id="9acd22968611ca33d2ba472c7feb326d" category="paragraph">示例：可以通过输入以下脚本将Astra Control Center映像推送到此注册表：</block>
   <block id="2da3911683fd04e8a1a6e54efd92d4ed" category="list-text"><block ref="95d9d6081bcfe327760924f1dcd7ff53" category="inline-link-rx"></block>。</block>
@@ -2606,8 +2595,6 @@
   <block id="3f23a4c261d25b12e00f6171fdb38359" category="list-text">确保存储分段为以下类型之一：</block>
   <block id="04f795a7ad6dab94d4298117f47fe736" category="cell">1.15至1.16 (请参见 <block ref="ca85a59b7f183a96161fa125579f74e9" category="inline-xref-macro-rx"></block>）</block>
   <block id="dfee63492fa418d45012f44e9efcecf3" category="list-text">*VMware Tanzu Kubernetes Grid集群要求*：在VMware Tanzu Kubernetes Grid (TKG)或Tanzu Kubernetes Grid Integrated Edition (TKGi)集群上托管Astra Control Center时，请记住以下注意事项。</block>
-  <block id="1c48088dc1732bdac3e27be1a94c191a" category="inline-link">VMware NSX-T 数据中心产品文档。</block>
-  <block id="6f2e84a8cc83bea678c051eedf03eda5" category="list-text">默认的 VMware TKG 和 TKGi 配置文件令牌将在部署后 10 小时过期。如果您使用的是 Tanzu 产品组合，则必须使用未过期的令牌生成 Tanzu Kubernetes 集群配置文件，以防止 Astra 控制中心与受管应用程序集群之间出现连接问题。有关说明，请访问<block ref="8b2a2640d5e94aaf0de3bd3373313f4b" category="inline-link-rx"></block></block>
   <block id="71aeb6f089406bc5a9abfec5efe995cc" category="list-text">使用<block ref="3b7e746f7178ae60c65fc979bda0c36b" prefix=" " category="inline-code"></block> 命令以查看是否已将服务监控器配置为接受传入流量。如果存在一个，则不应安装 MetalLB ，因为现有服务监控器将覆盖任何新的负载平衡器配置。</block>
   <block id="883a74644c0071959dda599b0318b7ca" category="list-text">在任何要由 Astra Control 管理的应用程序集群上禁用 TKG 或 TKGi 默认存储类强制实施。您可以通过编辑来执行此操作<block ref="ce7ec6c8eb08d64132a760a081faa0d0" prefix=" " category="inline-code"></block> 命名空间集群上的资源。</block>
   <block id="d3c98057775714af0833471a00e53e8a" category="section-title">服务网格要求</block>
@@ -2922,7 +2909,6 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="4f27e6f7f8f95f32f55540801c5f6db0" category="list-text">验证是否已创建操作员、部署和副本集。</block>
   <block id="6849b59104c35075b063cf35570fde13" category="admonition">在 Kubernetes 集群中只能有 * 一个操作符实例 * 。请勿创建多个部署的Asta三端操作员。</block>
   <block id="b88c081e2a4b249f94292c6f7bf16bdc" category="inline-link">下载Asta三端安装程序并解压缩</block>
-  <block id="f1f44f407a364d092b4a3b446d6593b5" category="list-text"><block ref="5512264baa78f7d10bb082092407833c" category="inline-link-rx"></block>。</block>
   <block id="b53ea1f6729ee2c1c5dc303c5e9bb360" category="list-text">如果您尚未安装Astra三端安装程序、或者您从初始Astra三端安装程序中删除了操作员、请完成以下步骤：</block>
   <block id="1802fc07d2de18110ae52621540f337e" category="list-text">创建客户需求日：</block>
   <block id="b19df824e7baecb971d0fdd39542c6d6" category="list-text">创建三项命名空间 <block ref="a40796e67d7096bdb1a461d9369987ae" prefix="(" category="inline-code"></block>)或确认三项命名空间仍然存在 <block ref="929ac53a7aaa18d0ab7bfd29e3b89c45" prefix="(" category="inline-code"></block>）。如果已删除此命名空间、请重新创建它。</block>
@@ -3252,9 +3238,7 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
   <block id="7247d7030b66ad4ed4eaa523ed6676b0" category="doc">[技术预览]使用CRS管理Astra Control应用程序</block>
   <block id="da13393683a8a904dc50249c70da287d" category="paragraph">使用Kubbernetes自定义资源(CR)管理Astra Control应用程序。可以使用以下选项：</block>
   <block id="fe3d899243edced10a1ad187416682d1" category="inline-link-macro">使用Kubbernetes自定义资源定义应用程序</block>
-  <block id="548367b13fdfb71bd127422bd31f4a23" category="list-text"><block ref="548367b13fdfb71bd127422bd31f4a23" category="inline-link-macro-rx"></block></block>
   <block id="b8e79ddd9fc269248031679199dbd254" category="inline-link-macro">使用自定义资源管理存储分段</block>
-  <block id="627279ce1f2550c02809339fdab89000" category="list-text"><block ref="627279ce1f2550c02809339fdab89000" category="inline-link-macro-rx"></block></block>
   <block id="facecf9e8e2f937530550ac2ae290916" category="list-text"><block ref="472d718512ba332a2d38860c315707a0" category="inline-link-rx"></block> 登录到NetApp 支持站点 并导航到"Systems"(系统)菜单下的软件许可证。</block>
   <block id="80d2cdb34a892477ebf224eafba016c0" category="admonition">请确保您的许可证至少启用所需数量的CPU单元。如果Astra Control Center当前管理的CPU单元数超过所应用新许可证中的可用CPU单元数、您将无法应用新许可证。</block>
   <block id="cafefc5f50506723aef36efe08228ac6" category="list-text"><block ref="cafefc5f50506723aef36efe08228ac6" category="inline-link-macro-rx"></block></block>
@@ -3708,4 +3692,17 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="ee598b6d30a6fff85e10ec4aa00fb486" category="list-text">Astra Control：Astra Control 是针对所有托管集群的集中管理服务，为本地应用程序保护和移动性提供协调的工作负载，并具有以下功能：</block>
   <block id="301a1bce6ec5e89d3e225cc1c7d88bb6" category="list-text">多个集群的组合视图</block>
   <block id="00b221fbcaad3eecdab529046865c432" category="paragraph">Astra Control 适用于单一部署模型。</block>
+  <block id="c30252f2d0066b5068c0018598caa179" category="list-text"><block ref="9dd8c260676cdbe799894b1bfaa380f3" category="inline-link-rx"></block>。</block>
+  <block id="b0fd08b16e7b7c94a3bf8b7445bca6fe" category="list-text">对于 GKE 集群，Astra Control Service 使用<block ref="8665cd3a57554cfca2cb7457cb655a04" category="inline-link-rx"></block>或 Google Persistent Disks 作为永久卷的存储后端。</block>
+  <block id="319c3fec493c64a65148bf0f94ddf14a" category="list-text">对于 AKS 集群，Astra Control Service 使用<block ref="c8cef11c8f82391ff314149403153759" category="inline-link-rx"></block>或 Azure 托管磁盘作为永久卷的存储后端。</block>
+  <block id="1e2b1bc63405a140a4387b2e8739eb16" category="list-text"><block ref="2e95ec519b9fe9bcf5a4be85aaffa8d6" category="inline-link-macro-rx"></block>。</block>
+  <block id="7493ebd270b68257f24f8ed58dae67e0" category="list-text"><block ref="7493ebd270b68257f24f8ed58dae67e0" category="inline-link-rx"></block></block>
+  <block id="ddeb3e05aed45d50e7f48754751c93b3" category="inline-link">VMware NSX-T Data Center 产品文档</block>
+  <block id="639460c11b1a38b37de388e6094e4e9e" category="list-text">默认 VMware TKG 和 TKGi 配置文件令牌在部署后 10 小时过期。如果您使用 Tanzu 产品组合，则必须生成包含不过期令牌的 Tanzu Kubernetes 集群配置文件，以防止 Astra Control Center 与托管应用程序集群之间出现连接问题。有关说明，请访问 <block ref="38e49605ed0ee8802727916ae2015530" category="inline-link-rx"></block>。</block>
+  <block id="c090e26e12d996a63ebdc9443b1a24bd" category="paragraph">如果您想在另一个 Astra Control Center 实例上管理某个集群，应先从管理该集群的实例中将其<block ref="10a3ec7ef23f0eeeb87bbd373b7d1bae" category="inline-link-macro-rx"></block>，然后再在另一个实例上对其进行管理。将集群从管理中移除后，通过执行以下命令验证该集群是否已取消管理：</block>
+  <block id="9baf06bed4e0958aca8a391da521f183" category="paragraph">请确保在建立连接时 <block ref="f332842401aa508212d4f5a688ca86ce" category="inline-link-macro-rx"></block>。</block>
+  <block id="c58281350ba073d90fe63e63b3f80e34" category="list-text"><block ref="c58281350ba073d90fe63e63b3f80e34" category="inline-link-macro-rx"></block></block>
+  <block id="e7b4bce844330e3c5aefb46f8d12db1d" category="list-text"><block ref="e7b4bce844330e3c5aefb46f8d12db1d" category="inline-link-macro-rx"></block></block>
+  <block id="398950e2648d28eed29b2b7bd0952ad5" category="list-text">（可选）任意 <block ref="3b1c56fea11b428a3060d7568229534a" category="inline-link-macro-rx"></block> 上的 Kubernetes 标签。</block>
+  <block id="eef3fedf7d4e668662e435160c3c5c87" category="admonition">添加存储桶时，请选择正确的存储桶提供程序，并为该提供程序提供正确的凭据。例如，UI 接受 NetApp ONTAP S3 作为类型并接受 StorageGRID 凭据；但是，这将导致将来使用此存储桶的所有应用程序备份和还原失败。请参阅<block ref="2fa2057c95f20298aba02cf1be9ec7d5" category="inline-link-macro-rx"></block>。</block>
 </blocks>

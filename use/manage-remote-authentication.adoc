@@ -21,6 +21,7 @@ IMPORTANT: Astra Control Center使用用户登录属性(在启用远程身份验
 
 
 
+[[add-a-certificate-for-ldaps-authentication]]
 == 添加用于LDAPS身份验证的证书
 
 为LDAP服务器添加专用TLS证书、以便在使用LDAPS连接时、Astra控制中心可以向LDAP服务器进行身份验证。您只需要执行一次此操作、或者在安装的证书过期时执行此操作。
@@ -36,6 +37,7 @@ IMPORTANT: Astra Control Center使用用户登录属性(在启用远程身份验
 
 
 
+[[enable-remote-authentication]]
 == 启用远程身份验证
 
 您可以启用LDAP身份验证并配置Astra Control与远程LDAP服务器之间的连接。
@@ -72,6 +74,7 @@ NOTE: 请务必对*用户匹配*和*组匹配*使用正确的基本可分辨名�
 
 
 
+[[disable-remote-authentication]]
 == 禁用远程身份验证
 
 您可以暂时禁用与LDAP服务器的活动连接。
@@ -90,6 +93,7 @@ NOTE: 禁用与LDAP服务器的连接时、将保存所有设置、并保留从�
 
 
 
+[[edit-remote-authentication-settings]]
 == 编辑远程身份验证设置
 
 如果禁用了与LDAP服务器的连接或*远程身份验证*窗格处于"连接错误"状态、则可以编辑配置设置。
@@ -106,6 +110,7 @@ NOTE: 如果*远程身份验证*窗格处于"已禁用"状态、则无法编辑L
 
 
 
+[[disconnect-remote-authentication]]
 == 断开远程身份验证
 
 您可以从LDAP服务器断开连接、并从Astra Control中删除配置设置。

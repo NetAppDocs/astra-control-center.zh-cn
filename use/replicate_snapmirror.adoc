@@ -42,6 +42,7 @@ NOTE: 您可以同时按相反方向复制不同的应用程序。例如、应�
 
 
 
+[[replication-prerequisites]]
 == 复制前提条件
 
 Astra Control应用程序复制要求在开始之前满足以下前提条件：
@@ -99,6 +100,7 @@ IMPORTANT: Astra Control复制支持使用单个存储类的应用程序。将�
 
 
 
+[[set-up-a-replication-relationship]]
 == 设置复制关系
 
 设置复制关系涉及以下方面：
@@ -161,6 +163,7 @@ Asta Control创建用于复制的应用程序快照。
 
 
 
+[[bring-a-replicated-app-online-on-the-destination-cluster-failover]]
 == 在目标集群上使复制的应用程序联机(故障转移)
 
 使用Astra Control、您可以将复制的应用程序故障转移到目标集群。此操作步骤 将停止复制关系并使应用程序在目标集群上联机。如果应用程序正常运行、则此操作步骤 不会停止源集群上的应用程序。
@@ -185,6 +188,7 @@ Asta Control创建用于复制的应用程序快照。
 
 
 
+[[resync-a-failed-over-replication]]
 == 重新同步故障转移复制
 
 重新同步操作将重新建立复制关系。您可以选择关系的源、以便在源或目标集群上保留数据。此操作将重新建立SnapMirror关系、以便按所选方向启动卷复制。
@@ -217,6 +221,7 @@ CAUTION: 请仔细选择重新同步源、因为目标上的数据将被覆盖�
 
 
 
+[[reverse-application-replication]]
 == 反向复制应用程序
 
 这是一项计划内操作、可将应用程序移至目标存储后端、同时继续复制回原始源存储后端。Asta Control会停止源应用程序并将数据复制到目标、然后再故障转移到目标应用程序。
@@ -243,6 +248,7 @@ CAUTION: 请仔细选择重新同步源、因为目标上的数据将被覆盖�
 
 
 
+[[fail-back-applications-to-the-original-source-cluster]]
 == 将应用程序故障恢复到原始源集群
 
 使用Astra Control、您可以通过以下操作序列在故障转移操作后实现"故障恢复"。在此工作流中、Astra Control会在反转复制方向之前、将所有应用程序更改复制(重新同步)回原始源应用程序。
@@ -270,6 +276,7 @@ CAUTION: 请仔细选择重新同步源、因为目标上的数据将被覆盖�
 
 
 
+[[delete-an-application-replication-relationship]]
 == 删除应用程序复制关系
 
 删除此关系会导致出现两个独立的应用程序、它们之间没有任何关系。
@@ -289,12 +296,14 @@ CAUTION: 请仔细选择重新同步源、因为目标上的数据将被覆盖�
 
 
 
+[[replication-relationship-health-status-and-relationship-life-cycle-states]]
 == 复制关系运行状况和关系生命周期状态
 
 Astra Control显示关系的运行状况以及复制关系的生命周期状态。
 
 
 
+[[replication-relationship-health-statuses]]
 === 复制关系运行状况
 
 以下状态指示复制关系的运行状况：
@@ -312,6 +321,7 @@ Astra Control显示关系的运行状况以及复制关系的生命周期状态�
 
 
 
+[[replication-life-cycle-states]]
 === 复制生命周期状态
 
 以下状态反映了复制生命周期的不同阶段：

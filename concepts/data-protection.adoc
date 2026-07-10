@@ -16,6 +16,7 @@ summary: 了解 Astra 控制中心提供的数据保护类型，以及如何以�
 
 
 
+[[snapshots-backups-and-protection-policies]]
 == 快照，备份和保护策略
 
 快照和备份均可保护以下类型的数据：
@@ -36,6 +37,7 @@ CAUTION: _You can't be Fully protected until you have a recent backup_ 。这一
 
 
 
+[[immutable-backups]]
 === 不可配置的备份
 
 不可变备份是指在指定时间段内无法更改或删除的备份。在创建不可更改的备份时、Astra Control会检查以确保您使用的存储分段是一次写入多次读取(Write on时 读取多次、WORM)存储分段、如果是、则会确保备份在Astra Control中不可更改。
@@ -53,12 +55,14 @@ Astra Control Center支持使用以下平台和存储分段类型创建不可配
 
 
 
+[[clones]]
 == 克隆
 
 _cloner_是应用程序、其配置及其永久性数据卷的精确副本。您可以在同一个 Kubernetes 集群或另一个集群上手动创建克隆。如果需要将应用程序和存储从一个 Kubernetes 集群移动到另一个 Kubernetes 集群，则克隆应用程序非常有用。
 
 
 
+[[replication-between-storage-backends]]
 == 在存储后端之间进行复制
 
 使用Astra Control、您可以使用NetApp SnapMirror技术的异步复制功能、以低RPO (恢复点目标)和低RTO (恢复时间目标)为应用程序构建业务连续性。配置后、应用程序便可将数据和应用程序更改从一个存储后端复制到另一个存储后端、复制到同一集群上或复制到不同集群之间。
@@ -87,6 +91,7 @@ image:acc-replication_4in.png["此图显示了两个Kubernetes集群和两个ONT
 
 
 
+[[backups-snapshots-and-clones-with-an-expired-license]]
 == 许可证已过期的备份、快照和克隆
 
 如果许可证过期、只有当要添加或保护的应用程序是另一个Asta Control Center实例时、您才能添加新应用程序或执行应用程序保护操作(例如快照、备份、克隆和还原操作)。

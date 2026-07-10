@@ -49,9 +49,10 @@ summary: 已知限制确定了本产品版本不支持的平台、设备或功�
 
 
 
+[[the-same-cluster-cannot-be-managed-by-two-astra-control-center-instances]]
 == 同一集群不能由两个 Astra Control Center 实例管理
 
-如果要管理另一个 Astra Control Center 实例上的集群，应首先进行管理 link:../use/unmanage.html#stop-managing-compute["取消管理集群"] 在另一个实例上管理之前，先从所管理的实例进行管理。从管理中删除集群后，执行以下命令以验证此集群是否未受管理：
+如果您想在另一个 Astra Control Center 实例上管理某个集群，应先从管理该集群的实例中将其link:../use/unmanage.html#unmanage-a-cluster["取消管理集群"]，然后再在另一个实例上对其进行管理。将集群从管理中移除后，通过执行以下命令验证该集群是否已取消管理：
 
 [listing]
 ----
@@ -61,6 +62,7 @@ oc get pods n -netapp-monitoring
 
 
 
+[[astra-control-center-cannot-manage-two-identically-named-clusters]]
 == Astra 控制中心无法管理两个命名相同的集群
 
 如果您尝试添加与已存在的集群同名的集群，则此操作将失败。如果未更改 Kubernetes 配置文件中的集群默认名称，则此问题描述最常发生在标准 Kubernetes 环境中。
@@ -97,18 +99,21 @@ current-context: kubernetes-admin@kubernetes
 
 
 
+[[a-user-with-namespace-rbac-constraints-can-add-and-unmanage-a-cluster]]
 == 具有命名空间 RBAC 限制的用户可以添加和取消管理集群
 
 不应允许具有命名空间 RBAC 限制的用户添加或取消管理集群。由于当前的限制， Astra 不会阻止此类用户取消管理集群。
 
 
 
+[[a-member-with-namespace-constraints-cannot-access-the-cloned-or-restored-apps-until-admin-adds-the-namespace-to-the-constraint]]
 == 具有命名空间约束的成员无法访问克隆或还原的应用程序，直到管理员将命名空间添加到此限制中为止
 
 任意 `member` 使用命名空间名称/ID限制RBAC的用户可以将应用程序克隆或还原到同一集群上的新命名空间或其组织帐户中的任何其他集群。但是，同一用户无法访问新命名空间中的克隆或还原应用程序。克隆或还原操作创建新命名空间后、帐户管理员/所有者可以编辑 `member` 受影响用户的用户帐户和更新角色约束、以授予对新命名空间的访问权限。
 
 
 
+[[restrictive-role-constraints-can-be-ignored-for-resources-on-non-connector-clusters]]
 == 对于非连接器集群上的资源、可以忽略限制性角色约束
 
 * *如果要访问的资源属于安装了最新Astra Connector的集群*：通过LDAP组成员资格为用户分配多个角色时，这些角色的约束条件将合并在一起。例如、如果具有本地查看器角色的用户加入绑定到成员角色的三个组、则该用户现在可以以查看器角色访问原始资源、并以成员角色访问通过组成员资格获得的资源。
@@ -117,24 +122,28 @@ current-context: kubernetes-admin@kubernetes
 
 
 
+[[multiple-applications-in-a-single-namespace-cannot-be-restored-collectively-to-a-different-namespace]]
 == 一个命名空间中的多个应用程序无法一起还原到另一个命名空间
 
 如果您在一个命名空间中管理多个应用程序(通过在Astra Control中创建多个应用程序定义)、则无法将所有应用程序还原到另一个命名空间。您需要将每个应用程序还原到其自己单独的命名空间。
 
 
 
+[[astra-control-does-not-support-apps-that-use-multiple-storage-classes-per-namespace]]
 == Astra Control不支持每个命名空间使用多个存储类的应用程序
 
 Astra Control支持每个命名空间使用一个存储类的应用程序。将应用程序添加到命名空间时、请确保该应用程序与命名空间中的其他应用程序具有相同的存储类。
 
 
 
+[[astra-control-does-not-automatically-assign-default-buckets-for-cloud-instances]]
 == Astra Control不会自动为云实例分配默认分段
 
 Astra Control不会自动为任何云实例分配默认分段。您需要手动设置云实例的默认存储分段。如果未设置默认分段、您将无法在两个集群之间执行应用程序克隆操作。
 
 
 
+[[clones-of-apps-installed-using-pass-by-reference-operators-can-fail]]
 == 使用按参考传递操作符安装的应用程序克隆可能会失败
 
 Astra Control 支持使用命名空间范围的运算符安装的应用程序。这些操作员通常采用 " 按价值传递 " 架构，而不是 " 按参考传递 " 架构。以下是一些遵循这些模式的操作员应用程序：
@@ -155,24 +164,28 @@ NOTE: 在克隆操作期间、需要IngressClass资源或webhooks才能正常运
 
 
 
+[[in-place-restore-operations-of-apps-that-use-a-certificate-manager-are-not-supported]]
 == 不支持对使用证书管理器的应用程序执行原位还原操作
 
 此版本的 Astra 控制中心不支持使用证书管理器原位还原应用程序。支持将还原操作还原到其他命名空间和克隆操作。
 
 
 
+[[olm-enabled-and-cluster-scoped-operator-deployed-apps-not-supported]]
 == 不支持已部署的应用程序，这些应用程序已启用 olm ，并且已部署集群范围
 
 Astra 控制中心不支持使用集群范围的操作员执行应用程序管理活动。
 
 
 
+[[apps-deployed-with-helm-2-are-not-supported]]
 == 不支持使用 Helm 2 部署的应用程序
 
 如果您使用 Helm 部署应用程序，则 Astra 控制中心需要 Helm 版本 3 。完全支持管理和克隆使用 Helm 3 部署的应用程序（或从 Helm 2 升级到 Helm 3 ）。有关详细信息，请参见 link:../get-started/requirements.html["Astra 控制中心要求"]。
 
 
 
+[[snapshots-might-fail-for-kubernetes-1-25-or-later-clusters-with-certain-snapshot-controller-versions]]
 == 使用某些Snapshot控制器版本的Kubernetes 1.25或更高版本集群的快照可能会失败
 
 如果在运行1.25或更高版本的Kubernetes集群上安装了v1beta1版本的快照控制器API、则该集群的快照可能会失败。
@@ -188,18 +201,21 @@ Astra 控制中心不支持使用集群范围的操作员执行应用程序管�
 
 
 
+[[backups-and-snapshots-might-not-be-retained-during-removal-of-an-astra-control-center-instance]]
 == 删除 Astra Control Center 实例期间，备份和快照可能不会保留
 
 如果您拥有评估许可证，请务必存储帐户 ID ，以避免在未发送 ASUP 的情况下 Astra 控制中心出现故障时丢失数据。
 
 
 
+[[in-place-restore-operations-to-ontap-nas-economy-storage-classes-fail]]
 == 对ONTAP NAS经济型存储类的原位还原操作失败
 
 如果您对应用程序执行原位还原(将应用程序还原到其原始命名空间)、并且应用程序的存储类使用 `ontap-nas-economy` 驱动程序、如果未隐藏快照目录、则还原操作可能会失败。在原位还原之前、请按照中的说明进行操作 link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["为ONTAP NAS经济型操作启用备份和还原"] 以隐藏快照目录。
 
 
 
+[[ldap-user-and-group-limitations]]
 == LDAP用户和组限制
 
 Astra控制中心最多支持5、000个远程组和10、000个远程用户。
@@ -208,36 +224,42 @@ Astra控制中心最多支持5、000个远程组和10、000个远程用户。
 
 
 
+[[s3-buckets-in-astra-control-center-do-not-report-available-capacity]]
 == Astra 控制中心中的 S3 存储分段不会报告可用容量
 
 在备份或克隆由 Astra 控制中心管理的应用程序之前，请检查 ONTAP 或 StorageGRID 管理系统中的存储分段信息。
 
 
 
+[[astra-control-center-does-not-validate-the-details-you-enter-for-your-proxy-server]]
 == Astra 控制中心不会验证您为代理服务器输入的详细信息
 
-请确保您的安全 link:../use/monitor-protect.html#add-a-proxy-server["输入正确的值"] 建立连接时。
+请确保在建立连接时 link:../use/monitor-protect.html#add-a-proxy-server-for-connections-to-the-netapp-support-site["输入正确的值"]。
 
 
 
+[[existing-connections-to-a-postgres-pod-causes-failures]]
 == 与 Postgres Pod 的现有连接导致故障
 
 在 Postgres Pod 上执行操作时，不应直接在 Pod 中连接以使用 psql 命令。Astra Control 需要使用 psql 访问权限来冻结和解冻数据库。如果已建立连接，则快照，备份或克隆将失败。
 
 
 
+[[the-activity-page-displays-up-to-100000-events]]
 == "Activity"页面最多可显示100000个事件
 
 Astra Control Activity页面最多可显示100、000个事件。要查看所有记录的事件、请使用检索这些事件 https://docs.netapp.com/us-en/astra-automation/index.html["Astra Control API"^]。
 
 
 
+[[snapmirror-does-not-support-applications-using-nvme-over-tcp-for-storage-backends]]
 == SnapMirror不支持将基于TCP的NVMe用于存储后端的应用程序
 
 对于使用基于TCP协议的NVMe的存储后端、Astra控制中心不支持NetApp SnapMirror复制。
 
 
 
+[[find-more-information]]
 == 了解更多信息
 
 * link:../release-notes/known-issues.html["已知问题"]

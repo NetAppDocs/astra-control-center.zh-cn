@@ -16,6 +16,7 @@ summary: 将集群添加到 Astra 控制中心后，您可以查看有关集群�
 
 
 
+[[view-cluster-health-and-details]]
 == 查看集群运行状况和详细信息
 
 您可以查看有关集群的详细信息、例如集群的位置、工作节点、永久性卷和存储类。
@@ -41,6 +42,7 @@ NOTE: 您还可以从 Astra 控制中心 * 信息板 * 开始查看集群信息�
 
 
 
+[[change-the-default-storage-class]]
 == 更改默认存储类
 
 您可以更改集群的默认存储类。当Astra Control管理集群时、它会跟踪集群的默认存储类。

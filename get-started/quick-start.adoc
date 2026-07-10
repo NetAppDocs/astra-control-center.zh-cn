@@ -74,6 +74,7 @@ summary: 只需几步即可开始使用 Astra Control 。
 
 
 
+[[for-more-information]]
 == 有关详细信息 ...
 
 * https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]

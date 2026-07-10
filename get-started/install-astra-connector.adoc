@@ -16,6 +16,7 @@ summary: 您可以在要管理的集群上安装Astra Connector。
 
 
 
+[[install-astra-connector]]
 == 安装A作用 连接器
 
 您可以使用Kubbernetes命令和自定义资源(Custom Resource、CR)文件安装Astra Connector。

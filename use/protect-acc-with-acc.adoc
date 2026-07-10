@@ -69,6 +69,7 @@ NOTE: 理想情况下、应用程序集群应位于上图中Kubernetes和randche
 
 
 
+[[step-1-option-backup-and-restore-astra-control-center]]
 == 步骤1选项：备份和还原Astra Control Center
 
 本操作步骤介绍了使用备份和还原将Astra控制中心还原到新集群所需的步骤。
@@ -182,6 +183,7 @@ kubectl get acc -n netapp-acc
 
 
 
+[[step-1-option-protect-astra-control-center-using-replication]]
 == 第1步选项：使用复制保护Astra Control Center
 
 本操作步骤介绍了配置所需的步骤 link:../use/replicate_snapmirror.html["Asta Control Center复制"] 保护主Asta Control Center实例。
@@ -329,6 +331,7 @@ kubectl get pods -n netapp-acc | grep -e "traefik" | awk '{print $1}' | xargs ku
 
 
 
+[[step-2-restore-the-astra-control-center-operator]]
 == 第2步：恢复Asta Control Center操作员
 
 使用辅助Asta控制中心、从备份中还原主Asta控制中心操作员。目标命名空间必须与源命名空间相同。如果从主源集群中删除了Astra Control Center、则仍会存在备份以执行相同的还原步骤。
@@ -353,6 +356,7 @@ kubectl get pods -n netapp-acc | grep -e "traefik" | awk '{print $1}' | xargs ku
 
 
 
+[[troubleshooting]]
 == 故障排除
 
 确定系统运行状况以及保护过程是否成功。

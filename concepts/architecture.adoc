@@ -16,6 +16,7 @@ Astra Control 是一种 Kubernetes 应用程序数据生命周期管理解决方
 
 
 
+[[capabilities]]
 == 功能
 
 Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键功能：
@@ -43,6 +44,7 @@ Astra Control 为 Kubernetes 应用程序数据生命周期管理提供了关键
 
 
 
+[[architecture]]
 == 架构
 
 Asta Control的架构支持IT提供高级数据管理功能、以增强Kubbernetes应用程序的功能和可用性、简化容器化工作负载在公有云和内部环境之间的管理、保护和移动。 并通过REST API和SDK提供自动化功能、支持编程访问、以便与现有工作流无缝集成。
@@ -86,6 +88,7 @@ Astra Control基于四个互补组件构建：
 
 
 
+[[deployment-models]]
 == 部署模式
 
 Astra Control 适用于单一部署模型。
@@ -128,6 +131,7 @@ https://docs.netapp.com/us-en/astra-control-center/["Astra 控制中心文档"^]
 |===
 
 
+[[for-more-information]]
 == 有关详细信息 ...
 
 * https://docs.netapp.com/us-en/astra-control-center/["Astra 控制中心文档"^]

@@ -16,12 +16,14 @@ summary: 如果您只是想快速了解问题解答，此常见问题解答会�
 
 
 
+[[overview]]
 == 概述
 
 以下各节将为您在使用 Astra 控制中心时可能遇到的其他一些问题提供解答。如需更多说明，请联系 astra.feedback@netapp.com
 
 
 
+[[access-to-astra-control-center]]
 == 访问 Astra 控制中心
 
 .什么是Asta Control URL？
@@ -31,6 +33,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 
 
+[[licensing]]
 == 许可
 
 .我正在使用评估版许可证。如何更改为完整许可证？
@@ -49,6 +52,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 
 
+[[registering-kubernetes-clusters]]
 == 注册 Kubernetes 集群
 
 .在添加到Astra Control后、我需要向Kubbernetes集群添加工作节点。我该怎么办？
@@ -56,7 +60,7 @@ Astra 控制中心使用本地身份验证以及每个环境专用的 URL 。
 
 .如何正确取消管理集群？
 . link:../use/unmanage.html["从 Astra Control 取消管理应用程序"]。
-. link:../use/unmanage.html#stop-managing-compute["从 Astra Control 取消管理集群"]。
+. link:../use/unmanage.html#unmanage-a-cluster["从 Astra Control 取消管理集群"]。
 
 
 .从Asta Control中删除Kubbernetes集群后、我的应用程序和数据会发生什么情况？
@@ -70,6 +74,7 @@ WARNING: 在通过任何其他方法删除集群之前，请始终从 Astra Cont
 
 
 
+[[managing-applications]]
 == 管理应用程序
 
 .Astra Control是否可以部署应用程序？
@@ -89,6 +94,7 @@ Astra Control Center默认情况下不会显示为您可以管理的应用程序
 
 
 
+[[data-management-operations]]
 == 数据管理操作
 
 .我的应用程序使用多个PV.Astra Control是否会为这些PVs创建快照和备份？
@@ -99,6 +105,7 @@ Astra Control Center默认情况下不会显示为您可以管理的应用程序
 
 
 
+[[astra-control-provisioner]]
 == Asta Control配置程序
 
 .Astra Control配置程序的存储配置功能与Astra Trident中的存储配置功能有何不同？
@@ -116,6 +123,7 @@ Asta Control配置程序已取代Asta Trandent、成为Asta Control架构中的�
 .如何从现有Asta Trident用户过渡到Asta Control以使用高级存储管理和配置功能？
 如果您是现有的Asta Trident用户(包括公有云中的Asta Trident用户)、则需要先获取Asta Control许可证。完成此操作后、您可以下载Astra Control配置程序捆绑包、升级Astra三端、和 link:../get-started/enable-acp.html["启用Astra Control配置程序功能"]。
 
+[[running-acp-check]]
 .如何知道Astra Control配置程序是否已取代了集群上的Astra Trident？
 安装Asta Control配置程序后、Asta Control UI中的主机集群将显示 `ACP version` 而不是 `Trident version` 字段和当前安装的版本号。
 

@@ -43,6 +43,7 @@ Astra Control 可以从快照或备份还原应用程序。将应用程序还原
 
 
 
+[[restore-data-from-backup-or-snapshot-using-the-web-ui]]
 == 使用Web UI从备份或快照还原数据
 
 您可以使用Asta Control Web UI还原数据。
@@ -110,6 +111,7 @@ NOTE: 要了解有关配置包含和排除规则的信息、请参见 <<在应�
 
 
 
+[[tech-preview-restore-from-backup-using-a-custom-resource-cr]]
 == [技术预览]使用自定义资源从备份中恢复(CR)
 
 您可以使用自定义资源(CR)文件将备份中的数据还原到其他命名空间或原始源命名空间。
@@ -256,6 +258,7 @@ kubectl apply -f astra-control-backup-ipr-cr.yaml
 ====
 
 
+[[tech-preview-restore-from-snapshot-using-a-custom-resource-cr]]
 == [技术预览]使用自定义资源从快照恢复(CR)
 
 您可以使用自定义资源(CR)文件从快照将数据还原到其他命名空间或原始源命名空间。
@@ -411,6 +414,7 @@ IMPORTANT: 任何按命名空间名称/ID或命名空间标签限制命名空间
 
 
 
+[[filter-resources-during-an-application-restore]]
 == 在应用程序还原期间筛选资源
 
 您可以向添加筛选器规则 link:../use/restore-apps.html["还原"] 此操作将指定要从还原的应用程序中包括或排除的现有应用程序资源。您可以根据指定的命名空间、标签或GVK (GroupVersion Kind)包括或排除资源。
@@ -469,6 +473,7 @@ TIP: 您可以根据需要创建任意数量的资源包含和排除规则。这
 
 
 
+[[in-place-restore-complications-for-an-app-that-shares-resources-with-another-app]]
 == 如果某个应用程序与其他应用程序共享资源、则就地恢复会变得非常复杂
 
 您可以对与其他应用共享资源并产生意外结果的应用程序执行原位还原操作。对其中一个应用程序执行原位还原时、这些应用程序之间共享的任何资源都会被替换。

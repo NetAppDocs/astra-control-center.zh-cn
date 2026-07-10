@@ -27,12 +27,14 @@ NOTE: 请确保您的许可证至少启用所需数量的CPU单元。如果Astra
 
 
 
+[[evaluation-licenses-and-full-licenses]]
 == 评估版许可证和完全许可证
 
 新安装的Astra Control Center会提供嵌入式评估许可证。评估版许可证可实现与完整许可证相同的功能和特性、有效期为90天。评估期结束后、需要完整许可证才能继续执行完整功能。
 
 
 
+[[license-expiration]]
 == 许可证到期
 
 如果活动A作用 中的Astra Control Center许可证过期、则以下功能的UI和API功能将不可用：
@@ -47,6 +49,7 @@ NOTE: 请确保您的许可证至少启用所需数量的CPU单元。如果Astra
 
 
 
+[[how-license-consumption-is-calculated]]
 == 如何计算许可证使用量
 
 在将新集群添加到 Astra 控制中心时，只有在集群上运行的至少一个应用程序由 Astra 控制中心管理之后，该集群才会计入已用许可证。
@@ -58,6 +61,7 @@ NOTE: Red Hat OpenShift基础架构节点不使用Astra Control Center中的许�
 
 
 
+[[find-more-information]]
 == 了解更多信息
 
 * link:../get-started/add-license.html["首次设置Astra控制中心时添加许可证"]

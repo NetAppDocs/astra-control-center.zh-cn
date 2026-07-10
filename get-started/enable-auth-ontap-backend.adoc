@@ -22,6 +22,7 @@ Astra控制中心提供了两种对ONTAP 后端进行身份验证的模式：
 
 
 
+[[enable-credential-based-authentication]]
 === 启用基于凭据的身份验证
 
 ASRA控制中心需要集群范围的凭据 `admin` 与ONTAP 后端通信。您应使用标准的预定义角色、例如 `admin`。这样可以确保与未来的ONTAP 版本向前兼容、这些版本可能会公开功能API、以供未来的Astra控制中心版本使用。
@@ -48,6 +49,7 @@ NOTE: 可以创建自定义安全登录角色并将其用于Astra Control Center
 
 
 
+[[enable-certificate-based-authentication]]
 === 启用基于证书的身份验证
 
 Astra控制中心可以使用证书与新的和现有的ONTAP 后端进行通信。您应在后端定义中输入以下信息。

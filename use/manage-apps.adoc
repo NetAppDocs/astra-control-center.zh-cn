@@ -18,6 +18,7 @@ summary: '将Kubernetes集群添加到Astra Control后、您可以在该集群�
 
 
 
+[[application-management-requirements]]
 == 应用程序管理要求
 
 Astra Control 具有以下应用程序管理要求：
@@ -61,6 +62,7 @@ Astra Control 具有以下应用程序管理要求：
 
 
 
+[[supported-app-installation-methods]]
 == 支持的应用程序安装方法
 
 Astra Control 支持以下应用程序安装方法：
@@ -93,12 +95,14 @@ Astra Control可能无法克隆使用"按参考传递"架构设计的运算符(�
 
 
 
+[[install-apps-on-your-cluster]]
 == 在集群上安装应用程序
 
 你先请 link:../get-started/add-cluster.html["已添加集群"] 对于Astra Control、您可以在集群上安装应用程序或管理现有应用程序。可以管理范围限定为一个或多个命名空间的任何应用程序。
 
 
 
+[[define-apps]]
 == 定义应用程序
 
 在Astra Control发现集群上的命名空间后、您可以定义要管理的应用程序。您可以选择 <<定义要作为应用程序进行管理的资源,管理跨越一个或多个命名空间的应用程序>> 或 <<定义要作为应用程序进行管理的命名空间,将整个命名空间作为一个应用程序进行管理>>。这一切都可以细化到数据保护操作所需的粒度级别。
@@ -112,7 +116,7 @@ TIP: 例如、您可能希望为"Maria"设置一个每周节奏的备份策略�
 * 已将Kubernetes集群添加到Astra Control中。
 * 集群上安装的一个或多个应用程序。 <<支持的应用程序安装方法,阅读有关支持的应用程序安装方法的更多信息>>。
 * 已添加到Astra Control的Kubernetes集群上的现有命名空间。
-* (可选) Any上的Kubernetes标签 link:../use/manage-apps.html#app-management-requirements["支持的Kubernetes资源"]。
+* （可选）任意 link:../use/manage-apps.html#application-management-requirements["支持的Kubernetes资源"] 上的 Kubernetes 标签。
 +
 
 TIP: 标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进行标识。通过标签，可以更轻松地对 Kubernetes 对象进行排序，组织和查找。要了解有关 Kubernetes 标签的更多信息， https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["请参见 Kubernetes 官方文档"^]。
@@ -133,6 +137,7 @@ TIP: 标签是一个键 / 值对，您可以将其分配给 Kubernetes 对象进
 
 
 
+[[define-resources-to-manage-as-an-app]]
 === 定义要作为应用程序进行管理的资源
 
 您可以指定 link:../concepts/app-management.html["构成应用程序的Kubernetes资源"] 要使用Astra Control进行管理的。通过定义应用程序、您可以将Kubernetes集群中的元素分组到一个应用程序中。此Kubernetes资源集合按命名空间和标签选择器标准进行组织。
@@ -221,6 +226,7 @@ TIP: 要查看特定应用程序的详细信息，请选择应用程序名称。
 
 
 
+[[define-a-namespace-to-manage-as-an-app]]
 === 定义要作为应用程序进行管理的命名空间
 
 您可以通过将命名空间的资源定义为应用程序来将命名空间中的所有Kubernetes资源添加到Astra Control管理中。如果您要以类似的方式并以通用间隔管理和保护特定命名空间中的所有资源、则此方法比单独定义应用程序更好。
@@ -243,6 +249,7 @@ NOTE: 选中*显示系统命名空间*复选框以显示默认情况下在应用
 
 
 
+[[tech-preview-define-an-application-using-a-kubernetes-custom-resource]]
 === [技术预览]使用Kubernetes自定义资源定义应用程序
 
 您可以通过使用自定义资源(CR)将要使用Asta Control管理的Kubbernetes资源定义为应用程序来指定这些资源。如果要单独管理某个命名空间中的资源、或者要以类似方式并按相同间隔管理和保护某个特定命名空间中的所有资源、则可以添加集群范围的资源。
@@ -343,6 +350,7 @@ kubectl apply -f astra_mysql_app.yaml -n astra-connector
 
 
 
+[[what-about-system-namespaces]]
 == 系统命名空间如何？
 
 Astra Control还会发现Kubernetes集群上的系统命名空间。默认情况下、我们不会向您显示这些系统命名空间、因为您很少需要备份系统应用程序资源。
@@ -356,6 +364,7 @@ TIP: Astra Control Center默认情况下不会显示为您可以管理的应用�
 
 
 
+[[example-separate-protection-policy-for-different-releases]]
 == 示例：不同版本的单独保护策略
 
 在此示例中、DevOps团队正在管理"金丝利"版本部署。该团队的集群中有三个Pod运行nginx。其中两个 Pod 专用于稳定版本。第三个 POD 适用于加那利版本。
@@ -368,6 +377,7 @@ DevOps 团队的 Kubernetes 管理员会将标签 `detion=stable` 添加到稳�
 
 
 
+[[find-more-information]]
 == 了解更多信息
 
 * https://docs.netapp.com/us-en/astra-automation["使用 Astra Control API"^]

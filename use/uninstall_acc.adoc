@@ -79,12 +79,14 @@ deployment.apps/acc-operator-controller-manager deleted
 
 
 
+[[troubleshooting-uninstall-issues]]
 == 对卸载问题进行故障排除
 
 使用以下解决方法解决卸载 Astra 控制中心时出现的任何问题。
 
 
 
+[[uninstall-of-astra-control-center-fails-to-clean-up-the-monitoring-operator-pod-on-the-managed-cluster]]
 === 卸载 Astra 控制中心无法清理受管集群上的监控操作员 POD
 
 如果在卸载 Astra Control Center 之前未取消管理集群，则可以使用以下命令手动删除 netapp-monitoring 命名空间和命名空间中的 Pod ：
@@ -164,6 +166,7 @@ customresourcedefinition.apiextensions.k8s.io "agents.monitoring.netapp.com" del
 
 
 
+[[uninstall-of-astra-control-center-fails-to-clean-up-traefik-crds]]
 === 卸载 Astra 控制中心无法清理 Traefik CRD
 
 您可以手动删除 Traefik CRD 。CRD 是全局资源，删除它们可能会影响集群上的其他应用程序。
@@ -201,6 +204,7 @@ kubectl delete crd ingressroutes.traefik.containo.us ingressroutetcps.traefik.co
 
 
 
+[[find-more-information]]
 == 了解更多信息
 
 * link:../release-notes/known-issues.html["卸载的已知问题"]

@@ -27,12 +27,14 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 
 
+[[deploy-astra-control-center-in-amazon-web-services]]
 == 在 Amazon Web Services 中部署 Astra 控制中心
 
 您可以在 Amazon Web Services （ AWS ）公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。
 
 
 
+[[what-youll-need-for-aws]]
 === AWS所需的功能
 
 在AWS中部署Astra Control Center之前、您需要满足以下条件：
@@ -48,6 +50,7 @@ summary: 要在满足某些环境前提条件后安装 Astra 控制中心，您�
 
 
 
+[[operational-environment-requirements-for-aws]]
 === AWS 的操作环境要求
 
 Astra 控制中心需要以下 AWS 操作环境：
@@ -64,6 +67,7 @@ NOTE: AWS注册表令牌将在12小时后过期、之后您必须续订Docker映
 
 
 
+[[overview-of-deployment-for-aws]]
 === AWS 部署概述
 
 下面简要介绍了将 Cloud Volumes ONTAP 作为存储后端安装适用于 AWS 的 Astra 控制中心的过程。
@@ -79,6 +83,7 @@ NOTE: AWS注册表令牌将在12小时后过期、之后您必须续订Docker映
 
 
 
+[[ensure-that-you-have-sufficient-iam-permissions]]
 === 确保您具有足够的 IAM 权限
 
 确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp BlueXP (以前称为Cloud Manager) Connector。
@@ -87,6 +92,7 @@ NOTE: AWS注册表令牌将在12小时后过期、之后您必须续订Docker映
 
 
 
+[[install-a-redhat-openshift-cluster-on-aws]]
 === 在 AWS 上安装 RedHat OpenShift 集群
 
 在 AWS 上安装 RedHat OpenShift 容器平台集群。
@@ -95,6 +101,7 @@ NOTE: AWS注册表令牌将在12小时后过期、之后您必须续订Docker映
 
 
 
+[[configure-aws]]
 === 配置 AWS
 
 接下来、将AWS配置为创建虚拟网络、设置EC2计算实例以及创建AWS S3存储分段。如果无法访问NetApp Astra控制中心映像注册表、则还需要创建一个Elastic Container Registry (ECR)来托管Astra控制中心映像、并将这些映像推送到此注册表。
@@ -126,6 +133,7 @@ image:acc-cvo-aws3.png["此图显示了采用Cloud Volumes ONTAP 部署的Astra�
 
 
 
+[[configure-netapp-bluexp-for-aws]]
 === 配置适用于AWS的NetApp BlueXP
 
 使用NetApp BlueXP (以前称为Cloud Manager)创建工作空间、向AWS添加连接器、创建工作环境并导入集群。
@@ -165,6 +173,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行，也可以在高可用�
 
 
 
+[[install-astra-control-center-for-aws]]
 === 安装适用于AWS的Astra控制中心
 
 请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
@@ -174,12 +183,14 @@ NOTE: AWS使用通用S3存储分段类型。
 
 
 
+[[deploy-astra-control-center-in-google-cloud-platform]]
 == 在Google Cloud Platform中部署Astra控制中心
 
 您可以在Google云平台(GCP)公有 云上托管的自管理Kubernetes集群上部署Astra控制中心。
 
 
 
+[[what-youll-need-for-gcp]]
 === GCP所需的功能
 
 在GCP中部署Astra Control Center之前、您需要以下各项：
@@ -194,6 +205,7 @@ NOTE: AWS使用通用S3存储分段类型。
 
 
 
+[[operational-environment-requirements-for-gcp]]
 === GCP的操作环境要求
 
 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
@@ -202,6 +214,7 @@ NOTE: AWS使用通用S3存储分段类型。
 
 
 
+[[overview-of-deployment-for-gcp]]
 === GCP部署概述
 
 下面概述了在GCP中将Cloud Volumes ONTAP 作为存储后端的自管理OCP集群上安装Astra控制中心的过程。
@@ -218,18 +231,20 @@ NOTE: AWS使用通用S3存储分段类型。
 
 
 
+[[install-a-redhat-openshift-cluster-on-gcp]]
 === 在GCP上安装RedHat OpenShift集群
 
 第一步是在GCP上安装RedHat OpenShift集群。
 
 有关安装说明，请参见以下内容：
 
-* https://access.redhat.com/documentation/en-us/openshift_container_platform/4.13/html/installing/index#installing-on-gcp["在GCP中安装OpenShift集群"^]
+* https://docs.redhat.com/en/documentation/openshift_container_platform/4.13/html/installing_on_google_cloud/index["在GCP中安装OpenShift集群"^]
 * https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["创建GCP服务帐户"^]
 
 
 
 
+[[create-a-gcp-project-and-virtual-private-cloud]]
 === 创建GCP项目和虚拟私有云
 
 至少创建一个GCP项目和虚拟私有云(Virtual Private Cloud、VPC)。
@@ -241,6 +256,7 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 
 
 
+[[ensure-that-you-have-sufficient-iam-permissions]]
 === 确保您具有足够的 IAM 权限
 
 确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp BlueXP (以前称为Cloud Manager) Connector。
@@ -249,6 +265,7 @@ NOTE: OpenShift 可能会创建自己的资源组。此外、您还应定义GCP 
 
 
 
+[[configure-gcp]]
 === 配置GCP
 
 接下来、配置GCP以创建VPC、设置计算实例以及创建Google Cloud Object Storage。如果无法访问NetApp Astra控制中心映像注册表、您还需要创建一个Google容器注册表来托管Astra控制中心映像、并将这些映像推送到此注册表。
@@ -299,6 +316,7 @@ done < acc.manifest.bundle.yaml
 
 
 
+[[configure-netapp-bluexp-for-gcp]]
 === 为GCP配置NetApp BlueXP
 
 使用NetApp BlueXP (以前称为Cloud Manager)创建工作空间、向GCP添加连接器、创建工作环境并导入集群。
@@ -343,6 +361,7 @@ TIP: Cloud Volumes ONTAP 可以作为单个节点运行、也可以在高可用�
 
 
 
+[[install-astra-control-center-for-gcp]]
 === 安装适用于GCP的Astra控制中心
 
 请遵循标准 link:../get-started/install_acc.html["Astra 控制中心安装说明"]。
@@ -360,12 +379,14 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 
+[[deploy-astra-control-center-in-microsoft-azure]]
 == 在 Microsoft Azure 中部署 Astra 控制中心
 
 您可以在 Microsoft Azure 公有 云上托管的自管理 Kubernetes 集群上部署 Astra 控制中心。
 
 
 
+[[what-youll-need-for-azure]]
 === Azure所需的功能
 
 在Azure中部署Astra Control Center之前、您需要满足以下条件：
@@ -380,6 +401,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 
+[[operational-environment-requirements-for-azure]]
 === Azure 的操作环境要求
 
 确保您选择托管 Astra 控制中心的操作环境满足环境官方文档中概述的基本资源要求。
@@ -388,6 +410,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 
+[[overview-of-deployment-for-azure]]
 === Azure 部署概述
 
 下面简要介绍了适用于 Azure 的 Astra 控制中心的安装过程。
@@ -404,6 +427,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 
+[[install-a-redhat-openshift-cluster-on-azure]]
 === 在 Azure 上安装 RedHat OpenShift 集群
 
 第一步是在 Azure 上安装 RedHat OpenShift 集群。
@@ -416,6 +440,7 @@ kubectl create secret docker-registry <secret name> --docker-server=<Registry lo
 
 
 
+[[create-azure-resource-groups]]
 === 创建 Azure 资源组
 
 至少创建一个 Azure 资源组。
@@ -427,6 +452,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 
 
+[[ensure-that-you-have-sufficient-iam-permissions]]
 === 确保您具有足够的 IAM 权限
 
 确保您具有足够的IAM角色和权限、可以安装RedHat OpenShift集群和NetApp BlueXP Connector。
@@ -435,6 +461,7 @@ NOTE: OpenShift 可能会创建自己的资源组。除了这些之外，您还�
 
 
 
+[[configure-azure]]
 === 配置 Azure
 
 接下来、将Azure配置为创建虚拟网络、设置计算实例以及创建Azure Blb容器。如果您无法访问NetApp Astra控制中心映像注册表、则还需要创建Azure容器注册表(ACR)来托管Astra控制中心映像、并将这些映像推送到此注册表。
@@ -484,6 +511,7 @@ done < acc.manifest.bundle.yaml
 
 
 
+[[configure-netapp-bluexp-formerly-cloud-manager-for-azure]]
 === 为Azure配置NetApp BlueXP (以前称为Cloud Manager)
 
 使用BlueXP (以前称为Cloud Manager)创建工作空间、向Azure添加连接器、创建工作环境并导入集群。
@@ -537,6 +565,7 @@ Asta Control配置程序会在导入和发现过程中自动安装。
 
 
 
+[[install-and-configure-astra-control-center-for-azure]]
 === 安装和配置适用于Azure的Astra控制中心
 
 按照标准安装 Astra 控制中心 link:../get-started/install_acc.html["安装说明"]。

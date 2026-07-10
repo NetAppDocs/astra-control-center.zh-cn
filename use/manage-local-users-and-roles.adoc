@@ -18,6 +18,7 @@ summary: 管理Astra控制中心系统上的用户和角色。
 
 
 
+[[use-ldap]]
 == 使用 LDAP
 
 LDAP是一种用于访问分布式目录信息的行业标准协议、也是企业身份验证的常见选择。您可以将Astra控制中心连接到LDAP服务器、以便对选定的Astra控制用户执行身份验证。从较高层面来看、该配置涉及将Astra与LDAP集成、并定义与LDAP定义对应的Astra Control用户和组。您可以使用Astra Control API或Web UI配置LDAP身份验证以及LDAP用户和组。有关详细信息、请参见以下文档：
@@ -29,6 +30,7 @@ LDAP是一种用于访问分布式目录信息的行业标准协议、也是企�
 
 
 
+[[add-users]]
 == 添加用户
 
 帐户所有者和管理员可以向 Astra 控制中心安装添加更多用户。
@@ -61,12 +63,14 @@ LDAP是一种用于访问分布式目录信息的行业标准协议、也是企�
 
 
 
+[[manage-passwords]]
 == 管理密码
 
 您可以在 Astra 控制中心管理用户帐户的密码。
 
 
 
+[[change-your-password]]
 === 更改密码
 
 您可以随时更改用户帐户的密码。
@@ -82,6 +86,7 @@ LDAP是一种用于访问分布式目录信息的行业标准协议、也是企�
 
 
 
+[[reset-another-users-password]]
 === 重置其他用户的密码
 
 如果您的帐户具有管理员或所有者角色权限，则可以重置其他用户帐户以及您自己的帐户的密码。重置密码时，您需要分配一个临时密码，用户必须在登录时更改此密码。
@@ -101,6 +106,7 @@ NOTE: 用户下次登录时，系统将提示用户更改密码。
 
 
 
+[[remove-users]]
 == 删除用户
 
 具有所有者或管理员角色的用户可以随时从帐户中删除其他用户。
@@ -117,12 +123,14 @@ Astra 控制中心从帐户中删除用户。
 
 
 
+[[manage-roles]]
 == 管理角色
 
 您可以通过添加命名空间限制并将用户角色限制为这些限制来管理角色。这样，您就可以控制对组织内资源的访问。您可以使用 Astra Control UI 或 https://docs.netapp.com/us-en/astra-automation["Astra Control API"^] 以管理角色。
 
 
 
+[[add-a-namespace-constraint-to-a-role]]
 === 向角色添加命名空间限制
 
 管理员或所有者用户可以向成员或查看器角色添加命名空间限制。
@@ -157,6 +165,7 @@ NOTE: 如果为某个角色启用了限制并选择了 * 确认 * 而未添加�
 
 
 
+[[remove-a-namespace-constraint-from-a-role]]
 === 从角色中删除命名空间限制
 
 管理员或所有者用户可以从角色中删除命名空间限制。
@@ -175,6 +184,7 @@ NOTE: 如果为某个角色启用了限制并选择了 * 确认 * 而未添加�
 
 
 
+[[for-more-information]]
 == 有关详细信息 ...
 
 * link:../concepts/user-roles-namespaces.html["用户角色和命名空间"]

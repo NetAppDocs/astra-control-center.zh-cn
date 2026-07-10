@@ -16,6 +16,7 @@ summary: 从 Astra Control 中删除不再需要管理的任何应用程序或�
 
 
 
+[[unmanage-an-app]]
 == 取消管理应用程序
 
 从 Astra 控制中心停止管理不再需要备份，快照或克隆的应用程序。
@@ -40,6 +41,7 @@ Astra 控制中心停止管理应用程序。
 
 
 
+[[unmanage-a-cluster]]
 == 取消管理集群
 
 停止从Astra控制中心管理不再需要管理的集群。

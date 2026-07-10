@@ -72,6 +72,7 @@ insecure-skip-tls-verify: true
 
 
 
+[[run-eligibility-checks]]
 == 运行资格检查
 
 运行以下资格检查，以确保您的集群已准备好添加到 Astra 控制中心。
@@ -131,6 +132,7 @@ ontap-gold (default)  csi.trident.netapp.io  Delete         Immediate          t
 
 
 
+[[create-a-cluster-role-kubeconfig]]
 == 创建集群角色kubeconfig
 
 对于使用kubeconfig"管理的集群、您可以选择为Astra Control Center创建有限权限或扩展权限管理员角色。这不是Astra控制中心设置所需的操作步骤、因为您已在中配置了kubeconfig link:../get-started/install_acc.html#set-up-namespace-and-secret-for-registries-with-auth-requirements["安装过程"]。

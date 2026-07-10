@@ -16,6 +16,7 @@ summary: 根据您的环境、安装Astra控制中心后可能需要进行其他
 
 
 
+[[remove-resource-limitations]]
 == 消除资源限制
 
 某些环境使用ResourceQuotas和LimitRanges对象来防止命名空间中的资源占用集群上的所有可用CPU和内存。Astra控制中心未设置最大限制、因此不符合这些资源的要求。如果您的环境采用这种方式配置、则需要从计划安装Astra控制中心的命名空间中删除这些资源。
@@ -81,6 +82,7 @@ kubectl delete limitrange cpu-limit-range -n [netapp-acc or custom namespace]
 
 
 
+[[add-a-custom-tls-certificate]]
 == 添加自定义 TLS 证书
 
 默认情况下、Astra控制中心对传入控制器流量(仅在某些配置中)和Web浏览器的Web UI身份验证使用自签名TLS证书。对于生产环境、您应删除现有的自签名TLS证书、并将其替换为由证书颁发机构(CA)签名的TLS证书。
@@ -104,6 +106,7 @@ kubectl delete limitrange cpu-limit-range -n [netapp-acc or custom namespace]
 
 
 
+[[remove-the-self-signed-certificate]]
 === 删除自签名证书
 
 删除现有的自签名 TLS 证书。
@@ -130,6 +133,7 @@ kubectl delete secret secure-testing-cert -n <ACC-deployment-namespace>
 
 
 
+[[add-a-new-certificate-using-the-command-line]]
 === 使用命令行添加新证书
 
 添加一个由 CA 签名的新 TLS 证书。

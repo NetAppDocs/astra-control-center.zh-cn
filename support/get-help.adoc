@@ -21,6 +21,7 @@ IMPORTANT: 如果您拥有 Astra 控制中心的评估许可证，则可以获�
 
 
 
+[[self-support-options]]
 == 自助支持选项
 
 您可以从 Astra 控制中心用户界面访问支持选项，方法是从主菜单中选择 * 支持 * 选项卡。
@@ -36,12 +37,14 @@ IMPORTANT: 如果您拥有 Astra 控制中心的评估许可证，则可以获�
 
 
 
+[[enable-daily-scheduled-support-bundle-upload-to-netapp-support]]
 == 启用每日计划的支持包上传至 NetApp 支持
 
 在安装Astra Control Center期间(如果指定) `enrolled: true` 适用于 `autoSupport` 在Astra控制中心自定义资源(CR)文件中 (`astra_control_center.yaml`)、则会自动将每日支持包上传到 https://mysupport.netapp.com/site/["NetApp 支持站点"^]。
 
 
 
+[[generate-support-bundle-to-provide-to-netapp-support]]
 == 生成要提供给 NetApp 支持的支持包
 
 通过 Astra 控制中心，管理员用户可以生成捆绑包，其中包含对 NetApp 支持有用的信息，包括日志， Astra 部署的所有组件的事件，指标以及有关所管理集群和应用程序的拓扑信息。如果您已连接到 Internet ，则可以直接从 Astra 控制中心 UI 将支持包上传到 NetApp 支持站点（ NSS ）。
@@ -87,6 +90,7 @@ TIP: 用户界面右上角的通知图标提供了有关与支持包相关的事
 
 
 
+[[if-you-have-an-air-gapped-installation]]
 === 如果您安装了带气的安装
 
 如果您安装了带风的安装，请在生成支持包后执行以下步骤。当该捆绑包可供下载时，在 * 支持 * 页面的 * 支持捆绑包 * 部分中的 * 生成 * 旁边会显示下载图标。

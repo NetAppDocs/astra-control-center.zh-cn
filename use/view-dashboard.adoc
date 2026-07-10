@@ -18,6 +18,7 @@ summary: 选择 Dashboard 可查看应用程序，计算及其运行状况的高
 
 
 
+[[applications-tile]]
 == 应用程序区块
 
 "* 应用程序 * " 图块可帮助您确定以下内容：
@@ -33,12 +34,14 @@ summary: 选择 Dashboard 可查看应用程序，计算及其运行状况的高
 
 
 
+[[clusters-tile]]
 == 集群图块
 
 "* 集群 * " 图块提供了有关使用 Astra 控制中心管理的集群运行状况的类似详细信息，您可以像使用应用程序一样深入查看以获取更多详细信息。
 
 
 
+[[storage-backends-tile]]
 == 存储后端图块
 
 "Storage Backends* " 图块提供的信息可帮助您确定存储后端的运行状况，其中包括：

@@ -14,6 +14,6 @@ summary: '使用Kubbernetes自定义资源(CR)管理Astra Control应用程序。
 [role="lead"]
 使用Kubbernetes自定义资源(CR)管理Astra Control应用程序。可以使用以下选项：
 
-* link:../use/manage-apps.html#define-an-application-using-a-kubernetes-custom-resource["使用Kubbernetes自定义资源定义应用程序"]
-* link:../use/manage-buckets.html#manage-a-bucket-using-a-custom-resource["使用自定义资源管理存储分段"]
+* link:../use/manage-apps.html#tech-preview-define-an-application-using-a-kubernetes-custom-resource["使用Kubbernetes自定义资源定义应用程序"]
+* link:../use/manage-buckets.html#tech-preview-manage-a-bucket-using-a-custom-resource["使用自定义资源管理存储分段"]
 
