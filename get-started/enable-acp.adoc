@@ -282,7 +282,7 @@ status:
 --
 .Tridentctl
 --
-. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["下载Asta三端安装程序并解压缩"^]。
+. https://docs.netapp.com/us-en/trident/trident-install/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["下载Asta三端安装程序并解压缩"^]。
 . https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["如果您已有Asta Trident、请从托管它的集群中将其卸载"^]。
 . 在启用Asta Control配置程序的情况下安装Asta Trent (`--enable-acp=true`）：
 +

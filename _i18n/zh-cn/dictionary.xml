@@ -2223,7 +2223,6 @@
   <block id="478393a7bc00211c00b84b91bd7270e1" category="list-text"><block ref="ae36d1cdd520df7c3eaefc0ce2deb814" category="inline-link-rx"></block>。</block>
   <block id="a9b10c3e99be35f3f8a9c7dc7fadd754" category="inline-link">安装快照CRD和快照控制器</block>
   <block id="e5b001692c70f874108d4c3517741181" category="inline-link">安装最新版本的Astra Trdent</block>
-  <block id="a303c00b0d0d4a1b4adf9ac86b7be2cc" category="list-text"><block ref="6b04d2c2cadce52e000fe64978797f65" category="inline-link-rx"></block>。</block>
   <block id="48d0b044dd9368b2691ff16393a31d86" category="inline-link">创建卷快照类</block>
   <block id="0fa487fe8680011a1e8590273692a729" category="list-text"><block ref="7780c580e1dcefaf97af849cafb81d68" category="inline-link-rx"></block>。</block>
   <block id="f48fcbd3913b071dd3dde66b31c0287b" category="admonition">如果您的应用使用由支持的存储类<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 驱动程序、无法创建快照。为快照使用备用存储类。</block>
@@ -2912,7 +2911,6 @@ Astra Control现在可以管理由使用NVMe/TCP连接的永久性卷提供支�
   <block id="b53ea1f6729ee2c1c5dc303c5e9bb360" category="list-text">如果您尚未安装Astra三端安装程序、或者您从初始Astra三端安装程序中删除了操作员、请完成以下步骤：</block>
   <block id="1802fc07d2de18110ae52621540f337e" category="list-text">创建客户需求日：</block>
   <block id="b19df824e7baecb971d0fdd39542c6d6" category="list-text">创建三项命名空间 <block ref="a40796e67d7096bdb1a461d9369987ae" prefix="(" category="inline-code"></block>)或确认三项命名空间仍然存在 <block ref="929ac53a7aaa18d0ab7bfd29e3b89c45" prefix="(" category="inline-code"></block>）。如果已删除此命名空间、请重新创建它。</block>
-  <block id="6942401e8cfb1a0fc7b82ec1dcda7d32" category="list-text"><block ref="b0e92e3807bd982cc8fd58230062a04f" category="inline-link-rx"></block>。</block>
   <block id="a65211330b142f51904ccfb3741cc124" category="inline-link">如果您已有Asta Trident、请从托管它的集群中将其卸载</block>
   <block id="00c4331aab8ed2101088511f96b6af8e" category="list-text"><block ref="f21e19b64d79b0da0ff48729d1b28669" category="inline-link-rx"></block>。</block>
   <block id="005a56f182fe268e9f6977b39114eab8" category="list-text">在启用Asta Control配置程序的情况下安装Asta Trent <block ref="87d6b9737ff6f9e44e3dd25c182cf495" prefix="(" category="inline-code"></block>）：</block>
@@ -3705,4 +3703,6 @@ Asta Control配置程序会在导入和发现过程中自动安装。</block>
   <block id="e7b4bce844330e3c5aefb46f8d12db1d" category="list-text"><block ref="e7b4bce844330e3c5aefb46f8d12db1d" category="inline-link-macro-rx"></block></block>
   <block id="398950e2648d28eed29b2b7bd0952ad5" category="list-text">（可选）任意 <block ref="3b1c56fea11b428a3060d7568229534a" category="inline-link-macro-rx"></block> 上的 Kubernetes 标签。</block>
   <block id="eef3fedf7d4e668662e435160c3c5c87" category="admonition">添加存储桶时，请选择正确的存储桶提供程序，并为该提供程序提供正确的凭据。例如，UI 接受 NetApp ONTAP S3 作为类型并接受 StorageGRID 凭据；但是，这将导致将来使用此存储桶的所有应用程序备份和还原失败。请参阅<block ref="2fa2057c95f20298aba02cf1be9ec7d5" category="inline-link-macro-rx"></block>。</block>
+  <block id="5b1ab0fe5df34787bb6e83e783c2d46f" category="list-text"><block ref="299939be75f9a3e7d44493947c6b6dbe" category="inline-link-rx"></block>。</block>
+  <block id="079f04a542e1f643fc541d9607a55d47" category="list-text"><block ref="1a55a38d49368309956301956beb2671" category="inline-link-rx"></block>。</block>
 </blocks>

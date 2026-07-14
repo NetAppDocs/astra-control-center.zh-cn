@@ -39,7 +39,7 @@ indexpage:
     - title: 开始使用 Astra Control API
       url: https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html
     - title: API 参考
-      url: https://docs.netapp.com/us-en/astra-automation/reference/overview.html
+      url: https://docs.netapp.com/us-en/astra-automation/reference/astra_api_(acc)_overview.html
     - title: API 工作流
       url: https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html
   - title: 解决方案简介
